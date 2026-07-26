@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    @apply bg-campus-cream text-campus-ink antialiased;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex min-h-[48px] w-full items-center justify-center rounded-xl bg-campus-terracotta px-6 py-3 text-base font-semibold text-white transition-colors hover:bg-campus-terracottaDark focus:outline-none focus:ring-2 focus:ring-campus-terracotta focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50;
+  }
+
+  .btn-secondary {
+    @apply inline-flex min-h-[48px] w-full items-center justify-center rounded-xl border-2 border-campus-sage bg-white px-6 py-3 text-base font-semibold text-campus-sageDark transition-colors hover:bg-campus-sage/10 focus:outline-none focus:ring-2 focus:ring-campus-sage focus:ring-offset-2;
+  }
+
+  .card {
+    @apply rounded-2xl border border-campus-sand bg-white p-5 shadow-sm;
+  }
+
+  .input-field {
+    @apply w-full rounded-xl border-2 border-campus-sand bg-white px-4 py-3 text-base text-campus-ink placeholder:text-campus-muted focus:border-campus-sage focus:outline-none focus:ring-2 focus:ring-campus-sage/30;
+  }
+
+  .chip {
+    @apply inline-flex cursor-pointer select-none items-center rounded-full border-2 px-4 py-2 text-sm font-medium transition-colors;
+  }
+
+  .chip-default {
+    @apply border-campus-sand bg-white text-campus-ink hover:border-campus-sage;
+  }
+
+  .chip-selected {
+    @apply border-campus-sage bg-campus-sage/15 text-campus-sageDark;
+  }
+}

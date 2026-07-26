@@ -1,0 +1,322 @@
+[
+  {
+    "id": "pates",
+    "name": "Pâtes (500 g)",
+    "price": 0.89,
+    "unit": "paquet",
+    "category": "feculents",
+    "dietTags": ["omnivore", "vegetarien", "vegan", "sans-porc", "halal"],
+    "allergens": ["gluten"],
+    "essential": true
+  },
+  {
+    "id": "riz",
+    "name": "Riz basmati (1 kg)",
+    "price": 1.79,
+    "unit": "sachet",
+    "category": "feculents",
+    "dietTags": ["omnivore", "vegetarien", "vegan", "sans-porc", "halal"],
+    "allergens": [],
+    "essential": true
+  },
+  {
+    "id": "pommes-de-terre",
+    "name": "Pommes de terre (2 kg)",
+    "price": 2.49,
+    "unit": "sac",
+    "category": "feculents",
+    "dietTags": ["omnivore", "vegetarien", "vegan", "sans-porc", "halal"],
+    "allergens": [],
+    "essential": true
+  },
+  {
+    "id": "pain-complet",
+    "name": "Pain complet (400 g)",
+    "price": 1.29,
+    "unit": "pain",
+    "category": "feculents",
+    "dietTags": ["omnivore", "vegetarien", "vegan", "sans-porc", "halal"],
+    "allergens": ["gluten"],
+    "essential": true
+  },
+  {
+    "id": "flocons-avoine",
+    "name": "Flocons d'avoine (500 g)",
+    "price": 1.19,
+    "unit": "sachet",
+    "category": "feculents",
+    "dietTags": ["omnivore", "vegetarien", "vegan", "sans-porc", "halal"],
+    "allergens": ["gluten"],
+    "essential": false
+  },
+  {
+    "id": "lentilles",
+    "name": "Lentilles vertes (500 g)",
+    "price": 1.49,
+    "unit": "sachet",
+    "category": "feculents",
+    "dietTags": ["omnivore", "vegetarien", "vegan", "sans-porc", "halal"],
+    "allergens": [],
+    "essential": true
+  },
+  {
+    "id": "poulet",
+    "name": "Filets de poulet (600 g)",
+    "price": 5.99,
+    "unit": "barquette",
+    "category": "proteines",
+    "dietTags": ["omnivore", "sans-porc", "halal"],
+    "allergens": [],
+    "essential": true
+  },
+  {
+    "id": "oeufs",
+    "name": "Œufs (x10)",
+    "price": 2.29,
+    "unit": "boîte",
+    "category": "proteines",
+    "dietTags": ["omnivore", "vegetarien", "sans-porc", "halal"],
+    "allergens": ["oeuf"],
+    "essential": true
+  },
+  {
+    "id": "tofu",
+    "name": "Tofu nature (250 g)",
+    "price": 1.89,
+    "unit": "barquette",
+    "category": "proteines",
+    "dietTags": ["omnivore", "vegetarien", "vegan", "sans-porc", "halal"],
+    "allergens": ["soja"],
+    "essential": true
+  },
+  {
+    "id": "pois-chiches",
+    "name": "Pois chiches (400 g)",
+    "price": 0.79,
+    "unit": "boîte",
+    "category": "proteines",
+    "dietTags": ["omnivore", "vegetarien", "vegan", "sans-porc", "halal"],
+    "allergens": [],
+    "essential": true
+  },
+  {
+    "id": "thon",
+    "name": "Thon nature (140 g)",
+    "price": 1.49,
+    "unit": "boîte",
+    "category": "proteines",
+    "dietTags": ["omnivore", "sans-porc", "halal"],
+    "allergens": ["poisson"],
+    "essential": false
+  },
+  {
+    "id": "steak-hache",
+    "name": "Steak haché 5 % (500 g)",
+    "price": 4.49,
+    "unit": "barquette",
+    "category": "proteines",
+    "dietTags": ["omnivore"],
+    "allergens": [],
+    "essential": false
+  },
+  {
+    "id": "carottes",
+    "name": "Carottes (1 kg)",
+    "price": 1.29,
+    "unit": "sachet",
+    "category": "legumes",
+    "dietTags": ["omnivore", "vegetarien", "vegan", "sans-porc", "halal"],
+    "allergens": [],
+    "essential": true
+  },
+  {
+    "id": "tomates",
+    "name": "Tomates (1 kg)",
+    "price": 2.19,
+    "unit": "barquette",
+    "category": "legumes",
+    "dietTags": ["omnivore", "vegetarien", "vegan", "sans-porc", "halal"],
+    "allergens": [],
+    "essential": true
+  },
+  {
+    "id": "courgettes",
+    "name": "Courgettes (x3)",
+    "price": 1.79,
+    "unit": "barquette",
+    "category": "legumes",
+    "dietTags": ["omnivore", "vegetarien", "vegan", "sans-porc", "halal"],
+    "allergens": [],
+    "essential": false
+  },
+  {
+    "id": "oignons",
+    "name": "Oignons (1 kg)",
+    "price": 1.49,
+    "unit": "filet",
+    "category": "legumes",
+    "dietTags": ["omnivore", "vegetarien", "vegan", "sans-porc", "halal"],
+    "allergens": [],
+    "essential": true
+  },
+  {
+    "id": "salade",
+    "name": "Salade verte",
+    "price": 0.99,
+    "unit": "pièce",
+    "category": "legumes",
+    "dietTags": ["omnivore", "vegetarien", "vegan", "sans-porc", "halal"],
+    "allergens": [],
+    "essential": false
+  },
+  {
+    "id": "haricots-verts",
+    "name": "Haricots verts (800 g)",
+    "price": 2.29,
+    "unit": "sachet",
+    "category": "legumes",
+    "dietTags": ["omnivore", "vegetarien", "vegan", "sans-porc", "halal"],
+    "allergens": [],
+    "essential": false
+  },
+  {
+    "id": "bananes",
+    "name": "Bananes (1 kg)",
+    "price": 1.69,
+    "unit": "grappe",
+    "category": "fruits",
+    "dietTags": ["omnivore", "vegetarien", "vegan", "sans-porc", "halal"],
+    "allergens": [],
+    "essential": true
+  },
+  {
+    "id": "pommes",
+    "name": "Pommes (1 kg)",
+    "price": 2.49,
+    "unit": "sachet",
+    "category": "fruits",
+    "dietTags": ["omnivore", "vegetarien", "vegan", "sans-porc", "halal"],
+    "allergens": [],
+    "essential": true
+  },
+  {
+    "id": "oranges",
+    "name": "Oranges (1 kg)",
+    "price": 2.19,
+    "unit": "filet",
+    "category": "fruits",
+    "dietTags": ["omnivore", "vegetarien", "vegan", "sans-porc", "halal"],
+    "allergens": [],
+    "essential": false
+  },
+  {
+    "id": "lait",
+    "name": "Lait demi-écrémé (1 L)",
+    "price": 0.99,
+    "unit": "brique",
+    "category": "produits-laitiers",
+    "dietTags": ["omnivore", "vegetarien", "sans-porc", "halal"],
+    "allergens": ["lactose"],
+    "essential": true
+  },
+  {
+    "id": "yaourt-nature",
+    "name": "Yaourts nature (x4)",
+    "price": 1.29,
+    "unit": "pack",
+    "category": "produits-laitiers",
+    "dietTags": ["omnivore", "vegetarien", "sans-porc", "halal"],
+    "allergens": ["lactose"],
+    "essential": false
+  },
+  {
+    "id": "fromage-rape",
+    "name": "Fromage râpé (200 g)",
+    "price": 2.19,
+    "unit": "sachet",
+    "category": "produits-laitiers",
+    "dietTags": ["omnivore", "vegetarien", "sans-porc", "halal"],
+    "allergens": ["lactose"],
+    "essential": false
+  },
+  {
+    "id": "beurre",
+    "name": "Beurre doux (250 g)",
+    "price": 2.49,
+    "unit": "plaquette",
+    "category": "produits-laitiers",
+    "dietTags": ["omnivore", "vegetarien", "sans-porc", "halal"],
+    "allergens": ["lactose"],
+    "essential": false
+  },
+  {
+    "id": "huile-olive",
+    "name": "Huile d'olive (1 L)",
+    "price": 4.99,
+    "unit": "bouteille",
+    "category": "epicerie",
+    "dietTags": ["omnivore", "vegetarien", "vegan", "sans-porc", "halal"],
+    "allergens": [],
+    "essential": true
+  },
+  {
+    "id": "sauce-tomate",
+    "name": "Sauce tomate (400 g)",
+    "price": 0.89,
+    "unit": "boîte",
+    "category": "epicerie",
+    "dietTags": ["omnivore", "vegetarien", "vegan", "sans-porc", "halal"],
+    "allergens": [],
+    "essential": true
+  },
+  {
+    "id": "concentré-tomate",
+    "name": "Concentré de tomate (140 g)",
+    "price": 0.69,
+    "unit": "tube",
+    "category": "epicerie",
+    "dietTags": ["omnivore", "vegetarien", "vegan", "sans-porc", "halal"],
+    "allergens": [],
+    "essential": false
+  },
+  {
+    "id": "cafe",
+    "name": "Café moulu (250 g)",
+    "price": 3.49,
+    "unit": "paquet",
+    "category": "boissons",
+    "dietTags": ["omnivore", "vegetarien", "vegan", "sans-porc", "halal"],
+    "allergens": [],
+    "essential": false
+  },
+  {
+    "id": "the",
+    "name": "Thé (25 sachets)",
+    "price": 1.99,
+    "unit": "boîte",
+    "category": "boissons",
+    "dietTags": ["omnivore", "vegetarien", "vegan", "sans-porc", "halal"],
+    "allergens": [],
+    "essential": false
+  },
+  {
+    "id": "jus-orange",
+    "name": "Jus d'orange (1 L)",
+    "price": 1.49,
+    "unit": "brique",
+    "category": "boissons",
+    "dietTags": ["omnivore", "vegetarien", "vegan", "sans-porc", "halal"],
+    "allergens": [],
+    "essential": false
+  },
+  {
+    "id": "noix-cajou",
+    "name": "Noix de cajou (150 g)",
+    "price": 2.99,
+    "unit": "sachet",
+    "category": "epicerie",
+    "dietTags": ["omnivore", "vegetarien", "vegan", "sans-porc", "halal"],
+    "allergens": ["fruits-a-coque"],
+    "essential": false
+  }
+]
