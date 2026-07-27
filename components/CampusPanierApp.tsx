@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { onAuthStateChanged, signOut, type User } from "firebase/auth";
 import BudgetStep from "@/components/BudgetStep";
+import MenuContent from "@/components/MenuContent";
 import ProfileForm from "@/components/ProfileForm";
 import RecipesContent from "@/components/RecipesContent";
 import ResultsContent from "@/components/ResultsContent";
@@ -19,7 +20,7 @@ import {
 } from "@/lib/types";
 
 type View = "signin" | "profile" | "budget" | "results";
-type ResultsTab = "liste" | "recettes";
+type ResultsTab = "liste" | "menu" | "recettes";
 
 export default function CampusPanierApp() {
   const [ready, setReady] = useState(false);
@@ -164,6 +165,17 @@ export default function CampusPanierApp() {
           </button>
           <button
             type="button"
+            onClick={() => setResultsTab("menu")}
+            className={`flex-1 border-b-2 py-3 text-sm font-semibold transition-colors ${
+              resultsTab === "menu"
+                ? "border-campus-terracotta text-campus-terracotta"
+                : "border-transparent text-campus-muted"
+            }`}
+          >
+            Mon menu
+          </button>
+          <button
+            type="button"
             onClick={() => setResultsTab("recettes")}
             className={`flex-1 border-b-2 py-3 text-sm font-semibold transition-colors ${
               resultsTab === "recettes"
@@ -187,24 +199,29 @@ export default function CampusPanierApp() {
             onEditProfile={() => setView("profile")}
           />
         )}
-        {view === "results" &&
-          result &&
-          preferences &&
-          (resultsTab === "liste" ? (
-            <ResultsContent
-              result={result}
-              preferences={preferences}
-              onRestart={handleRestart}
-              isFavorited={Boolean(currentFavorite)}
-              onToggleFavorite={handleToggleFavorite}
-            />
-          ) : (
-            <RecipesContent
-              result={result}
-              preferences={preferences}
-              onRestart={handleRestart}
-            />
-          ))}
+        {view === "results" && result && preferences && (
+          <>
+            {resultsTab === "liste" && (
+              <ResultsContent
+                result={result}
+                preferences={preferences}
+                onRestart={handleRestart}
+                isFavorited={Boolean(currentFavorite)}
+                onToggleFavorite={handleToggleFavorite}
+              />
+            )}
+            {resultsTab === "menu" && (
+              <MenuContent result={result} onRestart={handleRestart} />
+            )}
+            {resultsTab === "recettes" && (
+              <RecipesContent
+                result={result}
+                preferences={preferences}
+                onRestart={handleRestart}
+              />
+            )}
+          </>
+        )}
       </div>
     </>
   );

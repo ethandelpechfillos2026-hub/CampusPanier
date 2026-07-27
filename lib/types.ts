@@ -16,6 +16,8 @@ export type ProductCategory =
 
 export type NutriLevel = "faible" | "moyen" | "riche";
 
+export type MealSlot = "petit-dejeuner" | "dejeuner-diner" | "encas-extra";
+
 export type MacroPreference =
   | "riche-proteines"
   | "faible-lipides"
@@ -37,6 +39,7 @@ export interface Product {
   glucides: NutriLevel;
   sel: NutriLevel;
   easyToCook: boolean;
+  mealSlot: MealSlot;
   // Présent seulement sur les produits régénérés via scripts/build-catalog.mjs —
   // indique si le prix vient d'un vrai relevé Open Prices ou d'une estimation.
   priceSource?: "open-prices" | "estimation";
@@ -143,6 +146,24 @@ export const CATEGORY_ORDER: ProductCategory[] = [
   "frais",
   "boulangerie",
   "viande-poisson",
+];
+
+export const MEAL_SLOT_LABELS: Record<MealSlot, string> = {
+  "petit-dejeuner": "Petit-déjeuner",
+  "dejeuner-diner": "Déjeuner & Dîner",
+  "encas-extra": "Encas & Extras",
+};
+
+export const MEAL_SLOT_ICONS: Record<MealSlot, string> = {
+  "petit-dejeuner": "🌅",
+  "dejeuner-diner": "🍽️",
+  "encas-extra": "🍎",
+};
+
+export const MEAL_SLOT_ORDER: MealSlot[] = [
+  "petit-dejeuner",
+  "dejeuner-diner",
+  "encas-extra",
 ];
 
 export const STORAGE_KEY = "campus-panier-preferences";
