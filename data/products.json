@@ -25,6 +25,8 @@
   },
   {
     "id": "riz",
+    "weeklyServings": 1,
+    "servingUnit": "part",
     "name": "St Jacques fondue de poireaux & Riz Basmati",
     "price": 4.85,
     "priceSource": "open-prices",
@@ -70,6 +72,8 @@
   },
   {
     "id": "pois-chiches",
+    "weeklyServings": 4,
+    "servingUnit": "tranche",
     "name": "Les Tranches Végé Pois chiches",
     "price": 2.15,
     "priceSource": "open-prices",
@@ -184,6 +188,8 @@
   },
   {
     "id": "noix-cajou",
+    "weeklyServings": 5,
+    "servingUnit": "poignée",
     "name": "Noix de cajou & cranberries",
     "price": 2.99,
     "priceSource": "estimation",
@@ -207,6 +213,8 @@
   },
   {
     "id": "carottes",
+    "weeklyServings": 3,
+    "servingUnit": "portion",
     "name": "Carottes rapees citron dnp 320g",
     "price": 1.64,
     "priceSource": "open-prices",
@@ -232,6 +240,8 @@
   },
   {
     "id": "tomates",
+    "weeklyServings": 4,
+    "servingUnit": "portion",
     "name": "Tomates Cerises",
     "price": 0.99,
     "priceSource": "open-prices",
@@ -254,6 +264,8 @@
   },
   {
     "id": "bananes",
+    "weeklyServings": 6,
+    "servingUnit": "banane",
     "name": "Bananes (1 kg)",
     "price": 1.69,
     "priceSource": "estimation",
@@ -276,6 +288,8 @@
   },
   {
     "id": "pommes",
+    "weeklyServings": 6,
+    "servingUnit": "pomme",
     "name": "Pommes (1 kg)",
     "price": 2.49,
     "priceSource": "estimation",
@@ -365,6 +379,8 @@
   },
   {
     "id": "yaourt-nature",
+    "weeklyServings": 4,
+    "servingUnit": "yaourt",
     "name": "Yaourts nature (x4)",
     "price": 1.29,
     "priceSource": "estimation",
@@ -411,6 +427,8 @@
   },
   {
     "id": "oeufs",
+    "weeklyServings": 10,
+    "servingUnit": "œuf",
     "name": "Œufs (x10)",
     "price": 2.29,
     "priceSource": "estimation",
@@ -434,6 +452,8 @@
   },
   {
     "id": "tofu",
+    "weeklyServings": 2,
+    "servingUnit": "portion",
     "name": "Tofu nature",
     "price": 3.01,
     "priceSource": "open-prices",
@@ -456,6 +476,8 @@
   },
   {
     "id": "pain-complet",
+    "weeklyServings": 16,
+    "servingUnit": "tranche",
     "name": "Pain de mie american sandwich complet sans sucres ajoutés 600g",
     "price": 1.86,
     "priceSource": "open-prices",
@@ -479,6 +501,8 @@
   },
   {
     "id": "baguette",
+    "weeklyServings": 4,
+    "servingUnit": "baguette",
     "name": "4 Baguettes viennoises 340g",
     "price": 1.6,
     "priceSource": "open-prices",
@@ -503,6 +527,8 @@
   },
   {
     "id": "pains-mie",
+    "weeklyServings": 14,
+    "servingUnit": "tranche",
     "name": "Pain de mie Bio grandes tranches à la farine complète 500g",
     "price": 2.35,
     "priceSource": "open-prices",
@@ -526,6 +552,8 @@
   },
   {
     "id": "poulet",
+    "weeklyServings": 2,
+    "servingUnit": "portion",
     "name": "Rôti de Poulet - 100% filet",
     "price": 2.65,
     "priceSource": "open-prices",
@@ -546,6 +574,8 @@
   },
   {
     "id": "thon",
+    "weeklyServings": 2,
+    "servingUnit": "portion",
     "name": "Joly Thon Entier",
     "price": 1.49,
     "priceSource": "estimation",
@@ -566,6 +596,8 @@
   },
   {
     "id": "steak-hache",
+    "weeklyServings": 2,
+    "servingUnit": "steak",
     "name": "Steaks hachés 5%MG",
     "price": 6.16,
     "priceSource": "open-prices",
@@ -586,6 +618,8 @@
   },
   {
     "id": "saucisses",
+    "weeklyServings": 4,
+    "servingUnit": "saucisse",
     "name": "Saucisses de Toulouse (x4)",
     "price": 3.29,
     "priceSource": "estimation",
@@ -605,6 +639,8 @@
   },
   {
     "id": "cabillaud",
+    "weeklyServings": 1,
+    "servingUnit": "part",
     "name": "Cabillaud sauce Citron riz aux petits légumes",
     "price": 4.38,
     "priceSource": "open-prices",

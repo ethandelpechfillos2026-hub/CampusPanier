@@ -40,6 +40,12 @@ export interface Product {
   sel: NutriLevel;
   easyToCook: boolean;
   mealSlot: MealSlot;
+  // Combien d'unités "consommables" contient un seul achat de ce produit,
+  // et comment on les nomme (ex: 10 œufs, 4 yaourts). Absent pour les
+  // produits qui se dosent librement selon la recette (huile, pâtes,
+  // riz sec...) — dans ce cas pas de répartition journalière affichée.
+  weeklyServings?: number;
+  servingUnit?: string;
   // Présent seulement sur les produits régénérés via scripts/build-catalog.mjs —
   // indique si le prix vient d'un vrai relevé Open Prices ou d'une estimation.
   priceSource?: "open-prices" | "estimation";

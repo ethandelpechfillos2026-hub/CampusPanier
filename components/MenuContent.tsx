@@ -1,7 +1,7 @@
 "use client";
 
 import { formatPrice } from "@/lib/generateShoppingList";
-import { organizeMenu } from "@/lib/generateMenu";
+import { formatDailyServing, organizeMenu } from "@/lib/generateMenu";
 import {
   MEAL_SLOT_ICONS,
   MEAL_SLOT_LABELS,
@@ -49,23 +49,30 @@ export default function MenuContent({ result, onRestart }: MenuContentProps) {
                   </span>
                 )}
               </div>
-              <ul className="space-y-1">
-                {items.map(({ product, quantity }) => (
-                  <li
-                    key={product.id}
-                    className="flex items-center justify-between gap-3 px-1 py-2 text-sm"
-                  >
-                    <span className="font-medium text-campus-ink">
-                      {product.name}
-                      {quantity > 1 && (
-                        <span className="text-campus-muted"> ×{quantity}</span>
+              <ul className="space-y-2.5">
+                {items.map(({ product, quantity }) => {
+                  const dailyServing = formatDailyServing(product, quantity);
+                  return (
+                    <li key={product.id} className="px-1 py-1">
+                      <div className="flex items-center justify-between gap-3 text-sm">
+                        <span className="font-medium text-campus-ink">
+                          {product.name}
+                          {quantity > 1 && (
+                            <span className="text-campus-muted"> ×{quantity}</span>
+                          )}
+                        </span>
+                        <span className="shrink-0 font-semibold text-campus-ink">
+                          {formatPrice(product.price * quantity)}
+                        </span>
+                      </div>
+                      {dailyServing && (
+                        <p className="mt-0.5 text-xs text-campus-muted">
+                          {dailyServing}
+                        </p>
                       )}
-                    </span>
-                    <span className="shrink-0 font-semibold text-campus-ink">
-                      {formatPrice(product.price * quantity)}
-                    </span>
-                  </li>
-                ))}
+                    </li>
+                  );
+                })}
               </ul>
             </section>
           ))}
@@ -78,7 +85,9 @@ export default function MenuContent({ result, onRestart }: MenuContentProps) {
 
       <p className="text-center text-xs text-campus-muted">
         Répartition indicative selon le type de produit, pas un planning
-        figé — organise tes repas comme tu veux.
+        figé — organise tes repas comme tu veux. Les produits sans repère
+        journalier (huile, riz sec, pâtes...) se dosent librement selon la
+        recette.
       </p>
     </div>
   );
