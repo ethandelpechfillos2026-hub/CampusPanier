@@ -1,149 +1,224 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import Link from "next/link";
-import AidResourcesBanner from "@/components/AidResourcesBanner";
-import {
-  formatPrice,
-  generateShoppingList,
-} from "@/lib/generateShoppingList";
+import { useState } from "react";
+import { formatPrice } from "@/lib/generateShoppingList";
 import {
   CATEGORY_LABELS,
-  STORAGE_KEY,
+  CATEGORY_ORDER,
+  MACRO_OPTIONS,
+  ShoppingListResult,
   UserPreferences,
 } from "@/lib/types";
 
-export default function ResultsContent() {
-  const [result, setResult] = useState<ReturnType<
-    typeof generateShoppingList
-  > | null>(null);
-  const [preferences, setPreferences] = useState<UserPreferences | null>(null);
+interface ResultsContentProps {
+  result: ShoppingListResult;
+  preferences: UserPreferences;
+  onRestart: () => void;
+  isFavorited: boolean;
+  onToggleFavorite: () => void;
+}
 
-  useEffect(() => {
-    const raw = sessionStorage.getItem(STORAGE_KEY);
-    if (!raw) return;
-
-    try {
-      const parsed = JSON.parse(raw) as UserPreferences;
-      setPreferences(parsed);
-      setResult(generateShoppingList(parsed));
-    } catch {
-      sessionStorage.removeItem(STORAGE_KEY);
-    }
-  }, []);
-
-  if (!result || !preferences) {
-    return (
-      <div className="card space-y-4 text-center">
-        <p className="text-campus-muted">
-          Aucune liste trouvée. Commence par remplir le formulaire.
-        </p>
-        <Link href="/" className="btn-primary inline-flex">
-          Créer ma liste
-        </Link>
-      </div>
-    );
-  }
+export default function ResultsContent({
+  result,
+  preferences,
+  onRestart,
+  isFavorited,
+  onToggleFavorite,
+}: ResultsContentProps) {
+  const [checkedIds, setCheckedIds] = useState<Set<string>>(new Set());
 
   const budgetPercent = Math.min(
     100,
     Math.round((result.total / result.budget) * 100)
   );
 
-  const grouped = result.items.reduce<
-    Record<string, typeof result.items>
-  >((acc, item) => {
-    const cat = item.product.category;
-    if (!acc[cat]) acc[cat] = [];
-    acc[cat].push(item);
-    return acc;
-  }, {});
+  const barColor = result.isOverBudget ? "bg-campus-danger" : "bg-campus-success";
+
+  function toggleChecked(id: string) {
+    setCheckedIds((prev) => {
+      const next = new Set(prev);
+      if (next.has(id)) next.delete(id);
+      else next.add(id);
+      return next;
+    });
+  }
+
+  const grouped = CATEGORY_ORDER.map((category) => ({
+    category,
+    items: result.items.filter((item) => item.product.category === category),
+  })).filter((group) => group.items.length > 0);
 
   return (
-    <div className="space-y-6">
-      <div>
-        <h1 className="text-2xl font-bold text-campus-ink">Ta liste de courses</h1>
-        <p className="mt-1 text-campus-muted">
-          Adaptée à ton profil · Budget {formatPrice(preferences.budget)}/sem.
-        </p>
+    <div className="space-y-5">
+      <div className="flex items-start justify-between gap-3">
+        <div>
+          <h1 className="text-2xl font-bold text-campus-ink">Ta liste</h1>
+          <p className="mt-1 text-sm text-campus-muted">
+            Budget {formatPrice(preferences.budget)}/sem.
+            {preferences.dailyCalories && ` · ~${preferences.dailyCalories} kcal/j`}
+          </p>
+          {preferences.macroPreferences.length > 0 && (
+            <p className="mt-1 text-xs text-campus-muted">
+              {preferences.macroPreferences
+                .map(
+                  (value) =>
+                    MACRO_OPTIONS.find((option) => option.value === value)
+                      ?.label
+                )
+                .filter(Boolean)
+                .join(" · ")}
+            </p>
+          )}
+        </div>
+        <button
+          type="button"
+          onClick={onToggleFavorite}
+          aria-label={
+            isFavorited ? "Retirer des listes favorites" : "Enregistrer cette liste"
+          }
+          className="shrink-0 text-2xl leading-none text-campus-terracotta"
+        >
+          {isFavorited ? "★" : "☆"}
+        </button>
       </div>
 
-      <div className="card space-y-4">
-        <div className="flex items-end justify-between">
-          <div>
-            <p className="text-sm text-campus-muted">Total estimé</p>
-            <p className="text-3xl font-bold text-campus-terracotta">
-              {formatPrice(result.total)}
-            </p>
-          </div>
-          <div className="text-right">
-            <p className="text-sm text-campus-muted">Budget</p>
-            <p className="text-lg font-semibold">{formatPrice(result.budget)}</p>
-          </div>
+      <div className="rounded-2xl border border-campus-sand bg-white p-4">
+        <div className="h-3 overflow-hidden rounded-full bg-campus-sand">
+          <div
+            className={`h-full rounded-full transition-all ${barColor}`}
+            style={{ width: `${budgetPercent}%` }}
+          />
         </div>
 
-        <div>
-          <div className="h-3 overflow-hidden rounded-full bg-campus-sand">
-            <div
-              className="h-full rounded-full bg-campus-sage transition-all"
-              style={{ width: `${budgetPercent}%` }}
-            />
-          </div>
-          <p className="mt-2 text-sm text-campus-muted">
-            {result.remaining > 0
-              ? `Il te reste ${formatPrice(result.remaining)} dans ton budget.`
-              : "Tu as utilisé tout ton budget pour cette sélection."}
+        <div className="mt-3 flex items-center justify-between text-sm">
+          <p>
+            <span className="text-campus-muted">Dépensé </span>
+            <span
+              className={`font-bold ${
+                result.isOverBudget
+                  ? "text-campus-danger"
+                  : "text-campus-success"
+              }`}
+            >
+              {formatPrice(result.total)}
+            </span>
+          </p>
+          <p>
+            <span className="text-campus-muted">Reste </span>
+            <span className="font-bold text-campus-ink">
+              {formatPrice(result.remaining)}
+            </span>
           </p>
         </div>
       </div>
 
-      {result.showAidResources && <AidResourcesBanner />}
+      {result.isBudgetInsufficient && (
+        <div className="rounded-2xl border border-campus-terracotta/40 bg-campus-terracotta/10 p-4">
+          <p className="text-sm font-bold text-campus-ink">
+            Ton budget ne couvre pas un panier complet
+          </p>
+          <p className="mt-1 text-sm text-campus-muted">
+            Il manquerait environ{" "}
+            {formatPrice(
+              Math.max(0, result.minimalBalancedCost - preferences.budget)
+            )}{" "}
+            pour un panier équilibré. Tu n&apos;es pas seul·e — des
+            associations étudiantes peuvent t&apos;aider, sans jugement.
+          </p>
+          <ul className="mt-3 space-y-1.5 text-sm">
+            <li>
+              <a
+                href="https://cop1.fr"
+                target="_blank"
+                rel="noreferrer"
+                className="font-semibold text-campus-terracotta underline"
+              >
+                Cop1 — Solidarités étudiantes
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://linkee.co"
+                target="_blank"
+                rel="noreferrer"
+                className="font-semibold text-campus-terracotta underline"
+              >
+                Linkee — colis alimentaires étudiants
+              </a>
+            </li>
+            <li>
+              <span className="font-semibold text-campus-ink">Agoraé</span> —
+              épicerie solidaire de ton campus, renseigne-toi auprès de ton
+              BDE ou du CROUS
+            </li>
+          </ul>
+        </div>
+      )}
 
       {result.items.length === 0 ? (
-        <div className="card text-center">
-          <p className="text-campus-muted">
-            Aucun produit ne correspond à tes critères avec ce budget. Essaie
-            d&apos;augmenter le montant ou d&apos;ajuster tes filtres.
+        <div className="rounded-2xl border border-campus-sand bg-white p-5 text-center">
+          <p className="text-sm text-campus-muted">
+            Aucun produit ne correspond à tes critères. Essaie d&apos;augmenter
+            ton budget ou d&apos;ajuster tes filtres.
           </p>
         </div>
       ) : (
         <div className="space-y-4">
-          {Object.entries(grouped).map(([category, items]) => (
-            <section key={category} className="card">
-              <h2 className="mb-3 text-sm font-semibold uppercase tracking-wide text-campus-sageDark">
-                {CATEGORY_LABELS[category as keyof typeof CATEGORY_LABELS]}
+          {grouped.map(({ category, items }) => (
+            <section
+              key={category}
+              className="rounded-2xl border border-campus-sand bg-white p-4"
+            >
+              <h2 className="mb-3 text-xs font-bold uppercase tracking-wide text-campus-muted">
+                {CATEGORY_LABELS[category]}
               </h2>
-              <ul className="divide-y divide-campus-sand">
-                {items.map(({ product, quantity }) => (
-                  <li
-                    key={product.id}
-                    className="flex items-center justify-between py-3 first:pt-0 last:pb-0"
-                  >
-                    <div>
-                      <p className="font-medium">{product.name}</p>
-                      <p className="text-sm text-campus-muted">
-                        {quantity} {product.unit}
-                      </p>
-                    </div>
-                    <p className="font-semibold text-campus-ink">
-                      {formatPrice(product.price * quantity)}
-                    </p>
-                  </li>
-                ))}
+              <ul className="space-y-1">
+                {items.map(({ product }) => {
+                  const isChecked = checkedIds.has(product.id);
+                  return (
+                    <li key={product.id}>
+                      <label className="flex cursor-pointer items-center gap-3 rounded-xl px-1 py-2.5 transition-colors hover:bg-orange-50/60">
+                        <input
+                          type="checkbox"
+                          checked={isChecked}
+                          onChange={() => toggleChecked(product.id)}
+                          className="h-5 w-5 shrink-0 rounded-md border-2 border-campus-sand accent-campus-terracotta"
+                        />
+                        <span
+                          className={`flex-1 text-sm font-medium ${
+                            isChecked
+                              ? "text-campus-muted line-through"
+                              : "text-campus-ink"
+                          }`}
+                        >
+                          {product.name}
+                        </span>
+                        <span
+                          className={`text-sm font-semibold ${
+                            isChecked
+                              ? "text-campus-muted line-through"
+                              : "text-campus-ink"
+                          }`}
+                        >
+                          {formatPrice(product.price)}
+                        </span>
+                      </label>
+                    </li>
+                  );
+                })}
               </ul>
             </section>
           ))}
         </div>
       )}
 
-      <div className="flex flex-col gap-3">
-        <Link href="/" className="btn-primary">
-          Modifier mes critères
-        </Link>
-        <p className="text-center text-xs text-campus-muted">
-          Prix indicatifs · Non contractuels
-        </p>
-      </div>
+      <button type="button" onClick={onRestart} className="btn-primary">
+        Refaire
+      </button>
+
+      <p className="text-center text-xs text-campus-muted">
+        Prix indicatifs · Non contractuels
+      </p>
     </div>
   );
 }

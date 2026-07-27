@@ -1,6 +1,5 @@
 import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
-import Header from "@/components/Header";
 import "./globals.css";
 
 const inter = Inter({
@@ -41,12 +40,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fr">
-      <body className={`${inter.variable} font-sans`}>
-        <div className="mx-auto flex min-h-dvh max-w-lg flex-col">
-          <Header />
-          <main className="flex-1 px-4 pb-8 pt-2">{children}</main>
-        </div>
-      </body>
+      <body className={`${inter.variable} font-sans`}>{children}</body>
     </html>
   );
 }

@@ -16,6 +16,8 @@ const config: Config = {
           terracottaDark: "#C96A52",
           sage: "#81B29A",
           sageDark: "#6A9A82",
+          success: "#4CAF7D",
+          danger: "#E05252",
           ink: "#3D405B",
           muted: "#6B7280",
         },

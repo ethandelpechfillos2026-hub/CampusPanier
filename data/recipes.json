@@ -1,0 +1,140 @@
+[
+  {
+    "id": "pates-tomate",
+    "name": "Pâtes à la sauce tomate",
+    "icon": "🍝",
+    "prepTime": 15,
+    "difficulty": "facile",
+    "ingredientIds": ["pates", "sauce-tomate", "oignons", "huile-olive"],
+    "steps": [
+      "Fais bouillir de l'eau salée et cuis les pâtes selon le paquet.",
+      "Émince l'oignon et fais-le revenir dans l'huile d'olive.",
+      "Ajoute la sauce tomate, laisse mijoter 5 minutes.",
+      "Égoutte les pâtes, mélange avec la sauce et sers."
+    ]
+  },
+  {
+    "id": "curry-pois-chiches",
+    "name": "Curry de pois chiches",
+    "icon": "🍛",
+    "prepTime": 20,
+    "difficulty": "facile",
+    "ingredientIds": ["pois-chiches", "oignons", "riz", "concentre-tomate", "huile-olive"],
+    "steps": [
+      "Cuis le riz selon le paquet.",
+      "Fais revenir l'oignon émincé dans l'huile d'olive.",
+      "Ajoute les pois chiches égouttés et le concentré de tomate, un peu d'eau.",
+      "Laisse mijoter 10 minutes et sers sur le riz."
+    ]
+  },
+  {
+    "id": "omelette-legumes",
+    "name": "Omelette aux légumes",
+    "icon": "🍳",
+    "prepTime": 10,
+    "difficulty": "facile",
+    "ingredientIds": ["oeufs", "tomates", "oignons", "huile-olive"],
+    "steps": [
+      "Bats les œufs dans un bol.",
+      "Fais revenir l'oignon et la tomate coupés dans l'huile d'olive.",
+      "Verse les œufs battus dans la poêle.",
+      "Laisse cuire à feu doux 4-5 minutes puis plie l'omelette."
+    ]
+  },
+  {
+    "id": "poulet-roti",
+    "name": "Poulet rôti et pommes de terre",
+    "icon": "🍗",
+    "prepTime": 40,
+    "difficulty": "moyen",
+    "ingredientIds": ["poulet", "pommes-de-terre", "oignons", "huile-olive"],
+    "steps": [
+      "Préchauffe le four à 200°C.",
+      "Coupe les pommes de terre et l'oignon en morceaux, arrose d'huile d'olive.",
+      "Dispose le poulet sur les légumes dans un plat.",
+      "Enfourne 35-40 minutes jusqu'à ce que le poulet soit bien cuit."
+    ]
+  },
+  {
+    "id": "salade-thon",
+    "name": "Salade de thon",
+    "icon": "🥗",
+    "prepTime": 10,
+    "difficulty": "facile",
+    "ingredientIds": ["thon", "salade", "tomates", "oeufs", "huile-olive"],
+    "steps": [
+      "Fais cuire les œufs durs 9 minutes puis écale-les.",
+      "Lave et coupe la salade et les tomates.",
+      "Égoutte le thon et mélange le tout dans un saladier.",
+      "Arrose d'huile d'olive et assaisonne."
+    ]
+  },
+  {
+    "id": "tofu-saute",
+    "name": "Tofu sauté et riz",
+    "icon": "🥢",
+    "prepTime": 20,
+    "difficulty": "facile",
+    "ingredientIds": ["tofu", "riz", "carottes", "oignons", "huile-olive"],
+    "steps": [
+      "Cuis le riz selon le paquet.",
+      "Coupe le tofu en dés et fais-le dorer dans l'huile d'olive.",
+      "Ajoute les carottes râpées et l'oignon émincé, fais sauter 5 minutes.",
+      "Sers le tout sur le riz."
+    ]
+  },
+  {
+    "id": "steak-puree",
+    "name": "Steak haché et purée",
+    "icon": "🥩",
+    "prepTime": 25,
+    "difficulty": "moyen",
+    "ingredientIds": ["steak-hache", "pommes-de-terre", "lait", "huile-olive"],
+    "steps": [
+      "Fais cuire les pommes de terre à l'eau 20 minutes.",
+      "Écrase-les avec le lait et un filet d'huile d'olive pour la purée.",
+      "Fais cuire le steak haché à la poêle 3-4 minutes de chaque côté.",
+      "Sers le steak avec la purée."
+    ]
+  },
+  {
+    "id": "cabillaud-legumes",
+    "name": "Cabillaud et légumes",
+    "icon": "🐟",
+    "prepTime": 30,
+    "difficulty": "moyen",
+    "ingredientIds": ["cabillaud", "carottes", "pommes-de-terre", "huile-olive"],
+    "steps": [
+      "Coupe les carottes et pommes de terre en morceaux, fais-les cuire à la vapeur 15 minutes.",
+      "Fais dorer les filets de cabillaud dans l'huile d'olive 3-4 minutes de chaque côté.",
+      "Sers le poisson avec les légumes."
+    ]
+  },
+  {
+    "id": "tartine-fromage",
+    "name": "Tartine chaude au fromage",
+    "icon": "🧀",
+    "prepTime": 5,
+    "difficulty": "facile",
+    "ingredientIds": ["pain-complet", "fromage-rape"],
+    "steps": [
+      "Coupe des tranches de pain complet.",
+      "Recouvre de fromage râpé.",
+      "Passe au four ou au grille-pain jusqu'à ce que le fromage fonde."
+    ]
+  },
+  {
+    "id": "lentilles-mijotees",
+    "name": "Lentilles mijotées",
+    "icon": "🍲",
+    "prepTime": 25,
+    "difficulty": "facile",
+    "ingredientIds": ["lentilles", "oignons", "carottes", "concentre-tomate", "huile-olive"],
+    "steps": [
+      "Fais revenir l'oignon et les carottes coupées dans l'huile d'olive.",
+      "Ajoute les lentilles rincées et le concentré de tomate.",
+      "Couvre d'eau et laisse mijoter 20 minutes à couvert.",
+      "Assaisonne et sers."
+    ]
+  }
+]

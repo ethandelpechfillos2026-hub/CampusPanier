@@ -1,5 +1,5 @@
-import ResultsContent from "@/components/ResultsContent";
+import { redirect } from "next/navigation";
 
 export default function ResultatsPage() {
-  return <ResultsContent />;
+  redirect("/");
 }

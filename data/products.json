@@ -3,320 +3,599 @@
     "id": "pates",
     "name": "Pâtes (500 g)",
     "price": 0.89,
+    "priceSource": "estimation",
     "unit": "paquet",
-    "category": "feculents",
-    "dietTags": ["omnivore", "vegetarien", "vegan", "sans-porc", "halal"],
-    "allergens": ["gluten"],
-    "essential": true
+    "category": "epicerie",
+    "dietTags": [
+      "omnivore",
+      "vegetarien",
+      "vegan",
+      "sans-porc"
+    ],
+    "allergens": [
+      "gluten"
+    ],
+    "kcal": 350,
+    "protein": "moyen",
+    "lipides": "faible",
+    "glucides": "riche",
+    "sel": "faible",
+    "easyToCook": true
   },
   {
     "id": "riz",
-    "name": "Riz basmati (1 kg)",
-    "price": 1.79,
+    "name": "St Jacques fondue de poireaux & Riz Basmati",
+    "price": 4.85,
+    "priceSource": "open-prices",
     "unit": "sachet",
-    "category": "feculents",
-    "dietTags": ["omnivore", "vegetarien", "vegan", "sans-porc", "halal"],
-    "allergens": [],
-    "essential": true
-  },
-  {
-    "id": "pommes-de-terre",
-    "name": "Pommes de terre (2 kg)",
-    "price": 2.49,
-    "unit": "sac",
-    "category": "feculents",
-    "dietTags": ["omnivore", "vegetarien", "vegan", "sans-porc", "halal"],
-    "allergens": [],
-    "essential": true
-  },
-  {
-    "id": "pain-complet",
-    "name": "Pain complet (400 g)",
-    "price": 1.29,
-    "unit": "pain",
-    "category": "feculents",
-    "dietTags": ["omnivore", "vegetarien", "vegan", "sans-porc", "halal"],
-    "allergens": ["gluten"],
-    "essential": true
-  },
-  {
-    "id": "flocons-avoine",
-    "name": "Flocons d'avoine (500 g)",
-    "price": 1.19,
-    "unit": "sachet",
-    "category": "feculents",
-    "dietTags": ["omnivore", "vegetarien", "vegan", "sans-porc", "halal"],
-    "allergens": ["gluten"],
-    "essential": false
+    "category": "epicerie",
+    "dietTags": [
+      "omnivore",
+      "sans-porc"
+    ],
+    "allergens": [
+      "gluten",
+      "lactose"
+    ],
+    "kcal": 144,
+    "protein": "moyen",
+    "lipides": "moyen",
+    "glucides": "moyen",
+    "sel": "moyen",
+    "easyToCook": true
   },
   {
     "id": "lentilles",
     "name": "Lentilles vertes (500 g)",
     "price": 1.49,
+    "priceSource": "estimation",
     "unit": "sachet",
-    "category": "feculents",
-    "dietTags": ["omnivore", "vegetarien", "vegan", "sans-porc", "halal"],
+    "category": "epicerie",
+    "dietTags": [
+      "omnivore",
+      "vegetarien",
+      "vegan",
+      "sans-porc"
+    ],
     "allergens": [],
-    "essential": true
-  },
-  {
-    "id": "poulet",
-    "name": "Filets de poulet (600 g)",
-    "price": 5.99,
-    "unit": "barquette",
-    "category": "proteines",
-    "dietTags": ["omnivore", "sans-porc", "halal"],
-    "allergens": [],
-    "essential": true
-  },
-  {
-    "id": "oeufs",
-    "name": "Œufs (x10)",
-    "price": 2.29,
-    "unit": "boîte",
-    "category": "proteines",
-    "dietTags": ["omnivore", "vegetarien", "sans-porc", "halal"],
-    "allergens": ["oeuf"],
-    "essential": true
-  },
-  {
-    "id": "tofu",
-    "name": "Tofu nature (250 g)",
-    "price": 1.89,
-    "unit": "barquette",
-    "category": "proteines",
-    "dietTags": ["omnivore", "vegetarien", "vegan", "sans-porc", "halal"],
-    "allergens": ["soja"],
-    "essential": true
+    "kcal": 320,
+    "protein": "riche",
+    "lipides": "faible",
+    "glucides": "moyen",
+    "sel": "faible",
+    "easyToCook": true
   },
   {
     "id": "pois-chiches",
-    "name": "Pois chiches (400 g)",
-    "price": 0.79,
+    "name": "Les Tranches Végé Pois chiches",
+    "price": 2.15,
+    "priceSource": "open-prices",
     "unit": "boîte",
-    "category": "proteines",
-    "dietTags": ["omnivore", "vegetarien", "vegan", "sans-porc", "halal"],
-    "allergens": [],
-    "essential": true
+    "category": "epicerie",
+    "dietTags": [
+      "omnivore",
+      "sans-porc"
+    ],
+    "allergens": [
+      "oeuf"
+    ],
+    "kcal": 137,
+    "protein": "moyen",
+    "lipides": "moyen",
+    "glucides": "moyen",
+    "sel": "riche",
+    "easyToCook": true
   },
   {
-    "id": "thon",
-    "name": "Thon nature (140 g)",
-    "price": 1.49,
+    "id": "sauce-tomate",
+    "name": "Sauce Tomate concentrée cuisinée aux petits légumes",
+    "price": 0.97,
+    "priceSource": "open-prices",
     "unit": "boîte",
-    "category": "proteines",
-    "dietTags": ["omnivore", "sans-porc", "halal"],
-    "allergens": ["poisson"],
-    "essential": false
-  },
-  {
-    "id": "steak-hache",
-    "name": "Steak haché 5 % (500 g)",
-    "price": 4.49,
-    "unit": "barquette",
-    "category": "proteines",
-    "dietTags": ["omnivore"],
-    "allergens": [],
-    "essential": false
-  },
-  {
-    "id": "carottes",
-    "name": "Carottes (1 kg)",
-    "price": 1.29,
-    "unit": "sachet",
-    "category": "legumes",
-    "dietTags": ["omnivore", "vegetarien", "vegan", "sans-porc", "halal"],
-    "allergens": [],
-    "essential": true
-  },
-  {
-    "id": "tomates",
-    "name": "Tomates (1 kg)",
-    "price": 2.19,
-    "unit": "barquette",
-    "category": "legumes",
-    "dietTags": ["omnivore", "vegetarien", "vegan", "sans-porc", "halal"],
-    "allergens": [],
-    "essential": true
-  },
-  {
-    "id": "courgettes",
-    "name": "Courgettes (x3)",
-    "price": 1.79,
-    "unit": "barquette",
-    "category": "legumes",
-    "dietTags": ["omnivore", "vegetarien", "vegan", "sans-porc", "halal"],
-    "allergens": [],
-    "essential": false
-  },
-  {
-    "id": "oignons",
-    "name": "Oignons (1 kg)",
-    "price": 1.49,
-    "unit": "filet",
-    "category": "legumes",
-    "dietTags": ["omnivore", "vegetarien", "vegan", "sans-porc", "halal"],
-    "allergens": [],
-    "essential": true
-  },
-  {
-    "id": "salade",
-    "name": "Salade verte",
-    "price": 0.99,
-    "unit": "pièce",
-    "category": "legumes",
-    "dietTags": ["omnivore", "vegetarien", "vegan", "sans-porc", "halal"],
-    "allergens": [],
-    "essential": false
-  },
-  {
-    "id": "haricots-verts",
-    "name": "Haricots verts (800 g)",
-    "price": 2.29,
-    "unit": "sachet",
-    "category": "legumes",
-    "dietTags": ["omnivore", "vegetarien", "vegan", "sans-porc", "halal"],
-    "allergens": [],
-    "essential": false
-  },
-  {
-    "id": "bananes",
-    "name": "Bananes (1 kg)",
-    "price": 1.69,
-    "unit": "grappe",
-    "category": "fruits",
-    "dietTags": ["omnivore", "vegetarien", "vegan", "sans-porc", "halal"],
-    "allergens": [],
-    "essential": true
-  },
-  {
-    "id": "pommes",
-    "name": "Pommes (1 kg)",
-    "price": 2.49,
-    "unit": "sachet",
-    "category": "fruits",
-    "dietTags": ["omnivore", "vegetarien", "vegan", "sans-porc", "halal"],
-    "allergens": [],
-    "essential": true
-  },
-  {
-    "id": "oranges",
-    "name": "Oranges (1 kg)",
-    "price": 2.19,
-    "unit": "filet",
-    "category": "fruits",
-    "dietTags": ["omnivore", "vegetarien", "vegan", "sans-porc", "halal"],
-    "allergens": [],
-    "essential": false
-  },
-  {
-    "id": "lait",
-    "name": "Lait demi-écrémé (1 L)",
-    "price": 0.99,
-    "unit": "brique",
-    "category": "produits-laitiers",
-    "dietTags": ["omnivore", "vegetarien", "sans-porc", "halal"],
-    "allergens": ["lactose"],
-    "essential": true
-  },
-  {
-    "id": "yaourt-nature",
-    "name": "Yaourts nature (x4)",
-    "price": 1.29,
-    "unit": "pack",
-    "category": "produits-laitiers",
-    "dietTags": ["omnivore", "vegetarien", "sans-porc", "halal"],
-    "allergens": ["lactose"],
-    "essential": false
-  },
-  {
-    "id": "fromage-rape",
-    "name": "Fromage râpé (200 g)",
-    "price": 2.19,
-    "unit": "sachet",
-    "category": "produits-laitiers",
-    "dietTags": ["omnivore", "vegetarien", "sans-porc", "halal"],
-    "allergens": ["lactose"],
-    "essential": false
-  },
-  {
-    "id": "beurre",
-    "name": "Beurre doux (250 g)",
-    "price": 2.49,
-    "unit": "plaquette",
-    "category": "produits-laitiers",
-    "dietTags": ["omnivore", "vegetarien", "sans-porc", "halal"],
-    "allergens": ["lactose"],
-    "essential": false
+    "category": "epicerie",
+    "dietTags": [
+      "omnivore",
+      "vegetarien",
+      "sans-porc"
+    ],
+    "allergens": [
+      "gluten",
+      "lactose"
+    ],
+    "kcal": 137,
+    "protein": "faible",
+    "lipides": "moyen",
+    "glucides": "moyen",
+    "sel": "riche",
+    "easyToCook": true
   },
   {
     "id": "huile-olive",
     "name": "Huile d'olive (1 L)",
     "price": 4.99,
+    "priceSource": "estimation",
     "unit": "bouteille",
     "category": "epicerie",
-    "dietTags": ["omnivore", "vegetarien", "vegan", "sans-porc", "halal"],
+    "dietTags": [
+      "omnivore",
+      "vegetarien",
+      "vegan",
+      "sans-porc"
+    ],
     "allergens": [],
-    "essential": true
-  },
-  {
-    "id": "sauce-tomate",
-    "name": "Sauce tomate (400 g)",
-    "price": 0.89,
-    "unit": "boîte",
-    "category": "epicerie",
-    "dietTags": ["omnivore", "vegetarien", "vegan", "sans-porc", "halal"],
-    "allergens": [],
-    "essential": true
-  },
-  {
-    "id": "concentré-tomate",
-    "name": "Concentré de tomate (140 g)",
-    "price": 0.69,
-    "unit": "tube",
-    "category": "epicerie",
-    "dietTags": ["omnivore", "vegetarien", "vegan", "sans-porc", "halal"],
-    "allergens": [],
-    "essential": false
+    "kcal": 880,
+    "protein": "faible",
+    "lipides": "riche",
+    "glucides": "faible",
+    "sel": "faible",
+    "easyToCook": true
   },
   {
     "id": "cafe",
-    "name": "Café moulu (250 g)",
-    "price": 3.49,
+    "name": "Café moulu pur arabica des petits producteurs",
+    "price": 4.96,
+    "priceSource": "open-prices",
     "unit": "paquet",
-    "category": "boissons",
-    "dietTags": ["omnivore", "vegetarien", "vegan", "sans-porc", "halal"],
+    "category": "epicerie",
+    "dietTags": [
+      "omnivore",
+      "vegetarien",
+      "vegan",
+      "sans-porc"
+    ],
     "allergens": [],
-    "essential": false
+    "kcal": 0,
+    "protein": "faible",
+    "lipides": "faible",
+    "glucides": "faible",
+    "sel": "faible",
+    "easyToCook": true
   },
   {
-    "id": "the",
-    "name": "Thé (25 sachets)",
-    "price": 1.99,
-    "unit": "boîte",
-    "category": "boissons",
-    "dietTags": ["omnivore", "vegetarien", "vegan", "sans-porc", "halal"],
-    "allergens": [],
-    "essential": false
-  },
-  {
-    "id": "jus-orange",
-    "name": "Jus d'orange (1 L)",
-    "price": 1.49,
-    "unit": "brique",
-    "category": "boissons",
-    "dietTags": ["omnivore", "vegetarien", "vegan", "sans-porc", "halal"],
-    "allergens": [],
-    "essential": false
+    "id": "beurre-cacahuete",
+    "name": "Pur beurre de cacahuète",
+    "price": 4.29,
+    "priceSource": "open-prices",
+    "unit": "pot",
+    "category": "epicerie",
+    "dietTags": [
+      "omnivore",
+      "vegetarien",
+      "vegan",
+      "sans-porc"
+    ],
+    "allergens": [
+      "arachide"
+    ],
+    "kcal": 628,
+    "protein": "riche",
+    "lipides": "riche",
+    "glucides": "moyen",
+    "sel": "faible",
+    "easyToCook": true
   },
   {
     "id": "noix-cajou",
-    "name": "Noix de cajou (150 g)",
+    "name": "Noix de cajou & cranberries",
     "price": 2.99,
+    "priceSource": "estimation",
     "unit": "sachet",
     "category": "epicerie",
-    "dietTags": ["omnivore", "vegetarien", "vegan", "sans-porc", "halal"],
-    "allergens": ["fruits-a-coque"],
-    "essential": false
+    "dietTags": [
+      "omnivore",
+      "vegetarien",
+      "sans-porc"
+    ],
+    "allergens": [
+      "fruits-a-coque"
+    ],
+    "kcal": 468,
+    "protein": "moyen",
+    "lipides": "riche",
+    "glucides": "riche",
+    "sel": "faible",
+    "easyToCook": true
+  },
+  {
+    "id": "carottes",
+    "name": "Carottes rapees citron dnp 320g",
+    "price": 1.64,
+    "priceSource": "open-prices",
+    "unit": "sachet",
+    "category": "fruits-legumes",
+    "dietTags": [
+      "omnivore",
+      "vegetarien",
+      "sans-porc"
+    ],
+    "allergens": [
+      "oeuf",
+      "gluten",
+      "lactose"
+    ],
+    "kcal": 63,
+    "protein": "faible",
+    "lipides": "moyen",
+    "glucides": "faible",
+    "sel": "moyen",
+    "easyToCook": true
+  },
+  {
+    "id": "tomates",
+    "name": "Tomates Cerises",
+    "price": 0.99,
+    "priceSource": "open-prices",
+    "unit": "barquette",
+    "category": "fruits-legumes",
+    "dietTags": [
+      "omnivore",
+      "vegetarien",
+      "vegan",
+      "sans-porc"
+    ],
+    "allergens": [],
+    "kcal": 19,
+    "protein": "faible",
+    "lipides": "faible",
+    "glucides": "faible",
+    "sel": "moyen",
+    "easyToCook": true
+  },
+  {
+    "id": "bananes",
+    "name": "Bananes (1 kg)",
+    "price": 1.69,
+    "priceSource": "estimation",
+    "unit": "kg",
+    "category": "fruits-legumes",
+    "dietTags": [
+      "omnivore",
+      "vegetarien",
+      "vegan",
+      "sans-porc"
+    ],
+    "allergens": [],
+    "kcal": 90,
+    "protein": "faible",
+    "lipides": "faible",
+    "glucides": "moyen",
+    "sel": "faible",
+    "easyToCook": true
+  },
+  {
+    "id": "pommes",
+    "name": "Pommes (1 kg)",
+    "price": 2.49,
+    "priceSource": "estimation",
+    "unit": "sachet",
+    "category": "fruits-legumes",
+    "dietTags": [
+      "omnivore",
+      "vegetarien",
+      "vegan",
+      "sans-porc"
+    ],
+    "allergens": [],
+    "kcal": 55,
+    "protein": "faible",
+    "lipides": "faible",
+    "glucides": "moyen",
+    "sel": "faible",
+    "easyToCook": true
+  },
+  {
+    "id": "pommes-de-terre",
+    "name": "Pommes de terre (2 kg)",
+    "price": 2.49,
+    "priceSource": "estimation",
+    "unit": "sac",
+    "category": "fruits-legumes",
+    "dietTags": [
+      "omnivore",
+      "vegetarien",
+      "vegan",
+      "sans-porc"
+    ],
+    "allergens": [],
+    "kcal": 80,
+    "protein": "faible",
+    "lipides": "faible",
+    "glucides": "riche",
+    "sel": "faible",
+    "easyToCook": true
+  },
+  {
+    "id": "oignons",
+    "name": "Oignons (1 kg)",
+    "price": 1.49,
+    "priceSource": "estimation",
+    "unit": "filet",
+    "category": "fruits-legumes",
+    "dietTags": [
+      "omnivore",
+      "vegetarien",
+      "vegan",
+      "sans-porc"
+    ],
+    "allergens": [],
+    "kcal": 40,
+    "protein": "faible",
+    "lipides": "faible",
+    "glucides": "faible",
+    "sel": "faible",
+    "easyToCook": true
+  },
+  {
+    "id": "lait",
+    "name": "Lait de la ferme jaouda",
+    "price": 4,
+    "priceSource": "open-prices",
+    "unit": "brique",
+    "category": "frais",
+    "dietTags": [
+      "omnivore",
+      "vegetarien",
+      "sans-porc"
+    ],
+    "allergens": [
+      "lactose"
+    ],
+    "kcal": 45,
+    "protein": "faible",
+    "lipides": "faible",
+    "glucides": "faible",
+    "sel": "faible",
+    "easyToCook": true
+  },
+  {
+    "id": "yaourt-nature",
+    "name": "Yaourts nature (x4)",
+    "price": 1.29,
+    "priceSource": "estimation",
+    "unit": "pack",
+    "category": "frais",
+    "dietTags": [
+      "omnivore",
+      "vegetarien",
+      "sans-porc"
+    ],
+    "allergens": [
+      "lactose"
+    ],
+    "kcal": 60,
+    "protein": "moyen",
+    "lipides": "moyen",
+    "glucides": "faible",
+    "sel": "faible",
+    "easyToCook": true
+  },
+  {
+    "id": "fromage-rape",
+    "name": "Fromage râpé (200 g)",
+    "price": 2.19,
+    "priceSource": "estimation",
+    "unit": "sachet",
+    "category": "frais",
+    "dietTags": [
+      "omnivore",
+      "vegetarien",
+      "sans-porc"
+    ],
+    "allergens": [
+      "lactose"
+    ],
+    "kcal": 380,
+    "protein": "riche",
+    "lipides": "riche",
+    "glucides": "faible",
+    "sel": "riche",
+    "easyToCook": true
+  },
+  {
+    "id": "oeufs",
+    "name": "Œufs (x10)",
+    "price": 2.29,
+    "priceSource": "estimation",
+    "unit": "boîte",
+    "category": "frais",
+    "dietTags": [
+      "omnivore",
+      "vegetarien",
+      "sans-porc"
+    ],
+    "allergens": [
+      "oeuf"
+    ],
+    "kcal": 150,
+    "protein": "riche",
+    "lipides": "moyen",
+    "glucides": "faible",
+    "sel": "faible",
+    "easyToCook": true
+  },
+  {
+    "id": "tofu",
+    "name": "Tofu nature",
+    "price": 3.01,
+    "priceSource": "open-prices",
+    "unit": "barquette",
+    "category": "frais",
+    "dietTags": [
+      "omnivore",
+      "vegetarien",
+      "vegan",
+      "sans-porc"
+    ],
+    "allergens": [],
+    "kcal": 151,
+    "protein": "riche",
+    "lipides": "moyen",
+    "glucides": "faible",
+    "sel": "faible",
+    "easyToCook": true
+  },
+  {
+    "id": "pain-complet",
+    "name": "Pain de mie american sandwich complet sans sucres ajoutés 600g",
+    "price": 1.86,
+    "priceSource": "open-prices",
+    "unit": "pain",
+    "category": "boulangerie",
+    "dietTags": [
+      "omnivore",
+      "vegetarien",
+      "sans-porc"
+    ],
+    "allergens": [
+      "gluten"
+    ],
+    "kcal": 280,
+    "protein": "moyen",
+    "lipides": "moyen",
+    "glucides": "riche",
+    "sel": "moyen",
+    "easyToCook": true
+  },
+  {
+    "id": "baguette",
+    "name": "4 Baguettes viennoises 340g",
+    "price": 1.6,
+    "priceSource": "open-prices",
+    "unit": "pain",
+    "category": "boulangerie",
+    "dietTags": [
+      "omnivore",
+      "sans-porc"
+    ],
+    "allergens": [
+      "oeuf",
+      "gluten",
+      "lactose"
+    ],
+    "kcal": 327,
+    "protein": "moyen",
+    "lipides": "moyen",
+    "glucides": "riche",
+    "sel": "moyen",
+    "easyToCook": true
+  },
+  {
+    "id": "pains-mie",
+    "name": "Pain de mie Bio grandes tranches à la farine complète 500g",
+    "price": 2.35,
+    "priceSource": "open-prices",
+    "unit": "paquet",
+    "category": "boulangerie",
+    "dietTags": [
+      "omnivore",
+      "vegetarien",
+      "sans-porc"
+    ],
+    "allergens": [
+      "gluten"
+    ],
+    "kcal": 268,
+    "protein": "moyen",
+    "lipides": "moyen",
+    "glucides": "riche",
+    "sel": "moyen",
+    "easyToCook": true
+  },
+  {
+    "id": "poulet",
+    "name": "Rôti de Poulet - 100% filet",
+    "price": 2.65,
+    "priceSource": "open-prices",
+    "unit": "barquette",
+    "category": "viande-poisson",
+    "dietTags": [
+      "omnivore",
+      "sans-porc"
+    ],
+    "allergens": [],
+    "kcal": 109,
+    "protein": "riche",
+    "lipides": "faible",
+    "glucides": "faible",
+    "sel": "riche",
+    "easyToCook": true
+  },
+  {
+    "id": "thon",
+    "name": "Joly Thon Entier",
+    "price": 1.49,
+    "priceSource": "estimation",
+    "unit": "boîte",
+    "category": "viande-poisson",
+    "dietTags": [
+      "omnivore",
+      "sans-porc"
+    ],
+    "allergens": [],
+    "kcal": 175,
+    "protein": "riche",
+    "lipides": "faible",
+    "glucides": "faible",
+    "sel": "moyen",
+    "easyToCook": true
+  },
+  {
+    "id": "steak-hache",
+    "name": "Steaks hachés 5%MG",
+    "price": 6.16,
+    "priceSource": "open-prices",
+    "unit": "barquette",
+    "category": "viande-poisson",
+    "dietTags": [
+      "omnivore",
+      "sans-porc"
+    ],
+    "allergens": [],
+    "kcal": 126,
+    "protein": "riche",
+    "lipides": "moyen",
+    "glucides": "faible",
+    "sel": "faible",
+    "easyToCook": true
+  },
+  {
+    "id": "saucisses",
+    "name": "Saucisses de Toulouse (x4)",
+    "price": 3.29,
+    "priceSource": "estimation",
+    "unit": "barquette",
+    "category": "viande-poisson",
+    "dietTags": [
+      "omnivore"
+    ],
+    "allergens": [],
+    "kcal": 280,
+    "protein": "moyen",
+    "lipides": "riche",
+    "glucides": "faible",
+    "sel": "riche",
+    "easyToCook": true
+  },
+  {
+    "id": "cabillaud",
+    "name": "Cabillaud sauce Citron riz aux petits légumes",
+    "price": 4.38,
+    "priceSource": "open-prices",
+    "unit": "barquette",
+    "category": "viande-poisson",
+    "dietTags": [
+      "omnivore",
+      "sans-porc"
+    ],
+    "allergens": [
+      "gluten",
+      "lactose"
+    ],
+    "kcal": 141,
+    "protein": "moyen",
+    "lipides": "moyen",
+    "glucides": "moyen",
+    "sel": "moyen",
+    "easyToCook": true
   }
 ]

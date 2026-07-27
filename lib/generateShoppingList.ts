@@ -1,24 +1,13 @@
 import productsData from "@/data/products.json";
 import {
-  LOW_BUDGET_THRESHOLD,
+  CATEGORY_ORDER,
   Product,
-  ProductCategory,
   ShoppingListItem,
   ShoppingListResult,
   UserPreferences,
 } from "@/lib/types";
 
 const products = productsData as Product[];
-
-const CATEGORY_PRIORITY: ProductCategory[] = [
-  "feculents",
-  "proteines",
-  "legumes",
-  "fruits",
-  "produits-laitiers",
-  "epicerie",
-  "boissons",
-];
 
 function matchesDiet(product: Product, diet: UserPreferences["diet"]): boolean {
   return product.dietTags.includes(diet);
@@ -31,65 +20,134 @@ function matchesAllergies(
   return !product.allergens.some((allergen) => allergies.includes(allergen));
 }
 
-function matchesFreeText(product: Product, freeText: string): boolean {
-  const query = freeText.trim().toLowerCase();
-  if (!query) return true;
-
-  const keywords = query.split(/[\s,;]+/).filter(Boolean);
-  const haystack = `${product.name} ${product.category}`.toLowerCase();
-
-  return keywords.some((keyword) => haystack.includes(keyword));
-}
-
 function filterProducts(preferences: UserPreferences): Product[] {
   return products.filter(
     (product) =>
       matchesDiet(product, preferences.diet) &&
-      matchesAllergies(product, preferences.allergies) &&
-      matchesFreeText(product, preferences.freeText)
+      matchesAllergies(product, preferences.allergies)
   );
 }
 
-function sortProducts(filtered: Product[]): Product[] {
-  return [...filtered].sort((a, b) => {
-    if (a.essential !== b.essential) {
-      return a.essential ? -1 : 1;
-    }
+// Score a product against the user's nutritional preferences. This is a
+// simple heuristic to prioritize matching items when filling the basket —
+// not a real nutrition engine (no per-meal or per-day calorie modeling).
+// A proper calorie/macro-accurate plan would need a recipe/serving-size
+// database, which is out of scope for this MVP.
+function score(product: Product, preferences: UserPreferences): number {
+  let s = 0;
+  const prefs = preferences.macroPreferences;
 
-    const categoryDiff =
-      CATEGORY_PRIORITY.indexOf(a.category) -
-      CATEGORY_PRIORITY.indexOf(b.category);
+  if (prefs.includes("riche-proteines") && product.protein === "riche") s += 2;
+  if (prefs.includes("faible-lipides") && product.lipides === "faible") s += 2;
+  if (prefs.includes("riche-glucides") && product.glucides === "riche") s += 2;
+  if (prefs.includes("faible-sel") && product.sel === "faible") s += 2;
+  if (prefs.includes("faible-sel") && product.sel === "riche") s -= 2;
+  if (prefs.includes("facile") && product.easyToCook) s += 2;
 
-    if (categoryDiff !== 0) return categoryDiff;
+  if (preferences.dailyCalories !== null) {
+    if (preferences.dailyCalories >= 2400 && product.kcal >= 250) s += 1;
+    if (preferences.dailyCalories <= 1800 && product.kcal <= 150) s += 1;
+  }
 
-    return a.price - b.price;
-  });
+  return s;
+}
+
+function cheapestScoredByCategory(
+  filtered: Product[],
+  category: Product["category"],
+  exclude: Set<string>,
+  preferences: UserPreferences
+): Product | null {
+  const candidates = filtered
+    .filter((p) => p.category === category && !exclude.has(p.id))
+    .sort((a, b) => {
+      const scoreDiff = score(b, preferences) - score(a, preferences);
+      if (scoreDiff !== 0) return scoreDiff;
+      return a.price - b.price;
+    });
+
+  return candidates[0] ?? null;
+}
+
+function round(amount: number): number {
+  return Math.round(amount * 100) / 100;
 }
 
 export function generateShoppingList(
   preferences: UserPreferences
 ): ShoppingListResult {
-  const filtered = sortProducts(filterProducts(preferences));
-  const items: ShoppingListItem[] = [];
+  const filtered = filterProducts(preferences);
+
+  // Catégories réellement atteignables pour ce régime/ces allergies (un
+  // profil végan ne verra jamais "Viande et poisson" — c'est un choix de
+  // régime, pas un problème de budget, donc on ne la compte pas ici).
+  const availableCategories = CATEGORY_ORDER.filter((category) =>
+    filtered.some((p) => p.category === category)
+  );
+
+  // Coût du panier minimal équilibré : les deux articles les moins chers de
+  // chaque catégorie atteignable (un seul article par catégorie serait
+  // quasiment gratuit et ne déclencherait jamais ce repère). Sert à savoir
+  // si le budget saisi peut, ou non, couvrir un panier complet —
+  // indépendamment des préférences nutritionnelles.
+  const minimalBalancedCost = round(
+    availableCategories.reduce((sum, category) => {
+      const cheapestTwo = filtered
+        .filter((p) => p.category === category)
+        .sort((a, b) => a.price - b.price)
+        .slice(0, 2);
+      return sum + cheapestTwo.reduce((s, p) => s + p.price, 0);
+    }, 0)
+  );
+
+  const selected: Product[] = [];
+  const selectedIds = new Set<string>();
   let total = 0;
 
-  for (const product of filtered) {
-    const lineTotal = product.price;
-    if (total + lineTotal <= preferences.budget) {
-      items.push({ product, quantity: 1 });
-      total += lineTotal;
+  // Phase 1 : un article par catégorie, en priorisant ceux qui correspondent
+  // le mieux aux préférences nutritionnelles, pour un panier équilibré.
+  for (const category of availableCategories) {
+    const product = cheapestScoredByCategory(
+      filtered,
+      category,
+      selectedIds,
+      preferences
+    );
+    if (!product || total + product.price > preferences.budget) continue;
+
+    selected.push(product);
+    selectedIds.add(product.id);
+    total += product.price;
+  }
+
+  // Phase 2 : compléter avec les articles restants, en priorisant toujours
+  // ceux qui correspondent le mieux aux préférences, puis les moins chers.
+  const remaining = filtered
+    .filter((p) => !selectedIds.has(p.id))
+    .sort((a, b) => {
+      const scoreDiff = score(b, preferences) - score(a, preferences);
+      if (scoreDiff !== 0) return scoreDiff;
+      return a.price - b.price;
+    });
+
+  for (const product of remaining) {
+    if (total + product.price <= preferences.budget) {
+      selected.push(product);
+      selectedIds.add(product.id);
+      total += product.price;
     }
   }
 
-  const remaining = Math.max(0, preferences.budget - total);
+  const roundedTotal = round(total);
 
   return {
-    items,
-    total: Math.round(total * 100) / 100,
+    items: selected.map((product) => ({ product, quantity: 1 })),
+    total: roundedTotal,
     budget: preferences.budget,
-    remaining: Math.round(remaining * 100) / 100,
-    isOverBudget: false,
-    showAidResources: preferences.budget < LOW_BUDGET_THRESHOLD,
+    remaining: round(Math.max(0, preferences.budget - roundedTotal)),
+    isOverBudget: roundedTotal > preferences.budget,
+    minimalBalancedCost,
+    isBudgetInsufficient: preferences.budget < minimalBalancedCost,
   };
 }
 
