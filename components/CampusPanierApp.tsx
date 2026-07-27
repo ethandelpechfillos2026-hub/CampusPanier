@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { getRedirectResult, onAuthStateChanged, signOut, type User } from "firebase/auth";
+import { onAuthStateChanged, signOut, type User } from "firebase/auth";
 import BudgetStep from "@/components/BudgetStep";
 import ProfileForm from "@/components/ProfileForm";
 import RecipesContent from "@/components/RecipesContent";
@@ -32,17 +32,7 @@ export default function CampusPanierApp() {
   const [favorites, setFavorites] = useState<FavoriteList[]>([]);
 
   useEffect(() => {
-    console.log("[CampusPanier] montage, vérification du résultat de redirection...");
-    getRedirectResult(auth)
-      .then((result) => {
-        console.log("[CampusPanier] getRedirectResult ->", result ? `utilisateur ${result.user.uid}` : "aucun résultat (null)");
-      })
-      .catch((error) => {
-        console.error("[CampusPanier] Erreur de redirection Google:", error);
-      });
-
     const unsubscribe = onAuthStateChanged(auth, async (firebaseUser) => {
-      console.log("[CampusPanier] onAuthStateChanged ->", firebaseUser ? `connecté (${firebaseUser.uid})` : "non connecté (null)");
       setUser(firebaseUser);
 
       if (!firebaseUser) {

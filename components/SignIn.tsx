@@ -1,41 +1,88 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { getRedirectResult, GoogleAuthProvider, signInWithRedirect } from "firebase/auth";
+import { useEffect, useRef, useState } from "react";
+import { GoogleAuthProvider, signInWithCredential } from "firebase/auth";
 import { auth } from "@/lib/firebase";
+
+const GOOGLE_CLIENT_ID = process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID;
+
+declare global {
+  interface Window {
+    google?: {
+      accounts: {
+        id: {
+          initialize: (config: {
+            client_id: string;
+            callback: (response: { credential: string }) => void;
+          }) => void;
+          renderButton: (
+            parent: HTMLElement,
+            options: Record<string, unknown>
+          ) => void;
+        };
+      };
+    };
+  }
+}
 
 export default function SignIn() {
   const [error, setError] = useState<string | null>(null);
+  const buttonRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    getRedirectResult(auth)
-      .then((result) => {
-        if (!result) {
-          // Pas de redirection en cours : normal au premier chargement.
-          return;
-        }
-      })
-      .catch((err) => {
-        const code = err?.code ?? "inconnu";
-        const message = err?.message ?? String(err);
-        setError(`Erreur Firebase (${code}) : ${message}`);
-        console.error("Erreur getRedirectResult:", err);
-      });
-  }, []);
-
-  async function handleSignIn() {
-    console.log("[CampusPanier] clic sur Continuer avec Google, lancement de signInWithRedirect...");
-    setError(null);
-    const provider = new GoogleAuthProvider();
-    try {
-      await signInWithRedirect(auth, provider);
-      console.log("[CampusPanier] signInWithRedirect résolu (ne devrait pas s'afficher avant la navigation).");
-    } catch (err: unknown) {
-      const code = (err as { code?: string })?.code ?? "inconnu";
-      setError(`Erreur au lancement (${code}). Réessaie.`);
-      console.error("Erreur signInWithRedirect:", err);
+    if (!GOOGLE_CLIENT_ID) {
+      setError(
+        "Configuration Google manquante (NEXT_PUBLIC_GOOGLE_CLIENT_ID)."
+      );
+      return;
     }
-  }
+
+    async function handleCredentialResponse(response: { credential: string }) {
+      setError(null);
+      try {
+        const credential = GoogleAuthProvider.credential(response.credential);
+        await signInWithCredential(auth, credential);
+      } catch (err: unknown) {
+        const code = (err as { code?: string })?.code ?? "inconnu";
+        setError(`Erreur de connexion (${code}). Réessaie.`);
+        console.error("[CampusPanier] Erreur signInWithCredential:", err);
+      }
+    }
+
+    function initGoogle() {
+      if (!window.google || !buttonRef.current) return;
+      window.google.accounts.id.initialize({
+        client_id: GOOGLE_CLIENT_ID as string,
+        callback: handleCredentialResponse,
+      });
+      window.google.accounts.id.renderButton(buttonRef.current, {
+        theme: "filled_black",
+        size: "large",
+        text: "continue_with",
+        shape: "pill",
+        width: 280,
+      });
+    }
+
+    if (window.google) {
+      initGoogle();
+      return;
+    }
+
+    const existingScript = document.getElementById("google-identity-script");
+    if (existingScript) {
+      existingScript.addEventListener("load", initGoogle);
+      return () => existingScript.removeEventListener("load", initGoogle);
+    }
+
+    const script = document.createElement("script");
+    script.id = "google-identity-script";
+    script.src = "https://accounts.google.com/gsi/client";
+    script.async = true;
+    script.defer = true;
+    script.onload = initGoogle;
+    document.body.appendChild(script);
+  }, []);
 
   return (
     <div className="flex h-full flex-col items-center justify-center gap-6 text-center">
@@ -49,9 +96,7 @@ export default function SignIn() {
           d&apos;une fois sur l&apos;autre.
         </p>
       </div>
-      <button type="button" onClick={handleSignIn} className="btn-primary">
-        Continuer avec Google
-      </button>
+      <div ref={buttonRef} />
       <p className="max-w-xs text-xs text-campus-muted">
         On utilise Google uniquement pour créer ton compte en toute sécurité.
         Aucune donnée n&apos;est revendue ni partagée.
