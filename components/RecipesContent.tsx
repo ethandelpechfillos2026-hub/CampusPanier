@@ -82,7 +82,7 @@ export default function RecipesContent({
                             >
                               <span>{missing ? "＋" : "✓"}</span>
                               <span>
-                                {product?.name ?? id}
+                                {product?.shortName ?? product?.name ?? id}
                                 {missing ? " (à ajouter)" : ""}
                               </span>
                             </li>

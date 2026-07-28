@@ -19,7 +19,7 @@
     "icon": "🍛",
     "prepTime": 20,
     "difficulty": "facile",
-    "ingredientIds": ["pois-chiches", "oignons", "riz", "concentre-tomate", "huile-olive"],
+    "ingredientIds": ["pois-chiches", "oignons", "riz", "sauce-tomate", "huile-olive"],
     "steps": [
       "Cuis le riz selon le paquet.",
       "Fais revenir l'oignon émincé dans l'huile d'olive.",
@@ -61,10 +61,10 @@
     "icon": "🥗",
     "prepTime": 10,
     "difficulty": "facile",
-    "ingredientIds": ["thon", "salade", "tomates", "oeufs", "huile-olive"],
+    "ingredientIds": ["thon", "tomates", "oeufs", "huile-olive"],
     "steps": [
       "Fais cuire les œufs durs 9 minutes puis écale-les.",
-      "Lave et coupe la salade et les tomates.",
+      "Coupe les tomates en morceaux.",
       "Égoutte le thon et mélange le tout dans un saladier.",
       "Arrose d'huile d'olive et assaisonne."
     ]
@@ -129,7 +129,7 @@
     "icon": "🍲",
     "prepTime": 25,
     "difficulty": "facile",
-    "ingredientIds": ["lentilles", "oignons", "carottes", "concentre-tomate", "huile-olive"],
+    "ingredientIds": ["lentilles", "oignons", "carottes", "sauce-tomate", "huile-olive"],
     "steps": [
       "Fais revenir l'oignon et les carottes coupées dans l'huile d'olive.",
       "Ajoute les lentilles rincées et le concentré de tomate.",
