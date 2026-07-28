@@ -63,7 +63,6 @@ export function recordRecipeViewed(recipeId: string): void {
 
 export interface DashboardStats {
   streakWeeks: number;
-  savedThisMonth: number;
   listsGenerated: number;
   recipesTried: number;
 }
@@ -79,23 +78,8 @@ export function getDashboardStats(): DashboardStats {
     streakWeeks += 1;
   }
 
-  const now = new Date();
-  const savedThisMonth = history
-    .filter((entry) => {
-      const d = new Date(entry.timestamp);
-      return (
-        d.getMonth() === now.getMonth() &&
-        d.getFullYear() === now.getFullYear()
-      );
-    })
-    .reduce((sum, entry) => {
-      const saved = entry.budget - entry.total;
-      return saved > 0 ? sum + saved : sum;
-    }, 0);
-
   return {
     streakWeeks,
-    savedThisMonth: Math.round(savedThisMonth * 100) / 100,
     listsGenerated: history.length,
     recipesTried: viewed.length,
   };
