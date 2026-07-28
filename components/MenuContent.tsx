@@ -84,10 +84,13 @@ export default function MenuContent({ result, onRestart }: MenuContentProps) {
                             {product.shortName ?? product.name}
                           </span>
                           <span className="shrink-0 font-semibold text-campus-terracotta">
-                            {count}{" "}
-                            {count > 1
-                              ? `${product.servingUnit}s`
-                              : product.servingUnit}
+                            {product.gramsPerServing
+                              ? `${count * product.gramsPerServing} g`
+                              : `${count} ${
+                                  count > 1
+                                    ? `${product.servingUnit}s`
+                                    : product.servingUnit
+                                }`}
                           </span>
                         </li>
                       ))}

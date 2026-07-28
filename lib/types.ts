@@ -53,6 +53,10 @@ export interface Product {
   // riz sec...) — dans ce cas pas de répartition journalière affichée.
   weeklyServings?: number;
   servingUnit?: string;
+  // Quand l'unité seule ne parle pas (ex: "portion" de lentilles ou de
+  // pâtes), on précise le poids en grammes d'une portion — le planning
+  // affiche alors directement "160 g" plutôt que "2 portions".
+  gramsPerServing?: number;
   // Présent seulement sur les produits régénérés via scripts/build-catalog.mjs —
   // indique si le prix vient d'un vrai relevé Open Prices ou d'une estimation.
   priceSource?: "open-prices" | "estimation";
