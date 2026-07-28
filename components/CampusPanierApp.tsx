@@ -12,6 +12,7 @@ import { getCloudProfile, saveCloudProfile } from "@/lib/authProfile";
 import { addFavorite, findFavorite, getFavorites, removeFavorite } from "@/lib/favorites";
 import { auth } from "@/lib/firebase";
 import { generateShoppingList } from "@/lib/generateShoppingList";
+import { recordListGenerated } from "@/lib/stats";
 import {
   FavoriteList,
   ShoppingListResult,
@@ -60,8 +61,10 @@ export default function CampusPanierApp() {
   }, []);
 
   function generateList(prefs: UserPreferences) {
+    const newResult = generateShoppingList(prefs);
     setPreferences(prefs);
-    setResult(generateShoppingList(prefs));
+    setResult(newResult);
+    recordListGenerated(newResult);
     setResultsTab("liste");
     setView("results");
   }

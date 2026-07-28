@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { suggestRecipes } from "@/lib/generateRecipes";
 import { products } from "@/lib/generateShoppingList";
+import { recordRecipeViewed } from "@/lib/stats";
 import { ShoppingListResult, UserPreferences } from "@/lib/types";
 
 interface RecipesContentProps {
@@ -45,7 +46,10 @@ export default function RecipesContent({
               >
                 <button
                   type="button"
-                  onClick={() => setOpenId(isOpen ? null : recipe.id)}
+                  onClick={() => {
+                    if (!isOpen) recordRecipeViewed(recipe.id);
+                    setOpenId(isOpen ? null : recipe.id);
+                  }}
                   className="flex w-full items-center gap-3 p-4 text-left"
                 >
                   <span className="flex h-16 w-16 shrink-0 items-center justify-center rounded-xl bg-campus-sand text-3xl">

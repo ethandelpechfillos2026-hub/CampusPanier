@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import StatsHeader from "@/components/StatsHeader";
 import { formatPrice } from "@/lib/generateShoppingList";
 import {
   CATEGORY_LABELS,
@@ -26,13 +27,6 @@ export default function ResultsContent({
   onToggleFavorite,
 }: ResultsContentProps) {
   const [checkedIds, setCheckedIds] = useState<Set<string>>(new Set());
-
-  const budgetPercent = Math.min(
-    100,
-    Math.round((result.total / result.budget) * 100)
-  );
-
-  const barColor = result.isOverBudget ? "bg-campus-danger" : "bg-campus-success";
 
   function toggleChecked(id: string) {
     setCheckedIds((prev) => {
@@ -82,35 +76,7 @@ export default function ResultsContent({
         </button>
       </div>
 
-      <div className="rounded-2xl border border-campus-sand bg-white p-4">
-        <div className="h-3 overflow-hidden rounded-full bg-campus-sand">
-          <div
-            className={`h-full rounded-full transition-all ${barColor}`}
-            style={{ width: `${budgetPercent}%` }}
-          />
-        </div>
-
-        <div className="mt-3 flex items-center justify-between text-sm">
-          <p>
-            <span className="text-campus-muted">Dépensé </span>
-            <span
-              className={`font-bold ${
-                result.isOverBudget
-                  ? "text-campus-danger"
-                  : "text-campus-success"
-              }`}
-            >
-              {formatPrice(result.total)}
-            </span>
-          </p>
-          <p>
-            <span className="text-campus-muted">Reste </span>
-            <span className="font-bold text-campus-ink">
-              {formatPrice(result.remaining)}
-            </span>
-          </p>
-        </div>
-      </div>
+      <StatsHeader result={result} />
 
       {result.isBudgetInsufficient && (
         <div className="rounded-2xl border border-campus-terracotta/40 bg-campus-terracotta/10 p-4">
