@@ -71,7 +71,15 @@
   }
 
   .phone-frame {
-    @apply relative mx-auto flex w-full max-w-[480px] flex-col bg-campus-cream;
+    @apply relative mx-auto flex w-full max-w-[480px] flex-col;
     min-height: 100dvh;
+    background-image: linear-gradient(
+      165deg,
+      #fff6ec 0%,
+      #fdebd8 25%,
+      #fbd9bb 55%,
+      #f3bd93 80%,
+      #eba573 100%
+    );
   }
 }
