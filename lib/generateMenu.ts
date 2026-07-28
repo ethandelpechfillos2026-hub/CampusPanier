@@ -35,9 +35,7 @@ export function organizeMenu(items: ShoppingListItem[]): MenuSection[] {
 }
 
 // Traduit la quantité hebdomadaire d'un produit en repère journalier
-// ("10 œufs cette semaine → ~1,4 par jour"). Retourne null pour les
-// produits qui se dosent librement selon la recette (pas de weeklyServings
-// défini).
+// ("10 œufs cette semaine → ~1,4 par jour").
 export function formatDailyServing(
   product: Product,
   quantity: number
@@ -89,17 +87,16 @@ export interface DayPlan {
 
 export interface WeeklyPlan {
   days: DayPlan[];
-  // Produits qui se dosent librement selon la recette (huile, pâtes, riz
-  // sec...) et n'ont donc pas de quantité fixée jour par jour.
-  pantryItems: ShoppingListItem[];
 }
 
-// Étale `total` occurrences le plus régulièrement possible sur 7 jours
-// (ex: 10 œufs -> 2,1,2,1,2,1,1). Renvoie un tableau de 7 compteurs.
-function spreadAcrossWeek(total: number): number[] {
+// Étale `total` occurrences le plus régulièrement possible sur 7 jours, en
+// partant du jour `offset` plutôt que toujours du lundi — sinon tous les
+// produits achetés en une seule unité (riz, cabillaud...) atterriraient
+// systématiquement le même jour.
+function spreadAcrossWeek(total: number, offset: number): number[] {
   const counts = new Array(7).fill(0);
   for (let k = 0; k < total; k++) {
-    const dayIndex = Math.floor((k * 7) / total);
+    const dayIndex = (Math.floor((k * 7) / total) + offset) % 7;
     counts[dayIndex] += 1;
   }
   return counts;
@@ -109,34 +106,31 @@ function emptyDaySlots(): Record<DaySlot, DayEntry[]> {
   return { petitDejeuner: [], dejeuner: [], diner: [], collation: [] };
 }
 
-// Construit un planning jour par jour : pour chaque produit ayant un nombre
-// d'unités défini (weeklyServings), on étale ce nombre sur les 7 jours.
-// "Déjeuner & Dîner" (mealSlot unique côté produit) est réparti entre les
+// Construit un planning jour par jour : chaque produit de la liste (tous ont
+// désormais une quantité hebdomadaire précise) est étalé sur les 7 jours.
+// "Déjeuner & Dîner" (un seul mealSlot côté produit) est réparti entre les
 // deux repas au niveau de l'affichage, pour varier les repas d'un jour à
-// l'autre plutôt que de répéter le même contenu midi et soir. Les produits
-// sans quantité fixe (huile, pâtes, riz sec...) restent dans "pantryItems",
-// à composer librement.
+// l'autre plutôt que de répéter le même contenu midi et soir.
 export function buildWeeklyPlan(items: ShoppingListItem[]): WeeklyPlan {
   const days: DayPlan[] = WEEKDAY_LABELS.map((day) => ({
     day,
     slots: emptyDaySlots(),
   }));
-  const pantryItems: ShoppingListItem[] = [];
 
-  // Étape 1 : placer petit-déjeuner et collation directement, et collecter
-  // à part les articles "déjeuner-dîner" par jour pour pouvoir les répartir
-  // ensuite entre les deux repas.
   const mainsByDay: DayEntry[][] = Array.from({ length: 7 }, () => []);
+  let productIndex = 0;
 
   for (const item of items) {
     const { product, quantity } = item;
-    if (!product.weeklyServings) {
-      pantryItems.push(item);
-      continue;
-    }
+    if (!product.weeklyServings) continue;
 
     const total = product.weeklyServings * quantity;
-    const perDayCounts = spreadAcrossWeek(total);
+    // Pas de 3 (premier avec 7) pour bien étaler les décalages entre
+    // produits successifs avant de reboucler.
+    const offset = (productIndex * 3) % 7;
+    productIndex += 1;
+
+    const perDayCounts = spreadAcrossWeek(total, offset);
 
     perDayCounts.forEach((count, dayIndex) => {
       if (count === 0) return;
@@ -151,14 +145,12 @@ export function buildWeeklyPlan(items: ShoppingListItem[]): WeeklyPlan {
     });
   }
 
-  // Étape 2 : répartir les articles "déjeuner-dîner" du jour entre les deux
-  // repas pour varier, plutôt que d'afficher la même chose aux deux.
+  // Répartit les articles "déjeuner-dîner" du jour entre les deux repas
+  // pour varier, plutôt que d'afficher la même chose aux deux.
   mainsByDay.forEach((mains, dayIndex) => {
     if (mains.length === 0) return;
 
     if (mains.length === 1) {
-      // Un seul article ce jour-là : on alterne selon la parité du jour
-      // pour ne pas toujours mettre la même chose au déjeuner.
       const target = dayIndex % 2 === 0 ? "dejeuner" : "diner";
       days[dayIndex].slots[target].push(mains[0]);
       return;
@@ -170,5 +162,5 @@ export function buildWeeklyPlan(items: ShoppingListItem[]): WeeklyPlan {
     });
   });
 
-  return { days, pantryItems };
+  return { days };
 }

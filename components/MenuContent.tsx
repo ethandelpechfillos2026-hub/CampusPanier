@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { formatPrice } from "@/lib/generateShoppingList";
 import {
   buildWeeklyPlan,
   DAY_SLOT_ICONS,
@@ -17,7 +16,7 @@ interface MenuContentProps {
 }
 
 export default function MenuContent({ result, onRestart }: MenuContentProps) {
-  const { days, pantryItems } = buildWeeklyPlan(result.items);
+  const { days } = buildWeeklyPlan(result.items);
   const [selectedDay, setSelectedDay] = useState(0);
 
   const isEmpty = result.items.length === 0;
@@ -60,7 +59,6 @@ export default function MenuContent({ result, onRestart }: MenuContentProps) {
           <div className="space-y-4">
             {DAY_SLOT_ORDER.map((slot) => {
               const entries = day.slots[slot];
-              if (entries.length === 0) return null;
               return (
                 <section
                   key={slot}
@@ -70,67 +68,35 @@ export default function MenuContent({ result, onRestart }: MenuContentProps) {
                     <span className="text-lg">{DAY_SLOT_ICONS[slot]}</span>
                     {DAY_SLOT_LABELS[slot]}
                   </h2>
-                  <ul className="space-y-2">
-                    {entries.map(({ product, count }) => (
-                      <li
-                        key={product.id}
-                        className="flex items-center justify-between gap-3 text-sm"
-                      >
-                        <span className="font-medium text-campus-ink">
-                          {product.shortName ?? product.name}
-                        </span>
-                        <span className="shrink-0 font-semibold text-campus-terracotta">
-                          {count}{" "}
-                          {count > 1
-                            ? `${product.servingUnit}s`
-                            : product.servingUnit}
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
+                  {entries.length === 0 ? (
+                    <p className="text-sm text-campus-muted">
+                      Rien de prévu ici avec ce budget — augmente-le
+                      légèrement pour un menu complet tous les jours.
+                    </p>
+                  ) : (
+                    <ul className="space-y-2">
+                      {entries.map(({ product, count }) => (
+                        <li
+                          key={product.id}
+                          className="flex items-center justify-between gap-3 text-sm"
+                        >
+                          <span className="font-medium text-campus-ink">
+                            {product.shortName ?? product.name}
+                          </span>
+                          <span className="shrink-0 font-semibold text-campus-terracotta">
+                            {count}{" "}
+                            {count > 1
+                              ? `${product.servingUnit}s`
+                              : product.servingUnit}
+                          </span>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
                 </section>
               );
             })}
-
-            {DAY_SLOT_ORDER.every((slot) => day.slots[slot].length === 0) && (
-              <div className="rounded-2xl border border-campus-sand bg-white p-5 text-center">
-                <p className="text-sm text-campus-muted">
-                  Rien de prévu ce jour-là pour les produits à quantité
-                  fixe — pioche dans le garde-manger ci-dessous.
-                </p>
-              </div>
-            )}
           </div>
-
-          {pantryItems.length > 0 && (
-            <section className="rounded-2xl border border-campus-sand/80 bg-orange-50/40 p-4">
-              <h2 className="mb-1 text-sm font-bold text-campus-ink">
-                Garde-manger de la semaine
-              </h2>
-              <p className="mb-3 text-xs text-campus-muted">
-                À doser librement selon tes recettes, pas de quantité fixe
-                par jour.
-              </p>
-              <ul className="space-y-1.5">
-                {pantryItems.map(({ product, quantity }) => (
-                  <li
-                    key={product.id}
-                    className="flex items-center justify-between gap-3 text-sm"
-                  >
-                    <span className="text-campus-ink">
-                      {product.name}
-                      {quantity > 1 && (
-                        <span className="text-campus-muted"> ×{quantity}</span>
-                      )}
-                    </span>
-                    <span className="shrink-0 font-medium text-campus-muted">
-                      {formatPrice(product.price * quantity)}
-                    </span>
-                  </li>
-                ))}
-              </ul>
-            </section>
-          )}
         </>
       )}
 

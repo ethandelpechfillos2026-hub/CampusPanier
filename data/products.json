@@ -1,6 +1,9 @@
 [
   {
     "id": "pates",
+    "shortName": "Pâtes",
+    "weeklyServings": 4,
+    "servingUnit": "portion",
     "name": "Pâtes (500 g)",
     "price": 0.89,
     "priceSource": "estimation",
@@ -51,6 +54,9 @@
   },
   {
     "id": "lentilles",
+    "shortName": "Lentilles",
+    "weeklyServings": 3,
+    "servingUnit": "portion",
     "name": "Lentilles vertes (500 g)",
     "price": 1.49,
     "priceSource": "estimation",
@@ -98,6 +104,9 @@
   },
   {
     "id": "sauce-tomate",
+    "shortName": "Sauce tomate",
+    "weeklyServings": 3,
+    "servingUnit": "portion",
     "name": "Sauce Tomate concentrée cuisinée aux petits légumes",
     "price": 0.97,
     "priceSource": "open-prices",
@@ -122,12 +131,15 @@
   },
   {
     "id": "huile-olive",
+    "shortName": "Huile d'olive",
+    "weeklyServings": 7,
+    "servingUnit": "cuillère à soupe",
     "name": "Huile d'olive (1 L)",
     "price": 4.99,
     "priceSource": "estimation",
     "unit": "bouteille",
     "category": "epicerie",
-    "mealSlot": "encas-extra",
+    "mealSlot": "dejeuner-diner",
     "dietTags": [
       "omnivore",
       "vegetarien",
@@ -144,6 +156,9 @@
   },
   {
     "id": "cafe",
+    "shortName": "Café",
+    "weeklyServings": 7,
+    "servingUnit": "tasse",
     "name": "Café moulu pur arabica des petits producteurs",
     "price": 4.96,
     "priceSource": "open-prices",
@@ -166,6 +181,9 @@
   },
   {
     "id": "beurre-cacahuete",
+    "shortName": "Beurre de cacahuète",
+    "weeklyServings": 5,
+    "servingUnit": "cuillère",
     "name": "Pur beurre de cacahuète",
     "price": 4.29,
     "priceSource": "open-prices",
@@ -319,6 +337,9 @@
   },
   {
     "id": "pommes-de-terre",
+    "shortName": "Pommes de terre",
+    "weeklyServings": 4,
+    "servingUnit": "portion",
     "name": "Pommes de terre (2 kg)",
     "price": 2.49,
     "priceSource": "estimation",
@@ -341,6 +362,9 @@
   },
   {
     "id": "oignons",
+    "shortName": "Oignons",
+    "weeklyServings": 5,
+    "servingUnit": "portion",
     "name": "Oignons (1 kg)",
     "price": 1.49,
     "priceSource": "estimation",
@@ -363,6 +387,9 @@
   },
   {
     "id": "lait",
+    "shortName": "Lait",
+    "weeklyServings": 7,
+    "servingUnit": "verre",
     "name": "Lait de la ferme jaouda",
     "price": 4,
     "priceSource": "open-prices",
@@ -412,6 +439,9 @@
   },
   {
     "id": "fromage-rape",
+    "shortName": "Fromage râpé",
+    "weeklyServings": 4,
+    "servingUnit": "portion",
     "name": "Fromage râpé (200 g)",
     "price": 2.19,
     "priceSource": "estimation",
