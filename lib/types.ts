@@ -23,7 +23,10 @@ export type MacroPreference =
   | "faible-lipides"
   | "riche-glucides"
   | "faible-sel"
-  | "facile";
+  | "facile"
+  | "prise-masse"
+  | "seche"
+  | "belle-peau";
 
 export interface Product {
   id: string;
@@ -125,6 +128,9 @@ export const MACRO_OPTIONS: { value: MacroPreference; label: string }[] = [
   { value: "riche-glucides", label: "Riche en glucides" },
   { value: "faible-sel", label: "Faible en sel" },
   { value: "facile", label: "Recettes faciles" },
+  { value: "prise-masse", label: "Prise de masse" },
+  { value: "seche", label: "Sèche / cut" },
+  { value: "belle-peau", label: "Belle peau" },
 ];
 
 export const DIET_OPTIONS: { value: DietType; label: string }[] = [

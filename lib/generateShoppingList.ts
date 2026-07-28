@@ -44,6 +44,23 @@ function score(product: Product, preferences: UserPreferences): number {
   if (prefs.includes("faible-sel") && product.sel === "riche") s -= 2;
   if (prefs.includes("facile") && product.easyToCook) s += 2;
 
+  // Objectifs "silhouette" : des heuristiques simples (pas un vrai bilan
+  // nutritionnel) basées sur les seuls champs qu'on a — protéines/lipides/
+  // kcal, ou catégorie pour la peau (fruits et légumes = vitamines/
+  // antioxydants).
+  if (prefs.includes("prise-masse")) {
+    if (product.protein === "riche") s += 2;
+    if (product.kcal >= 250) s += 1;
+  }
+  if (prefs.includes("seche")) {
+    if (product.protein === "riche") s += 2;
+    if (product.lipides === "faible") s += 1;
+    if (product.kcal <= 200) s += 1;
+  }
+  if (prefs.includes("belle-peau") && product.category === "fruits-legumes") {
+    s += 3;
+  }
+
   if (preferences.dailyCalories !== null) {
     if (preferences.dailyCalories >= 2400 && product.kcal >= 250) s += 1;
     if (preferences.dailyCalories <= 1800 && product.kcal <= 150) s += 1;
