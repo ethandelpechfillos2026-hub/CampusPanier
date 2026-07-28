@@ -141,7 +141,7 @@ export default function MenuContent({ result, onRestart }: MenuContentProps) {
                           className="flex items-center justify-between gap-3 text-sm"
                         >
                           <span className="font-medium text-campus-ink">
-                            {product.name}
+                            {product.shortName ?? product.name}
                           </span>
                           <span className="shrink-0 font-semibold text-campus-terracotta">
                             {count}{" "}

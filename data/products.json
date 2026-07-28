@@ -25,6 +25,7 @@
   },
   {
     "id": "riz",
+    "shortName": "Riz basmati aux poireaux",
     "weeklyServings": 1,
     "servingUnit": "part",
     "name": "St Jacques fondue de poireaux & Riz Basmati",
@@ -72,6 +73,7 @@
   },
   {
     "id": "pois-chiches",
+    "shortName": "Tranches de pois chiches",
     "weeklyServings": 4,
     "servingUnit": "tranche",
     "name": "Les Tranches Végé Pois chiches",
@@ -188,6 +190,7 @@
   },
   {
     "id": "noix-cajou",
+    "shortName": "Noix de cajou",
     "weeklyServings": 5,
     "servingUnit": "poignée",
     "name": "Noix de cajou & cranberries",
@@ -213,6 +216,7 @@
   },
   {
     "id": "carottes",
+    "shortName": "Carottes râpées",
     "weeklyServings": 3,
     "servingUnit": "portion",
     "name": "Carottes rapees citron dnp 320g",
@@ -240,6 +244,7 @@
   },
   {
     "id": "tomates",
+    "shortName": "Tomates cerises",
     "weeklyServings": 4,
     "servingUnit": "portion",
     "name": "Tomates Cerises",
@@ -264,6 +269,7 @@
   },
   {
     "id": "bananes",
+    "shortName": "Banane",
     "weeklyServings": 6,
     "servingUnit": "banane",
     "name": "Bananes (1 kg)",
@@ -288,6 +294,7 @@
   },
   {
     "id": "pommes",
+    "shortName": "Pomme",
     "weeklyServings": 6,
     "servingUnit": "pomme",
     "name": "Pommes (1 kg)",
@@ -379,6 +386,7 @@
   },
   {
     "id": "yaourt-nature",
+    "shortName": "Yaourt nature",
     "weeklyServings": 4,
     "servingUnit": "yaourt",
     "name": "Yaourts nature (x4)",
@@ -427,6 +435,7 @@
   },
   {
     "id": "oeufs",
+    "shortName": "Œufs",
     "weeklyServings": 10,
     "servingUnit": "œuf",
     "name": "Œufs (x10)",
@@ -452,6 +461,7 @@
   },
   {
     "id": "tofu",
+    "shortName": "Tofu",
     "weeklyServings": 2,
     "servingUnit": "portion",
     "name": "Tofu nature",
@@ -476,6 +486,7 @@
   },
   {
     "id": "pain-complet",
+    "shortName": "Pain de mie complet",
     "weeklyServings": 16,
     "servingUnit": "tranche",
     "name": "Pain de mie american sandwich complet sans sucres ajoutés 600g",
@@ -501,6 +512,7 @@
   },
   {
     "id": "baguette",
+    "shortName": "Baguette viennoise",
     "weeklyServings": 4,
     "servingUnit": "baguette",
     "name": "4 Baguettes viennoises 340g",
@@ -527,6 +539,7 @@
   },
   {
     "id": "pains-mie",
+    "shortName": "Pain de mie bio",
     "weeklyServings": 14,
     "servingUnit": "tranche",
     "name": "Pain de mie Bio grandes tranches à la farine complète 500g",
@@ -552,6 +565,7 @@
   },
   {
     "id": "poulet",
+    "shortName": "Poulet rôti",
     "weeklyServings": 2,
     "servingUnit": "portion",
     "name": "Rôti de Poulet - 100% filet",
@@ -574,6 +588,7 @@
   },
   {
     "id": "thon",
+    "shortName": "Thon",
     "weeklyServings": 2,
     "servingUnit": "portion",
     "name": "Joly Thon Entier",
@@ -596,6 +611,7 @@
   },
   {
     "id": "steak-hache",
+    "shortName": "Steak haché",
     "weeklyServings": 2,
     "servingUnit": "steak",
     "name": "Steaks hachés 5%MG",
@@ -618,6 +634,7 @@
   },
   {
     "id": "saucisses",
+    "shortName": "Saucisse de Toulouse",
     "weeklyServings": 4,
     "servingUnit": "saucisse",
     "name": "Saucisses de Toulouse (x4)",
@@ -639,6 +656,7 @@
   },
   {
     "id": "cabillaud",
+    "shortName": "Cabillaud",
     "weeklyServings": 1,
     "servingUnit": "part",
     "name": "Cabillaud sauce Citron riz aux petits légumes",

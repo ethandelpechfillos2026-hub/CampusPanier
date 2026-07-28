@@ -28,6 +28,10 @@ export type MacroPreference =
 export interface Product {
   id: string;
   name: string;
+  // Nom court utilisé dans le planning jour par jour (ex: "Baguette
+  // viennoise" plutôt que "4 Baguettes viennoises 340g"). Optionnel — si
+  // absent, on retombe sur `name`.
+  shortName?: string;
   price: number;
   unit: string;
   category: ProductCategory;
