@@ -12,6 +12,7 @@ import { getCloudProfile, saveCloudProfile } from "@/lib/authProfile";
 import { addFavorite, findFavorite, getFavorites, removeFavorite } from "@/lib/favorites";
 import { auth } from "@/lib/firebase";
 import { generateShoppingList } from "@/lib/generateShoppingList";
+import { playClickSound } from "@/lib/sound";
 import { recordListGenerated } from "@/lib/stats";
 import {
   FavoriteList,
@@ -100,6 +101,15 @@ export default function CampusPanierApp() {
     signOut(auth);
   }
 
+  // Petit clic satisfaisant sur chaque bouton de l'app — délégation
+  // d'événement au niveau racine, pas besoin de le câbler bouton par bouton.
+  function handleGlobalClick(event: React.MouseEvent<HTMLDivElement>) {
+    const target = event.target as HTMLElement;
+    if (target.closest("button")) {
+      playClickSound();
+    }
+  }
+
   if (!ready) return null;
 
   const showTabs = view === "results" && result && preferences;
@@ -109,7 +119,10 @@ export default function CampusPanierApp() {
   const showFavorites = (view === "profile" || view === "budget") && favorites.length > 0;
 
   return (
-    <>
+    <div
+      onClickCapture={handleGlobalClick}
+      className="flex min-h-full flex-1 flex-col"
+    >
       <header className="flex items-center justify-between border-b border-campus-sand/80 px-5 py-4">
         <div className="flex items-center gap-2.5">
           <span className="flex h-9 w-9 items-center justify-center rounded-2xl bg-campus-terracotta text-lg text-white">
@@ -226,6 +239,6 @@ export default function CampusPanierApp() {
           </>
         )}
       </div>
-    </>
+    </div>
   );
 }

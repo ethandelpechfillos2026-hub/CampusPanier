@@ -5,6 +5,7 @@ import { ShoppingListResult } from "@/lib/types";
 // user has opened (for "recettes essayées") to power the rewards dashboard.
 const HISTORY_KEY = "campus-panier-list-history";
 const RECIPES_VIEWED_KEY = "campus-panier-recipes-viewed";
+const LISTS_COMPLETED_KEY = "campus-panier-lists-completed";
 const MAX_HISTORY = 52; // roughly a year of weekly lists
 
 interface ListHistoryEntry {
@@ -61,10 +62,30 @@ export function recordRecipeViewed(recipeId: string): void {
   );
 }
 
+function readListsCompleted(): number {
+  if (typeof window === "undefined") return 0;
+  try {
+    const raw = window.localStorage.getItem(LISTS_COMPLETED_KEY);
+    return raw ? Number(raw) || 0 : 0;
+  } catch {
+    return 0;
+  }
+}
+
+// Appelé quand l'utilisateur coche le dernier article d'une liste — compte
+// le nombre de fois où une liste a été entièrement cochée (pour le badge
+// "Liste parfaite" et le système de points).
+export function recordListFullyChecked(): void {
+  if (typeof window === "undefined") return;
+  const count = readListsCompleted() + 1;
+  window.localStorage.setItem(LISTS_COMPLETED_KEY, String(count));
+}
+
 export interface DashboardStats {
   streakWeeks: number;
   listsGenerated: number;
   recipesTried: number;
+  listsCompleted: number;
 }
 
 export function getDashboardStats(): DashboardStats {
@@ -82,5 +103,6 @@ export function getDashboardStats(): DashboardStats {
     streakWeeks,
     listsGenerated: history.length,
     recipesTried: viewed.length,
+    listsCompleted: readListsCompleted(),
   };
 }

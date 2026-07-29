@@ -1,8 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import StatsHeader from "@/components/StatsHeader";
 import { formatPrice } from "@/lib/generateShoppingList";
+import { recordListFullyChecked } from "@/lib/stats";
 import {
   CATEGORY_LABELS,
   CATEGORY_ORDER,
@@ -27,12 +28,20 @@ export default function ResultsContent({
   onToggleFavorite,
 }: ResultsContentProps) {
   const [checkedIds, setCheckedIds] = useState<Set<string>>(new Set());
+  const hasRecordedCompletionRef = useRef(false);
 
   function toggleChecked(id: string) {
     setCheckedIds((prev) => {
       const next = new Set(prev);
       if (next.has(id)) next.delete(id);
       else next.add(id);
+      if (
+        next.size === result.items.length &&
+        !hasRecordedCompletionRef.current
+      ) {
+        hasRecordedCompletionRef.current = true;
+        recordListFullyChecked();
+      }
       return next;
     });
   }
