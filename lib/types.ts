@@ -113,6 +113,18 @@ export interface RecipeMatch {
   missingProducts: Product[];
 }
 
+// Recette générée à la volée par l'IA (Groq) à partir des produits du
+// panier — pas d'id fixe, pas d'ingredientIds à résoudre dans le
+// catalogue, contrairement aux recettes statiques de data/recipes.json.
+export interface GeneratedRecipe {
+  name: string;
+  icon: string;
+  prepTime: number;
+  difficulty: "facile" | "moyen";
+  usedIngredients: string[];
+  steps: string[];
+}
+
 export interface FavoriteList {
   id: string;
   label: string;
