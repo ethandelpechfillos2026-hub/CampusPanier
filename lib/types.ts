@@ -26,7 +26,8 @@ export type MacroPreference =
   | "facile"
   | "prise-masse"
   | "seche"
-  | "belle-peau";
+  | "belle-peau"
+  | "gourmand";
 
 export interface Product {
   id: string;
@@ -60,6 +61,9 @@ export interface Product {
   // Présent seulement sur les produits régénérés via scripts/build-catalog.mjs —
   // indique si le prix vient d'un vrai relevé Open Prices ou d'une estimation.
   priceSource?: "open-prices" | "estimation";
+  // Produit "plaisir" (sucré, gras, gourmand) plutôt qu'équilibré — sert à la
+  // préférence "Gourmand", pour se faire plaisir même avec un petit budget.
+  gourmand?: boolean;
 }
 
 export interface UserProfile {
@@ -135,6 +139,7 @@ export const MACRO_OPTIONS: { value: MacroPreference; label: string }[] = [
   { value: "prise-masse", label: "Prise de masse" },
   { value: "seche", label: "Sèche / cut" },
   { value: "belle-peau", label: "Belle peau" },
+  { value: "gourmand", label: "Gourmand" },
 ];
 
 export const DIET_OPTIONS: { value: DietType; label: string }[] = [

@@ -61,16 +61,22 @@ export default function ResultsContent({
             {preferences.dailyCalories && ` · ~${preferences.dailyCalories} kcal/j`}
           </p>
           {preferences.macroPreferences.length > 0 && (
-            <p className="mt-1 text-xs text-campus-muted">
-              {preferences.macroPreferences
-                .map(
-                  (value) =>
-                    MACRO_OPTIONS.find((option) => option.value === value)
-                      ?.label
-                )
-                .filter(Boolean)
-                .join(" · ")}
-            </p>
+            <ul className="mt-1.5 space-y-0.5">
+              {preferences.macroPreferences.map((value) => {
+                const label = MACRO_OPTIONS.find(
+                  (option) => option.value === value
+                )?.label;
+                if (!label) return null;
+                return (
+                  <li
+                    key={value}
+                    className="text-xs text-campus-muted before:mr-1.5 before:text-campus-terracotta before:content-['•']"
+                  >
+                    {label}
+                  </li>
+                );
+              })}
+            </ul>
           )}
         </div>
         <button

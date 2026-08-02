@@ -208,7 +208,8 @@
     "lipides": "riche",
     "glucides": "moyen",
     "sel": "faible",
-    "easyToCook": true
+    "easyToCook": true,
+    "gourmand": true
   },
   {
     "id": "noix-cajou",
@@ -234,7 +235,8 @@
     "lipides": "riche",
     "glucides": "riche",
     "sel": "faible",
-    "easyToCook": true
+    "easyToCook": true,
+    "gourmand": true
   },
   {
     "id": "carottes",
@@ -470,7 +472,8 @@
     "lipides": "riche",
     "glucides": "faible",
     "sel": "riche",
-    "easyToCook": true
+    "easyToCook": true,
+    "gourmand": true
   },
   {
     "id": "oeufs",
@@ -694,7 +697,8 @@
     "lipides": "riche",
     "glucides": "faible",
     "sel": "riche",
-    "easyToCook": true
+    "easyToCook": true,
+    "gourmand": true
   },
   {
     "id": "cabillaud",
@@ -735,7 +739,12 @@
     "unit": "sachet",
     "category": "epicerie",
     "mealSlot": "dejeuner-diner",
-    "dietTags": ["omnivore", "vegetarien", "vegan", "sans-porc"],
+    "dietTags": [
+      "omnivore",
+      "vegetarien",
+      "vegan",
+      "sans-porc"
+    ],
     "allergens": [],
     "kcal": 368,
     "protein": "moyen",
@@ -756,8 +765,15 @@
     "unit": "paquet",
     "category": "epicerie",
     "mealSlot": "dejeuner-diner",
-    "dietTags": ["omnivore", "vegetarien", "vegan", "sans-porc"],
-    "allergens": ["gluten"],
+    "dietTags": [
+      "omnivore",
+      "vegetarien",
+      "vegan",
+      "sans-porc"
+    ],
+    "allergens": [
+      "gluten"
+    ],
     "kcal": 376,
     "protein": "moyen",
     "lipides": "faible",
@@ -777,8 +793,15 @@
     "unit": "paquet",
     "category": "epicerie",
     "mealSlot": "dejeuner-diner",
-    "dietTags": ["omnivore", "vegetarien", "vegan", "sans-porc"],
-    "allergens": ["gluten"],
+    "dietTags": [
+      "omnivore",
+      "vegetarien",
+      "vegan",
+      "sans-porc"
+    ],
+    "allergens": [
+      "gluten"
+    ],
     "kcal": 364,
     "protein": "faible",
     "lipides": "faible",
@@ -797,7 +820,12 @@
     "unit": "paquet",
     "category": "epicerie",
     "mealSlot": "petit-dejeuner",
-    "dietTags": ["omnivore", "vegetarien", "vegan", "sans-porc"],
+    "dietTags": [
+      "omnivore",
+      "vegetarien",
+      "vegan",
+      "sans-porc"
+    ],
     "allergens": [],
     "kcal": 400,
     "protein": "faible",
@@ -817,14 +845,19 @@
     "unit": "pot",
     "category": "epicerie",
     "mealSlot": "petit-dejeuner",
-    "dietTags": ["omnivore", "vegetarien", "sans-porc"],
+    "dietTags": [
+      "omnivore",
+      "vegetarien",
+      "sans-porc"
+    ],
     "allergens": [],
     "kcal": 304,
     "protein": "faible",
     "lipides": "faible",
     "glucides": "riche",
     "sel": "faible",
-    "easyToCook": true
+    "easyToCook": true,
+    "gourmand": true
   },
   {
     "id": "confiture",
@@ -837,14 +870,20 @@
     "unit": "pot",
     "category": "epicerie",
     "mealSlot": "petit-dejeuner",
-    "dietTags": ["omnivore", "vegetarien", "vegan", "sans-porc"],
+    "dietTags": [
+      "omnivore",
+      "vegetarien",
+      "vegan",
+      "sans-porc"
+    ],
     "allergens": [],
     "kcal": 250,
     "protein": "faible",
     "lipides": "faible",
     "glucides": "riche",
     "sel": "faible",
-    "easyToCook": true
+    "easyToCook": true,
+    "gourmand": true
   },
   {
     "id": "cereales-muesli",
@@ -858,8 +897,15 @@
     "unit": "paquet",
     "category": "epicerie",
     "mealSlot": "petit-dejeuner",
-    "dietTags": ["omnivore", "vegetarien", "vegan", "sans-porc"],
-    "allergens": ["gluten"],
+    "dietTags": [
+      "omnivore",
+      "vegetarien",
+      "vegan",
+      "sans-porc"
+    ],
+    "allergens": [
+      "gluten"
+    ],
     "kcal": 380,
     "protein": "moyen",
     "lipides": "moyen",
@@ -879,8 +925,15 @@
     "unit": "paquet",
     "category": "epicerie",
     "mealSlot": "petit-dejeuner",
-    "dietTags": ["omnivore", "vegetarien", "vegan", "sans-porc"],
-    "allergens": ["gluten"],
+    "dietTags": [
+      "omnivore",
+      "vegetarien",
+      "vegan",
+      "sans-porc"
+    ],
+    "allergens": [
+      "gluten"
+    ],
     "kcal": 375,
     "protein": "moyen",
     "lipides": "moyen",
@@ -899,14 +952,22 @@
     "unit": "pot",
     "category": "epicerie",
     "mealSlot": "petit-dejeuner",
-    "dietTags": ["omnivore", "vegetarien", "sans-porc"],
-    "allergens": ["lactose", "fruits-a-coque"],
+    "dietTags": [
+      "omnivore",
+      "vegetarien",
+      "sans-porc"
+    ],
+    "allergens": [
+      "lactose",
+      "fruits-a-coque"
+    ],
     "kcal": 539,
     "protein": "faible",
     "lipides": "riche",
     "glucides": "riche",
     "sel": "faible",
-    "easyToCook": true
+    "easyToCook": true,
+    "gourmand": true
   },
   {
     "id": "sauce-soja",
@@ -919,8 +980,15 @@
     "unit": "bouteille",
     "category": "epicerie",
     "mealSlot": "dejeuner-diner",
-    "dietTags": ["omnivore", "vegetarien", "vegan", "sans-porc"],
-    "allergens": ["gluten"],
+    "dietTags": [
+      "omnivore",
+      "vegetarien",
+      "vegan",
+      "sans-porc"
+    ],
+    "allergens": [
+      "gluten"
+    ],
     "kcal": 60,
     "protein": "moyen",
     "lipides": "faible",
@@ -939,7 +1007,12 @@
     "unit": "pot",
     "category": "epicerie",
     "mealSlot": "dejeuner-diner",
-    "dietTags": ["omnivore", "vegetarien", "vegan", "sans-porc"],
+    "dietTags": [
+      "omnivore",
+      "vegetarien",
+      "vegan",
+      "sans-porc"
+    ],
     "allergens": [],
     "kcal": 66,
     "protein": "faible",
@@ -959,14 +1032,21 @@
     "unit": "pot",
     "category": "epicerie",
     "mealSlot": "dejeuner-diner",
-    "dietTags": ["omnivore", "vegetarien", "sans-porc"],
-    "allergens": ["oeuf"],
+    "dietTags": [
+      "omnivore",
+      "vegetarien",
+      "sans-porc"
+    ],
+    "allergens": [
+      "oeuf"
+    ],
     "kcal": 680,
     "protein": "faible",
     "lipides": "riche",
     "glucides": "faible",
     "sel": "moyen",
-    "easyToCook": true
+    "easyToCook": true,
+    "gourmand": true
   },
   {
     "id": "the",
@@ -979,7 +1059,12 @@
     "unit": "boîte",
     "category": "epicerie",
     "mealSlot": "petit-dejeuner",
-    "dietTags": ["omnivore", "vegetarien", "vegan", "sans-porc"],
+    "dietTags": [
+      "omnivore",
+      "vegetarien",
+      "vegan",
+      "sans-porc"
+    ],
     "allergens": [],
     "kcal": 0,
     "protein": "faible",
@@ -1000,7 +1085,12 @@
     "unit": "boîte",
     "category": "epicerie",
     "mealSlot": "dejeuner-diner",
-    "dietTags": ["omnivore", "vegetarien", "vegan", "sans-porc"],
+    "dietTags": [
+      "omnivore",
+      "vegetarien",
+      "vegan",
+      "sans-porc"
+    ],
     "allergens": [],
     "kcal": 127,
     "protein": "riche",
@@ -1021,7 +1111,12 @@
     "unit": "boîte",
     "category": "epicerie",
     "mealSlot": "dejeuner-diner",
-    "dietTags": ["omnivore", "vegetarien", "vegan", "sans-porc"],
+    "dietTags": [
+      "omnivore",
+      "vegetarien",
+      "vegan",
+      "sans-porc"
+    ],
     "allergens": [],
     "kcal": 86,
     "protein": "faible",
@@ -1042,7 +1137,12 @@
     "unit": "kg",
     "category": "fruits-legumes",
     "mealSlot": "dejeuner-diner",
-    "dietTags": ["omnivore", "vegetarien", "vegan", "sans-porc"],
+    "dietTags": [
+      "omnivore",
+      "vegetarien",
+      "vegan",
+      "sans-porc"
+    ],
     "allergens": [],
     "kcal": 17,
     "protein": "faible",
@@ -1063,7 +1163,12 @@
     "unit": "barquette",
     "category": "fruits-legumes",
     "mealSlot": "dejeuner-diner",
-    "dietTags": ["omnivore", "vegetarien", "vegan", "sans-porc"],
+    "dietTags": [
+      "omnivore",
+      "vegetarien",
+      "vegan",
+      "sans-porc"
+    ],
     "allergens": [],
     "kcal": 31,
     "protein": "faible",
@@ -1084,7 +1189,12 @@
     "unit": "pièce",
     "category": "fruits-legumes",
     "mealSlot": "dejeuner-diner",
-    "dietTags": ["omnivore", "vegetarien", "vegan", "sans-porc"],
+    "dietTags": [
+      "omnivore",
+      "vegetarien",
+      "vegan",
+      "sans-porc"
+    ],
     "allergens": [],
     "kcal": 34,
     "protein": "moyen",
@@ -1105,7 +1215,12 @@
     "unit": "barquette",
     "category": "fruits-legumes",
     "mealSlot": "dejeuner-diner",
-    "dietTags": ["omnivore", "vegetarien", "vegan", "sans-porc"],
+    "dietTags": [
+      "omnivore",
+      "vegetarien",
+      "vegan",
+      "sans-porc"
+    ],
     "allergens": [],
     "kcal": 22,
     "protein": "moyen",
@@ -1126,7 +1241,12 @@
     "unit": "pièce",
     "category": "fruits-legumes",
     "mealSlot": "dejeuner-diner",
-    "dietTags": ["omnivore", "vegetarien", "vegan", "sans-porc"],
+    "dietTags": [
+      "omnivore",
+      "vegetarien",
+      "vegan",
+      "sans-porc"
+    ],
     "allergens": [],
     "kcal": 15,
     "protein": "faible",
@@ -1147,7 +1267,12 @@
     "unit": "pièce",
     "category": "fruits-legumes",
     "mealSlot": "dejeuner-diner",
-    "dietTags": ["omnivore", "vegetarien", "vegan", "sans-porc"],
+    "dietTags": [
+      "omnivore",
+      "vegetarien",
+      "vegan",
+      "sans-porc"
+    ],
     "allergens": [],
     "kcal": 15,
     "protein": "faible",
@@ -1167,7 +1292,12 @@
     "unit": "filet",
     "category": "fruits-legumes",
     "mealSlot": "dejeuner-diner",
-    "dietTags": ["omnivore", "vegetarien", "vegan", "sans-porc"],
+    "dietTags": [
+      "omnivore",
+      "vegetarien",
+      "vegan",
+      "sans-porc"
+    ],
     "allergens": [],
     "kcal": 160,
     "protein": "faible",
@@ -1187,7 +1317,12 @@
     "unit": "filet",
     "category": "fruits-legumes",
     "mealSlot": "dejeuner-diner",
-    "dietTags": ["omnivore", "vegetarien", "vegan", "sans-porc"],
+    "dietTags": [
+      "omnivore",
+      "vegetarien",
+      "vegan",
+      "sans-porc"
+    ],
     "allergens": [],
     "kcal": 29,
     "protein": "faible",
@@ -1207,7 +1342,12 @@
     "unit": "filet",
     "category": "fruits-legumes",
     "mealSlot": "encas-extra",
-    "dietTags": ["omnivore", "vegetarien", "vegan", "sans-porc"],
+    "dietTags": [
+      "omnivore",
+      "vegetarien",
+      "vegan",
+      "sans-porc"
+    ],
     "allergens": [],
     "kcal": 47,
     "protein": "faible",
@@ -1227,7 +1367,12 @@
     "unit": "tête",
     "category": "fruits-legumes",
     "mealSlot": "dejeuner-diner",
-    "dietTags": ["omnivore", "vegetarien", "vegan", "sans-porc"],
+    "dietTags": [
+      "omnivore",
+      "vegetarien",
+      "vegan",
+      "sans-porc"
+    ],
     "allergens": [],
     "kcal": 149,
     "protein": "moyen",
@@ -1248,7 +1393,12 @@
     "unit": "botte",
     "category": "fruits-legumes",
     "mealSlot": "dejeuner-diner",
-    "dietTags": ["omnivore", "vegetarien", "vegan", "sans-porc"],
+    "dietTags": [
+      "omnivore",
+      "vegetarien",
+      "vegan",
+      "sans-porc"
+    ],
     "allergens": [],
     "kcal": 29,
     "protein": "faible",
@@ -1269,7 +1419,12 @@
     "unit": "sachet",
     "category": "fruits-legumes",
     "mealSlot": "dejeuner-diner",
-    "dietTags": ["omnivore", "vegetarien", "vegan", "sans-porc"],
+    "dietTags": [
+      "omnivore",
+      "vegetarien",
+      "vegan",
+      "sans-porc"
+    ],
     "allergens": [],
     "kcal": 23,
     "protein": "moyen",
@@ -1290,7 +1445,12 @@
     "unit": "pièce",
     "category": "fruits-legumes",
     "mealSlot": "dejeuner-diner",
-    "dietTags": ["omnivore", "vegetarien", "vegan", "sans-porc"],
+    "dietTags": [
+      "omnivore",
+      "vegetarien",
+      "vegan",
+      "sans-porc"
+    ],
     "allergens": [],
     "kcal": 25,
     "protein": "faible",
@@ -1310,8 +1470,14 @@
     "unit": "pack",
     "category": "frais",
     "mealSlot": "petit-dejeuner",
-    "dietTags": ["omnivore", "vegetarien", "sans-porc"],
-    "allergens": ["lactose"],
+    "dietTags": [
+      "omnivore",
+      "vegetarien",
+      "sans-porc"
+    ],
+    "allergens": [
+      "lactose"
+    ],
     "kcal": 97,
     "protein": "riche",
     "lipides": "moyen",
@@ -1331,8 +1497,14 @@
     "unit": "pot",
     "category": "frais",
     "mealSlot": "petit-dejeuner",
-    "dietTags": ["omnivore", "vegetarien", "sans-porc"],
-    "allergens": ["lactose"],
+    "dietTags": [
+      "omnivore",
+      "vegetarien",
+      "sans-porc"
+    ],
+    "allergens": [
+      "lactose"
+    ],
     "kcal": 75,
     "protein": "riche",
     "lipides": "faible",
@@ -1351,14 +1523,21 @@
     "unit": "plaquette",
     "category": "frais",
     "mealSlot": "petit-dejeuner",
-    "dietTags": ["omnivore", "vegetarien", "sans-porc"],
-    "allergens": ["lactose"],
+    "dietTags": [
+      "omnivore",
+      "vegetarien",
+      "sans-porc"
+    ],
+    "allergens": [
+      "lactose"
+    ],
     "kcal": 717,
     "protein": "faible",
     "lipides": "riche",
     "glucides": "faible",
     "sel": "moyen",
-    "easyToCook": true
+    "easyToCook": true,
+    "gourmand": true
   },
   {
     "id": "creme-fraiche",
@@ -1371,14 +1550,21 @@
     "unit": "pot",
     "category": "frais",
     "mealSlot": "dejeuner-diner",
-    "dietTags": ["omnivore", "vegetarien", "sans-porc"],
-    "allergens": ["lactose"],
+    "dietTags": [
+      "omnivore",
+      "vegetarien",
+      "sans-porc"
+    ],
+    "allergens": [
+      "lactose"
+    ],
     "kcal": 292,
     "protein": "faible",
     "lipides": "riche",
     "glucides": "faible",
     "sel": "faible",
-    "easyToCook": true
+    "easyToCook": true,
+    "gourmand": true
   },
   {
     "id": "mozzarella",
@@ -1392,14 +1578,21 @@
     "unit": "boule",
     "category": "frais",
     "mealSlot": "dejeuner-diner",
-    "dietTags": ["omnivore", "vegetarien", "sans-porc"],
-    "allergens": ["lactose"],
+    "dietTags": [
+      "omnivore",
+      "vegetarien",
+      "sans-porc"
+    ],
+    "allergens": [
+      "lactose"
+    ],
     "kcal": 280,
     "protein": "riche",
     "lipides": "riche",
     "glucides": "faible",
     "sel": "moyen",
-    "easyToCook": true
+    "easyToCook": true,
+    "gourmand": true
   },
   {
     "id": "jambon-dinde",
@@ -1412,7 +1605,10 @@
     "unit": "paquet",
     "category": "frais",
     "mealSlot": "dejeuner-diner",
-    "dietTags": ["omnivore", "sans-porc"],
+    "dietTags": [
+      "omnivore",
+      "sans-porc"
+    ],
     "allergens": [],
     "kcal": 105,
     "protein": "riche",
@@ -1432,7 +1628,12 @@
     "unit": "brique",
     "category": "frais",
     "mealSlot": "petit-dejeuner",
-    "dietTags": ["omnivore", "vegetarien", "vegan", "sans-porc"],
+    "dietTags": [
+      "omnivore",
+      "vegetarien",
+      "vegan",
+      "sans-porc"
+    ],
     "allergens": [],
     "kcal": 33,
     "protein": "moyen",
@@ -1452,7 +1653,12 @@
     "unit": "pack",
     "category": "frais",
     "mealSlot": "encas-extra",
-    "dietTags": ["omnivore", "vegetarien", "vegan", "sans-porc"],
+    "dietTags": [
+      "omnivore",
+      "vegetarien",
+      "vegan",
+      "sans-porc"
+    ],
     "allergens": [],
     "kcal": 60,
     "protein": "faible",
@@ -1472,7 +1678,12 @@
     "unit": "bouteille",
     "category": "frais",
     "mealSlot": "petit-dejeuner",
-    "dietTags": ["omnivore", "vegetarien", "vegan", "sans-porc"],
+    "dietTags": [
+      "omnivore",
+      "vegetarien",
+      "vegan",
+      "sans-porc"
+    ],
     "allergens": [],
     "kcal": 45,
     "protein": "faible",
@@ -1492,8 +1703,15 @@
     "unit": "pain",
     "category": "boulangerie",
     "mealSlot": "petit-dejeuner",
-    "dietTags": ["omnivore", "vegetarien", "vegan", "sans-porc"],
-    "allergens": ["gluten"],
+    "dietTags": [
+      "omnivore",
+      "vegetarien",
+      "vegan",
+      "sans-porc"
+    ],
+    "allergens": [
+      "gluten"
+    ],
     "kcal": 270,
     "protein": "moyen",
     "lipides": "faible",
@@ -1512,14 +1730,23 @@
     "unit": "sachet",
     "category": "boulangerie",
     "mealSlot": "petit-dejeuner",
-    "dietTags": ["omnivore", "vegetarien", "sans-porc"],
-    "allergens": ["gluten", "lactose", "oeuf"],
+    "dietTags": [
+      "omnivore",
+      "vegetarien",
+      "sans-porc"
+    ],
+    "allergens": [
+      "gluten",
+      "lactose",
+      "oeuf"
+    ],
     "kcal": 406,
     "protein": "moyen",
     "lipides": "riche",
     "glucides": "riche",
     "sel": "moyen",
-    "easyToCook": true
+    "easyToCook": true,
+    "gourmand": true
   },
   {
     "id": "pain-cereales",
@@ -1532,8 +1759,15 @@
     "unit": "paquet",
     "category": "boulangerie",
     "mealSlot": "petit-dejeuner",
-    "dietTags": ["omnivore", "vegetarien", "vegan", "sans-porc"],
-    "allergens": ["gluten"],
+    "dietTags": [
+      "omnivore",
+      "vegetarien",
+      "vegan",
+      "sans-porc"
+    ],
+    "allergens": [
+      "gluten"
+    ],
     "kcal": 250,
     "protein": "moyen",
     "lipides": "moyen",
@@ -1552,8 +1786,15 @@
     "unit": "paquet",
     "category": "boulangerie",
     "mealSlot": "dejeuner-diner",
-    "dietTags": ["omnivore", "vegetarien", "vegan", "sans-porc"],
-    "allergens": ["gluten"],
+    "dietTags": [
+      "omnivore",
+      "vegetarien",
+      "vegan",
+      "sans-porc"
+    ],
+    "allergens": [
+      "gluten"
+    ],
     "kcal": 290,
     "protein": "moyen",
     "lipides": "moyen",
@@ -1572,8 +1813,15 @@
     "unit": "paquet",
     "category": "boulangerie",
     "mealSlot": "petit-dejeuner",
-    "dietTags": ["omnivore", "vegetarien", "vegan", "sans-porc"],
-    "allergens": ["gluten"],
+    "dietTags": [
+      "omnivore",
+      "vegetarien",
+      "vegan",
+      "sans-porc"
+    ],
+    "allergens": [
+      "gluten"
+    ],
     "kcal": 408,
     "protein": "moyen",
     "lipides": "faible",
@@ -1592,14 +1840,23 @@
     "unit": "paquet",
     "category": "boulangerie",
     "mealSlot": "petit-dejeuner",
-    "dietTags": ["omnivore", "vegetarien", "sans-porc"],
-    "allergens": ["gluten", "lactose", "oeuf"],
+    "dietTags": [
+      "omnivore",
+      "vegetarien",
+      "sans-porc"
+    ],
+    "allergens": [
+      "gluten",
+      "lactose",
+      "oeuf"
+    ],
     "kcal": 350,
     "protein": "moyen",
     "lipides": "moyen",
     "glucides": "riche",
     "sel": "moyen",
-    "easyToCook": true
+    "easyToCook": true,
+    "gourmand": true
   },
   {
     "id": "escalope-dinde",
@@ -1613,7 +1870,10 @@
     "unit": "barquette",
     "category": "viande-poisson",
     "mealSlot": "dejeuner-diner",
-    "dietTags": ["omnivore", "sans-porc"],
+    "dietTags": [
+      "omnivore",
+      "sans-porc"
+    ],
     "allergens": [],
     "kcal": 104,
     "protein": "riche",
@@ -1634,14 +1894,17 @@
     "unit": "sachet",
     "category": "viande-poisson",
     "mealSlot": "dejeuner-diner",
-    "dietTags": ["omnivore"],
+    "dietTags": [
+      "omnivore"
+    ],
     "allergens": [],
     "kcal": 380,
     "protein": "riche",
     "lipides": "riche",
     "glucides": "faible",
     "sel": "riche",
-    "easyToCook": true
+    "easyToCook": true,
+    "gourmand": true
   },
   {
     "id": "merguez",
@@ -1654,14 +1917,18 @@
     "unit": "barquette",
     "category": "viande-poisson",
     "mealSlot": "dejeuner-diner",
-    "dietTags": ["omnivore", "sans-porc"],
+    "dietTags": [
+      "omnivore",
+      "sans-porc"
+    ],
     "allergens": [],
     "kcal": 290,
     "protein": "moyen",
     "lipides": "riche",
     "glucides": "faible",
     "sel": "riche",
-    "easyToCook": true
+    "easyToCook": true,
+    "gourmand": true
   },
   {
     "id": "saumon",
@@ -1675,7 +1942,10 @@
     "unit": "barquette",
     "category": "viande-poisson",
     "mealSlot": "dejeuner-diner",
-    "dietTags": ["omnivore", "sans-porc"],
+    "dietTags": [
+      "omnivore",
+      "sans-porc"
+    ],
     "allergens": [],
     "kcal": 208,
     "protein": "riche",
@@ -1696,7 +1966,10 @@
     "unit": "sachet",
     "category": "viande-poisson",
     "mealSlot": "dejeuner-diner",
-    "dietTags": ["omnivore", "sans-porc"],
+    "dietTags": [
+      "omnivore",
+      "sans-porc"
+    ],
     "allergens": [],
     "kcal": 99,
     "protein": "riche",
@@ -1717,7 +1990,10 @@
     "unit": "boîte",
     "category": "viande-poisson",
     "mealSlot": "dejeuner-diner",
-    "dietTags": ["omnivore", "sans-porc"],
+    "dietTags": [
+      "omnivore",
+      "sans-porc"
+    ],
     "allergens": [],
     "kcal": 208,
     "protein": "riche",
@@ -1738,14 +2014,17 @@
     "unit": "sachet",
     "category": "viande-poisson",
     "mealSlot": "dejeuner-diner",
-    "dietTags": ["omnivore"],
+    "dietTags": [
+      "omnivore"
+    ],
     "allergens": [],
     "kcal": 455,
     "protein": "riche",
     "lipides": "riche",
     "glucides": "faible",
     "sel": "riche",
-    "easyToCook": true
+    "easyToCook": true,
+    "gourmand": true
   },
   {
     "id": "filet-poulet-cru",
@@ -1759,7 +2038,10 @@
     "unit": "barquette",
     "category": "viande-poisson",
     "mealSlot": "dejeuner-diner",
-    "dietTags": ["omnivore", "sans-porc"],
+    "dietTags": [
+      "omnivore",
+      "sans-porc"
+    ],
     "allergens": [],
     "kcal": 120,
     "protein": "riche",
@@ -1779,7 +2061,10 @@
     "unit": "barquette",
     "category": "viande-poisson",
     "mealSlot": "dejeuner-diner",
-    "dietTags": ["omnivore", "sans-porc"],
+    "dietTags": [
+      "omnivore",
+      "sans-porc"
+    ],
     "allergens": [],
     "kcal": 294,
     "protein": "riche",

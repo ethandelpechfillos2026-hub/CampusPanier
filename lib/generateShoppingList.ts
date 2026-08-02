@@ -60,6 +60,11 @@ function score(product: Product, preferences: UserPreferences): number {
   if (prefs.includes("belle-peau") && product.category === "fruits-legumes") {
     s += 3;
   }
+  // Pour se faire plaisir même avec un petit budget — priorise les produits
+  // "plaisir" (sucré/gras/gourmand) plutôt que les plus équilibrés.
+  if (prefs.includes("gourmand") && product.gourmand) {
+    s += 3;
+  }
 
   if (preferences.dailyCalories !== null) {
     if (preferences.dailyCalories >= 2400 && product.kcal >= 250) s += 1;
