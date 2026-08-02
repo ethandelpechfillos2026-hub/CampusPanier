@@ -29,6 +29,11 @@ export default function ResultsContent({
 }: ResultsContentProps) {
   const [checkedIds, setCheckedIds] = useState<Set<string>>(new Set());
   const hasRecordedCompletionRef = useRef(false);
+  // Incrémenté quand la liste vient d'être entièrement cochée, pour dire au
+  // bloc de progression "revérifie les badges maintenant" — sinon il ne se
+  // rafraîchit que quand une nouvelle liste est générée, jamais en cochant
+  // les articles de la liste actuelle.
+  const [completionSignal, setCompletionSignal] = useState(0);
 
   function toggleChecked(id: string) {
     setCheckedIds((prev) => {
@@ -41,6 +46,7 @@ export default function ResultsContent({
       ) {
         hasRecordedCompletionRef.current = true;
         recordListFullyChecked();
+        setCompletionSignal((n) => n + 1);
       }
       return next;
     });
@@ -91,7 +97,7 @@ export default function ResultsContent({
         </button>
       </div>
 
-      <StatsHeader result={result} />
+      <StatsHeader result={result} refreshSignal={completionSignal} />
 
       {result.isBudgetInsufficient && (
         <div className="rounded-2xl border border-campus-terracotta/40 bg-campus-terracotta/10 p-4">

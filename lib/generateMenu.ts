@@ -102,6 +102,56 @@ function spreadAcrossWeek(total: number, offset: number): number[] {
   return counts;
 }
 
+// Même principe que spreadAcrossWeek, mais limité à un sous-ensemble de
+// jours autorisés — utilisé pour les "familles" de produits interchangeables
+// (voir plus bas) afin qu'ils ne se marchent jamais dessus le même jour.
+function spreadAcrossDays(total: number, allowedDays: number[]): number[] {
+  const counts = new Array(7).fill(0);
+  const n = allowedDays.length;
+  if (n === 0 || total === 0) return counts;
+  for (let k = 0; k < total; k++) {
+    const dayIndex = allowedDays[Math.floor((k * n) / total) % n];
+    counts[dayIndex] += 1;
+  }
+  return counts;
+}
+
+// Groupes de produits qui jouent le même rôle dans un repas (plusieurs
+// féculents ou plusieurs laitiers du petit-déj en même temps, ça n'a pas de
+// sens). Quand plusieurs membres d'un même groupe sont dans le panier, on
+// leur réserve chacun des jours différents plutôt que de les laisser
+// s'empiler le même jour.
+const PRODUCT_FAMILIES: string[][] = [
+  // Féculents du petit-déjeuner.
+  ["pain-complet", "baguette", "pains-mie", "pain-cereales", "croissants", "biscottes", "brioche"],
+  // Laitiers du petit-déjeuner.
+  ["yaourt-nature", "yaourt-grec", "fromage-blanc"],
+  // Féculents principaux du déjeuner/dîner.
+  ["riz", "pates", "pommes-de-terre", "quinoa", "semoule-couscous"],
+];
+
+// Pour chaque produit membre d'une famille présente en plusieurs
+// exemplaires dans le panier, calcule les jours (0-6) qui lui sont réservés
+// — les autres jours reviennent aux autres membres de la même famille.
+function buildFamilyDayMap(items: ShoppingListItem[]): Map<string, number[]> {
+  const map = new Map<string, number[]>();
+  const presentIds = new Set(items.map((item) => item.product.id));
+
+  for (const family of PRODUCT_FAMILIES) {
+    const present = family.filter((id) => presentIds.has(id));
+    if (present.length <= 1) continue; // pas de conflit possible
+
+    present.forEach((id, memberIndex) => {
+      const allowedDays = [0, 1, 2, 3, 4, 5, 6].filter(
+        (day) => day % present.length === memberIndex
+      );
+      map.set(id, allowedDays);
+    });
+  }
+
+  return map;
+}
+
 function emptyDaySlots(): Record<DaySlot, DayEntry[]> {
   return { petitDejeuner: [], dejeuner: [], diner: [], collation: [] };
 }
@@ -119,10 +169,14 @@ export function buildWeeklyPlan(items: ShoppingListItem[]): WeeklyPlan {
 
   const mainsByDay: DayEntry[][] = Array.from({ length: 7 }, () => []);
   let productIndex = 0;
+  const familyDayMap = buildFamilyDayMap(items);
 
   for (const item of items) {
     const { product, quantity } = item;
-    if (!product.weeklyServings) continue;
+    // Les condiments (huile, sucre, moutarde...) restent dans "Ma liste"
+    // mais ne sont jamais un repas à part entière — on ne les affiche pas
+    // comme ligne indépendante du planning jour par jour.
+    if (!product.weeklyServings || product.isCondiment) continue;
 
     const total = product.weeklyServings * quantity;
     // Pas de 3 (premier avec 7) pour bien étaler les décalages entre
@@ -130,7 +184,14 @@ export function buildWeeklyPlan(items: ShoppingListItem[]): WeeklyPlan {
     const offset = (productIndex * 3) % 7;
     productIndex += 1;
 
-    const perDayCounts = spreadAcrossWeek(total, offset);
+    // Un produit membre d'une "famille" (voir plus haut) n'a droit qu'à ses
+    // jours réservés, pour ne jamais tomber le même jour qu'un autre membre
+    // de la même famille — sinon "Mon menu" propose baguette + biscottes +
+    // pain de mie le même petit-déjeuner.
+    const allowedDays = familyDayMap.get(product.id);
+    const perDayCounts = allowedDays
+      ? spreadAcrossDays(total, allowedDays)
+      : spreadAcrossWeek(total, offset);
 
     perDayCounts.forEach((count, dayIndex) => {
       if (count === 0) return;

@@ -64,6 +64,12 @@ export interface Product {
   // Produit "plaisir" (sucré, gras, gourmand) plutôt qu'équilibré — sert à la
   // préférence "Gourmand", pour se faire plaisir même avec un petit budget.
   gourmand?: boolean;
+  // Condiment/assaisonnement (huile, sucre, moutarde...) qui n'est jamais
+  // mangé seul comme un repas — reste dans "Ma liste" mais n'apparaît pas
+  // comme ligne indépendante dans le planning jour par jour ("Mon menu"),
+  // pour éviter des suggestions incohérentes type "1 cuillère de sucre" à
+  // manger seule au petit-déjeuner.
+  isCondiment?: boolean;
 }
 
 export interface UserProfile {

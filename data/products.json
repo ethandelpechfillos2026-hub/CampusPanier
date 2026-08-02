@@ -156,7 +156,8 @@
     "lipides": "riche",
     "glucides": "faible",
     "sel": "faible",
-    "easyToCook": true
+    "easyToCook": true,
+    "isCondiment": true
   },
   {
     "id": "cafe",
@@ -832,7 +833,8 @@
     "lipides": "faible",
     "glucides": "riche",
     "sel": "faible",
-    "easyToCook": true
+    "easyToCook": true,
+    "isCondiment": true
   },
   {
     "id": "miel",
@@ -857,7 +859,8 @@
     "glucides": "riche",
     "sel": "faible",
     "easyToCook": true,
-    "gourmand": true
+    "gourmand": true,
+    "isCondiment": true
   },
   {
     "id": "confiture",
@@ -883,7 +886,8 @@
     "glucides": "riche",
     "sel": "faible",
     "easyToCook": true,
-    "gourmand": true
+    "gourmand": true,
+    "isCondiment": true
   },
   {
     "id": "cereales-muesli",
@@ -967,7 +971,8 @@
     "glucides": "riche",
     "sel": "faible",
     "easyToCook": true,
-    "gourmand": true
+    "gourmand": true,
+    "isCondiment": true
   },
   {
     "id": "sauce-soja",
@@ -994,7 +999,8 @@
     "lipides": "faible",
     "glucides": "faible",
     "sel": "riche",
-    "easyToCook": true
+    "easyToCook": true,
+    "isCondiment": true
   },
   {
     "id": "moutarde",
@@ -1019,7 +1025,8 @@
     "lipides": "faible",
     "glucides": "faible",
     "sel": "riche",
-    "easyToCook": true
+    "easyToCook": true,
+    "isCondiment": true
   },
   {
     "id": "mayonnaise",
@@ -1046,7 +1053,8 @@
     "glucides": "faible",
     "sel": "moyen",
     "easyToCook": true,
-    "gourmand": true
+    "gourmand": true,
+    "isCondiment": true
   },
   {
     "id": "the",
@@ -1379,7 +1387,8 @@
     "lipides": "faible",
     "glucides": "moyen",
     "sel": "faible",
-    "easyToCook": true
+    "easyToCook": true,
+    "isCondiment": true
   },
   {
     "id": "poireaux",
@@ -1537,7 +1546,8 @@
     "glucides": "faible",
     "sel": "moyen",
     "easyToCook": true,
-    "gourmand": true
+    "gourmand": true,
+    "isCondiment": true
   },
   {
     "id": "creme-fraiche",
@@ -1564,7 +1574,8 @@
     "glucides": "faible",
     "sel": "faible",
     "easyToCook": true,
-    "gourmand": true
+    "gourmand": true,
+    "isCondiment": true
   },
   {
     "id": "mozzarella",
