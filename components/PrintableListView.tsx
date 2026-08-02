@@ -1,11 +1,50 @@
 "use client";
 
-import { formatPrice } from "@/lib/generateShoppingList";
-import { ListHistoryEntry } from "@/lib/stats";
+import { formatPrice, products } from "@/lib/generateShoppingList";
+import { ListHistoryEntry, ListHistoryItem } from "@/lib/stats";
+import { CATEGORY_LABELS, CATEGORY_ORDER } from "@/lib/types";
 
 interface PrintableListViewProps {
   entry: ListHistoryEntry;
   onClose: () => void;
+}
+
+interface ItemGroup {
+  label: string;
+  items: ListHistoryItem[];
+}
+
+// Range les articles par rayon (Épicerie, Fruits et légumes...), exactement
+// comme l'onglet "Ma liste" — sans ça, la liste imprimée/téléchargée sort
+// dans l'ordre brut de l'algorithme de sélection, pas par rayon, ce qui
+// donne un résultat illisible en magasin.
+function groupItemsByCategory(items: ListHistoryItem[]): ItemGroup[] {
+  const byCategory = new Map<string, ListHistoryItem[]>();
+  const others: ListHistoryItem[] = [];
+
+  for (const item of items) {
+    const product = products.find((p) => p.id === item.id);
+    if (!product) {
+      others.push(item);
+      continue;
+    }
+    const list = byCategory.get(product.category) ?? [];
+    list.push(item);
+    byCategory.set(product.category, list);
+  }
+
+  const groups: ItemGroup[] = CATEGORY_ORDER.filter((category) =>
+    byCategory.has(category)
+  ).map((category) => ({
+    label: CATEGORY_LABELS[category],
+    items: byCategory.get(category)!,
+  }));
+
+  if (others.length > 0) {
+    groups.push({ label: "Autres", items: others });
+  }
+
+  return groups;
 }
 
 function escapeHtml(value: string): string {
@@ -22,17 +61,29 @@ function buildDownloadableHtml(
   entry: ListHistoryEntry,
   dateLabel: string
 ): string {
-  const itemsHtml =
-    entry.items && entry.items.length > 0
-      ? entry.items
-          .map(
-            (item) =>
-              `<li style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px dashed #E5D3BC;"><span>${escapeHtml(
-                item.name
-              )}</span><span style="font-weight:600;">${formatPrice(
-                item.price
-              )}</span></li>`
-          )
+  const groups = entry.items ? groupItemsByCategory(entry.items) : [];
+
+  const groupsHtml =
+    groups.length > 0
+      ? groups
+          .map((group) => {
+            const rows = group.items
+              .map(
+                (item) =>
+                  `<li style="display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px dashed #E5D3BC;"><span>${escapeHtml(
+                    item.name
+                  )}</span><span style="font-weight:600;">${formatPrice(
+                    item.price
+                  )}</span></li>`
+              )
+              .join("");
+            return `<section style="margin-top:20px;">
+              <h2 style="font-size:11px;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;color:#6B7280;margin:0 0 6px;">${escapeHtml(
+                group.label
+              )}</h2>
+              <ul style="list-style:none;padding:0;margin:0;">${rows}</ul>
+            </section>`;
+          })
           .join("")
       : `<p style="color:#6B7280;">Détail non disponible pour cette liste.</p>`;
 
@@ -44,9 +95,9 @@ function buildDownloadableHtml(
 <title>CampusPanier — Liste du ${dateLabel}</title>
 </head>
 <body style="font-family:-apple-system,system-ui,sans-serif;background:#FFF8F0;color:#3D405B;max-width:480px;margin:0 auto;padding:32px 24px;">
-  <h1 style="font-size:20px;">🛒 CampusPanier</h1>
-  <p>Liste de courses du ${dateLabel}</p>
-  <ul style="list-style:none;padding:0;margin-top:24px;">${itemsHtml}</ul>
+  <h1 style="font-size:20px;margin:0;">🛒 CampusPanier</h1>
+  <p style="margin:4px 0 0;">Liste de courses du ${dateLabel}</p>
+  ${groupsHtml}
   <div style="display:flex;justify-content:space-between;border-top:2px solid #3D405B;padding-top:12px;margin-top:24px;font-weight:700;font-size:16px;">
     <span>Total</span><span>${formatPrice(entry.total)}</span>
   </div>
@@ -67,6 +118,8 @@ export default function PrintableListView({
     month: "long",
     year: "numeric",
   });
+
+  const groups = entry.items ? groupItemsByCategory(entry.items) : [];
 
   function handleDownload() {
     const html = buildDownloadableHtml(entry, dateLabel);
@@ -126,21 +179,30 @@ export default function PrintableListView({
           Liste de courses du {dateLabel}
         </p>
 
-        {entry.items && entry.items.length > 0 ? (
+        {groups.length > 0 ? (
           <>
-            <ul className="mt-6 space-y-2">
-              {entry.items.map((item, index) => (
-                <li
-                  key={`${item.id}-${index}`}
-                  className="flex items-center justify-between border-b border-dashed border-campus-sand pb-2 text-sm text-campus-ink"
-                >
-                  <span>{item.name}</span>
-                  <span className="font-semibold">
-                    {formatPrice(item.price)}
-                  </span>
-                </li>
+            <div className="mt-6 space-y-5">
+              {groups.map((group) => (
+                <section key={group.label}>
+                  <h2 className="mb-2 text-xs font-bold uppercase tracking-wide text-campus-muted">
+                    {group.label}
+                  </h2>
+                  <ul className="space-y-1.5">
+                    {group.items.map((item, index) => (
+                      <li
+                        key={`${item.id}-${index}`}
+                        className="flex items-center justify-between border-b border-dashed border-campus-sand pb-1.5 text-sm text-campus-ink"
+                      >
+                        <span>{item.name}</span>
+                        <span className="font-semibold">
+                          {formatPrice(item.price)}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                </section>
               ))}
-            </ul>
+            </div>
 
             <div className="mt-6 flex items-center justify-between border-t-2 border-campus-ink pt-3 text-base font-bold text-campus-ink">
               <span>Total</span>
