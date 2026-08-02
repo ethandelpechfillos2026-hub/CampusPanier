@@ -136,5 +136,257 @@
       "Couvre d'eau et laisse mijoter 20 minutes à couvert.",
       "Assaisonne et sers."
     ]
+  },
+  {
+    "id": "porridge-avoine",
+    "name": "Porridge d'avoine à la banane",
+    "icon": "🥣",
+    "prepTime": 8,
+    "difficulty": "facile",
+    "ingredientIds": ["flocons-avoine", "lait", "miel", "bananes"],
+    "steps": [
+      "Fais chauffer le lait dans une casserole.",
+      "Ajoute les flocons d'avoine et laisse épaissir 3-4 minutes à feu doux.",
+      "Verse dans un bol et ajoute des rondelles de banane.",
+      "Arrose d'un filet de miel et sers chaud."
+    ]
+  },
+  {
+    "id": "pancakes",
+    "name": "Pancakes maison",
+    "icon": "🥞",
+    "prepTime": 20,
+    "difficulty": "moyen",
+    "ingredientIds": ["farine", "oeufs", "lait", "sucre", "beurre"],
+    "steps": [
+      "Mélange la farine, le sucre et une pincée de sel.",
+      "Ajoute les œufs puis le lait petit à petit pour obtenir une pâte lisse.",
+      "Fais fondre un peu de beurre dans une poêle chaude.",
+      "Verse une louche de pâte, cuis 2 minutes de chaque côté jusqu'à coloration."
+    ]
+  },
+  {
+    "id": "toast-avocat",
+    "name": "Toast à l'avocat et œuf",
+    "icon": "🥑",
+    "prepTime": 10,
+    "difficulty": "facile",
+    "ingredientIds": ["pain-complet", "avocat", "citron", "oeufs"],
+    "steps": [
+      "Fais griller les tranches de pain complet.",
+      "Écrase l'avocat à la fourchette avec un filet de citron.",
+      "Fais cuire un œuf au plat ou poché.",
+      "Tartine le pain d'avocat écrasé et dépose l'œuf par-dessus."
+    ]
+  },
+  {
+    "id": "wrap-poulet",
+    "name": "Wrap au poulet",
+    "icon": "🌯",
+    "prepTime": 15,
+    "difficulty": "facile",
+    "ingredientIds": ["wraps", "filet-poulet-cru", "salade-verte", "tomates", "mayonnaise"],
+    "steps": [
+      "Fais cuire les filets de poulet à la poêle et coupe-les en lanières.",
+      "Réchauffe légèrement les wraps pour les assouplir.",
+      "Garnis de salade, de tomates coupées et de poulet.",
+      "Ajoute un peu de mayonnaise, roule et sers."
+    ]
+  },
+  {
+    "id": "bowl-quinoa-legumes",
+    "name": "Bowl de quinoa aux légumes",
+    "icon": "🥗",
+    "prepTime": 25,
+    "difficulty": "facile",
+    "ingredientIds": ["quinoa", "courgettes", "poivrons", "oignons", "huile-olive"],
+    "steps": [
+      "Cuis le quinoa selon le paquet.",
+      "Coupe les courgettes et poivrons en dés, fais-les revenir avec l'oignon dans l'huile d'olive.",
+      "Mélange les légumes cuits avec le quinoa.",
+      "Assaisonne et sers tiède ou froid."
+    ]
+  },
+  {
+    "id": "saumon-poireaux",
+    "name": "Saumon et poireaux fondants",
+    "icon": "🐠",
+    "prepTime": 25,
+    "difficulty": "moyen",
+    "ingredientIds": ["saumon", "poireaux", "creme-fraiche", "citron"],
+    "steps": [
+      "Coupe les poireaux en rondelles et fais-les fondre à la poêle 10 minutes.",
+      "Ajoute la crème fraîche et un filet de citron, laisse mijoter 5 minutes.",
+      "Fais cuire les pavés de saumon à la poêle 3-4 minutes de chaque côté.",
+      "Sers le saumon sur le lit de poireaux."
+    ]
+  },
+  {
+    "id": "crevettes-ail",
+    "name": "Crevettes sautées à l'ail",
+    "icon": "🍤",
+    "prepTime": 15,
+    "difficulty": "facile",
+    "ingredientIds": ["crevettes", "ail", "riz", "huile-olive", "citron"],
+    "steps": [
+      "Cuis le riz selon le paquet.",
+      "Fais chauffer l'huile d'olive avec l'ail émincé.",
+      "Ajoute les crevettes et fais sauter 3-4 minutes.",
+      "Arrose de citron et sers sur le riz."
+    ]
+  },
+  {
+    "id": "couscous-legumes",
+    "name": "Couscous végétarien",
+    "icon": "🍛",
+    "prepTime": 30,
+    "difficulty": "moyen",
+    "ingredientIds": ["semoule-couscous", "courgettes", "poivrons", "pois-chiches", "oignons"],
+    "steps": [
+      "Fais revenir l'oignon, les courgettes et les poivrons coupés en morceaux.",
+      "Ajoute les pois chiches égouttés et un peu d'eau, laisse mijoter 15 minutes.",
+      "Prépare la semoule selon le paquet.",
+      "Sers les légumes et les pois chiches sur la semoule."
+    ]
+  },
+  {
+    "id": "salade-mozza-tomate",
+    "name": "Salade mozzarella-tomates",
+    "icon": "🍅",
+    "prepTime": 10,
+    "difficulty": "facile",
+    "ingredientIds": ["mozzarella", "tomates", "huile-olive", "salade-verte"],
+    "steps": [
+      "Coupe la mozzarella et les tomates en tranches.",
+      "Dispose sur un lit de salade verte.",
+      "Arrose d'huile d'olive.",
+      "Assaisonne et sers frais."
+    ]
+  },
+  {
+    "id": "omelette-jambon-fromage",
+    "name": "Omelette jambon-fromage",
+    "icon": "🍳",
+    "prepTime": 10,
+    "difficulty": "facile",
+    "ingredientIds": ["oeufs", "jambon-dinde", "fromage-rape"],
+    "steps": [
+      "Bats les œufs dans un bol.",
+      "Coupe le jambon de dinde en petits morceaux.",
+      "Verse les œufs dans la poêle, ajoute le jambon et le fromage râpé.",
+      "Laisse cuire à feu doux 4-5 minutes puis plie l'omelette."
+    ]
+  },
+  {
+    "id": "pates-lardons-creme",
+    "name": "Pâtes lardons-crème",
+    "icon": "🍝",
+    "prepTime": 20,
+    "difficulty": "facile",
+    "ingredientIds": ["pates", "lardons", "creme-fraiche", "oeufs"],
+    "steps": [
+      "Fais cuire les pâtes selon le paquet.",
+      "Fais revenir les lardons à sec dans une poêle.",
+      "Hors du feu, mélange les lardons avec la crème fraîche et un œuf battu.",
+      "Égoutte les pâtes et mélange avec la préparation encore chaude."
+    ]
+  },
+  {
+    "id": "chili-haricots-rouges",
+    "name": "Chili végétarien aux haricots rouges",
+    "icon": "🌶️",
+    "prepTime": 25,
+    "difficulty": "facile",
+    "ingredientIds": ["haricots-rouges", "mais-doux", "oignons", "poivrons", "sauce-tomate"],
+    "steps": [
+      "Fais revenir l'oignon et les poivrons coupés en dés.",
+      "Ajoute les haricots rouges et le maïs égouttés.",
+      "Verse la sauce tomate et laisse mijoter 15 minutes.",
+      "Assaisonne et sers bien chaud."
+    ]
+  },
+  {
+    "id": "toast-sardines",
+    "name": "Toast de sardines",
+    "icon": "🐟",
+    "prepTime": 8,
+    "difficulty": "facile",
+    "ingredientIds": ["pain-cereales", "sardines", "citron", "salade-verte"],
+    "steps": [
+      "Fais griller les tranches de pain aux céréales.",
+      "Écrase légèrement les sardines avec un filet de citron.",
+      "Tartine le pain de sardines écrasées.",
+      "Ajoute quelques feuilles de salade verte et sers."
+    ]
+  },
+  {
+    "id": "cotelettes-agneau-grillees",
+    "name": "Côtelettes d'agneau grillées",
+    "icon": "🍖",
+    "prepTime": 25,
+    "difficulty": "moyen",
+    "ingredientIds": ["cotelettes-agneau", "courgettes", "ail", "huile-olive"],
+    "steps": [
+      "Fais mariner les côtelettes avec l'huile d'olive et l'ail écrasé.",
+      "Coupe les courgettes en rondelles.",
+      "Fais griller les côtelettes 4-5 minutes de chaque côté à la poêle ou au grill.",
+      "Sers avec les courgettes poêlées."
+    ]
+  },
+  {
+    "id": "merguez-semoule",
+    "name": "Merguez et semoule aux poivrons",
+    "icon": "🌭",
+    "prepTime": 25,
+    "difficulty": "facile",
+    "ingredientIds": ["merguez", "semoule-couscous", "poivrons", "oignons"],
+    "steps": [
+      "Fais revenir l'oignon et les poivrons coupés en lanières.",
+      "Fais cuire les merguez à la poêle 10-12 minutes.",
+      "Prépare la semoule selon le paquet.",
+      "Sers les merguez avec les poivrons sur la semoule."
+    ]
+  },
+  {
+    "id": "poelee-chorizo-pdt",
+    "name": "Poêlée chorizo-pommes de terre",
+    "icon": "🥘",
+    "prepTime": 25,
+    "difficulty": "facile",
+    "ingredientIds": ["chorizo", "pommes-de-terre", "oignons", "oeufs"],
+    "steps": [
+      "Coupe les pommes de terre en dés et fais-les cuire à la poêle 15 minutes.",
+      "Ajoute l'oignon émincé et le chorizo coupé en rondelles, poêle 5 minutes.",
+      "Casse les œufs par-dessus et laisse cuire à couvert jusqu'à ce qu'ils soient pris.",
+      "Assaisonne et sers directement dans la poêle."
+    ]
+  },
+  {
+    "id": "bowl-yaourt-muesli",
+    "name": "Bowl yaourt grec, muesli et banane",
+    "icon": "🍯",
+    "prepTime": 5,
+    "difficulty": "facile",
+    "ingredientIds": ["yaourt-grec", "cereales-muesli", "bananes", "miel"],
+    "steps": [
+      "Verse le yaourt grec dans un bol.",
+      "Ajoute le muesli et des rondelles de banane.",
+      "Arrose d'un filet de miel.",
+      "Mélange légèrement et déguste aussitôt."
+    ]
+  },
+  {
+    "id": "soupe-legumes-hiver",
+    "name": "Soupe de légumes d'hiver",
+    "icon": "🍜",
+    "prepTime": 30,
+    "difficulty": "facile",
+    "ingredientIds": ["poireaux", "pommes-de-terre", "carottes", "oignons", "creme-fraiche"],
+    "steps": [
+      "Coupe tous les légumes en morceaux.",
+      "Fais-les revenir quelques minutes avec l'oignon dans une grande casserole.",
+      "Couvre d'eau et laisse cuire 20 minutes jusqu'à ce que les légumes soient tendres.",
+      "Mixe le tout, ajoute une cuillère de crème fraîche et sers bien chaud."
+    ]
   }
 ]
