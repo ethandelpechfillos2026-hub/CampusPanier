@@ -23,8 +23,8 @@ export default function PrintableListView({
   });
 
   return (
-    <div className="fixed inset-0 z-[60] overflow-y-auto bg-campus-cream">
-      <div className="sticky top-0 flex items-center justify-between border-b border-campus-sand bg-campus-cream px-5 py-4">
+    <div className="fixed inset-0 z-[60] overflow-y-auto bg-campus-cream print:static print:h-auto print:overflow-visible print:bg-white">
+      <div className="sticky top-0 flex items-center justify-between border-b border-campus-sand bg-campus-cream px-5 py-4 print:hidden">
         <p className="text-sm font-bold text-campus-ink">
           Aperçu avant impression
         </p>

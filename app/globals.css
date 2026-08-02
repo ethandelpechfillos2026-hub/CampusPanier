@@ -107,7 +107,13 @@
 /* Impression / export PDF d'une liste passée (PrintableListView) — masque
    tout sauf le contenu de la liste, quel que soit le reste de l'app affiché
    derrière. Aucune dépendance : c'est la boîte de dialogue d'impression du
-   navigateur qui fait office d'export PDF. */
+   navigateur qui fait office d'export PDF.
+
+   Les conteneurs `fixed`/`overflow-y-auto` des panneaux (HistoryPanel,
+   PrintableListView) sont neutralisés en `print:static` directement dans
+   leurs classes Tailwind — sans ça, l'impression pagine sur la hauteur de
+   l'écran au lieu du contenu réel, ce qui produit des pages blanches et
+   coupe la liste au milieu. */
 @media print {
   body * {
     visibility: hidden;
@@ -115,11 +121,5 @@
   .print-area,
   .print-area * {
     visibility: visible;
-  }
-  .print-area {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
   }
 }
