@@ -105,17 +105,28 @@
 }
 
 /* Impression / export PDF d'une liste passée (PrintableListView) — masque
-   toute l'app pendant l'impression. Aucune dépendance : c'est la boîte de
-   dialogue d'impression du navigateur qui fait office d'export PDF.
+   tout sauf le contenu de la liste, quel que soit le reste de l'app affiché
+   derrière. Aucune dépendance : c'est la boîte de dialogue d'impression du
+   navigateur qui fait office d'export PDF.
 
-   PrintableListView est rendu via un portail React directement dans
-   document.body (voir components/PrintableListView.tsx), donc en dehors de
-   .phone-frame. On peut simplement masquer .phone-frame en display:none :
-   comme il porte un min-height:100dvh, le cacher seulement en
-   visibility:hidden laissait un immense bloc invisible qui faisait générer
-   plusieurs pages blanches à l'impression. */
+   .phone-frame porte un min-height:100dvh pour l'affichage écran — en
+   impression ça forçait un immense bloc invisible avant le vrai contenu
+   (donc des pages blanches), on l'annule ici spécifiquement pour print. */
 @media print {
   .phone-frame {
-    display: none;
+    min-height: auto;
+  }
+  body * {
+    visibility: hidden;
+  }
+  .print-area,
+  .print-area * {
+    visibility: visible;
+  }
+  .print-area {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
   }
 }
