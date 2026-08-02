@@ -103,3 +103,23 @@
     opacity: 0;
   }
 }
+
+/* Impression / export PDF d'une liste passée (PrintableListView) — masque
+   tout sauf le contenu de la liste, quel que soit le reste de l'app affiché
+   derrière. Aucune dépendance : c'est la boîte de dialogue d'impression du
+   navigateur qui fait office d'export PDF. */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  .print-area,
+  .print-area * {
+    visibility: visible;
+  }
+  .print-area {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+  }
+}

@@ -8,11 +8,21 @@ const RECIPES_VIEWED_KEY = "campus-panier-recipes-viewed";
 const LISTS_COMPLETED_KEY = "campus-panier-lists-completed";
 const MAX_HISTORY = 52; // roughly a year of weekly lists
 
-interface ListHistoryEntry {
+export interface ListHistoryItem {
+  id: string;
+  name: string;
+  price: number;
+}
+
+export interface ListHistoryEntry {
   timestamp: number;
   budget: number;
   total: number;
   isOverBudget: boolean;
+  // Snapshot minimal des articles au moment de la génération — pour
+  // l'historique et l'export/impression. Absent sur les entrées créées
+  // avant l'ajout de cette fonctionnalité (rétrocompatible).
+  items?: ListHistoryItem[];
 }
 
 function readHistory(): ListHistoryEntry[] {
@@ -37,8 +47,19 @@ export function recordListGenerated(result: ShoppingListResult): void {
     budget: result.budget,
     total: result.total,
     isOverBudget: result.isOverBudget,
+    items: result.items.map(({ product }) => ({
+      id: product.id,
+      name: product.shortName ?? product.name,
+      price: product.price,
+    })),
   });
   writeHistory(history.slice(-MAX_HISTORY));
+}
+
+// Historique complet, du plus récent au plus ancien — pour l'écran
+// "Historique & évolution" et l'export/impression d'une liste passée.
+export function getListHistory(): ListHistoryEntry[] {
+  return [...readHistory()].reverse();
 }
 
 function readViewedRecipes(): string[] {

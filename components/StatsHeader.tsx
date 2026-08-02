@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import BadgesPanel from "@/components/BadgesPanel";
 import CelebrationOverlay from "@/components/CelebrationOverlay";
+import HistoryPanel from "@/components/HistoryPanel";
 import {
   Achievement,
   getNewlyUnlockedAchievements,
@@ -27,6 +28,7 @@ const EMPTY_STATS: DashboardStats = {
 export default function StatsHeader({ result }: StatsHeaderProps) {
   const [stats, setStats] = useState<DashboardStats>(EMPTY_STATS);
   const [showBadges, setShowBadges] = useState(false);
+  const [showHistory, setShowHistory] = useState(false);
   const [celebration, setCelebration] = useState<Achievement | null>(null);
 
   useEffect(() => {
@@ -139,19 +141,30 @@ export default function StatsHeader({ result }: StatsHeaderProps) {
             </div>
           </div>
 
-          <button
-            type="button"
-            onClick={() => setShowBadges(true)}
-            className="mt-3 w-full rounded-full bg-white/20 py-2 text-xs font-bold backdrop-blur-sm transition-colors hover:bg-white/30"
-          >
-            🏆 Voir mes badges
-          </button>
+          <div className="mt-3 flex gap-2">
+            <button
+              type="button"
+              onClick={() => setShowBadges(true)}
+              className="flex-1 rounded-full bg-white/20 py-2 text-xs font-bold backdrop-blur-sm transition-colors hover:bg-white/30"
+            >
+              🏆 Mes badges
+            </button>
+            <button
+              type="button"
+              onClick={() => setShowHistory(true)}
+              className="flex-1 rounded-full bg-white/20 py-2 text-xs font-bold backdrop-blur-sm transition-colors hover:bg-white/30"
+            >
+              📊 Historique
+            </button>
+          </div>
         </div>
       </div>
 
       {showBadges && (
         <BadgesPanel stats={stats} onClose={() => setShowBadges(false)} />
       )}
+
+      {showHistory && <HistoryPanel onClose={() => setShowHistory(false)} />}
 
       {celebration && (
         <CelebrationOverlay
