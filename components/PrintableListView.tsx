@@ -1,5 +1,6 @@
 "use client";
 
+import { createPortal } from "react-dom";
 import { formatPrice, products } from "@/lib/generateShoppingList";
 import { ListHistoryEntry, ListHistoryItem } from "@/lib/stats";
 import { CATEGORY_LABELS, CATEGORY_ORDER } from "@/lib/types";
@@ -135,7 +136,9 @@ export default function PrintableListView({
     URL.revokeObjectURL(url);
   }
 
-  return (
+  if (typeof document === "undefined") return null;
+
+  return createPortal(
     <div className="fixed inset-0 z-[60] overflow-y-auto bg-campus-cream print:static print:h-auto print:overflow-visible print:bg-white">
       <div className="sticky top-0 border-b border-campus-sand bg-campus-cream px-5 py-4 print:hidden">
         <div className="flex items-center justify-between">
@@ -223,6 +226,7 @@ export default function PrintableListView({
           Prix indicatifs · Non contractuels
         </p>
       </div>
-    </div>
+    </div>,
+    document.body
   );
 }
