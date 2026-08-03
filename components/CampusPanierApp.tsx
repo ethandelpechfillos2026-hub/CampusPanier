@@ -7,6 +7,7 @@ import MenuContent from "@/components/MenuContent";
 import ProfileForm from "@/components/ProfileForm";
 import RecipesContent from "@/components/RecipesContent";
 import ResultsContent from "@/components/ResultsContent";
+import SharedListTab from "@/components/SharedListTab";
 import SignIn from "@/components/SignIn";
 import { getCloudProfile, saveCloudProfile } from "@/lib/authProfile";
 import { addFavorite, findFavorite, getFavorites, removeFavorite } from "@/lib/favorites";
@@ -22,7 +23,7 @@ import {
 } from "@/lib/types";
 
 type View = "signin" | "profile" | "budget" | "results";
-type ResultsTab = "liste" | "menu" | "recettes";
+type ResultsTab = "liste" | "menu" | "recettes" | "coloc";
 
 export default function CampusPanierApp() {
   const [ready, setReady] = useState(false);
@@ -201,6 +202,17 @@ export default function CampusPanierApp() {
           >
             Mes recettes
           </button>
+          <button
+            type="button"
+            onClick={() => setResultsTab("coloc")}
+            className={`flex-1 border-b-2 py-3 text-sm font-semibold transition-colors ${
+              resultsTab === "coloc"
+                ? "border-campus-terracotta text-campus-terracotta"
+                : "border-transparent text-campus-muted"
+            }`}
+          >
+            👥 Coloc
+          </button>
         </div>
       )}
 
@@ -234,6 +246,13 @@ export default function CampusPanierApp() {
                 result={result}
                 preferences={preferences}
                 onRestart={handleRestart}
+              />
+            )}
+            {resultsTab === "coloc" && user && (
+              <SharedListTab
+                result={result}
+                userId={user.uid}
+                userName={user.displayName ?? user.email ?? "Toi"}
               />
             )}
           </>

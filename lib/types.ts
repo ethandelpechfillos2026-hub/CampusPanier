@@ -138,6 +138,39 @@ export interface FavoriteList {
   createdAt: number;
 }
 
+// Un article dans une liste partagée entre colocataires. Contrairement à
+// ShoppingListItem (qui référence un Product complet, jamais persisté tel
+// quel), on stocke ici une copie figée du nom/prix — comme pour
+// ListHistoryItem — pour que la liste reste lisible même si le catalogue
+// change plus tard.
+export interface SharedListItem {
+  name: string;
+  price: number;
+  checked: boolean;
+  // Prénom (ou nom Google) de la personne qui a coché l'article, pour
+  // l'attribution "coché par ..." affichée dans l'interface.
+  checkedBy: string | null;
+}
+
+// Document Firestore de la collection "sharedLists". `items` est une map
+// (product id -> SharedListItem) et non un tableau : ça permet des mises à
+// jour partielles Firestore par chemin ("items.<id>.checked") qui touchent
+// un seul champ sans relire/réécrire tout le document — indispensable pour
+// éviter que deux colocataires qui cochent en même temps s'écrasent l'un
+// l'autre.
+export interface SharedList {
+  id: string;
+  ownerId: string;
+  ownerName: string;
+  memberIds: string[];
+  memberNames: Record<string, string>;
+  inviteCode: string;
+  budget: number;
+  total: number;
+  createdAt: number;
+  items: Record<string, SharedListItem>;
+}
+
 export const BUDGET_MIN = 10;
 export const BUDGET_MAX = 100;
 export const BUDGET_DEFAULT = 25;
