@@ -35,6 +35,13 @@ interface ItemGroup {
 // Range les articles de la liste partagée par rayon, comme partout ailleurs
 // dans l'app — on retrouve le rayon via le catalogue produits en local
 // (les articles de la liste partagée ne stockent que id/nom/prix/coché).
+//
+// Important : Firestore ne garantit PAS l'ordre des champs d'une map au
+// moment de la lecture (contrairement à un tableau) — deux appareils qui
+// lisent le même document peuvent recevoir `items` dans un ordre différent.
+// On trie donc explicitement chaque rayon selon la position du produit dans
+// le catalogue (`products`, un ordre fixe et identique pour tout le monde),
+// pour que l'ordre affiché soit toujours le même chez tous les colocataires.
 function groupSharedItems(
   items: Record<string, SharedListItem>
 ): ItemGroup[] {
@@ -47,6 +54,14 @@ function groupSharedItems(
     const list = byCategory.get(product.category) ?? [];
     list.push(entry);
     byCategory.set(product.category, list);
+  }
+
+  for (const list of Array.from(byCategory.values())) {
+    list.sort(
+      (a, b) =>
+        products.findIndex((p) => p.id === a[0]) -
+        products.findIndex((p) => p.id === b[0])
+    );
   }
 
   return CATEGORY_ORDER.filter((category) => byCategory.has(category)).map(
