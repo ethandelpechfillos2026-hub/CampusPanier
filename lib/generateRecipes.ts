@@ -1,12 +1,6 @@
 import recipesData from "@/data/recipes.json";
 import { products } from "@/lib/generateShoppingList";
-import {
-  Product,
-  Recipe,
-  RecipeMatch,
-  ShoppingListResult,
-  UserPreferences,
-} from "@/lib/types";
+import { Product, Recipe, RecipeMatch, UserPreferences } from "@/lib/types";
 
 const recipes = recipesData as Recipe[];
 
@@ -29,13 +23,17 @@ function isRecipeCompatible(recipe: Recipe, preferences: UserPreferences): boole
   });
 }
 
+// `cartIds` doit être les produits RÉELLEMENT disponibles pour le moment
+// visé — le jour précis de "Mon menu", pas toute la liste de courses de la
+// semaine. Sans cette distinction, une recette "déjà prête" avec des
+// ingrédients "dans ta liste" pouvait en fait piocher dans des produits
+// réservés à d'autres jours du planning (ex : le riz prévu mercredi), ce
+// qui déséquilibrait le reste de la semaine une fois utilisé en avance.
 export function suggestRecipes(
-  list: ShoppingListResult,
+  cartIds: Set<string>,
   preferences: UserPreferences,
   limit = 4
 ): RecipeMatch[] {
-  const cartIds = new Set(list.items.map((item) => item.product.id));
-
   return recipes
     .filter((recipe) => isRecipeCompatible(recipe, preferences))
     .map((recipe) => {

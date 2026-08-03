@@ -1,7 +1,12 @@
 "use client";
 
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import Mascot from "@/components/Mascot";
+import {
+  buildWeeklyPlan,
+  DAY_SLOT_ORDER,
+  WEEKDAY_LABELS,
+} from "@/lib/generateMenu";
 import { suggestRecipes } from "@/lib/generateRecipes";
 import { generateRecipeWithAI } from "@/lib/generateRecipeWithAI";
 import { products } from "@/lib/generateShoppingList";
@@ -24,7 +29,40 @@ export default function RecipesContent({
   onRestart,
 }: RecipesContentProps) {
   const [openId, setOpenId] = useState<string | null>(null);
-  const matches = suggestRecipes(result, preferences);
+  const [selectedDay, setSelectedDay] = useState(0);
+
+  // Les recettes doivent utiliser uniquement ce qui est déjà prévu CE
+  // JOUR-LÀ dans "Mon menu" — pas toute la liste de courses de la semaine.
+  // Sinon une recette "prête" avec des ingrédients "déjà dans ta liste"
+  // pouvait en réalité piocher dans des produits réservés à un autre jour
+  // (ex : le riz prévu mercredi utilisé pour une recette lundi), ce qui
+  // déséquilibre le reste de la semaine une fois consommé en avance.
+  const { days } = useMemo(() => buildWeeklyPlan(result.items), [result.items]);
+  const dayIds = useMemo(() => {
+    const day = days[selectedDay];
+    const ids = new Set<string>();
+    for (const slot of DAY_SLOT_ORDER) {
+      for (const entry of day.slots[slot]) ids.add(entry.product.id);
+    }
+    // Les condiments (huile, sel, sucre...) ne sont jamais assignés à un
+    // jour précis dans "Mon menu" — ils sont là toute la semaine, donc
+    // toujours disponibles pour une recette, peu importe le jour choisi.
+    for (const item of result.items) {
+      if (item.product.isCondiment) ids.add(item.product.id);
+    }
+    return ids;
+  }, [days, selectedDay, result.items]);
+
+  const matches = suggestRecipes(dayIds, preferences);
+
+  // Pour distinguer, parmi les ingrédients manquants ce jour-là, ceux qui
+  // sont déjà dans la liste de la semaine mais prévus un AUTRE jour
+  // (attention à ne pas les utiliser en avance) de ceux qu'il faut vraiment
+  // ajouter à la liste.
+  const weekCartIds = useMemo(
+    () => new Set(result.items.map((item) => item.product.id)),
+    [result.items]
+  );
 
   const [aiRecipe, setAiRecipe] = useState<GeneratedRecipe | null>(null);
   const [aiLoading, setAiLoading] = useState(false);
@@ -34,9 +72,10 @@ export default function RecipesContent({
     setAiLoading(true);
     setAiError(null);
     try {
-      const ingredientNames = result.items.map(
-        ({ product }) => product.shortName ?? product.name
-      );
+      const ingredientNames = Array.from(dayIds)
+        .map((id) => products.find((p) => p.id === id))
+        .filter((p): p is (typeof products)[number] => Boolean(p))
+        .map((product) => product.shortName ?? product.name);
       const recipe = await generateRecipeWithAI(
         ingredientNames,
         preferences.diet,
@@ -58,8 +97,26 @@ export default function RecipesContent({
       <div>
         <h1 className="text-2xl font-bold text-campus-ink">Mes recettes</h1>
         <p className="mt-1 text-sm text-campus-muted">
-          À cuisiner avec les produits de ta liste
+          À cuisiner avec ce qui est déjà prévu ce jour-là dans &quot;Mon
+          menu&quot; — pas avec des produits réservés à un autre jour.
         </p>
+      </div>
+
+      <div className="flex gap-1.5 overflow-x-auto pb-1">
+        {WEEKDAY_LABELS.map((label, index) => (
+          <button
+            key={label}
+            type="button"
+            onClick={() => setSelectedDay(index)}
+            className={`shrink-0 rounded-full px-3.5 py-2 text-xs font-semibold transition-colors ${
+              selectedDay === index
+                ? "bg-campus-terracotta text-white"
+                : "bg-white text-campus-muted border border-campus-sand"
+            }`}
+          >
+            {label.slice(0, 3)}
+          </button>
+        ))}
       </div>
 
       <div className="rounded-2xl border border-campus-terracotta/30 bg-campus-terracotta/5 p-4">
@@ -71,8 +128,8 @@ export default function RecipesContent({
                 Envie d&apos;autre chose ?
               </p>
               <p className="text-xs text-campus-muted">
-                Génère une recette originale avec l&apos;IA, à partir de ta
-                liste.
+                Génère une recette originale avec l&apos;IA, à partir de ce
+                qui est prévu ce jour-là.
               </p>
             </div>
           </div>
@@ -148,7 +205,8 @@ export default function RecipesContent({
       {matches.length === 0 ? (
         <div className="rounded-2xl border border-campus-sand bg-white p-5 text-center">
           <p className="text-sm text-campus-muted">
-            Pas encore de recette compatible avec ton régime ou tes allergies.
+            Pas encore de recette compatible avec ton régime ou tes
+            allergies — essaie un autre jour de la semaine.
           </p>
         </div>
       ) : (
@@ -177,7 +235,7 @@ export default function RecipesContent({
                     </span>
                     <span className="mt-1 block text-xs text-campus-muted">
                       {recipe.prepTime} min · {recipe.difficulty} ·{" "}
-                      {matchedCount}/{totalCount} déjà dans ta liste
+                      {matchedCount}/{totalCount} déjà prévus ce jour-là
                     </span>
                   </span>
                   <span className="text-campus-muted">{isOpen ? "−" : "+"}</span>
@@ -193,6 +251,7 @@ export default function RecipesContent({
                         {recipe.ingredientIds.map((id) => {
                           const product = products.find((p) => p.id === id);
                           const missing = missingProducts.some((p) => p.id === id);
+                          const scheduledAnotherDay = missing && weekCartIds.has(id);
                           return (
                             <li
                               key={id}
@@ -203,7 +262,11 @@ export default function RecipesContent({
                               <span>{missing ? "＋" : "✓"}</span>
                               <span>
                                 {product?.shortName ?? product?.name ?? id}
-                                {missing ? " (à ajouter)" : ""}
+                                {scheduledAnotherDay
+                                  ? " (prévu un autre jour)"
+                                  : missing
+                                  ? " (à ajouter)"
+                                  : ""}
                               </span>
                             </li>
                           );

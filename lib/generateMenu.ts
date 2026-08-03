@@ -248,9 +248,13 @@ function emptyDaySlots(): Record<DaySlot, DayEntry[]> {
 
 // Construit un planning jour par jour : chaque produit de la liste (tous ont
 // désormais une quantité hebdomadaire précise) est étalé sur les 7 jours.
-// "Déjeuner & Dîner" (un seul mealSlot côté produit) est réparti entre les
-// deux repas au niveau de l'affichage, pour varier les repas d'un jour à
-// l'autre plutôt que de répéter le même contenu midi et soir.
+// "Déjeuner & Dîner" (un seul mealSlot côté produit) est réparti à parts
+// égales entre les deux repas au niveau de l'affichage — féculent, légume
+// et protéine du jour se retrouvent moitié au déjeuner, moitié au dîner,
+// plutôt que, par exemple, tout le féculent au déjeuner et seulement la
+// protéine au dîner (repas déséquilibré). Les deux repas du jour sont donc
+// identiques mais chacun cohérent (un peu de tout), ce qui est plus simple
+// à préparer et plus logique qu'une répartition aléatoire par article.
 export function buildWeeklyPlan(items: ShoppingListItem[]): WeeklyPlan {
   const days: DayPlan[] = WEEKDAY_LABELS.map((day) => ({
     day,
@@ -291,20 +295,18 @@ export function buildWeeklyPlan(items: ShoppingListItem[]): WeeklyPlan {
     });
   }
 
-  // Répartit les articles "déjeuner-dîner" du jour entre les deux repas
-  // pour varier, plutôt que d'afficher la même chose aux deux.
+  // Répartit les articles "déjeuner-dîner" du jour ENTRE les deux repas, à
+  // parts égales, plutôt que d'assigner chaque article entier à l'un ou
+  // l'autre en alternance — sinon un féculent acheté en grosse quantité
+  // (ex : 800 g de pommes de terre) pouvait atterrir entièrement au
+  // déjeuner pendant que le dîner ne gardait que la protéine, donnant un
+  // repas déséquilibré (féculent + légume d'un côté, rien que de la viande
+  // de l'autre) plutôt que deux repas cohérents avec un peu de chaque.
   mainsByDay.forEach((mains, dayIndex) => {
-    if (mains.length === 0) return;
-
-    if (mains.length === 1) {
-      const target = dayIndex % 2 === 0 ? "dejeuner" : "diner";
-      days[dayIndex].slots[target].push(mains[0]);
-      return;
-    }
-
-    mains.forEach((entry, i) => {
-      const target = i % 2 === 0 ? "dejeuner" : "diner";
-      days[dayIndex].slots[target].push(entry);
+    mains.forEach((entry) => {
+      const half = round2(entry.count / 2);
+      days[dayIndex].slots.dejeuner.push({ product: entry.product, count: half });
+      days[dayIndex].slots.diner.push({ product: entry.product, count: half });
     });
   });
 
