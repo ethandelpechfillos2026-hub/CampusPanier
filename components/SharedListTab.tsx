@@ -211,7 +211,7 @@ export default function SharedListTab({
               onChange={(event) => setJoinCode(event.target.value.toUpperCase())}
               placeholder="Ex : F3T8QM"
               maxLength={6}
-              className="min-h-[48px] flex-1 rounded-2xl border-2 border-campus-sand px-4 text-center text-base font-bold uppercase tracking-widest text-campus-ink focus:border-campus-terracotta focus:outline-none"
+              className="min-h-[48px] min-w-0 flex-1 rounded-2xl border-2 border-campus-sand px-4 text-center text-base font-bold uppercase tracking-widest text-campus-ink focus:border-campus-terracotta focus:outline-none"
             />
             <button
               type="button"
