@@ -55,7 +55,10 @@ export function computeMacroTargets(
 // (`macroOverride`) priment toujours sur le calcul automatique — pour les
 // personnes qui savent déjà ce qu'elles visent (sportif·ves, suivi
 // nutritionnel existant...) et veulent, par exemple, moins de lipides que
-// ce que la formule par défaut propose.
+// ce que la formule par défaut propose. Les calories ne sont PAS un réglage
+// séparé dans ce cas : 1 g de protéines/glucides = 4 kcal, 1 g de lipides =
+// 9 kcal, donc dès qu'on ajuste les grammes, le total de calories doit
+// suivre automatiquement — sinon l'un des deux chiffres affichés ment.
 export function getActiveMacroTargets(
   stats: BodyStats,
   dailyCalories: number | null
@@ -63,12 +66,8 @@ export function getActiveMacroTargets(
   const computed = computeMacroTargets(stats, dailyCalories);
   if (!stats.macroOverride) return computed;
 
-  const calories =
-    computed?.calories ??
-    dailyCalories ??
-    stats.macroOverride.proteinG * 4 +
-      stats.macroOverride.lipidesG * 9 +
-      stats.macroOverride.glucidesG * 4;
+  const { proteinG, lipidesG, glucidesG } = stats.macroOverride;
+  const calories = proteinG * 4 + lipidesG * 9 + glucidesG * 4;
 
-  return { calories, ...stats.macroOverride };
+  return { calories, proteinG, lipidesG, glucidesG };
 }

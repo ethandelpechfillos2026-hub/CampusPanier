@@ -1,4 +1,5 @@
 import {
+  CATEGORY_ORDER,
   MEAL_SLOT_ORDER,
   MealSlot,
   Product,
@@ -201,6 +202,38 @@ function buildFamilyDayMap(items: ShoppingListItem[]): Map<string, number[]> {
     present.forEach((id, memberIndex) => {
       const allowedDays = [0, 1, 2, 3, 4, 5, 6].filter(
         (day) => day % present.length === memberIndex
+      );
+      map.set(id, allowedDays);
+    });
+  }
+
+  // Rotation des accompagnements du déjeuner-dîner (légumes, féculents pas
+  // déjà couverts par une famille, fromages/charcuterie, viandes/poissons...)
+  // : sans ça, TOUS les articles achetés dans une catégorie pour ce créneau
+  // (pois chiches, concombre, salade, chou-fleur, oignon, camembert,
+  // rillettes, jambon de dinde...) se retrouvaient combinés dans le même
+  // repas — bien trop long à préparer pour un étudiant. On les fait plutôt
+  // tourner un seul par catégorie et par jour, avec une part plus grosse à
+  // chaque apparition (ex : 250 g de blanc de dinde un soir plutôt que
+  // 130 g de poulet + sole + Saint-Jacques le même soir). Ça laisse au
+  // maximum un féculent + un légume + un produit "frais" + une
+  // viande/poisson par jour, répartis ensuite entre déjeuner et dîner.
+  for (const category of CATEGORY_ORDER) {
+    const members = items
+      .filter(
+        (item) =>
+          item.product.category === category &&
+          item.product.mealSlot === "dejeuner-diner" &&
+          item.product.weeklyServings &&
+          !item.product.isCondiment &&
+          !map.has(item.product.id) // priorité aux familles déjà assignées (ex : pommes de terre/patate douce dans les féculents)
+      )
+      .map((item) => item.product.id);
+    if (members.length <= 1) continue;
+
+    members.forEach((id, memberIndex) => {
+      const allowedDays = [0, 1, 2, 3, 4, 5, 6].filter(
+        (day) => day % members.length === memberIndex
       );
       map.set(id, allowedDays);
     });

@@ -91,9 +91,16 @@ export default function ProfileForm({ onComplete, initialProfile }: ProfileFormP
           caloriesValue
         )
       : null;
+  // Identité calorique : 1 g de protéines/glucides = 4 kcal, 1 g de
+  // lipides = 9 kcal. Dès que la personne ajuste les grammes à la main, le
+  // total de calories affiché doit suivre — sinon les deux chiffres se
+  // contredisent (ex : elle baisse les lipides mais "2200 kcal" reste
+  // affiché comme si de rien n'était).
+  const derivedCalories =
+    proteinOverride * 4 + lipidesOverride * 9 + glucidesOverride * 4;
   const macroTargets = customMacros
     ? {
-        calories: computedMacroTargets?.calories ?? caloriesValue,
+        calories: derivedCalories,
         proteinG: proteinOverride,
         lipidesG: lipidesOverride,
         glucidesG: glucidesOverride,
@@ -163,7 +170,12 @@ export default function ProfileForm({ onComplete, initialProfile }: ProfileFormP
     onComplete({
       diet,
       allergies,
-      dailyCalories: calorieMode === "custom" ? caloriesValue : null,
+      dailyCalories:
+        calorieMode === "custom"
+          ? customMacros
+            ? derivedCalories
+            : caloriesValue
+          : null,
       macroPreferences,
       sex: bodyStatsComplete ? sex : null,
       weightKg: bodyStatsComplete ? weightKg : null,
@@ -335,7 +347,20 @@ export default function ProfileForm({ onComplete, initialProfile }: ProfileFormP
               </p>
             )}
 
-            {calorieMode === "custom" && (
+            {calorieMode === "custom" && customMacros && (
+              <div className="space-y-1 text-center">
+                <p className="text-5xl font-bold text-campus-terracotta">
+                  {derivedCalories}
+                </p>
+                <p className="text-sm text-campus-muted">kcal / jour</p>
+                <p className="text-xs text-campus-muted">
+                  Calculé à partir de tes objectifs de protéines/lipides/
+                  glucides ci-dessous — ajuste-les pour changer ce chiffre.
+                </p>
+              </div>
+            )}
+
+            {calorieMode === "custom" && !customMacros && (
               <div className="space-y-3">
                 <div className="text-center">
                   <p className="text-5xl font-bold text-campus-terracotta">

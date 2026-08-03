@@ -182,7 +182,8 @@
     "lipides": "faible",
     "glucides": "faible",
     "sel": "faible",
-    "easyToCook": true
+    "easyToCook": true,
+    "gramsPerServing": 200
   },
   {
     "id": "beurre-cacahuete",
@@ -210,7 +211,8 @@
     "glucides": "moyen",
     "sel": "faible",
     "easyToCook": true,
-    "gourmand": true
+    "gourmand": true,
+    "gramsPerServing": 15
   },
   {
     "id": "noix-cajou",
@@ -237,7 +239,8 @@
     "glucides": "riche",
     "sel": "faible",
     "easyToCook": true,
-    "gourmand": true
+    "gourmand": true,
+    "gramsPerServing": 30
   },
   {
     "id": "carottes",
@@ -317,7 +320,8 @@
     "lipides": "faible",
     "glucides": "moyen",
     "sel": "faible",
-    "easyToCook": true
+    "easyToCook": true,
+    "gramsPerServing": 120
   },
   {
     "id": "pommes",
@@ -342,7 +346,8 @@
     "lipides": "faible",
     "glucides": "moyen",
     "sel": "faible",
-    "easyToCook": true
+    "easyToCook": true,
+    "gramsPerServing": 150
   },
   {
     "id": "pommes-de-terre",
@@ -420,7 +425,8 @@
     "lipides": "faible",
     "glucides": "faible",
     "sel": "faible",
-    "easyToCook": true
+    "easyToCook": true,
+    "gramsPerServing": 200
   },
   {
     "id": "yaourt-nature",
@@ -446,7 +452,8 @@
     "lipides": "moyen",
     "glucides": "faible",
     "sel": "faible",
-    "easyToCook": true
+    "easyToCook": true,
+    "gramsPerServing": 125
   },
   {
     "id": "fromage-rape",
@@ -500,7 +507,8 @@
     "lipides": "moyen",
     "glucides": "faible",
     "sel": "faible",
-    "easyToCook": true
+    "easyToCook": true,
+    "gramsPerServing": 55
   },
   {
     "id": "tofu",
@@ -678,7 +686,8 @@
     "lipides": "moyen",
     "glucides": "faible",
     "sel": "faible",
-    "easyToCook": true
+    "easyToCook": true,
+    "gramsPerServing": 100
   },
   {
     "id": "saucisses",
@@ -702,7 +711,8 @@
     "sel": "riche",
     "easyToCook": true,
     "gourmand": true,
-    "ultraTransforme": true
+    "ultraTransforme": true,
+    "gramsPerServing": 50
   },
   {
     "id": "cabillaud",
@@ -1084,7 +1094,8 @@
     "lipides": "faible",
     "glucides": "faible",
     "sel": "faible",
-    "easyToCook": true
+    "easyToCook": true,
+    "gramsPerServing": 200
   },
   {
     "id": "haricots-rouges",
@@ -1317,7 +1328,8 @@
     "lipides": "riche",
     "glucides": "faible",
     "sel": "faible",
-    "easyToCook": true
+    "easyToCook": true,
+    "gramsPerServing": 170
   },
   {
     "id": "citron",
@@ -1367,7 +1379,8 @@
     "lipides": "faible",
     "glucides": "moyen",
     "sel": "faible",
-    "easyToCook": true
+    "easyToCook": true,
+    "gramsPerServing": 200
   },
   {
     "id": "ail",
@@ -1497,7 +1510,8 @@
     "lipides": "moyen",
     "glucides": "faible",
     "sel": "faible",
-    "easyToCook": true
+    "easyToCook": true,
+    "gramsPerServing": 125
   },
   {
     "id": "fromage-blanc",
@@ -1632,7 +1646,8 @@
     "glucides": "faible",
     "sel": "riche",
     "easyToCook": true,
-    "ultraTransforme": true
+    "ultraTransforme": true,
+    "gramsPerServing": 20
   },
   {
     "id": "lait-soja",
@@ -1657,7 +1672,8 @@
     "lipides": "faible",
     "glucides": "faible",
     "sel": "faible",
-    "easyToCook": true
+    "easyToCook": true,
+    "gramsPerServing": 200
   },
   {
     "id": "compote",
@@ -1682,7 +1698,8 @@
     "lipides": "faible",
     "glucides": "moyen",
     "sel": "faible",
-    "easyToCook": true
+    "easyToCook": true,
+    "gramsPerServing": 90
   },
   {
     "id": "jus-orange",
@@ -1707,7 +1724,8 @@
     "lipides": "faible",
     "glucides": "moyen",
     "sel": "faible",
-    "easyToCook": true
+    "easyToCook": true,
+    "gramsPerServing": 200
   },
   {
     "id": "baguette-tradition",
@@ -1820,7 +1838,8 @@
     "glucides": "riche",
     "sel": "moyen",
     "easyToCook": true,
-    "ultraTransforme": true
+    "ultraTransforme": true,
+    "gramsPerServing": 60
   },
   {
     "id": "biscottes",
@@ -1951,7 +1970,8 @@
     "sel": "riche",
     "easyToCook": true,
     "gourmand": true,
-    "ultraTransforme": true
+    "ultraTransforme": true,
+    "gramsPerServing": 50
   },
   {
     "id": "saumon",
@@ -2095,7 +2115,8 @@
     "lipides": "riche",
     "glucides": "faible",
     "sel": "faible",
-    "easyToCook": false
+    "easyToCook": false,
+    "gramsPerServing": 80
   },
   {
     "id": "pates-completes",
@@ -2122,7 +2143,8 @@
     "sel": "faible",
     "easyToCook": true,
     "weeklyServings": 3,
-    "servingUnit": "portion"
+    "servingUnit": "portion",
+    "gramsPerServing": 80
   },
   {
     "id": "spaghetti",
@@ -2148,7 +2170,8 @@
     "sel": "faible",
     "easyToCook": true,
     "weeklyServings": 3,
-    "servingUnit": "portion"
+    "servingUnit": "portion",
+    "gramsPerServing": 80
   },
   {
     "id": "nouilles-chinoises",
@@ -2175,7 +2198,8 @@
     "sel": "faible",
     "easyToCook": true,
     "weeklyServings": 3,
-    "servingUnit": "portion"
+    "servingUnit": "portion",
+    "gramsPerServing": 80
   },
   {
     "id": "riz-complet",
@@ -2200,7 +2224,8 @@
     "sel": "faible",
     "easyToCook": true,
     "weeklyServings": 3,
-    "servingUnit": "portion"
+    "servingUnit": "portion",
+    "gramsPerServing": 80
   },
   {
     "id": "polenta",
@@ -2227,7 +2252,8 @@
     "sel": "faible",
     "easyToCook": true,
     "weeklyServings": 3,
-    "servingUnit": "portion"
+    "servingUnit": "portion",
+    "gramsPerServing": 60
   },
   {
     "id": "farine-complete",
@@ -2254,7 +2280,8 @@
     "sel": "faible",
     "easyToCook": true,
     "weeklyServings": 3,
-    "servingUnit": "portion"
+    "servingUnit": "portion",
+    "gramsPerServing": 50
   },
   {
     "id": "farine-sans-gluten",
@@ -2279,7 +2306,8 @@
     "sel": "faible",
     "easyToCook": true,
     "weeklyServings": 3,
-    "servingUnit": "portion"
+    "servingUnit": "portion",
+    "gramsPerServing": 50
   },
   {
     "id": "levure-chimique",
@@ -2328,7 +2356,8 @@
     "sel": "moyen",
     "easyToCook": true,
     "weeklyServings": 3,
-    "servingUnit": "portion"
+    "servingUnit": "portion",
+    "gramsPerServing": 120
   },
   {
     "id": "petits-pois-conserve",
@@ -2353,7 +2382,8 @@
     "sel": "moyen",
     "easyToCook": true,
     "weeklyServings": 3,
-    "servingUnit": "portion"
+    "servingUnit": "portion",
+    "gramsPerServing": 120
   },
   {
     "id": "champignons-conserve",
@@ -2378,7 +2408,8 @@
     "sel": "moyen",
     "easyToCook": true,
     "weeklyServings": 3,
-    "servingUnit": "portion"
+    "servingUnit": "portion",
+    "gramsPerServing": 100
   },
   {
     "id": "cornichons",
@@ -2611,7 +2642,8 @@
     "sel": "faible",
     "easyToCook": true,
     "weeklyServings": 3,
-    "servingUnit": "portion"
+    "servingUnit": "portion",
+    "gramsPerServing": 100
   },
   {
     "id": "cereales-chocolatees",
@@ -2638,7 +2670,8 @@
     "gourmand": true,
     "weeklyServings": 3,
     "servingUnit": "portion",
-    "ultraTransforme": true
+    "ultraTransforme": true,
+    "gramsPerServing": 40
   },
   {
     "id": "muesli-fruits",
@@ -2663,7 +2696,8 @@
     "sel": "faible",
     "easyToCook": true,
     "weeklyServings": 3,
-    "servingUnit": "portion"
+    "servingUnit": "portion",
+    "gramsPerServing": 50
   },
   {
     "id": "sirop-erable",
@@ -2689,7 +2723,8 @@
     "easyToCook": true,
     "gourmand": true,
     "weeklyServings": 3,
-    "servingUnit": "portion"
+    "servingUnit": "portion",
+    "gramsPerServing": 20
   },
   {
     "id": "jus-pomme",
@@ -2714,7 +2749,8 @@
     "sel": "faible",
     "easyToCook": true,
     "weeklyServings": 3,
-    "servingUnit": "portion"
+    "servingUnit": "portion",
+    "gramsPerServing": 200
   },
   {
     "id": "eau-gazeuse",
@@ -2739,7 +2775,8 @@
     "sel": "faible",
     "easyToCook": true,
     "weeklyServings": 3,
-    "servingUnit": "portion"
+    "servingUnit": "portion",
+    "gramsPerServing": 250
   },
   {
     "id": "sirop-menthe",
@@ -2764,7 +2801,8 @@
     "gourmand": true,
     "weeklyServings": 3,
     "servingUnit": "portion",
-    "ultraTransforme": true
+    "ultraTransforme": true,
+    "gramsPerServing": 20
   },
   {
     "id": "chips",
@@ -2791,7 +2829,8 @@
     "gourmand": true,
     "weeklyServings": 3,
     "servingUnit": "portion",
-    "ultraTransforme": true
+    "ultraTransforme": true,
+    "gramsPerServing": 30
   },
   {
     "id": "barres-cereales",
@@ -2821,7 +2860,8 @@
     "easyToCook": true,
     "weeklyServings": 3,
     "servingUnit": "portion",
-    "ultraTransforme": true
+    "ultraTransforme": true,
+    "gramsPerServing": 30
   },
   {
     "id": "bonbons",
@@ -2847,7 +2887,8 @@
     "gourmand": true,
     "weeklyServings": 3,
     "servingUnit": "portion",
-    "ultraTransforme": true
+    "ultraTransforme": true,
+    "gramsPerServing": 30
   },
   {
     "id": "houmous",
@@ -2872,7 +2913,8 @@
     "sel": "moyen",
     "easyToCook": true,
     "weeklyServings": 3,
-    "servingUnit": "portion"
+    "servingUnit": "portion",
+    "gramsPerServing": 50
   },
   {
     "id": "tahini",
@@ -2921,7 +2963,8 @@
     "sel": "faible",
     "easyToCook": true,
     "weeklyServings": 3,
-    "servingUnit": "portion"
+    "servingUnit": "portion",
+    "gramsPerServing": 15
   },
   {
     "id": "graines-lin",
@@ -2946,7 +2989,8 @@
     "sel": "faible",
     "easyToCook": true,
     "weeklyServings": 3,
-    "servingUnit": "portion"
+    "servingUnit": "portion",
+    "gramsPerServing": 15
   },
   {
     "id": "noix",
@@ -2973,7 +3017,8 @@
     "sel": "faible",
     "easyToCook": true,
     "weeklyServings": 3,
-    "servingUnit": "portion"
+    "servingUnit": "portion",
+    "gramsPerServing": 30
   },
   {
     "id": "pistaches",
@@ -3000,7 +3045,8 @@
     "sel": "riche",
     "easyToCook": true,
     "weeklyServings": 3,
-    "servingUnit": "portion"
+    "servingUnit": "portion",
+    "gramsPerServing": 30
   },
   {
     "id": "raisins-secs",
@@ -3025,7 +3071,8 @@
     "sel": "faible",
     "easyToCook": true,
     "weeklyServings": 3,
-    "servingUnit": "portion"
+    "servingUnit": "portion",
+    "gramsPerServing": 30
   },
   {
     "id": "dattes",
@@ -3050,7 +3097,8 @@
     "sel": "faible",
     "easyToCook": true,
     "weeklyServings": 3,
-    "servingUnit": "portion"
+    "servingUnit": "portion",
+    "gramsPerServing": 30
   },
   {
     "id": "lait-avoine",
@@ -3074,7 +3122,8 @@
     "easyToCook": true,
     "weeklyServings": 3,
     "servingUnit": "portion",
-    "ultraTransforme": true
+    "ultraTransforme": true,
+    "gramsPerServing": 200
   },
   {
     "id": "lait-amande",
@@ -3102,7 +3151,8 @@
     "easyToCook": true,
     "weeklyServings": 3,
     "servingUnit": "portion",
-    "ultraTransforme": true
+    "ultraTransforme": true,
+    "gramsPerServing": 200
   },
   {
     "id": "sauce-carbonara",
@@ -3129,7 +3179,8 @@
     "easyToCook": true,
     "weeklyServings": 3,
     "servingUnit": "portion",
-    "ultraTransforme": true
+    "ultraTransforme": true,
+    "gramsPerServing": 80
   },
   {
     "id": "cafe-decafeine",
@@ -3154,7 +3205,8 @@
     "sel": "faible",
     "easyToCook": true,
     "weeklyServings": 3,
-    "servingUnit": "portion"
+    "servingUnit": "portion",
+    "gramsPerServing": 200
   },
   {
     "id": "kiwi",
@@ -3179,7 +3231,8 @@
     "sel": "faible",
     "easyToCook": true,
     "weeklyServings": 3,
-    "servingUnit": "portion"
+    "servingUnit": "portion",
+    "gramsPerServing": 80
   },
   {
     "id": "ananas",
@@ -3204,7 +3257,8 @@
     "sel": "faible",
     "easyToCook": true,
     "weeklyServings": 3,
-    "servingUnit": "portion"
+    "servingUnit": "portion",
+    "gramsPerServing": 150
   },
   {
     "id": "mangue",
@@ -3229,7 +3283,8 @@
     "sel": "faible",
     "easyToCook": true,
     "weeklyServings": 3,
-    "servingUnit": "portion"
+    "servingUnit": "portion",
+    "gramsPerServing": 200
   },
   {
     "id": "pasteque",
@@ -3254,7 +3309,8 @@
     "sel": "faible",
     "easyToCook": true,
     "weeklyServings": 3,
-    "servingUnit": "portion"
+    "servingUnit": "portion",
+    "gramsPerServing": 250
   },
   {
     "id": "fraises",
@@ -3279,7 +3335,8 @@
     "sel": "faible",
     "easyToCook": true,
     "weeklyServings": 3,
-    "servingUnit": "portion"
+    "servingUnit": "portion",
+    "gramsPerServing": 125
   },
   {
     "id": "framboises",
@@ -3304,7 +3361,8 @@
     "sel": "faible",
     "easyToCook": true,
     "weeklyServings": 3,
-    "servingUnit": "portion"
+    "servingUnit": "portion",
+    "gramsPerServing": 125
   },
   {
     "id": "myrtilles",
@@ -3329,7 +3387,8 @@
     "sel": "faible",
     "easyToCook": true,
     "weeklyServings": 3,
-    "servingUnit": "portion"
+    "servingUnit": "portion",
+    "gramsPerServing": 125
   },
   {
     "id": "raisin",
@@ -3354,7 +3413,8 @@
     "sel": "faible",
     "easyToCook": true,
     "weeklyServings": 3,
-    "servingUnit": "portion"
+    "servingUnit": "portion",
+    "gramsPerServing": 100
   },
   {
     "id": "poire",
@@ -3379,7 +3439,8 @@
     "sel": "faible",
     "easyToCook": true,
     "weeklyServings": 3,
-    "servingUnit": "portion"
+    "servingUnit": "portion",
+    "gramsPerServing": 150
   },
   {
     "id": "pamplemousse",
@@ -3404,7 +3465,8 @@
     "sel": "faible",
     "easyToCook": true,
     "weeklyServings": 3,
-    "servingUnit": "portion"
+    "servingUnit": "portion",
+    "gramsPerServing": 200
   },
   {
     "id": "clementine",
@@ -3429,7 +3491,8 @@
     "sel": "faible",
     "easyToCook": true,
     "weeklyServings": 3,
-    "servingUnit": "portion"
+    "servingUnit": "portion",
+    "gramsPerServing": 50
   },
   {
     "id": "abricot",
@@ -3454,7 +3517,8 @@
     "sel": "faible",
     "easyToCook": true,
     "weeklyServings": 3,
-    "servingUnit": "portion"
+    "servingUnit": "portion",
+    "gramsPerServing": 50
   },
   {
     "id": "prune",
@@ -3479,7 +3543,8 @@
     "sel": "faible",
     "easyToCook": true,
     "weeklyServings": 3,
-    "servingUnit": "portion"
+    "servingUnit": "portion",
+    "gramsPerServing": 55
   },
   {
     "id": "cerises",
@@ -3504,7 +3569,8 @@
     "sel": "faible",
     "easyToCook": true,
     "weeklyServings": 3,
-    "servingUnit": "portion"
+    "servingUnit": "portion",
+    "gramsPerServing": 100
   },
   {
     "id": "figues",
@@ -3529,7 +3595,8 @@
     "sel": "faible",
     "easyToCook": true,
     "weeklyServings": 3,
-    "servingUnit": "portion"
+    "servingUnit": "portion",
+    "gramsPerServing": 50
   },
   {
     "id": "grenade",
@@ -3554,7 +3621,8 @@
     "sel": "faible",
     "easyToCook": true,
     "weeklyServings": 3,
-    "servingUnit": "portion"
+    "servingUnit": "portion",
+    "gramsPerServing": 200
   },
   {
     "id": "papaye",
@@ -3579,7 +3647,8 @@
     "sel": "faible",
     "easyToCook": true,
     "weeklyServings": 3,
-    "servingUnit": "portion"
+    "servingUnit": "portion",
+    "gramsPerServing": 150
   },
   {
     "id": "aubergine",
@@ -3604,7 +3673,8 @@
     "sel": "faible",
     "easyToCook": true,
     "weeklyServings": 3,
-    "servingUnit": "portion"
+    "servingUnit": "portion",
+    "gramsPerServing": 250
   },
   {
     "id": "celeri",
@@ -3629,7 +3699,8 @@
     "sel": "faible",
     "easyToCook": true,
     "weeklyServings": 3,
-    "servingUnit": "portion"
+    "servingUnit": "portion",
+    "gramsPerServing": 100
   },
   {
     "id": "betterave",
@@ -3653,7 +3724,8 @@
     "sel": "moyen",
     "easyToCook": true,
     "weeklyServings": 3,
-    "servingUnit": "portion"
+    "servingUnit": "portion",
+    "gramsPerServing": 150
   },
   {
     "id": "radis",
@@ -3678,7 +3750,8 @@
     "sel": "faible",
     "easyToCook": true,
     "weeklyServings": 3,
-    "servingUnit": "portion"
+    "servingUnit": "portion",
+    "gramsPerServing": 80
   },
   {
     "id": "navet",
@@ -3703,7 +3776,8 @@
     "sel": "faible",
     "easyToCook": true,
     "weeklyServings": 3,
-    "servingUnit": "portion"
+    "servingUnit": "portion",
+    "gramsPerServing": 150
   },
   {
     "id": "panais",
@@ -3726,7 +3800,8 @@
     "sel": "moyen",
     "easyToCook": true,
     "weeklyServings": 3,
-    "servingUnit": "portion"
+    "servingUnit": "portion",
+    "gramsPerServing": 150
   },
   {
     "id": "patate-douce",
@@ -3751,7 +3826,8 @@
     "sel": "faible",
     "easyToCook": true,
     "weeklyServings": 3,
-    "servingUnit": "portion"
+    "servingUnit": "portion",
+    "gramsPerServing": 200
   },
   {
     "id": "courge-butternut",
@@ -3776,7 +3852,8 @@
     "sel": "faible",
     "easyToCook": true,
     "weeklyServings": 3,
-    "servingUnit": "portion"
+    "servingUnit": "portion",
+    "gramsPerServing": 300
   },
   {
     "id": "potiron",
@@ -3801,7 +3878,8 @@
     "sel": "faible",
     "easyToCook": true,
     "weeklyServings": 3,
-    "servingUnit": "portion"
+    "servingUnit": "portion",
+    "gramsPerServing": 300
   },
   {
     "id": "endive",
@@ -3826,7 +3904,8 @@
     "sel": "faible",
     "easyToCook": true,
     "weeklyServings": 3,
-    "servingUnit": "portion"
+    "servingUnit": "portion",
+    "gramsPerServing": 100
   },
   {
     "id": "fenouil",
@@ -3851,7 +3930,8 @@
     "sel": "faible",
     "easyToCook": true,
     "weeklyServings": 3,
-    "servingUnit": "portion"
+    "servingUnit": "portion",
+    "gramsPerServing": 200
   },
   {
     "id": "petits-pois-frais",
@@ -3874,7 +3954,8 @@
     "sel": "moyen",
     "easyToCook": true,
     "weeklyServings": 3,
-    "servingUnit": "portion"
+    "servingUnit": "portion",
+    "gramsPerServing": 100
   },
   {
     "id": "haricots-verts-frais",
@@ -3899,7 +3980,8 @@
     "sel": "faible",
     "easyToCook": true,
     "weeklyServings": 3,
-    "servingUnit": "portion"
+    "servingUnit": "portion",
+    "gramsPerServing": 100
   },
   {
     "id": "roquette",
@@ -3924,7 +4006,8 @@
     "sel": "faible",
     "easyToCook": true,
     "weeklyServings": 3,
-    "servingUnit": "portion"
+    "servingUnit": "portion",
+    "gramsPerServing": 50
   },
   {
     "id": "chou-rouge",
@@ -3949,7 +4032,8 @@
     "sel": "moyen",
     "easyToCook": true,
     "weeklyServings": 3,
-    "servingUnit": "portion"
+    "servingUnit": "portion",
+    "gramsPerServing": 150
   },
   {
     "id": "chou-vert",
@@ -3974,7 +4058,8 @@
     "sel": "faible",
     "easyToCook": true,
     "weeklyServings": 3,
-    "servingUnit": "portion"
+    "servingUnit": "portion",
+    "gramsPerServing": 150
   },
   {
     "id": "blette",
@@ -3999,7 +4084,8 @@
     "sel": "moyen",
     "easyToCook": true,
     "weeklyServings": 3,
-    "servingUnit": "portion"
+    "servingUnit": "portion",
+    "gramsPerServing": 150
   },
   {
     "id": "persil",
@@ -4216,7 +4302,8 @@
     "sel": "faible",
     "easyToCook": true,
     "weeklyServings": 3,
-    "servingUnit": "portion"
+    "servingUnit": "portion",
+    "gramsPerServing": 125
   },
   {
     "id": "groseille",
@@ -4241,7 +4328,8 @@
     "sel": "faible",
     "easyToCook": true,
     "weeklyServings": 3,
-    "servingUnit": "portion"
+    "servingUnit": "portion",
+    "gramsPerServing": 125
   },
   {
     "id": "courge-spaghetti",
@@ -4264,7 +4352,8 @@
     "sel": "faible",
     "easyToCook": true,
     "weeklyServings": 3,
-    "servingUnit": "portion"
+    "servingUnit": "portion",
+    "gramsPerServing": 300
   },
   {
     "id": "mais-epi",
@@ -4289,7 +4378,8 @@
     "sel": "faible",
     "easyToCook": true,
     "weeklyServings": 3,
-    "servingUnit": "portion"
+    "servingUnit": "portion",
+    "gramsPerServing": 150
   },
   {
     "id": "salade-frisee",
@@ -4314,7 +4404,8 @@
     "sel": "faible",
     "easyToCook": true,
     "weeklyServings": 3,
-    "servingUnit": "portion"
+    "servingUnit": "portion",
+    "gramsPerServing": 100
   },
   {
     "id": "cresson",
@@ -4339,7 +4430,8 @@
     "sel": "faible",
     "easyToCook": true,
     "weeklyServings": 3,
-    "servingUnit": "portion"
+    "servingUnit": "portion",
+    "gramsPerServing": 50
   },
   {
     "id": "camembert",
@@ -4365,7 +4457,8 @@
     "sel": "moyen",
     "easyToCook": true,
     "weeklyServings": 3,
-    "servingUnit": "portion"
+    "servingUnit": "portion",
+    "gramsPerServing": 30
   },
   {
     "id": "roquefort",
@@ -4390,7 +4483,8 @@
     "sel": "riche",
     "easyToCook": true,
     "weeklyServings": 3,
-    "servingUnit": "portion"
+    "servingUnit": "portion",
+    "gramsPerServing": 30
   },
   {
     "id": "ricotta",
@@ -4417,7 +4511,8 @@
     "sel": "moyen",
     "easyToCook": true,
     "weeklyServings": 3,
-    "servingUnit": "portion"
+    "servingUnit": "portion",
+    "gramsPerServing": 50
   },
   {
     "id": "parmesan",
@@ -4467,7 +4562,8 @@
     "sel": "moyen",
     "easyToCook": true,
     "weeklyServings": 3,
-    "servingUnit": "portion"
+    "servingUnit": "portion",
+    "gramsPerServing": 100
   },
   {
     "id": "faisselle",
@@ -4493,7 +4589,8 @@
     "sel": "faible",
     "easyToCook": true,
     "weeklyServings": 3,
-    "servingUnit": "portion"
+    "servingUnit": "portion",
+    "gramsPerServing": 100
   },
   {
     "id": "lait-entier",
@@ -4519,7 +4616,8 @@
     "sel": "faible",
     "easyToCook": true,
     "weeklyServings": 3,
-    "servingUnit": "portion"
+    "servingUnit": "portion",
+    "gramsPerServing": 200
   },
   {
     "id": "lait-ecreme",
@@ -4544,7 +4642,8 @@
     "sel": "faible",
     "easyToCook": true,
     "weeklyServings": 3,
-    "servingUnit": "portion"
+    "servingUnit": "portion",
+    "gramsPerServing": 200
   },
   {
     "id": "beurre-demi-sel",
@@ -4617,7 +4716,8 @@
     "sel": "faible",
     "easyToCook": true,
     "weeklyServings": 3,
-    "servingUnit": "portion"
+    "servingUnit": "portion",
+    "gramsPerServing": 150
   },
   {
     "id": "tempeh",
@@ -4642,7 +4742,8 @@
     "sel": "faible",
     "easyToCook": true,
     "weeklyServings": 3,
-    "servingUnit": "portion"
+    "servingUnit": "portion",
+    "gramsPerServing": 100
   },
   {
     "id": "pate-campagne",
@@ -4668,7 +4769,8 @@
     "easyToCook": true,
     "weeklyServings": 3,
     "servingUnit": "portion",
-    "ultraTransforme": true
+    "ultraTransforme": true,
+    "gramsPerServing": 40
   },
   {
     "id": "rillettes",
@@ -4692,7 +4794,8 @@
     "easyToCook": true,
     "weeklyServings": 3,
     "servingUnit": "portion",
-    "ultraTransforme": true
+    "ultraTransforme": true,
+    "gramsPerServing": 40
   },
   {
     "id": "saucisson-sec",
@@ -4717,7 +4820,8 @@
     "easyToCook": true,
     "weeklyServings": 3,
     "servingUnit": "portion",
-    "ultraTransforme": true
+    "ultraTransforme": true,
+    "gramsPerServing": 30
   },
   {
     "id": "terrine",
@@ -4743,7 +4847,8 @@
     "easyToCook": true,
     "weeklyServings": 3,
     "servingUnit": "portion",
-    "ultraTransforme": true
+    "ultraTransforme": true,
+    "gramsPerServing": 40
   },
   {
     "id": "pate-feuilletee",
@@ -4770,7 +4875,8 @@
     "easyToCook": true,
     "weeklyServings": 3,
     "servingUnit": "portion",
-    "ultraTransforme": true
+    "ultraTransforme": true,
+    "gramsPerServing": 100
   },
   {
     "id": "quiche-prete",
@@ -4797,7 +4903,8 @@
     "easyToCook": true,
     "weeklyServings": 3,
     "servingUnit": "portion",
-    "ultraTransforme": true
+    "ultraTransforme": true,
+    "gramsPerServing": 150
   },
   {
     "id": "ravioli-frais",
@@ -4824,7 +4931,8 @@
     "easyToCook": true,
     "weeklyServings": 3,
     "servingUnit": "portion",
-    "ultraTransforme": true
+    "ultraTransforme": true,
+    "gramsPerServing": 200
   },
   {
     "id": "beurre-allege",
@@ -4876,7 +4984,8 @@
     "gourmand": true,
     "weeklyServings": 3,
     "servingUnit": "portion",
-    "ultraTransforme": true
+    "ultraTransforme": true,
+    "gramsPerServing": 30
   },
   {
     "id": "glace-vanille",
@@ -4903,7 +5012,8 @@
     "gourmand": true,
     "weeklyServings": 3,
     "servingUnit": "portion",
-    "ultraTransforme": true
+    "ultraTransforme": true,
+    "gramsPerServing": 100
   },
   {
     "id": "mousse-chocolat",
@@ -4932,7 +5042,8 @@
     "gourmand": true,
     "weeklyServings": 3,
     "servingUnit": "portion",
-    "ultraTransforme": true
+    "ultraTransforme": true,
+    "gramsPerServing": 100
   },
   {
     "id": "tiramisu",
@@ -4961,7 +5072,8 @@
     "gourmand": true,
     "weeklyServings": 3,
     "servingUnit": "portion",
-    "ultraTransforme": true
+    "ultraTransforme": true,
+    "gramsPerServing": 100
   },
   {
     "id": "flan",
@@ -4989,7 +5101,8 @@
     "gourmand": true,
     "weeklyServings": 3,
     "servingUnit": "portion",
-    "ultraTransforme": true
+    "ultraTransforme": true,
+    "gramsPerServing": 100
   },
   {
     "id": "escalope-veau",
@@ -5015,7 +5128,8 @@
     "sel": "moyen",
     "easyToCook": true,
     "weeklyServings": 3,
-    "servingUnit": "portion"
+    "servingUnit": "portion",
+    "gramsPerServing": 120
   },
   {
     "id": "cotes-porc",
@@ -5037,7 +5151,8 @@
     "sel": "moyen",
     "easyToCook": true,
     "weeklyServings": 3,
-    "servingUnit": "portion"
+    "servingUnit": "portion",
+    "gramsPerServing": 150
   },
   {
     "id": "roti-boeuf",
@@ -5060,7 +5175,8 @@
     "sel": "moyen",
     "easyToCook": true,
     "weeklyServings": 3,
-    "servingUnit": "portion"
+    "servingUnit": "portion",
+    "gramsPerServing": 150
   },
   {
     "id": "poulet-entier",
@@ -5083,7 +5199,8 @@
     "sel": "faible",
     "easyToCook": true,
     "weeklyServings": 3,
-    "servingUnit": "portion"
+    "servingUnit": "portion",
+    "gramsPerServing": 200
   },
   {
     "id": "blanc-dinde",
@@ -5106,7 +5223,8 @@
     "sel": "moyen",
     "easyToCook": true,
     "weeklyServings": 3,
-    "servingUnit": "portion"
+    "servingUnit": "portion",
+    "gramsPerServing": 120
   },
   {
     "id": "agneau-hache",
@@ -5129,7 +5247,8 @@
     "sel": "moyen",
     "easyToCook": true,
     "weeklyServings": 3,
-    "servingUnit": "portion"
+    "servingUnit": "portion",
+    "gramsPerServing": 120
   },
   {
     "id": "foie-volaille",
@@ -5152,7 +5271,8 @@
     "sel": "riche",
     "easyToCook": true,
     "weeklyServings": 3,
-    "servingUnit": "portion"
+    "servingUnit": "portion",
+    "gramsPerServing": 100
   },
   {
     "id": "lapin",
@@ -5175,7 +5295,8 @@
     "sel": "faible",
     "easyToCook": true,
     "weeklyServings": 3,
-    "servingUnit": "portion"
+    "servingUnit": "portion",
+    "gramsPerServing": 150
   },
   {
     "id": "dorade",
@@ -5198,7 +5319,8 @@
     "sel": "faible",
     "easyToCook": true,
     "weeklyServings": 3,
-    "servingUnit": "portion"
+    "servingUnit": "portion",
+    "gramsPerServing": 150
   },
   {
     "id": "maquereau",
@@ -5221,7 +5343,8 @@
     "sel": "moyen",
     "easyToCook": true,
     "weeklyServings": 3,
-    "servingUnit": "portion"
+    "servingUnit": "portion",
+    "gramsPerServing": 120
   },
   {
     "id": "truite",
@@ -5244,7 +5367,8 @@
     "sel": "riche",
     "easyToCook": true,
     "weeklyServings": 3,
-    "servingUnit": "portion"
+    "servingUnit": "portion",
+    "gramsPerServing": 150
   },
   {
     "id": "colin",
@@ -5267,7 +5391,8 @@
     "sel": "faible",
     "easyToCook": true,
     "weeklyServings": 3,
-    "servingUnit": "portion"
+    "servingUnit": "portion",
+    "gramsPerServing": 130
   },
   {
     "id": "sole",
@@ -5290,7 +5415,8 @@
     "sel": "faible",
     "easyToCook": true,
     "weeklyServings": 3,
-    "servingUnit": "portion"
+    "servingUnit": "portion",
+    "gramsPerServing": 130
   },
   {
     "id": "calamars",
@@ -5315,7 +5441,8 @@
     "sel": "moyen",
     "easyToCook": true,
     "weeklyServings": 3,
-    "servingUnit": "portion"
+    "servingUnit": "portion",
+    "gramsPerServing": 120
   },
   {
     "id": "saint-jacques",
@@ -5338,7 +5465,8 @@
     "sel": "moyen",
     "easyToCook": true,
     "weeklyServings": 3,
-    "servingUnit": "portion"
+    "servingUnit": "portion",
+    "gramsPerServing": 100
   },
   {
     "id": "thon-frais",
@@ -5361,7 +5489,8 @@
     "sel": "faible",
     "easyToCook": true,
     "weeklyServings": 3,
-    "servingUnit": "portion"
+    "servingUnit": "portion",
+    "gramsPerServing": 130
   },
   {
     "id": "anchois",
@@ -5406,7 +5535,8 @@
     "easyToCook": true,
     "weeklyServings": 3,
     "servingUnit": "portion",
-    "ultraTransforme": true
+    "ultraTransforme": true,
+    "gramsPerServing": 30
   },
   {
     "id": "pate-de-foie",
@@ -5432,7 +5562,8 @@
     "easyToCook": true,
     "weeklyServings": 3,
     "servingUnit": "portion",
-    "ultraTransforme": true
+    "ultraTransforme": true,
+    "gramsPerServing": 40
   },
   {
     "id": "boudin-noir",
@@ -5455,7 +5586,8 @@
     "easyToCook": true,
     "weeklyServings": 3,
     "servingUnit": "portion",
-    "ultraTransforme": true
+    "ultraTransforme": true,
+    "gramsPerServing": 100
   },
   {
     "id": "andouillette",
@@ -5478,7 +5610,8 @@
     "easyToCook": true,
     "weeklyServings": 3,
     "servingUnit": "portion",
-    "ultraTransforme": true
+    "ultraTransforme": true,
+    "gramsPerServing": 120
   },
   {
     "id": "bacon",
@@ -5501,7 +5634,8 @@
     "easyToCook": true,
     "weeklyServings": 3,
     "servingUnit": "portion",
-    "ultraTransforme": true
+    "ultraTransforme": true,
+    "gramsPerServing": 30
   },
   {
     "id": "nuggets-poulet",
@@ -5527,7 +5661,8 @@
     "easyToCook": true,
     "weeklyServings": 3,
     "servingUnit": "portion",
-    "ultraTransforme": true
+    "ultraTransforme": true,
+    "gramsPerServing": 100
   },
   {
     "id": "cordon-bleu",
@@ -5553,7 +5688,8 @@
     "easyToCook": true,
     "weeklyServings": 3,
     "servingUnit": "portion",
-    "ultraTransforme": true
+    "ultraTransforme": true,
+    "gramsPerServing": 120
   },
   {
     "id": "filet-dinde-fume",
@@ -5577,7 +5713,8 @@
     "easyToCook": true,
     "weeklyServings": 3,
     "servingUnit": "portion",
-    "ultraTransforme": true
+    "ultraTransforme": true,
+    "gramsPerServing": 30
   },
   {
     "id": "surimi",
@@ -5605,7 +5742,8 @@
     "easyToCook": true,
     "weeklyServings": 3,
     "servingUnit": "portion",
-    "ultraTransforme": true
+    "ultraTransforme": true,
+    "gramsPerServing": 50
   },
   {
     "id": "truite-fumee",
@@ -5628,7 +5766,8 @@
     "sel": "riche",
     "easyToCook": true,
     "weeklyServings": 3,
-    "servingUnit": "portion"
+    "servingUnit": "portion",
+    "gramsPerServing": 40
   },
   {
     "id": "lieu-noir",
@@ -5651,7 +5790,8 @@
     "sel": "faible",
     "easyToCook": true,
     "weeklyServings": 3,
-    "servingUnit": "portion"
+    "servingUnit": "portion",
+    "gramsPerServing": 130
   },
   {
     "id": "pain-de-campagne",
@@ -5758,7 +5898,8 @@
     "easyToCook": true,
     "weeklyServings": 3,
     "servingUnit": "portion",
-    "ultraTransforme": true
+    "ultraTransforme": true,
+    "gramsPerServing": 80
   },
   {
     "id": "pain-hot-dog",
@@ -5784,7 +5925,8 @@
     "easyToCook": true,
     "weeklyServings": 3,
     "servingUnit": "portion",
-    "ultraTransforme": true
+    "ultraTransforme": true,
+    "gramsPerServing": 60
   },
   {
     "id": "naan",
@@ -5810,7 +5952,8 @@
     "easyToCook": true,
     "weeklyServings": 3,
     "servingUnit": "portion",
-    "ultraTransforme": true
+    "ultraTransforme": true,
+    "gramsPerServing": 90
   },
   {
     "id": "pain-epices",
@@ -5953,7 +6096,8 @@
     "gourmand": true,
     "weeklyServings": 3,
     "servingUnit": "portion",
-    "ultraTransforme": true
+    "ultraTransforme": true,
+    "gramsPerServing": 40
   },
   {
     "id": "cookie",
@@ -5980,7 +6124,8 @@
     "gourmand": true,
     "weeklyServings": 3,
     "servingUnit": "portion",
-    "ultraTransforme": true
+    "ultraTransforme": true,
+    "gramsPerServing": 35
   },
   {
     "id": "muffin",
@@ -6009,7 +6154,8 @@
     "gourmand": true,
     "weeklyServings": 3,
     "servingUnit": "portion",
-    "ultraTransforme": true
+    "ultraTransforme": true,
+    "gramsPerServing": 60
   },
   {
     "id": "tarte-fine",
@@ -6037,7 +6183,8 @@
     "gourmand": true,
     "weeklyServings": 3,
     "servingUnit": "portion",
-    "ultraTransforme": true
+    "ultraTransforme": true,
+    "gramsPerServing": 100
   },
   {
     "id": "gressins",
@@ -6065,7 +6212,8 @@
     "easyToCook": true,
     "weeklyServings": 3,
     "servingUnit": "portion",
-    "ultraTransforme": true
+    "ultraTransforme": true,
+    "gramsPerServing": 20
   },
   {
     "id": "tortilla-mais",
@@ -6090,7 +6238,8 @@
     "sel": "moyen",
     "easyToCook": true,
     "weeklyServings": 3,
-    "servingUnit": "portion"
+    "servingUnit": "portion",
+    "gramsPerServing": 40
   },
   {
     "id": "pain-complet-graines",
@@ -6144,7 +6293,8 @@
     "sel": "riche",
     "easyToCook": true,
     "weeklyServings": 3,
-    "servingUnit": "portion"
+    "servingUnit": "portion",
+    "gramsPerServing": 80
   },
   {
     "id": "pain-brie",
@@ -6196,6 +6346,7 @@
     "sel": "moyen",
     "easyToCook": true,
     "weeklyServings": 3,
-    "servingUnit": "portion"
+    "servingUnit": "portion",
+    "gramsPerServing": 80
   }
 ]
