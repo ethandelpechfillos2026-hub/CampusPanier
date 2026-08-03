@@ -141,6 +141,17 @@ function round(amount: number): number {
   return Math.round(amount * 100) / 100;
 }
 
+// Au-delà de ce nombre de produits DIFFÉRENTS dans une catégorie, la phase 2
+// augmente plutôt la quantité d'un produit déjà choisi — sans ça, un gros
+// budget viande-poisson finissait avec 5-6 viandes/poissons différents en
+// une seule portion chacun (colin + lapin + thon + poulet + dinde la même
+// semaine) plutôt qu'une plus grosse quantité de moins de produits, plus
+// cohérent pour cuisiner.
+const MAX_DISTINCT_PER_CATEGORY: Partial<Record<Product["category"], number>> = {
+  "viande-poisson": 3,
+};
+const MAX_QUANTITY_PER_ITEM = 3;
+
 export function generateShoppingList(
   preferences: UserPreferences
 ): ShoppingListResult {
@@ -170,6 +181,7 @@ export function generateShoppingList(
 
   const selected: Product[] = [];
   const selectedIds = new Set<string>();
+  const quantities = new Map<string, number>();
   let total = 0;
 
   // Phase 1 : un article par catégorie, en priorisant ceux qui correspondent
@@ -185,6 +197,7 @@ export function generateShoppingList(
 
     selected.push(product);
     selectedIds.add(product.id);
+    quantities.set(product.id, 1);
     total += product.price;
   }
 
@@ -226,6 +239,7 @@ export function generateShoppingList(
 
     selected.push(product);
     selectedIds.add(product.id);
+    quantities.set(product.id, 1);
     total += product.price;
   }
 
@@ -240,10 +254,52 @@ export function generateShoppingList(
       return a.price - b.price;
     });
 
+  const categoryCounts = new Map<Product["category"], number>();
+  for (const p of selected) {
+    categoryCounts.set(p.category, (categoryCounts.get(p.category) ?? 0) + 1);
+  }
+
   for (const product of remaining) {
+    const cap = MAX_DISTINCT_PER_CATEGORY[product.category];
+    const atCap =
+      cap !== undefined && (categoryCounts.get(product.category) ?? 0) >= cap;
+
+    if (atCap) {
+      // Plafond atteint pour cette catégorie : plutôt qu'un produit
+      // différent de plus, on prend une quantité supplémentaire du meilleur
+      // produit déjà choisi dans cette catégorie (dans la limite de
+      // MAX_QUANTITY_PER_ITEM) — plus cohérent à cuisiner qu'une multitude
+      // de viandes/poissons différents en une seule portion chacun.
+      const boostCandidate = selected
+        .filter(
+          (p) =>
+            p.category === product.category &&
+            (quantities.get(p.id) ?? 1) < MAX_QUANTITY_PER_ITEM
+        )
+        .sort((a, b) => {
+          const scoreDiff = score(b, preferences) - score(a, preferences);
+          if (scoreDiff !== 0) return scoreDiff;
+          return a.price - b.price;
+        })[0];
+
+      if (boostCandidate && total + boostCandidate.price <= preferences.budget) {
+        quantities.set(
+          boostCandidate.id,
+          (quantities.get(boostCandidate.id) ?? 1) + 1
+        );
+        total += boostCandidate.price;
+      }
+      continue;
+    }
+
     if (total + product.price <= preferences.budget) {
       selected.push(product);
       selectedIds.add(product.id);
+      quantities.set(product.id, 1);
+      categoryCounts.set(
+        product.category,
+        (categoryCounts.get(product.category) ?? 0) + 1
+      );
       total += product.price;
     }
   }
@@ -251,7 +307,10 @@ export function generateShoppingList(
   const roundedTotal = round(total);
 
   return {
-    items: selected.map((product) => ({ product, quantity: 1 })),
+    items: selected.map((product) => ({
+      product,
+      quantity: quantities.get(product.id) ?? 1,
+    })),
     total: roundedTotal,
     budget: preferences.budget,
     remaining: round(Math.max(0, preferences.budget - roundedTotal)),

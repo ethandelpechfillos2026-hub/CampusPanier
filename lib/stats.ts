@@ -12,6 +12,7 @@ export interface ListHistoryItem {
   id: string;
   name: string;
   price: number;
+  quantity: number;
 }
 
 export interface ListHistoryEntry {
@@ -47,10 +48,11 @@ export function recordListGenerated(result: ShoppingListResult): void {
     budget: result.budget,
     total: result.total,
     isOverBudget: result.isOverBudget,
-    items: result.items.map(({ product }) => ({
+    items: result.items.map(({ product, quantity }) => ({
       id: product.id,
       name: product.shortName ?? product.name,
       price: product.price,
+      quantity,
     })),
   });
   writeHistory(history.slice(-MAX_HISTORY));

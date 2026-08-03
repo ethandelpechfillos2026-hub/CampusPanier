@@ -6,6 +6,7 @@ import {
   DAY_SLOT_ICONS,
   DAY_SLOT_LABELS,
   DAY_SLOT_ORDER,
+  formatDayEntryQuantity,
   WEEKDAY_LABELS,
 } from "@/lib/generateMenu";
 import { ShoppingListResult } from "@/lib/types";
@@ -84,13 +85,7 @@ export default function MenuContent({ result, onRestart }: MenuContentProps) {
                             {product.shortName ?? product.name}
                           </span>
                           <span className="shrink-0 font-semibold text-campus-terracotta">
-                            {product.gramsPerServing
-                              ? `${count * product.gramsPerServing} g`
-                              : `${count} ${
-                                  count > 1
-                                    ? `${product.servingUnit}s`
-                                    : product.servingUnit
-                                }`}
+                            {formatDayEntryQuantity(product, count)}
                           </span>
                         </li>
                       ))}

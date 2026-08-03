@@ -68,14 +68,16 @@ function buildDownloadableHtml(
       ? groups
           .map((group) => {
             const rows = group.items
-              .map(
-                (item) =>
-                  `<li style="display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px dashed #E5D3BC;"><span>${escapeHtml(
-                    item.name
-                  )}</span><span style="font-weight:600;">${formatPrice(
-                    item.price
-                  )}</span></li>`
-              )
+              .map((item) => {
+                const quantity = item.quantity ?? 1;
+                const label =
+                  quantity > 1 ? `${item.name} ×${quantity}` : item.name;
+                return `<li style="display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px dashed #E5D3BC;"><span>${escapeHtml(
+                  label
+                )}</span><span style="font-weight:600;">${formatPrice(
+                  item.price * quantity
+                )}</span></li>`;
+              })
               .join("");
             return `<section style="margin-top:20px;">
               <h2 style="font-size:11px;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;color:#6B7280;margin:0 0 6px;">${escapeHtml(
@@ -188,17 +190,27 @@ export default function PrintableListView({
                     {group.label}
                   </h2>
                   <ul className="space-y-1.5">
-                    {group.items.map((item, index) => (
-                      <li
-                        key={`${item.id}-${index}`}
-                        className="flex items-center justify-between border-b border-dashed border-campus-sand pb-1.5 text-sm text-campus-ink"
-                      >
-                        <span>{item.name}</span>
-                        <span className="font-semibold">
-                          {formatPrice(item.price)}
-                        </span>
-                      </li>
-                    ))}
+                    {group.items.map((item, index) => {
+                      const quantity = item.quantity ?? 1;
+                      return (
+                        <li
+                          key={`${item.id}-${index}`}
+                          className="flex items-center justify-between border-b border-dashed border-campus-sand pb-1.5 text-sm text-campus-ink"
+                        >
+                          <span>
+                            {item.name}
+                            {quantity > 1 && (
+                              <span className="ml-1.5 text-xs font-bold text-campus-terracotta">
+                                ×{quantity}
+                              </span>
+                            )}
+                          </span>
+                          <span className="font-semibold">
+                            {formatPrice(item.price * quantity)}
+                          </span>
+                        </li>
+                      );
+                    })}
                   </ul>
                 </section>
               ))}

@@ -89,31 +89,72 @@ export interface WeeklyPlan {
   days: DayPlan[];
 }
 
-// Étale `total` occurrences le plus régulièrement possible sur 7 jours, en
-// partant du jour `offset` plutôt que toujours du lundi — sinon tous les
-// produits achetés en une seule unité (riz, cabillaud...) atterriraient
-// systématiquement le même jour.
-function spreadAcrossWeek(total: number, offset: number): number[] {
+// Étale `total` occurrences de façon RIGOUREUSEMENT égale sur les jours
+// autorisés (tous les 7 jours par défaut, ou un sous-ensemble pour les
+// "familles" de produits interchangeables — voir plus bas). Avant, un
+// étalement par lots entiers (ex : 3 jours avec 1 baguette entière, 4 jours
+// sans rien) donnait des matins très différents les uns des autres. Une
+// part égale chaque jour (ex : ¾ de baguette tous les jours plutôt qu'une
+// baguette entière 3 jours et rien les 4 autres) donne une semaine
+// équivalente d'un jour à l'autre, comme demandé.
+function evenlySpread(total: number, allowedDays: number[]): number[] {
   const counts = new Array(7).fill(0);
-  for (let k = 0; k < total; k++) {
-    const dayIndex = (Math.floor((k * 7) / total) + offset) % 7;
-    counts[dayIndex] += 1;
+  const n = allowedDays.length;
+  if (n === 0 || total === 0) return counts;
+  const perDay = total / n;
+  for (const day of allowedDays) {
+    counts[day] = perDay;
   }
   return counts;
 }
 
-// Même principe que spreadAcrossWeek, mais limité à un sous-ensemble de
-// jours autorisés — utilisé pour les "familles" de produits interchangeables
-// (voir plus bas) afin qu'ils ne se marchent jamais dessus le même jour.
-function spreadAcrossDays(total: number, allowedDays: number[]): number[] {
-  const counts = new Array(7).fill(0);
-  const n = allowedDays.length;
-  if (n === 0 || total === 0) return counts;
-  for (let k = 0; k < total; k++) {
-    const dayIndex = allowedDays[Math.floor((k * n) / total) % n];
-    counts[dayIndex] += 1;
+function roundToQuarter(value: number): number {
+  return Math.round(value * 4) / 4;
+}
+
+// Formate une quantité fractionnaire en glyphe lisible ("¼", "½", "¾") pour
+// les produits qui se comptent à l'unité (baguette, œuf, yaourt...) — les
+// grammes précis n'ont pas de sens pour ce genre d'article.
+function formatFractionalUnit(value: number, unit: string): string {
+  const whole = Math.floor(value);
+  const frac = round2(value - whole);
+  let fracGlyph = "";
+  if (frac === 0.25) fracGlyph = "¼";
+  else if (frac === 0.5) fracGlyph = "½";
+  else if (frac === 0.75) fracGlyph = "¾";
+
+  const unitLabel = value > 1 ? `${unit}s` : unit;
+  const numberLabel =
+    whole === 0 ? fracGlyph : fracGlyph ? `${whole} ${fracGlyph}` : `${whole}`;
+
+  return `${numberLabel} ${unitLabel}`;
+}
+
+function round2(value: number): number {
+  return Math.round(value * 100) / 100;
+}
+
+// Formate la quantité du jour pour un article de "Mon menu" : des grammes
+// arrondis à 5 g près pour les produits qui se dosent en poids (riz,
+// pâtes...), ou une fraction lisible (¼, ½, ¾, 1, 1 ¼...) pour les produits
+// qui se comptent à l'unité (baguette, œuf...). Le résultat n'est jamais 0
+// tant que le produit est présent ce jour-là (minimum ¼ unité affiché).
+export function formatDayEntryQuantity(
+  product: Product,
+  rawCount: number
+): string {
+  if (product.gramsPerServing) {
+    const grams = Math.max(
+      5,
+      Math.round((rawCount * product.gramsPerServing) / 5) * 5
+    );
+    return `${grams} g`;
   }
-  return counts;
+  if (!product.servingUnit) return `${rawCount}`;
+
+  const rounded = roundToQuarter(rawCount);
+  const displayValue = rounded === 0 && rawCount > 0 ? 0.25 : rounded;
+  return formatFractionalUnit(displayValue, product.servingUnit);
 }
 
 // Groupes de produits qui jouent le même rôle dans un repas (plusieurs
@@ -184,8 +225,8 @@ export function buildWeeklyPlan(items: ShoppingListItem[]): WeeklyPlan {
   }));
 
   const mainsByDay: DayEntry[][] = Array.from({ length: 7 }, () => []);
-  let productIndex = 0;
   const familyDayMap = buildFamilyDayMap(items);
+  const allWeekDays = [0, 1, 2, 3, 4, 5, 6];
 
   for (const item of items) {
     const { product, quantity } = item;
@@ -195,19 +236,14 @@ export function buildWeeklyPlan(items: ShoppingListItem[]): WeeklyPlan {
     if (!product.weeklyServings || product.isCondiment) continue;
 
     const total = product.weeklyServings * quantity;
-    // Pas de 3 (premier avec 7) pour bien étaler les décalages entre
-    // produits successifs avant de reboucler.
-    const offset = (productIndex * 3) % 7;
-    productIndex += 1;
 
     // Un produit membre d'une "famille" (voir plus haut) n'a droit qu'à ses
     // jours réservés, pour ne jamais tomber le même jour qu'un autre membre
     // de la même famille — sinon "Mon menu" propose baguette + biscottes +
-    // pain de mie le même petit-déjeuner.
-    const allowedDays = familyDayMap.get(product.id);
-    const perDayCounts = allowedDays
-      ? spreadAcrossDays(total, allowedDays)
-      : spreadAcrossWeek(total, offset);
+    // pain de mie le même petit-déjeuner. Dans les deux cas, la quantité
+    // hebdomadaire est répartie à parts égales sur les jours autorisés.
+    const allowedDays = familyDayMap.get(product.id) ?? allWeekDays;
+    const perDayCounts = evenlySpread(total, allowedDays);
 
     perDayCounts.forEach((count, dayIndex) => {
       if (count === 0) return;

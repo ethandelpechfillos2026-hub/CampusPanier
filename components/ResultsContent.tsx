@@ -170,7 +170,7 @@ export default function ResultsContent({
                 {CATEGORY_LABELS[category]}
               </h2>
               <ul className="space-y-1">
-                {items.map(({ product }) => {
+                {items.map(({ product, quantity }) => {
                   const isChecked = checkedIds.has(product.id);
                   return (
                     <li key={product.id}>
@@ -189,6 +189,11 @@ export default function ResultsContent({
                           }`}
                         >
                           {product.name}
+                          {quantity > 1 && (
+                            <span className="ml-1.5 text-xs font-bold text-campus-terracotta">
+                              ×{quantity}
+                            </span>
+                          )}
                         </span>
                         <span
                           className={`text-sm font-semibold ${
@@ -197,7 +202,7 @@ export default function ResultsContent({
                               : "text-campus-ink"
                           }`}
                         >
-                          {formatPrice(product.price)}
+                          {formatPrice(product.price * quantity)}
                         </span>
                       </label>
                     </li>

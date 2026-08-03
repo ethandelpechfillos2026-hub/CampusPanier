@@ -389,57 +389,6 @@ export default function ProfileForm({ onComplete, initialProfile }: ProfileFormP
 
                 {sex && (
                   <>
-                    <div className="space-y-2">
-                      <div className="flex items-center justify-between text-sm">
-                        <span className="text-campus-muted">Poids</span>
-                        <span className="font-bold text-campus-ink">{weightKg} kg</span>
-                      </div>
-                      <input
-                        type="range"
-                        min={WEIGHT_MIN}
-                        max={WEIGHT_MAX}
-                        step={1}
-                        value={weightKg}
-                        onChange={(e) => setWeightKg(Number(e.target.value))}
-                        aria-label="Poids"
-                        className="w-full"
-                      />
-                    </div>
-
-                    <div className="space-y-2">
-                      <div className="flex items-center justify-between text-sm">
-                        <span className="text-campus-muted">Taille</span>
-                        <span className="font-bold text-campus-ink">{heightCm} cm</span>
-                      </div>
-                      <input
-                        type="range"
-                        min={HEIGHT_MIN}
-                        max={HEIGHT_MAX}
-                        step={1}
-                        value={heightCm}
-                        onChange={(e) => setHeightCm(Number(e.target.value))}
-                        aria-label="Taille"
-                        className="w-full"
-                      />
-                    </div>
-
-                    <div className="space-y-2">
-                      <div className="flex items-center justify-between text-sm">
-                        <span className="text-campus-muted">Âge</span>
-                        <span className="font-bold text-campus-ink">{age} ans</span>
-                      </div>
-                      <input
-                        type="range"
-                        min={AGE_MIN}
-                        max={AGE_MAX}
-                        step={1}
-                        value={age}
-                        onChange={(e) => setAge(Number(e.target.value))}
-                        aria-label="Âge"
-                        className="w-full"
-                      />
-                    </div>
-
                     {macroTargets && !customMacros && (
                       <div className="rounded-2xl bg-campus-terracotta/10 p-4">
                         <div className="flex items-start justify-between gap-2">
@@ -562,6 +511,63 @@ export default function ProfileForm({ onComplete, initialProfile }: ProfileFormP
                         </p>
                       </div>
                     )}
+
+                    <div className="space-y-4 border-t border-campus-sand pt-4">
+                      <p className="text-xs font-semibold uppercase tracking-wide text-campus-muted">
+                        Affiner le calcul automatique
+                      </p>
+
+                      <div className="space-y-2">
+                        <div className="flex items-center justify-between text-sm">
+                          <span className="text-campus-muted">Poids</span>
+                          <span className="font-bold text-campus-ink">{weightKg} kg</span>
+                        </div>
+                        <input
+                          type="range"
+                          min={WEIGHT_MIN}
+                          max={WEIGHT_MAX}
+                          step={1}
+                          value={weightKg}
+                          onChange={(e) => setWeightKg(Number(e.target.value))}
+                          aria-label="Poids"
+                          className="w-full"
+                        />
+                      </div>
+
+                      <div className="space-y-2">
+                        <div className="flex items-center justify-between text-sm">
+                          <span className="text-campus-muted">Taille</span>
+                          <span className="font-bold text-campus-ink">{heightCm} cm</span>
+                        </div>
+                        <input
+                          type="range"
+                          min={HEIGHT_MIN}
+                          max={HEIGHT_MAX}
+                          step={1}
+                          value={heightCm}
+                          onChange={(e) => setHeightCm(Number(e.target.value))}
+                          aria-label="Taille"
+                          className="w-full"
+                        />
+                      </div>
+
+                      <div className="space-y-2">
+                        <div className="flex items-center justify-between text-sm">
+                          <span className="text-campus-muted">Âge</span>
+                          <span className="font-bold text-campus-ink">{age} ans</span>
+                        </div>
+                        <input
+                          type="range"
+                          min={AGE_MIN}
+                          max={AGE_MAX}
+                          step={1}
+                          value={age}
+                          onChange={(e) => setAge(Number(e.target.value))}
+                          aria-label="Âge"
+                          className="w-full"
+                        />
+                      </div>
+                    </div>
                   </>
                 )}
               </div>
