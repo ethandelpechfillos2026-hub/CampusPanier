@@ -82,12 +82,27 @@ export default function ProfileForm({ onComplete, initialProfile }: ProfileFormP
   const [performanceObjective, setPerformanceObjective] = useState<
     "prise-masse" | "seche"
   >(initialProfile?.macroPreferences.includes("seche") ? "seche" : "prise-masse");
+  // Étudiant·e qui mange à la cantine le midi en semaine — réduit les
+  // courses "déjeuner-dîner" prévues à la maison (voir generateShoppingList.ts)
+  // et met tout au dîner les jours de semaine dans "Mon menu" (voir
+  // generateMenu.ts), pour éviter les restes non consommés.
+  const [eatsLunchAtCanteen, setEatsLunchAtCanteen] = useState(
+    initialProfile?.eatsLunchAtCanteen ?? false
+  );
 
   const currentStep = STEPS[step - 1];
   const computedMacroTargets =
     calorieMode === "custom"
       ? computeMacroTargets(
-          { sex, weightKg, heightCm, age, macroOverride: null, performanceMode },
+          {
+            sex,
+            weightKg,
+            heightCm,
+            age,
+            macroOverride: null,
+            performanceMode,
+            eatsLunchAtCanteen,
+          },
           caloriesValue
         )
       : null;
@@ -190,6 +205,7 @@ export default function ProfileForm({ onComplete, initialProfile }: ProfileFormP
             }
           : null,
       performanceMode,
+      eatsLunchAtCanteen,
     });
   }
 
@@ -222,19 +238,48 @@ export default function ProfileForm({ onComplete, initialProfile }: ProfileFormP
 
       <div className="flex-1">
         {step === 1 && (
-          <div className="grid grid-cols-2 gap-3">
-            {DIET_OPTIONS.map((option) => (
-              <button
-                key={option.value}
-                type="button"
-                onClick={() => setDiet(option.value)}
-                className={`diet-btn ${
-                  diet === option.value ? "diet-btn-selected" : "diet-btn-default"
-                }`}
-              >
-                {option.label}
-              </button>
-            ))}
+          <div className="space-y-5">
+            <div className="grid grid-cols-2 gap-3">
+              {DIET_OPTIONS.map((option) => (
+                <button
+                  key={option.value}
+                  type="button"
+                  onClick={() => setDiet(option.value)}
+                  className={`diet-btn ${
+                    diet === option.value ? "diet-btn-selected" : "diet-btn-default"
+                  }`}
+                >
+                  {option.label}
+                </button>
+              ))}
+            </div>
+
+            <div className="rounded-2xl border-2 border-campus-terracotta/30 bg-campus-terracotta/5 p-4">
+              <div className="flex items-center justify-between gap-3">
+                <div>
+                  <p className="text-sm font-bold text-campus-ink">
+                    🍽️ Cantine le midi
+                  </p>
+                  <p className="mt-0.5 text-xs text-campus-muted">
+                    Tu manges à la cantine du lundi au vendredi ? On réduit
+                    les courses prévues pour le déjeuner à la maison, pour
+                    éviter les restes en fin de semaine.
+                  </p>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setEatsLunchAtCanteen((prev) => !prev)}
+                  aria-pressed={eatsLunchAtCanteen}
+                  className={`shrink-0 rounded-full px-4 py-2 text-xs font-bold transition-colors ${
+                    eatsLunchAtCanteen
+                      ? "bg-campus-terracotta text-white"
+                      : "bg-white text-campus-ink border-2 border-campus-sand"
+                  }`}
+                >
+                  {eatsLunchAtCanteen ? "Activé" : "Activer"}
+                </button>
+              </div>
+            </div>
           </div>
         )}
 

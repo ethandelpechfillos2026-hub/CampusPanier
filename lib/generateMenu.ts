@@ -246,6 +246,11 @@ function emptyDaySlots(): Record<DaySlot, DayEntry[]> {
   return { petitDejeuner: [], dejeuner: [], diner: [], collation: [] };
 }
 
+// Indices (0 = Lundi ... 6 = Dimanche) des jours de semaine — la cantine
+// universitaire n'existe généralement que du lundi au vendredi, le week-end
+// reste donc un vrai déjeuner+dîner à la maison même en mode cantine.
+const WEEKDAY_INDICES = [0, 1, 2, 3, 4];
+
 // Construit un planning jour par jour : chaque produit de la liste (tous ont
 // désormais une quantité hebdomadaire précise) est étalé sur les 7 jours.
 // "Déjeuner & Dîner" (un seul mealSlot côté produit) est réparti à parts
@@ -253,9 +258,15 @@ function emptyDaySlots(): Record<DaySlot, DayEntry[]> {
 // et protéine du jour se retrouvent moitié au déjeuner, moitié au dîner,
 // plutôt que, par exemple, tout le féculent au déjeuner et seulement la
 // protéine au dîner (repas déséquilibré). Les deux repas du jour sont donc
-// identiques mais chacun cohérent (un peu de tout), ce qui est plus simple
-// à préparer et plus logique qu'une répartition aléatoire par article.
-export function buildWeeklyPlan(items: ShoppingListItem[]): WeeklyPlan {
+// similaires en quantité mais jamais identiques, ce qui est plus simple à
+// préparer et plus logique qu'une répartition aléatoire par article.
+// `eatsLunchAtCanteen` : si activé, du lundi au vendredi tout part au dîner
+// (le déjeuner est mangé à la cantine, pas à la maison) — le week-end
+// garde le partage normal entre les deux repas.
+export function buildWeeklyPlan(
+  items: ShoppingListItem[],
+  eatsLunchAtCanteen = false
+): WeeklyPlan {
   const days: DayPlan[] = WEEKDAY_LABELS.map((day) => ({
     day,
     slots: emptyDaySlots(),
@@ -306,6 +317,14 @@ export function buildWeeklyPlan(items: ShoppingListItem[]): WeeklyPlan {
   // retrouvait avec tout le féculent et l'autre avec rien que la protéine.
   const LEAN_SHARE = 0.6;
   mainsByDay.forEach((mains, dayIndex) => {
+    if (eatsLunchAtCanteen && WEEKDAY_INDICES.includes(dayIndex)) {
+      // Cantine en semaine : tout au dîner, rien au déjeuner à la maison.
+      mains.forEach((entry) => {
+        days[dayIndex].slots.diner.push(entry);
+      });
+      return;
+    }
+
     mains.forEach((entry, entryIndex) => {
       const leansLunch = (entryIndex + dayIndex) % 2 === 0;
       const majorShare = round2(entry.count * LEAN_SHARE);

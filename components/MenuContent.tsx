@@ -9,16 +9,23 @@ import {
   formatDayEntryQuantity,
   WEEKDAY_LABELS,
 } from "@/lib/generateMenu";
-import { ShoppingListResult } from "@/lib/types";
+import { ShoppingListResult, UserPreferences } from "@/lib/types";
 
 interface MenuContentProps {
   result: ShoppingListResult;
+  preferences: UserPreferences;
   onRestart: () => void;
 }
 
-export default function MenuContent({ result, onRestart }: MenuContentProps) {
-  const { days } = buildWeeklyPlan(result.items);
+export default function MenuContent({
+  result,
+  preferences,
+  onRestart,
+}: MenuContentProps) {
+  const { days } = buildWeeklyPlan(result.items, preferences.eatsLunchAtCanteen);
   const [selectedDay, setSelectedDay] = useState(0);
+  const isCantineDay =
+    preferences.eatsLunchAtCanteen && selectedDay >= 0 && selectedDay <= 4;
 
   const isEmpty = result.items.length === 0;
   const day = days[selectedDay];
@@ -69,7 +76,11 @@ export default function MenuContent({ result, onRestart }: MenuContentProps) {
                     <span className="text-lg">{DAY_SLOT_ICONS[slot]}</span>
                     {DAY_SLOT_LABELS[slot]}
                   </h2>
-                  {entries.length === 0 ? (
+                  {entries.length === 0 && slot === "dejeuner" && isCantineDay ? (
+                    <p className="text-sm text-campus-muted">
+                      🍽️ Tu manges à la cantine ce midi — rien à préparer.
+                    </p>
+                  ) : entries.length === 0 ? (
                     <p className="text-sm text-campus-muted">
                       Rien de prévu ici avec ce budget — augmente-le
                       légèrement pour un menu complet tous les jours.

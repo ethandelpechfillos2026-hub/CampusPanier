@@ -239,7 +239,11 @@ export default function CampusPanierApp() {
               />
             )}
             {resultsTab === "menu" && (
-              <MenuContent result={result} onRestart={handleRestart} />
+              <MenuContent
+                result={result}
+                preferences={preferences}
+                onRestart={handleRestart}
+              />
             )}
             {resultsTab === "recettes" && (
               <RecipesContent

@@ -310,6 +310,57 @@ export function generateShoppingList(
     }
   }
 
+  // Cantine le midi en semaine : le foyer ne mange à la maison que le dîner
+  // du lundi au vendredi (2 déjeuners de week-end + 7 dîners = 9 des 14
+  // repas "déjeuner-dîner" de la semaine), donc on réduit d'autant les
+  // quantités déjà choisies dans cette catégorie plutôt que d'acheter pour
+  // des déjeuners qui ne seront jamais mangés à la maison — sinon ça finit
+  // en restes non consommés. Le budget libéré est réinvesti ailleurs
+  // (davantage de variété dans le reste de la liste) plutôt que perdu.
+  if (preferences.eatsLunchAtCanteen) {
+    const NEEDED_FRACTION = 9 / 14;
+    let freedBudget = 0;
+
+    for (const product of selected) {
+      if (product.mealSlot !== "dejeuner-diner") continue;
+      const currentQty = quantities.get(product.id) ?? 1;
+      const newQty = Math.max(1, Math.round(currentQty * NEEDED_FRACTION));
+      if (newQty < currentQty) {
+        freedBudget += (currentQty - newQty) * product.price;
+        quantities.set(product.id, newQty);
+        total -= (currentQty - newQty) * product.price;
+      }
+    }
+
+    if (freedBudget > 0) {
+      const extraCandidates = filtered
+        .filter((p) => !selectedIds.has(p.id))
+        .sort((a, b) => {
+          const scoreDiff = score(b, preferences) - score(a, preferences);
+          if (scoreDiff !== 0) return scoreDiff;
+          return a.price - b.price;
+        });
+
+      for (const product of extraCandidates) {
+        const cap = MAX_DISTINCT_PER_CATEGORY[product.category];
+        const atCap =
+          cap !== undefined && (categoryCounts.get(product.category) ?? 0) >= cap;
+        if (atCap) continue;
+
+        if (total + product.price <= preferences.budget) {
+          selected.push(product);
+          selectedIds.add(product.id);
+          quantities.set(product.id, 1);
+          categoryCounts.set(
+            product.category,
+            (categoryCounts.get(product.category) ?? 0) + 1
+          );
+          total += product.price;
+        }
+      }
+    }
+  }
+
   const roundedTotal = round(total);
 
   return {

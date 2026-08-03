@@ -103,6 +103,13 @@ export interface BodyStats {
   // préférences, et seuls les produits bruts/peu transformés sont proposés
   // (voir Product.ultraTransforme).
   performanceMode: boolean;
+  // Étudiant·e qui mange à la cantine le midi en semaine (lundi-vendredi) :
+  // on réduit d'autant les quantités de féculent/légume/protéine
+  // "déjeuner-dîner" prévues pour la maison (voir generateShoppingList.ts
+  // et generateMenu.ts), et "Mon menu" met tout au dîner ces jours-là au
+  // lieu de partager entre midi et soir — sinon la part "midi" achetée
+  // n'est jamais consommée et finit en restes.
+  eatsLunchAtCanteen: boolean;
 }
 
 export interface UserProfile extends BodyStats {
