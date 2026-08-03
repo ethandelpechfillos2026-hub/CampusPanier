@@ -295,18 +295,29 @@ export function buildWeeklyPlan(items: ShoppingListItem[]): WeeklyPlan {
     });
   }
 
-  // Répartit les articles "déjeuner-dîner" du jour ENTRE les deux repas, à
-  // parts égales, plutôt que d'assigner chaque article entier à l'un ou
-  // l'autre en alternance — sinon un féculent acheté en grosse quantité
-  // (ex : 800 g de pommes de terre) pouvait atterrir entièrement au
-  // déjeuner pendant que le dîner ne gardait que la protéine, donnant un
-  // repas déséquilibré (féculent + légume d'un côté, rien que de la viande
-  // de l'autre) plutôt que deux repas cohérents avec un peu de chaque.
+  // Répartit les articles "déjeuner-dîner" du jour ENTRE les deux repas de
+  // façon déséquilibrée à dessein (60/40) plutôt que pile à moitié — un
+  // partage à parts strictement égales donnait deux repas IDENTIQUES (même
+  // articles, mêmes quantités), ce qui devient vite lassant à répétition.
+  // Chaque article penche tantôt vers le déjeuner, tantôt vers le dîner
+  // (l'alternance dépend de l'article et du jour), pour que les deux repas
+  // ne soient jamais identiques tout en gardant un total de la journée
+  // équivalent — sans revenir au problème initial où un repas se
+  // retrouvait avec tout le féculent et l'autre avec rien que la protéine.
+  const LEAN_SHARE = 0.6;
   mainsByDay.forEach((mains, dayIndex) => {
-    mains.forEach((entry) => {
-      const half = round2(entry.count / 2);
-      days[dayIndex].slots.dejeuner.push({ product: entry.product, count: half });
-      days[dayIndex].slots.diner.push({ product: entry.product, count: half });
+    mains.forEach((entry, entryIndex) => {
+      const leansLunch = (entryIndex + dayIndex) % 2 === 0;
+      const majorShare = round2(entry.count * LEAN_SHARE);
+      const minorShare = round2(entry.count - majorShare);
+      const lunchShare = leansLunch ? majorShare : minorShare;
+      const dinnerShare = leansLunch ? minorShare : majorShare;
+      if (lunchShare > 0) {
+        days[dayIndex].slots.dejeuner.push({ product: entry.product, count: lunchShare });
+      }
+      if (dinnerShare > 0) {
+        days[dayIndex].slots.diner.push({ product: entry.product, count: dinnerShare });
+      }
     });
   });
 
