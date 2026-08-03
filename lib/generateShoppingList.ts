@@ -143,11 +143,17 @@ function round(amount: number): number {
 
 // Au-delà de ce nombre de produits DIFFÉRENTS dans une catégorie, la phase 2
 // augmente plutôt la quantité d'un produit déjà choisi — sans ça, un gros
-// budget viande-poisson finissait avec 5-6 viandes/poissons différents en
-// une seule portion chacun (colin + lapin + thon + poulet + dinde la même
-// semaine) plutôt qu'une plus grosse quantité de moins de produits, plus
-// cohérent pour cuisiner.
+// budget finissait avec 5-6 viandes/poissons différents, ou 8-10 légumes
+// différents, en une seule petite portion chacun, plutôt qu'une plus grosse
+// quantité de moins de produits — plus cohérent à cuisiner et plus rapide à
+// préparer, comme demandé ("augmente les quantités du même produit plutôt
+// que plein de produits différents"). Plafonds volontairement bas sur
+// toutes les catégories, pas seulement viande-poisson.
 const MAX_DISTINCT_PER_CATEGORY: Partial<Record<Product["category"], number>> = {
+  epicerie: 4,
+  "fruits-legumes": 4,
+  frais: 3,
+  boulangerie: 3,
   "viande-poisson": 3,
 };
 const MAX_QUANTITY_PER_ITEM = 3;

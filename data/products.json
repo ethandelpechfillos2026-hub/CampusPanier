@@ -821,7 +821,8 @@
     "lipides": "faible",
     "glucides": "riche",
     "sel": "faible",
-    "easyToCook": true
+    "easyToCook": true,
+    "isCondiment": true
   },
   {
     "id": "sucre",
@@ -2281,7 +2282,8 @@
     "easyToCook": true,
     "weeklyServings": 3,
     "servingUnit": "portion",
-    "gramsPerServing": 50
+    "gramsPerServing": 50,
+    "isCondiment": true
   },
   {
     "id": "farine-sans-gluten",
@@ -2307,7 +2309,8 @@
     "easyToCook": true,
     "weeklyServings": 3,
     "servingUnit": "portion",
-    "gramsPerServing": 50
+    "gramsPerServing": 50,
+    "isCondiment": true
   },
   {
     "id": "levure-chimique",
