@@ -2083,5 +2083,3819 @@
     "glucides": "faible",
     "sel": "faible",
     "easyToCook": false
+  },
+  {
+    "id": "pates-completes",
+    "shortName": "Pâtes complètes",
+    "name": "Pâtes spaghetti au blé complet integral 500g",
+    "price": 1.6,
+    "priceSource": "open-prices",
+    "unit": "paquet",
+    "category": "epicerie",
+    "mealSlot": "dejeuner-diner",
+    "dietTags": [
+      "omnivore",
+      "vegetarien",
+      "vegan",
+      "sans-porc"
+    ],
+    "allergens": [
+      "gluten"
+    ],
+    "kcal": 347,
+    "protein": "moyen",
+    "lipides": "faible",
+    "glucides": "riche",
+    "sel": "faible",
+    "easyToCook": true
+  },
+  {
+    "id": "spaghetti",
+    "shortName": "Spaghetti",
+    "name": "Spaghetti n°5",
+    "price": 7.49,
+    "priceSource": "open-prices",
+    "unit": "paquet",
+    "category": "epicerie",
+    "mealSlot": "dejeuner-diner",
+    "dietTags": [
+      "omnivore",
+      "vegetarien",
+      "sans-porc"
+    ],
+    "allergens": [
+      "gluten"
+    ],
+    "kcal": 359,
+    "protein": "moyen",
+    "lipides": "faible",
+    "glucides": "riche",
+    "sel": "faible",
+    "easyToCook": true
+  },
+  {
+    "id": "nouilles-chinoises",
+    "shortName": "Nouilles chinoises",
+    "name": "nouilles en nid",
+    "price": 1.63,
+    "priceSource": "open-prices",
+    "unit": "paquet",
+    "category": "epicerie",
+    "mealSlot": "dejeuner-diner",
+    "dietTags": [
+      "omnivore",
+      "vegetarien",
+      "sans-porc"
+    ],
+    "allergens": [
+      "oeuf",
+      "gluten"
+    ],
+    "kcal": 135,
+    "protein": "faible",
+    "lipides": "faible",
+    "glucides": "moyen",
+    "sel": "faible",
+    "easyToCook": true
+  },
+  {
+    "id": "riz-complet",
+    "shortName": "Riz complet",
+    "name": "Galettes riz complet Bio",
+    "price": 1.9,
+    "priceSource": "open-prices",
+    "unit": "sachet",
+    "category": "epicerie",
+    "mealSlot": "dejeuner-diner",
+    "dietTags": [
+      "omnivore",
+      "vegetarien",
+      "vegan",
+      "sans-porc"
+    ],
+    "allergens": [],
+    "kcal": 379,
+    "protein": "moyen",
+    "lipides": "moyen",
+    "glucides": "riche",
+    "sel": "faible",
+    "easyToCook": true
+  },
+  {
+    "id": "polenta",
+    "shortName": "Polenta",
+    "name": "Polenta",
+    "price": 1.82,
+    "priceSource": "open-prices",
+    "unit": "paquet",
+    "category": "epicerie",
+    "mealSlot": "dejeuner-diner",
+    "dietTags": [
+      "omnivore",
+      "vegetarien",
+      "vegan",
+      "sans-porc"
+    ],
+    "allergens": [
+      "lactose"
+    ],
+    "kcal": 355,
+    "protein": "moyen",
+    "lipides": "faible",
+    "glucides": "riche",
+    "sel": "faible",
+    "easyToCook": true
+  },
+  {
+    "id": "farine-complete",
+    "shortName": "Farine complète",
+    "name": "Beau & bon à la farine complète de blé",
+    "price": 2.35,
+    "priceSource": "open-prices",
+    "unit": "paquet",
+    "category": "epicerie",
+    "mealSlot": "dejeuner-diner",
+    "dietTags": [
+      "omnivore",
+      "vegetarien",
+      "sans-porc"
+    ],
+    "allergens": [
+      "gluten"
+    ],
+    "kcal": 303,
+    "protein": "moyen",
+    "lipides": "moyen",
+    "glucides": "riche",
+    "sel": "moyen",
+    "easyToCook": true
+  },
+  {
+    "id": "farine-sans-gluten",
+    "shortName": "Farine sans gluten",
+    "name": "Tartines crac’form farine avoine et riz sans gluten sans lactose",
+    "price": 3.6,
+    "priceSource": "open-prices",
+    "unit": "paquet",
+    "category": "epicerie",
+    "mealSlot": "dejeuner-diner",
+    "dietTags": [
+      "omnivore",
+      "vegetarien",
+      "vegan",
+      "sans-porc"
+    ],
+    "allergens": [],
+    "kcal": 378,
+    "protein": "moyen",
+    "lipides": "moyen",
+    "glucides": "riche",
+    "sel": "moyen",
+    "easyToCook": true
+  },
+  {
+    "id": "levure-chimique",
+    "shortName": "Levure chimique",
+    "name": "levure pâtisserie",
+    "price": 2.5,
+    "priceSource": "estimation",
+    "unit": "sachet",
+    "category": "epicerie",
+    "mealSlot": "encas-extra",
+    "dietTags": [
+      "omnivore",
+      "vegetarien",
+      "vegan",
+      "sans-porc"
+    ],
+    "allergens": [],
+    "kcal": 183,
+    "protein": "faible",
+    "lipides": "faible",
+    "glucides": "riche",
+    "sel": "faible",
+    "easyToCook": true,
+    "isCondiment": true
+  },
+  {
+    "id": "haricots-verts-conserve",
+    "shortName": "Haricots verts (conserve)",
+    "name": "Haricots Verts extra-fins 1/2",
+    "price": 2.95,
+    "priceSource": "open-prices",
+    "unit": "boîte",
+    "category": "epicerie",
+    "mealSlot": "dejeuner-diner",
+    "dietTags": [
+      "omnivore",
+      "vegetarien",
+      "vegan",
+      "sans-porc"
+    ],
+    "allergens": [],
+    "kcal": 20,
+    "protein": "faible",
+    "lipides": "faible",
+    "glucides": "faible",
+    "sel": "moyen",
+    "easyToCook": true
+  },
+  {
+    "id": "petits-pois-conserve",
+    "shortName": "Petits pois (conserve)",
+    "name": "Petits Pois et Carottes 1/2",
+    "price": 2.12,
+    "priceSource": "open-prices",
+    "unit": "boîte",
+    "category": "epicerie",
+    "mealSlot": "dejeuner-diner",
+    "dietTags": [
+      "omnivore",
+      "vegetarien",
+      "vegan",
+      "sans-porc"
+    ],
+    "allergens": [],
+    "kcal": 23,
+    "protein": "faible",
+    "lipides": "faible",
+    "glucides": "faible",
+    "sel": "moyen",
+    "easyToCook": true
+  },
+  {
+    "id": "champignons-conserve",
+    "shortName": "Champignons (conserve)",
+    "name": "Champignons de Paris 1er choix émincés",
+    "price": 1.07,
+    "priceSource": "open-prices",
+    "unit": "boîte",
+    "category": "epicerie",
+    "mealSlot": "dejeuner-diner",
+    "dietTags": [
+      "omnivore",
+      "vegetarien",
+      "vegan",
+      "sans-porc"
+    ],
+    "allergens": [],
+    "kcal": 19,
+    "protein": "faible",
+    "lipides": "faible",
+    "glucides": "faible",
+    "sel": "moyen",
+    "easyToCook": true
+  },
+  {
+    "id": "cornichons",
+    "shortName": "Cornichons",
+    "name": "Cornichons aigres-doux Recette Paysanne",
+    "price": 2.56,
+    "priceSource": "open-prices",
+    "unit": "pot",
+    "category": "epicerie",
+    "mealSlot": "encas-extra",
+    "dietTags": [
+      "omnivore",
+      "sans-porc"
+    ],
+    "allergens": [],
+    "kcal": 30,
+    "protein": "faible",
+    "lipides": "faible",
+    "glucides": "faible",
+    "sel": "moyen",
+    "easyToCook": true,
+    "isCondiment": true
+  },
+  {
+    "id": "harissa",
+    "shortName": "Harissa",
+    "name": "Harissa du Cap-Bon",
+    "price": 0.85,
+    "priceSource": "open-prices",
+    "unit": "pot",
+    "category": "epicerie",
+    "mealSlot": "dejeuner-diner",
+    "dietTags": [
+      "omnivore",
+      "sans-porc"
+    ],
+    "allergens": [],
+    "kcal": 72,
+    "protein": "faible",
+    "lipides": "faible",
+    "glucides": "moyen",
+    "sel": "riche",
+    "easyToCook": true,
+    "isCondiment": true
+  },
+  {
+    "id": "cumin",
+    "shortName": "Cumin",
+    "name": "Quinoa Royal - Carottes jaunes et cumin",
+    "price": 2.72,
+    "priceSource": "open-prices",
+    "unit": "pot",
+    "category": "epicerie",
+    "mealSlot": "dejeuner-diner",
+    "dietTags": [
+      "omnivore",
+      "vegetarien",
+      "vegan",
+      "sans-porc"
+    ],
+    "allergens": [
+      "gluten"
+    ],
+    "kcal": 90,
+    "protein": "faible",
+    "lipides": "faible",
+    "glucides": "moyen",
+    "sel": "moyen",
+    "easyToCook": true,
+    "isCondiment": true
+  },
+  {
+    "id": "paprika",
+    "shortName": "Paprika",
+    "name": "Les Galettes Boulgour & Quinoa - Tomate & Paprika",
+    "price": 2.33,
+    "priceSource": "open-prices",
+    "unit": "pot",
+    "category": "epicerie",
+    "mealSlot": "dejeuner-diner",
+    "dietTags": [
+      "omnivore",
+      "vegetarien",
+      "vegan",
+      "sans-porc"
+    ],
+    "allergens": [
+      "gluten"
+    ],
+    "kcal": 172,
+    "protein": "moyen",
+    "lipides": "moyen",
+    "glucides": "moyen",
+    "sel": "moyen",
+    "easyToCook": true,
+    "isCondiment": true
+  },
+  {
+    "id": "poivre",
+    "shortName": "Poivre",
+    "name": "Poivre noir moulu",
+    "price": 2.43,
+    "priceSource": "open-prices",
+    "unit": "moulin",
+    "category": "epicerie",
+    "mealSlot": "dejeuner-diner",
+    "dietTags": [
+      "omnivore",
+      "vegetarien",
+      "vegan",
+      "sans-porc"
+    ],
+    "allergens": [],
+    "kcal": 0,
+    "protein": "moyen",
+    "lipides": "moyen",
+    "glucides": "moyen",
+    "sel": "moyen",
+    "easyToCook": true,
+    "isCondiment": true
+  },
+  {
+    "id": "herbes-de-provence",
+    "shortName": "Herbes de Provence",
+    "name": "Chipos végétales aux herbes de Provence",
+    "price": 3.93,
+    "priceSource": "open-prices",
+    "unit": "pot",
+    "category": "epicerie",
+    "mealSlot": "dejeuner-diner",
+    "dietTags": [
+      "omnivore",
+      "vegetarien",
+      "vegan",
+      "sans-porc"
+    ],
+    "allergens": [],
+    "kcal": 213,
+    "protein": "moyen",
+    "lipides": "moyen",
+    "glucides": "faible",
+    "sel": "moyen",
+    "easyToCook": true,
+    "isCondiment": true
+  },
+  {
+    "id": "ketchup",
+    "shortName": "Ketchup",
+    "name": "Tomato Ketchup BIO",
+    "price": 2.98,
+    "priceSource": "open-prices",
+    "unit": "flacon",
+    "category": "epicerie",
+    "mealSlot": "dejeuner-diner",
+    "dietTags": [
+      "omnivore",
+      "vegetarien",
+      "sans-porc"
+    ],
+    "allergens": [],
+    "kcal": 112,
+    "protein": "faible",
+    "lipides": "faible",
+    "glucides": "moyen",
+    "sel": "riche",
+    "easyToCook": true,
+    "isCondiment": true
+  },
+  {
+    "id": "vinaigre-balsamique",
+    "shortName": "Vinaigre balsamique",
+    "name": "Vinaigre Balsamique de Modène 25 cl",
+    "price": 4.31,
+    "priceSource": "open-prices",
+    "unit": "bouteille",
+    "category": "epicerie",
+    "mealSlot": "dejeuner-diner",
+    "dietTags": [
+      "omnivore",
+      "sans-porc"
+    ],
+    "allergens": [],
+    "kcal": 112,
+    "protein": "faible",
+    "lipides": "faible",
+    "glucides": "moyen",
+    "sel": "faible",
+    "easyToCook": true,
+    "isCondiment": true
+  },
+  {
+    "id": "tabasco",
+    "shortName": "Tabasco",
+    "name": "Tabasco Sauce Epicée Sriracha 256ml",
+    "price": 4.81,
+    "priceSource": "open-prices",
+    "unit": "flacon",
+    "category": "epicerie",
+    "mealSlot": "dejeuner-diner",
+    "dietTags": [
+      "omnivore",
+      "sans-porc"
+    ],
+    "allergens": [],
+    "kcal": 121,
+    "protein": "faible",
+    "lipides": "faible",
+    "glucides": "moyen",
+    "sel": "riche",
+    "easyToCook": true,
+    "isCondiment": true
+  },
+  {
+    "id": "lait-coco",
+    "shortName": "Lait de coco",
+    "name": "Lait de coco",
+    "price": 1.16,
+    "priceSource": "open-prices",
+    "unit": "boîte",
+    "category": "epicerie",
+    "mealSlot": "dejeuner-diner",
+    "dietTags": [
+      "omnivore",
+      "vegetarien",
+      "vegan",
+      "sans-porc"
+    ],
+    "allergens": [],
+    "kcal": 182,
+    "protein": "faible",
+    "lipides": "riche",
+    "glucides": "faible",
+    "sel": "faible",
+    "easyToCook": true
+  },
+  {
+    "id": "cereales-chocolatees",
+    "shortName": "Céréales chocolatées",
+    "name": "NESTLE CHOCAPIC Céréales 645g",
+    "price": 4.66,
+    "priceSource": "open-prices",
+    "unit": "paquet",
+    "category": "epicerie",
+    "mealSlot": "petit-dejeuner",
+    "dietTags": [
+      "omnivore",
+      "sans-porc"
+    ],
+    "allergens": [
+      "gluten"
+    ],
+    "kcal": 384,
+    "protein": "moyen",
+    "lipides": "moyen",
+    "glucides": "riche",
+    "sel": "faible",
+    "easyToCook": true,
+    "gourmand": true
+  },
+  {
+    "id": "muesli-fruits",
+    "shortName": "Muesli aux fruits",
+    "name": "Muesli Raisin, Figue, Datte, Abricot",
+    "price": 2.43,
+    "priceSource": "open-prices",
+    "unit": "paquet",
+    "category": "epicerie",
+    "mealSlot": "petit-dejeuner",
+    "dietTags": [
+      "omnivore",
+      "sans-porc"
+    ],
+    "allergens": [
+      "gluten"
+    ],
+    "kcal": 352,
+    "protein": "moyen",
+    "lipides": "moyen",
+    "glucides": "riche",
+    "sel": "faible",
+    "easyToCook": true
+  },
+  {
+    "id": "sirop-erable",
+    "shortName": "Sirop d'érable",
+    "name": "Sirop d'érable",
+    "price": 4.87,
+    "priceSource": "open-prices",
+    "unit": "bouteille",
+    "category": "epicerie",
+    "mealSlot": "petit-dejeuner",
+    "dietTags": [
+      "omnivore",
+      "vegetarien",
+      "vegan",
+      "sans-porc"
+    ],
+    "allergens": [],
+    "kcal": 268,
+    "protein": "faible",
+    "lipides": "faible",
+    "glucides": "riche",
+    "sel": "faible",
+    "easyToCook": true,
+    "gourmand": true
+  },
+  {
+    "id": "jus-pomme",
+    "shortName": "Jus de pomme",
+    "name": "Maille Vinaigre de Cidre adouci au Jus de Pomme Concentré 500ml",
+    "price": 2.62,
+    "priceSource": "open-prices",
+    "unit": "brique",
+    "category": "epicerie",
+    "mealSlot": "petit-dejeuner",
+    "dietTags": [
+      "omnivore",
+      "vegetarien",
+      "vegan",
+      "sans-porc"
+    ],
+    "allergens": [],
+    "kcal": 64,
+    "protein": "faible",
+    "lipides": "faible",
+    "glucides": "moyen",
+    "sel": "faible",
+    "easyToCook": true
+  },
+  {
+    "id": "eau-gazeuse",
+    "shortName": "Eau gazeuse",
+    "name": "Eau minéral naturelle",
+    "price": 0.6,
+    "priceSource": "open-prices",
+    "unit": "bouteille",
+    "category": "epicerie",
+    "mealSlot": "encas-extra",
+    "dietTags": [
+      "omnivore",
+      "vegetarien",
+      "vegan",
+      "sans-porc"
+    ],
+    "allergens": [],
+    "kcal": 0,
+    "protein": "faible",
+    "lipides": "faible",
+    "glucides": "faible",
+    "sel": "faible",
+    "easyToCook": true
+  },
+  {
+    "id": "sirop-menthe",
+    "shortName": "Sirop de menthe",
+    "name": "Duval sirop de menthe 750 ML",
+    "price": 2.5,
+    "priceSource": "estimation",
+    "unit": "bouteille",
+    "category": "epicerie",
+    "mealSlot": "encas-extra",
+    "dietTags": [
+      "omnivore",
+      "sans-porc"
+    ],
+    "allergens": [],
+    "kcal": 264,
+    "protein": "faible",
+    "lipides": "faible",
+    "glucides": "riche",
+    "sel": "faible",
+    "easyToCook": true,
+    "gourmand": true
+  },
+  {
+    "id": "chips",
+    "shortName": "Chips",
+    "name": "Chips recette paysanne nature",
+    "price": 1.5,
+    "priceSource": "open-prices",
+    "unit": "paquet",
+    "category": "epicerie",
+    "mealSlot": "encas-extra",
+    "dietTags": [
+      "omnivore",
+      "vegetarien",
+      "vegan",
+      "sans-porc"
+    ],
+    "allergens": [],
+    "kcal": 516,
+    "protein": "moyen",
+    "lipides": "riche",
+    "glucides": "riche",
+    "sel": "moyen",
+    "easyToCook": true,
+    "gourmand": true
+  },
+  {
+    "id": "barres-cereales",
+    "shortName": "Barres de céréales",
+    "name": "Sweet & Salty Nut chocolat noir et mélange de noix, 5 barres de 30 g",
+    "price": 3.6,
+    "priceSource": "open-prices",
+    "unit": "boîte",
+    "category": "epicerie",
+    "mealSlot": "encas-extra",
+    "dietTags": [
+      "omnivore",
+      "vegetarien",
+      "sans-porc"
+    ],
+    "allergens": [
+      "gluten",
+      "lactose",
+      "fruits-a-coque",
+      "arachide"
+    ],
+    "kcal": 647,
+    "protein": "faible",
+    "lipides": "moyen",
+    "glucides": "moyen",
+    "sel": "faible",
+    "easyToCook": true
+  },
+  {
+    "id": "bonbons",
+    "shortName": "Bonbons",
+    "name": "Bonbons Tic Tac x110 pastilles MENTHE - 54g",
+    "price": 2.86,
+    "priceSource": "open-prices",
+    "unit": "paquet",
+    "category": "epicerie",
+    "mealSlot": "encas-extra",
+    "dietTags": [
+      "omnivore",
+      "vegetarien",
+      "sans-porc"
+    ],
+    "allergens": [],
+    "kcal": 397,
+    "protein": "faible",
+    "lipides": "faible",
+    "glucides": "riche",
+    "sel": "faible",
+    "easyToCook": true,
+    "gourmand": true
+  },
+  {
+    "id": "houmous",
+    "shortName": "Houmous",
+    "name": "Houmous extra - Pois chiches français & graines de sésame",
+    "price": 3.1,
+    "priceSource": "open-prices",
+    "unit": "pot",
+    "category": "epicerie",
+    "mealSlot": "dejeuner-diner",
+    "dietTags": [
+      "omnivore",
+      "vegetarien",
+      "vegan",
+      "sans-porc"
+    ],
+    "allergens": [],
+    "kcal": 317,
+    "protein": "moyen",
+    "lipides": "riche",
+    "glucides": "faible",
+    "sel": "moyen",
+    "easyToCook": true
+  },
+  {
+    "id": "tahini",
+    "shortName": "Tahini",
+    "name": "Houmous Tahini au sésame",
+    "price": 2.31,
+    "priceSource": "open-prices",
+    "unit": "pot",
+    "category": "epicerie",
+    "mealSlot": "dejeuner-diner",
+    "dietTags": [
+      "omnivore",
+      "vegetarien",
+      "vegan",
+      "sans-porc"
+    ],
+    "allergens": [],
+    "kcal": 335,
+    "protein": "moyen",
+    "lipides": "riche",
+    "glucides": "moyen",
+    "sel": "moyen",
+    "easyToCook": true,
+    "isCondiment": true
+  },
+  {
+    "id": "graines-chia",
+    "shortName": "Graines de chia",
+    "name": "Bio crackers graines de chia et flocons d’avoine",
+    "price": 2.69,
+    "priceSource": "open-prices",
+    "unit": "sachet",
+    "category": "epicerie",
+    "mealSlot": "petit-dejeuner",
+    "dietTags": [
+      "omnivore",
+      "vegetarien",
+      "vegan",
+      "sans-porc"
+    ],
+    "allergens": [
+      "gluten"
+    ],
+    "kcal": 447,
+    "protein": "moyen",
+    "lipides": "riche",
+    "glucides": "riche",
+    "sel": "riche",
+    "easyToCook": true
+  },
+  {
+    "id": "graines-lin",
+    "shortName": "Graines de lin",
+    "name": "Pain de mie grandes tranches Seigle & Graines 500g",
+    "price": 2.44,
+    "priceSource": "open-prices",
+    "unit": "sachet",
+    "category": "epicerie",
+    "mealSlot": "petit-dejeuner",
+    "dietTags": [
+      "omnivore",
+      "sans-porc"
+    ],
+    "allergens": [
+      "gluten"
+    ],
+    "kcal": 294,
+    "protein": "moyen",
+    "lipides": "moyen",
+    "glucides": "riche",
+    "sel": "moyen",
+    "easyToCook": true
+  },
+  {
+    "id": "noix",
+    "shortName": "Noix",
+    "name": "Cerneaux de Noix",
+    "price": 3.37,
+    "priceSource": "open-prices",
+    "unit": "sachet",
+    "category": "epicerie",
+    "mealSlot": "encas-extra",
+    "dietTags": [
+      "omnivore",
+      "vegetarien",
+      "vegan",
+      "sans-porc"
+    ],
+    "allergens": [
+      "fruits-a-coque"
+    ],
+    "kcal": 712,
+    "protein": "riche",
+    "lipides": "riche",
+    "glucides": "faible",
+    "sel": "faible",
+    "easyToCook": true
+  },
+  {
+    "id": "pistaches",
+    "shortName": "Pistaches",
+    "name": "Pistaches grillées et salées",
+    "price": 2.35,
+    "priceSource": "open-prices",
+    "unit": "sachet",
+    "category": "epicerie",
+    "mealSlot": "encas-extra",
+    "dietTags": [
+      "omnivore",
+      "vegetarien",
+      "vegan",
+      "sans-porc"
+    ],
+    "allergens": [
+      "fruits-a-coque"
+    ],
+    "kcal": 614,
+    "protein": "riche",
+    "lipides": "riche",
+    "glucides": "faible",
+    "sel": "riche",
+    "easyToCook": true
+  },
+  {
+    "id": "raisins-secs",
+    "shortName": "Raisins secs",
+    "name": "Biscuit raisins",
+    "price": 2.37,
+    "priceSource": "open-prices",
+    "unit": "sachet",
+    "category": "epicerie",
+    "mealSlot": "encas-extra",
+    "dietTags": [
+      "omnivore",
+      "sans-porc"
+    ],
+    "allergens": [
+      "gluten"
+    ],
+    "kcal": 441,
+    "protein": "moyen",
+    "lipides": "moyen",
+    "glucides": "riche",
+    "sel": "faible",
+    "easyToCook": true
+  },
+  {
+    "id": "dattes",
+    "shortName": "Dattes",
+    "name": "Muesli Proteines Soja, Dattes, Fruits Rouges",
+    "price": 3.64,
+    "priceSource": "open-prices",
+    "unit": "sachet",
+    "category": "epicerie",
+    "mealSlot": "encas-extra",
+    "dietTags": [
+      "omnivore",
+      "vegetarien",
+      "vegan",
+      "sans-porc"
+    ],
+    "allergens": [
+      "gluten"
+    ],
+    "kcal": 365,
+    "protein": "riche",
+    "lipides": "moyen",
+    "glucides": "riche",
+    "sel": "faible",
+    "easyToCook": true
+  },
+  {
+    "id": "lait-avoine",
+    "shortName": "Lait d'avoine",
+    "name": "Lait d'Avoine",
+    "price": 2.52,
+    "priceSource": "open-prices",
+    "unit": "brique",
+    "category": "epicerie",
+    "mealSlot": "petit-dejeuner",
+    "dietTags": [
+      "omnivore",
+      "sans-porc"
+    ],
+    "allergens": [],
+    "kcal": 48,
+    "protein": "faible",
+    "lipides": "faible",
+    "glucides": "faible",
+    "sel": "faible",
+    "easyToCook": true
+  },
+  {
+    "id": "lait-amande",
+    "shortName": "Lait d'amande",
+    "name": "Lait d'amande",
+    "price": 2.68,
+    "priceSource": "open-prices",
+    "unit": "brique",
+    "category": "epicerie",
+    "mealSlot": "petit-dejeuner",
+    "dietTags": [
+      "omnivore",
+      "vegetarien",
+      "vegan",
+      "sans-porc"
+    ],
+    "allergens": [
+      "fruits-a-coque"
+    ],
+    "kcal": 29,
+    "protein": "faible",
+    "lipides": "faible",
+    "glucides": "faible",
+    "sel": "faible",
+    "easyToCook": true
+  },
+  {
+    "id": "sauce-carbonara",
+    "shortName": "Sauce carbonara",
+    "name": "Sauce Carbonara",
+    "price": 3.43,
+    "priceSource": "open-prices",
+    "unit": "pot",
+    "category": "epicerie",
+    "mealSlot": "dejeuner-diner",
+    "dietTags": [
+      "omnivore"
+    ],
+    "allergens": [
+      "oeuf",
+      "gluten",
+      "lactose"
+    ],
+    "kcal": 129,
+    "protein": "faible",
+    "lipides": "moyen",
+    "glucides": "faible",
+    "sel": "moyen",
+    "easyToCook": true
+  },
+  {
+    "id": "cafe-decafeine",
+    "shortName": "Café décaféiné",
+    "name": "NESCAFÉ SPECIAL FILTRE Décaféiné, Café Soluble, Flacon de 200g",
+    "price": 7.91,
+    "priceSource": "open-prices",
+    "unit": "paquet",
+    "category": "epicerie",
+    "mealSlot": "petit-dejeuner",
+    "dietTags": [
+      "omnivore",
+      "vegetarien",
+      "vegan",
+      "sans-porc"
+    ],
+    "allergens": [],
+    "kcal": 3,
+    "protein": "faible",
+    "lipides": "faible",
+    "glucides": "faible",
+    "sel": "faible",
+    "easyToCook": true
+  },
+  {
+    "id": "kiwi",
+    "shortName": "Kiwis",
+    "name": "Fruits Kiwi Sungold",
+    "price": 0.77,
+    "priceSource": "open-prices",
+    "unit": "filet",
+    "category": "fruits-legumes",
+    "mealSlot": "encas-extra",
+    "dietTags": [
+      "omnivore",
+      "vegetarien",
+      "vegan",
+      "sans-porc"
+    ],
+    "allergens": [],
+    "kcal": 59,
+    "protein": "faible",
+    "lipides": "faible",
+    "glucides": "moyen",
+    "sel": "faible",
+    "easyToCook": true
+  },
+  {
+    "id": "ananas",
+    "shortName": "Ananas",
+    "name": "Daya Ananas Coco",
+    "price": 2.2,
+    "priceSource": "estimation",
+    "unit": "pièce",
+    "category": "fruits-legumes",
+    "mealSlot": "encas-extra",
+    "dietTags": [
+      "omnivore",
+      "vegetarien",
+      "sans-porc"
+    ],
+    "allergens": [
+      "lactose"
+    ],
+    "kcal": 74,
+    "protein": "faible",
+    "lipides": "faible",
+    "glucides": "moyen",
+    "sel": "faible",
+    "easyToCook": true
+  },
+  {
+    "id": "mangue",
+    "shortName": "Mangue",
+    "name": "fawakih mangue 900ml",
+    "price": 2.2,
+    "priceSource": "estimation",
+    "unit": "pièce",
+    "category": "fruits-legumes",
+    "mealSlot": "encas-extra",
+    "dietTags": [
+      "omnivore",
+      "sans-porc"
+    ],
+    "allergens": [
+      "lactose"
+    ],
+    "kcal": 55,
+    "protein": "faible",
+    "lipides": "faible",
+    "glucides": "moyen",
+    "sel": "faible",
+    "easyToCook": true
+  },
+  {
+    "id": "pasteque",
+    "shortName": "Pastèque",
+    "name": "Gazpacho tomate, pastèque & menthe",
+    "price": 4.33,
+    "priceSource": "open-prices",
+    "unit": "pièce",
+    "category": "fruits-legumes",
+    "mealSlot": "encas-extra",
+    "dietTags": [
+      "omnivore",
+      "vegetarien",
+      "vegan",
+      "sans-porc"
+    ],
+    "allergens": [],
+    "kcal": 21,
+    "protein": "faible",
+    "lipides": "faible",
+    "glucides": "faible",
+    "sel": "moyen",
+    "easyToCook": true
+  },
+  {
+    "id": "fraises",
+    "shortName": "Fraises",
+    "name": "Confiture extra de Fraises",
+    "price": 1.91,
+    "priceSource": "open-prices",
+    "unit": "barquette",
+    "category": "fruits-legumes",
+    "mealSlot": "encas-extra",
+    "dietTags": [
+      "omnivore",
+      "vegetarien",
+      "sans-porc"
+    ],
+    "allergens": [],
+    "kcal": 241,
+    "protein": "faible",
+    "lipides": "faible",
+    "glucides": "riche",
+    "sel": "faible",
+    "easyToCook": true
+  },
+  {
+    "id": "framboises",
+    "shortName": "Framboises",
+    "name": "Biscuits fourrés aux framboises",
+    "price": 3.18,
+    "priceSource": "open-prices",
+    "unit": "barquette",
+    "category": "fruits-legumes",
+    "mealSlot": "encas-extra",
+    "dietTags": [
+      "omnivore",
+      "sans-porc"
+    ],
+    "allergens": [
+      "oeuf",
+      "gluten"
+    ],
+    "kcal": 432,
+    "protein": "moyen",
+    "lipides": "moyen",
+    "glucides": "riche",
+    "sel": "moyen",
+    "easyToCook": true
+  },
+  {
+    "id": "myrtilles",
+    "shortName": "Myrtilles",
+    "name": "Sablés Myrtilles Germes de riz",
+    "price": 2.87,
+    "priceSource": "open-prices",
+    "unit": "barquette",
+    "category": "fruits-legumes",
+    "mealSlot": "encas-extra",
+    "dietTags": [
+      "omnivore",
+      "sans-porc"
+    ],
+    "allergens": [
+      "gluten",
+      "lactose"
+    ],
+    "kcal": 54,
+    "protein": "faible",
+    "lipides": "faible",
+    "glucides": "faible",
+    "sel": "faible",
+    "easyToCook": true
+  },
+  {
+    "id": "raisin",
+    "shortName": "Raisin",
+    "name": "Biscuit raisins",
+    "price": 2.37,
+    "priceSource": "open-prices",
+    "unit": "grappe",
+    "category": "fruits-legumes",
+    "mealSlot": "encas-extra",
+    "dietTags": [
+      "omnivore",
+      "sans-porc"
+    ],
+    "allergens": [
+      "gluten"
+    ],
+    "kcal": 441,
+    "protein": "moyen",
+    "lipides": "moyen",
+    "glucides": "riche",
+    "sel": "faible",
+    "easyToCook": true
+  },
+  {
+    "id": "poire",
+    "shortName": "Poires",
+    "name": "Pommes Poires Williams (sans sucres ajoutés)",
+    "price": 1.69,
+    "priceSource": "open-prices",
+    "unit": "sachet",
+    "category": "fruits-legumes",
+    "mealSlot": "encas-extra",
+    "dietTags": [
+      "omnivore",
+      "sans-porc"
+    ],
+    "allergens": [],
+    "kcal": 55,
+    "protein": "faible",
+    "lipides": "faible",
+    "glucides": "moyen",
+    "sel": "faible",
+    "easyToCook": true
+  },
+  {
+    "id": "pamplemousse",
+    "shortName": "Pamplemousse",
+    "name": "Bulles de fruits Pamplemousse Touche de citron",
+    "price": 1.61,
+    "priceSource": "open-prices",
+    "unit": "pièce",
+    "category": "fruits-legumes",
+    "mealSlot": "encas-extra",
+    "dietTags": [
+      "omnivore",
+      "sans-porc"
+    ],
+    "allergens": [],
+    "kcal": 21,
+    "protein": "faible",
+    "lipides": "faible",
+    "glucides": "faible",
+    "sel": "faible",
+    "easyToCook": true
+  },
+  {
+    "id": "clementine",
+    "shortName": "Clémentines",
+    "name": "Oranges Clémentines Citrons sans sucres ajoutés",
+    "price": 3.78,
+    "priceSource": "open-prices",
+    "unit": "filet",
+    "category": "fruits-legumes",
+    "mealSlot": "encas-extra",
+    "dietTags": [
+      "omnivore",
+      "sans-porc"
+    ],
+    "allergens": [],
+    "kcal": 84,
+    "protein": "faible",
+    "lipides": "faible",
+    "glucides": "moyen",
+    "sel": "faible",
+    "easyToCook": true
+  },
+  {
+    "id": "abricot",
+    "shortName": "Abricots",
+    "name": "El Baraka Confiture D'abricots 430 G",
+    "price": 2.2,
+    "priceSource": "estimation",
+    "unit": "barquette",
+    "category": "fruits-legumes",
+    "mealSlot": "encas-extra",
+    "dietTags": [
+      "omnivore",
+      "sans-porc"
+    ],
+    "allergens": [],
+    "kcal": 244,
+    "protein": "faible",
+    "lipides": "faible",
+    "glucides": "riche",
+    "sel": "faible",
+    "easyToCook": true
+  },
+  {
+    "id": "prune",
+    "shortName": "Prunes",
+    "name": "Prunes Kuipje 500 Gram (alesto)",
+    "price": 2.2,
+    "priceSource": "estimation",
+    "unit": "barquette",
+    "category": "fruits-legumes",
+    "mealSlot": "encas-extra",
+    "dietTags": [
+      "omnivore",
+      "vegetarien",
+      "vegan",
+      "sans-porc"
+    ],
+    "allergens": [],
+    "kcal": 255,
+    "protein": "faible",
+    "lipides": "faible",
+    "glucides": "riche",
+    "sel": "faible",
+    "easyToCook": true
+  },
+  {
+    "id": "cerises",
+    "shortName": "Cerises",
+    "name": "Tomates Cerises",
+    "price": 0.99,
+    "priceSource": "open-prices",
+    "unit": "barquette",
+    "category": "fruits-legumes",
+    "mealSlot": "encas-extra",
+    "dietTags": [
+      "omnivore",
+      "vegetarien",
+      "vegan",
+      "sans-porc"
+    ],
+    "allergens": [],
+    "kcal": 19,
+    "protein": "faible",
+    "lipides": "faible",
+    "glucides": "faible",
+    "sel": "moyen",
+    "easyToCook": true
+  },
+  {
+    "id": "figues",
+    "shortName": "Figues",
+    "name": "Muesli fibres - Son de blé, Figues, Pruneaux",
+    "price": 3.5,
+    "priceSource": "open-prices",
+    "unit": "barquette",
+    "category": "fruits-legumes",
+    "mealSlot": "encas-extra",
+    "dietTags": [
+      "omnivore",
+      "vegetarien",
+      "vegan",
+      "sans-porc"
+    ],
+    "allergens": [
+      "gluten"
+    ],
+    "kcal": 344,
+    "protein": "moyen",
+    "lipides": "moyen",
+    "glucides": "riche",
+    "sel": "faible",
+    "easyToCook": true
+  },
+  {
+    "id": "grenade",
+    "shortName": "Grenade",
+    "name": "Spécialité Laitière Framboise, Grenade, Baies de Goji",
+    "price": 2.2,
+    "priceSource": "estimation",
+    "unit": "pièce",
+    "category": "fruits-legumes",
+    "mealSlot": "encas-extra",
+    "dietTags": [
+      "omnivore",
+      "sans-porc"
+    ],
+    "allergens": [
+      "lactose"
+    ],
+    "kcal": 79,
+    "protein": "moyen",
+    "lipides": "faible",
+    "glucides": "moyen",
+    "sel": "faible",
+    "easyToCook": true
+  },
+  {
+    "id": "papaye",
+    "shortName": "Papaye",
+    "name": "Mix raisin ananas papaye banane noix de coco",
+    "price": 1.99,
+    "priceSource": "open-prices",
+    "unit": "pièce",
+    "category": "fruits-legumes",
+    "mealSlot": "encas-extra",
+    "dietTags": [
+      "omnivore",
+      "sans-porc"
+    ],
+    "allergens": [],
+    "kcal": 395,
+    "protein": "faible",
+    "lipides": "moyen",
+    "glucides": "riche",
+    "sel": "faible",
+    "easyToCook": true
+  },
+  {
+    "id": "aubergine",
+    "shortName": "Aubergine",
+    "name": "Aubergines cuisinées à la Provençal",
+    "price": 3.53,
+    "priceSource": "open-prices",
+    "unit": "pièce",
+    "category": "fruits-legumes",
+    "mealSlot": "dejeuner-diner",
+    "dietTags": [
+      "omnivore",
+      "vegetarien",
+      "vegan",
+      "sans-porc"
+    ],
+    "allergens": [],
+    "kcal": 83,
+    "protein": "faible",
+    "lipides": "moyen",
+    "glucides": "faible",
+    "sel": "moyen",
+    "easyToCook": true
+  },
+  {
+    "id": "celeri",
+    "shortName": "Céleri",
+    "name": "Céleri Branche",
+    "price": 2.2,
+    "priceSource": "estimation",
+    "unit": "botte",
+    "category": "fruits-legumes",
+    "mealSlot": "dejeuner-diner",
+    "dietTags": [
+      "omnivore",
+      "vegetarien",
+      "vegan",
+      "sans-porc"
+    ],
+    "allergens": [],
+    "kcal": 12,
+    "protein": "faible",
+    "lipides": "faible",
+    "glucides": "faible",
+    "sel": "faible",
+    "easyToCook": true
+  },
+  {
+    "id": "betterave",
+    "shortName": "Betterave",
+    "name": "Betteraves rouges à l'échalote",
+    "price": 1.89,
+    "priceSource": "open-prices",
+    "unit": "sachet",
+    "category": "fruits-legumes",
+    "mealSlot": "dejeuner-diner",
+    "dietTags": [
+      "omnivore",
+      "vegetarien",
+      "sans-porc"
+    ],
+    "allergens": [],
+    "kcal": 60,
+    "protein": "faible",
+    "lipides": "faible",
+    "glucides": "faible",
+    "sel": "moyen",
+    "easyToCook": true
+  },
+  {
+    "id": "radis",
+    "shortName": "Radis",
+    "name": "Radis",
+    "price": 2.8,
+    "priceSource": "open-prices",
+    "unit": "botte",
+    "category": "fruits-legumes",
+    "mealSlot": "encas-extra",
+    "dietTags": [
+      "omnivore",
+      "vegetarien",
+      "vegan",
+      "sans-porc"
+    ],
+    "allergens": [],
+    "kcal": 14,
+    "protein": "faible",
+    "lipides": "faible",
+    "glucides": "faible",
+    "sel": "faible",
+    "easyToCook": true
+  },
+  {
+    "id": "navet",
+    "shortName": "Navets",
+    "name": "Navets",
+    "price": 2.2,
+    "priceSource": "estimation",
+    "unit": "sachet",
+    "category": "fruits-legumes",
+    "mealSlot": "dejeuner-diner",
+    "dietTags": [
+      "omnivore",
+      "vegetarien",
+      "vegan",
+      "sans-porc"
+    ],
+    "allergens": [],
+    "kcal": 28,
+    "protein": "faible",
+    "lipides": "faible",
+    "glucides": "faible",
+    "sel": "faible",
+    "easyToCook": true
+  },
+  {
+    "id": "panais",
+    "shortName": "Panais",
+    "name": "VEGETABLES* Carottes, betteraves, patates douces, panais",
+    "price": 2.43,
+    "priceSource": "open-prices",
+    "unit": "sachet",
+    "category": "fruits-legumes",
+    "mealSlot": "dejeuner-diner",
+    "dietTags": [
+      "omnivore",
+      "sans-porc"
+    ],
+    "allergens": [],
+    "kcal": 489,
+    "protein": "moyen",
+    "lipides": "riche",
+    "glucides": "riche",
+    "sel": "moyen",
+    "easyToCook": true
+  },
+  {
+    "id": "patate-douce",
+    "shortName": "Patate douce",
+    "name": "Frites de patate douce",
+    "price": 4.28,
+    "priceSource": "open-prices",
+    "unit": "sachet",
+    "category": "fruits-legumes",
+    "mealSlot": "dejeuner-diner",
+    "dietTags": [
+      "omnivore",
+      "vegetarien",
+      "vegan",
+      "sans-porc"
+    ],
+    "allergens": [],
+    "kcal": 161,
+    "protein": "faible",
+    "lipides": "moyen",
+    "glucides": "moyen",
+    "sel": "faible",
+    "easyToCook": true
+  },
+  {
+    "id": "courge-butternut",
+    "shortName": "Butternut",
+    "name": "Velouté courge butternut carotte navet jaune",
+    "price": 2.2,
+    "priceSource": "estimation",
+    "unit": "pièce",
+    "category": "fruits-legumes",
+    "mealSlot": "dejeuner-diner",
+    "dietTags": [
+      "omnivore",
+      "vegetarien",
+      "sans-porc"
+    ],
+    "allergens": [
+      "lactose"
+    ],
+    "kcal": 13,
+    "protein": "faible",
+    "lipides": "moyen",
+    "glucides": "faible",
+    "sel": "moyen",
+    "easyToCook": true
+  },
+  {
+    "id": "potiron",
+    "shortName": "Potiron",
+    "name": "Velouté de potiron & carottes BIO",
+    "price": 3.59,
+    "priceSource": "open-prices",
+    "unit": "part",
+    "category": "fruits-legumes",
+    "mealSlot": "dejeuner-diner",
+    "dietTags": [
+      "omnivore",
+      "vegetarien",
+      "sans-porc"
+    ],
+    "allergens": [
+      "gluten",
+      "lactose"
+    ],
+    "kcal": 28,
+    "protein": "faible",
+    "lipides": "faible",
+    "glucides": "faible",
+    "sel": "moyen",
+    "easyToCook": true
+  },
+  {
+    "id": "endive",
+    "shortName": "Endives",
+    "name": "Gratin d'Endives Jambon Supérieur, Emmental",
+    "price": 4.19,
+    "priceSource": "open-prices",
+    "unit": "sachet",
+    "category": "fruits-legumes",
+    "mealSlot": "dejeuner-diner",
+    "dietTags": [
+      "omnivore"
+    ],
+    "allergens": [
+      "oeuf",
+      "gluten",
+      "lactose"
+    ],
+    "kcal": 107,
+    "protein": "moyen",
+    "lipides": "moyen",
+    "glucides": "faible",
+    "sel": "moyen",
+    "easyToCook": true
+  },
+  {
+    "id": "fenouil",
+    "shortName": "Fenouil",
+    "name": "Taralli graines de Fenouil",
+    "price": 2.04,
+    "priceSource": "open-prices",
+    "unit": "pièce",
+    "category": "fruits-legumes",
+    "mealSlot": "dejeuner-diner",
+    "dietTags": [
+      "omnivore",
+      "vegetarien",
+      "sans-porc"
+    ],
+    "allergens": [
+      "gluten"
+    ],
+    "kcal": 468,
+    "protein": "moyen",
+    "lipides": "riche",
+    "glucides": "riche",
+    "sel": "riche",
+    "easyToCook": true
+  },
+  {
+    "id": "petits-pois-frais",
+    "shortName": "Petits pois frais",
+    "name": "Petits Pois & Jeunes Carottes Extra Fins",
+    "price": 1.23,
+    "priceSource": "open-prices",
+    "unit": "sachet",
+    "category": "fruits-legumes",
+    "mealSlot": "dejeuner-diner",
+    "dietTags": [
+      "omnivore",
+      "sans-porc"
+    ],
+    "allergens": [],
+    "kcal": 63,
+    "protein": "faible",
+    "lipides": "faible",
+    "glucides": "faible",
+    "sel": "moyen",
+    "easyToCook": true
+  },
+  {
+    "id": "haricots-verts-frais",
+    "shortName": "Haricots verts frais",
+    "name": "Haricots verts XF P.Vapeur 1kg",
+    "price": 2.43,
+    "priceSource": "open-prices",
+    "unit": "sachet",
+    "category": "fruits-legumes",
+    "mealSlot": "dejeuner-diner",
+    "dietTags": [
+      "omnivore",
+      "vegetarien",
+      "vegan",
+      "sans-porc"
+    ],
+    "allergens": [],
+    "kcal": 32,
+    "protein": "faible",
+    "lipides": "faible",
+    "glucides": "faible",
+    "sel": "faible",
+    "easyToCook": true
+  },
+  {
+    "id": "roquette",
+    "shortName": "Roquette",
+    "name": "Pesto basilic roquette basilicum en rucola",
+    "price": 1.83,
+    "priceSource": "open-prices",
+    "unit": "sachet",
+    "category": "fruits-legumes",
+    "mealSlot": "dejeuner-diner",
+    "dietTags": [
+      "omnivore",
+      "sans-porc"
+    ],
+    "allergens": [
+      "lactose",
+      "fruits-a-coque"
+    ],
+    "kcal": 428,
+    "protein": "faible",
+    "lipides": "riche",
+    "glucides": "faible",
+    "sel": "riche",
+    "easyToCook": true
+  },
+  {
+    "id": "chou-rouge",
+    "shortName": "Chou rouge",
+    "name": "Chou rouge lacto-fermenté BIO Nutriform",
+    "price": 3.69,
+    "priceSource": "open-prices",
+    "unit": "pièce",
+    "category": "fruits-legumes",
+    "mealSlot": "dejeuner-diner",
+    "dietTags": [
+      "omnivore",
+      "vegetarien",
+      "vegan",
+      "sans-porc"
+    ],
+    "allergens": [],
+    "kcal": 17,
+    "protein": "faible",
+    "lipides": "faible",
+    "glucides": "faible",
+    "sel": "moyen",
+    "easyToCook": true
+  },
+  {
+    "id": "chou-vert",
+    "shortName": "Chou vert",
+    "name": "Coleslaw Chou blanc et carottes",
+    "price": 1.6,
+    "priceSource": "open-prices",
+    "unit": "pièce",
+    "category": "fruits-legumes",
+    "mealSlot": "dejeuner-diner",
+    "dietTags": [
+      "omnivore",
+      "vegetarien",
+      "sans-porc"
+    ],
+    "allergens": [
+      "oeuf"
+    ],
+    "kcal": 110,
+    "protein": "faible",
+    "lipides": "moyen",
+    "glucides": "faible",
+    "sel": "moyen",
+    "easyToCook": true
+  },
+  {
+    "id": "blette",
+    "shortName": "Blettes",
+    "name": "Blettes",
+    "price": 2.2,
+    "priceSource": "estimation",
+    "unit": "botte",
+    "category": "fruits-legumes",
+    "mealSlot": "dejeuner-diner",
+    "dietTags": [
+      "omnivore",
+      "vegetarien",
+      "vegan",
+      "sans-porc"
+    ],
+    "allergens": [],
+    "kcal": 11,
+    "protein": "faible",
+    "lipides": "faible",
+    "glucides": "faible",
+    "sel": "moyen",
+    "easyToCook": true
+  },
+  {
+    "id": "persil",
+    "shortName": "Persil",
+    "name": "Olives aux Citron & touche de persil",
+    "price": 3.21,
+    "priceSource": "open-prices",
+    "unit": "botte",
+    "category": "fruits-legumes",
+    "mealSlot": "dejeuner-diner",
+    "dietTags": [
+      "omnivore",
+      "vegetarien",
+      "vegan",
+      "sans-porc"
+    ],
+    "allergens": [],
+    "kcal": 230,
+    "protein": "faible",
+    "lipides": "riche",
+    "glucides": "faible",
+    "sel": "riche",
+    "easyToCook": true,
+    "isCondiment": true
+  },
+  {
+    "id": "basilic",
+    "shortName": "Basilic",
+    "name": "Ravioles à poêler au fromage frais et Basilic de Provence sachet",
+    "price": 3.99,
+    "priceSource": "open-prices",
+    "unit": "pot",
+    "category": "fruits-legumes",
+    "mealSlot": "dejeuner-diner",
+    "dietTags": [
+      "omnivore",
+      "sans-porc"
+    ],
+    "allergens": [
+      "oeuf",
+      "gluten",
+      "lactose"
+    ],
+    "kcal": 210,
+    "protein": "moyen",
+    "lipides": "moyen",
+    "glucides": "moyen",
+    "sel": "moyen",
+    "easyToCook": true,
+    "isCondiment": true
+  },
+  {
+    "id": "coriandre",
+    "shortName": "Coriandre",
+    "name": "Mousseline de carottes Pointe de crème fraîche et de coriandre",
+    "price": 2.2,
+    "priceSource": "estimation",
+    "unit": "botte",
+    "category": "fruits-legumes",
+    "mealSlot": "dejeuner-diner",
+    "dietTags": [
+      "omnivore",
+      "sans-porc"
+    ],
+    "allergens": [
+      "lactose"
+    ],
+    "kcal": 103,
+    "protein": "faible",
+    "lipides": "moyen",
+    "glucides": "faible",
+    "sel": "moyen",
+    "easyToCook": true,
+    "isCondiment": true
+  },
+  {
+    "id": "ciboulette",
+    "shortName": "Ciboulette",
+    "name": "Fromage à tartiner Echalote et Ciboulette fouetté MADAME LOIK - 150g",
+    "price": 1.89,
+    "priceSource": "open-prices",
+    "unit": "pot",
+    "category": "fruits-legumes",
+    "mealSlot": "dejeuner-diner",
+    "dietTags": [
+      "omnivore",
+      "vegetarien",
+      "sans-porc"
+    ],
+    "allergens": [
+      "lactose"
+    ],
+    "kcal": 242,
+    "protein": "moyen",
+    "lipides": "riche",
+    "glucides": "faible",
+    "sel": "moyen",
+    "easyToCook": true,
+    "isCondiment": true
+  },
+  {
+    "id": "menthe-fraiche",
+    "shortName": "Menthe fraîche",
+    "name": "Bonbons Tic Tac x100 pastilles MENTHE EXTRA FRAÎCHE - 49g",
+    "price": 1.74,
+    "priceSource": "open-prices",
+    "unit": "botte",
+    "category": "fruits-legumes",
+    "mealSlot": "encas-extra",
+    "dietTags": [
+      "omnivore",
+      "vegetarien",
+      "sans-porc"
+    ],
+    "allergens": [],
+    "kcal": 395,
+    "protein": "faible",
+    "lipides": "faible",
+    "glucides": "riche",
+    "sel": "faible",
+    "easyToCook": true,
+    "isCondiment": true
+  },
+  {
+    "id": "gingembre-frais",
+    "shortName": "Gingembre frais",
+    "name": "Boost gingembre mangue",
+    "price": 2.2,
+    "priceSource": "estimation",
+    "unit": "racine",
+    "category": "fruits-legumes",
+    "mealSlot": "dejeuner-diner",
+    "dietTags": [
+      "omnivore",
+      "sans-porc"
+    ],
+    "allergens": [],
+    "kcal": 52,
+    "protein": "faible",
+    "lipides": "faible",
+    "glucides": "moyen",
+    "sel": "faible",
+    "easyToCook": true,
+    "isCondiment": true
+  },
+  {
+    "id": "echalote",
+    "shortName": "Échalote",
+    "name": "Fromage à tartiner Echalote et Ciboulette fouetté MADAME LOIK - 150g",
+    "price": 1.89,
+    "priceSource": "open-prices",
+    "unit": "filet",
+    "category": "fruits-legumes",
+    "mealSlot": "dejeuner-diner",
+    "dietTags": [
+      "omnivore",
+      "vegetarien",
+      "sans-porc"
+    ],
+    "allergens": [
+      "lactose"
+    ],
+    "kcal": 242,
+    "protein": "moyen",
+    "lipides": "riche",
+    "glucides": "faible",
+    "sel": "moyen",
+    "easyToCook": true,
+    "isCondiment": true
+  },
+  {
+    "id": "piment",
+    "shortName": "Piment frais",
+    "name": "Olives à la provençale poivrons piments",
+    "price": 3.13,
+    "priceSource": "open-prices",
+    "unit": "sachet",
+    "category": "fruits-legumes",
+    "mealSlot": "dejeuner-diner",
+    "dietTags": [
+      "omnivore",
+      "vegetarien",
+      "vegan",
+      "sans-porc"
+    ],
+    "allergens": [],
+    "kcal": 235,
+    "protein": "faible",
+    "lipides": "riche",
+    "glucides": "faible",
+    "sel": "riche",
+    "easyToCook": true,
+    "isCondiment": true
+  },
+  {
+    "id": "mure",
+    "shortName": "Mûres",
+    "name": "Gelée Mûres",
+    "price": 3.26,
+    "priceSource": "open-prices",
+    "unit": "barquette",
+    "category": "fruits-legumes",
+    "mealSlot": "encas-extra",
+    "dietTags": [
+      "omnivore",
+      "vegetarien",
+      "sans-porc"
+    ],
+    "allergens": [],
+    "kcal": 242,
+    "protein": "faible",
+    "lipides": "faible",
+    "glucides": "riche",
+    "sel": "faible",
+    "easyToCook": true
+  },
+  {
+    "id": "groseille",
+    "shortName": "Groseilles",
+    "name": "Gelée de groseilles",
+    "price": 2.21,
+    "priceSource": "open-prices",
+    "unit": "barquette",
+    "category": "fruits-legumes",
+    "mealSlot": "encas-extra",
+    "dietTags": [
+      "omnivore",
+      "vegetarien",
+      "vegan",
+      "sans-porc"
+    ],
+    "allergens": [],
+    "kcal": 241,
+    "protein": "faible",
+    "lipides": "faible",
+    "glucides": "riche",
+    "sel": "faible",
+    "easyToCook": true
+  },
+  {
+    "id": "courge-spaghetti",
+    "shortName": "Courge spaghetti",
+    "name": "Biologique Courge Spaghetti",
+    "price": 2.2,
+    "priceSource": "estimation",
+    "unit": "pièce",
+    "category": "fruits-legumes",
+    "mealSlot": "dejeuner-diner",
+    "dietTags": [
+      "omnivore",
+      "sans-porc"
+    ],
+    "allergens": [],
+    "kcal": 0,
+    "protein": "moyen",
+    "lipides": "moyen",
+    "glucides": "moyen",
+    "sel": "faible",
+    "easyToCook": true
+  },
+  {
+    "id": "mais-epi",
+    "shortName": "Maïs en épi",
+    "name": "BIO Maïs doux précuit",
+    "price": 2.92,
+    "priceSource": "open-prices",
+    "unit": "pièce",
+    "category": "fruits-legumes",
+    "mealSlot": "dejeuner-diner",
+    "dietTags": [
+      "omnivore",
+      "vegetarien",
+      "vegan",
+      "sans-porc"
+    ],
+    "allergens": [],
+    "kcal": 74,
+    "protein": "faible",
+    "lipides": "faible",
+    "glucides": "moyen",
+    "sel": "faible",
+    "easyToCook": true
+  },
+  {
+    "id": "salade-frisee",
+    "shortName": "Salade frisée",
+    "name": "Salade Composée Frisée Iceberg Scarole Chicorée rouge",
+    "price": 2.02,
+    "priceSource": "open-prices",
+    "unit": "pièce",
+    "category": "fruits-legumes",
+    "mealSlot": "dejeuner-diner",
+    "dietTags": [
+      "omnivore",
+      "vegetarien",
+      "vegan",
+      "sans-porc"
+    ],
+    "allergens": [],
+    "kcal": 17,
+    "protein": "faible",
+    "lipides": "faible",
+    "glucides": "faible",
+    "sel": "faible",
+    "easyToCook": true
+  },
+  {
+    "id": "cresson",
+    "shortName": "Cresson",
+    "name": "velouté de cresson",
+    "price": 2.2,
+    "priceSource": "estimation",
+    "unit": "botte",
+    "category": "fruits-legumes",
+    "mealSlot": "dejeuner-diner",
+    "dietTags": [
+      "omnivore",
+      "sans-porc"
+    ],
+    "allergens": [
+      "lactose"
+    ],
+    "kcal": 33,
+    "protein": "faible",
+    "lipides": "faible",
+    "glucides": "faible",
+    "sel": "moyen",
+    "easyToCook": true
+  },
+  {
+    "id": "camembert",
+    "shortName": "Camembert",
+    "name": "PRESIDENT CAMEMBERT 250g",
+    "price": 1.97,
+    "priceSource": "open-prices",
+    "unit": "pièce",
+    "category": "frais",
+    "mealSlot": "dejeuner-diner",
+    "dietTags": [
+      "omnivore",
+      "vegetarien",
+      "sans-porc"
+    ],
+    "allergens": [
+      "lactose"
+    ],
+    "kcal": 269,
+    "protein": "riche",
+    "lipides": "riche",
+    "glucides": "faible",
+    "sel": "moyen",
+    "easyToCook": true
+  },
+  {
+    "id": "roquefort",
+    "shortName": "Roquefort",
+    "name": "Roquefort Société",
+    "price": 3.1,
+    "priceSource": "open-prices",
+    "unit": "part",
+    "category": "frais",
+    "mealSlot": "dejeuner-diner",
+    "dietTags": [
+      "omnivore",
+      "sans-porc"
+    ],
+    "allergens": [
+      "lactose"
+    ],
+    "kcal": 365,
+    "protein": "riche",
+    "lipides": "riche",
+    "glucides": "faible",
+    "sel": "riche",
+    "easyToCook": true
+  },
+  {
+    "id": "ricotta",
+    "shortName": "Ricotta",
+    "name": "Ricotta & Épinards",
+    "price": 3.31,
+    "priceSource": "open-prices",
+    "unit": "pot",
+    "category": "frais",
+    "mealSlot": "dejeuner-diner",
+    "dietTags": [
+      "omnivore",
+      "sans-porc"
+    ],
+    "allergens": [
+      "oeuf",
+      "gluten",
+      "lactose"
+    ],
+    "kcal": 251,
+    "protein": "moyen",
+    "lipides": "moyen",
+    "glucides": "moyen",
+    "sel": "moyen",
+    "easyToCook": true
+  },
+  {
+    "id": "parmesan",
+    "shortName": "Parmesan",
+    "name": "Parmesan",
+    "price": 1.74,
+    "priceSource": "open-prices",
+    "unit": "sachet",
+    "category": "frais",
+    "mealSlot": "dejeuner-diner",
+    "dietTags": [
+      "omnivore",
+      "sans-porc"
+    ],
+    "allergens": [
+      "lactose"
+    ],
+    "kcal": 402,
+    "protein": "riche",
+    "lipides": "riche",
+    "glucides": "faible",
+    "sel": "riche",
+    "easyToCook": true,
+    "isCondiment": true
+  },
+  {
+    "id": "cottage-cheese",
+    "shortName": "Cottage cheese",
+    "name": "Cottage cheese",
+    "price": 3.95,
+    "priceSource": "open-prices",
+    "unit": "pot",
+    "category": "frais",
+    "mealSlot": "petit-dejeuner",
+    "dietTags": [
+      "omnivore",
+      "vegetarien",
+      "sans-porc"
+    ],
+    "allergens": [
+      "lactose"
+    ],
+    "kcal": 88,
+    "protein": "moyen",
+    "lipides": "moyen",
+    "glucides": "faible",
+    "sel": "moyen",
+    "easyToCook": true
+  },
+  {
+    "id": "faisselle",
+    "shortName": "Faisselle",
+    "name": "faisselle",
+    "price": 2.62,
+    "priceSource": "open-prices",
+    "unit": "pot",
+    "category": "frais",
+    "mealSlot": "petit-dejeuner",
+    "dietTags": [
+      "omnivore",
+      "vegetarien",
+      "sans-porc"
+    ],
+    "allergens": [
+      "lactose"
+    ],
+    "kcal": 76,
+    "protein": "faible",
+    "lipides": "moyen",
+    "glucides": "faible",
+    "sel": "faible",
+    "easyToCook": true
+  },
+  {
+    "id": "lait-entier",
+    "shortName": "Lait entier",
+    "name": "Yaourt nature au lait entier",
+    "price": 1.02,
+    "priceSource": "open-prices",
+    "unit": "brique",
+    "category": "frais",
+    "mealSlot": "petit-dejeuner",
+    "dietTags": [
+      "omnivore",
+      "vegetarien",
+      "sans-porc"
+    ],
+    "allergens": [
+      "lactose"
+    ],
+    "kcal": 63,
+    "protein": "faible",
+    "lipides": "moyen",
+    "glucides": "faible",
+    "sel": "faible",
+    "easyToCook": true
+  },
+  {
+    "id": "lait-ecreme",
+    "shortName": "Lait écrémé",
+    "name": "Viva lait 1/2 écrémé",
+    "price": 1.04,
+    "priceSource": "open-prices",
+    "unit": "brique",
+    "category": "frais",
+    "mealSlot": "petit-dejeuner",
+    "dietTags": [
+      "omnivore",
+      "sans-porc"
+    ],
+    "allergens": [
+      "lactose"
+    ],
+    "kcal": 41,
+    "protein": "faible",
+    "lipides": "faible",
+    "glucides": "faible",
+    "sel": "faible",
+    "easyToCook": true
+  },
+  {
+    "id": "beurre-demi-sel",
+    "shortName": "Beurre demi-sel",
+    "name": "beurre demi-sel",
+    "price": 2.44,
+    "priceSource": "open-prices",
+    "unit": "plaquette",
+    "category": "frais",
+    "mealSlot": "petit-dejeuner",
+    "dietTags": [
+      "omnivore",
+      "sans-porc"
+    ],
+    "allergens": [
+      "lactose"
+    ],
+    "kcal": 726,
+    "protein": "faible",
+    "lipides": "riche",
+    "glucides": "faible",
+    "sel": "riche",
+    "easyToCook": true,
+    "isCondiment": true
+  },
+  {
+    "id": "margarine",
+    "shortName": "Margarine",
+    "name": "Margarine bio doux tartine & cuisson",
+    "price": 2.64,
+    "priceSource": "open-prices",
+    "unit": "pot",
+    "category": "frais",
+    "mealSlot": "petit-dejeuner",
+    "dietTags": [
+      "omnivore",
+      "sans-porc"
+    ],
+    "allergens": [],
+    "kcal": 485,
+    "protein": "faible",
+    "lipides": "riche",
+    "glucides": "faible",
+    "sel": "moyen",
+    "easyToCook": true,
+    "isCondiment": true
+  },
+  {
+    "id": "skyr",
+    "shortName": "Skyr",
+    "name": "Skyr nature 0%",
+    "price": 3.61,
+    "priceSource": "open-prices",
+    "unit": "pot",
+    "category": "frais",
+    "mealSlot": "petit-dejeuner",
+    "dietTags": [
+      "omnivore",
+      "vegetarien",
+      "sans-porc"
+    ],
+    "allergens": [
+      "lactose"
+    ],
+    "kcal": 57,
+    "protein": "moyen",
+    "lipides": "faible",
+    "glucides": "faible",
+    "sel": "faible",
+    "easyToCook": true
+  },
+  {
+    "id": "tempeh",
+    "shortName": "Tempeh",
+    "name": "Tempeh",
+    "price": 4.34,
+    "priceSource": "open-prices",
+    "unit": "barquette",
+    "category": "frais",
+    "mealSlot": "dejeuner-diner",
+    "dietTags": [
+      "omnivore",
+      "vegetarien",
+      "vegan",
+      "sans-porc"
+    ],
+    "allergens": [],
+    "kcal": 179,
+    "protein": "riche",
+    "lipides": "moyen",
+    "glucides": "faible",
+    "sel": "faible",
+    "easyToCook": true
+  },
+  {
+    "id": "pate-campagne",
+    "shortName": "Pâté de campagne",
+    "name": "Pâté campagne breton IGP",
+    "price": 2.8,
+    "priceSource": "estimation",
+    "unit": "pot",
+    "category": "frais",
+    "mealSlot": "dejeuner-diner",
+    "dietTags": [
+      "omnivore"
+    ],
+    "allergens": [
+      "oeuf",
+      "gluten"
+    ],
+    "kcal": 310,
+    "protein": "moyen",
+    "lipides": "riche",
+    "glucides": "faible",
+    "sel": "moyen",
+    "easyToCook": true
+  },
+  {
+    "id": "rillettes",
+    "shortName": "Rillettes",
+    "name": "Rillettes de poulet rôti",
+    "price": 2.76,
+    "priceSource": "open-prices",
+    "unit": "pot",
+    "category": "frais",
+    "mealSlot": "dejeuner-diner",
+    "dietTags": [
+      "omnivore",
+      "sans-porc"
+    ],
+    "allergens": [],
+    "kcal": 358,
+    "protein": "riche",
+    "lipides": "riche",
+    "glucides": "faible",
+    "sel": "moyen",
+    "easyToCook": true
+  },
+  {
+    "id": "saucisson-sec",
+    "shortName": "Saucisson sec",
+    "name": "Bâton de berger Mini x15 (Saucisson sec supérieur)",
+    "price": 3.67,
+    "priceSource": "open-prices",
+    "unit": "pièce",
+    "category": "frais",
+    "mealSlot": "encas-extra",
+    "dietTags": [
+      "omnivore"
+    ],
+    "allergens": [
+      "lactose"
+    ],
+    "kcal": 510,
+    "protein": "riche",
+    "lipides": "riche",
+    "glucides": "faible",
+    "sel": "riche",
+    "easyToCook": true
+  },
+  {
+    "id": "terrine",
+    "shortName": "Terrine",
+    "name": "Terrine de campagne dorée au four",
+    "price": 1.4,
+    "priceSource": "open-prices",
+    "unit": "pot",
+    "category": "frais",
+    "mealSlot": "dejeuner-diner",
+    "dietTags": [
+      "omnivore"
+    ],
+    "allergens": [
+      "oeuf",
+      "gluten"
+    ],
+    "kcal": 272,
+    "protein": "riche",
+    "lipides": "riche",
+    "glucides": "faible",
+    "sel": "riche",
+    "easyToCook": true
+  },
+  {
+    "id": "pate-feuilletee",
+    "shortName": "Pâte feuilletée",
+    "name": "HERTA TARTE EN OR Pâte Feuilletée 230g",
+    "price": 1.16,
+    "priceSource": "open-prices",
+    "unit": "rouleau",
+    "category": "frais",
+    "mealSlot": "dejeuner-diner",
+    "dietTags": [
+      "omnivore",
+      "vegetarien",
+      "sans-porc"
+    ],
+    "allergens": [
+      "gluten"
+    ],
+    "kcal": 383,
+    "protein": "moyen",
+    "lipides": "riche",
+    "glucides": "riche",
+    "sel": "moyen",
+    "easyToCook": true
+  },
+  {
+    "id": "quiche-prete",
+    "shortName": "Quiche lorraine",
+    "name": "Quiche Lorraine pur beurre",
+    "price": 3.56,
+    "priceSource": "open-prices",
+    "unit": "pièce",
+    "category": "frais",
+    "mealSlot": "dejeuner-diner",
+    "dietTags": [
+      "omnivore"
+    ],
+    "allergens": [
+      "oeuf",
+      "gluten",
+      "lactose"
+    ],
+    "kcal": 241,
+    "protein": "moyen",
+    "lipides": "moyen",
+    "glucides": "moyen",
+    "sel": "moyen",
+    "easyToCook": true
+  },
+  {
+    "id": "ravioli-frais",
+    "shortName": "Ravioli frais",
+    "name": "RAVIOLINI jambon cru",
+    "price": 2.8,
+    "priceSource": "estimation",
+    "unit": "paquet",
+    "category": "frais",
+    "mealSlot": "dejeuner-diner",
+    "dietTags": [
+      "omnivore"
+    ],
+    "allergens": [
+      "oeuf",
+      "gluten",
+      "lactose"
+    ],
+    "kcal": 294,
+    "protein": "moyen",
+    "lipides": "moyen",
+    "glucides": "riche",
+    "sel": "moyen",
+    "easyToCook": true
+  },
+  {
+    "id": "beurre-allege",
+    "shortName": "Beurre allégé",
+    "name": "Les Fourrées  -  Beurre de Cacahuète & Cacao",
+    "price": 4.93,
+    "priceSource": "open-prices",
+    "unit": "plaquette",
+    "category": "frais",
+    "mealSlot": "petit-dejeuner",
+    "dietTags": [
+      "omnivore",
+      "vegetarien",
+      "vegan",
+      "sans-porc"
+    ],
+    "allergens": [
+      "lactose",
+      "arachide"
+    ],
+    "kcal": 438,
+    "protein": "moyen",
+    "lipides": "moyen",
+    "glucides": "riche",
+    "sel": "faible",
+    "easyToCook": true,
+    "isCondiment": true
+  },
+  {
+    "id": "creme-fouettee",
+    "shortName": "Crème fouettée",
+    "name": "Crème sous pression à la vanille 250g",
+    "price": 2.82,
+    "priceSource": "open-prices",
+    "unit": "bombe",
+    "category": "frais",
+    "mealSlot": "encas-extra",
+    "dietTags": [
+      "omnivore",
+      "sans-porc"
+    ],
+    "allergens": [
+      "lactose"
+    ],
+    "kcal": 313,
+    "protein": "faible",
+    "lipides": "riche",
+    "glucides": "moyen",
+    "sel": "faible",
+    "easyToCook": true,
+    "gourmand": true
+  },
+  {
+    "id": "glace-vanille",
+    "shortName": "Glace vanille",
+    "name": "Crème glacée Vanille de Madagascar",
+    "price": 3.41,
+    "priceSource": "open-prices",
+    "unit": "pot",
+    "category": "frais",
+    "mealSlot": "encas-extra",
+    "dietTags": [
+      "omnivore",
+      "sans-porc"
+    ],
+    "allergens": [
+      "lactose"
+    ],
+    "kcal": 185,
+    "protein": "faible",
+    "lipides": "moyen",
+    "glucides": "moyen",
+    "sel": "faible",
+    "easyToCook": true,
+    "gourmand": true
+  },
+  {
+    "id": "mousse-chocolat",
+    "shortName": "Mousse au chocolat",
+    "name": "Mousse au chocolat à L'ANCIENNE",
+    "price": 4.16,
+    "priceSource": "open-prices",
+    "unit": "pack",
+    "category": "frais",
+    "mealSlot": "encas-extra",
+    "dietTags": [
+      "omnivore",
+      "vegetarien",
+      "sans-porc"
+    ],
+    "allergens": [
+      "oeuf",
+      "lactose"
+    ],
+    "kcal": 348,
+    "protein": "moyen",
+    "lipides": "riche",
+    "glucides": "moyen",
+    "sel": "moyen",
+    "easyToCook": true,
+    "gourmand": true
+  },
+  {
+    "id": "tiramisu",
+    "shortName": "Tiramisu",
+    "name": "Le Tiramisu Cappuccino",
+    "price": 2.84,
+    "priceSource": "open-prices",
+    "unit": "part",
+    "category": "frais",
+    "mealSlot": "encas-extra",
+    "dietTags": [
+      "omnivore",
+      "sans-porc"
+    ],
+    "allergens": [
+      "oeuf",
+      "gluten",
+      "lactose"
+    ],
+    "kcal": 286,
+    "protein": "faible",
+    "lipides": "moyen",
+    "glucides": "riche",
+    "sel": "faible",
+    "easyToCook": true,
+    "gourmand": true
+  },
+  {
+    "id": "flan",
+    "shortName": "Flan pâtissier",
+    "name": "Flan pâtissier",
+    "price": 2.8,
+    "priceSource": "estimation",
+    "unit": "part",
+    "category": "frais",
+    "mealSlot": "encas-extra",
+    "dietTags": [
+      "omnivore",
+      "vegetarien",
+      "sans-porc"
+    ],
+    "allergens": [
+      "oeuf"
+    ],
+    "kcal": 125,
+    "protein": "faible",
+    "lipides": "faible",
+    "glucides": "moyen",
+    "sel": "faible",
+    "easyToCook": true,
+    "gourmand": true
+  },
+  {
+    "id": "escalope-veau",
+    "shortName": "Escalope de veau",
+    "name": "2 Escalopes de Veau à la milanaise",
+    "price": 5.5,
+    "priceSource": "estimation",
+    "unit": "barquette",
+    "category": "viande-poisson",
+    "mealSlot": "dejeuner-diner",
+    "dietTags": [
+      "omnivore",
+      "sans-porc"
+    ],
+    "allergens": [
+      "oeuf",
+      "gluten"
+    ],
+    "kcal": 153,
+    "protein": "riche",
+    "lipides": "faible",
+    "glucides": "moyen",
+    "sel": "moyen",
+    "easyToCook": true
+  },
+  {
+    "id": "cotes-porc",
+    "shortName": "Côtes de porc",
+    "name": "Côtes de porc désossées marinées",
+    "price": 5.5,
+    "priceSource": "estimation",
+    "unit": "barquette",
+    "category": "viande-poisson",
+    "mealSlot": "dejeuner-diner",
+    "dietTags": [
+      "omnivore"
+    ],
+    "allergens": [],
+    "kcal": 129,
+    "protein": "riche",
+    "lipides": "moyen",
+    "glucides": "faible",
+    "sel": "moyen",
+    "easyToCook": true
+  },
+  {
+    "id": "roti-boeuf",
+    "shortName": "Rôti de bœuf",
+    "name": "Rôti de Boeuf Doré au four",
+    "price": 5.5,
+    "priceSource": "estimation",
+    "unit": "pièce",
+    "category": "viande-poisson",
+    "mealSlot": "dejeuner-diner",
+    "dietTags": [
+      "omnivore",
+      "sans-porc"
+    ],
+    "allergens": [],
+    "kcal": 123,
+    "protein": "riche",
+    "lipides": "moyen",
+    "glucides": "faible",
+    "sel": "moyen",
+    "easyToCook": true
+  },
+  {
+    "id": "poulet-entier",
+    "shortName": "Poulet entier",
+    "name": "Filet de poulet et ses pommes de terre a la sarladaise",
+    "price": 2.99,
+    "priceSource": "open-prices",
+    "unit": "pièce",
+    "category": "viande-poisson",
+    "mealSlot": "dejeuner-diner",
+    "dietTags": [
+      "omnivore",
+      "sans-porc"
+    ],
+    "allergens": [
+      "lactose"
+    ],
+    "kcal": 139,
+    "protein": "moyen",
+    "lipides": "moyen",
+    "glucides": "moyen",
+    "sel": "moyen",
+    "easyToCook": true
+  },
+  {
+    "id": "blanc-dinde",
+    "shortName": "Blanc de dinde",
+    "name": "Blanc de dinde doré au four",
+    "price": 2.76,
+    "priceSource": "open-prices",
+    "unit": "barquette",
+    "category": "viande-poisson",
+    "mealSlot": "dejeuner-diner",
+    "dietTags": [
+      "omnivore",
+      "sans-porc"
+    ],
+    "allergens": [],
+    "kcal": 103,
+    "protein": "riche",
+    "lipides": "faible",
+    "glucides": "faible",
+    "sel": "moyen",
+    "easyToCook": true
+  },
+  {
+    "id": "agneau-hache",
+    "shortName": "Agneau haché",
+    "name": "Pavé d'Agneau Haché",
+    "price": 5.5,
+    "priceSource": "estimation",
+    "unit": "barquette",
+    "category": "viande-poisson",
+    "mealSlot": "dejeuner-diner",
+    "dietTags": [
+      "omnivore",
+      "sans-porc"
+    ],
+    "allergens": [],
+    "kcal": 219,
+    "protein": "riche",
+    "lipides": "moyen",
+    "glucides": "faible",
+    "sel": "moyen",
+    "easyToCook": true
+  },
+  {
+    "id": "foie-volaille",
+    "shortName": "Foie de volaille",
+    "name": "Foies de volailles confits",
+    "price": 3.34,
+    "priceSource": "open-prices",
+    "unit": "barquette",
+    "category": "viande-poisson",
+    "mealSlot": "dejeuner-diner",
+    "dietTags": [
+      "omnivore",
+      "sans-porc"
+    ],
+    "allergens": [],
+    "kcal": 145,
+    "protein": "riche",
+    "lipides": "moyen",
+    "glucides": "faible",
+    "sel": "riche",
+    "easyToCook": true
+  },
+  {
+    "id": "lapin",
+    "shortName": "Lapin",
+    "name": "Lapin d’or chocolat au lait",
+    "price": 6.56,
+    "priceSource": "open-prices",
+    "unit": "pièce",
+    "category": "viande-poisson",
+    "mealSlot": "dejeuner-diner",
+    "dietTags": [
+      "omnivore",
+      "sans-porc"
+    ],
+    "allergens": [
+      "gluten",
+      "lactose"
+    ],
+    "kcal": 544,
+    "protein": "moyen",
+    "lipides": "riche",
+    "glucides": "riche",
+    "sel": "moyen",
+    "easyToCook": true
+  },
+  {
+    "id": "dorade",
+    "shortName": "Dorade",
+    "name": "Filets de dorade-sébaste surgelés",
+    "price": 5.5,
+    "priceSource": "estimation",
+    "unit": "pièce",
+    "category": "viande-poisson",
+    "mealSlot": "dejeuner-diner",
+    "dietTags": [
+      "omnivore",
+      "sans-porc"
+    ],
+    "allergens": [],
+    "kcal": 105,
+    "protein": "riche",
+    "lipides": "moyen",
+    "glucides": "faible",
+    "sel": "faible",
+    "easyToCook": true
+  },
+  {
+    "id": "maquereau",
+    "shortName": "Maquereau",
+    "name": "Filets maquereau naturel",
+    "price": 1.3,
+    "priceSource": "open-prices",
+    "unit": "pièce",
+    "category": "viande-poisson",
+    "mealSlot": "dejeuner-diner",
+    "dietTags": [
+      "omnivore",
+      "sans-porc"
+    ],
+    "allergens": [],
+    "kcal": 238,
+    "protein": "riche",
+    "lipides": "riche",
+    "glucides": "faible",
+    "sel": "moyen",
+    "easyToCook": true
+  },
+  {
+    "id": "truite",
+    "shortName": "Truite",
+    "name": "Truite Fumée de France",
+    "price": 3.44,
+    "priceSource": "open-prices",
+    "unit": "pièce",
+    "category": "viande-poisson",
+    "mealSlot": "dejeuner-diner",
+    "dietTags": [
+      "omnivore",
+      "sans-porc"
+    ],
+    "allergens": [],
+    "kcal": 155,
+    "protein": "riche",
+    "lipides": "moyen",
+    "glucides": "faible",
+    "sel": "riche",
+    "easyToCook": true
+  },
+  {
+    "id": "colin",
+    "shortName": "Colin",
+    "name": "Colin d'Alaska MSC façon Fish & Chips",
+    "price": 3.96,
+    "priceSource": "open-prices",
+    "unit": "barquette",
+    "category": "viande-poisson",
+    "mealSlot": "dejeuner-diner",
+    "dietTags": [
+      "omnivore",
+      "sans-porc"
+    ],
+    "allergens": [
+      "gluten"
+    ],
+    "kcal": 207,
+    "protein": "moyen",
+    "lipides": "moyen",
+    "glucides": "moyen",
+    "sel": "moyen",
+    "easyToCook": true
+  },
+  {
+    "id": "sole",
+    "shortName": "Sole",
+    "name": "Spicchi di sole bonus pack 400g mb",
+    "price": 5.5,
+    "priceSource": "estimation",
+    "unit": "pièce",
+    "category": "viande-poisson",
+    "mealSlot": "dejeuner-diner",
+    "dietTags": [
+      "omnivore",
+      "vegetarien",
+      "sans-porc"
+    ],
+    "allergens": [
+      "oeuf",
+      "gluten",
+      "lactose"
+    ],
+    "kcal": 461,
+    "protein": "moyen",
+    "lipides": "moyen",
+    "glucides": "riche",
+    "sel": "moyen",
+    "easyToCook": true
+  },
+  {
+    "id": "calamars",
+    "shortName": "Calamars",
+    "name": "Calamars à la Romaine",
+    "price": 5.5,
+    "priceSource": "estimation",
+    "unit": "barquette",
+    "category": "viande-poisson",
+    "mealSlot": "dejeuner-diner",
+    "dietTags": [
+      "omnivore",
+      "sans-porc"
+    ],
+    "allergens": [
+      "gluten"
+    ],
+    "kcal": 235,
+    "protein": "moyen",
+    "lipides": "moyen",
+    "glucides": "moyen",
+    "sel": "moyen",
+    "easyToCook": true
+  },
+  {
+    "id": "saint-jacques",
+    "shortName": "Noix de Saint-Jacques",
+    "name": "La Terrine aux Noix de Saint-Jacques à la Bretonne",
+    "price": 4.59,
+    "priceSource": "open-prices",
+    "unit": "barquette",
+    "category": "viande-poisson",
+    "mealSlot": "dejeuner-diner",
+    "dietTags": [
+      "omnivore",
+      "sans-porc"
+    ],
+    "allergens": [
+      "oeuf",
+      "lactose"
+    ],
+    "kcal": 186,
+    "protein": "moyen",
+    "lipides": "moyen",
+    "glucides": "faible",
+    "sel": "moyen",
+    "easyToCook": true
+  },
+  {
+    "id": "thon-frais",
+    "shortName": "Thon frais",
+    "name": "Minis Tartinades Thon fromage frais ciboulette",
+    "price": 2.56,
+    "priceSource": "open-prices",
+    "unit": "pavé",
+    "category": "viande-poisson",
+    "mealSlot": "dejeuner-diner",
+    "dietTags": [
+      "omnivore",
+      "sans-porc"
+    ],
+    "allergens": [
+      "oeuf",
+      "gluten",
+      "lactose"
+    ],
+    "kcal": 273,
+    "protein": "moyen",
+    "lipides": "moyen",
+    "glucides": "riche",
+    "sel": "moyen",
+    "easyToCook": true
+  },
+  {
+    "id": "anchois",
+    "shortName": "Anchois",
+    "name": "Anchois entiers à l'huile d'olive vierge extra",
+    "price": 2.81,
+    "priceSource": "open-prices",
+    "unit": "boîte",
+    "category": "viande-poisson",
+    "mealSlot": "dejeuner-diner",
+    "dietTags": [
+      "omnivore",
+      "sans-porc"
+    ],
+    "allergens": [],
+    "kcal": 250,
+    "protein": "riche",
+    "lipides": "moyen",
+    "glucides": "faible",
+    "sel": "riche",
+    "easyToCook": true,
+    "isCondiment": true
+  },
+  {
+    "id": "jambon-cru",
+    "shortName": "Jambon cru",
+    "name": "Pâtes fraîches jambon cru",
+    "price": 3.25,
+    "priceSource": "open-prices",
+    "unit": "paquet",
+    "category": "viande-poisson",
+    "mealSlot": "dejeuner-diner",
+    "dietTags": [
+      "omnivore"
+    ],
+    "allergens": [
+      "oeuf",
+      "gluten",
+      "lactose"
+    ],
+    "kcal": 293,
+    "protein": "riche",
+    "lipides": "moyen",
+    "glucides": "riche",
+    "sel": "riche",
+    "easyToCook": true
+  },
+  {
+    "id": "pate-de-foie",
+    "shortName": "Pâté de foie",
+    "name": "pâte végétale faux gras",
+    "price": 3.83,
+    "priceSource": "open-prices",
+    "unit": "pot",
+    "category": "viande-poisson",
+    "mealSlot": "dejeuner-diner",
+    "dietTags": [
+      "omnivore",
+      "vegetarien",
+      "vegan",
+      "sans-porc"
+    ],
+    "allergens": [],
+    "kcal": 261,
+    "protein": "faible",
+    "lipides": "riche",
+    "glucides": "faible",
+    "sel": "moyen",
+    "easyToCook": true
+  },
+  {
+    "id": "boudin-noir",
+    "shortName": "Boudin noir",
+    "name": "Boudin à l'ancienne",
+    "price": 2.95,
+    "priceSource": "open-prices",
+    "unit": "barquette",
+    "category": "viande-poisson",
+    "mealSlot": "dejeuner-diner",
+    "dietTags": [
+      "omnivore"
+    ],
+    "allergens": [],
+    "kcal": 231,
+    "protein": "moyen",
+    "lipides": "riche",
+    "glucides": "faible",
+    "sel": "riche",
+    "easyToCook": true
+  },
+  {
+    "id": "andouillette",
+    "shortName": "Andouillette",
+    "name": "Véritables Andouillettes De Troyes",
+    "price": 3.49,
+    "priceSource": "open-prices",
+    "unit": "pièce",
+    "category": "viande-poisson",
+    "mealSlot": "dejeuner-diner",
+    "dietTags": [
+      "omnivore"
+    ],
+    "allergens": [],
+    "kcal": 245,
+    "protein": "riche",
+    "lipides": "riche",
+    "glucides": "faible",
+    "sel": "riche",
+    "easyToCook": true
+  },
+  {
+    "id": "bacon",
+    "shortName": "Bacon",
+    "name": "Bacon Fumé au bois de hêtre",
+    "price": 2.25,
+    "priceSource": "open-prices",
+    "unit": "paquet",
+    "category": "viande-poisson",
+    "mealSlot": "petit-dejeuner",
+    "dietTags": [
+      "omnivore"
+    ],
+    "allergens": [],
+    "kcal": 110,
+    "protein": "riche",
+    "lipides": "faible",
+    "glucides": "faible",
+    "sel": "riche",
+    "easyToCook": true
+  },
+  {
+    "id": "nuggets-poulet",
+    "shortName": "Nuggets de poulet",
+    "name": "Nuggets Extra Croustillant x10",
+    "price": 2.41,
+    "priceSource": "open-prices",
+    "unit": "boîte",
+    "category": "viande-poisson",
+    "mealSlot": "dejeuner-diner",
+    "dietTags": [
+      "omnivore",
+      "sans-porc"
+    ],
+    "allergens": [
+      "gluten"
+    ],
+    "kcal": 232,
+    "protein": "moyen",
+    "lipides": "moyen",
+    "glucides": "moyen",
+    "sel": "moyen",
+    "easyToCook": true
+  },
+  {
+    "id": "cordon-bleu",
+    "shortName": "Cordon bleu",
+    "name": "Cordon bleu Le Gaulois",
+    "price": 2.06,
+    "priceSource": "open-prices",
+    "unit": "boîte",
+    "category": "viande-poisson",
+    "mealSlot": "dejeuner-diner",
+    "dietTags": [
+      "omnivore"
+    ],
+    "allergens": [
+      "gluten",
+      "lactose"
+    ],
+    "kcal": 124,
+    "protein": "moyen",
+    "lipides": "moyen",
+    "glucides": "moyen",
+    "sel": "moyen",
+    "easyToCook": true
+  },
+  {
+    "id": "filet-dinde-fume",
+    "shortName": "Filet de dinde fumé",
+    "name": "Escalope cordon bleu de poulet 100% filets",
+    "price": 2.31,
+    "priceSource": "open-prices",
+    "unit": "paquet",
+    "category": "viande-poisson",
+    "mealSlot": "dejeuner-diner",
+    "dietTags": [
+      "omnivore",
+      "sans-porc"
+    ],
+    "allergens": [
+      "oeuf",
+      "gluten",
+      "lactose"
+    ],
+    "kcal": 201,
+    "protein": "moyen",
+    "lipides": "moyen",
+    "glucides": "moyen",
+    "sel": "moyen",
+    "easyToCook": true
+  },
+  {
+    "id": "surimi",
+    "shortName": "Surimi",
+    "name": "Surimi Le Moelleux",
+    "price": 4.18,
+    "priceSource": "open-prices",
+    "unit": "paquet",
+    "category": "viande-poisson",
+    "mealSlot": "dejeuner-diner",
+    "dietTags": [
+      "omnivore",
+      "sans-porc"
+    ],
+    "allergens": [
+      "oeuf",
+      "gluten",
+      "lactose"
+    ],
+    "kcal": 110,
+    "protein": "moyen",
+    "lipides": "moyen",
+    "glucides": "moyen",
+    "sel": "riche",
+    "easyToCook": true
+  },
+  {
+    "id": "truite-fumee",
+    "shortName": "Truite fumée",
+    "name": "Truite Fumée de France",
+    "price": 3.44,
+    "priceSource": "open-prices",
+    "unit": "paquet",
+    "category": "viande-poisson",
+    "mealSlot": "dejeuner-diner",
+    "dietTags": [
+      "omnivore",
+      "sans-porc"
+    ],
+    "allergens": [],
+    "kcal": 155,
+    "protein": "riche",
+    "lipides": "moyen",
+    "glucides": "faible",
+    "sel": "riche",
+    "easyToCook": true
+  },
+  {
+    "id": "lieu-noir",
+    "shortName": "Lieu noir",
+    "name": "Lieu noir panire bio",
+    "price": 5.5,
+    "priceSource": "estimation",
+    "unit": "pièce",
+    "category": "viande-poisson",
+    "mealSlot": "dejeuner-diner",
+    "dietTags": [
+      "omnivore",
+      "sans-porc"
+    ],
+    "allergens": [
+      "gluten"
+    ],
+    "kcal": 192,
+    "protein": "moyen",
+    "lipides": "moyen",
+    "glucides": "moyen",
+    "sel": "moyen",
+    "easyToCook": true
+  },
+  {
+    "id": "pain-de-campagne",
+    "shortName": "Pain de campagne",
+    "name": "pain grillé pelletier",
+    "price": 2.3,
+    "priceSource": "open-prices",
+    "unit": "pain",
+    "category": "boulangerie",
+    "mealSlot": "dejeuner-diner",
+    "dietTags": [
+      "omnivore",
+      "vegetarien",
+      "vegan",
+      "sans-porc"
+    ],
+    "allergens": [
+      "gluten"
+    ],
+    "kcal": 387,
+    "protein": "moyen",
+    "lipides": "moyen",
+    "glucides": "riche",
+    "sel": "riche",
+    "easyToCook": true
+  },
+  {
+    "id": "pain-seigle",
+    "shortName": "Pain de seigle",
+    "name": "Pain de mie grandes tranches Seigle & Graines 500g",
+    "price": 2.44,
+    "priceSource": "open-prices",
+    "unit": "pain",
+    "category": "boulangerie",
+    "mealSlot": "dejeuner-diner",
+    "dietTags": [
+      "omnivore",
+      "sans-porc"
+    ],
+    "allergens": [
+      "gluten"
+    ],
+    "kcal": 294,
+    "protein": "moyen",
+    "lipides": "moyen",
+    "glucides": "riche",
+    "sel": "moyen",
+    "easyToCook": true
+  },
+  {
+    "id": "pain-nordique",
+    "shortName": "Pain nordique",
+    "name": "Pain nordique",
+    "price": 1.71,
+    "priceSource": "open-prices",
+    "unit": "paquet",
+    "category": "boulangerie",
+    "mealSlot": "petit-dejeuner",
+    "dietTags": [
+      "omnivore",
+      "sans-porc"
+    ],
+    "allergens": [
+      "gluten"
+    ],
+    "kcal": 289,
+    "protein": "moyen",
+    "lipides": "moyen",
+    "glucides": "riche",
+    "sel": "moyen",
+    "easyToCook": true
+  },
+  {
+    "id": "pain-burger",
+    "shortName": "Pain burger",
+    "name": "pain Burger complet",
+    "price": 1.52,
+    "priceSource": "open-prices",
+    "unit": "paquet",
+    "category": "boulangerie",
+    "mealSlot": "dejeuner-diner",
+    "dietTags": [
+      "omnivore",
+      "vegetarien",
+      "vegan",
+      "sans-porc"
+    ],
+    "allergens": [
+      "gluten"
+    ],
+    "kcal": 269,
+    "protein": "moyen",
+    "lipides": "moyen",
+    "glucides": "riche",
+    "sel": "moyen",
+    "easyToCook": true
+  },
+  {
+    "id": "pain-hot-dog",
+    "shortName": "Pain hot-dog",
+    "name": "PAINS HOT DOG prédécoupés",
+    "price": 1.8,
+    "priceSource": "estimation",
+    "unit": "paquet",
+    "category": "boulangerie",
+    "mealSlot": "dejeuner-diner",
+    "dietTags": [
+      "omnivore",
+      "sans-porc"
+    ],
+    "allergens": [
+      "gluten"
+    ],
+    "kcal": 297,
+    "protein": "moyen",
+    "lipides": "moyen",
+    "glucides": "riche",
+    "sel": "moyen",
+    "easyToCook": true
+  },
+  {
+    "id": "naan",
+    "shortName": "Naan",
+    "name": "Street food saveur cheese naan",
+    "price": 1.58,
+    "priceSource": "open-prices",
+    "unit": "paquet",
+    "category": "boulangerie",
+    "mealSlot": "dejeuner-diner",
+    "dietTags": [
+      "omnivore",
+      "sans-porc"
+    ],
+    "allergens": [
+      "lactose"
+    ],
+    "kcal": 512,
+    "protein": "moyen",
+    "lipides": "riche",
+    "glucides": "riche",
+    "sel": "moyen",
+    "easyToCook": true
+  },
+  {
+    "id": "pain-epices",
+    "shortName": "Pain d'épices",
+    "name": "Pain d'épices miel",
+    "price": 2.31,
+    "priceSource": "open-prices",
+    "unit": "pain",
+    "category": "boulangerie",
+    "mealSlot": "petit-dejeuner",
+    "dietTags": [
+      "omnivore",
+      "vegetarien",
+      "sans-porc"
+    ],
+    "allergens": [
+      "gluten"
+    ],
+    "kcal": 329,
+    "protein": "faible",
+    "lipides": "faible",
+    "glucides": "riche",
+    "sel": "moyen",
+    "easyToCook": true,
+    "gourmand": true
+  },
+  {
+    "id": "chausson-pomme",
+    "shortName": "Chausson aux pommes",
+    "name": "Chaussons aux Pommes",
+    "price": 1.8,
+    "priceSource": "estimation",
+    "unit": "pièce",
+    "category": "boulangerie",
+    "mealSlot": "petit-dejeuner",
+    "dietTags": [
+      "omnivore",
+      "vegetarien",
+      "sans-porc"
+    ],
+    "allergens": [
+      "oeuf",
+      "gluten",
+      "lactose"
+    ],
+    "kcal": 46,
+    "protein": "faible",
+    "lipides": "faible",
+    "glucides": "faible",
+    "sel": "faible",
+    "easyToCook": true,
+    "gourmand": true
+  },
+  {
+    "id": "pain-au-chocolat",
+    "shortName": "Pain au chocolat",
+    "name": "pain au chocolat pasquier x8",
+    "price": 2.4,
+    "priceSource": "open-prices",
+    "unit": "pièce",
+    "category": "boulangerie",
+    "mealSlot": "petit-dejeuner",
+    "dietTags": [
+      "omnivore",
+      "sans-porc"
+    ],
+    "allergens": [
+      "gluten",
+      "lactose"
+    ],
+    "kcal": 379,
+    "protein": "moyen",
+    "lipides": "moyen",
+    "glucides": "riche",
+    "sel": "moyen",
+    "easyToCook": true,
+    "gourmand": true
+  },
+  {
+    "id": "pain-aux-raisins",
+    "shortName": "Pain aux raisins",
+    "name": "Pain d'épices aux figues et aux raisins",
+    "price": 1.8,
+    "priceSource": "estimation",
+    "unit": "pièce",
+    "category": "boulangerie",
+    "mealSlot": "petit-dejeuner",
+    "dietTags": [
+      "omnivore",
+      "vegetarien",
+      "sans-porc"
+    ],
+    "allergens": [
+      "oeuf",
+      "gluten"
+    ],
+    "kcal": 442,
+    "protein": "riche",
+    "lipides": "riche",
+    "glucides": "faible",
+    "sel": "riche",
+    "easyToCook": true,
+    "gourmand": true
+  },
+  {
+    "id": "financier",
+    "shortName": "Financier",
+    "name": "Petits fours financiers",
+    "price": 1.8,
+    "priceSource": "estimation",
+    "unit": "pièce",
+    "category": "boulangerie",
+    "mealSlot": "encas-extra",
+    "dietTags": [
+      "omnivore",
+      "vegetarien",
+      "vegan",
+      "sans-porc"
+    ],
+    "allergens": [],
+    "kcal": 452,
+    "protein": "moyen",
+    "lipides": "riche",
+    "glucides": "riche",
+    "sel": "faible",
+    "easyToCook": true,
+    "gourmand": true
+  },
+  {
+    "id": "cookie",
+    "shortName": "Cookie",
+    "name": "Cookie cacao pépites Sans Sucre",
+    "price": 3.04,
+    "priceSource": "open-prices",
+    "unit": "pièce",
+    "category": "boulangerie",
+    "mealSlot": "encas-extra",
+    "dietTags": [
+      "omnivore",
+      "sans-porc"
+    ],
+    "allergens": [
+      "gluten"
+    ],
+    "kcal": 414,
+    "protein": "moyen",
+    "lipides": "riche",
+    "glucides": "riche",
+    "sel": "faible",
+    "easyToCook": true,
+    "gourmand": true
+  },
+  {
+    "id": "muffin",
+    "shortName": "Muffin",
+    "name": "Brioche Muffin x 5 250g",
+    "price": 1.66,
+    "priceSource": "open-prices",
+    "unit": "pièce",
+    "category": "boulangerie",
+    "mealSlot": "encas-extra",
+    "dietTags": [
+      "omnivore",
+      "sans-porc"
+    ],
+    "allergens": [
+      "oeuf",
+      "gluten",
+      "lactose"
+    ],
+    "kcal": 320,
+    "protein": "moyen",
+    "lipides": "moyen",
+    "glucides": "riche",
+    "sel": "moyen",
+    "easyToCook": true,
+    "gourmand": true
+  },
+  {
+    "id": "tarte-fine",
+    "shortName": "Tarte fine",
+    "name": "Tarte fine Champignons Gorgonzola",
+    "price": 3.5,
+    "priceSource": "open-prices",
+    "unit": "pièce",
+    "category": "boulangerie",
+    "mealSlot": "encas-extra",
+    "dietTags": [
+      "omnivore",
+      "sans-porc"
+    ],
+    "allergens": [
+      "gluten",
+      "lactose"
+    ],
+    "kcal": 181,
+    "protein": "faible",
+    "lipides": "moyen",
+    "glucides": "moyen",
+    "sel": "moyen",
+    "easyToCook": true,
+    "gourmand": true
+  },
+  {
+    "id": "gressins",
+    "shortName": "Gressins",
+    "name": "Gressins au sésame",
+    "price": 1.11,
+    "priceSource": "open-prices",
+    "unit": "paquet",
+    "category": "boulangerie",
+    "mealSlot": "encas-extra",
+    "dietTags": [
+      "omnivore",
+      "vegetarien",
+      "vegan",
+      "sans-porc"
+    ],
+    "allergens": [
+      "gluten"
+    ],
+    "kcal": 475,
+    "protein": "riche",
+    "lipides": "riche",
+    "glucides": "riche",
+    "sel": "riche",
+    "easyToCook": true
+  },
+  {
+    "id": "tortilla-mais",
+    "shortName": "Tortillas de maïs",
+    "name": "Sweet Chilli Pepper Tortillas",
+    "price": 2.28,
+    "priceSource": "open-prices",
+    "unit": "paquet",
+    "category": "boulangerie",
+    "mealSlot": "dejeuner-diner",
+    "dietTags": [
+      "omnivore",
+      "sans-porc"
+    ],
+    "allergens": [],
+    "kcal": 477,
+    "protein": "moyen",
+    "lipides": "riche",
+    "glucides": "riche",
+    "sel": "moyen",
+    "easyToCook": true
+  },
+  {
+    "id": "pain-complet-graines",
+    "shortName": "Pain complet aux graines",
+    "name": "Pain complet de seigle aux graines de tournesol",
+    "price": 2.67,
+    "priceSource": "open-prices",
+    "unit": "pain",
+    "category": "boulangerie",
+    "mealSlot": "petit-dejeuner",
+    "dietTags": [
+      "omnivore",
+      "vegetarien",
+      "vegan",
+      "sans-porc"
+    ],
+    "allergens": [
+      "gluten"
+    ],
+    "kcal": 214,
+    "protein": "moyen",
+    "lipides": "moyen",
+    "glucides": "riche",
+    "sel": "moyen",
+    "easyToCook": true
+  },
+  {
+    "id": "focaccia",
+    "shortName": "Focaccia",
+    "name": "Focaccia alla genovese",
+    "price": 1.8,
+    "priceSource": "estimation",
+    "unit": "pièce",
+    "category": "boulangerie",
+    "mealSlot": "dejeuner-diner",
+    "dietTags": [
+      "omnivore",
+      "vegetarien",
+      "vegan",
+      "sans-porc"
+    ],
+    "allergens": [
+      "gluten"
+    ],
+    "kcal": 315,
+    "protein": "moyen",
+    "lipides": "moyen",
+    "glucides": "riche",
+    "sel": "riche",
+    "easyToCook": true
+  },
+  {
+    "id": "pain-brie",
+    "shortName": "Pain brié",
+    "name": "Miche surprise Pain spécial aux céréales",
+    "price": 1.8,
+    "priceSource": "estimation",
+    "unit": "pain",
+    "category": "boulangerie",
+    "mealSlot": "petit-dejeuner",
+    "dietTags": [
+      "omnivore"
+    ],
+    "allergens": [
+      "oeuf",
+      "gluten",
+      "lactose",
+      "fruits-a-coque"
+    ],
+    "kcal": 285,
+    "protein": "moyen",
+    "lipides": "moyen",
+    "glucides": "moyen",
+    "sel": "moyen",
+    "easyToCook": true
+  },
+  {
+    "id": "fougasse",
+    "shortName": "Fougasse",
+    "name": "La fougasses d’aigues mortes",
+    "price": 1.8,
+    "priceSource": "estimation",
+    "unit": "pièce",
+    "category": "boulangerie",
+    "mealSlot": "dejeuner-diner",
+    "dietTags": [
+      "omnivore",
+      "sans-porc"
+    ],
+    "allergens": [
+      "lactose"
+    ],
+    "kcal": 366,
+    "protein": "moyen",
+    "lipides": "moyen",
+    "glucides": "riche",
+    "sel": "moyen",
+    "easyToCook": true
   }
 ]
