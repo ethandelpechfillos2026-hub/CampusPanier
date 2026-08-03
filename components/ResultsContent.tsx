@@ -3,6 +3,7 @@
 import { useRef, useState } from "react";
 import StatsHeader from "@/components/StatsHeader";
 import { formatPrice } from "@/lib/generateShoppingList";
+import { computeMacroTargets } from "@/lib/macros";
 import { recordListFullyChecked } from "@/lib/stats";
 import {
   CATEGORY_LABELS,
@@ -57,6 +58,8 @@ export default function ResultsContent({
     items: result.items.filter((item) => item.product.category === category),
   })).filter((group) => group.items.length > 0);
 
+  const macroTargets = computeMacroTargets(preferences, preferences.dailyCalories);
+
   return (
     <div className="space-y-5">
       <div className="flex items-start justify-between gap-3">
@@ -66,6 +69,13 @@ export default function ResultsContent({
             Budget {formatPrice(preferences.budget)}/sem.
             {preferences.dailyCalories && ` · ~${preferences.dailyCalories} kcal/j`}
           </p>
+          {macroTargets && (
+            <p className="mt-1 text-xs text-campus-muted">
+              Repère : ~{macroTargets.proteinG}g protéines ·{" "}
+              {macroTargets.lipidesG}g lipides · {macroTargets.glucidesG}g
+              glucides / jour
+            </p>
+          )}
           {preferences.macroPreferences.length > 0 && (
             <ul className="mt-1.5 space-y-0.5">
               {preferences.macroPreferences.map((value) => {

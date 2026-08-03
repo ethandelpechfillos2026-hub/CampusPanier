@@ -122,12 +122,28 @@ function spreadAcrossDays(total: number, allowedDays: number[]): number[] {
 // leur réserve chacun des jours différents plutôt que de les laisser
 // s'empiler le même jour.
 const PRODUCT_FAMILIES: string[][] = [
-  // Féculents du petit-déjeuner.
-  ["pain-complet", "baguette", "pains-mie", "pain-cereales", "croissants", "biscottes", "brioche"],
+  // Féculents/viennoiseries du petit-déjeuner. Sans cette liste à jour, les
+  // nouveaux produits de boulangerie (pain d'épices, pain au chocolat...)
+  // pouvaient tomber le même jour que croissants/brioche — d'où le
+  // "croissant + pain d'épices + pain au chocolat" un même matin.
+  [
+    "pain-complet", "baguette", "pains-mie", "pain-cereales", "croissants",
+    "biscottes", "brioche", "pain-epices", "pain-au-chocolat",
+    "pain-aux-raisins", "chausson-pomme", "pain-de-campagne", "pain-seigle",
+    "pain-nordique", "pain-complet-graines", "baguette-graines", "pain-brie",
+  ],
   // Laitiers du petit-déjeuner.
-  ["yaourt-nature", "yaourt-grec", "fromage-blanc"],
+  ["yaourt-nature", "yaourt-grec", "fromage-blanc", "skyr", "petit-suisse", "faisselle", "cottage-cheese", "yaourt-soja"],
   // Féculents principaux du déjeuner/dîner.
-  ["riz", "pates", "pommes-de-terre", "quinoa", "semoule-couscous"],
+  ["riz", "pates", "pommes-de-terre", "quinoa", "semoule-couscous", "riz-complet", "pates-completes", "spaghetti", "boulgour", "polenta", "patate-douce"],
+  // Douceurs/collations sucrées — pour éviter d'empiler chips + cookies +
+  // financiers + tiramisu le même jour quand plusieurs sont sélectionnés.
+  [
+    "chips", "biscuits-sables", "cookie", "financier", "madeleine",
+    "muffin", "tarte-fine", "galette-bretonne", "popcorn", "gateaux-secs",
+    "bonbons", "chocolat-noir", "barres-cereales", "creme-fouettee",
+    "mousse-chocolat", "tiramisu", "flan", "glace-vanille",
+  ],
 ];
 
 // Pour chaque produit membre d'une famille présente en plusieurs

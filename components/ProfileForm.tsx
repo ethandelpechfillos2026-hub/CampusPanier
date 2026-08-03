@@ -1,15 +1,26 @@
 "use client";
 
 import { useState } from "react";
+import { computeMacroTargets } from "@/lib/macros";
 import {
+  AGE_DEFAULT,
+  AGE_MAX,
+  AGE_MIN,
   ALLERGEN_OPTIONS,
   CALORIE_DEFAULT,
   CALORIE_MAX,
   CALORIE_MIN,
   CALORIE_STEP,
   DIET_OPTIONS,
+  HEIGHT_DEFAULT,
+  HEIGHT_MAX,
+  HEIGHT_MIN,
   MACRO_OPTIONS,
+  SEX_OPTIONS,
   UserProfile,
+  WEIGHT_DEFAULT,
+  WEIGHT_MAX,
+  WEIGHT_MIN,
 } from "@/lib/types";
 
 const STEPS = [
@@ -39,8 +50,16 @@ export default function ProfileForm({ onComplete, initialProfile }: ProfileFormP
   const [macroPreferences, setMacroPreferences] = useState<UserProfile["macroPreferences"]>(
     initialProfile?.macroPreferences ?? []
   );
+  const [sex, setSex] = useState<UserProfile["sex"]>(initialProfile?.sex ?? null);
+  const [weightKg, setWeightKg] = useState(initialProfile?.weightKg ?? WEIGHT_DEFAULT);
+  const [heightCm, setHeightCm] = useState(initialProfile?.heightCm ?? HEIGHT_DEFAULT);
+  const [age, setAge] = useState(initialProfile?.age ?? AGE_DEFAULT);
 
   const currentStep = STEPS[step - 1];
+  const macroTargets =
+    calorieMode === "custom"
+      ? computeMacroTargets({ sex, weightKg, heightCm, age }, caloriesValue)
+      : null;
 
   function toggleAllergy(allergen: UserProfile["allergies"][number]) {
     setAllergies((prev) =>
@@ -60,11 +79,17 @@ export default function ProfileForm({ onComplete, initialProfile }: ProfileFormP
       return;
     }
 
+    const bodyStatsComplete = calorieMode === "custom" && sex !== null;
+
     onComplete({
       diet,
       allergies,
       dailyCalories: calorieMode === "custom" ? caloriesValue : null,
       macroPreferences,
+      sex: bodyStatsComplete ? sex : null,
+      weightKg: bodyStatsComplete ? weightKg : null,
+      heightCm: bodyStatsComplete ? heightCm : null,
+      age: bodyStatsComplete ? age : null,
     });
   }
 
@@ -180,6 +205,122 @@ export default function ProfileForm({ onComplete, initialProfile }: ProfileFormP
                   <span>{CALORIE_MIN} kcal</span>
                   <span>{CALORIE_MAX} kcal</span>
                 </div>
+              </div>
+            )}
+
+            {calorieMode === "custom" && (
+              <div className="space-y-5 border-t border-campus-sand pt-5">
+                <div>
+                  <p className="mb-2 text-sm font-semibold text-campus-ink">
+                    Pour affiner : ton profil corporel
+                  </p>
+                  <p className="text-xs text-campus-muted">
+                    Sert à estimer tes besoins en protéines/lipides/glucides
+                    en grammes — jamais stocké ailleurs que dans ce calcul.
+                  </p>
+                </div>
+
+                <div className="flex gap-2">
+                  {SEX_OPTIONS.map((option) => (
+                    <button
+                      key={option.value}
+                      type="button"
+                      onClick={() => setSex(option.value)}
+                      className={`btn-shortcut flex-1 ${
+                        sex === option.value ? "btn-shortcut-active" : ""
+                      }`}
+                    >
+                      {option.label}
+                    </button>
+                  ))}
+                </div>
+
+                {sex && (
+                  <>
+                    <div className="space-y-2">
+                      <div className="flex items-center justify-between text-sm">
+                        <span className="text-campus-muted">Poids</span>
+                        <span className="font-bold text-campus-ink">{weightKg} kg</span>
+                      </div>
+                      <input
+                        type="range"
+                        min={WEIGHT_MIN}
+                        max={WEIGHT_MAX}
+                        step={1}
+                        value={weightKg}
+                        onChange={(e) => setWeightKg(Number(e.target.value))}
+                        aria-label="Poids"
+                        className="w-full"
+                      />
+                    </div>
+
+                    <div className="space-y-2">
+                      <div className="flex items-center justify-between text-sm">
+                        <span className="text-campus-muted">Taille</span>
+                        <span className="font-bold text-campus-ink">{heightCm} cm</span>
+                      </div>
+                      <input
+                        type="range"
+                        min={HEIGHT_MIN}
+                        max={HEIGHT_MAX}
+                        step={1}
+                        value={heightCm}
+                        onChange={(e) => setHeightCm(Number(e.target.value))}
+                        aria-label="Taille"
+                        className="w-full"
+                      />
+                    </div>
+
+                    <div className="space-y-2">
+                      <div className="flex items-center justify-between text-sm">
+                        <span className="text-campus-muted">Âge</span>
+                        <span className="font-bold text-campus-ink">{age} ans</span>
+                      </div>
+                      <input
+                        type="range"
+                        min={AGE_MIN}
+                        max={AGE_MAX}
+                        step={1}
+                        value={age}
+                        onChange={(e) => setAge(Number(e.target.value))}
+                        aria-label="Âge"
+                        className="w-full"
+                      />
+                    </div>
+
+                    {macroTargets && (
+                      <div className="rounded-2xl bg-campus-terracotta/10 p-4">
+                        <p className="text-xs font-semibold uppercase tracking-wide text-campus-terracotta">
+                          Ton repère quotidien estimé
+                        </p>
+                        <div className="mt-2 grid grid-cols-3 gap-2 text-center">
+                          <div>
+                            <p className="text-lg font-extrabold text-campus-ink">
+                              {macroTargets.proteinG}g
+                            </p>
+                            <p className="text-[11px] text-campus-muted">Protéines</p>
+                          </div>
+                          <div>
+                            <p className="text-lg font-extrabold text-campus-ink">
+                              {macroTargets.lipidesG}g
+                            </p>
+                            <p className="text-[11px] text-campus-muted">Lipides</p>
+                          </div>
+                          <div>
+                            <p className="text-lg font-extrabold text-campus-ink">
+                              {macroTargets.glucidesG}g
+                            </p>
+                            <p className="text-[11px] text-campus-muted">Glucides</p>
+                          </div>
+                        </div>
+                        <p className="mt-2 text-[11px] text-campus-muted">
+                          Hypothèse : activité modérée (repère indicatif, pas
+                          un plan médical).
+                        </p>
+                      </div>
+                    )}
+                  </>
+                )}
               </div>
             )}
 

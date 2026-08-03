@@ -1,6 +1,8 @@
 import productsData from "@/data/products.json";
+import { computeMacroTargets } from "@/lib/macros";
 import {
   CATEGORY_ORDER,
+  MEAL_SLOT_ORDER,
   Product,
   ShoppingListItem,
   ShoppingListResult,
@@ -69,18 +71,22 @@ function score(product: Product, preferences: UserPreferences): number {
   if (preferences.dailyCalories !== null) {
     if (preferences.dailyCalories >= 2400 && product.kcal >= 250) s += 1;
     if (preferences.dailyCalories <= 1800 && product.kcal <= 150) s += 1;
-    // Un objectif calorique élevé implique un vrai besoin en protéines
-    // (repère courant : ~1,6-2 g/kg, soit ~130-160 g/jour pour 3000 kcal).
-    // Sans ce boost, la phase 2 (remplissage du budget restant, triée par
-    // score puis prix croissant) se remplissait surtout de petits produits
-    // pas chers — condiments, biscuits, épices — plutôt que de viande,
-    // poisson, œufs ou fromage, nettement plus chers au kilo mais bien
-    // plus riches en protéines. Avec un catalogue élargi qui compte
-    // beaucoup plus de ces petits produits bon marché, ce déséquilibre
-    // était devenu très visible sur les gros budgets/calories.
-    if (preferences.dailyCalories >= 2400 && product.protein === "riche") {
-      s += 4;
-    }
+  }
+
+  // Besoin en protéines : basé sur le profil corporel (poids/taille/âge/
+  // sexe) quand il est renseigné — bien plus fiable qu'un simple seuil de
+  // calories — sinon on retombe sur l'ancien repère (calories élevées =
+  // probablement plus de protéines nécessaires). Sans ce boost, la phase 2
+  // (remplissage du budget, triée par score puis prix croissant) se
+  // remplissait surtout de petits produits pas chers — condiments,
+  // biscuits, épices — plutôt que de viande, poisson, œufs ou fromage,
+  // nettement plus chers au kilo mais bien plus riches en protéines.
+  const macroTargets = computeMacroTargets(preferences, preferences.dailyCalories);
+  const highProteinNeed =
+    macroTargets !== null ||
+    (preferences.dailyCalories !== null && preferences.dailyCalories >= 2400);
+  if (highProteinNeed && product.protein === "riche") {
+    s += 4;
   }
 
   return s;
@@ -154,8 +160,50 @@ export function generateShoppingList(
     total += product.price;
   }
 
-  // Phase 2 : compléter avec les articles restants, en priorisant toujours
-  // ceux qui correspondent le mieux aux préférences, puis les moins chers.
+  // Phase 1b : une base réelle par créneau repas (petit-déj, déjeuner/dîner,
+  // collation), AVANT de remplir le reste du budget. Sans ça, un profil
+  // "gourmand" pouvait finir avec des collations 100 % chips/bonbons/gâteaux
+  // et aucun vrai repas certains jours ("Mon menu" avec des trous, ou un
+  // dîner réduit à 25 g de fromage râpé) — le budget filait entièrement
+  // dans des produits plaisir bon marché avant que l'algorithme ne pense à
+  // couvrir chaque moment de la journée. Quand "gourmand" est coché, cette
+  // base exclut volontairement les produits "gourmand" : l'idée n'est pas
+  // d'interdire les extras, mais de garantir d'abord un fruit/légume/
+  // protéine/féculent réel à chaque créneau, les envies plaisir venant se
+  // rajouter PAR-DESSUS en phase 2 avec le budget restant.
+  const isGourmand = preferences.macroPreferences.includes("gourmand");
+  for (const slot of MEAL_SLOT_ORDER) {
+    const alreadyCovered = selected.some(
+      (p) => p.mealSlot === slot && p.weeklyServings && !p.isCondiment
+    );
+    if (alreadyCovered) continue;
+
+    const candidates = filtered
+      .filter(
+        (p) =>
+          p.mealSlot === slot &&
+          p.weeklyServings &&
+          !p.isCondiment &&
+          !selectedIds.has(p.id) &&
+          (!isGourmand || !p.gourmand)
+      )
+      .sort((a, b) => {
+        const scoreDiff = score(b, preferences) - score(a, preferences);
+        if (scoreDiff !== 0) return scoreDiff;
+        return a.price - b.price;
+      });
+
+    const product = candidates[0];
+    if (!product || total + product.price > preferences.budget) continue;
+
+    selected.push(product);
+    selectedIds.add(product.id);
+    total += product.price;
+  }
+
+  // Phase 2 : compléter avec les articles restants (y compris les extras
+  // gourmands), en priorisant toujours ceux qui correspondent le mieux aux
+  // préférences, puis les moins chers.
   const remaining = filtered
     .filter((p) => !selectedIds.has(p.id))
     .sort((a, b) => {

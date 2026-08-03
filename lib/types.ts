@@ -72,14 +72,26 @@ export interface Product {
   isCondiment?: boolean;
 }
 
-export interface UserProfile {
+export type Sex = "homme" | "femme";
+
+// Utilisés uniquement pour calculer un repère personnalisé de grammes de
+// protéines/lipides/glucides par jour (voir lib/macros.ts) — jamais stockés
+// ni affichés ailleurs que dans ce calcul.
+export interface BodyStats {
+  sex: Sex | null;
+  weightKg: number | null;
+  heightCm: number | null;
+  age: number | null;
+}
+
+export interface UserProfile extends BodyStats {
   diet: DietType;
   allergies: Allergen[];
   dailyCalories: number | null;
   macroPreferences: MacroPreference[];
 }
 
-export interface UserPreferences {
+export interface UserPreferences extends BodyStats {
   budget: number;
   diet: DietType;
   allergies: Allergen[];
@@ -187,6 +199,23 @@ export const CALORIE_MIN = 1500;
 export const CALORIE_MAX = 3500;
 export const CALORIE_DEFAULT = 2200;
 export const CALORIE_STEP = 50;
+
+export const WEIGHT_MIN = 40;
+export const WEIGHT_MAX = 150;
+export const WEIGHT_DEFAULT = 65;
+
+export const HEIGHT_MIN = 140;
+export const HEIGHT_MAX = 210;
+export const HEIGHT_DEFAULT = 170;
+
+export const AGE_MIN = 15;
+export const AGE_MAX = 80;
+export const AGE_DEFAULT = 20;
+
+export const SEX_OPTIONS: { value: Sex; label: string }[] = [
+  { value: "femme", label: "Femme" },
+  { value: "homme", label: "Homme" },
+];
 
 export const MACRO_OPTIONS: { value: MacroPreference; label: string }[] = [
   { value: "riche-proteines", label: "Riche en protéines" },
