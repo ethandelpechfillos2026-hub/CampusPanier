@@ -169,6 +169,13 @@ export interface SharedList {
   total: number;
   createdAt: number;
   items: Record<string, SharedListItem>;
+  // Ordre d'affichage des articles (ids de produits), figé à la création à
+  // partir de "Ma liste". Un TABLEAU, contrairement à `items` — Firestore ne
+  // garantit pas l'ordre des champs d'une map à la lecture, alors qu'il
+  // préserve toujours l'ordre d'un tableau. C'est ce champ qui sert à trier
+  // l'affichage, pour que tous les colocataires voient les articles dans le
+  // même ordre.
+  itemOrder: string[];
 }
 
 export const BUDGET_MIN = 10;

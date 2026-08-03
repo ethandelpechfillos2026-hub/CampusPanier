@@ -76,6 +76,10 @@ export async function createSharedList(
     total: result.total,
     createdAt: Date.now(),
     items,
+    // Capturé depuis "Ma liste" au moment de la création — c'est ce tableau
+    // (et non l'ordre des clés de `items`) qui fixe l'ordre d'affichage pour
+    // tout le monde.
+    itemOrder: result.items.map(({ product }) => product.id),
   };
 
   await setDoc(doc(db, COLLECTION, sharedList.id), sharedList);

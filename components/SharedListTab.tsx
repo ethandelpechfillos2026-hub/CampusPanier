@@ -39,11 +39,13 @@ interface ItemGroup {
 // Important : Firestore ne garantit PAS l'ordre des champs d'une map au
 // moment de la lecture (contrairement à un tableau) — deux appareils qui
 // lisent le même document peuvent recevoir `items` dans un ordre différent.
-// On trie donc explicitement chaque rayon selon la position du produit dans
-// le catalogue (`products`, un ordre fixe et identique pour tout le monde),
-// pour que l'ordre affiché soit toujours le même chez tous les colocataires.
+// `itemOrder` est un TABLEAU figé à la création (à partir de "Ma liste"),
+// dont Firestore préserve l'ordre — on trie chaque rayon selon la position
+// du produit dans ce tableau, jamais selon l'ordre des clés de `items`, pour
+// que tous les colocataires voient exactement le même ordre.
 function groupSharedItems(
-  items: Record<string, SharedListItem>
+  items: Record<string, SharedListItem>,
+  itemOrder: string[]
 ): ItemGroup[] {
   const byCategory = new Map<ProductCategory, [string, SharedListItem][]>();
 
@@ -56,12 +58,16 @@ function groupSharedItems(
     byCategory.set(product.category, list);
   }
 
+  // Repli sur l'ordre du catalogue produits si `itemOrder` est absent (listes
+  // créées avant l'ajout de ce champ) ou si un article n'y figure pas.
+  function sortKey(productId: string): number {
+    const orderIndex = itemOrder.indexOf(productId);
+    if (orderIndex !== -1) return orderIndex;
+    return 1000 + products.findIndex((p) => p.id === productId);
+  }
+
   for (const list of Array.from(byCategory.values())) {
-    list.sort(
-      (a, b) =>
-        products.findIndex((p) => p.id === a[0]) -
-        products.findIndex((p) => p.id === b[0])
-    );
+    list.sort((a, b) => sortKey(a[0]) - sortKey(b[0]));
   }
 
   return CATEGORY_ORDER.filter((category) => byCategory.has(category)).map(
@@ -204,20 +210,20 @@ export default function SharedListTab({
           <p className="mt-1 text-xs text-campus-muted">
             Demande le code à ton/ta colocataire qui a créé la liste.
           </p>
-          <div className="mt-3 flex gap-2">
+          <div className="mt-3 grid grid-cols-[minmax(0,1fr)_auto] gap-2">
             <input
               type="text"
               value={joinCode}
               onChange={(event) => setJoinCode(event.target.value.toUpperCase())}
               placeholder="Ex : F3T8QM"
               maxLength={6}
-              className="min-h-[48px] min-w-0 flex-1 rounded-2xl border-2 border-campus-sand px-4 text-center text-base font-bold uppercase tracking-widest text-campus-ink focus:border-campus-terracotta focus:outline-none"
+              className="min-h-[48px] w-full min-w-0 rounded-2xl border-2 border-campus-sand px-3 text-center text-base font-bold uppercase tracking-widest text-campus-ink focus:border-campus-terracotta focus:outline-none"
             />
             <button
               type="button"
               onClick={handleJoin}
               disabled={busy || joinCode.trim().length === 0}
-              className="btn-secondary w-auto shrink-0 px-5"
+              className="btn-secondary w-auto px-4"
             >
               {busy ? "..." : "Rejoindre"}
             </button>
@@ -231,7 +237,7 @@ export default function SharedListTab({
     );
   }
 
-  const groups = groupSharedItems(sharedList.items);
+  const groups = groupSharedItems(sharedList.items, sharedList.itemOrder ?? []);
   const memberList = sharedList.memberIds.map(
     (id) => sharedList.memberNames[id] ?? "Colocataire"
   );
