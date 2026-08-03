@@ -12,10 +12,16 @@ import {
   CALORIE_MIN,
   CALORIE_STEP,
   DIET_OPTIONS,
+  GLUCIDES_G_MAX,
+  GLUCIDES_G_MIN,
   HEIGHT_DEFAULT,
   HEIGHT_MAX,
   HEIGHT_MIN,
+  LIPIDES_G_MAX,
+  LIPIDES_G_MIN,
   MACRO_OPTIONS,
+  PROTEIN_G_MAX,
+  PROTEIN_G_MIN,
   SEX_OPTIONS,
   UserProfile,
   WEIGHT_DEFAULT,
@@ -54,12 +60,85 @@ export default function ProfileForm({ onComplete, initialProfile }: ProfileFormP
   const [weightKg, setWeightKg] = useState(initialProfile?.weightKg ?? WEIGHT_DEFAULT);
   const [heightCm, setHeightCm] = useState(initialProfile?.heightCm ?? HEIGHT_DEFAULT);
   const [age, setAge] = useState(initialProfile?.age ?? AGE_DEFAULT);
+  // Objectifs macro fixés à la main — pour les sportif·ves/pratiques
+  // avisé·es qui préfèrent viser un chiffre précis (ex : 50 g de lipides)
+  // plutôt que le calcul automatique à partir du profil corporel.
+  const [customMacros, setCustomMacros] = useState(Boolean(initialProfile?.macroOverride));
+  const [proteinOverride, setProteinOverride] = useState(
+    initialProfile?.macroOverride?.proteinG ?? 120
+  );
+  const [lipidesOverride, setLipidesOverride] = useState(
+    initialProfile?.macroOverride?.lipidesG ?? 70
+  );
+  const [glucidesOverride, setGlucidesOverride] = useState(
+    initialProfile?.macroOverride?.glucidesG ?? 250
+  );
+  // Mode Performance (sportif·ves) : calories obligatoires, objectif prise
+  // de masse/sèche + belle peau ajoutés automatiquement, uniquement des
+  // produits bruts/peu transformés.
+  const [performanceMode, setPerformanceMode] = useState(
+    initialProfile?.performanceMode ?? false
+  );
+  const [performanceObjective, setPerformanceObjective] = useState<
+    "prise-masse" | "seche"
+  >(initialProfile?.macroPreferences.includes("seche") ? "seche" : "prise-masse");
 
   const currentStep = STEPS[step - 1];
-  const macroTargets =
+  const computedMacroTargets =
     calorieMode === "custom"
-      ? computeMacroTargets({ sex, weightKg, heightCm, age }, caloriesValue)
+      ? computeMacroTargets(
+          { sex, weightKg, heightCm, age, macroOverride: null, performanceMode },
+          caloriesValue
+        )
       : null;
+  const macroTargets = customMacros
+    ? {
+        calories: computedMacroTargets?.calories ?? caloriesValue,
+        proteinG: proteinOverride,
+        lipidesG: lipidesOverride,
+        glucidesG: glucidesOverride,
+      }
+    : computedMacroTargets;
+
+  function enableCustomMacros() {
+    if (computedMacroTargets) {
+      setProteinOverride(computedMacroTargets.proteinG);
+      setLipidesOverride(computedMacroTargets.lipidesG);
+      setGlucidesOverride(computedMacroTargets.glucidesG);
+    }
+    setCustomMacros(true);
+  }
+
+  // Impose l'objectif (prise de masse OU sèche, jamais les deux) et "belle
+  // peau" dans les préférences — sans effacer d'autres préférences déjà
+  // cochées à la main.
+  function applyPerformanceMacros(objective: "prise-masse" | "seche") {
+    setMacroPreferences((prev): UserProfile["macroPreferences"] => {
+      const withoutObjectives = prev.filter(
+        (m) => m !== "prise-masse" && m !== "seche"
+      );
+      const withBellePeau: UserProfile["macroPreferences"] =
+        withoutObjectives.includes("belle-peau")
+          ? withoutObjectives
+          : [...withoutObjectives, "belle-peau"];
+      return [...withBellePeau, objective];
+    });
+  }
+
+  function togglePerformanceMode() {
+    const next = !performanceMode;
+    setPerformanceMode(next);
+    if (next) {
+      // Calories obligatoires en Mode Performance.
+      setCalorieMode("custom");
+      applyPerformanceMacros(performanceObjective);
+    }
+  }
+
+  function selectPerformanceObjective(objective: "prise-masse" | "seche") {
+    setPerformanceObjective(objective);
+    applyPerformanceMacros(objective);
+  }
 
   function toggleAllergy(allergen: UserProfile["allergies"][number]) {
     setAllergies((prev) =>
@@ -90,6 +169,15 @@ export default function ProfileForm({ onComplete, initialProfile }: ProfileFormP
       weightKg: bodyStatsComplete ? weightKg : null,
       heightCm: bodyStatsComplete ? heightCm : null,
       age: bodyStatsComplete ? age : null,
+      macroOverride:
+        bodyStatsComplete && customMacros
+          ? {
+              proteinG: proteinOverride,
+              lipidesG: lipidesOverride,
+              glucidesG: glucidesOverride,
+            }
+          : null,
+      performanceMode,
     });
   }
 
@@ -162,13 +250,72 @@ export default function ProfileForm({ onComplete, initialProfile }: ProfileFormP
 
         {step === 3 && (
           <div className="space-y-6">
+            <div className="rounded-2xl border-2 border-campus-terracotta/30 bg-campus-terracotta/5 p-4">
+              <div className="flex items-center justify-between gap-3">
+                <div>
+                  <p className="text-sm font-bold text-campus-ink">
+                    🏆 Mode Performance
+                  </p>
+                  <p className="mt-0.5 text-xs text-campus-muted">
+                    Pour les sportif·ves : calories obligatoires, objectif
+                    prise de masse/sèche, et uniquement des aliments bruts
+                    (sans produits ultra-transformés).
+                  </p>
+                </div>
+                <button
+                  type="button"
+                  onClick={togglePerformanceMode}
+                  aria-pressed={performanceMode}
+                  className={`shrink-0 rounded-full px-4 py-2 text-xs font-bold transition-colors ${
+                    performanceMode
+                      ? "bg-campus-terracotta text-white"
+                      : "bg-white text-campus-ink border-2 border-campus-sand"
+                  }`}
+                >
+                  {performanceMode ? "Activé" : "Activer"}
+                </button>
+              </div>
+
+              {performanceMode && (
+                <div className="mt-4">
+                  <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-campus-muted">
+                    Ton objectif
+                  </p>
+                  <div className="flex gap-2">
+                    <button
+                      type="button"
+                      onClick={() => selectPerformanceObjective("prise-masse")}
+                      className={`btn-shortcut flex-1 ${
+                        performanceObjective === "prise-masse" ? "btn-shortcut-active" : ""
+                      }`}
+                    >
+                      Prise de masse
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => selectPerformanceObjective("seche")}
+                      className={`btn-shortcut flex-1 ${
+                        performanceObjective === "seche" ? "btn-shortcut-active" : ""
+                      }`}
+                    >
+                      Sèche
+                    </button>
+                  </div>
+                  <p className="mt-2 text-[11px] text-campus-muted">
+                    &quot;Belle peau&quot; est aussi ajoutée automatiquement.
+                  </p>
+                </div>
+              )}
+            </div>
+
             <div className="flex gap-2">
               <button
                 type="button"
                 onClick={() => setCalorieMode("unknown")}
+                disabled={performanceMode}
                 className={`btn-shortcut flex-1 ${
                   calorieMode === "unknown" ? "btn-shortcut-active" : ""
-                }`}
+                } ${performanceMode ? "cursor-not-allowed opacity-40" : ""}`}
               >
                 Peu importe
               </button>
@@ -182,6 +329,11 @@ export default function ProfileForm({ onComplete, initialProfile }: ProfileFormP
                 Je précise
               </button>
             </div>
+            {performanceMode && (
+              <p className="-mt-4 text-xs text-campus-muted">
+                Calories obligatoires en Mode Performance.
+              </p>
+            )}
 
             {calorieMode === "custom" && (
               <div className="space-y-3">
@@ -288,11 +440,20 @@ export default function ProfileForm({ onComplete, initialProfile }: ProfileFormP
                       />
                     </div>
 
-                    {macroTargets && (
+                    {macroTargets && !customMacros && (
                       <div className="rounded-2xl bg-campus-terracotta/10 p-4">
-                        <p className="text-xs font-semibold uppercase tracking-wide text-campus-terracotta">
-                          Ton repère quotidien estimé
-                        </p>
+                        <div className="flex items-start justify-between gap-2">
+                          <p className="text-xs font-semibold uppercase tracking-wide text-campus-terracotta">
+                            Ton repère quotidien estimé
+                          </p>
+                          <button
+                            type="button"
+                            onClick={enableCustomMacros}
+                            className="shrink-0 text-[11px] font-bold text-campus-terracotta underline"
+                          >
+                            Ajuster
+                          </button>
+                        </div>
                         <div className="mt-2 grid grid-cols-3 gap-2 text-center">
                           <div>
                             <p className="text-lg font-extrabold text-campus-ink">
@@ -316,6 +477,88 @@ export default function ProfileForm({ onComplete, initialProfile }: ProfileFormP
                         <p className="mt-2 text-[11px] text-campus-muted">
                           Hypothèse : activité modérée (repère indicatif, pas
                           un plan médical).
+                        </p>
+                      </div>
+                    )}
+
+                    {customMacros && (
+                      <div className="rounded-2xl bg-campus-terracotta/10 p-4">
+                        <div className="flex items-start justify-between gap-2">
+                          <p className="text-xs font-semibold uppercase tracking-wide text-campus-terracotta">
+                            Tes objectifs personnalisés
+                          </p>
+                          <button
+                            type="button"
+                            onClick={() => setCustomMacros(false)}
+                            className="shrink-0 text-[11px] font-bold text-campus-terracotta underline"
+                          >
+                            Revenir au calcul auto
+                          </button>
+                        </div>
+
+                        <div className="mt-3 space-y-4">
+                          <div className="space-y-1.5">
+                            <div className="flex items-center justify-between text-sm">
+                              <span className="text-campus-muted">Protéines</span>
+                              <span className="font-bold text-campus-ink">
+                                {proteinOverride} g
+                              </span>
+                            </div>
+                            <input
+                              type="range"
+                              min={PROTEIN_G_MIN}
+                              max={PROTEIN_G_MAX}
+                              step={5}
+                              value={proteinOverride}
+                              onChange={(e) => setProteinOverride(Number(e.target.value))}
+                              aria-label="Objectif protéines (grammes/jour)"
+                              className="w-full"
+                            />
+                          </div>
+
+                          <div className="space-y-1.5">
+                            <div className="flex items-center justify-between text-sm">
+                              <span className="text-campus-muted">Lipides</span>
+                              <span className="font-bold text-campus-ink">
+                                {lipidesOverride} g
+                              </span>
+                            </div>
+                            <input
+                              type="range"
+                              min={LIPIDES_G_MIN}
+                              max={LIPIDES_G_MAX}
+                              step={5}
+                              value={lipidesOverride}
+                              onChange={(e) => setLipidesOverride(Number(e.target.value))}
+                              aria-label="Objectif lipides (grammes/jour)"
+                              className="w-full"
+                            />
+                          </div>
+
+                          <div className="space-y-1.5">
+                            <div className="flex items-center justify-between text-sm">
+                              <span className="text-campus-muted">Glucides</span>
+                              <span className="font-bold text-campus-ink">
+                                {glucidesOverride} g
+                              </span>
+                            </div>
+                            <input
+                              type="range"
+                              min={GLUCIDES_G_MIN}
+                              max={GLUCIDES_G_MAX}
+                              step={5}
+                              value={glucidesOverride}
+                              onChange={(e) => setGlucidesOverride(Number(e.target.value))}
+                              aria-label="Objectif glucides (grammes/jour)"
+                              className="w-full"
+                            />
+                          </div>
+                        </div>
+
+                        <p className="mt-3 text-[11px] text-campus-muted">
+                          Ces chiffres remplacent le calcul automatique et
+                          orientent la sélection des produits (plus ou moins
+                          de lipides/glucides/protéines selon tes réglages).
                         </p>
                       </div>
                     )}

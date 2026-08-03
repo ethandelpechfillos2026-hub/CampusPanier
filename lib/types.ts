@@ -70,18 +70,39 @@ export interface Product {
   // pour éviter des suggestions incohérentes type "1 cuillère de sucre" à
   // manger seule au petit-déjeuner.
   isCondiment?: boolean;
+  // Produit industriel/reconstitué avec de nombreux additifs (viennoiserie
+  // emballée, charcuterie, plat préparé, soda, bonbon...) plutôt que brut ou
+  // peu transformé — sert au "Mode Performance", qui exclut ces produits
+  // pour ne proposer que des aliments bruts. Absent = considéré comme non
+  // ultra-transformé.
+  ultraTransforme?: boolean;
 }
 
 export type Sex = "homme" | "femme";
 
-// Utilisés uniquement pour calculer un repère personnalisé de grammes de
-// protéines/lipides/glucides par jour (voir lib/macros.ts) — jamais stockés
-// ni affichés ailleurs que dans ce calcul.
+// Objectifs en grammes fixés à la main par la personne (sportif·ves,
+// pratiques avisé·es...) plutôt que calculés automatiquement à partir du
+// profil corporel — remplace le calcul par défaut de lib/macros.ts quand
+// présent.
+export interface MacroOverride {
+  proteinG: number;
+  lipidesG: number;
+  glucidesG: number;
+}
+
+// Utilisés pour calculer (ou ajuster à la main) un repère personnalisé de
+// grammes de protéines/lipides/glucides par jour (voir lib/macros.ts).
 export interface BodyStats {
   sex: Sex | null;
   weightKg: number | null;
   heightCm: number | null;
   age: number | null;
+  macroOverride: MacroOverride | null;
+  // "Mode Performance" (sportif·ves) : calories obligatoires, objectif
+  // prise de masse/sèche + belle peau ajoutés automatiquement aux
+  // préférences, et seuls les produits bruts/peu transformés sont proposés
+  // (voir Product.ultraTransforme).
+  performanceMode: boolean;
 }
 
 export interface UserProfile extends BodyStats {
@@ -216,6 +237,13 @@ export const SEX_OPTIONS: { value: Sex; label: string }[] = [
   { value: "femme", label: "Femme" },
   { value: "homme", label: "Homme" },
 ];
+
+export const PROTEIN_G_MIN = 40;
+export const PROTEIN_G_MAX = 250;
+export const LIPIDES_G_MIN = 20;
+export const LIPIDES_G_MAX = 150;
+export const GLUCIDES_G_MIN = 50;
+export const GLUCIDES_G_MAX = 500;
 
 export const MACRO_OPTIONS: { value: MacroPreference; label: string }[] = [
   { value: "riche-proteines", label: "Riche en protéines" },

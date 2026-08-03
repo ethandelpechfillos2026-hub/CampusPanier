@@ -3,7 +3,7 @@
 import { useRef, useState } from "react";
 import StatsHeader from "@/components/StatsHeader";
 import { formatPrice } from "@/lib/generateShoppingList";
-import { computeMacroTargets } from "@/lib/macros";
+import { getActiveMacroTargets } from "@/lib/macros";
 import { recordListFullyChecked } from "@/lib/stats";
 import {
   CATEGORY_LABELS,
@@ -58,7 +58,7 @@ export default function ResultsContent({
     items: result.items.filter((item) => item.product.category === category),
   })).filter((group) => group.items.length > 0);
 
-  const macroTargets = computeMacroTargets(preferences, preferences.dailyCalories);
+  const macroTargets = getActiveMacroTargets(preferences, preferences.dailyCalories);
 
   return (
     <div className="space-y-5">

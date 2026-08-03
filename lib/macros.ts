@@ -50,3 +50,25 @@ export function computeMacroTargets(
 
   return { calories: Math.round(calories), proteinG, lipidesG, glucidesG };
 }
+
+// Objectifs réellement utilisés : ceux fixés à la main dans le profil
+// (`macroOverride`) priment toujours sur le calcul automatique — pour les
+// personnes qui savent déjà ce qu'elles visent (sportif·ves, suivi
+// nutritionnel existant...) et veulent, par exemple, moins de lipides que
+// ce que la formule par défaut propose.
+export function getActiveMacroTargets(
+  stats: BodyStats,
+  dailyCalories: number | null
+): MacroTargets | null {
+  const computed = computeMacroTargets(stats, dailyCalories);
+  if (!stats.macroOverride) return computed;
+
+  const calories =
+    computed?.calories ??
+    dailyCalories ??
+    stats.macroOverride.proteinG * 4 +
+      stats.macroOverride.lipidesG * 9 +
+      stats.macroOverride.glucidesG * 4;
+
+  return { calories, ...stats.macroOverride };
+}

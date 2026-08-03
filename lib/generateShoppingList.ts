@@ -1,5 +1,5 @@
 import productsData from "@/data/products.json";
-import { computeMacroTargets } from "@/lib/macros";
+import { getActiveMacroTargets } from "@/lib/macros";
 import {
   CATEGORY_ORDER,
   MEAL_SLOT_ORDER,
@@ -26,7 +26,10 @@ function filterProducts(preferences: UserPreferences): Product[] {
   return products.filter(
     (product) =>
       matchesDiet(product, preferences.diet) &&
-      matchesAllergies(product, preferences.allergies)
+      matchesAllergies(product, preferences.allergies) &&
+      // Mode Performance : uniquement des produits bruts/peu transformés —
+      // exclusion pure, pas juste une préférence de score, comme demandé.
+      (!preferences.performanceMode || !product.ultraTransforme)
   );
 }
 
@@ -73,20 +76,45 @@ function score(product: Product, preferences: UserPreferences): number {
     if (preferences.dailyCalories <= 1800 && product.kcal <= 150) s += 1;
   }
 
-  // Besoin en protéines : basé sur le profil corporel (poids/taille/âge/
-  // sexe) quand il est renseigné — bien plus fiable qu'un simple seuil de
-  // calories — sinon on retombe sur l'ancien repère (calories élevées =
-  // probablement plus de protéines nécessaires). Sans ce boost, la phase 2
-  // (remplissage du budget, triée par score puis prix croissant) se
-  // remplissait surtout de petits produits pas chers — condiments,
-  // biscuits, épices — plutôt que de viande, poisson, œufs ou fromage,
-  // nettement plus chers au kilo mais bien plus riches en protéines.
-  const macroTargets = computeMacroTargets(preferences, preferences.dailyCalories);
+  // Objectifs en grammes : ceux fixés à la main (sportif·ves avisé·es...)
+  // priment sur le calcul automatique à partir du profil corporel — voir
+  // lib/macros.ts. On regarde la part de chaque macro dans les calories
+  // totales visées pour orienter le score, plutôt que le gramme exact
+  // (le catalogue n'a que des niveaux faible/moyen/riche, pas de grammes
+  // précis par produit).
+  const macroTargets = getActiveMacroTargets(preferences, preferences.dailyCalories);
   const highProteinNeed =
     macroTargets !== null ||
     (preferences.dailyCalories !== null && preferences.dailyCalories >= 2400);
+  // Sans ce boost, la phase 2 (remplissage du budget, triée par score puis
+  // prix croissant) se remplissait surtout de petits produits pas chers —
+  // condiments, biscuits, épices — plutôt que de viande, poisson, œufs ou
+  // fromage, nettement plus chers au kilo mais bien plus riches en
+  // protéines.
   if (highProteinNeed && product.protein === "riche") {
     s += 4;
+  }
+
+  if (macroTargets && macroTargets.calories > 0) {
+    const lipidesShare = (macroTargets.lipidesG * 9) / macroTargets.calories;
+    const glucidesShare = (macroTargets.glucidesG * 4) / macroTargets.calories;
+
+    // Objectif lipides bas (ex : 50 g visés plutôt que 100 g) — on
+    // privilégie nettement les produits faibles en lipides et on évite les
+    // plus riches, sinon la sélection ignorait complètement cet objectif.
+    if (lipidesShare <= 0.22) {
+      if (product.lipides === "faible") s += 3;
+      if (product.lipides === "riche") s -= 3;
+    } else if (lipidesShare >= 0.4) {
+      if (product.lipides === "riche") s += 2;
+    }
+
+    if (glucidesShare >= 0.55) {
+      if (product.glucides === "riche") s += 2;
+    } else if (glucidesShare <= 0.3) {
+      if (product.glucides === "riche") s -= 2;
+      if (product.glucides === "faible") s += 2;
+    }
   }
 
   return s;
