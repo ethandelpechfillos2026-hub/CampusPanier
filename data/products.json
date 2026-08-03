@@ -2107,7 +2107,9 @@
     "lipides": "faible",
     "glucides": "riche",
     "sel": "faible",
-    "easyToCook": true
+    "easyToCook": true,
+    "weeklyServings": 3,
+    "servingUnit": "portion"
   },
   {
     "id": "spaghetti",
@@ -2131,7 +2133,9 @@
     "lipides": "faible",
     "glucides": "riche",
     "sel": "faible",
-    "easyToCook": true
+    "easyToCook": true,
+    "weeklyServings": 3,
+    "servingUnit": "portion"
   },
   {
     "id": "nouilles-chinoises",
@@ -2156,7 +2160,9 @@
     "lipides": "faible",
     "glucides": "moyen",
     "sel": "faible",
-    "easyToCook": true
+    "easyToCook": true,
+    "weeklyServings": 3,
+    "servingUnit": "portion"
   },
   {
     "id": "riz-complet",
@@ -2179,7 +2185,9 @@
     "lipides": "moyen",
     "glucides": "riche",
     "sel": "faible",
-    "easyToCook": true
+    "easyToCook": true,
+    "weeklyServings": 3,
+    "servingUnit": "portion"
   },
   {
     "id": "polenta",
@@ -2204,7 +2212,9 @@
     "lipides": "faible",
     "glucides": "riche",
     "sel": "faible",
-    "easyToCook": true
+    "easyToCook": true,
+    "weeklyServings": 3,
+    "servingUnit": "portion"
   },
   {
     "id": "farine-complete",
@@ -2228,7 +2238,9 @@
     "lipides": "moyen",
     "glucides": "riche",
     "sel": "moyen",
-    "easyToCook": true
+    "easyToCook": true,
+    "weeklyServings": 3,
+    "servingUnit": "portion"
   },
   {
     "id": "farine-sans-gluten",
@@ -2251,7 +2263,9 @@
     "lipides": "moyen",
     "glucides": "riche",
     "sel": "moyen",
-    "easyToCook": true
+    "easyToCook": true,
+    "weeklyServings": 3,
+    "servingUnit": "portion"
   },
   {
     "id": "levure-chimique",
@@ -2298,7 +2312,9 @@
     "lipides": "faible",
     "glucides": "faible",
     "sel": "moyen",
-    "easyToCook": true
+    "easyToCook": true,
+    "weeklyServings": 3,
+    "servingUnit": "portion"
   },
   {
     "id": "petits-pois-conserve",
@@ -2321,7 +2337,9 @@
     "lipides": "faible",
     "glucides": "faible",
     "sel": "moyen",
-    "easyToCook": true
+    "easyToCook": true,
+    "weeklyServings": 3,
+    "servingUnit": "portion"
   },
   {
     "id": "champignons-conserve",
@@ -2344,7 +2362,9 @@
     "lipides": "faible",
     "glucides": "faible",
     "sel": "moyen",
-    "easyToCook": true
+    "easyToCook": true,
+    "weeklyServings": 3,
+    "servingUnit": "portion"
   },
   {
     "id": "cornichons",
@@ -2578,7 +2598,9 @@
     "lipides": "riche",
     "glucides": "faible",
     "sel": "faible",
-    "easyToCook": true
+    "easyToCook": true,
+    "weeklyServings": 3,
+    "servingUnit": "portion"
   },
   {
     "id": "cereales-chocolatees",
@@ -2602,7 +2624,9 @@
     "glucides": "riche",
     "sel": "faible",
     "easyToCook": true,
-    "gourmand": true
+    "gourmand": true,
+    "weeklyServings": 3,
+    "servingUnit": "portion"
   },
   {
     "id": "muesli-fruits",
@@ -2625,7 +2649,9 @@
     "lipides": "moyen",
     "glucides": "riche",
     "sel": "faible",
-    "easyToCook": true
+    "easyToCook": true,
+    "weeklyServings": 3,
+    "servingUnit": "portion"
   },
   {
     "id": "sirop-erable",
@@ -2649,7 +2675,9 @@
     "glucides": "riche",
     "sel": "faible",
     "easyToCook": true,
-    "gourmand": true
+    "gourmand": true,
+    "weeklyServings": 3,
+    "servingUnit": "portion"
   },
   {
     "id": "jus-pomme",
@@ -2672,14 +2700,16 @@
     "lipides": "faible",
     "glucides": "moyen",
     "sel": "faible",
-    "easyToCook": true
+    "easyToCook": true,
+    "weeklyServings": 3,
+    "servingUnit": "portion"
   },
   {
     "id": "eau-gazeuse",
     "shortName": "Eau gazeuse",
-    "name": "Eau minéral naturelle",
+    "name": "Eau gazeuse (1,5 L)",
     "price": 0.6,
-    "priceSource": "open-prices",
+    "priceSource": "estimation",
     "unit": "bouteille",
     "category": "epicerie",
     "mealSlot": "encas-extra",
@@ -2695,7 +2725,9 @@
     "lipides": "faible",
     "glucides": "faible",
     "sel": "faible",
-    "easyToCook": true
+    "easyToCook": true,
+    "weeklyServings": 3,
+    "servingUnit": "portion"
   },
   {
     "id": "sirop-menthe",
@@ -2717,7 +2749,9 @@
     "glucides": "riche",
     "sel": "faible",
     "easyToCook": true,
-    "gourmand": true
+    "gourmand": true,
+    "weeklyServings": 3,
+    "servingUnit": "portion"
   },
   {
     "id": "chips",
@@ -2741,7 +2775,9 @@
     "glucides": "riche",
     "sel": "moyen",
     "easyToCook": true,
-    "gourmand": true
+    "gourmand": true,
+    "weeklyServings": 3,
+    "servingUnit": "portion"
   },
   {
     "id": "barres-cereales",
@@ -2768,7 +2804,9 @@
     "lipides": "moyen",
     "glucides": "moyen",
     "sel": "faible",
-    "easyToCook": true
+    "easyToCook": true,
+    "weeklyServings": 3,
+    "servingUnit": "portion"
   },
   {
     "id": "bonbons",
@@ -2791,7 +2829,9 @@
     "glucides": "riche",
     "sel": "faible",
     "easyToCook": true,
-    "gourmand": true
+    "gourmand": true,
+    "weeklyServings": 3,
+    "servingUnit": "portion"
   },
   {
     "id": "houmous",
@@ -2814,7 +2854,9 @@
     "lipides": "riche",
     "glucides": "faible",
     "sel": "moyen",
-    "easyToCook": true
+    "easyToCook": true,
+    "weeklyServings": 3,
+    "servingUnit": "portion"
   },
   {
     "id": "tahini",
@@ -2863,30 +2905,34 @@
     "lipides": "riche",
     "glucides": "riche",
     "sel": "riche",
-    "easyToCook": true
+    "easyToCook": true,
+    "weeklyServings": 3,
+    "servingUnit": "portion"
   },
   {
     "id": "graines-lin",
     "shortName": "Graines de lin",
-    "name": "Pain de mie grandes tranches Seigle & Graines 500g",
-    "price": 2.44,
-    "priceSource": "open-prices",
+    "name": "Graines de lin (250 g)",
+    "price": 2.2,
+    "priceSource": "estimation",
     "unit": "sachet",
     "category": "epicerie",
     "mealSlot": "petit-dejeuner",
     "dietTags": [
       "omnivore",
+      "vegetarien",
+      "vegan",
       "sans-porc"
     ],
-    "allergens": [
-      "gluten"
-    ],
-    "kcal": 294,
-    "protein": "moyen",
-    "lipides": "moyen",
-    "glucides": "riche",
-    "sel": "moyen",
-    "easyToCook": true
+    "allergens": [],
+    "kcal": 534,
+    "protein": "riche",
+    "lipides": "riche",
+    "glucides": "moyen",
+    "sel": "faible",
+    "easyToCook": true,
+    "weeklyServings": 3,
+    "servingUnit": "portion"
   },
   {
     "id": "noix",
@@ -2911,7 +2957,9 @@
     "lipides": "riche",
     "glucides": "faible",
     "sel": "faible",
-    "easyToCook": true
+    "easyToCook": true,
+    "weeklyServings": 3,
+    "servingUnit": "portion"
   },
   {
     "id": "pistaches",
@@ -2936,30 +2984,34 @@
     "lipides": "riche",
     "glucides": "faible",
     "sel": "riche",
-    "easyToCook": true
+    "easyToCook": true,
+    "weeklyServings": 3,
+    "servingUnit": "portion"
   },
   {
     "id": "raisins-secs",
     "shortName": "Raisins secs",
-    "name": "Biscuit raisins",
-    "price": 2.37,
-    "priceSource": "open-prices",
+    "name": "Raisins secs (250 g)",
+    "price": 2.2,
+    "priceSource": "estimation",
     "unit": "sachet",
     "category": "epicerie",
     "mealSlot": "encas-extra",
     "dietTags": [
       "omnivore",
+      "vegetarien",
+      "vegan",
       "sans-porc"
     ],
-    "allergens": [
-      "gluten"
-    ],
-    "kcal": 441,
-    "protein": "moyen",
-    "lipides": "moyen",
+    "allergens": [],
+    "kcal": 300,
+    "protein": "faible",
+    "lipides": "faible",
     "glucides": "riche",
     "sel": "faible",
-    "easyToCook": true
+    "easyToCook": true,
+    "weeklyServings": 3,
+    "servingUnit": "portion"
   },
   {
     "id": "dattes",
@@ -2984,7 +3036,9 @@
     "lipides": "moyen",
     "glucides": "riche",
     "sel": "faible",
-    "easyToCook": true
+    "easyToCook": true,
+    "weeklyServings": 3,
+    "servingUnit": "portion"
   },
   {
     "id": "lait-avoine",
@@ -3005,7 +3059,9 @@
     "lipides": "faible",
     "glucides": "faible",
     "sel": "faible",
-    "easyToCook": true
+    "easyToCook": true,
+    "weeklyServings": 3,
+    "servingUnit": "portion"
   },
   {
     "id": "lait-amande",
@@ -3030,7 +3086,9 @@
     "lipides": "faible",
     "glucides": "faible",
     "sel": "faible",
-    "easyToCook": true
+    "easyToCook": true,
+    "weeklyServings": 3,
+    "servingUnit": "portion"
   },
   {
     "id": "sauce-carbonara",
@@ -3054,7 +3112,9 @@
     "lipides": "moyen",
     "glucides": "faible",
     "sel": "moyen",
-    "easyToCook": true
+    "easyToCook": true,
+    "weeklyServings": 3,
+    "servingUnit": "portion"
   },
   {
     "id": "cafe-decafeine",
@@ -3077,7 +3137,9 @@
     "lipides": "faible",
     "glucides": "faible",
     "sel": "faible",
-    "easyToCook": true
+    "easyToCook": true,
+    "weeklyServings": 3,
+    "servingUnit": "portion"
   },
   {
     "id": "kiwi",
@@ -3100,7 +3162,9 @@
     "lipides": "faible",
     "glucides": "moyen",
     "sel": "faible",
-    "easyToCook": true
+    "easyToCook": true,
+    "weeklyServings": 3,
+    "servingUnit": "portion"
   },
   {
     "id": "ananas",
@@ -3124,7 +3188,9 @@
     "lipides": "faible",
     "glucides": "moyen",
     "sel": "faible",
-    "easyToCook": true
+    "easyToCook": true,
+    "weeklyServings": 3,
+    "servingUnit": "portion"
   },
   {
     "id": "mangue",
@@ -3147,7 +3213,9 @@
     "lipides": "faible",
     "glucides": "moyen",
     "sel": "faible",
-    "easyToCook": true
+    "easyToCook": true,
+    "weeklyServings": 3,
+    "servingUnit": "portion"
   },
   {
     "id": "pasteque",
@@ -3170,7 +3238,9 @@
     "lipides": "faible",
     "glucides": "faible",
     "sel": "moyen",
-    "easyToCook": true
+    "easyToCook": true,
+    "weeklyServings": 3,
+    "servingUnit": "portion"
   },
   {
     "id": "fraises",
@@ -3192,7 +3262,9 @@
     "lipides": "faible",
     "glucides": "riche",
     "sel": "faible",
-    "easyToCook": true
+    "easyToCook": true,
+    "weeklyServings": 3,
+    "servingUnit": "portion"
   },
   {
     "id": "framboises",
@@ -3216,7 +3288,9 @@
     "lipides": "moyen",
     "glucides": "riche",
     "sel": "moyen",
-    "easyToCook": true
+    "easyToCook": true,
+    "weeklyServings": 3,
+    "servingUnit": "portion"
   },
   {
     "id": "myrtilles",
@@ -3240,7 +3314,9 @@
     "lipides": "faible",
     "glucides": "faible",
     "sel": "faible",
-    "easyToCook": true
+    "easyToCook": true,
+    "weeklyServings": 3,
+    "servingUnit": "portion"
   },
   {
     "id": "raisin",
@@ -3263,7 +3339,9 @@
     "lipides": "moyen",
     "glucides": "riche",
     "sel": "faible",
-    "easyToCook": true
+    "easyToCook": true,
+    "weeklyServings": 3,
+    "servingUnit": "portion"
   },
   {
     "id": "poire",
@@ -3284,7 +3362,9 @@
     "lipides": "faible",
     "glucides": "moyen",
     "sel": "faible",
-    "easyToCook": true
+    "easyToCook": true,
+    "weeklyServings": 3,
+    "servingUnit": "portion"
   },
   {
     "id": "pamplemousse",
@@ -3305,7 +3385,9 @@
     "lipides": "faible",
     "glucides": "faible",
     "sel": "faible",
-    "easyToCook": true
+    "easyToCook": true,
+    "weeklyServings": 3,
+    "servingUnit": "portion"
   },
   {
     "id": "clementine",
@@ -3326,7 +3408,9 @@
     "lipides": "faible",
     "glucides": "moyen",
     "sel": "faible",
-    "easyToCook": true
+    "easyToCook": true,
+    "weeklyServings": 3,
+    "servingUnit": "portion"
   },
   {
     "id": "abricot",
@@ -3347,7 +3431,9 @@
     "lipides": "faible",
     "glucides": "riche",
     "sel": "faible",
-    "easyToCook": true
+    "easyToCook": true,
+    "weeklyServings": 3,
+    "servingUnit": "portion"
   },
   {
     "id": "prune",
@@ -3370,7 +3456,9 @@
     "lipides": "faible",
     "glucides": "riche",
     "sel": "faible",
-    "easyToCook": true
+    "easyToCook": true,
+    "weeklyServings": 3,
+    "servingUnit": "portion"
   },
   {
     "id": "cerises",
@@ -3393,7 +3481,9 @@
     "lipides": "faible",
     "glucides": "faible",
     "sel": "moyen",
-    "easyToCook": true
+    "easyToCook": true,
+    "weeklyServings": 3,
+    "servingUnit": "portion"
   },
   {
     "id": "figues",
@@ -3418,7 +3508,9 @@
     "lipides": "moyen",
     "glucides": "riche",
     "sel": "faible",
-    "easyToCook": true
+    "easyToCook": true,
+    "weeklyServings": 3,
+    "servingUnit": "portion"
   },
   {
     "id": "grenade",
@@ -3441,7 +3533,9 @@
     "lipides": "faible",
     "glucides": "moyen",
     "sel": "faible",
-    "easyToCook": true
+    "easyToCook": true,
+    "weeklyServings": 3,
+    "servingUnit": "portion"
   },
   {
     "id": "papaye",
@@ -3462,7 +3556,9 @@
     "lipides": "moyen",
     "glucides": "riche",
     "sel": "faible",
-    "easyToCook": true
+    "easyToCook": true,
+    "weeklyServings": 3,
+    "servingUnit": "portion"
   },
   {
     "id": "aubergine",
@@ -3485,7 +3581,9 @@
     "lipides": "moyen",
     "glucides": "faible",
     "sel": "moyen",
-    "easyToCook": true
+    "easyToCook": true,
+    "weeklyServings": 3,
+    "servingUnit": "portion"
   },
   {
     "id": "celeri",
@@ -3508,7 +3606,9 @@
     "lipides": "faible",
     "glucides": "faible",
     "sel": "faible",
-    "easyToCook": true
+    "easyToCook": true,
+    "weeklyServings": 3,
+    "servingUnit": "portion"
   },
   {
     "id": "betterave",
@@ -3530,7 +3630,9 @@
     "lipides": "faible",
     "glucides": "faible",
     "sel": "moyen",
-    "easyToCook": true
+    "easyToCook": true,
+    "weeklyServings": 3,
+    "servingUnit": "portion"
   },
   {
     "id": "radis",
@@ -3553,7 +3655,9 @@
     "lipides": "faible",
     "glucides": "faible",
     "sel": "faible",
-    "easyToCook": true
+    "easyToCook": true,
+    "weeklyServings": 3,
+    "servingUnit": "portion"
   },
   {
     "id": "navet",
@@ -3576,7 +3680,9 @@
     "lipides": "faible",
     "glucides": "faible",
     "sel": "faible",
-    "easyToCook": true
+    "easyToCook": true,
+    "weeklyServings": 3,
+    "servingUnit": "portion"
   },
   {
     "id": "panais",
@@ -3597,7 +3703,9 @@
     "lipides": "riche",
     "glucides": "riche",
     "sel": "moyen",
-    "easyToCook": true
+    "easyToCook": true,
+    "weeklyServings": 3,
+    "servingUnit": "portion"
   },
   {
     "id": "patate-douce",
@@ -3620,7 +3728,9 @@
     "lipides": "moyen",
     "glucides": "moyen",
     "sel": "faible",
-    "easyToCook": true
+    "easyToCook": true,
+    "weeklyServings": 3,
+    "servingUnit": "portion"
   },
   {
     "id": "courge-butternut",
@@ -3644,7 +3754,9 @@
     "lipides": "moyen",
     "glucides": "faible",
     "sel": "moyen",
-    "easyToCook": true
+    "easyToCook": true,
+    "weeklyServings": 3,
+    "servingUnit": "portion"
   },
   {
     "id": "potiron",
@@ -3669,7 +3781,9 @@
     "lipides": "faible",
     "glucides": "faible",
     "sel": "moyen",
-    "easyToCook": true
+    "easyToCook": true,
+    "weeklyServings": 3,
+    "servingUnit": "portion"
   },
   {
     "id": "endive",
@@ -3693,7 +3807,9 @@
     "lipides": "moyen",
     "glucides": "faible",
     "sel": "moyen",
-    "easyToCook": true
+    "easyToCook": true,
+    "weeklyServings": 3,
+    "servingUnit": "portion"
   },
   {
     "id": "fenouil",
@@ -3717,7 +3833,9 @@
     "lipides": "riche",
     "glucides": "riche",
     "sel": "riche",
-    "easyToCook": true
+    "easyToCook": true,
+    "weeklyServings": 3,
+    "servingUnit": "portion"
   },
   {
     "id": "petits-pois-frais",
@@ -3738,7 +3856,9 @@
     "lipides": "faible",
     "glucides": "faible",
     "sel": "moyen",
-    "easyToCook": true
+    "easyToCook": true,
+    "weeklyServings": 3,
+    "servingUnit": "portion"
   },
   {
     "id": "haricots-verts-frais",
@@ -3761,7 +3881,9 @@
     "lipides": "faible",
     "glucides": "faible",
     "sel": "faible",
-    "easyToCook": true
+    "easyToCook": true,
+    "weeklyServings": 3,
+    "servingUnit": "portion"
   },
   {
     "id": "roquette",
@@ -3785,7 +3907,9 @@
     "lipides": "riche",
     "glucides": "faible",
     "sel": "riche",
-    "easyToCook": true
+    "easyToCook": true,
+    "weeklyServings": 3,
+    "servingUnit": "portion"
   },
   {
     "id": "chou-rouge",
@@ -3808,31 +3932,34 @@
     "lipides": "faible",
     "glucides": "faible",
     "sel": "moyen",
-    "easyToCook": true
+    "easyToCook": true,
+    "weeklyServings": 3,
+    "servingUnit": "portion"
   },
   {
     "id": "chou-vert",
     "shortName": "Chou vert",
-    "name": "Coleslaw Chou blanc et carottes",
-    "price": 1.6,
-    "priceSource": "open-prices",
+    "name": "Chou vert (pièce)",
+    "price": 1.3,
+    "priceSource": "estimation",
     "unit": "pièce",
     "category": "fruits-legumes",
     "mealSlot": "dejeuner-diner",
     "dietTags": [
       "omnivore",
       "vegetarien",
+      "vegan",
       "sans-porc"
     ],
-    "allergens": [
-      "oeuf"
-    ],
-    "kcal": 110,
+    "allergens": [],
+    "kcal": 25,
     "protein": "faible",
-    "lipides": "moyen",
+    "lipides": "faible",
     "glucides": "faible",
-    "sel": "moyen",
-    "easyToCook": true
+    "sel": "faible",
+    "easyToCook": true,
+    "weeklyServings": 3,
+    "servingUnit": "portion"
   },
   {
     "id": "blette",
@@ -3855,14 +3982,16 @@
     "lipides": "faible",
     "glucides": "faible",
     "sel": "moyen",
-    "easyToCook": true
+    "easyToCook": true,
+    "weeklyServings": 3,
+    "servingUnit": "portion"
   },
   {
     "id": "persil",
     "shortName": "Persil",
-    "name": "Olives aux Citron & touche de persil",
-    "price": 3.21,
-    "priceSource": "open-prices",
+    "name": "Persil frais (botte)",
+    "price": 1.1,
+    "priceSource": "estimation",
     "unit": "botte",
     "category": "fruits-legumes",
     "mealSlot": "dejeuner-diner",
@@ -3873,11 +4002,11 @@
       "sans-porc"
     ],
     "allergens": [],
-    "kcal": 230,
+    "kcal": 36,
     "protein": "faible",
-    "lipides": "riche",
+    "lipides": "faible",
     "glucides": "faible",
-    "sel": "riche",
+    "sel": "faible",
     "easyToCook": true,
     "isCondiment": true
   },
@@ -3959,22 +4088,23 @@
   {
     "id": "menthe-fraiche",
     "shortName": "Menthe fraîche",
-    "name": "Bonbons Tic Tac x100 pastilles MENTHE EXTRA FRAÎCHE - 49g",
-    "price": 1.74,
-    "priceSource": "open-prices",
+    "name": "Menthe fraîche (botte)",
+    "price": 1.2,
+    "priceSource": "estimation",
     "unit": "botte",
     "category": "fruits-legumes",
     "mealSlot": "encas-extra",
     "dietTags": [
       "omnivore",
       "vegetarien",
+      "vegan",
       "sans-porc"
     ],
     "allergens": [],
-    "kcal": 395,
+    "kcal": 70,
     "protein": "faible",
     "lipides": "faible",
-    "glucides": "riche",
+    "glucides": "moyen",
     "sel": "faible",
     "easyToCook": true,
     "isCondiment": true
@@ -3982,18 +4112,20 @@
   {
     "id": "gingembre-frais",
     "shortName": "Gingembre frais",
-    "name": "Boost gingembre mangue",
-    "price": 2.2,
+    "name": "Gingembre frais (racine)",
+    "price": 1.5,
     "priceSource": "estimation",
     "unit": "racine",
     "category": "fruits-legumes",
     "mealSlot": "dejeuner-diner",
     "dietTags": [
       "omnivore",
+      "vegetarien",
+      "vegan",
       "sans-porc"
     ],
     "allergens": [],
-    "kcal": 52,
+    "kcal": 80,
     "protein": "faible",
     "lipides": "faible",
     "glucides": "moyen",
@@ -4029,9 +4161,9 @@
   {
     "id": "piment",
     "shortName": "Piment frais",
-    "name": "Olives à la provençale poivrons piments",
-    "price": 3.13,
-    "priceSource": "open-prices",
+    "name": "Piment frais (sachet)",
+    "price": 1.8,
+    "priceSource": "estimation",
     "unit": "sachet",
     "category": "fruits-legumes",
     "mealSlot": "dejeuner-diner",
@@ -4042,11 +4174,11 @@
       "sans-porc"
     ],
     "allergens": [],
-    "kcal": 235,
+    "kcal": 40,
     "protein": "faible",
-    "lipides": "riche",
+    "lipides": "faible",
     "glucides": "faible",
-    "sel": "riche",
+    "sel": "faible",
     "easyToCook": true,
     "isCondiment": true
   },
@@ -4070,7 +4202,9 @@
     "lipides": "faible",
     "glucides": "riche",
     "sel": "faible",
-    "easyToCook": true
+    "easyToCook": true,
+    "weeklyServings": 3,
+    "servingUnit": "portion"
   },
   {
     "id": "groseille",
@@ -4093,7 +4227,9 @@
     "lipides": "faible",
     "glucides": "riche",
     "sel": "faible",
-    "easyToCook": true
+    "easyToCook": true,
+    "weeklyServings": 3,
+    "servingUnit": "portion"
   },
   {
     "id": "courge-spaghetti",
@@ -4114,7 +4250,9 @@
     "lipides": "moyen",
     "glucides": "moyen",
     "sel": "faible",
-    "easyToCook": true
+    "easyToCook": true,
+    "weeklyServings": 3,
+    "servingUnit": "portion"
   },
   {
     "id": "mais-epi",
@@ -4137,7 +4275,9 @@
     "lipides": "faible",
     "glucides": "moyen",
     "sel": "faible",
-    "easyToCook": true
+    "easyToCook": true,
+    "weeklyServings": 3,
+    "servingUnit": "portion"
   },
   {
     "id": "salade-frisee",
@@ -4160,7 +4300,9 @@
     "lipides": "faible",
     "glucides": "faible",
     "sel": "faible",
-    "easyToCook": true
+    "easyToCook": true,
+    "weeklyServings": 3,
+    "servingUnit": "portion"
   },
   {
     "id": "cresson",
@@ -4183,7 +4325,9 @@
     "lipides": "faible",
     "glucides": "faible",
     "sel": "moyen",
-    "easyToCook": true
+    "easyToCook": true,
+    "weeklyServings": 3,
+    "servingUnit": "portion"
   },
   {
     "id": "camembert",
@@ -4207,7 +4351,9 @@
     "lipides": "riche",
     "glucides": "faible",
     "sel": "moyen",
-    "easyToCook": true
+    "easyToCook": true,
+    "weeklyServings": 3,
+    "servingUnit": "portion"
   },
   {
     "id": "roquefort",
@@ -4230,7 +4376,9 @@
     "lipides": "riche",
     "glucides": "faible",
     "sel": "riche",
-    "easyToCook": true
+    "easyToCook": true,
+    "weeklyServings": 3,
+    "servingUnit": "portion"
   },
   {
     "id": "ricotta",
@@ -4255,7 +4403,9 @@
     "lipides": "moyen",
     "glucides": "moyen",
     "sel": "moyen",
-    "easyToCook": true
+    "easyToCook": true,
+    "weeklyServings": 3,
+    "servingUnit": "portion"
   },
   {
     "id": "parmesan",
@@ -4303,7 +4453,9 @@
     "lipides": "moyen",
     "glucides": "faible",
     "sel": "moyen",
-    "easyToCook": true
+    "easyToCook": true,
+    "weeklyServings": 3,
+    "servingUnit": "portion"
   },
   {
     "id": "faisselle",
@@ -4327,7 +4479,9 @@
     "lipides": "moyen",
     "glucides": "faible",
     "sel": "faible",
-    "easyToCook": true
+    "easyToCook": true,
+    "weeklyServings": 3,
+    "servingUnit": "portion"
   },
   {
     "id": "lait-entier",
@@ -4351,7 +4505,9 @@
     "lipides": "moyen",
     "glucides": "faible",
     "sel": "faible",
-    "easyToCook": true
+    "easyToCook": true,
+    "weeklyServings": 3,
+    "servingUnit": "portion"
   },
   {
     "id": "lait-ecreme",
@@ -4374,7 +4530,9 @@
     "lipides": "faible",
     "glucides": "faible",
     "sel": "faible",
-    "easyToCook": true
+    "easyToCook": true,
+    "weeklyServings": 3,
+    "servingUnit": "portion"
   },
   {
     "id": "beurre-demi-sel",
@@ -4444,7 +4602,9 @@
     "lipides": "faible",
     "glucides": "faible",
     "sel": "faible",
-    "easyToCook": true
+    "easyToCook": true,
+    "weeklyServings": 3,
+    "servingUnit": "portion"
   },
   {
     "id": "tempeh",
@@ -4467,7 +4627,9 @@
     "lipides": "moyen",
     "glucides": "faible",
     "sel": "faible",
-    "easyToCook": true
+    "easyToCook": true,
+    "weeklyServings": 3,
+    "servingUnit": "portion"
   },
   {
     "id": "pate-campagne",
@@ -4490,7 +4652,9 @@
     "lipides": "riche",
     "glucides": "faible",
     "sel": "moyen",
-    "easyToCook": true
+    "easyToCook": true,
+    "weeklyServings": 3,
+    "servingUnit": "portion"
   },
   {
     "id": "rillettes",
@@ -4511,7 +4675,9 @@
     "lipides": "riche",
     "glucides": "faible",
     "sel": "moyen",
-    "easyToCook": true
+    "easyToCook": true,
+    "weeklyServings": 3,
+    "servingUnit": "portion"
   },
   {
     "id": "saucisson-sec",
@@ -4533,7 +4699,9 @@
     "lipides": "riche",
     "glucides": "faible",
     "sel": "riche",
-    "easyToCook": true
+    "easyToCook": true,
+    "weeklyServings": 3,
+    "servingUnit": "portion"
   },
   {
     "id": "terrine",
@@ -4556,7 +4724,9 @@
     "lipides": "riche",
     "glucides": "faible",
     "sel": "riche",
-    "easyToCook": true
+    "easyToCook": true,
+    "weeklyServings": 3,
+    "servingUnit": "portion"
   },
   {
     "id": "pate-feuilletee",
@@ -4580,7 +4750,9 @@
     "lipides": "riche",
     "glucides": "riche",
     "sel": "moyen",
-    "easyToCook": true
+    "easyToCook": true,
+    "weeklyServings": 3,
+    "servingUnit": "portion"
   },
   {
     "id": "quiche-prete",
@@ -4604,7 +4776,9 @@
     "lipides": "moyen",
     "glucides": "moyen",
     "sel": "moyen",
-    "easyToCook": true
+    "easyToCook": true,
+    "weeklyServings": 3,
+    "servingUnit": "portion"
   },
   {
     "id": "ravioli-frais",
@@ -4628,32 +4802,32 @@
     "lipides": "moyen",
     "glucides": "riche",
     "sel": "moyen",
-    "easyToCook": true
+    "easyToCook": true,
+    "weeklyServings": 3,
+    "servingUnit": "portion"
   },
   {
     "id": "beurre-allege",
     "shortName": "Beurre allégé",
-    "name": "Les Fourrées  -  Beurre de Cacahuète & Cacao",
-    "price": 4.93,
-    "priceSource": "open-prices",
+    "name": "Beurre allégé (250 g)",
+    "price": 2.3,
+    "priceSource": "estimation",
     "unit": "plaquette",
     "category": "frais",
     "mealSlot": "petit-dejeuner",
     "dietTags": [
       "omnivore",
       "vegetarien",
-      "vegan",
       "sans-porc"
     ],
     "allergens": [
-      "lactose",
-      "arachide"
+      "lactose"
     ],
-    "kcal": 438,
-    "protein": "moyen",
-    "lipides": "moyen",
-    "glucides": "riche",
-    "sel": "faible",
+    "kcal": 366,
+    "protein": "faible",
+    "lipides": "riche",
+    "glucides": "faible",
+    "sel": "moyen",
     "easyToCook": true,
     "isCondiment": true
   },
@@ -4679,7 +4853,9 @@
     "glucides": "moyen",
     "sel": "faible",
     "easyToCook": true,
-    "gourmand": true
+    "gourmand": true,
+    "weeklyServings": 3,
+    "servingUnit": "portion"
   },
   {
     "id": "glace-vanille",
@@ -4703,7 +4879,9 @@
     "glucides": "moyen",
     "sel": "faible",
     "easyToCook": true,
-    "gourmand": true
+    "gourmand": true,
+    "weeklyServings": 3,
+    "servingUnit": "portion"
   },
   {
     "id": "mousse-chocolat",
@@ -4729,7 +4907,9 @@
     "glucides": "moyen",
     "sel": "moyen",
     "easyToCook": true,
-    "gourmand": true
+    "gourmand": true,
+    "weeklyServings": 3,
+    "servingUnit": "portion"
   },
   {
     "id": "tiramisu",
@@ -4755,7 +4935,9 @@
     "glucides": "riche",
     "sel": "faible",
     "easyToCook": true,
-    "gourmand": true
+    "gourmand": true,
+    "weeklyServings": 3,
+    "servingUnit": "portion"
   },
   {
     "id": "flan",
@@ -4780,7 +4962,9 @@
     "glucides": "moyen",
     "sel": "faible",
     "easyToCook": true,
-    "gourmand": true
+    "gourmand": true,
+    "weeklyServings": 3,
+    "servingUnit": "portion"
   },
   {
     "id": "escalope-veau",
@@ -4804,7 +4988,9 @@
     "lipides": "faible",
     "glucides": "moyen",
     "sel": "moyen",
-    "easyToCook": true
+    "easyToCook": true,
+    "weeklyServings": 3,
+    "servingUnit": "portion"
   },
   {
     "id": "cotes-porc",
@@ -4824,7 +5010,9 @@
     "lipides": "moyen",
     "glucides": "faible",
     "sel": "moyen",
-    "easyToCook": true
+    "easyToCook": true,
+    "weeklyServings": 3,
+    "servingUnit": "portion"
   },
   {
     "id": "roti-boeuf",
@@ -4845,14 +5033,16 @@
     "lipides": "moyen",
     "glucides": "faible",
     "sel": "moyen",
-    "easyToCook": true
+    "easyToCook": true,
+    "weeklyServings": 3,
+    "servingUnit": "portion"
   },
   {
     "id": "poulet-entier",
     "shortName": "Poulet entier",
-    "name": "Filet de poulet et ses pommes de terre a la sarladaise",
-    "price": 2.99,
-    "priceSource": "open-prices",
+    "name": "Poulet entier (env. 1,5 kg)",
+    "price": 7.5,
+    "priceSource": "estimation",
     "unit": "pièce",
     "category": "viande-poisson",
     "mealSlot": "dejeuner-diner",
@@ -4860,15 +5050,15 @@
       "omnivore",
       "sans-porc"
     ],
-    "allergens": [
-      "lactose"
-    ],
-    "kcal": 139,
-    "protein": "moyen",
+    "allergens": [],
+    "kcal": 190,
+    "protein": "riche",
     "lipides": "moyen",
-    "glucides": "moyen",
-    "sel": "moyen",
-    "easyToCook": true
+    "glucides": "faible",
+    "sel": "faible",
+    "easyToCook": true,
+    "weeklyServings": 3,
+    "servingUnit": "portion"
   },
   {
     "id": "blanc-dinde",
@@ -4889,7 +5079,9 @@
     "lipides": "faible",
     "glucides": "faible",
     "sel": "moyen",
-    "easyToCook": true
+    "easyToCook": true,
+    "weeklyServings": 3,
+    "servingUnit": "portion"
   },
   {
     "id": "agneau-hache",
@@ -4910,7 +5102,9 @@
     "lipides": "moyen",
     "glucides": "faible",
     "sel": "moyen",
-    "easyToCook": true
+    "easyToCook": true,
+    "weeklyServings": 3,
+    "servingUnit": "portion"
   },
   {
     "id": "foie-volaille",
@@ -4931,7 +5125,9 @@
     "lipides": "moyen",
     "glucides": "faible",
     "sel": "riche",
-    "easyToCook": true
+    "easyToCook": true,
+    "weeklyServings": 3,
+    "servingUnit": "portion"
   },
   {
     "id": "lapin",
@@ -4955,7 +5151,9 @@
     "lipides": "riche",
     "glucides": "riche",
     "sel": "moyen",
-    "easyToCook": true
+    "easyToCook": true,
+    "weeklyServings": 3,
+    "servingUnit": "portion"
   },
   {
     "id": "dorade",
@@ -4976,7 +5174,9 @@
     "lipides": "moyen",
     "glucides": "faible",
     "sel": "faible",
-    "easyToCook": true
+    "easyToCook": true,
+    "weeklyServings": 3,
+    "servingUnit": "portion"
   },
   {
     "id": "maquereau",
@@ -4997,7 +5197,9 @@
     "lipides": "riche",
     "glucides": "faible",
     "sel": "moyen",
-    "easyToCook": true
+    "easyToCook": true,
+    "weeklyServings": 3,
+    "servingUnit": "portion"
   },
   {
     "id": "truite",
@@ -5018,7 +5220,9 @@
     "lipides": "moyen",
     "glucides": "faible",
     "sel": "riche",
-    "easyToCook": true
+    "easyToCook": true,
+    "weeklyServings": 3,
+    "servingUnit": "portion"
   },
   {
     "id": "colin",
@@ -5041,7 +5245,9 @@
     "lipides": "moyen",
     "glucides": "moyen",
     "sel": "moyen",
-    "easyToCook": true
+    "easyToCook": true,
+    "weeklyServings": 3,
+    "servingUnit": "portion"
   },
   {
     "id": "sole",
@@ -5067,7 +5273,9 @@
     "lipides": "moyen",
     "glucides": "riche",
     "sel": "moyen",
-    "easyToCook": true
+    "easyToCook": true,
+    "weeklyServings": 3,
+    "servingUnit": "portion"
   },
   {
     "id": "calamars",
@@ -5090,7 +5298,9 @@
     "lipides": "moyen",
     "glucides": "moyen",
     "sel": "moyen",
-    "easyToCook": true
+    "easyToCook": true,
+    "weeklyServings": 3,
+    "servingUnit": "portion"
   },
   {
     "id": "saint-jacques",
@@ -5114,7 +5324,9 @@
     "lipides": "moyen",
     "glucides": "faible",
     "sel": "moyen",
-    "easyToCook": true
+    "easyToCook": true,
+    "weeklyServings": 3,
+    "servingUnit": "portion"
   },
   {
     "id": "thon-frais",
@@ -5139,7 +5351,9 @@
     "lipides": "moyen",
     "glucides": "riche",
     "sel": "moyen",
-    "easyToCook": true
+    "easyToCook": true,
+    "weeklyServings": 3,
+    "servingUnit": "portion"
   },
   {
     "id": "anchois",
@@ -5185,14 +5399,16 @@
     "lipides": "moyen",
     "glucides": "riche",
     "sel": "riche",
-    "easyToCook": true
+    "easyToCook": true,
+    "weeklyServings": 3,
+    "servingUnit": "portion"
   },
   {
     "id": "pate-de-foie",
-    "shortName": "Pâté de foie",
-    "name": "pâte végétale faux gras",
-    "price": 3.83,
-    "priceSource": "open-prices",
+    "shortName": "Pâté végétal",
+    "name": "Pâté végétal façon foie gras (100 g)",
+    "price": 3.2,
+    "priceSource": "estimation",
     "unit": "pot",
     "category": "viande-poisson",
     "mealSlot": "dejeuner-diner",
@@ -5203,12 +5419,14 @@
       "sans-porc"
     ],
     "allergens": [],
-    "kcal": 261,
-    "protein": "faible",
+    "kcal": 280,
+    "protein": "moyen",
     "lipides": "riche",
-    "glucides": "faible",
+    "glucides": "moyen",
     "sel": "moyen",
-    "easyToCook": true
+    "easyToCook": true,
+    "weeklyServings": 3,
+    "servingUnit": "portion"
   },
   {
     "id": "boudin-noir",
@@ -5228,7 +5446,9 @@
     "lipides": "riche",
     "glucides": "faible",
     "sel": "riche",
-    "easyToCook": true
+    "easyToCook": true,
+    "weeklyServings": 3,
+    "servingUnit": "portion"
   },
   {
     "id": "andouillette",
@@ -5248,7 +5468,9 @@
     "lipides": "riche",
     "glucides": "faible",
     "sel": "riche",
-    "easyToCook": true
+    "easyToCook": true,
+    "weeklyServings": 3,
+    "servingUnit": "portion"
   },
   {
     "id": "bacon",
@@ -5268,7 +5490,9 @@
     "lipides": "faible",
     "glucides": "faible",
     "sel": "riche",
-    "easyToCook": true
+    "easyToCook": true,
+    "weeklyServings": 3,
+    "servingUnit": "portion"
   },
   {
     "id": "nuggets-poulet",
@@ -5291,7 +5515,9 @@
     "lipides": "moyen",
     "glucides": "moyen",
     "sel": "moyen",
-    "easyToCook": true
+    "easyToCook": true,
+    "weeklyServings": 3,
+    "servingUnit": "portion"
   },
   {
     "id": "cordon-bleu",
@@ -5314,14 +5540,16 @@
     "lipides": "moyen",
     "glucides": "moyen",
     "sel": "moyen",
-    "easyToCook": true
+    "easyToCook": true,
+    "weeklyServings": 3,
+    "servingUnit": "portion"
   },
   {
     "id": "filet-dinde-fume",
     "shortName": "Filet de dinde fumé",
-    "name": "Escalope cordon bleu de poulet 100% filets",
-    "price": 2.31,
-    "priceSource": "open-prices",
+    "name": "Filet de dinde fumé (100 g)",
+    "price": 3.5,
+    "priceSource": "estimation",
     "unit": "paquet",
     "category": "viande-poisson",
     "mealSlot": "dejeuner-diner",
@@ -5329,17 +5557,15 @@
       "omnivore",
       "sans-porc"
     ],
-    "allergens": [
-      "oeuf",
-      "gluten",
-      "lactose"
-    ],
-    "kcal": 201,
-    "protein": "moyen",
-    "lipides": "moyen",
-    "glucides": "moyen",
-    "sel": "moyen",
-    "easyToCook": true
+    "allergens": [],
+    "kcal": 105,
+    "protein": "riche",
+    "lipides": "faible",
+    "glucides": "faible",
+    "sel": "riche",
+    "easyToCook": true,
+    "weeklyServings": 3,
+    "servingUnit": "portion"
   },
   {
     "id": "surimi",
@@ -5364,7 +5590,9 @@
     "lipides": "moyen",
     "glucides": "moyen",
     "sel": "riche",
-    "easyToCook": true
+    "easyToCook": true,
+    "weeklyServings": 3,
+    "servingUnit": "portion"
   },
   {
     "id": "truite-fumee",
@@ -5385,7 +5613,9 @@
     "lipides": "moyen",
     "glucides": "faible",
     "sel": "riche",
-    "easyToCook": true
+    "easyToCook": true,
+    "weeklyServings": 3,
+    "servingUnit": "portion"
   },
   {
     "id": "lieu-noir",
@@ -5408,7 +5638,9 @@
     "lipides": "moyen",
     "glucides": "moyen",
     "sel": "moyen",
-    "easyToCook": true
+    "easyToCook": true,
+    "weeklyServings": 3,
+    "servingUnit": "portion"
   },
   {
     "id": "pain-de-campagne",
@@ -5433,7 +5665,9 @@
     "lipides": "moyen",
     "glucides": "riche",
     "sel": "riche",
-    "easyToCook": true
+    "easyToCook": true,
+    "weeklyServings": 3,
+    "servingUnit": "portion"
   },
   {
     "id": "pain-seigle",
@@ -5456,7 +5690,9 @@
     "lipides": "moyen",
     "glucides": "riche",
     "sel": "moyen",
-    "easyToCook": true
+    "easyToCook": true,
+    "weeklyServings": 3,
+    "servingUnit": "portion"
   },
   {
     "id": "pain-nordique",
@@ -5479,7 +5715,9 @@
     "lipides": "moyen",
     "glucides": "riche",
     "sel": "moyen",
-    "easyToCook": true
+    "easyToCook": true,
+    "weeklyServings": 3,
+    "servingUnit": "portion"
   },
   {
     "id": "pain-burger",
@@ -5504,7 +5742,9 @@
     "lipides": "moyen",
     "glucides": "riche",
     "sel": "moyen",
-    "easyToCook": true
+    "easyToCook": true,
+    "weeklyServings": 3,
+    "servingUnit": "portion"
   },
   {
     "id": "pain-hot-dog",
@@ -5527,7 +5767,9 @@
     "lipides": "moyen",
     "glucides": "riche",
     "sel": "moyen",
-    "easyToCook": true
+    "easyToCook": true,
+    "weeklyServings": 3,
+    "servingUnit": "portion"
   },
   {
     "id": "naan",
@@ -5550,7 +5792,9 @@
     "lipides": "riche",
     "glucides": "riche",
     "sel": "moyen",
-    "easyToCook": true
+    "easyToCook": true,
+    "weeklyServings": 3,
+    "servingUnit": "portion"
   },
   {
     "id": "pain-epices",
@@ -5575,7 +5819,9 @@
     "glucides": "riche",
     "sel": "moyen",
     "easyToCook": true,
-    "gourmand": true
+    "gourmand": true,
+    "weeklyServings": 3,
+    "servingUnit": "portion"
   },
   {
     "id": "chausson-pomme",
@@ -5602,7 +5848,9 @@
     "glucides": "faible",
     "sel": "faible",
     "easyToCook": true,
-    "gourmand": true
+    "gourmand": true,
+    "weeklyServings": 3,
+    "servingUnit": "portion"
   },
   {
     "id": "pain-au-chocolat",
@@ -5627,7 +5875,9 @@
     "glucides": "riche",
     "sel": "moyen",
     "easyToCook": true,
-    "gourmand": true
+    "gourmand": true,
+    "weeklyServings": 3,
+    "servingUnit": "portion"
   },
   {
     "id": "pain-aux-raisins",
@@ -5653,7 +5903,9 @@
     "glucides": "faible",
     "sel": "riche",
     "easyToCook": true,
-    "gourmand": true
+    "gourmand": true,
+    "weeklyServings": 3,
+    "servingUnit": "portion"
   },
   {
     "id": "financier",
@@ -5677,7 +5929,9 @@
     "glucides": "riche",
     "sel": "faible",
     "easyToCook": true,
-    "gourmand": true
+    "gourmand": true,
+    "weeklyServings": 3,
+    "servingUnit": "portion"
   },
   {
     "id": "cookie",
@@ -5701,7 +5955,9 @@
     "glucides": "riche",
     "sel": "faible",
     "easyToCook": true,
-    "gourmand": true
+    "gourmand": true,
+    "weeklyServings": 3,
+    "servingUnit": "portion"
   },
   {
     "id": "muffin",
@@ -5727,7 +5983,9 @@
     "glucides": "riche",
     "sel": "moyen",
     "easyToCook": true,
-    "gourmand": true
+    "gourmand": true,
+    "weeklyServings": 3,
+    "servingUnit": "portion"
   },
   {
     "id": "tarte-fine",
@@ -5752,7 +6010,9 @@
     "glucides": "moyen",
     "sel": "moyen",
     "easyToCook": true,
-    "gourmand": true
+    "gourmand": true,
+    "weeklyServings": 3,
+    "servingUnit": "portion"
   },
   {
     "id": "gressins",
@@ -5777,28 +6037,34 @@
     "lipides": "riche",
     "glucides": "riche",
     "sel": "riche",
-    "easyToCook": true
+    "easyToCook": true,
+    "weeklyServings": 3,
+    "servingUnit": "portion"
   },
   {
     "id": "tortilla-mais",
     "shortName": "Tortillas de maïs",
-    "name": "Sweet Chilli Pepper Tortillas",
-    "price": 2.28,
-    "priceSource": "open-prices",
+    "name": "Tortillas de maïs (paquet)",
+    "price": 2,
+    "priceSource": "estimation",
     "unit": "paquet",
     "category": "boulangerie",
     "mealSlot": "dejeuner-diner",
     "dietTags": [
       "omnivore",
+      "vegetarien",
+      "vegan",
       "sans-porc"
     ],
     "allergens": [],
-    "kcal": 477,
+    "kcal": 218,
     "protein": "moyen",
-    "lipides": "riche",
+    "lipides": "faible",
     "glucides": "riche",
     "sel": "moyen",
-    "easyToCook": true
+    "easyToCook": true,
+    "weeklyServings": 3,
+    "servingUnit": "portion"
   },
   {
     "id": "pain-complet-graines",
@@ -5823,7 +6089,9 @@
     "lipides": "moyen",
     "glucides": "riche",
     "sel": "moyen",
-    "easyToCook": true
+    "easyToCook": true,
+    "weeklyServings": 3,
+    "servingUnit": "portion"
   },
   {
     "id": "focaccia",
@@ -5848,7 +6116,9 @@
     "lipides": "moyen",
     "glucides": "riche",
     "sel": "riche",
-    "easyToCook": true
+    "easyToCook": true,
+    "weeklyServings": 3,
+    "servingUnit": "portion"
   },
   {
     "id": "pain-brie",
@@ -5873,7 +6143,9 @@
     "lipides": "moyen",
     "glucides": "moyen",
     "sel": "moyen",
-    "easyToCook": true
+    "easyToCook": true,
+    "weeklyServings": 3,
+    "servingUnit": "portion"
   },
   {
     "id": "fougasse",
@@ -5896,6 +6168,8 @@
     "lipides": "moyen",
     "glucides": "riche",
     "sel": "moyen",
-    "easyToCook": true
+    "easyToCook": true,
+    "weeklyServings": 3,
+    "servingUnit": "portion"
   }
 ]

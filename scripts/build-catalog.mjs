@@ -152,11 +152,20 @@ async function fetchWithRetry(url, options, label) {
 // Ne garde un résultat que si le terme cherché apparaît vraiment dans son
 // nom — évite les faux positifs (ex: "huile d'olive" -> un gazpacho).
 function findBestMatch(products, searchTerm) {
-  const keyword = normalize(searchTerm.split(" ")[0]);
+  // On exige que TOUS les mots significatifs du terme cherché apparaissent
+  // dans le nom du produit — pas seulement le premier. Se limiter au
+  // premier mot (ex: "menthe" pour "menthe fraîche") laissait passer des
+  // faux positifs bien réels : "menthe fraîche" a matché des bonbons Tic
+  // Tac parfum menthe, "gingembre frais" un jus de fruits, etc. — retrouvés
+  // et corrigés à la main après coup, d'où ce durcissement pour la suite.
+  const keywords = normalize(searchTerm)
+    .split(" ")
+    .filter((w) => w.length > 2);
+
   return products.find((p) => {
     if (!p.nutriments || p.nutriments["energy-kcal_100g"] === undefined) return false;
     const name = normalize(pickName(p, ""));
-    return name.includes(keyword);
+    return keywords.every((k) => name.includes(k));
   });
 }
 
