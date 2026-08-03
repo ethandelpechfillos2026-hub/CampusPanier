@@ -69,6 +69,18 @@ function score(product: Product, preferences: UserPreferences): number {
   if (preferences.dailyCalories !== null) {
     if (preferences.dailyCalories >= 2400 && product.kcal >= 250) s += 1;
     if (preferences.dailyCalories <= 1800 && product.kcal <= 150) s += 1;
+    // Un objectif calorique élevé implique un vrai besoin en protéines
+    // (repère courant : ~1,6-2 g/kg, soit ~130-160 g/jour pour 3000 kcal).
+    // Sans ce boost, la phase 2 (remplissage du budget restant, triée par
+    // score puis prix croissant) se remplissait surtout de petits produits
+    // pas chers — condiments, biscuits, épices — plutôt que de viande,
+    // poisson, œufs ou fromage, nettement plus chers au kilo mais bien
+    // plus riches en protéines. Avec un catalogue élargi qui compte
+    // beaucoup plus de ces petits produits bon marché, ce déséquilibre
+    // était devenu très visible sur les gros budgets/calories.
+    if (preferences.dailyCalories >= 2400 && product.protein === "riche") {
+      s += 4;
+    }
   }
 
   return s;
