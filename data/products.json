@@ -212,7 +212,8 @@
     "sel": "faible",
     "easyToCook": true,
     "gourmand": true,
-    "gramsPerServing": 15
+    "gramsPerServing": 15,
+    "isSpread": true
   },
   {
     "id": "noix-cajou",
@@ -874,7 +875,8 @@
     "sel": "faible",
     "easyToCook": true,
     "gourmand": true,
-    "isCondiment": true
+    "isCondiment": true,
+    "isSpread": true
   },
   {
     "id": "confiture",
@@ -901,7 +903,8 @@
     "sel": "faible",
     "easyToCook": true,
     "gourmand": true,
-    "isCondiment": true
+    "isCondiment": true,
+    "isSpread": true
   },
   {
     "id": "cereales-muesli",
@@ -987,7 +990,8 @@
     "easyToCook": true,
     "gourmand": true,
     "isCondiment": true,
-    "ultraTransforme": true
+    "ultraTransforme": true,
+    "isSpread": true
   },
   {
     "id": "sauce-soja",
@@ -1567,7 +1571,8 @@
     "sel": "moyen",
     "easyToCook": true,
     "gourmand": true,
-    "isCondiment": true
+    "isCondiment": true,
+    "isSpread": true
   },
   {
     "id": "creme-fraiche",
@@ -1783,7 +1788,8 @@
     "sel": "moyen",
     "easyToCook": true,
     "gourmand": true,
-    "ultraTransforme": true
+    "ultraTransforme": true,
+    "gramsPerServing": 50
   },
   {
     "id": "pain-cereales",
@@ -3785,7 +3791,7 @@
   {
     "id": "panais",
     "shortName": "Panais",
-    "name": "VEGETABLES* Carottes, betteraves, patates douces, panais",
+    "name": "Mélange de légumes racines (carottes, betteraves, patates douces, panais)",
     "price": 2.43,
     "priceSource": "open-prices",
     "unit": "sachet",
@@ -3796,11 +3802,11 @@
       "sans-porc"
     ],
     "allergens": [],
-    "kcal": 489,
-    "protein": "moyen",
-    "lipides": "riche",
-    "glucides": "riche",
-    "sel": "moyen",
+    "kcal": 65,
+    "protein": "faible",
+    "lipides": "faible",
+    "glucides": "moyen",
+    "sel": "faible",
     "easyToCook": true,
     "weeklyServings": 3,
     "servingUnit": "portion",
@@ -4670,7 +4676,8 @@
     "glucides": "faible",
     "sel": "riche",
     "easyToCook": true,
-    "isCondiment": true
+    "isCondiment": true,
+    "isSpread": true
   },
   {
     "id": "margarine",
@@ -4960,7 +4967,8 @@
     "glucides": "faible",
     "sel": "moyen",
     "easyToCook": true,
-    "isCondiment": true
+    "isCondiment": true,
+    "isSpread": true
   },
   {
     "id": "creme-fouettee",
@@ -5945,7 +5953,8 @@
       "sans-porc"
     ],
     "allergens": [
-      "lactose"
+      "lactose",
+      "gluten"
     ],
     "kcal": 512,
     "protein": "moyen",
@@ -6014,7 +6023,8 @@
     "gourmand": true,
     "weeklyServings": 3,
     "servingUnit": "portion",
-    "ultraTransforme": true
+    "ultraTransforme": true,
+    "gramsPerServing": 100
   },
   {
     "id": "pain-au-chocolat",
@@ -6042,7 +6052,8 @@
     "gourmand": true,
     "weeklyServings": 3,
     "servingUnit": "portion",
-    "ultraTransforme": true
+    "ultraTransforme": true,
+    "gramsPerServing": 65
   },
   {
     "id": "pain-aux-raisins",
@@ -6072,7 +6083,8 @@
     "gourmand": true,
     "weeklyServings": 3,
     "servingUnit": "portion",
-    "ultraTransforme": true
+    "ultraTransforme": true,
+    "gramsPerServing": 70
   },
   {
     "id": "financier",
@@ -6089,7 +6101,9 @@
       "vegan",
       "sans-porc"
     ],
-    "allergens": [],
+    "allergens": [
+      "gluten"
+    ],
     "kcal": 452,
     "protein": "moyen",
     "lipides": "riche",
@@ -6340,7 +6354,8 @@
       "sans-porc"
     ],
     "allergens": [
-      "lactose"
+      "lactose",
+      "gluten"
     ],
     "kcal": 366,
     "protein": "moyen",

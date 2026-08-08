@@ -76,6 +76,12 @@ export interface Product {
   // pour ne proposer que des aliments bruts. Absent = considéré comme non
   // ultra-transformé.
   ultraTransforme?: boolean;
+  // Pâte à tartiner/beurre/confiture/miel — un condiment, mais spécifiquement
+  // le genre qu'on met SUR du pain au petit-déjeuner. Sert à garantir qu'un
+  // pain/baguette acheté ait toujours de quoi être tartiné (voir
+  // generateShoppingList.ts), sans quoi le petit-déjeuner se résumait à du
+  // pain nu — pas très appétissant.
+  isSpread?: boolean;
 }
 
 export type Sex = "homme" | "femme";

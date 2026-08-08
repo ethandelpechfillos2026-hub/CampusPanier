@@ -117,6 +117,14 @@ function score(product: Product, preferences: UserPreferences): number {
     }
   }
 
+  // Pénalité pour les produits quasi sans calories (eau, sodas light...) —
+  // sans ça, leur prix ridicule (souvent < 1€) les faisait remonter en tête
+  // du remplissage glouton de la phase 2 sur les petits budgets, où l'argent
+  // est justement le plus précieux et devrait aller à de la vraie nourriture.
+  if (product.kcal < 20) {
+    s -= 5;
+  }
+
   return s;
 }
 
@@ -156,7 +164,21 @@ const MAX_DISTINCT_PER_CATEGORY: Partial<Record<Product["category"], number>> = 
   boulangerie: 3,
   "viande-poisson": 3,
 };
-const MAX_QUANTITY_PER_ITEM = 3;
+const DEFAULT_MAX_QUANTITY_PER_ITEM = 3;
+// La boulangerie ne profite pas du "boost" de quantité : comme le pain se
+// répartit ensuite sur ses quelques jours réservés (voir generateMenu.ts,
+// familles de produits), booster la quantité d'une baguette ou d'une
+// viennoiserie concentre une portion énorme (ex : 3 portions de chaussons
+// aux pommes) sur un seul jour au lieu d'agrandir un vrai repas. Pour du
+// pain/des viennoiseries en plus, mieux vaut varier (plus de produits
+// distincts, déjà plafonné juste au-dessus) que dupliquer le même.
+const MAX_QUANTITY_PER_ITEM: Partial<Record<Product["category"], number>> = {
+  boulangerie: 1,
+};
+
+function maxQuantityFor(category: Product["category"]): number {
+  return MAX_QUANTITY_PER_ITEM[category] ?? DEFAULT_MAX_QUANTITY_PER_ITEM;
+}
 
 export function generateShoppingList(
   preferences: UserPreferences
@@ -218,10 +240,19 @@ export function generateShoppingList(
   // d'interdire les extras, mais de garantir d'abord un fruit/légume/
   // protéine/féculent réel à chaque créneau, les envies plaisir venant se
   // rajouter PAR-DESSUS en phase 2 avec le budget restant.
+  // "Réel" veut aussi dire "a un minimum de calories" — sans ce seuil, une
+  // eau gazeuse (0 kcal, quasi gratuite) pouvait remplir la case "collation"
+  // à elle seule sur un petit budget, alors qu'elle ne nourrit personne :
+  // le budget filait dans une bouteille d'eau plutôt qu'un vrai encas.
+  const MIN_REAL_MEAL_KCAL = 20;
   const isGourmand = preferences.macroPreferences.includes("gourmand");
   for (const slot of MEAL_SLOT_ORDER) {
     const alreadyCovered = selected.some(
-      (p) => p.mealSlot === slot && p.weeklyServings && !p.isCondiment
+      (p) =>
+        p.mealSlot === slot &&
+        p.weeklyServings &&
+        !p.isCondiment &&
+        p.kcal >= MIN_REAL_MEAL_KCAL
     );
     if (alreadyCovered) continue;
 
@@ -231,6 +262,7 @@ export function generateShoppingList(
           p.mealSlot === slot &&
           p.weeklyServings &&
           !p.isCondiment &&
+          p.kcal >= MIN_REAL_MEAL_KCAL &&
           !selectedIds.has(p.id) &&
           (!isGourmand || !p.gourmand)
       )
@@ -247,6 +279,61 @@ export function generateShoppingList(
     selectedIds.add(product.id);
     quantities.set(product.id, 1);
     total += product.price;
+  }
+
+  // Phase 1c : si du pain/une baguette a été retenu pour le petit-déjeuner,
+  // s'assurer qu'il y a bien de quoi le tartiner (confiture, beurre, miel,
+  // pâte à tartiner, beurre de cacahuète...) — sans ça, le petit-déjeuner se
+  // résumait à du pain nu avec du lait, ce qui n'a pas grand intérêt.
+  const hasBreadForBreakfast = selected.some(
+    (p) => p.category === "boulangerie" && p.mealSlot === "petit-dejeuner"
+  );
+  const hasSpread = selected.some((p) => p.isSpread);
+  if (hasBreadForBreakfast && !hasSpread) {
+    const spreadCandidates = filtered
+      .filter((p) => p.isSpread && !selectedIds.has(p.id))
+      .sort((a, b) => {
+        const scoreDiff = score(b, preferences) - score(a, preferences);
+        if (scoreDiff !== 0) return scoreDiff;
+        return a.price - b.price;
+      });
+
+    const spread = spreadCandidates[0];
+    if (spread && total + spread.price <= preferences.budget) {
+      selected.push(spread);
+      selectedIds.add(spread.id);
+      quantities.set(spread.id, 1);
+      total += spread.price;
+    }
+  }
+
+  // Phase 1d : s'assurer qu'il y a un féculent (riz, pâtes, pommes de
+  // terre...) pour le déjeuner/dîner. Sans ça, "un vrai repas par créneau"
+  // pouvait être satisfait par un simple pois chiches + fromage + concombre
+  // — nutritionnellement correct, mais ça ressemble plus à une salade froide
+  // qu'à un vrai plat cuisiné avec une base.
+  const FECULENT_IDS = new Set([
+    "riz", "pates", "pommes-de-terre", "quinoa", "semoule-couscous",
+    "riz-complet", "pates-completes", "spaghetti", "polenta",
+    "patate-douce", "nouilles-chinoises",
+  ]);
+  const hasFeculent = selected.some((p) => FECULENT_IDS.has(p.id));
+  if (!hasFeculent) {
+    const feculentCandidates = filtered
+      .filter((p) => FECULENT_IDS.has(p.id) && !selectedIds.has(p.id))
+      .sort((a, b) => {
+        const scoreDiff = score(b, preferences) - score(a, preferences);
+        if (scoreDiff !== 0) return scoreDiff;
+        return a.price - b.price;
+      });
+
+    const feculent = feculentCandidates[0];
+    if (feculent && total + feculent.price <= preferences.budget) {
+      selected.push(feculent);
+      selectedIds.add(feculent.id);
+      quantities.set(feculent.id, 1);
+      total += feculent.price;
+    }
   }
 
   // Phase 2 : compléter avec les articles restants (y compris les extras
@@ -280,7 +367,7 @@ export function generateShoppingList(
         .filter(
           (p) =>
             p.category === product.category &&
-            (quantities.get(p.id) ?? 1) < MAX_QUANTITY_PER_ITEM
+            (quantities.get(p.id) ?? 1) < maxQuantityFor(p.category)
         )
         .sort((a, b) => {
           const scoreDiff = score(b, preferences) - score(a, preferences);

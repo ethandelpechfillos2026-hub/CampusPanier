@@ -169,15 +169,19 @@ const PRODUCT_FAMILIES: string[][] = [
   // pouvaient tomber le même jour que croissants/brioche — d'où le
   // "croissant + pain d'épices + pain au chocolat" un même matin.
   [
-    "pain-complet", "baguette", "pains-mie", "pain-cereales", "croissants",
-    "biscottes", "brioche", "pain-epices", "pain-au-chocolat",
-    "pain-aux-raisins", "chausson-pomme", "pain-de-campagne", "pain-seigle",
-    "pain-nordique", "pain-complet-graines", "baguette-graines", "pain-brie",
+    "pain-complet", "baguette", "baguette-tradition", "pains-mie",
+    "pain-cereales", "croissants", "biscottes", "brioche", "pain-epices",
+    "pain-au-chocolat", "pain-aux-raisins", "chausson-pomme",
+    "pain-de-campagne", "pain-seigle", "pain-nordique",
+    "pain-complet-graines", "baguette-graines", "pain-brie",
   ],
   // Laitiers du petit-déjeuner.
   ["yaourt-nature", "yaourt-grec", "fromage-blanc", "skyr", "petit-suisse", "faisselle", "cottage-cheese", "yaourt-soja"],
+  // Variantes de lait à boire — redondantes entre elles (pas de raison
+  // d'avoir "lait" ET "lait entier" ET "lait écrémé" le même matin).
+  ["lait", "lait-entier", "lait-ecreme"],
   // Féculents principaux du déjeuner/dîner.
-  ["riz", "pates", "pommes-de-terre", "quinoa", "semoule-couscous", "riz-complet", "pates-completes", "spaghetti", "boulgour", "polenta", "patate-douce"],
+  ["riz", "pates", "pommes-de-terre", "quinoa", "semoule-couscous", "riz-complet", "pates-completes", "spaghetti", "boulgour", "polenta", "patate-douce", "nouilles-chinoises"],
   // Douceurs/collations sucrées — pour éviter d'empiler chips + cookies +
   // financiers + tiramisu le même jour quand plusieurs sont sélectionnés.
   [
@@ -280,8 +284,13 @@ export function buildWeeklyPlan(
     const { product, quantity } = item;
     // Les condiments (huile, sucre, moutarde...) restent dans "Ma liste"
     // mais ne sont jamais un repas à part entière — on ne les affiche pas
-    // comme ligne indépendante du planning jour par jour.
-    if (!product.weeklyServings || product.isCondiment) continue;
+    // comme ligne indépendante du planning jour par jour. Exception : les
+    // pâtes à tartiner (confiture, beurre, miel...) SONT affichées, parce
+    // qu'on veut justement voir "avec quoi" manger le pain du petit-déjeuner
+    // — contrairement à l'huile ou au sel, invisibles par nature.
+    if (!product.weeklyServings || (product.isCondiment && !product.isSpread)) {
+      continue;
+    }
 
     const total = product.weeklyServings * quantity;
 

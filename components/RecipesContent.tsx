@@ -70,6 +70,11 @@ export default function RecipesContent({
   const [aiRecipe, setAiRecipe] = useState<GeneratedRecipe | null>(null);
   const [aiLoading, setAiLoading] = useState(false);
   const [aiError, setAiError] = useState<string | null>(null);
+  // Noms des recettes déjà générées dans cette session — envoyés à l'IA pour
+  // qu'elle évite de reproduire le même style de plat (souvent "salade")
+  // encore et encore quand on clique plusieurs fois sur "Générer une autre
+  // recette".
+  const [aiRecipeHistory, setAiRecipeHistory] = useState<string[]>([]);
 
   async function handleGenerateAiRecipe() {
     setAiLoading(true);
@@ -82,9 +87,11 @@ export default function RecipesContent({
       const recipe = await generateRecipeWithAI(
         ingredientNames,
         preferences.diet,
-        preferences.allergies
+        preferences.allergies,
+        aiRecipeHistory
       );
       setAiRecipe(recipe);
+      setAiRecipeHistory((prev) => [...prev, recipe.name]);
       recordRecipeViewed(`ai-${Date.now()}`);
     } catch (error) {
       const message =

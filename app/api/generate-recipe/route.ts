@@ -11,6 +11,10 @@ interface GenerateRecipeBody {
   ingredientNames: string[];
   diet: DietType;
   allergies: Allergen[];
+  // Noms des recettes déjà proposées dans cette session — pour éviter que
+  // "Générer une autre recette" ne redonne la même salade avec un autre nom,
+  // ou le même style de plat encore et encore.
+  avoidNames?: string[];
 }
 
 const DIET_LABELS: Record<DietType, string> = {
@@ -57,19 +61,26 @@ export async function POST(request: NextRequest) {
     .map((allergen) => ALLERGEN_LABELS[allergen])
     .filter(Boolean);
 
+  const avoidNames = (body.avoidNames ?? []).filter(Boolean);
+
   const systemPrompt = `Tu es un chef cuisinier qui aide des étudiants à petit budget sur l'application française CampusPanier. Tu génères des recettes simples, rapides et économiques en utilisant PRINCIPALEMENT les ingrédients fournis par l'utilisateur. Tu peux ajouter des bases courantes (sel, poivre, eau, huile) si besoin, mais rien d'autre qui ne soit pas déjà dans la liste fournie.
 
 Contraintes obligatoires :
 - Régime alimentaire à respecter : ${dietLabel}.
 ${allergenLabels.length > 0 ? `- Allergènes à exclure absolument : ${allergenLabels.join(", ")}.` : ""}
-- La recette doit être réalisable par un·e étudiant·e avec un équipement de cuisine basique.
+- La recette doit être réalisable par un·e étudiant·e avec un équipement de cuisine basique (plaque de cuisson, poêle, casserole, four si besoin).
+- Évite la solution de facilité "salade froide" (ingrédients juste coupés et mélangés sans cuisson) sauf si les ingrédients disponibles ne permettent vraiment rien d'autre. Privilégie un vrai plat cuisiné : poêlée, gratin, curry, soupe/velouté, plat one-pot avec féculent, wok, sauce mijotée, omelette garnie, etc. Varie le style d'un appel à l'autre plutôt que de toujours proposer le même type de plat.
 
 Réponds UNIQUEMENT avec un objet JSON valide, sans texte avant ni après, au format exact suivant :
 {"name": "nom de la recette", "icon": "un seul emoji représentatif", "prepTime": nombre de minutes, "difficulty": "facile" ou "moyen", "usedIngredients": ["ingrédients de la liste fournie réellement utilisés"], "steps": ["étape 1", "étape 2", "..."]}`;
 
   const userPrompt = `Ingrédients disponibles dans mon panier : ${ingredientNames.join(", ")}.
 
-Génère une recette originale à partir de ces ingrédients. Varie les propositions à chaque fois — n'hésite pas à proposer des styles de cuisine différents (méditerranéen, asiatique, etc.) tant que ça reste simple et rapide.`;
+Génère une recette originale à partir de ces ingrédients, avec une vraie cuisson (pas juste assembler des ingrédients froids) sauf si c'est impossible avec cette liste.${
+    avoidNames.length > 0
+      ? ` Ne propose PAS un plat similaire à ceux déjà générés dans cette session : ${avoidNames.join(", ")}. Change de style de plat.`
+      : ""
+  }`;
 
   try {
     const groqResponse = await fetch(
