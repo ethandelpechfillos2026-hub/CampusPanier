@@ -12,17 +12,23 @@ interface NutritionSummaryCardProps {
   macroTargets: MacroTargets | null;
 }
 
-// Une barre de progression simple réutilisée pour chaque nutriment — le
-// pourcentage peut dépasser 100 (ex: trop de sel), la barre se limite alors
-// visuellement à 100% pleine mais le chiffre affiché, lui, reste exact.
+// Une ligne "valeur / cible (%)" par nutriment. Affiche toujours la cible à
+// côté de la valeur — un pourcentage seul ("117%") ne veut rien dire sans
+// savoir de quoi il est le pourcentage (retour utilisateur, 8 août 2026).
+// `unit` distingue kcal de g : coller "g" à une valeur en kcal était le bug
+// à l'origine de la confusion ("2069 grammes" au lieu de "2069 kcal").
 function CoverageBar({
   label,
   valueG,
+  targetG,
+  unit = "g",
   pct,
   overThreshold = 120,
 }: {
   label: string;
   valueG: number;
+  targetG?: number | null;
+  unit?: string;
   pct: number | null;
   overThreshold?: number;
 }) {
@@ -41,9 +47,21 @@ function CoverageBar({
     <div>
       <div className="flex items-baseline justify-between gap-2">
         <p className="text-xs font-medium text-campus-ink">{label}</p>
-        <p className="text-xs font-semibold">
-          <span className="text-campus-ink">{valueG}g</span>
-          {pct !== null && <span className={`ml-1 ${pctColor}`}>{pct}%</span>}
+        <p className="text-xs">
+          <span className="font-semibold text-campus-ink">
+            {valueG}
+            {unit}
+          </span>
+          {targetG != null && (
+            <span className="text-campus-muted">
+              {" "}
+              / {targetG}
+              {unit} visé
+            </span>
+          )}
+          {pct !== null && (
+            <span className={`ml-1 font-semibold ${pctColor}`}>({pct}%)</span>
+          )}
         </p>
       </div>
       <div className="mt-1 h-1.5 w-full overflow-hidden rounded-full bg-campus-sand/60">
@@ -64,6 +82,13 @@ function CoverageBar({
 // réel connu et une fiche nutritionnelle tracée (voir
 // lib/nutritionSummary.ts) — jamais une estimation inventée pour le reste,
 // dont le nombre est affiché en toute transparence.
+//
+// Deux bases de comparaison différentes cohabitent volontairement dans
+// cette carte : la partie du haut compare à TON objectif (calculé depuis
+// ton profil), la partie du bas compare à un repère UE générique (le même
+// pour tout le monde, indépendant de ton profil). D'où les deux titres de
+// section distincts plutôt qu'une seule liste — pour ne pas laisser croire
+// que les 7 lignes répondent à la même question.
 export default function NutritionSummaryCard({
   items,
   macroTargets,
@@ -81,7 +106,7 @@ export default function NutritionSummaryCard({
   return (
     <div className="rounded-2xl border border-campus-sand bg-white p-5">
       <h2 className="text-sm font-bold text-campus-ink">
-        🍎 Bilan nutritionnel (moyenne/jour)
+        🍎 Bilan nutritionnel (moyenne par jour)
       </h2>
       <p className="mt-0.5 text-[11px] text-campus-muted">
         Calculé sur {itemsCounted}/{totalItems} article
@@ -91,29 +116,34 @@ export default function NutritionSummaryCard({
 
       {macroTargets ? (
         <div className="mt-4 space-y-3">
+          <p className="text-[10px] font-bold uppercase tracking-wide text-campus-terracotta">
+            Par rapport à ton objectif personnalisé
+          </p>
           <CoverageBar
             label="Calories"
             valueG={Math.round(dailyAverage.kcal)}
+            targetG={macroTargets.calories}
+            unit=" kcal"
             pct={personal.kcalPct}
           />
           <CoverageBar
             label="Protéines"
             valueG={dailyAverage.proteinG}
+            targetG={macroTargets.proteinG}
             pct={personal.proteinPct}
           />
           <CoverageBar
             label="Lipides"
             valueG={dailyAverage.lipidesG}
+            targetG={macroTargets.lipidesG}
             pct={personal.lipidesPct}
           />
           <CoverageBar
             label="Glucides"
             valueG={dailyAverage.glucidesG}
+            targetG={macroTargets.glucidesG}
             pct={personal.glucidesPct}
           />
-          <p className="text-[10px] text-campus-muted">
-            % de ton objectif personnalisé (profil corporel).
-          </p>
         </div>
       ) : (
         <p className="mt-3 rounded-xl bg-campus-terracotta/10 p-2.5 text-[11px] text-campus-muted">
@@ -123,32 +153,41 @@ export default function NutritionSummaryCard({
       )}
 
       <div className="mt-4 space-y-3 border-t border-campus-sand pt-4">
+        <p className="text-[10px] font-bold uppercase tracking-wide text-campus-muted">
+          Par rapport au repère officiel UE (indicatif, tout le monde)
+        </p>
         <CoverageBar
           label="Sucres"
           valueG={dailyAverage.sucresG}
+          targetG={EU_REFERENCE_INTAKE_2000KCAL.sucresG}
           pct={reference.sucresPct}
         />
         <CoverageBar
           label="Acides gras saturés"
           valueG={dailyAverage.satureesG}
+          targetG={EU_REFERENCE_INTAKE_2000KCAL.satureesG}
           pct={reference.satureesPct}
         />
         <CoverageBar
           label="Sel"
           valueG={dailyAverage.selG}
+          targetG={EU_REFERENCE_INTAKE_2000KCAL.selG}
           pct={reference.selPct}
         />
         <div className="flex items-baseline justify-between gap-2">
           <p className="text-xs font-medium text-campus-ink">Fibres</p>
           <p className="text-xs font-semibold text-campus-ink">
             {dailyAverage.fibresG}g
+            <span className="ml-1 font-normal text-campus-muted">
+              (pas de repère officiel)
+            </span>
           </p>
         </div>
         <p className="text-[10px] text-campus-muted">
-          % du repère de référence UE pour un adulte (base{" "}
-          {EU_REFERENCE_INTAKE_2000KCAL.kcal} kcal/j, règlement (UE)
-          n°1169/2011). Pas de repère officiel pour les fibres — valeur
-          affichée brute.
+          Repère UE = même valeur pour tout adulte, base{" "}
+          {EU_REFERENCE_INTAKE_2000KCAL.kcal} kcal/j (règlement (UE)
+          n°1169/2011) — contrairement à la section du haut, il ne tient pas
+          compte de ton profil.
         </p>
       </div>
 
