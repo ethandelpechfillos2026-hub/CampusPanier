@@ -127,15 +127,7 @@
     "easyToCook": true,
     "priceInfo": {
       "source": "estimation"
-    },
-    "nutritionPer100g": {
-      "kcal": 187,
-      "proteinG": 7.5,
-      "lipidesG": 7.5,
-      "glucidesG": 18,
-      "selG": 1.2
-    },
-    "offCode": "7613035982116"
+    }
   },
   {
     "id": "sauce-tomate",
@@ -1094,15 +1086,7 @@
     "isCondiment": true,
     "priceInfo": {
       "source": "estimation"
-    },
-    "nutritionPer100g": {
-      "kcal": 268,
-      "proteinG": 8.1,
-      "lipidesG": 4.2,
-      "glucidesG": 47,
-      "selG": 1.1
-    },
-    "offCode": "3760049790214"
+    }
   },
   {
     "id": "sucre",
@@ -1159,15 +1143,7 @@
     "isSpread": true,
     "priceInfo": {
       "source": "estimation"
-    },
-    "nutritionPer100g": {
-      "kcal": 384,
-      "proteinG": 5.2,
-      "lipidesG": 1.5,
-      "glucidesG": 85,
-      "selG": 0.4
-    },
-    "offCode": "5059319023762"
+    }
   },
   {
     "id": "confiture",
@@ -1467,15 +1443,7 @@
     "gramsPerServing": 200,
     "priceInfo": {
       "source": "estimation"
-    },
-    "nutritionPer100g": {
-      "kcal": 400,
-      "proteinG": 0,
-      "lipidesG": 0,
-      "glucidesG": 100,
-      "selG": 0
-    },
-    "offCode": "6111029000118"
+    }
   },
   {
     "id": "haricots-rouges",
@@ -1575,15 +1543,7 @@
     "easyToCook": true,
     "priceInfo": {
       "source": "estimation"
-    },
-    "nutritionPer100g": {
-      "kcal": 63,
-      "proteinG": 1.7,
-      "lipidesG": 2.5,
-      "glucidesG": 7.3,
-      "selG": 0.75
-    },
-    "offCode": "3083681094459"
+    }
   },
   {
     "id": "poivrons",
@@ -1723,15 +1683,7 @@
     "easyToCook": true,
     "priceInfo": {
       "source": "estimation"
-    },
-    "nutritionPer100g": {
-      "kcal": 184,
-      "proteinG": 5.5,
-      "lipidesG": 16,
-      "glucidesG": 4.4,
-      "selG": 0.99
-    },
-    "offCode": "3245412956515"
+    }
   },
   {
     "id": "avocat",
@@ -1794,15 +1746,7 @@
     "easyToCook": true,
     "priceInfo": {
       "source": "estimation"
-    },
-    "nutritionPer100g": {
-      "kcal": 19,
-      "proteinG": 0,
-      "lipidesG": 0,
-      "glucidesG": 4.5,
-      "selG": 0.03
-    },
-    "offCode": "5449000334343"
+    }
   },
   {
     "id": "orange",
@@ -1858,15 +1802,7 @@
     "isCondiment": true,
     "priceInfo": {
       "source": "estimation"
-    },
-    "nutritionPer100g": {
-      "kcal": 220,
-      "proteinG": 19,
-      "lipidesG": 15,
-      "glucidesG": 1.6,
-      "selG": 4.5
-    },
-    "offCode": "4012359144102"
+    }
   },
   {
     "id": "poireaux",
@@ -2581,15 +2517,7 @@
     "gramsPerServing": 50,
     "priceInfo": {
       "source": "estimation"
-    },
-    "nutritionPer100g": {
-      "kcal": 229,
-      "proteinG": 14,
-      "lipidesG": 16,
-      "glucidesG": 6,
-      "selG": 0.92
-    },
-    "offCode": "3560071534349"
+    }
   },
   {
     "id": "saumon",
@@ -2742,15 +2670,7 @@
     "easyToCook": true,
     "priceInfo": {
       "source": "estimation"
-    },
-    "nutritionPer100g": {
-      "kcal": 137,
-      "proteinG": 23,
-      "lipidesG": 2,
-      "glucidesG": 0.5,
-      "selG": 1.5
-    },
-    "offCode": "3302740057670"
+    }
   },
   {
     "id": "cotelettes-agneau",
@@ -3239,15 +3159,7 @@
     "isCondiment": true,
     "priceInfo": {
       "source": "estimation"
-    },
-    "nutritionPer100g": {
-      "kcal": 110,
-      "proteinG": 4.4,
-      "lipidesG": 4.5,
-      "glucidesG": 9,
-      "selG": 0.68
-    },
-    "offCode": "3083681178661"
+    }
   },
   {
     "id": "paprika",
@@ -3307,15 +3219,7 @@
     "isCondiment": true,
     "priceInfo": {
       "source": "open-prices"
-    },
-    "nutritionPer100g": {
-      "kcal": 407,
-      "proteinG": 18,
-      "lipidesG": 11,
-      "glucidesG": 55,
-      "selG": 0.33
-    },
-    "offCode": "3245550078964"
+    }
   },
   {
     "id": "herbes-de-provence",
@@ -3341,15 +3245,7 @@
     "isCondiment": true,
     "priceInfo": {
       "source": "estimation"
-    },
-    "nutritionPer100g": {
-      "kcal": 293,
-      "proteinG": 14.6,
-      "lipidesG": 25.8,
-      "glucidesG": 8,
-      "selG": 2.65
-    },
-    "offCode": "3023260005872"
+    }
   },
   {
     "id": "ketchup",
@@ -3943,15 +3839,7 @@
     "gramsPerServing": 15,
     "priceInfo": {
       "source": "estimation"
-    },
-    "nutritionPer100g": {
-      "kcal": 451,
-      "proteinG": 8.9,
-      "lipidesG": 16,
-      "glucidesG": 64,
-      "selG": 0.08
-    },
-    "offCode": "3175681072916"
+    }
   },
   {
     "id": "noix",
@@ -4270,15 +4158,7 @@
     "gramsPerServing": 80,
     "priceInfo": {
       "source": "open-prices"
-    },
-    "nutritionPer100g": {
-      "kcal": 59,
-      "proteinG": 0.4,
-      "lipidesG": 0.5,
-      "glucidesG": 12.6,
-      "selG": 0
-    },
-    "offCode": "3297760097976"
+    }
   },
   {
     "id": "ananas",
@@ -4306,15 +4186,7 @@
     "gramsPerServing": 150,
     "priceInfo": {
       "source": "estimation"
-    },
-    "nutritionPer100g": {
-      "kcal": 74,
-      "proteinG": 2.1,
-      "lipidesG": 1.1,
-      "glucidesG": 14,
-      "selG": 0
-    },
-    "offCode": "6111126004521"
+    }
   },
   {
     "id": "mangue",
@@ -4342,15 +4214,7 @@
     "gramsPerServing": 200,
     "priceInfo": {
       "source": "estimation"
-    },
-    "nutritionPer100g": {
-      "kcal": 96,
-      "proteinG": 2.7,
-      "lipidesG": 2.6,
-      "glucidesG": 15.5,
-      "selG": 0.1
-    },
-    "offCode": "6111246953167"
+    }
   },
   {
     "id": "pasteque",
@@ -4526,15 +4390,7 @@
     "gramsPerServing": 150,
     "priceInfo": {
       "source": "estimation"
-    },
-    "nutritionPer100g": {
-      "kcal": 55,
-      "proteinG": 0.5,
-      "lipidesG": 0.5,
-      "glucidesG": 13,
-      "selG": 0.01
-    },
-    "offCode": "3297760097068"
+    }
   },
   {
     "id": "pamplemousse",
@@ -4562,15 +4418,7 @@
     "gramsPerServing": 200,
     "priceInfo": {
       "source": "estimation"
-    },
-    "nutritionPer100g": {
-      "kcal": 35,
-      "proteinG": 0.5,
-      "lipidesG": 0.1,
-      "glucidesG": 7.9,
-      "selG": 0
-    },
-    "offCode": "3045320104158"
+    }
   },
   {
     "id": "clementine",
@@ -4598,15 +4446,7 @@
     "gramsPerServing": 50,
     "priceInfo": {
       "source": "estimation"
-    },
-    "nutritionPer100g": {
-      "kcal": 44,
-      "proteinG": 0.7,
-      "lipidesG": 0.1,
-      "glucidesG": 10,
-      "selG": 0
-    },
-    "offCode": "3045320104172"
+    }
   },
   {
     "id": "abricot",
@@ -4690,15 +4530,7 @@
     "gramsPerServing": 100,
     "priceInfo": {
       "source": "estimation"
-    },
-    "nutritionPer100g": {
-      "kcal": 19,
-      "proteinG": 0.9,
-      "lipidesG": 0.3,
-      "glucidesG": 2.5,
-      "selG": 0
-    },
-    "offCode": "3276558775128"
+    }
   },
   {
     "id": "figues",
@@ -4754,15 +4586,7 @@
     "gramsPerServing": 200,
     "priceInfo": {
       "source": "estimation"
-    },
-    "nutritionPer100g": {
-      "kcal": 46,
-      "proteinG": 0,
-      "lipidesG": 0,
-      "glucidesG": 11.4,
-      "selG": 0.1
-    },
-    "offCode": "3229820181646"
+    }
   },
   {
     "id": "papaye",
@@ -4790,15 +4614,7 @@
     "gramsPerServing": 150,
     "priceInfo": {
       "source": "estimation"
-    },
-    "nutritionPer100g": {
-      "kcal": 342,
-      "proteinG": 0.1,
-      "lipidesG": 0.1,
-      "glucidesG": 85,
-      "selG": 0.4
-    },
-    "offCode": "3068230016830"
+    }
   },
   {
     "id": "aubergine",
@@ -4826,15 +4642,7 @@
     "gramsPerServing": 250,
     "priceInfo": {
       "source": "estimation"
-    },
-    "nutritionPer100g": {
-      "kcal": 197,
-      "proteinG": 5.2,
-      "lipidesG": 15,
-      "glucidesG": 8.3,
-      "selG": 1.1
-    },
-    "offCode": "3229820174891"
+    }
   },
   {
     "id": "celeri",
@@ -4864,15 +4672,7 @@
     "gramsPerServing": 100,
     "priceInfo": {
       "source": "estimation"
-    },
-    "nutritionPer100g": {
-      "kcal": 93,
-      "proteinG": 1,
-      "lipidesG": 7.6,
-      "glucidesG": 3.7,
-      "selG": 1.18
-    },
-    "offCode": "20023782"
+    }
   },
   {
     "id": "betterave",
@@ -5005,15 +4805,7 @@
     "gramsPerServing": 150,
     "priceInfo": {
       "source": "open-prices"
-    },
-    "nutritionPer100g": {
-      "kcal": 39,
-      "proteinG": 1,
-      "lipidesG": 0.5,
-      "glucidesG": 5.9,
-      "selG": 0.05
-    },
-    "offCode": "3083681168044"
+    }
   },
   {
     "id": "patate-douce",
@@ -5041,15 +4833,7 @@
     "gramsPerServing": 200,
     "priceInfo": {
       "source": "estimation"
-    },
-    "nutritionPer100g": {
-      "kcal": 161,
-      "proteinG": 2,
-      "lipidesG": 5.5,
-      "glucidesG": 24,
-      "selG": 0.3
-    },
-    "offCode": "8710438116281"
+    }
   },
   {
     "id": "courge-butternut",
@@ -5077,15 +4861,7 @@
     "gramsPerServing": 300,
     "priceInfo": {
       "source": "estimation"
-    },
-    "nutritionPer100g": {
-      "kcal": 180,
-      "proteinG": 5.8,
-      "lipidesG": 9.3,
-      "glucidesG": 17,
-      "selG": 0.78
-    },
-    "offCode": "3083681147926"
+    }
   },
   {
     "id": "potiron",
@@ -5169,15 +4945,7 @@
     "gramsPerServing": 200,
     "priceInfo": {
       "source": "estimation"
-    },
-    "nutritionPer100g": {
-      "kcal": 0,
-      "proteinG": 0,
-      "lipidesG": 0,
-      "glucidesG": 0,
-      "selG": 0
-    },
-    "offCode": "3422150000490"
+    }
   },
   {
     "id": "petits-pois-frais",
@@ -5419,15 +5187,7 @@
     "isCondiment": true,
     "priceInfo": {
       "source": "estimation"
-    },
-    "nutritionPer100g": {
-      "kcal": 64,
-      "proteinG": 1.6,
-      "lipidesG": 2.6,
-      "glucidesG": 7.6,
-      "selG": 0.9
-    },
-    "offCode": "8076809513722"
+    }
   },
   {
     "id": "coriandre",
@@ -5453,15 +5213,7 @@
     "isCondiment": true,
     "priceInfo": {
       "source": "estimation"
-    },
-    "nutritionPer100g": {
-      "kcal": 222,
-      "proteinG": 6.7,
-      "lipidesG": 14,
-      "glucidesG": 14,
-      "selG": 0.78
-    },
-    "offCode": "3250392434823"
+    }
   },
   {
     "id": "ciboulette",
@@ -5487,15 +5239,7 @@
     "isCondiment": true,
     "priceInfo": {
       "source": "estimation"
-    },
-    "nutritionPer100g": {
-      "kcal": 79,
-      "proteinG": 1.1,
-      "lipidesG": 5.2,
-      "glucidesG": 5.6,
-      "selG": 0.87
-    },
-    "offCode": "20023751"
+    }
   },
   {
     "id": "menthe-fraiche",
@@ -5599,15 +5343,7 @@
     "isCondiment": true,
     "priceInfo": {
       "source": "estimation"
-    },
-    "nutritionPer100g": {
-      "kcal": 232,
-      "proteinG": 15,
-      "lipidesG": 18,
-      "glucidesG": 0,
-      "selG": 0.73
-    },
-    "offCode": "3497800200032"
+    }
   },
   {
     "id": "mure",
@@ -5689,15 +5425,7 @@
     "gramsPerServing": 300,
     "priceInfo": {
       "source": "estimation"
-    },
-    "nutritionPer100g": {
-      "kcal": 118,
-      "proteinG": 5.2,
-      "lipidesG": 2.5,
-      "glucidesG": 17,
-      "selG": 0.06
-    },
-    "offCode": "3770008476028"
+    }
   },
   {
     "id": "mais-epi",
@@ -5761,15 +5489,7 @@
     "gramsPerServing": 100,
     "priceInfo": {
       "source": "open-prices"
-    },
-    "nutritionPer100g": {
-      "kcal": 15,
-      "proteinG": 1.3,
-      "lipidesG": 0.2,
-      "glucidesG": 0.7,
-      "selG": 0
-    },
-    "offCode": "3270190023487"
+    }
   },
   {
     "id": "cresson",
@@ -5797,15 +5517,7 @@
     "gramsPerServing": 50,
     "priceInfo": {
       "source": "estimation"
-    },
-    "nutritionPer100g": {
-      "kcal": 33,
-      "proteinG": 0.8,
-      "lipidesG": 0.7,
-      "glucidesG": 5.5,
-      "selG": 0.67
-    },
-    "offCode": "00333602"
+    }
   },
   {
     "id": "camembert",
@@ -6045,15 +5757,7 @@
     "gramsPerServing": 200,
     "priceInfo": {
       "source": "estimation"
-    },
-    "nutritionPer100g": {
-      "kcal": 63,
-      "proteinG": 3.9,
-      "lipidesG": 3.4,
-      "glucidesG": 4.1,
-      "selG": 0.16
-    },
-    "offCode": "3560070845408"
+    }
   },
   {
     "id": "lait-ecreme",
@@ -6914,15 +6618,7 @@
     "gramsPerServing": 100,
     "priceInfo": {
       "source": "open-prices"
-    },
-    "nutritionPer100g": {
-      "kcal": 268,
-      "proteinG": 16,
-      "lipidesG": 22,
-      "glucidesG": 1.4,
-      "selG": 1.2
-    },
-    "offCode": "3560071180669"
+    }
   },
   {
     "id": "lapin",
@@ -7141,15 +6837,7 @@
     "gramsPerServing": 120,
     "priceInfo": {
       "source": "estimation"
-    },
-    "nutritionPer100g": {
-      "kcal": 146,
-      "proteinG": 11,
-      "lipidesG": 8.7,
-      "glucidesG": 5.7,
-      "selG": 1.2
-    },
-    "offCode": "3165950217773"
+    }
   },
   {
     "id": "saint-jacques",
@@ -7205,15 +6893,7 @@
     "gramsPerServing": 130,
     "priceInfo": {
       "source": "estimation"
-    },
-    "nutritionPer100g": {
-      "kcal": 194,
-      "proteinG": 9.2,
-      "lipidesG": 15.6,
-      "glucidesG": 3.6,
-      "selG": 0.91
-    },
-    "offCode": "3292070010691"
+    }
   },
   {
     "id": "anchois",
@@ -7404,15 +7084,7 @@
     "gramsPerServing": 30,
     "priceInfo": {
       "source": "open-prices"
-    },
-    "nutritionPer100g": {
-      "kcal": 258,
-      "proteinG": 15,
-      "lipidesG": 15,
-      "glucidesG": 4.3,
-      "selG": 2.2
-    },
-    "offCode": "3770018078151"
+    }
   },
   {
     "id": "nuggets-poulet",
