@@ -47,10 +47,10 @@ export interface ShoppingListNutritionSummary {
   // (portion hebdomadaire × poids de portion connu) ET dont la fiche
   // nutritionnelle a au moins une valeur — donc réellement comptés.
   itemsCounted: number;
-  // Articles ignorés : condiments dosés librement (huile, sel...), ou
-  // produits comptés à l'unité sans poids de portion connu (baguette,
-  // tranche de pain, cuillère à soupe...) — jamais un poids inventé pour
-  // les inclure quand même.
+  // Articles ignorés : condiments dosés librement sans quantité fixe (sel,
+  // poivre, épices...), ou produits pas encore placés dans le planning
+  // journalier (voir Product.weeklyServings dans lib/types.ts) — jamais un
+  // poids inventé pour les inclure quand même.
   itemsExcluded: number;
   totalItems: number;
 }
@@ -77,8 +77,9 @@ function round1(value: number): number {
 // quantité achetée) ET une fiche nutritionnelle tracée (nutritionPer100g,
 // voir lib/types.ts) — jamais une estimation inventée pour les autres.
 // C'est un bilan PARTIEL et assumé comme tel (voir itemsExcluded) : les
-// condiments dosés librement et les produits comptés à l'unité sans poids
-// connu n'y figurent pas, plutôt que de leur attribuer un poids au hasard.
+// condiments dosés librement (sans quantité fixe) et les produits pas
+// encore placés dans le planning journalier n'y figurent pas, plutôt que
+// de leur attribuer un poids au hasard.
 export function computeShoppingListNutrition(
   items: ShoppingListItem[]
 ): ShoppingListNutritionSummary {

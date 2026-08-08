@@ -144,7 +144,18 @@ export interface Product {
   servingUnit?: string;
   // Quand l'unité seule ne parle pas (ex: "portion" de lentilles ou de
   // pâtes), on précise le poids en grammes d'une portion — le planning
-  // affiche alors directement "160 g" plutôt que "2 portions".
+  // affiche alors directement "160 g" plutôt que "2 portions". Sert aussi
+  // de base au bilan nutritionnel du panier (lib/nutritionSummary.ts) :
+  // un produit sans gramsPerServing en est exclu plutôt que d'estimer son
+  // poids au hasard. Poids sourcés : soit dérivés du poids de paquet
+  // déclaré dans `name` (ex: baguette viennoise = 340 g / 4 = 85 g), soit
+  // des équivalences poids/mesures usuelles pour le pain et les condiments
+  // (cuillère à soupe ≈ 15 g, cuillère à café ≈ 5 g, huile ≈ 10 g/repère
+  // PNNS, tranche de pain de mie ≈ 25 g, portion de pain ≈ 40 g, biscotte
+  // ≈ 10 g, gousse d'ail ≈ 5 g, citron ≈ 120 g, baguette classique/
+  // tradition ≈ 250/300 g) — jamais une donnée nutritionnelle par 100 g
+  // (voir NutritionFacts ci-dessous, seule catégorie soumise à la règle
+  // stricte "aucune valeur inventée, uniquement OFF/Ciqual").
   gramsPerServing?: number;
   // Produit "plaisir" (sucré, gras, gourmand) plutôt qu'équilibré — sert à la
   // préférence "Gourmand", pour se faire plaisir même avec un petit budget.
