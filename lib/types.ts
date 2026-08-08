@@ -231,6 +231,15 @@ export interface UserProfile extends BodyStats {
   // recueilli", pas comme un refus.
   healthConsent: boolean;
   healthConsentAt: string | null;
+  // Budget de la dernière liste générée — sert uniquement à retomber
+  // directement sur "Ma liste" à la prochaine connexion (avec ce même
+  // compte Google, sur n'importe quel appareil) plutôt que sur l'écran
+  // budget. Rattaché au profil Firestore (pas au localStorage de
+  // l'appareil) : retour utilisateur — ce comportement doit suivre le
+  // compte, pas l'appareil. `null` = jamais généré de liste, ou profil créé
+  // avant l'ajout de ce champ (voir migration défensive dans
+  // lib/authProfile.ts).
+  lastBudget: number | null;
 }
 
 export interface UserPreferences extends BodyStats {

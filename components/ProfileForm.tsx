@@ -281,6 +281,11 @@ export default function ProfileForm({ onComplete, initialProfile }: ProfileFormP
       preferredZone: preferredZone || null,
       healthConsent,
       healthConsentAt,
+      // Ce formulaire ne gère jamais le budget lui-même (BudgetStep s'en
+      // charge après) — on se contente de reporter la valeur déjà connue du
+      // profil (préservée telle quelle si la personne modifie son profil
+      // plus tard), `null` pour un tout premier profil.
+      lastBudget: initialProfile?.lastBudget ?? null,
     });
   }
 

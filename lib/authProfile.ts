@@ -1,4 +1,4 @@
-import { deleteDoc, doc, getDoc, setDoc } from "firebase/firestore";
+import { deleteDoc, doc, getDoc, setDoc, updateDoc } from "firebase/firestore";
 import { db } from "@/lib/firebase";
 import { UserProfile } from "@/lib/types";
 
@@ -23,6 +23,9 @@ export async function getCloudProfile(uid: string): Promise<UserProfile | null> 
     // l'étape 1.
     healthConsent: data.healthConsent ?? false,
     healthConsentAt: data.healthConsentAt ?? null,
+    // Profils créés avant l'ajout de ce champ (voir lib/types.ts) : pas de
+    // dernière liste connue, retombe normalement sur l'écran budget.
+    lastBudget: data.lastBudget ?? null,
   };
 }
 
@@ -36,4 +39,14 @@ export async function deleteCloudProfile(uid: string): Promise<void> {
 
 export async function saveCloudProfile(uid: string, profile: UserProfile): Promise<void> {
   await setDoc(doc(db, "profiles", uid), profile);
+}
+
+// Mémorise le budget de la dernière liste générée, à même le profil
+// Firestore — c'est ce qui permet de retomber directement sur "Ma liste" à
+// la prochaine connexion avec ce même compte Google, peu importe
+// l'appareil. Mise à jour ciblée (pas un `saveCloudProfile` complet) pour ne
+// jamais écraser par erreur un autre champ du profil avec une copie locale
+// périmée.
+export async function updateLastBudget(uid: string, budget: number): Promise<void> {
+  await updateDoc(doc(db, "profiles", uid), { lastBudget: budget });
 }

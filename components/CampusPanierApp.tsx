@@ -10,11 +10,10 @@ import RecipesContent from "@/components/RecipesContent";
 import ResultsContent from "@/components/ResultsContent";
 import SharedListTab from "@/components/SharedListTab";
 import SignIn from "@/components/SignIn";
-import { getCloudProfile, saveCloudProfile } from "@/lib/authProfile";
+import { getCloudProfile, saveCloudProfile, updateLastBudget } from "@/lib/authProfile";
 import { addFavorite, findFavorite, getFavorites, removeFavorite } from "@/lib/favorites";
 import { auth } from "@/lib/firebase";
 import { generateShoppingList } from "@/lib/generateShoppingList";
-import { getLastBudget, saveLastBudget } from "@/lib/lastSession";
 import { playClickSound } from "@/lib/sound";
 import { recordListGenerated } from "@/lib/stats";
 import {
@@ -58,15 +57,16 @@ export default function CampusPanierApp() {
         const savedProfile = await getCloudProfile(firebaseUser.uid);
         setProfile(savedProfile);
         // Retombe directement sur "Ma liste" avec la dernière liste générée
-        // plutôt que sur l'écran budget — retour utilisateur : devoir
-        // repasser par le budget (ou par les favoris, vides pour qui n'en a
-        // pas enregistré) à chaque ouverture était pénible. Le budget est le
-        // seul réglage mémorisé ici ; le reste vient toujours du profil à
-        // jour, jamais d'une copie figée, pour refléter un éventuel
-        // changement de profil fait entre-temps.
-        const lastBudget = savedProfile ? getLastBudget() : null;
-        if (savedProfile && lastBudget !== null) {
-          resumeList({ budget: lastBudget, ...savedProfile });
+        // plutôt que sur l'écran budget — retour utilisateur : ce
+        // comportement doit suivre le compte Google connecté, pas
+        // l'appareil. Le budget mémorisé (lastBudget) vient donc du profil
+        // Firestore, pas d'un cache local ; le reste des préférences vient
+        // toujours du profil à jour, jamais d'une copie figée, pour refléter
+        // un éventuel changement de profil fait entre-temps. Première
+        // connexion (jamais de liste générée) : onboarding puis écran
+        // budget comme avant.
+        if (savedProfile && savedProfile.lastBudget !== null) {
+          resumeList({ budget: savedProfile.lastBudget, ...savedProfile });
         } else {
           setView(savedProfile ? "budget" : "profile");
         }
@@ -102,7 +102,17 @@ export default function CampusPanierApp() {
     setResult(newResult);
     setMealsOut([]);
     recordListGenerated(newResult);
-    saveLastBudget(prefs.budget);
+    // Mémorisé sur le profil Firestore (pas en local) pour que "reconnecte
+    // directement sur la liste" fonctionne avec ce compte Google, peu
+    // importe l'appareil. On garde aussi `profile` à jour côté client pour
+    // qu'une modification de profil juste après ne réécrase pas ce budget
+    // avec une valeur périmée (voir handleProfileComplete/ProfileForm).
+    if (user) {
+      updateLastBudget(user.uid, prefs.budget).catch((error) => {
+        console.error("Erreur d'enregistrement du dernier budget:", error);
+      });
+    }
+    setProfile((prev) => (prev ? { ...prev, lastBudget: prefs.budget } : prev));
     setResultsTab("liste");
     setView("results");
   }
