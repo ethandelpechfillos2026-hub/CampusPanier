@@ -17,6 +17,7 @@ import { playClickSound } from "@/lib/sound";
 import { recordListGenerated } from "@/lib/stats";
 import {
   FavoriteList,
+  MealOutEntry,
   ShoppingListResult,
   UserPreferences,
   UserProfile,
@@ -34,6 +35,11 @@ export default function CampusPanierApp() {
   const [preferences, setPreferences] = useState<UserPreferences | null>(null);
   const [result, setResult] = useState<ShoppingListResult | null>(null);
   const [favorites, setFavorites] = useState<FavoriteList[]>([]);
+  // Journal des repas mangés dehors de façon imprévue cette semaine — élevé
+  // ici (plutôt que dans MenuContent) pour survivre aux changements d'onglet
+  // ("Ma liste" ↔ "Mon menu"), et remis à zéro à chaque nouvelle liste
+  // générée (nouvelle semaine).
+  const [mealsOut, setMealsOut] = useState<MealOutEntry[]>([]);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (firebaseUser) => {
@@ -66,6 +72,7 @@ export default function CampusPanierApp() {
     const newResult = generateShoppingList(prefs);
     setPreferences(prefs);
     setResult(newResult);
+    setMealsOut([]);
     recordListGenerated(newResult);
     setResultsTab("liste");
     setView("results");
@@ -86,6 +93,7 @@ export default function CampusPanierApp() {
   function handleRestart() {
     setPreferences(null);
     setResult(null);
+    setMealsOut([]);
     setResultsTab("liste");
     setView("budget");
   }
@@ -243,6 +251,8 @@ export default function CampusPanierApp() {
                 result={result}
                 preferences={preferences}
                 onRestart={handleRestart}
+                mealsOut={mealsOut}
+                onMealsOutChange={setMealsOut}
               />
             )}
             {resultsTab === "recettes" && (

@@ -1,5 +1,6 @@
 import {
   CATEGORY_ORDER,
+  MealOutEntry,
   MEAL_SLOT_ORDER,
   MealSlot,
   Product,
@@ -250,11 +251,6 @@ function emptyDaySlots(): Record<DaySlot, DayEntry[]> {
   return { petitDejeuner: [], dejeuner: [], diner: [], collation: [] };
 }
 
-// Indices (0 = Lundi ... 6 = Dimanche) des jours de semaine — la cantine
-// universitaire n'existe généralement que du lundi au vendredi, le week-end
-// reste donc un vrai déjeuner+dîner à la maison même en mode cantine.
-const WEEKDAY_INDICES = [0, 1, 2, 3, 4];
-
 // Construit un planning jour par jour : chaque produit de la liste (tous ont
 // désormais une quantité hebdomadaire précise) est étalé sur les 7 jours.
 // "Déjeuner & Dîner" (un seul mealSlot côté produit) est réparti à parts
@@ -264,12 +260,12 @@ const WEEKDAY_INDICES = [0, 1, 2, 3, 4];
 // protéine au dîner (repas déséquilibré). Les deux repas du jour sont donc
 // similaires en quantité mais jamais identiques, ce qui est plus simple à
 // préparer et plus logique qu'une répartition aléatoire par article.
-// `eatsLunchAtCanteen` : si activé, du lundi au vendredi tout part au dîner
-// (le déjeuner est mangé à la cantine, pas à la maison) — le week-end
-// garde le partage normal entre les deux repas.
+// `canteenDays` : indices (0 = Lundi ... 4 = Vendredi) des jours où tout
+// part au dîner (le déjeuner est mangé à la cantine, pas à la maison) —
+// les autres jours gardent le partage normal entre les deux repas.
 export function buildWeeklyPlan(
   items: ShoppingListItem[],
-  eatsLunchAtCanteen = false
+  canteenDays: number[] = []
 ): WeeklyPlan {
   const days: DayPlan[] = WEEKDAY_LABELS.map((day) => ({
     day,
@@ -326,8 +322,8 @@ export function buildWeeklyPlan(
   // retrouvait avec tout le féculent et l'autre avec rien que la protéine.
   const LEAN_SHARE = 0.6;
   mainsByDay.forEach((mains, dayIndex) => {
-    if (eatsLunchAtCanteen && WEEKDAY_INDICES.includes(dayIndex)) {
-      // Cantine en semaine : tout au dîner, rien au déjeuner à la maison.
+    if (canteenDays.includes(dayIndex)) {
+      // Cantine ce jour-là : tout au dîner, rien au déjeuner à la maison.
       mains.forEach((entry) => {
         days[dayIndex].slots.diner.push(entry);
       });
@@ -350,4 +346,45 @@ export function buildWeeklyPlan(
   });
 
   return { days };
+}
+
+// Retire du planning les repas marqués "mangé dehors" (imprévu, voir
+// MealOutEntry) et regroupe leurs ingrédients dans un pot commun "bonus" —
+// déjà achetés, mais plus liés à un jour précis. On ne les réassigne PAS
+// arbitrairement à un autre jour : ce jour-là a déjà son propre repas
+// complet, y ajouter une double portion n'aurait pas de sens. Ces
+// ingrédients restent disponibles pour un futur repas au choix (rab, autre
+// soir, congélateur...).
+export function applyMealsOut(
+  plan: WeeklyPlan,
+  mealsOut: MealOutEntry[]
+): { days: DayPlan[]; bonusItems: DayEntry[] } {
+  const days: DayPlan[] = plan.days.map((day) => ({
+    day: day.day,
+    slots: {
+      petitDejeuner: [...day.slots.petitDejeuner],
+      dejeuner: [...day.slots.dejeuner],
+      diner: [...day.slots.diner],
+      collation: [...day.slots.collation],
+    },
+  }));
+
+  const bonusMap = new Map<string, DayEntry>();
+
+  for (const entry of mealsOut) {
+    const day = days[entry.dayIndex];
+    if (!day) continue;
+    const removed = day.slots[entry.slot];
+    day.slots[entry.slot] = [];
+    for (const item of removed) {
+      const existing = bonusMap.get(item.product.id);
+      if (existing) {
+        existing.count = round2(existing.count + item.count);
+      } else {
+        bonusMap.set(item.product.id, { product: item.product, count: item.count });
+      }
+    }
+  }
+
+  return { days, bonusItems: Array.from(bonusMap.values()) };
 }

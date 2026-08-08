@@ -67,13 +67,24 @@ export default function ResultsContent({
           <h1 className="text-2xl font-bold text-campus-ink">Ta liste</h1>
           <p className="mt-1 text-sm text-campus-muted">
             Budget {formatPrice(preferences.budget)}/sem.
-            {preferences.dailyCalories && ` · ~${preferences.dailyCalories} kcal/j`}
+            {preferences.dailyCalories &&
+              ` · ~${
+                preferences.canteenDays.length > 0 && macroTargets
+                  ? macroTargets.calories
+                  : preferences.dailyCalories
+              } kcal/j${preferences.canteenDays.length > 0 ? " à la maison" : ""}`}
           </p>
           {macroTargets && (
             <p className="mt-1 text-xs text-campus-muted">
               Repère : ~{macroTargets.proteinG}g protéines ·{" "}
               {macroTargets.lipidesG}g lipides · {macroTargets.glucidesG}g
               glucides / jour
+            </p>
+          )}
+          {preferences.canteenDays.length > 0 && preferences.dailyCalories && (
+            <p className="mt-1 text-[11px] text-campus-terracotta">
+              🍽️ Objectif total {preferences.dailyCalories} kcal/j — la
+              cantine du midi couvre le reste.
             </p>
           )}
           {preferences.macroPreferences.length > 0 && (

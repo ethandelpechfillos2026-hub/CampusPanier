@@ -109,14 +109,38 @@ export interface BodyStats {
   // préférences, et seuls les produits bruts/peu transformés sont proposés
   // (voir Product.ultraTransforme).
   performanceMode: boolean;
-  // Étudiant·e qui mange à la cantine le midi en semaine (lundi-vendredi) :
-  // on réduit d'autant les quantités de féculent/légume/protéine
-  // "déjeuner-dîner" prévues pour la maison (voir generateShoppingList.ts
-  // et generateMenu.ts), et "Mon menu" met tout au dîner ces jours-là au
-  // lieu de partager entre midi et soir — sinon la part "midi" achetée
-  // n'est jamais consommée et finit en restes.
-  eatsLunchAtCanteen: boolean;
+  // Jours (0 = lundi ... 4 = vendredi) où la personne mange à la cantine le
+  // midi — tout le monde n'y va pas les mêmes jours (ex : pas le mercredi).
+  // Tableau vide = jamais à la cantine. Pour ces jours-là, on réduit
+  // d'autant les quantités de féculent/légume/protéine "déjeuner-dîner"
+  // prévues pour la maison (voir generateShoppingList.ts et
+  // generateMenu.ts), et "Mon menu" met tout au dîner ce jour-là au lieu de
+  // partager entre midi et soir — sinon la part "midi" achetée n'est jamais
+  // consommée et finit en restes.
+  canteenDays: number[];
 }
+
+// Un repas mangé "dehors" de façon imprévue (ex : pizza avec des ami·es), à
+// la différence de la cantine qui est régulière et connue à l'avance. Loggé
+// à la volée dans "Mon menu" (pas dans le profil) pour : (1) ne pas perdre
+// les ingrédients déjà achetés pour ce repas — regroupés en "bonus" plutôt
+// qu'assignés arbitrairement à un autre jour déjà complet (voir
+// generateMenu.ts) — et (2) réajuster l'objectif calorique du reste de la
+// semaine (voir lib/macros.ts).
+export interface MealOutEntry {
+  dayIndex: number; // 0 (lundi) à 6 (dimanche)
+  slot: "dejeuner" | "diner";
+  estimatedKcal: number;
+}
+
+// Estimations rapides à choisir plutôt que de faire deviner un chiffre
+// précis à la personne — elle ne connaît de toute façon pas les calories
+// exactes d'un repas pris dehors.
+export const MEAL_OUT_PRESETS: { label: string; kcal: number }[] = [
+  { label: "Léger", kcal: 500 },
+  { label: "Repas normal", kcal: 700 },
+  { label: "Copieux (fast-food, pizza...)", kcal: 900 },
+];
 
 export interface UserProfile extends BodyStats {
   diet: DietType;

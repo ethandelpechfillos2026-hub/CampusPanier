@@ -38,8 +38,8 @@ export default function RecipesContent({
   // (ex : le riz prévu mercredi utilisé pour une recette lundi), ce qui
   // déséquilibre le reste de la semaine une fois consommé en avance.
   const { days } = useMemo(
-    () => buildWeeklyPlan(result.items, preferences.eatsLunchAtCanteen),
-    [result.items, preferences.eatsLunchAtCanteen]
+    () => buildWeeklyPlan(result.items, preferences.canteenDays),
+    [result.items, preferences.canteenDays]
   );
   const dayIds = useMemo(() => {
     const day = days[selectedDay];

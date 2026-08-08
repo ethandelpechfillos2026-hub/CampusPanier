@@ -1,5 +1,5 @@
 import productsData from "@/data/products.json";
-import { getActiveMacroTargets } from "@/lib/macros";
+import { getActiveMacroTargets, getEffectiveDailyCalories } from "@/lib/macros";
 import {
   CATEGORY_ORDER,
   MEAL_SLOT_ORDER,
@@ -71,9 +71,17 @@ function score(product: Product, preferences: UserPreferences): number {
     s += 3;
   }
 
-  if (preferences.dailyCalories !== null) {
-    if (preferences.dailyCalories >= 2400 && product.kcal >= 250) s += 1;
-    if (preferences.dailyCalories <= 1800 && product.kcal <= 150) s += 1;
+  // Objectif calorique réellement visé par les courses — réduit si la
+  // personne mange à la cantine le midi (voir lib/macros.ts), pour ne pas
+  // prévoir/acheter de la nourriture pour un repas pris à l'extérieur.
+  const effectiveDailyCalories = getEffectiveDailyCalories(
+    preferences,
+    preferences.dailyCalories
+  );
+
+  if (effectiveDailyCalories !== null) {
+    if (effectiveDailyCalories >= 2400 && product.kcal >= 250) s += 1;
+    if (effectiveDailyCalories <= 1800 && product.kcal <= 150) s += 1;
   }
 
   // Objectifs en grammes : ceux fixés à la main (sportif·ves avisé·es...)
@@ -85,7 +93,7 @@ function score(product: Product, preferences: UserPreferences): number {
   const macroTargets = getActiveMacroTargets(preferences, preferences.dailyCalories);
   const highProteinNeed =
     macroTargets !== null ||
-    (preferences.dailyCalories !== null && preferences.dailyCalories >= 2400);
+    (effectiveDailyCalories !== null && effectiveDailyCalories >= 2400);
   // Sans ce boost, la phase 2 (remplissage du budget, triée par score puis
   // prix croissant) se remplissait surtout de petits produits pas chers —
   // condiments, biscuits, épices — plutôt que de viande, poisson, œufs ou
@@ -397,15 +405,19 @@ export function generateShoppingList(
     }
   }
 
-  // Cantine le midi en semaine : le foyer ne mange à la maison que le dîner
-  // du lundi au vendredi (2 déjeuners de week-end + 7 dîners = 9 des 14
-  // repas "déjeuner-dîner" de la semaine), donc on réduit d'autant les
-  // quantités déjà choisies dans cette catégorie plutôt que d'acheter pour
-  // des déjeuners qui ne seront jamais mangés à la maison — sinon ça finit
-  // en restes non consommés. Le budget libéré est réinvesti ailleurs
-  // (davantage de variété dans le reste de la liste) plutôt que perdu.
-  if (preferences.eatsLunchAtCanteen) {
-    const NEEDED_FRACTION = 9 / 14;
+  // Cantine le midi certains jours de la semaine (variable d'une personne à
+  // l'autre, voir preferences.canteenDays) : sur les 14 repas "déjeuner-dîner"
+  // de la semaine (7 jours x 2), chaque jour cantine retire un déjeuner à
+  // prévoir à la maison. On réduit d'autant les quantités déjà choisies dans
+  // cette catégorie plutôt que d'acheter pour des déjeuners qui ne seront
+  // jamais mangés à la maison — sinon ça finit en restes non consommés. Le
+  // budget libéré est réinvesti ailleurs (davantage de variété dans le reste
+  // de la liste) plutôt que perdu.
+  if (preferences.canteenDays.length > 0) {
+    const TOTAL_LUNCH_DINNER_SLOTS = 14;
+    const NEEDED_FRACTION =
+      (TOTAL_LUNCH_DINNER_SLOTS - preferences.canteenDays.length) /
+      TOTAL_LUNCH_DINNER_SLOTS;
     let freedBudget = 0;
 
     for (const product of selected) {

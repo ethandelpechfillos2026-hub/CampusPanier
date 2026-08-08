@@ -29,6 +29,16 @@ import {
   WEIGHT_MIN,
 } from "@/lib/types";
 
+// Jours sélectionnables pour la cantine — 0 = lundi ... 4 = vendredi,
+// convention partagée avec generateMenu.ts (WEEKDAY_LABELS).
+const CANTEEN_DAY_OPTIONS = [
+  { value: 0, label: "Lun" },
+  { value: 1, label: "Mar" },
+  { value: 2, label: "Mer" },
+  { value: 3, label: "Jeu" },
+  { value: 4, label: "Ven" },
+];
+
 const STEPS = [
   { id: 1, title: "Alimentation", subtitle: "Quel est ton type d'alimentation ?" },
   { id: 2, title: "Allergies", subtitle: "As-tu des allergies alimentaires ?" },
@@ -82,13 +92,20 @@ export default function ProfileForm({ onComplete, initialProfile }: ProfileFormP
   const [performanceObjective, setPerformanceObjective] = useState<
     "prise-masse" | "seche"
   >(initialProfile?.macroPreferences.includes("seche") ? "seche" : "prise-masse");
-  // Étudiant·e qui mange à la cantine le midi en semaine — réduit les
-  // courses "déjeuner-dîner" prévues à la maison (voir generateShoppingList.ts)
-  // et met tout au dîner les jours de semaine dans "Mon menu" (voir
+  // Jours où l'étudiant·e mange à la cantine le midi — variable d'une
+  // personne à l'autre (ex : pas le mercredi). Réduit les courses
+  // "déjeuner-dîner" prévues à la maison ces jours-là (voir
+  // generateShoppingList.ts) et met tout au dîner dans "Mon menu" (voir
   // generateMenu.ts), pour éviter les restes non consommés.
-  const [eatsLunchAtCanteen, setEatsLunchAtCanteen] = useState(
-    initialProfile?.eatsLunchAtCanteen ?? false
+  const [canteenDays, setCanteenDays] = useState<number[]>(
+    initialProfile?.canteenDays ?? []
   );
+
+  function toggleCanteenDay(day: number) {
+    setCanteenDays((prev) =>
+      prev.includes(day) ? prev.filter((d) => d !== day) : [...prev, day].sort()
+    );
+  }
 
   const currentStep = STEPS[step - 1];
   const computedMacroTargets =
@@ -101,7 +118,7 @@ export default function ProfileForm({ onComplete, initialProfile }: ProfileFormP
             age,
             macroOverride: null,
             performanceMode,
-            eatsLunchAtCanteen,
+            canteenDays,
           },
           caloriesValue
         )
@@ -205,7 +222,7 @@ export default function ProfileForm({ onComplete, initialProfile }: ProfileFormP
             }
           : null,
       performanceMode,
-      eatsLunchAtCanteen,
+      canteenDays,
     });
   }
 
@@ -255,29 +272,30 @@ export default function ProfileForm({ onComplete, initialProfile }: ProfileFormP
             </div>
 
             <div className="rounded-2xl border-2 border-campus-terracotta/30 bg-campus-terracotta/5 p-4">
-              <div className="flex items-center justify-between gap-3">
-                <div>
-                  <p className="text-sm font-bold text-campus-ink">
-                    🍽️ Cantine le midi
-                  </p>
-                  <p className="mt-0.5 text-xs text-campus-muted">
-                    Tu manges à la cantine du lundi au vendredi ? On réduit
-                    les courses prévues pour le déjeuner à la maison, pour
-                    éviter les restes en fin de semaine.
-                  </p>
-                </div>
-                <button
-                  type="button"
-                  onClick={() => setEatsLunchAtCanteen((prev) => !prev)}
-                  aria-pressed={eatsLunchAtCanteen}
-                  className={`shrink-0 rounded-full px-4 py-2 text-xs font-bold transition-colors ${
-                    eatsLunchAtCanteen
-                      ? "bg-campus-terracotta text-white"
-                      : "bg-white text-campus-ink border-2 border-campus-sand"
-                  }`}
-                >
-                  {eatsLunchAtCanteen ? "Activé" : "Activer"}
-                </button>
+              <p className="text-sm font-bold text-campus-ink">
+                🍽️ Cantine le midi
+              </p>
+              <p className="mt-0.5 text-xs text-campus-muted">
+                Coche les jours où tu manges à la cantine — on réduit les
+                courses prévues pour le déjeuner à la maison ces jours-là,
+                pour éviter les restes en fin de semaine.
+              </p>
+              <div className="mt-3 flex gap-1.5">
+                {CANTEEN_DAY_OPTIONS.map((option) => (
+                  <button
+                    key={option.value}
+                    type="button"
+                    onClick={() => toggleCanteenDay(option.value)}
+                    aria-pressed={canteenDays.includes(option.value)}
+                    className={`flex-1 rounded-full px-2 py-2 text-xs font-bold transition-colors ${
+                      canteenDays.includes(option.value)
+                        ? "bg-campus-terracotta text-white"
+                        : "bg-white text-campus-ink border-2 border-campus-sand"
+                    }`}
+                  >
+                    {option.label}
+                  </button>
+                ))}
               </div>
             </div>
           </div>
@@ -497,6 +515,13 @@ export default function ProfileForm({ onComplete, initialProfile }: ProfileFormP
                           Hypothèse : activité modérée (repère indicatif, pas
                           un plan médical).
                         </p>
+                        {canteenDays.length > 0 && (
+                          <p className="mt-1 text-[11px] font-medium text-campus-terracotta">
+                            🍽️ Repère réduit pour ne compter que les repas à
+                            la maison — le déjeuner à la cantine complète le
+                            reste.
+                          </p>
+                        )}
                       </div>
                     )}
 
