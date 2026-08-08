@@ -93,6 +93,11 @@ export interface NutritionFacts {
   matchConfidence: "exact" | "high" | "review" | "unknown";
   sourceVersion: string | null;
   importDate: string | null;
+  // Précision affichée à l'écran quand la correspondance est une
+  // approximation (ex: "plat complet riz + sauce, valeur = poisson en
+  // sauce seul") — pour que la personne comprenne ce que représente le
+  // chiffre plutôt que de le prendre pour une mesure exacte du produit.
+  sourceNote?: string;
 }
 
 export interface Product {

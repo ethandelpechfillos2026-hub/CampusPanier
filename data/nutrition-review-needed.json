@@ -1,5 +1,14 @@
 [
-  { "id": "cabillaud", "shortName": "Cabillaud", "raison": "Le produit réel est un plat préparé (« Cabillaud sauce Citron riz aux petits légumes »), pas du cabillaud seul. Aucune fiche Ciqual de plat composé équivalente — appliquer la nutrition du cabillaud seul fausserait fortement les glucides/kcal (riz + sauce non comptés)." },
-  { "id": "filet-dinde-fume", "shortName": "Filet de dinde fumé", "raison": "Aucune fiche Ciqual pour la dinde fumée en filet trouvée dans la table 2025." },
-  { "id": "tarte-fine", "shortName": "Tarte fine", "raison": "Produit trop spécifique (tarte fine champignons-gorgonzola) — aucun équivalent générique dans Ciqual (pas de catégorie « tarte salée » générique)." }
+  {
+    "note": "Tous les produits du catalogue ont désormais une valeur nutritionnelle sourcée (Open Food Facts ou Ciqual 2025) — plus aucun produit sans donnée. Les 10 entrées ci-dessous sont des estimations (matchConfidence: \"review\") : la correspondance Ciqual est une approximation raisonnable plutôt qu'un match exact, documentée via le champ sourceNote de chaque produit dans data/products.json et affichée dans l'app sous la fiche nutritionnelle. À vérifier/affiner si une meilleure source devient disponible."
+  },
+  { "id": "cabillaud", "shortName": "Cabillaud", "raison": "Estimation \"poisson blanc en sauce\" seul (Ciqual 24998) — le produit réel inclut aussi riz et légumes, non comptés." },
+  { "id": "nouilles-chinoises", "shortName": "Nouilles chinoises", "raison": "Estimation nouilles asiatiques sèches blé/oeuf (Ciqual 9863) — type exact (blé vs riz) non précisé sur le produit." },
+  { "id": "barres-cereales", "shortName": "Barres de céréales", "raison": "Estimation barre aux amandes/noisettes (Ciqual 31114) — recette réelle (chocolat noir + noix) différente." },
+  { "id": "panais", "shortName": "Panais", "raison": "Moyenne calculée à parts égales de 4 légumes racines (Ciqual 20009+20091+4101+20181) — le produit réel est un mélange, proportions réelles inconnues." },
+  { "id": "salade-frisee", "shortName": "Salade frisée", "raison": "Estimation frisée seule (Ciqual 20012) — le produit réel est un mélange de salades, écart nutritionnel probablement faible." },
+  { "id": "lait-ecreme", "shortName": "Lait écrémé", "raison": "Incohérence catalogue : nom \"lait écrémé\" mais produit réel = demi-écrémé (Viva 1/2 écrémé). Valeur = lait demi-écrémé Ciqual, identique à \"Lait\"." },
+  { "id": "ravioli-frais", "shortName": "Ravioli frais", "raison": "Estimation raviolis fromage crus (Ciqual 25181) — le produit réel est fourré au jambon cru." },
+  { "id": "filet-dinde-fume", "shortName": "Filet de dinde fumé", "raison": "Estimation jambon/blanc de dinde en tranche (Ciqual 28964) — pas de fiche Ciqual spécifique au fumage." },
+  { "id": "tarte-fine", "shortName": "Tarte fine", "raison": "Estimation tarte flambée aux lardons (Ciqual 25550, format le plus proche) — recette réelle (champignons-gorgonzola) différente." }
 ]

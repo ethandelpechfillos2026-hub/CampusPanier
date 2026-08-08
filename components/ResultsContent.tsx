@@ -414,10 +414,12 @@ export default function ResultsContent({
                       : selectedProduct.nutritionPer100g.nutritionSource === "manufacturer"
                         ? "Source : étiquette fabricant."
                         : null}
-                  {selectedProduct.nutritionPer100g.matchConfidence === "review" && (
-                    <span className="ml-1 italic">(correspondance à vérifier)</span>
-                  )}
                 </p>
+                {selectedProduct.nutritionPer100g.sourceNote && (
+                  <p className="mt-1 text-[11px] italic text-campus-muted">
+                    ⓘ {selectedProduct.nutritionPer100g.sourceNote}
+                  </p>
+                )}
               </>
             ) : (
               <div className="mt-4 grid grid-cols-2 gap-2">

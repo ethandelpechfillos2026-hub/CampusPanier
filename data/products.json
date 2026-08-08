@@ -1323,6 +1323,24 @@
     "easyToCook": true,
     "priceInfo": {
       "source": "open-prices"
+    },
+    "nutritionPer100g": {
+      "per100g": true,
+      "kcal": 147,
+      "proteinG": 13.2,
+      "glucidesG": 4.67,
+      "sucresG": 1.6,
+      "lipidesG": 8.1,
+      "satureesG": 1.85,
+      "fibresG": 1.14,
+      "selG": 1.12,
+      "sourceFoodName": "Poisson blanc en sauce, préemballé (aliment moyen)",
+      "sourceId": "24998",
+      "matchConfidence": "review",
+      "sourceNote": "Estimation \"poisson en sauce\" seul — le produit réel inclut aussi du riz et des légumes, donc les glucides et kcal réels du plat complet sont plus élevés que la valeur affichée.",
+      "nutritionSource": "ciqual-2025",
+      "sourceVersion": "Anses, 2025, Table de composition nutritionnelle des aliments Ciqual (édition 2025-11-03)",
+      "importDate": "2026-08-08"
     }
   },
   {
@@ -3872,7 +3890,8 @@
       "matchConfidence": "review",
       "nutritionSource": "ciqual-2025",
       "sourceVersion": "Anses, 2025, Table de composition nutritionnelle des aliments Ciqual (édition 2025-11-03)",
-      "importDate": "2026-08-08"
+      "importDate": "2026-08-08",
+      "sourceNote": "Estimation \"nouilles asiatiques blé/oeuf\" — le type exact (blé ou riz) n'est pas précisé sur le produit, les nouilles de riz auraient un profil différent (sans oeuf, plus de glucides)."
     }
   },
   {
@@ -5050,7 +5069,8 @@
       "matchConfidence": "review",
       "nutritionSource": "ciqual-2025",
       "sourceVersion": "Anses, 2025, Table de composition nutritionnelle des aliments Ciqual (édition 2025-11-03)",
-      "importDate": "2026-08-08"
+      "importDate": "2026-08-08",
+      "sourceNote": "Estimation \"barre aux amandes/noisettes\" — la recette réelle (chocolat noir + mélange de noix) diffère, valeur à prendre comme ordre de grandeur."
     }
   },
   {
@@ -6698,7 +6718,8 @@
       "matchConfidence": "review",
       "nutritionSource": "ciqual-2025",
       "sourceVersion": "Anses, 2025, Table de composition nutritionnelle des aliments Ciqual (édition 2025-11-03)",
-      "importDate": "2026-08-08"
+      "importDate": "2026-08-08",
+      "sourceNote": "Le produit réel est un mélange de légumes racines (carottes, betteraves, patates douces, panais) ; valeur = moyenne calculée à parts égales de ces 4 légumes crus, proportions réelles inconnues."
     }
   },
   {
@@ -7762,7 +7783,8 @@
       "matchConfidence": "review",
       "nutritionSource": "ciqual-2025",
       "sourceVersion": "Anses, 2025, Table de composition nutritionnelle des aliments Ciqual (édition 2025-11-03)",
-      "importDate": "2026-08-08"
+      "importDate": "2026-08-08",
+      "sourceNote": "Le produit réel est un mélange de salades (frisée, iceberg, scarole, chicorée rouge) ; valeur = frisée seule, les autres salades de la mâche/laitue ont un profil très proche donc l'écart réel est faible."
     }
   },
   {
@@ -8176,7 +8198,8 @@
       "matchConfidence": "high",
       "nutritionSource": "ciqual-2025",
       "sourceVersion": "Anses, 2025, Table de composition nutritionnelle des aliments Ciqual (édition 2025-11-03)",
-      "importDate": "2026-08-08"
+      "importDate": "2026-08-08",
+      "sourceNote": "Le produit réel (\"Viva lait 1/2 écrémé\") est en réalité du lait demi-écrémé malgré son nom dans le catalogue — mêmes valeurs que \"Lait\" (demi-écrémé)."
     }
   },
   {
@@ -8686,7 +8709,8 @@
       "matchConfidence": "review",
       "nutritionSource": "ciqual-2025",
       "sourceVersion": "Anses, 2025, Table de composition nutritionnelle des aliments Ciqual (édition 2025-11-03)",
-      "importDate": "2026-08-08"
+      "importDate": "2026-08-08",
+      "sourceNote": "Estimation à partir de raviolis au fromage — le produit réel est fourré au jambon cru, donc probablement un peu plus riche en protéines et moins en matières grasses que la valeur affichée."
     }
   },
   {
@@ -10078,6 +10102,24 @@
     "gramsPerServing": 30,
     "priceInfo": {
       "source": "estimation"
+    },
+    "nutritionPer100g": {
+      "per100g": true,
+      "kcal": 99.3,
+      "proteinG": 20.9,
+      "glucidesG": 0.023,
+      "sucresG": 0.023,
+      "lipidesG": 1.67,
+      "satureesG": 0.54,
+      "fibresG": 0.39,
+      "selG": 1.9,
+      "sourceFoodName": "Jambon de dinde ou blanc de dinde en tranche",
+      "sourceId": "28964",
+      "matchConfidence": "review",
+      "sourceNote": "Estimation à partir d'une tranche de dinde (jambon/blanc) — pas de fiche Ciqual spécifique à la dinde fumée, le procédé de fumage peut faire varier le sel réel.",
+      "nutritionSource": "ciqual-2025",
+      "sourceVersion": "Anses, 2025, Table de composition nutritionnelle des aliments Ciqual (édition 2025-11-03)",
+      "importDate": "2026-08-08"
     }
   },
   {
@@ -10881,6 +10923,24 @@
     "gramsPerServing": 100,
     "priceInfo": {
       "source": "open-prices"
+    },
+    "nutritionPer100g": {
+      "per100g": true,
+      "kcal": 300,
+      "proteinG": 8.81,
+      "glucidesG": 31.8,
+      "sucresG": 4.15,
+      "lipidesG": 14.8,
+      "satureesG": 6.27,
+      "fibresG": 1.7,
+      "selG": 1.64,
+      "sourceFoodName": "Flammenkueche ou tarte flambée aux lardons, préemballée",
+      "sourceId": "25550",
+      "matchConfidence": "review",
+      "sourceNote": "Estimation à partir d'une tarte flambée aux lardons (format le plus proche dans Ciqual) — la recette réelle (champignons-gorgonzola) diffère, valeur à prendre comme ordre de grandeur.",
+      "nutritionSource": "ciqual-2025",
+      "sourceVersion": "Anses, 2025, Table de composition nutritionnelle des aliments Ciqual (édition 2025-11-03)",
+      "importDate": "2026-08-08"
     }
   },
   {
