@@ -3,7 +3,7 @@
 import { useRef, useState } from "react";
 import StatsHeader from "@/components/StatsHeader";
 import {
-  findSubstitute,
+  findSubstitutes,
   formatPrice,
   formatPriceProvenance,
   getPriceReliability,
@@ -58,34 +58,31 @@ export default function ResultsContent({
   // Popup nutrition/échange ouvert en cliquant sur un produit (pas sur sa
   // case à cocher, voir plus bas) — retour utilisateur (8 août 2026).
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
-  const [swapError, setSwapError] = useState<string | null>(null);
+  // Jusqu'à 4 options de remplacement (voir findSubstitutes) calculées à
+  // l'ouverture du popup — retour utilisateur : "je peux juste le changer
+  // une fois, je voudrais au moins quatre options" plutôt qu'un seul
+  // remplaçant imposé.
+  const [substitutes, setSubstitutes] = useState<Product[]>([]);
 
   function handleOpenProduct(product: Product) {
-    setSwapError(null);
+    const excludeIds = new Set(result.items.map((item) => item.product.id));
+    setSubstitutes(findSubstitutes(product, preferences, excludeIds));
     setSelectedProduct(product);
   }
 
-  function handleSwap(product: Product) {
-    const excludeIds = new Set(result.items.map((item) => item.product.id));
-    const substitute = findSubstitute(product, preferences, excludeIds);
-    if (!substitute) {
-      setSwapError(
-        "Aucun remplacement à valeur nutritionnelle proche trouvé dans le catalogue pour ce produit."
-      );
-      return;
-    }
+  function handleChooseSubstitute(oldProduct: Product, newProduct: Product) {
     // Le produit remplacé n'a pas encore été acheté sous sa nouvelle
     // identité — on retire son éventuelle coche plutôt que de la laisser
     // trainer sur un id qui n'est plus dans la liste.
     setCheckedIds((prev) => {
-      if (!prev.has(product.id)) return prev;
+      if (!prev.has(oldProduct.id)) return prev;
       const next = new Set(prev);
-      next.delete(product.id);
+      next.delete(oldProduct.id);
       return next;
     });
-    onSwapProduct(product.id, substitute);
+    onSwapProduct(oldProduct.id, newProduct);
     setSelectedProduct(null);
-    setSwapError(null);
+    setSubstitutes([]);
   }
 
   function toggleChecked(id: string) {
@@ -324,7 +321,7 @@ export default function ResultsContent({
           onClick={() => setSelectedProduct(null)}
         >
           <div
-            className="w-full max-w-sm rounded-t-3xl bg-white p-5 sm:rounded-3xl"
+            className="max-h-[85vh] w-full max-w-sm overflow-y-auto rounded-t-3xl bg-white p-5 sm:rounded-3xl"
             onClick={(event) => event.stopPropagation()}
           >
             <div className="flex items-start justify-between gap-3">
@@ -400,23 +397,65 @@ export default function ResultsContent({
               </p>
             )}
 
-            {swapError && (
-              <p className="mt-3 text-xs font-semibold text-red-600">{swapError}</p>
-            )}
-
-            <div className="mt-5 flex flex-col gap-2">
-              <button
-                type="button"
-                onClick={() => handleSwap(selectedProduct)}
-                className="btn-primary"
-              >
-                🔄 Échanger ce produit
-              </button>
-              <p className="text-center text-[11px] text-campus-muted">
-                Remplace par un produit à valeur nutritionnelle proche, sans
-                changer le budget de la liste — dans la limite de ce que
-                propose le catalogue.
+            <div className="mt-5 border-t border-campus-sand pt-4">
+              <p className="text-xs font-bold uppercase tracking-wide text-campus-muted">
+                🔄 Échanger contre...
               </p>
+              <p className="mt-1 text-[11px] text-campus-muted">
+                Valeur nutritionnelle proche, prix aussi proche que possible
+                pour ne pas changer le budget de la liste — dans la limite de
+                ce que propose le catalogue.
+              </p>
+
+              {substitutes.length === 0 ? (
+                <p className="mt-3 text-xs font-semibold text-red-600">
+                  Aucun remplacement à valeur nutritionnelle proche trouvé
+                  dans le catalogue pour ce produit.
+                </p>
+              ) : (
+                <ul className="mt-3 space-y-2">
+                  {substitutes.map((candidate) => {
+                    const currentQuantity =
+                      result.items.find(
+                        (item) => item.product.id === selectedProduct.id
+                      )?.quantity ?? 1;
+                    const delta =
+                      (candidate.price - selectedProduct.price) * currentQuantity;
+                    return (
+                      <li key={candidate.id}>
+                        <button
+                          type="button"
+                          onClick={() =>
+                            handleChooseSubstitute(selectedProduct, candidate)
+                          }
+                          className="flex w-full items-center justify-between gap-3 rounded-xl border-2 border-campus-sand px-3 py-2.5 text-left transition-colors hover:border-campus-terracotta"
+                        >
+                          <span>
+                            <span className="block text-sm font-semibold text-campus-ink">
+                              {candidate.name}
+                            </span>
+                            <span className="block text-[11px] text-campus-muted">
+                              {candidate.kcal} kcal · Protéines{" "}
+                              {LEVEL_LABELS[candidate.protein].toLowerCase()}
+                            </span>
+                          </span>
+                          <span className="shrink-0 text-right text-xs font-bold text-campus-terracotta">
+                            {formatPrice(candidate.price)}
+                            <span className="block font-normal text-campus-muted">
+                              {delta === 0
+                                ? "budget inchangé"
+                                : `${delta > 0 ? "+" : ""}${formatPrice(delta)}`}
+                            </span>
+                          </span>
+                        </button>
+                      </li>
+                    );
+                  })}
+                </ul>
+              )}
+            </div>
+
+            <div className="mt-5">
               <button
                 type="button"
                 onClick={() => setSelectedProduct(null)}

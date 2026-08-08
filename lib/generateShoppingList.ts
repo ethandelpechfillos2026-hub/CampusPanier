@@ -664,20 +664,26 @@ const LEVEL_RANK: Record<Product["protein"], number> = {
   riche: 2,
 };
 
-// Trouve un produit de remplacement pour un article de la liste — retour
-// utilisateur (8 août 2026) : pouvoir échanger un produit qu'on n'aime pas
-// (ex : les lentilles) contre un autre à valeur nutritionnelle proche, sans
-// faire bouger le budget de la liste. Toujours dans la même catégorie ET le
-// même créneau de repas que l'original, pour rester cohérent avec "Mon
+// Nombre d'options de remplacement proposées pour un même article — retour
+// utilisateur (8 août 2026) : "je peux juste le changer une fois, si je
+// n'aime pas la première option je suis obligé d'accepter la deuxième, je
+// voudrais au moins quatre options".
+const SUBSTITUTE_OPTIONS_COUNT = 4;
+
+// Trouve jusqu'à SUBSTITUTE_OPTIONS_COUNT produits de remplacement pour un
+// article de la liste, classés du plus proche au moins proche — pouvoir
+// choisir parmi plusieurs équivalents (ex : les lentilles) plutôt que
+// d'accepter le seul remplaçant proposé. Toujours dans la même catégorie ET
+// le même créneau de repas que l'original, pour rester cohérent avec "Mon
 // menu" (jamais un produit de petit-déjeuner en remplacement d'un dîner).
 // Respecte toujours le régime et les allergies déjà filtrés par
 // filterProducts — un remplacement ne doit jamais réintroduire un allergène
 // écarté ailleurs dans l'application.
-export function findSubstitute(
+export function findSubstitutes(
   product: Product,
   preferences: UserPreferences,
   excludeIds: Set<string>
-): Product | null {
+): Product[] {
   const candidates = filterProducts(preferences).filter(
     (p) =>
       p.id !== product.id &&
@@ -693,7 +699,7 @@ export function findSubstitute(
       Boolean(p.isSpread) === Boolean(product.isSpread)
   );
 
-  if (candidates.length === 0) return null;
+  if (candidates.length === 0) return [];
 
   // Le prix pèse le plus lourd : l'objectif principal du retour utilisateur
   // est "qui ne va pas changer le budget", la proximité nutritionnelle
@@ -718,11 +724,13 @@ export function findSubstitute(
     );
   }
 
-  return [...candidates].sort((a, b) => distance(a) - distance(b))[0];
+  return [...candidates]
+    .sort((a, b) => distance(a) - distance(b))
+    .slice(0, SUBSTITUTE_OPTIONS_COUNT);
 }
 
 // Recalcule les totaux d'une liste après un échange de produit (voir
-// findSubstitute) — le budget, le coût plancher et le "budget insuffisant"
+// findSubstitutes) — le budget, le coût plancher et le "budget insuffisant"
 // ne dépendent pas d'un échange dans une même catégorie/créneau, seul le
 // total change.
 export function recomputeAfterSwap(
