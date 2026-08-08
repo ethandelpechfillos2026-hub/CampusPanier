@@ -133,6 +133,19 @@ function score(product: Product, preferences: UserPreferences): number {
     s += 3;
   }
 
+  // Petit-déjeuner Mode Performance : flocons d'avoine + fromage blanc
+  // plutôt que pain/confiture — retour utilisateur (8 août 2026), plus
+  // rassasiant et protéiné pour qui s'entraîne. Ciblé sur ces deux produits
+  // précis (pas une règle générale "jamais de pain") : le reste du
+  // catalogue ne distingue pas glucides complexes/raffinés, donc pas de
+  // base fiable pour généraliser au-delà de ce retour concret.
+  if (
+    preferences.performanceMode &&
+    (product.id === "flocons-avoine" || product.id === "fromage-blanc")
+  ) {
+    s += 3;
+  }
+
   // Objectif calorique réellement visé par les courses — réduit si la
   // personne mange à la cantine le midi (voir lib/macros.ts), pour ne pas
   // prévoir/acheter de la nourriture pour un repas pris à l'extérieur.
@@ -430,6 +443,50 @@ export function generateShoppingList(
       selectedIds.add(feculent.id);
       quantities.set(feculent.id, 1);
       total += feculent.price;
+    }
+  }
+
+  // Phase 1e (Mode Performance) : double la quantité achetée de la
+  // protéine principale et du féculent du déjeuner/dîner, ainsi que du
+  // fromage blanc/des flocons d'avoine du petit-déjeuner — retour
+  // utilisateur (8 août 2026) : "85 g de poulet, 80 g de pommes de terre,
+  // 25 g de lentilles, 55 g de fromage blanc, je trouve ça pas assez, je
+  // mange des escalopes de 150-200 g". La quantité hebdomadaire de ces
+  // produits est ensuite répartie sur plusieurs créneaux/jours (voir
+  // generateMenu.ts) : la doubler ici double d'autant la portion réellement
+  // servie chaque jour. Volontairement limité à la protéine/au féculent
+  // "principaux" du repas (pas tout produit riche en protéines, comme le
+  // parmesan ou les pois chiches en accompagnement) : booster indistinctement
+  // tout épuiserait le budget avant même la phase 2, au détriment de la
+  // variété. Seulement si le budget le permet — sinon on garde discrètement
+  // la quantité normale plutôt que de dépasser le budget saisi (voir aussi
+  // le message "budget insuffisant" si le Mode Performance a besoin d'un
+  // budget plus large que prévu).
+  const PERFORMANCE_PORTION_MULTIPLIER = 2;
+  if (preferences.performanceMode) {
+    const boostTargets = selected.filter(
+      (p) =>
+        (p.mealSlot === "dejeuner-diner" &&
+          // Lentilles citées explicitement dans le retour utilisateur : pas
+          // dans FECULENT_IDS (légumineuse, pas un féculent pur), mais joue
+          // le même rôle de "base du repas" que le riz ou les pâtes.
+          (p.category === "viande-poisson" ||
+            FECULENT_IDS.has(p.id) ||
+            p.id === "lentilles")) ||
+        (p.mealSlot === "petit-dejeuner" &&
+          (p.id === "fromage-blanc" || p.id === "flocons-avoine"))
+    );
+    for (const product of boostTargets) {
+      const currentQty = quantities.get(product.id) ?? 1;
+      const targetQty = Math.min(
+        currentQty * PERFORMANCE_PORTION_MULTIPLIER,
+        maxQuantityFor(product.category)
+      );
+      const extraCost = (targetQty - currentQty) * product.price;
+      if (targetQty > currentQty && total + extraCost <= preferences.budget) {
+        quantities.set(product.id, targetQty);
+        total += extraCost;
+      }
     }
   }
 
