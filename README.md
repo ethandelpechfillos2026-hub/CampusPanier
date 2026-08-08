@@ -19,10 +19,21 @@ L'application filtre un catalogue mocké de produits et compose un panier dans l
 
 - **Next.js 14** (App Router) + **TypeScript**
 - **Tailwind CSS** — design sobre, couleurs chaleureuses, mobile-first
-- **Données mockées** — `data/products.json` (~30 produits avec prix, catégories, tags régime/allergènes)
+- **Données mockées** — `data/products.json` (267 produits avec prix, catégories, tags régime/allergènes)
 - **PWA** — `public/manifest.json`, icônes, installable sur mobile
 
 Pas de backend pour l'instant : toute la logique tourne côté client.
+
+### Valeurs nutritionnelles
+
+Chaque produit peut porter un objet `nutritionPer100g` traçable (kcal, protéines, glucides dont sucres, lipides dont acides gras saturés, fibres, sel — jamais de valeur inventée). Ordre de sourcing, du plus fiable au moins fiable :
+
+1. **Open Food Facts**, via code-barres exact (`matchConfidence: "exact"` si le code-barres était déjà connu du catalogue, `"high"` s'il a été retrouvé par recherche puis vérifié manuellement).
+2. **Anses, 2025, Table de composition nutritionnelle des aliments Ciqual**, par correspondance à un aliment générique (`nutritionSource: "ciqual-2025"`).
+3. Étiquette fabricant, uniquement si la source est enregistrée (`nutritionSource: "manufacturer"`).
+4. Aucune valeur si rien de fiable n'a été trouvé (`nutritionSource: "unknown"`, champs à `null`).
+
+Voir `scripts/fetch-nutrition.mjs` pour le script de récupération OFF et le rapport de sourcing (nombre de fiches par source, correspondances à revoir) dans l'historique du projet.
 
 ## Démarrage
 

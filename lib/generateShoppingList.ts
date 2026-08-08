@@ -714,7 +714,14 @@ export function findSubstitutes(
   // niveaux qualitatifs pour rester comparable.
   function distance(candidate: Product): number {
     const bothHaveRealNutrition = Boolean(
-      candidate.nutritionPer100g && product.nutritionPer100g
+      candidate.nutritionPer100g &&
+        product.nutritionPer100g &&
+        candidate.nutritionPer100g.proteinG != null &&
+        candidate.nutritionPer100g.lipidesG != null &&
+        candidate.nutritionPer100g.glucidesG != null &&
+        product.nutritionPer100g.proteinG != null &&
+        product.nutritionPer100g.lipidesG != null &&
+        product.nutritionPer100g.glucidesG != null
     );
 
     let proteinDiff: number;
@@ -724,9 +731,9 @@ export function findSubstitutes(
     if (bothHaveRealNutrition) {
       const a = candidate.nutritionPer100g!;
       const b = product.nutritionPer100g!;
-      proteinDiff = Math.abs(a.proteinG - b.proteinG) / Math.max(b.proteinG, 1);
-      lipidesDiff = Math.abs(a.lipidesG - b.lipidesG) / Math.max(b.lipidesG, 1);
-      glucidesDiff = Math.abs(a.glucidesG - b.glucidesG) / Math.max(b.glucidesG, 1);
+      proteinDiff = Math.abs(a.proteinG! - b.proteinG!) / Math.max(b.proteinG!, 1);
+      lipidesDiff = Math.abs(a.lipidesG! - b.lipidesG!) / Math.max(b.lipidesG!, 1);
+      glucidesDiff = Math.abs(a.glucidesG! - b.glucidesG!) / Math.max(b.glucidesG!, 1);
     } else {
       proteinDiff = Math.abs(
         LEVEL_RANK[candidate.protein] - LEVEL_RANK[product.protein]

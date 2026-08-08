@@ -68,12 +68,31 @@ export interface PriceInfo {
 // Facts (voir scripts/fetch-nutrition.mjs) — jamais inventées. Les niveaux
 // qualitatifs (NutriLevel) restent le filet de sécurité pour tout produit
 // qui n'a pas encore cette donnée précise.
+// Traçabilité obligatoire : jamais de valeur inventée. Priorité de
+// sourcing : 1) Open Food Facts via code-barres exact, 2) Ciqual 2025
+// (Anses) par correspondance d'aliment générique, 3) étiquette fabricant
+// enregistrée, 4) aucune valeur si rien de fiable — voir
+// scripts/fetch-nutrition.mjs et le rapport de sourcing dans
+// PLAN-DONNEES-PRIX-CATALOGUE.md.
 export interface NutritionFacts {
-  kcal: number;
-  proteinG: number;
-  lipidesG: number;
-  glucidesG: number;
-  selG: number;
+  per100g: true;
+  kcal: number | null;
+  proteinG: number | null;
+  glucidesG: number | null;
+  sucresG: number | null;
+  lipidesG: number | null;
+  satureesG: number | null;
+  fibresG: number | null;
+  selG: number | null;
+  nutritionSource: "open-food-facts" | "ciqual-2025" | "manufacturer" | "unknown";
+  // Nom exact de l'aliment/produit dans la source (utile pour vérifier une
+  // correspondance a posteriori).
+  sourceFoodName: string | null;
+  // Code-barres OFF ou code alim_code Ciqual selon la source.
+  sourceId: string | null;
+  matchConfidence: "exact" | "high" | "review" | "unknown";
+  sourceVersion: string | null;
+  importDate: string | null;
 }
 
 export interface Product {

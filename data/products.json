@@ -27,6 +27,23 @@
     "easyToCook": true,
     "priceInfo": {
       "source": "estimation"
+    },
+    "nutritionPer100g": {
+      "per100g": true,
+      "kcal": 364,
+      "proteinG": 12,
+      "glucidesG": 72.7,
+      "sucresG": 2.58,
+      "lipidesG": 1.6,
+      "satureesG": 0.33,
+      "fibresG": 2.91,
+      "selG": 0.016,
+      "nutritionSource": "ciqual-2025",
+      "sourceFoodName": "Pâtes sèches, standard, crues",
+      "sourceId": "9810",
+      "matchConfidence": "high",
+      "sourceVersion": "Anses, 2025, Table de composition nutritionnelle des aliments Ciqual (édition 2025-11-03)",
+      "importDate": "2026-08-08"
     }
   },
   {
@@ -57,11 +74,21 @@
       "source": "estimation"
     },
     "nutritionPer100g": {
+      "per100g": true,
       "kcal": 142,
       "proteinG": 3.1,
-      "lipidesG": 1.6,
       "glucidesG": 29,
-      "selG": 0.01
+      "sucresG": 0.5,
+      "lipidesG": 1.6,
+      "satureesG": 0.1,
+      "fibresG": 0.5,
+      "selG": 0.01,
+      "nutritionSource": "open-food-facts",
+      "sourceFoodName": "Riz Basmati",
+      "sourceId": "3487400006721",
+      "matchConfidence": "high",
+      "sourceVersion": "Open Food Facts (export API, 2026-08-08)",
+      "importDate": "2026-08-08"
     },
     "offCode": "3487400006721"
   },
@@ -93,11 +120,21 @@
       "source": "estimation"
     },
     "nutritionPer100g": {
+      "per100g": true,
       "kcal": 327,
       "proteinG": 25.1,
-      "lipidesG": 1.8,
       "glucidesG": 44.5,
-      "selG": 0
+      "sucresG": 1.1,
+      "lipidesG": 1.8,
+      "satureesG": 0.2,
+      "fibresG": 16.4,
+      "selG": 0,
+      "nutritionSource": "open-food-facts",
+      "sourceFoodName": "Lentilles vertes",
+      "sourceId": "4056489032090",
+      "matchConfidence": "high",
+      "sourceVersion": "Open Food Facts (export API, 2026-08-08)",
+      "importDate": "2026-08-08"
     },
     "offCode": "4056489032090"
   },
@@ -127,6 +164,23 @@
     "easyToCook": true,
     "priceInfo": {
       "source": "estimation"
+    },
+    "nutritionPer100g": {
+      "per100g": true,
+      "kcal": 122,
+      "proteinG": 6.74,
+      "glucidesG": 15,
+      "sucresG": 0.5,
+      "lipidesG": 2.68,
+      "satureesG": 0.3,
+      "fibresG": 5.45,
+      "selG": 0.54,
+      "nutritionSource": "ciqual-2025",
+      "sourceFoodName": "Pois chiche, appertisé, égoutté",
+      "sourceId": "20532",
+      "matchConfidence": "high",
+      "sourceVersion": "Anses, 2025, Table de composition nutritionnelle des aliments Ciqual (édition 2025-11-03)",
+      "importDate": "2026-08-08"
     }
   },
   {
@@ -160,11 +214,21 @@
       "source": "open-prices"
     },
     "nutritionPer100g": {
+      "per100g": true,
       "kcal": 137,
       "proteinG": 2.8,
-      "lipidesG": 7.3,
       "glucidesG": 14,
-      "selG": 2.9
+      "sucresG": 9.3,
+      "lipidesG": 7.3,
+      "satureesG": 0.5,
+      "fibresG": 2,
+      "selG": 2.9,
+      "nutritionSource": "open-food-facts",
+      "sourceFoodName": "Sauce Tomate concentrée cuisinée aux petits légumes",
+      "sourceId": "3038359004544",
+      "matchConfidence": "high",
+      "sourceVersion": "Open Food Facts (export API, 2026-08-08)",
+      "importDate": "2026-08-08"
     },
     "offCode": "3038359004544"
   },
@@ -196,11 +260,21 @@
       "source": "estimation"
     },
     "nutritionPer100g": {
+      "per100g": true,
       "kcal": 900,
       "proteinG": 0,
-      "lipidesG": 92,
       "glucidesG": 0,
-      "selG": 0
+      "sucresG": 0,
+      "lipidesG": 92,
+      "satureesG": 12,
+      "fibresG": 0,
+      "selG": 0,
+      "nutritionSource": "open-food-facts",
+      "sourceFoodName": "Huile d'olive",
+      "sourceId": "6111099000254",
+      "matchConfidence": "high",
+      "sourceVersion": "Open Food Facts (export API, 2026-08-08)",
+      "importDate": "2026-08-08"
     },
     "offCode": "6111099000254"
   },
@@ -232,11 +306,21 @@
       "source": "open-prices"
     },
     "nutritionPer100g": {
+      "per100g": true,
       "kcal": 267,
       "proteinG": 8,
-      "lipidesG": 0.5,
       "glucidesG": 34,
-      "selG": 0.03
+      "sucresG": 3.7,
+      "lipidesG": 0.5,
+      "satureesG": 0.2,
+      "fibresG": 17,
+      "selG": 0.03,
+      "nutritionSource": "open-food-facts",
+      "sourceFoodName": "Nescafé Classic",
+      "sourceId": "6111018903161",
+      "matchConfidence": "high",
+      "sourceVersion": "Open Food Facts (export API, 2026-08-08)",
+      "importDate": "2026-08-08"
     },
     "offCode": "6111018903161"
   },
@@ -272,11 +356,21 @@
       "source": "open-prices"
     },
     "nutritionPer100g": {
+      "per100g": true,
       "kcal": 622,
       "proteinG": 26,
-      "lipidesG": 50,
       "glucidesG": 13,
-      "selG": 0.03
+      "sucresG": 5.8,
+      "lipidesG": 50,
+      "satureesG": 6.8,
+      "fibresG": 8.3,
+      "selG": 0.03,
+      "nutritionSource": "open-food-facts",
+      "sourceFoodName": "Beurre bio cacahuète",
+      "sourceId": "3760091727732",
+      "matchConfidence": "high",
+      "sourceVersion": "Open Food Facts (export API, 2026-08-08)",
+      "importDate": "2026-08-08"
     },
     "offCode": "3760091727732"
   },
@@ -310,11 +404,21 @@
       "source": "estimation"
     },
     "nutritionPer100g": {
+      "per100g": true,
       "kcal": 468,
       "proteinG": 10.5,
-      "lipidesG": 23.6,
       "glucidesG": 50.6,
-      "selG": 0.02
+      "sucresG": 38.1,
+      "lipidesG": 23.6,
+      "satureesG": 4.3,
+      "fibresG": 5.4,
+      "selG": 0.02,
+      "nutritionSource": "open-food-facts",
+      "sourceFoodName": "Noix de cajou & cranberries",
+      "sourceId": "20815400",
+      "matchConfidence": "high",
+      "sourceVersion": "Open Food Facts (export API, 2026-08-08)",
+      "importDate": "2026-08-08"
     },
     "offCode": "20815400"
   },
@@ -343,6 +447,23 @@
     "easyToCook": true,
     "priceInfo": {
       "source": "estimation"
+    },
+    "nutritionPer100g": {
+      "per100g": true,
+      "kcal": 381,
+      "proteinG": 8.39,
+      "glucidesG": 77.9,
+      "sucresG": 0.55,
+      "lipidesG": 3,
+      "satureesG": 0.75,
+      "fibresG": 3.4,
+      "selG": 0.22,
+      "nutritionSource": "ciqual-2025",
+      "sourceFoodName": "Galette de riz complet soufflé",
+      "sourceId": "7352",
+      "matchConfidence": "high",
+      "sourceVersion": "Anses, 2025, Table de composition nutritionnelle des aliments Ciqual (édition 2025-11-03)",
+      "importDate": "2026-08-08"
     }
   },
   {
@@ -376,11 +497,21 @@
       "source": "open-prices"
     },
     "nutritionPer100g": {
+      "per100g": true,
       "kcal": 67,
       "proteinG": 1,
-      "lipidesG": 4.5,
       "glucidesG": 5.5,
-      "selG": 0.71
+      "sucresG": 4.5,
+      "lipidesG": 4.5,
+      "satureesG": 0.3,
+      "fibresG": 3,
+      "selG": 0.71,
+      "nutritionSource": "open-food-facts",
+      "sourceFoodName": "Carottes rapees citron",
+      "sourceId": "3083681148602",
+      "matchConfidence": "high",
+      "sourceVersion": "Open Food Facts (export API, 2026-08-08)",
+      "importDate": "2026-08-08"
     },
     "offCode": "3083681148602"
   },
@@ -412,11 +543,21 @@
       "source": "open-prices"
     },
     "nutritionPer100g": {
+      "per100g": true,
       "kcal": 19,
       "proteinG": 0.9,
-      "lipidesG": 0.3,
       "glucidesG": 2.5,
-      "selG": 0
+      "sucresG": 2.5,
+      "lipidesG": 0.3,
+      "satureesG": 0.1,
+      "fibresG": 1.2,
+      "selG": null,
+      "nutritionSource": "open-food-facts",
+      "sourceFoodName": "Tomates Cerises",
+      "sourceId": "3276558775128",
+      "matchConfidence": "high",
+      "sourceVersion": "Open Food Facts (export API, 2026-08-08)",
+      "importDate": "2026-08-08"
     },
     "offCode": "3276558775128"
   },
@@ -448,13 +589,22 @@
       "source": "estimation"
     },
     "nutritionPer100g": {
-      "kcal": 76,
-      "proteinG": 1,
-      "lipidesG": 1.6,
-      "glucidesG": 13,
-      "selG": 1
-    },
-    "offCode": "6111126002909"
+      "per100g": true,
+      "kcal": 87.6,
+      "proteinG": 1.06,
+      "glucidesG": 19.7,
+      "sucresG": 15.6,
+      "lipidesG": 0.25,
+      "satureesG": 0.005,
+      "fibresG": 2.7,
+      "selG": 0.006,
+      "nutritionSource": "ciqual-2025",
+      "sourceFoodName": "Banane, chair sans peau, crue",
+      "sourceId": "13005",
+      "matchConfidence": "exact",
+      "sourceVersion": "Anses, 2025, Table de composition nutritionnelle des aliments Ciqual (édition 2025-11-03)",
+      "importDate": "2026-08-08"
+    }
   },
   {
     "id": "pommes",
@@ -482,6 +632,23 @@
     "gramsPerServing": 150,
     "priceInfo": {
       "source": "estimation"
+    },
+    "nutritionPer100g": {
+      "per100g": true,
+      "kcal": 54,
+      "proteinG": 0.25,
+      "glucidesG": 11.6,
+      "sucresG": 10.6,
+      "lipidesG": 0.25,
+      "satureesG": 0.052,
+      "fibresG": 1.4,
+      "selG": 0.004,
+      "nutritionSource": "ciqual-2025",
+      "sourceFoodName": "Pomme, chair et peau, crue",
+      "sourceId": "13039",
+      "matchConfidence": "exact",
+      "sourceVersion": "Anses, 2025, Table de composition nutritionnelle des aliments Ciqual (édition 2025-11-03)",
+      "importDate": "2026-08-08"
     }
   },
   {
@@ -510,6 +677,23 @@
     "easyToCook": true,
     "priceInfo": {
       "source": "estimation"
+    },
+    "nutritionPer100g": {
+      "per100g": true,
+      "kcal": 80,
+      "proteinG": 2.02,
+      "glucidesG": 16.2,
+      "sucresG": 0.78,
+      "lipidesG": 0.09,
+      "satureesG": 0.026,
+      "fibresG": 2.2,
+      "selG": 0.001,
+      "nutritionSource": "ciqual-2025",
+      "sourceFoodName": "Pomme de terre, sans peau, crue",
+      "sourceId": "4008",
+      "matchConfidence": "exact",
+      "sourceVersion": "Anses, 2025, Table de composition nutritionnelle des aliments Ciqual (édition 2025-11-03)",
+      "importDate": "2026-08-08"
     }
   },
   {
@@ -540,13 +724,22 @@
       "source": "estimation"
     },
     "nutritionPer100g": {
-      "kcal": 452,
-      "proteinG": 13,
-      "lipidesG": 19,
-      "glucidesG": 54,
-      "selG": 1
-    },
-    "offCode": "3336972109104"
+      "per100g": true,
+      "kcal": 39,
+      "proteinG": 1.1,
+      "glucidesG": 6.25,
+      "sucresG": 4.8,
+      "lipidesG": 0.62,
+      "satureesG": 0.2,
+      "fibresG": 1.7,
+      "selG": 0.098,
+      "nutritionSource": "ciqual-2025",
+      "sourceFoodName": "Oignon, cru",
+      "sourceId": "20034",
+      "matchConfidence": "exact",
+      "sourceVersion": "Anses, 2025, Table de composition nutritionnelle des aliments Ciqual (édition 2025-11-03)",
+      "importDate": "2026-08-08"
+    }
   },
   {
     "id": "lait",
@@ -606,11 +799,21 @@
       "source": "estimation"
     },
     "nutritionPer100g": {
+      "per100g": true,
       "kcal": 50,
       "proteinG": 3.1,
-      "lipidesG": 7.9,
       "glucidesG": 3.5,
-      "selG": 0.12
+      "sucresG": 3.5,
+      "lipidesG": 7.9,
+      "satureesG": 5.3,
+      "fibresG": 0,
+      "selG": 0.12,
+      "nutritionSource": "open-food-facts",
+      "sourceFoodName": "Yaos Yaourt à la Grecque Nature",
+      "sourceId": "3023291122005",
+      "matchConfidence": "high",
+      "sourceVersion": "Open Food Facts (export API, 2026-08-08)",
+      "importDate": "2026-08-08"
     },
     "offCode": "3023291122005"
   },
@@ -642,6 +845,23 @@
     "gourmand": true,
     "priceInfo": {
       "source": "estimation"
+    },
+    "nutritionPer100g": {
+      "per100g": true,
+      "kcal": 386,
+      "proteinG": 32,
+      "glucidesG": 0.15,
+      "sucresG": 0,
+      "lipidesG": 28.9,
+      "satureesG": 20.1,
+      "fibresG": 0,
+      "selG": 1.48,
+      "nutritionSource": "ciqual-2025",
+      "sourceFoodName": "Mélange de fromages râpés (ex : spécial gratins,\nspécial pâtes, spécial pizzas…)",
+      "sourceId": "12775",
+      "matchConfidence": "high",
+      "sourceVersion": "Anses, 2025, Table de composition nutritionnelle des aliments Ciqual (édition 2025-11-03)",
+      "importDate": "2026-08-08"
     }
   },
   {
@@ -671,6 +891,23 @@
     "gramsPerServing": 55,
     "priceInfo": {
       "source": "estimation"
+    },
+    "nutritionPer100g": {
+      "per100g": true,
+      "kcal": 140,
+      "proteinG": 12.8,
+      "glucidesG": 0.06,
+      "sucresG": 0.06,
+      "lipidesG": 9.83,
+      "satureesG": 2.64,
+      "fibresG": 0,
+      "selG": 0.31,
+      "nutritionSource": "ciqual-2025",
+      "sourceFoodName": "Oeuf cru",
+      "sourceId": "22000",
+      "matchConfidence": "exact",
+      "sourceVersion": "Anses, 2025, Table de composition nutritionnelle des aliments Ciqual (édition 2025-11-03)",
+      "importDate": "2026-08-08"
     }
   },
   {
@@ -703,11 +940,21 @@
       "source": "open-prices"
     },
     "nutritionPer100g": {
+      "per100g": true,
       "kcal": 139,
       "proteinG": 15,
-      "lipidesG": 7.7,
       "glucidesG": 1,
-      "selG": 0.59
+      "sucresG": 0.5,
+      "lipidesG": 7.7,
+      "satureesG": 1.4,
+      "fibresG": 2.7,
+      "selG": 0.59,
+      "nutritionSource": "open-food-facts",
+      "sourceFoodName": "Tofu fumé",
+      "sourceId": "3229820794112",
+      "matchConfidence": "high",
+      "sourceVersion": "Open Food Facts (export API, 2026-08-08)",
+      "importDate": "2026-08-08"
     },
     "offCode": "3229820794112"
   },
@@ -740,11 +987,21 @@
       "source": "open-prices"
     },
     "nutritionPer100g": {
+      "per100g": true,
       "kcal": 273,
       "proteinG": 8.4,
-      "lipidesG": 5.1,
       "glucidesG": 46,
-      "selG": 1.1
+      "sucresG": 5.2,
+      "lipidesG": 5.1,
+      "satureesG": 0.4,
+      "fibresG": 4.6,
+      "selG": 1.1,
+      "nutritionSource": "open-food-facts",
+      "sourceFoodName": "Pain de mie complet",
+      "sourceId": "3560071232719",
+      "matchConfidence": "high",
+      "sourceVersion": "Open Food Facts (export API, 2026-08-08)",
+      "importDate": "2026-08-08"
     },
     "offCode": "3560071232719"
   },
@@ -777,11 +1034,21 @@
       "source": "open-prices"
     },
     "nutritionPer100g": {
+      "per100g": true,
       "kcal": 303,
       "proteinG": 9.9,
-      "lipidesG": 5,
       "glucidesG": 53,
-      "selG": 1.1
+      "sucresG": 11,
+      "lipidesG": 5,
+      "satureesG": 0.5,
+      "fibresG": 3.4,
+      "selG": 1.1,
+      "nutritionSource": "open-food-facts",
+      "sourceFoodName": "4 Baguettes viennoises",
+      "sourceId": "3560071259655",
+      "matchConfidence": "high",
+      "sourceVersion": "Open Food Facts (export API, 2026-08-08)",
+      "importDate": "2026-08-08"
     },
     "offCode": "3560071259655"
   },
@@ -814,11 +1081,21 @@
       "source": "open-prices"
     },
     "nutritionPer100g": {
+      "per100g": true,
       "kcal": 273,
       "proteinG": 8.4,
-      "lipidesG": 5.1,
       "glucidesG": 46,
-      "selG": 1.1
+      "sucresG": 5.2,
+      "lipidesG": 5.1,
+      "satureesG": 0.4,
+      "fibresG": 4.6,
+      "selG": 1.1,
+      "nutritionSource": "open-food-facts",
+      "sourceFoodName": "Pain de mie à la farine complète* biologique",
+      "sourceId": "3596710473625",
+      "matchConfidence": "high",
+      "sourceVersion": "Open Food Facts (export API, 2026-08-08)",
+      "importDate": "2026-08-08"
     },
     "offCode": "3596710473625"
   },
@@ -848,11 +1125,21 @@
       "source": "open-prices"
     },
     "nutritionPer100g": {
+      "per100g": true,
       "kcal": 137,
       "proteinG": 23,
-      "lipidesG": 2,
       "glucidesG": 0.5,
-      "selG": 1.5
+      "sucresG": 0.5,
+      "lipidesG": 2,
+      "satureesG": 0.6,
+      "fibresG": null,
+      "selG": 1.5,
+      "nutritionSource": "open-food-facts",
+      "sourceFoodName": "Filet de poulet rôti",
+      "sourceId": "3302740057670",
+      "matchConfidence": "high",
+      "sourceVersion": "Open Food Facts (export API, 2026-08-08)",
+      "importDate": "2026-08-08"
     },
     "offCode": "3302740057670"
   },
@@ -884,11 +1171,21 @@
       "source": "estimation"
     },
     "nutritionPer100g": {
+      "per100g": true,
       "kcal": 175,
       "proteinG": 33,
-      "lipidesG": 1.1,
       "glucidesG": 1,
-      "selG": 0.5
+      "sucresG": 1,
+      "lipidesG": 1.1,
+      "satureesG": 0.7,
+      "fibresG": 0,
+      "selG": 0.5,
+      "nutritionSource": "open-food-facts",
+      "sourceFoodName": "Joly Thon Entier",
+      "sourceId": "6111162000181",
+      "matchConfidence": "high",
+      "sourceVersion": "Open Food Facts (export API, 2026-08-08)",
+      "importDate": "2026-08-08"
     },
     "offCode": "6111162000181"
   },
@@ -918,11 +1215,21 @@
       "source": "open-prices"
     },
     "nutritionPer100g": {
+      "per100g": true,
       "kcal": 126,
       "proteinG": 20,
-      "lipidesG": 5,
       "glucidesG": 0,
-      "selG": 0.22
+      "sucresG": 0,
+      "lipidesG": 5,
+      "satureesG": 2.2,
+      "fibresG": null,
+      "selG": 0.22,
+      "nutritionSource": "open-food-facts",
+      "sourceFoodName": "Steaks hachés 5%MG",
+      "sourceId": "3181232220286",
+      "matchConfidence": "high",
+      "sourceVersion": "Open Food Facts (export API, 2026-08-08)",
+      "importDate": "2026-08-08"
     },
     "offCode": "3181232220286"
   },
@@ -953,11 +1260,21 @@
       "source": "estimation"
     },
     "nutritionPer100g": {
+      "per100g": true,
       "kcal": 174,
       "proteinG": 16,
-      "lipidesG": 12,
       "glucidesG": 0,
-      "selG": 1.7
+      "sucresG": 0,
+      "lipidesG": 12,
+      "satureesG": 5.6,
+      "fibresG": null,
+      "selG": 1.7,
+      "nutritionSource": "open-food-facts",
+      "sourceFoodName": "Saucisse de Toulouse",
+      "sourceId": "3245415407311",
+      "matchConfidence": "high",
+      "sourceVersion": "Open Food Facts (export API, 2026-08-08)",
+      "importDate": "2026-08-08"
     },
     "offCode": "3245415407311"
   },
@@ -1019,11 +1336,21 @@
       "source": "estimation"
     },
     "nutritionPer100g": {
+      "per100g": true,
       "kcal": 362,
       "proteinG": 14,
-      "lipidesG": 4.1,
       "glucidesG": 65,
-      "selG": 0
+      "sucresG": 2.5,
+      "lipidesG": 4.1,
+      "satureesG": 0.5,
+      "fibresG": 7.6,
+      "selG": 0,
+      "nutritionSource": "open-food-facts",
+      "sourceFoodName": "Quinoa gourmand",
+      "sourceId": "3600900011037",
+      "matchConfidence": "high",
+      "sourceVersion": "Open Food Facts (export API, 2026-08-08)",
+      "importDate": "2026-08-08"
     },
     "offCode": "3600900011037"
   },
@@ -1055,6 +1382,23 @@
     "easyToCook": true,
     "priceInfo": {
       "source": "estimation"
+    },
+    "nutritionPer100g": {
+      "per100g": true,
+      "kcal": 366,
+      "proteinG": 12.3,
+      "glucidesG": 72.7,
+      "sucresG": 3.5,
+      "lipidesG": 1.32,
+      "satureesG": 0.26,
+      "fibresG": 4.5,
+      "selG": 0.018,
+      "nutritionSource": "ciqual-2025",
+      "sourceFoodName": "Graine de couscous (semoule de blé dur précuite), à\ncuire",
+      "sourceId": "9681",
+      "matchConfidence": "high",
+      "sourceVersion": "Anses, 2025, Table de composition nutritionnelle des aliments Ciqual (édition 2025-11-03)",
+      "importDate": "2026-08-08"
     }
   },
   {
@@ -1086,6 +1430,23 @@
     "isCondiment": true,
     "priceInfo": {
       "source": "estimation"
+    },
+    "nutritionPer100g": {
+      "per100g": true,
+      "kcal": 350,
+      "proteinG": 9.03,
+      "glucidesG": 73.7,
+      "sucresG": 1.5,
+      "lipidesG": 1,
+      "satureesG": 0.19,
+      "fibresG": 3.2,
+      "selG": 0.065,
+      "nutritionSource": "ciqual-2025",
+      "sourceFoodName": "Farine de blé tendre ou froment T55 (pour pains)",
+      "sourceId": "9436",
+      "matchConfidence": "exact",
+      "sourceVersion": "Anses, 2025, Table de composition nutritionnelle des aliments Ciqual (édition 2025-11-03)",
+      "importDate": "2026-08-08"
     }
   },
   {
@@ -1114,6 +1475,23 @@
     "isCondiment": true,
     "priceInfo": {
       "source": "estimation"
+    },
+    "nutritionPer100g": {
+      "per100g": true,
+      "kcal": 399,
+      "proteinG": 0,
+      "glucidesG": 99.7,
+      "sucresG": 99.7,
+      "lipidesG": 0,
+      "satureesG": 0,
+      "fibresG": 0,
+      "selG": 0.005,
+      "nutritionSource": "ciqual-2025",
+      "sourceFoodName": "Sucre blanc",
+      "sourceId": "31016",
+      "matchConfidence": "exact",
+      "sourceVersion": "Anses, 2025, Table de composition nutritionnelle des aliments Ciqual (édition 2025-11-03)",
+      "importDate": "2026-08-08"
     }
   },
   {
@@ -1143,6 +1521,23 @@
     "isSpread": true,
     "priceInfo": {
       "source": "estimation"
+    },
+    "nutritionPer100g": {
+      "per100g": true,
+      "kcal": 331,
+      "proteinG": 0.65,
+      "glucidesG": 82.1,
+      "sucresG": 81.1,
+      "lipidesG": 0,
+      "satureesG": 0,
+      "fibresG": 0,
+      "selG": 0.01,
+      "nutritionSource": "ciqual-2025",
+      "sourceFoodName": "Miel",
+      "sourceId": "31008",
+      "matchConfidence": "exact",
+      "sourceVersion": "Anses, 2025, Table de composition nutritionnelle des aliments Ciqual (édition 2025-11-03)",
+      "importDate": "2026-08-08"
     }
   },
   {
@@ -1175,11 +1570,21 @@
       "source": "estimation"
     },
     "nutritionPer100g": {
+      "per100g": true,
       "kcal": 105,
       "proteinG": 0.8,
-      "lipidesG": 0.5,
       "glucidesG": 25.6,
-      "selG": 0.03
+      "sucresG": 25.6,
+      "lipidesG": 0.5,
+      "satureesG": 0,
+      "fibresG": 11.2,
+      "selG": 0.03,
+      "nutritionSource": "open-food-facts",
+      "sourceFoodName": "Confiture abricot",
+      "sourceId": "3330720244000",
+      "matchConfidence": "high",
+      "sourceVersion": "Open Food Facts (export API, 2026-08-08)",
+      "importDate": "2026-08-08"
     },
     "offCode": "3330720244000"
   },
@@ -1213,11 +1618,21 @@
       "source": "estimation"
     },
     "nutritionPer100g": {
+      "per100g": true,
       "kcal": 386,
       "proteinG": 12,
-      "lipidesG": 8.8,
       "glucidesG": 60,
-      "selG": 0.1
+      "sucresG": 8.2,
+      "lipidesG": 8.8,
+      "satureesG": 3.3,
+      "fibresG": 10,
+      "selG": 0.1,
+      "nutritionSource": "open-food-facts",
+      "sourceFoodName": "Muesli avoine chocolat bio",
+      "sourceId": "3229820769165",
+      "matchConfidence": "high",
+      "sourceVersion": "Open Food Facts (export API, 2026-08-08)",
+      "importDate": "2026-08-08"
     },
     "offCode": "3229820769165"
   },
@@ -1251,11 +1666,21 @@
       "source": "estimation"
     },
     "nutritionPer100g": {
+      "per100g": true,
       "kcal": 363,
       "proteinG": 11,
-      "lipidesG": 7.1,
       "glucidesG": 58,
-      "selG": 0.02
+      "sucresG": 1.7,
+      "lipidesG": 7.1,
+      "satureesG": 1.3,
+      "fibresG": 11,
+      "selG": 0.02,
+      "nutritionSource": "open-food-facts",
+      "sourceFoodName": "Flocons d'avoine",
+      "sourceId": "3229820019307",
+      "matchConfidence": "high",
+      "sourceVersion": "Open Food Facts (export API, 2026-08-08)",
+      "importDate": "2026-08-08"
     },
     "offCode": "3229820019307"
   },
@@ -1292,11 +1717,21 @@
       "source": "estimation"
     },
     "nutritionPer100g": {
+      "per100g": true,
       "kcal": 551,
       "proteinG": 6.7,
-      "lipidesG": 34,
       "glucidesG": 53,
-      "selG": 0.1
+      "sucresG": 51,
+      "lipidesG": 34,
+      "satureesG": 5.2,
+      "fibresG": 3.3,
+      "selG": 0.1,
+      "nutritionSource": "open-food-facts",
+      "sourceFoodName": "Pâte à tartiner noisettes et cacao",
+      "sourceId": "3608580065340",
+      "matchConfidence": "high",
+      "sourceVersion": "Open Food Facts (export API, 2026-08-08)",
+      "importDate": "2026-08-08"
     },
     "offCode": "3608580065340"
   },
@@ -1331,11 +1766,21 @@
       "source": "estimation"
     },
     "nutritionPer100g": {
+      "per100g": true,
       "kcal": 66,
       "proteinG": 8.7,
-      "lipidesG": 0,
       "glucidesG": 7.8,
-      "selG": 16
+      "sucresG": 1.4,
+      "lipidesG": 0,
+      "satureesG": 0,
+      "fibresG": 0,
+      "selG": 16,
+      "nutritionSource": "open-food-facts",
+      "sourceFoodName": "Sauce soja",
+      "sourceId": "3229820762050",
+      "matchConfidence": "high",
+      "sourceVersion": "Open Food Facts (export API, 2026-08-08)",
+      "importDate": "2026-08-08"
     },
     "offCode": "3229820762050"
   },
@@ -1369,11 +1814,21 @@
       "source": "estimation"
     },
     "nutritionPer100g": {
+      "per100g": true,
       "kcal": 111,
       "proteinG": 5.2,
-      "lipidesG": 7.9,
       "glucidesG": 3.1,
-      "selG": 6.7
+      "sucresG": 1.3,
+      "lipidesG": 7.9,
+      "satureesG": 0.4,
+      "fibresG": 0,
+      "selG": 6.7,
+      "nutritionSource": "open-food-facts",
+      "sourceFoodName": "Moutarde",
+      "sourceId": "6111250474641",
+      "matchConfidence": "high",
+      "sourceVersion": "Open Food Facts (export API, 2026-08-08)",
+      "importDate": "2026-08-08"
     },
     "offCode": "6111250474641"
   },
@@ -1409,11 +1864,21 @@
       "source": "estimation"
     },
     "nutritionPer100g": {
+      "per100g": true,
       "kcal": 598,
       "proteinG": 0.8,
-      "lipidesG": 70,
       "glucidesG": 3,
-      "selG": 1
+      "sucresG": 1.5,
+      "lipidesG": 70,
+      "satureesG": 6.7,
+      "fibresG": null,
+      "selG": 1,
+      "nutritionSource": "open-food-facts",
+      "sourceFoodName": "Mayonnaise American Style",
+      "sourceId": "8715700421957",
+      "matchConfidence": "high",
+      "sourceVersion": "Open Food Facts (export API, 2026-08-08)",
+      "importDate": "2026-08-08"
     },
     "offCode": "8715700421957"
   },
@@ -1473,11 +1938,21 @@
       "source": "estimation"
     },
     "nutritionPer100g": {
+      "per100g": true,
       "kcal": 111,
       "proteinG": 7.7,
-      "lipidesG": 0.8,
       "glucidesG": 15,
-      "selG": 0.29
+      "sucresG": 0.6,
+      "lipidesG": 0.8,
+      "satureesG": 0.1,
+      "fibresG": 6.2,
+      "selG": 0.29,
+      "nutritionSource": "open-food-facts",
+      "sourceFoodName": "Haricots rouges",
+      "sourceId": "3245412621963",
+      "matchConfidence": "high",
+      "sourceVersion": "Open Food Facts (export API, 2026-08-08)",
+      "importDate": "2026-08-08"
     },
     "offCode": "3245412621963"
   },
@@ -1509,11 +1984,21 @@
       "source": "estimation"
     },
     "nutritionPer100g": {
+      "per100g": true,
       "kcal": 69,
       "proteinG": 3.2,
-      "lipidesG": 0.6,
       "glucidesG": 11,
-      "selG": 0.3
+      "sucresG": 5.5,
+      "lipidesG": 0.6,
+      "satureesG": 0.2,
+      "fibresG": null,
+      "selG": 0.3,
+      "nutritionSource": "open-food-facts",
+      "sourceFoodName": "Maïs Doux",
+      "sourceId": "6111250470810",
+      "matchConfidence": "high",
+      "sourceVersion": "Open Food Facts (export API, 2026-08-08)",
+      "importDate": "2026-08-08"
     },
     "offCode": "6111250470810"
   },
@@ -1543,6 +2028,23 @@
     "easyToCook": true,
     "priceInfo": {
       "source": "estimation"
+    },
+    "nutritionPer100g": {
+      "per100g": true,
+      "kcal": 16.7,
+      "proteinG": 1.21,
+      "glucidesG": 1.75,
+      "sucresG": 1.74,
+      "lipidesG": 0.32,
+      "satureesG": 0.084,
+      "fibresG": 1,
+      "selG": 0.02,
+      "nutritionSource": "ciqual-2025",
+      "sourceFoodName": "Courgette, chair et peau, crue",
+      "sourceId": "20020",
+      "matchConfidence": "exact",
+      "sourceVersion": "Anses, 2025, Table de composition nutritionnelle des aliments Ciqual (édition 2025-11-03)",
+      "importDate": "2026-08-08"
     }
   },
   {
@@ -1571,6 +2073,23 @@
     "easyToCook": true,
     "priceInfo": {
       "source": "estimation"
+    },
+    "nutritionPer100g": {
+      "per100g": true,
+      "kcal": 22.6,
+      "proteinG": 0.8,
+      "glucidesG": 3.5,
+      "sucresG": 1.5,
+      "lipidesG": 0.27,
+      "satureesG": 0.071,
+      "fibresG": 1.5,
+      "selG": 0.021,
+      "nutritionSource": "ciqual-2025",
+      "sourceFoodName": "Poivron, vert, jaune ou rouge, cru",
+      "sourceId": "20041",
+      "matchConfidence": "exact",
+      "sourceVersion": "Anses, 2025, Table de composition nutritionnelle des aliments Ciqual (édition 2025-11-03)",
+      "importDate": "2026-08-08"
     }
   },
   {
@@ -1599,6 +2118,23 @@
     "easyToCook": true,
     "priceInfo": {
       "source": "estimation"
+    },
+    "nutritionPer100g": {
+      "per100g": true,
+      "kcal": 31.9,
+      "proteinG": 2.9,
+      "glucidesG": 2.15,
+      "sucresG": 1.7,
+      "lipidesG": 0.36,
+      "satureesG": 0.047,
+      "fibresG": 2.6,
+      "selG": 0.075,
+      "nutritionSource": "ciqual-2025",
+      "sourceFoodName": "Brocoli, cru",
+      "sourceId": "20057",
+      "matchConfidence": "exact",
+      "sourceVersion": "Anses, 2025, Table de composition nutritionnelle des aliments Ciqual (édition 2025-11-03)",
+      "importDate": "2026-08-08"
     }
   },
   {
@@ -1627,6 +2163,23 @@
     "easyToCook": true,
     "priceInfo": {
       "source": "estimation"
+    },
+    "nutritionPer100g": {
+      "per100g": true,
+      "kcal": 21,
+      "proteinG": 2.11,
+      "glucidesG": 1.83,
+      "sucresG": 1.55,
+      "lipidesG": 0.36,
+      "satureesG": 0.067,
+      "fibresG": 1,
+      "selG": 0.098,
+      "nutritionSource": "ciqual-2025",
+      "sourceFoodName": "Champignon de Paris ou champignon de couche, cru",
+      "sourceId": "20056",
+      "matchConfidence": "exact",
+      "sourceVersion": "Anses, 2025, Table de composition nutritionnelle des aliments Ciqual (édition 2025-11-03)",
+      "importDate": "2026-08-08"
     }
   },
   {
@@ -1655,6 +2208,23 @@
     "easyToCook": true,
     "priceInfo": {
       "source": "estimation"
+    },
+    "nutritionPer100g": {
+      "per100g": true,
+      "kcal": 13.5,
+      "proteinG": 1.01,
+      "glucidesG": 1.5,
+      "sucresG": 0.83,
+      "lipidesG": 0.1,
+      "satureesG": 0.028,
+      "fibresG": 1.3,
+      "selG": 0.046,
+      "nutritionSource": "ciqual-2025",
+      "sourceFoodName": "Salade verte, crue, sans assaisonnement",
+      "sourceId": "25604",
+      "matchConfidence": "exact",
+      "sourceVersion": "Anses, 2025, Table de composition nutritionnelle des aliments Ciqual (édition 2025-11-03)",
+      "importDate": "2026-08-08"
     }
   },
   {
@@ -1683,6 +2253,23 @@
     "easyToCook": true,
     "priceInfo": {
       "source": "estimation"
+    },
+    "nutritionPer100g": {
+      "per100g": true,
+      "kcal": 16.8,
+      "proteinG": 0.65,
+      "glucidesG": 2.87,
+      "sucresG": 1.67,
+      "lipidesG": 0.11,
+      "satureesG": 0.037,
+      "fibresG": 0.5,
+      "selG": 0.012,
+      "nutritionSource": "ciqual-2025",
+      "sourceFoodName": "Concombre, chair et peau, cru",
+      "sourceId": "20019",
+      "matchConfidence": "exact",
+      "sourceVersion": "Anses, 2025, Table de composition nutritionnelle des aliments Ciqual (édition 2025-11-03)",
+      "importDate": "2026-08-08"
     }
   },
   {
@@ -1713,11 +2300,21 @@
       "source": "estimation"
     },
     "nutritionPer100g": {
+      "per100g": true,
       "kcal": 74,
       "proteinG": 2.1,
-      "lipidesG": 1.1,
       "glucidesG": 14,
-      "selG": 0
+      "sucresG": 14,
+      "lipidesG": 1.1,
+      "satureesG": 0,
+      "fibresG": 1,
+      "selG": 0,
+      "nutritionSource": "open-food-facts",
+      "sourceFoodName": "Daya Avocat",
+      "sourceId": "6111126002763",
+      "matchConfidence": "high",
+      "sourceVersion": "Open Food Facts (export API, 2026-08-08)",
+      "importDate": "2026-08-08"
     },
     "offCode": "6111126002763"
   },
@@ -1746,6 +2343,23 @@
     "easyToCook": true,
     "priceInfo": {
       "source": "estimation"
+    },
+    "nutritionPer100g": {
+      "per100g": true,
+      "kcal": 24.3,
+      "proteinG": 0.25,
+      "glucidesG": 1.56,
+      "sucresG": 0.8,
+      "lipidesG": 0.25,
+      "satureesG": 0.005,
+      "fibresG": 0.25,
+      "selG": 0.006,
+      "nutritionSource": "ciqual-2025",
+      "sourceFoodName": "Citron, chair sans peau, sans pépins, cru",
+      "sourceId": "13009",
+      "matchConfidence": "high",
+      "sourceVersion": "Anses, 2025, Table de composition nutritionnelle des aliments Ciqual (édition 2025-11-03)",
+      "importDate": "2026-08-08"
     }
   },
   {
@@ -1774,6 +2388,23 @@
     "gramsPerServing": 200,
     "priceInfo": {
       "source": "estimation"
+    },
+    "nutritionPer100g": {
+      "per100g": true,
+      "kcal": 42,
+      "proteinG": 0.75,
+      "glucidesG": 8.03,
+      "sucresG": 7.6,
+      "lipidesG": 0.25,
+      "satureesG": 0.005,
+      "fibresG": 2.7,
+      "selG": 0.006,
+      "nutritionSource": "ciqual-2025",
+      "sourceFoodName": "Orange, chair sans peau, sans pépins, crue",
+      "sourceId": "13034",
+      "matchConfidence": "exact",
+      "sourceVersion": "Anses, 2025, Table de composition nutritionnelle des aliments Ciqual (édition 2025-11-03)",
+      "importDate": "2026-08-08"
     }
   },
   {
@@ -1802,6 +2433,23 @@
     "isCondiment": true,
     "priceInfo": {
       "source": "estimation"
+    },
+    "nutritionPer100g": {
+      "per100g": true,
+      "kcal": 109,
+      "proteinG": 5.31,
+      "glucidesG": 18.6,
+      "sucresG": 1.2,
+      "lipidesG": 0.25,
+      "satureesG": 0.005,
+      "fibresG": 5.8,
+      "selG": 0.023,
+      "nutritionSource": "ciqual-2025",
+      "sourceFoodName": "Ail, cru",
+      "sourceId": "11000",
+      "matchConfidence": "exact",
+      "sourceVersion": "Anses, 2025, Table de composition nutritionnelle des aliments Ciqual (édition 2025-11-03)",
+      "importDate": "2026-08-08"
     }
   },
   {
@@ -1830,6 +2478,23 @@
     "easyToCook": true,
     "priceInfo": {
       "source": "estimation"
+    },
+    "nutritionPer100g": {
+      "per100g": true,
+      "kcal": 30.4,
+      "proteinG": 1.5,
+      "glucidesG": 4.55,
+      "sucresG": 3.9,
+      "lipidesG": 0.3,
+      "satureesG": 0.04,
+      "fibresG": 1.8,
+      "selG": 0.05,
+      "nutritionSource": "ciqual-2025",
+      "sourceFoodName": "Poireau, cru",
+      "sourceId": "20039",
+      "matchConfidence": "exact",
+      "sourceVersion": "Anses, 2025, Table de composition nutritionnelle des aliments Ciqual (édition 2025-11-03)",
+      "importDate": "2026-08-08"
     }
   },
   {
@@ -1858,6 +2523,23 @@
     "easyToCook": true,
     "priceInfo": {
       "source": "estimation"
+    },
+    "nutritionPer100g": {
+      "per100g": true,
+      "kcal": 17,
+      "proteinG": 2.06,
+      "glucidesG": null,
+      "sucresG": null,
+      "lipidesG": 0.4,
+      "satureesG": 0.09,
+      "fibresG": 2.4,
+      "selG": 0.063,
+      "nutritionSource": "ciqual-2025",
+      "sourceFoodName": "Épinard, jeunes pousses pour salades, cru",
+      "sourceId": "20270",
+      "matchConfidence": "exact",
+      "sourceVersion": "Anses, 2025, Table de composition nutritionnelle des aliments Ciqual (édition 2025-11-03)",
+      "importDate": "2026-08-08"
     }
   },
   {
@@ -1888,11 +2570,21 @@
       "source": "estimation"
     },
     "nutritionPer100g": {
+      "per100g": true,
       "kcal": 26,
       "proteinG": 1.9,
-      "lipidesG": 0.3,
       "glucidesG": 3,
-      "selG": 0
+      "sucresG": 1.9,
+      "lipidesG": 0.3,
+      "satureesG": 0.1,
+      "fibresG": null,
+      "selG": null,
+      "nutritionSource": "open-food-facts",
+      "sourceFoodName": "Florette - Chou-fleur 180g",
+      "sourceId": "3280220112166",
+      "matchConfidence": "high",
+      "sourceVersion": "Open Food Facts (export API, 2026-08-08)",
+      "importDate": "2026-08-08"
     },
     "offCode": "3280220112166"
   },
@@ -1925,11 +2617,21 @@
       "source": "estimation"
     },
     "nutritionPer100g": {
+      "per100g": true,
       "kcal": 150,
       "proteinG": 3.3,
-      "lipidesG": 8,
       "glucidesG": 16.1,
-      "selG": 0
+      "sucresG": 16.1,
+      "lipidesG": 8,
+      "satureesG": 8,
+      "fibresG": null,
+      "selG": 0,
+      "nutritionSource": "open-food-facts",
+      "sourceFoodName": "Yaourt grec",
+      "sourceId": "6111242103696",
+      "matchConfidence": "high",
+      "sourceVersion": "Open Food Facts (export API, 2026-08-08)",
+      "importDate": "2026-08-08"
     },
     "offCode": "6111242103696"
   },
@@ -1962,11 +2664,21 @@
       "source": "estimation"
     },
     "nutritionPer100g": {
+      "per100g": true,
       "kcal": 159,
       "proteinG": 5,
-      "lipidesG": 11,
       "glucidesG": 10,
-      "selG": 0.1
+      "sucresG": 4,
+      "lipidesG": 11,
+      "satureesG": 7.2,
+      "fibresG": 0,
+      "selG": 0.1,
+      "nutritionSource": "open-food-facts",
+      "sourceFoodName": "Fromage Blanc Nature",
+      "sourceId": "6111246721261",
+      "matchConfidence": "high",
+      "sourceVersion": "Open Food Facts (export API, 2026-08-08)",
+      "importDate": "2026-08-08"
     },
     "offCode": "6111246721261"
   },
@@ -2001,11 +2713,21 @@
       "source": "estimation"
     },
     "nutritionPer100g": {
+      "per100g": true,
       "kcal": 375,
       "proteinG": 0.7,
-      "lipidesG": 82,
       "glucidesG": 0.8,
-      "selG": 0.05
+      "sucresG": 0.8,
+      "lipidesG": 82,
+      "satureesG": 57,
+      "fibresG": 0,
+      "selG": 0.05,
+      "nutritionSource": "open-food-facts",
+      "sourceFoodName": "Le beurre tendre",
+      "sourceId": "3451790988677",
+      "matchConfidence": "high",
+      "sourceVersion": "Open Food Facts (export API, 2026-08-08)",
+      "importDate": "2026-08-08"
     },
     "offCode": "3451790988677"
   },
@@ -2039,11 +2761,21 @@
       "source": "estimation"
     },
     "nutritionPer100g": {
+      "per100g": true,
       "kcal": 169,
       "proteinG": 2.5,
-      "lipidesG": 15,
       "glucidesG": 6,
-      "selG": 0.11
+      "sucresG": 3.9,
+      "lipidesG": 15,
+      "satureesG": 10,
+      "fibresG": null,
+      "selG": 0.11,
+      "nutritionSource": "open-food-facts",
+      "sourceFoodName": "Crème fraîche épaisse",
+      "sourceId": "3155250001554",
+      "matchConfidence": "high",
+      "sourceVersion": "Open Food Facts (export API, 2026-08-08)",
+      "importDate": "2026-08-08"
     },
     "offCode": "3155250001554"
   },
@@ -2077,11 +2809,21 @@
       "source": "estimation"
     },
     "nutritionPer100g": {
+      "per100g": true,
       "kcal": 184,
       "proteinG": 17,
-      "lipidesG": 18,
       "glucidesG": 2,
-      "selG": 0.7
+      "sucresG": 1,
+      "lipidesG": 18,
+      "satureesG": 13,
+      "fibresG": null,
+      "selG": 0.7,
+      "nutritionSource": "open-food-facts",
+      "sourceFoodName": "Mozzarella",
+      "sourceId": "8000430138719",
+      "matchConfidence": "high",
+      "sourceVersion": "Open Food Facts (export API, 2026-08-08)",
+      "importDate": "2026-08-08"
     },
     "offCode": "8000430138719"
   },
@@ -2110,6 +2852,23 @@
     "gramsPerServing": 20,
     "priceInfo": {
       "source": "estimation"
+    },
+    "nutritionPer100g": {
+      "per100g": true,
+      "kcal": 99.3,
+      "proteinG": 20.9,
+      "glucidesG": 0.023,
+      "sucresG": 0.023,
+      "lipidesG": 1.67,
+      "satureesG": 0.54,
+      "fibresG": 0.39,
+      "selG": 1.9,
+      "nutritionSource": "ciqual-2025",
+      "sourceFoodName": "Jambon de dinde ou blanc de dinde en tranche",
+      "sourceId": "28964",
+      "matchConfidence": "exact",
+      "sourceVersion": "Anses, 2025, Table de composition nutritionnelle des aliments Ciqual (édition 2025-11-03)",
+      "importDate": "2026-08-08"
     }
   },
   {
@@ -2140,6 +2899,23 @@
     "gramsPerServing": 200,
     "priceInfo": {
       "source": "estimation"
+    },
+    "nutritionPer100g": {
+      "per100g": true,
+      "kcal": 42.4,
+      "proteinG": 3.19,
+      "glucidesG": 1.87,
+      "sucresG": 0.53,
+      "lipidesG": 2.1,
+      "satureesG": 0.28,
+      "fibresG": 0.71,
+      "selG": 0.053,
+      "nutritionSource": "ciqual-2025",
+      "sourceFoodName": "Boisson au soja, nature, non enrichie, préemballée",
+      "sourceId": "18900",
+      "matchConfidence": "high",
+      "sourceVersion": "Anses, 2025, Table de composition nutritionnelle des aliments Ciqual (édition 2025-11-03)",
+      "importDate": "2026-08-08"
     }
   },
   {
@@ -2170,11 +2946,21 @@
       "source": "estimation"
     },
     "nutritionPer100g": {
+      "per100g": true,
       "kcal": 55,
       "proteinG": 0.3,
-      "lipidesG": 0.2,
       "glucidesG": 12,
-      "selG": 0
+      "sucresG": 12,
+      "lipidesG": 0.2,
+      "satureesG": 0,
+      "fibresG": 1.9,
+      "selG": 0,
+      "nutritionSource": "open-food-facts",
+      "sourceFoodName": "Compote Pomme Nature",
+      "sourceId": "3608580789758",
+      "matchConfidence": "high",
+      "sourceVersion": "Open Food Facts (export API, 2026-08-08)",
+      "importDate": "2026-08-08"
     },
     "offCode": "3608580789758"
   },
@@ -2206,11 +2992,21 @@
       "source": "estimation"
     },
     "nutritionPer100g": {
+      "per100g": true,
       "kcal": 49,
       "proteinG": 0.1,
-      "lipidesG": 0,
       "glucidesG": 12,
-      "selG": 0
+      "sucresG": 11.2,
+      "lipidesG": 0,
+      "satureesG": 0,
+      "fibresG": 0,
+      "selG": 0,
+      "nutritionSource": "open-food-facts",
+      "sourceFoodName": "Jus d'orange",
+      "sourceId": "6111251752748",
+      "matchConfidence": "high",
+      "sourceVersion": "Open Food Facts (export API, 2026-08-08)",
+      "importDate": "2026-08-08"
     },
     "offCode": "6111251752748"
   },
@@ -2241,6 +3037,23 @@
     "easyToCook": true,
     "priceInfo": {
       "source": "estimation"
+    },
+    "nutritionPer100g": {
+      "per100g": true,
+      "kcal": 279,
+      "proteinG": 8.15,
+      "glucidesG": 56.7,
+      "sucresG": 2.1,
+      "lipidesG": 1,
+      "satureesG": 0.27,
+      "fibresG": 3.8,
+      "selG": 1.27,
+      "nutritionSource": "ciqual-2025",
+      "sourceFoodName": "Pain de tradition française (par ex. : baguette,\nboule…)",
+      "sourceId": "7007",
+      "matchConfidence": "high",
+      "sourceVersion": "Anses, 2025, Table de composition nutritionnelle des aliments Ciqual (édition 2025-11-03)",
+      "importDate": "2026-08-08"
     }
   },
   {
@@ -2276,11 +3089,21 @@
       "source": "estimation"
     },
     "nutritionPer100g": {
+      "per100g": true,
       "kcal": 368,
       "proteinG": 8.4,
-      "lipidesG": 15,
       "glucidesG": 48,
-      "selG": 0.88
+      "sucresG": 10,
+      "lipidesG": 15,
+      "satureesG": 8.1,
+      "fibresG": 4.6,
+      "selG": 0.88,
+      "nutritionSource": "open-food-facts",
+      "sourceFoodName": "Croissants",
+      "sourceId": "3256540000339",
+      "matchConfidence": "high",
+      "sourceVersion": "Open Food Facts (export API, 2026-08-08)",
+      "importDate": "2026-08-08"
     },
     "offCode": "3256540000339"
   },
@@ -2312,6 +3135,23 @@
     "ultraTransforme": true,
     "priceInfo": {
       "source": "estimation"
+    },
+    "nutritionPer100g": {
+      "per100g": true,
+      "kcal": 290,
+      "proteinG": 8.84,
+      "glucidesG": 43.5,
+      "sucresG": 5.6,
+      "lipidesG": 6.6,
+      "satureesG": 1.07,
+      "fibresG": 5.9,
+      "selG": 1.07,
+      "nutritionSource": "ciqual-2025",
+      "sourceFoodName": "Pain de mie aux céréales et/ou graines, préemballé",
+      "sourceId": "7113",
+      "matchConfidence": "exact",
+      "sourceVersion": "Anses, 2025, Table de composition nutritionnelle des aliments Ciqual (édition 2025-11-03)",
+      "importDate": "2026-08-08"
     }
   },
   {
@@ -2345,11 +3185,21 @@
       "source": "estimation"
     },
     "nutritionPer100g": {
+      "per100g": true,
       "kcal": 302,
       "proteinG": 9.1,
-      "lipidesG": 5.2,
       "glucidesG": 53.2,
-      "selG": 1
+      "sucresG": 2.1,
+      "lipidesG": 5.2,
+      "satureesG": 1.2,
+      "fibresG": 1.6,
+      "selG": 1,
+      "nutritionSource": "open-food-facts",
+      "sourceFoodName": "Wraps",
+      "sourceId": "8410076472953",
+      "matchConfidence": "high",
+      "sourceVersion": "Open Food Facts (export API, 2026-08-08)",
+      "importDate": "2026-08-08"
     },
     "offCode": "8410076472953"
   },
@@ -2382,11 +3232,21 @@
       "source": "estimation"
     },
     "nutritionPer100g": {
+      "per100g": true,
       "kcal": 393,
       "proteinG": 13,
-      "lipidesG": 7.6,
       "glucidesG": 67,
-      "selG": 1.6
+      "sucresG": 3.2,
+      "lipidesG": 7.6,
+      "satureesG": 2.3,
+      "fibresG": 5.2,
+      "selG": 1.6,
+      "nutritionSource": "open-food-facts",
+      "sourceFoodName": "Biscottes 6 Céréales",
+      "sourceId": "3392460480827",
+      "matchConfidence": "high",
+      "sourceVersion": "Open Food Facts (export API, 2026-08-08)",
+      "importDate": "2026-08-08"
     },
     "offCode": "3392460480827"
   },
@@ -2422,11 +3282,21 @@
       "source": "estimation"
     },
     "nutritionPer100g": {
+      "per100g": true,
       "kcal": 336,
       "proteinG": 8.8,
-      "lipidesG": 9.4,
       "glucidesG": 52,
-      "selG": 0.95
+      "sucresG": 13,
+      "lipidesG": 9.4,
+      "satureesG": 0.9,
+      "fibresG": 3.9,
+      "selG": 0.95,
+      "nutritionSource": "open-food-facts",
+      "sourceFoodName": "Brioche Tranchée Bio 400g",
+      "sourceId": "3284230006408",
+      "matchConfidence": "high",
+      "sourceVersion": "Open Food Facts (export API, 2026-08-08)",
+      "importDate": "2026-08-08"
     },
     "offCode": "3284230006408"
   },
@@ -2454,6 +3324,23 @@
     "easyToCook": true,
     "priceInfo": {
       "source": "estimation"
+    },
+    "nutritionPer100g": {
+      "per100g": true,
+      "kcal": 108,
+      "proteinG": 23.7,
+      "glucidesG": 0,
+      "sucresG": 0,
+      "lipidesG": 1.48,
+      "satureesG": 0.29,
+      "fibresG": 0,
+      "selG": 0.28,
+      "nutritionSource": "ciqual-2025",
+      "sourceFoodName": "Dinde, escalope crue",
+      "sourceId": "36304",
+      "matchConfidence": "exact",
+      "sourceVersion": "Anses, 2025, Table de composition nutritionnelle des aliments Ciqual (édition 2025-11-03)",
+      "importDate": "2026-08-08"
     }
   },
   {
@@ -2483,13 +3370,22 @@
       "source": "estimation"
     },
     "nutritionPer100g": {
-      "kcal": 218,
-      "proteinG": 15,
-      "lipidesG": 15,
-      "glucidesG": 4.3,
-      "selG": 2.2
-    },
-    "offCode": "3770018078038"
+      "per100g": true,
+      "kcal": 272,
+      "proteinG": 16.7,
+      "glucidesG": 0.35,
+      "sucresG": 0.35,
+      "lipidesG": 22.6,
+      "satureesG": 8,
+      "fibresG": 0.34,
+      "selG": 2.63,
+      "nutritionSource": "ciqual-2025",
+      "sourceFoodName": "Lardon fumé, cru",
+      "sourceId": "28720",
+      "matchConfidence": "exact",
+      "sourceVersion": "Anses, 2025, Table de composition nutritionnelle des aliments Ciqual (édition 2025-11-03)",
+      "importDate": "2026-08-08"
+    }
   },
   {
     "id": "merguez",
@@ -2517,6 +3413,23 @@
     "gramsPerServing": 50,
     "priceInfo": {
       "source": "estimation"
+    },
+    "nutritionPer100g": {
+      "per100g": true,
+      "kcal": 381,
+      "proteinG": 12.8,
+      "glucidesG": null,
+      "sucresG": null,
+      "lipidesG": 36.3,
+      "satureesG": null,
+      "fibresG": 0,
+      "selG": null,
+      "nutritionSource": "ciqual-2025",
+      "sourceFoodName": "Merguez crue (aliment moyen)",
+      "sourceId": "30151",
+      "matchConfidence": "high",
+      "sourceVersion": "Anses, 2025, Table de composition nutritionnelle des aliments Ciqual (édition 2025-11-03)",
+      "importDate": "2026-08-08"
     }
   },
   {
@@ -2545,6 +3458,23 @@
     "easyToCook": true,
     "priceInfo": {
       "source": "estimation"
+    },
+    "nutritionPer100g": {
+      "per100g": true,
+      "kcal": 193,
+      "proteinG": 20.5,
+      "glucidesG": null,
+      "sucresG": null,
+      "lipidesG": 12.4,
+      "satureesG": 2.15,
+      "fibresG": 0.125,
+      "selG": 0.16,
+      "nutritionSource": "ciqual-2025",
+      "sourceFoodName": "Saumon, élevage, cru",
+      "sourceId": "26036",
+      "matchConfidence": "high",
+      "sourceVersion": "Anses, 2025, Table de composition nutritionnelle des aliments Ciqual (édition 2025-11-03)",
+      "importDate": "2026-08-08"
     }
   },
   {
@@ -2573,6 +3503,23 @@
     "easyToCook": true,
     "priceInfo": {
       "source": "estimation"
+    },
+    "nutritionPer100g": {
+      "per100g": true,
+      "kcal": 92.5,
+      "proteinG": 18.3,
+      "glucidesG": 2.6,
+      "sucresG": 0.055,
+      "lipidesG": 1.02,
+      "satureesG": 0.18,
+      "fibresG": 0.1,
+      "selG": 1.8,
+      "nutritionSource": "ciqual-2025",
+      "sourceFoodName": "Crevettes, décortiquées, cuites, réfrigérées,\npréemballées",
+      "sourceId": "10086",
+      "matchConfidence": "exact",
+      "sourceVersion": "Anses, 2025, Table de composition nutritionnelle des aliments Ciqual (édition 2025-11-03)",
+      "importDate": "2026-08-08"
     }
   },
   {
@@ -2603,11 +3550,21 @@
       "source": "estimation"
     },
     "nutritionPer100g": {
+      "per100g": true,
       "kcal": 158,
       "proteinG": 22,
-      "lipidesG": 7.8,
       "glucidesG": 0,
-      "selG": 1
+      "sucresG": 0,
+      "lipidesG": 7.8,
+      "satureesG": 2.6,
+      "fibresG": 0,
+      "selG": 1,
+      "nutritionSource": "open-food-facts",
+      "sourceFoodName": "Sardines Nature",
+      "sourceId": "3263670162219",
+      "matchConfidence": "high",
+      "sourceVersion": "Open Food Facts (export API, 2026-08-08)",
+      "importDate": "2026-08-08"
     },
     "offCode": "3263670162219"
   },
@@ -2638,11 +3595,21 @@
       "source": "estimation"
     },
     "nutritionPer100g": {
+      "per100g": true,
       "kcal": 498,
       "proteinG": 18,
-      "lipidesG": 46,
       "glucidesG": 3,
-      "selG": 3.6
+      "sucresG": 2.5,
+      "lipidesG": 46,
+      "satureesG": 18,
+      "fibresG": null,
+      "selG": 3.6,
+      "nutritionSource": "open-food-facts",
+      "sourceFoodName": "CHORIZO Doux",
+      "sourceId": "3181450100599",
+      "matchConfidence": "high",
+      "sourceVersion": "Open Food Facts (export API, 2026-08-08)",
+      "importDate": "2026-08-08"
     },
     "offCode": "3181450100599"
   },
@@ -2670,6 +3637,23 @@
     "easyToCook": true,
     "priceInfo": {
       "source": "estimation"
+    },
+    "nutritionPer100g": {
+      "per100g": true,
+      "kcal": 110,
+      "proteinG": 23.4,
+      "glucidesG": 0,
+      "sucresG": null,
+      "lipidesG": 1.5,
+      "satureesG": 0.44,
+      "fibresG": 0,
+      "selG": 0.11,
+      "nutritionSource": "ciqual-2025",
+      "sourceFoodName": "Poulet, filet sans peau cru",
+      "sourceId": "36017",
+      "matchConfidence": "exact",
+      "sourceVersion": "Anses, 2025, Table de composition nutritionnelle des aliments Ciqual (édition 2025-11-03)",
+      "importDate": "2026-08-08"
     }
   },
   {
@@ -2698,11 +3682,21 @@
       "source": "estimation"
     },
     "nutritionPer100g": {
+      "per100g": true,
       "kcal": 307,
       "proteinG": 15,
-      "lipidesG": 27,
       "glucidesG": 0,
-      "selG": 0.35
+      "sucresG": 0,
+      "lipidesG": 27,
+      "satureesG": 9,
+      "fibresG": 0,
+      "selG": 0.35,
+      "nutritionSource": "open-food-facts",
+      "sourceFoodName": "Côtelettes d'agneau",
+      "sourceId": "0211060052940",
+      "matchConfidence": "high",
+      "sourceVersion": "Open Food Facts (export API, 2026-08-08)",
+      "importDate": "2026-08-08"
     },
     "offCode": "0211060052940"
   },
@@ -2734,6 +3728,23 @@
     "gramsPerServing": 80,
     "priceInfo": {
       "source": "open-prices"
+    },
+    "nutritionPer100g": {
+      "per100g": true,
+      "kcal": 353,
+      "proteinG": 11.8,
+      "glucidesG": 67.6,
+      "sucresG": 1.8,
+      "lipidesG": 2.2,
+      "satureesG": 0.36,
+      "fibresG": 6.1,
+      "selG": 0.016,
+      "nutritionSource": "ciqual-2025",
+      "sourceFoodName": "Pâtes sèches, au blé complet, crues",
+      "sourceId": "9870",
+      "matchConfidence": "exact",
+      "sourceVersion": "Anses, 2025, Table de composition nutritionnelle des aliments Ciqual (édition 2025-11-03)",
+      "importDate": "2026-08-08"
     }
   },
   {
@@ -2765,11 +3776,21 @@
       "source": "open-prices"
     },
     "nutritionPer100g": {
+      "per100g": true,
       "kcal": 359,
       "proteinG": 13,
-      "lipidesG": 2,
       "glucidesG": 71,
-      "selG": 0.01
+      "sucresG": 3.5,
+      "lipidesG": 2,
+      "satureesG": 0.5,
+      "fibresG": 3,
+      "selG": 0.01,
+      "nutritionSource": "open-food-facts",
+      "sourceFoodName": "Spaghetti n°5",
+      "sourceId": "8076800195057",
+      "matchConfidence": "high",
+      "sourceVersion": "Open Food Facts (export API, 2026-08-08)",
+      "importDate": "2026-08-08"
     },
     "offCode": "8076800195057"
   },
@@ -2831,11 +3852,21 @@
       "source": "estimation"
     },
     "nutritionPer100g": {
+      "per100g": true,
       "kcal": 360,
       "proteinG": 7.7,
-      "lipidesG": 2.6,
       "glucidesG": 75,
-      "selG": 0
+      "sucresG": 0.5,
+      "lipidesG": 2.6,
+      "satureesG": 0.5,
+      "fibresG": 2.9,
+      "selG": 0,
+      "nutritionSource": "open-food-facts",
+      "sourceFoodName": "Riz complet",
+      "sourceId": "3564700444207",
+      "matchConfidence": "high",
+      "sourceVersion": "Open Food Facts (export API, 2026-08-08)",
+      "importDate": "2026-08-08"
     },
     "offCode": "3564700444207"
   },
@@ -2869,11 +3900,21 @@
       "source": "open-prices"
     },
     "nutritionPer100g": {
+      "per100g": true,
       "kcal": 355,
       "proteinG": 6.3,
-      "lipidesG": 1,
       "glucidesG": 79,
-      "selG": 0
+      "sucresG": 0.8,
+      "lipidesG": 1,
+      "satureesG": 0.1,
+      "fibresG": 2,
+      "selG": 0,
+      "nutritionSource": "open-food-facts",
+      "sourceFoodName": "Polenta",
+      "sourceId": "3600900021890",
+      "matchConfidence": "high",
+      "sourceVersion": "Open Food Facts (export API, 2026-08-08)",
+      "importDate": "2026-08-08"
     },
     "offCode": "3600900021890"
   },
@@ -2908,11 +3949,21 @@
       "source": "estimation"
     },
     "nutritionPer100g": {
+      "per100g": true,
       "kcal": 303,
       "proteinG": 11,
-      "lipidesG": 9,
       "glucidesG": 41,
-      "selG": 0.9
+      "sucresG": 3.5,
+      "lipidesG": 9,
+      "satureesG": 1,
+      "fibresG": 7,
+      "selG": 0.9,
+      "nutritionSource": "open-food-facts",
+      "sourceFoodName": "Beau & bon à la farine complète de blé",
+      "sourceId": "3228857001101",
+      "matchConfidence": "high",
+      "sourceVersion": "Open Food Facts (export API, 2026-08-08)",
+      "importDate": "2026-08-08"
     },
     "offCode": "3228857001101"
   },
@@ -2945,11 +3996,21 @@
       "source": "estimation"
     },
     "nutritionPer100g": {
+      "per100g": true,
       "kcal": 378,
       "proteinG": 7.1,
-      "lipidesG": 3.2,
       "glucidesG": 78,
-      "selG": 0.7
+      "sucresG": 0.6,
+      "lipidesG": 3.2,
+      "satureesG": 0.8,
+      "fibresG": 4.5,
+      "selG": 0.7,
+      "nutritionSource": "open-food-facts",
+      "sourceFoodName": "Tartines crac’form farine avoine et riz sans gluten sans lactose",
+      "sourceId": "3175681281981",
+      "matchConfidence": "high",
+      "sourceVersion": "Open Food Facts (export API, 2026-08-08)",
+      "importDate": "2026-08-08"
     },
     "offCode": "3175681281981"
   },
@@ -2979,11 +4040,21 @@
       "source": "estimation"
     },
     "nutritionPer100g": {
+      "per100g": true,
       "kcal": 80,
       "proteinG": 0,
-      "lipidesG": 0,
       "glucidesG": 20,
-      "selG": 54.6
+      "sucresG": 0,
+      "lipidesG": 0,
+      "satureesG": 0,
+      "fibresG": 0,
+      "selG": 54.6,
+      "nutritionSource": "open-food-facts",
+      "sourceFoodName": "Levure chimique",
+      "sourceId": "3179140163818",
+      "matchConfidence": "high",
+      "sourceVersion": "Open Food Facts (export API, 2026-08-08)",
+      "importDate": "2026-08-08"
     },
     "offCode": "3179140163818"
   },
@@ -3013,6 +4084,23 @@
     "gramsPerServing": 120,
     "priceInfo": {
       "source": "open-prices"
+    },
+    "nutritionPer100g": {
+      "per100g": true,
+      "kcal": 23.2,
+      "proteinG": 1.34,
+      "glucidesG": 2.07,
+      "sucresG": 0.77,
+      "lipidesG": 0.32,
+      "satureesG": 0.083,
+      "fibresG": 3.36,
+      "selG": 0.65,
+      "nutritionSource": "ciqual-2025",
+      "sourceFoodName": "Haricot vert, appertisé, égoutté",
+      "sourceId": "20062",
+      "matchConfidence": "exact",
+      "sourceVersion": "Anses, 2025, Table de composition nutritionnelle des aliments Ciqual (édition 2025-11-03)",
+      "importDate": "2026-08-08"
     }
   },
   {
@@ -3041,6 +4129,23 @@
     "gramsPerServing": 120,
     "priceInfo": {
       "source": "open-prices"
+    },
+    "nutritionPer100g": {
+      "per100g": true,
+      "kcal": 53.8,
+      "proteinG": 2.52,
+      "glucidesG": 8.58,
+      "sucresG": 3.32,
+      "lipidesG": 0.37,
+      "satureesG": 0.074,
+      "fibresG": 3.08,
+      "selG": 0.62,
+      "nutritionSource": "ciqual-2025",
+      "sourceFoodName": "Petits pois et carottes, appertisés, égouttés",
+      "sourceId": "20093",
+      "matchConfidence": "exact",
+      "sourceVersion": "Anses, 2025, Table de composition nutritionnelle des aliments Ciqual (édition 2025-11-03)",
+      "importDate": "2026-08-08"
     }
   },
   {
@@ -3069,6 +4174,23 @@
     "gramsPerServing": 100,
     "priceInfo": {
       "source": "open-prices"
+    },
+    "nutritionPer100g": {
+      "per100g": true,
+      "kcal": 18.3,
+      "proteinG": 2,
+      "glucidesG": 0.64,
+      "sucresG": 0,
+      "lipidesG": 0.37,
+      "satureesG": 0.065,
+      "fibresG": 2.5,
+      "selG": 0.63,
+      "nutritionSource": "ciqual-2025",
+      "sourceFoodName": "Champignon de Paris ou champignon de couche,\nappertisé, égoutté",
+      "sourceId": "20079",
+      "matchConfidence": "exact",
+      "sourceVersion": "Anses, 2025, Table de composition nutritionnelle des aliments Ciqual (édition 2025-11-03)",
+      "importDate": "2026-08-08"
     }
   },
   {
@@ -3095,11 +4217,21 @@
       "source": "open-prices"
     },
     "nutritionPer100g": {
+      "per100g": true,
       "kcal": 16,
       "proteinG": 2.2,
-      "lipidesG": 0.3,
       "glucidesG": 1.1,
-      "selG": 3.16
+      "sucresG": 0.7,
+      "lipidesG": 0.3,
+      "satureesG": 0.1,
+      "fibresG": null,
+      "selG": 3.16,
+      "nutritionSource": "open-food-facts",
+      "sourceFoodName": "Cornichons",
+      "sourceId": "6111184000541",
+      "matchConfidence": "high",
+      "sourceVersion": "Open Food Facts (export API, 2026-08-08)",
+      "importDate": "2026-08-08"
     },
     "offCode": "6111184000541"
   },
@@ -3127,11 +4259,21 @@
       "source": "open-prices"
     },
     "nutritionPer100g": {
+      "per100g": true,
       "kcal": 108,
       "proteinG": 4,
-      "lipidesG": 2,
       "glucidesG": 6.4,
-      "selG": 12
+      "sucresG": 5,
+      "lipidesG": 2,
+      "satureesG": 0.4,
+      "fibresG": 7,
+      "selG": 12,
+      "nutritionSource": "open-food-facts",
+      "sourceFoodName": "Harissa",
+      "sourceId": "3276650100590",
+      "matchConfidence": "high",
+      "sourceVersion": "Open Food Facts (export API, 2026-08-08)",
+      "importDate": "2026-08-08"
     },
     "offCode": "3276650100590"
   },
@@ -3159,6 +4301,23 @@
     "isCondiment": true,
     "priceInfo": {
       "source": "estimation"
+    },
+    "nutritionPer100g": {
+      "per100g": true,
+      "kcal": 427,
+      "proteinG": 17.8,
+      "glucidesG": 33.7,
+      "sucresG": 2.25,
+      "lipidesG": 22.3,
+      "satureesG": 1.54,
+      "fibresG": 10.5,
+      "selG": 0.42,
+      "nutritionSource": "ciqual-2025",
+      "sourceFoodName": "Cumin, graine",
+      "sourceId": "11042",
+      "matchConfidence": "high",
+      "sourceVersion": "Anses, 2025, Table de composition nutritionnelle des aliments Ciqual (édition 2025-11-03)",
+      "importDate": "2026-08-08"
     }
   },
   {
@@ -3187,11 +4346,21 @@
       "source": "estimation"
     },
     "nutritionPer100g": {
+      "per100g": true,
       "kcal": 479,
       "proteinG": 6.1,
-      "lipidesG": 22,
       "glucidesG": 60,
-      "selG": 1.1
+      "sucresG": 2.9,
+      "lipidesG": 22,
+      "satureesG": 1.9,
+      "fibresG": 6,
+      "selG": 1.1,
+      "nutritionSource": "open-food-facts",
+      "sourceFoodName": "paprika",
+      "sourceId": "3168930173250",
+      "matchConfidence": "high",
+      "sourceVersion": "Open Food Facts (export API, 2026-08-08)",
+      "importDate": "2026-08-08"
     },
     "offCode": "3168930173250"
   },
@@ -3219,6 +4388,23 @@
     "isCondiment": true,
     "priceInfo": {
       "source": "open-prices"
+    },
+    "nutritionPer100g": {
+      "per100g": true,
+      "kcal": 331,
+      "proteinG": 13.3,
+      "glucidesG": 39.9,
+      "sucresG": 0.64,
+      "lipidesG": 7.5,
+      "satureesG": 2.9,
+      "fibresG": 25.3,
+      "selG": 0.036,
+      "nutritionSource": "ciqual-2025",
+      "sourceFoodName": "Poivre noir, poudre",
+      "sourceId": "11015",
+      "matchConfidence": "exact",
+      "sourceVersion": "Anses, 2025, Table de composition nutritionnelle des aliments Ciqual (édition 2025-11-03)",
+      "importDate": "2026-08-08"
     }
   },
   {
@@ -3245,6 +4431,23 @@
     "isCondiment": true,
     "priceInfo": {
       "source": "estimation"
+    },
+    "nutritionPer100g": {
+      "per100g": true,
+      "kcal": 283,
+      "proteinG": 11.5,
+      "glucidesG": 23.1,
+      "sucresG": null,
+      "lipidesG": 7.2,
+      "satureesG": 1.88,
+      "fibresG": 40.1,
+      "selG": 0.088,
+      "nutritionSource": "ciqual-2025",
+      "sourceFoodName": "Herbes de Provence, séchées",
+      "sourceId": "11060",
+      "matchConfidence": "exact",
+      "sourceVersion": "Anses, 2025, Table de composition nutritionnelle des aliments Ciqual (édition 2025-11-03)",
+      "importDate": "2026-08-08"
     }
   },
   {
@@ -3273,11 +4476,21 @@
       "source": "open-prices"
     },
     "nutritionPer100g": {
+      "per100g": true,
       "kcal": 102,
       "proteinG": 1.2,
-      "lipidesG": 0.1,
       "glucidesG": 23.2,
-      "selG": 1.8
+      "sucresG": 22.8,
+      "lipidesG": 0.1,
+      "satureesG": 0.1,
+      "fibresG": null,
+      "selG": 1.8,
+      "nutritionSource": "open-food-facts",
+      "sourceFoodName": "Tomato Ketchup",
+      "sourceId": "87157215",
+      "matchConfidence": "high",
+      "sourceVersion": "Open Food Facts (export API, 2026-08-08)",
+      "importDate": "2026-08-08"
     },
     "offCode": "87157215"
   },
@@ -3307,11 +4520,21 @@
       "source": "open-prices"
     },
     "nutritionPer100g": {
+      "per100g": true,
       "kcal": 197,
       "proteinG": 1,
-      "lipidesG": 0,
       "glucidesG": 42,
-      "selG": 0.1
+      "sucresG": 42,
+      "lipidesG": 0,
+      "satureesG": 0,
+      "fibresG": null,
+      "selG": 0.1,
+      "nutritionSource": "open-food-facts",
+      "sourceFoodName": "Vinaigre balsamique",
+      "sourceId": "8002470029217",
+      "matchConfidence": "high",
+      "sourceVersion": "Open Food Facts (export API, 2026-08-08)",
+      "importDate": "2026-08-08"
     },
     "offCode": "8002470029217"
   },
@@ -3339,11 +4562,21 @@
       "source": "open-prices"
     },
     "nutritionPer100g": {
+      "per100g": true,
       "kcal": 30,
       "proteinG": 1.2,
-      "lipidesG": 0.6,
       "glucidesG": 4.9,
-      "selG": 2
+      "sucresG": 2.8,
+      "lipidesG": 0.6,
+      "satureesG": 0.1,
+      "fibresG": 2.2,
+      "selG": 2,
+      "nutritionSource": "open-food-facts",
+      "sourceFoodName": "Tabasco",
+      "sourceId": "8410422407011",
+      "matchConfidence": "high",
+      "sourceVersion": "Open Food Facts (export API, 2026-08-08)",
+      "importDate": "2026-08-08"
     },
     "offCode": "8410422407011"
   },
@@ -3375,11 +4608,21 @@
       "source": "open-prices"
     },
     "nutritionPer100g": {
+      "per100g": true,
       "kcal": 182,
       "proteinG": 2,
-      "lipidesG": 18,
       "glucidesG": 2.9,
-      "selG": 0.03
+      "sucresG": 2.2,
+      "lipidesG": 18,
+      "satureesG": 17,
+      "fibresG": 0.5,
+      "selG": 0.03,
+      "nutritionSource": "open-food-facts",
+      "sourceFoodName": "Lait de coco",
+      "sourceId": "8886303210238",
+      "matchConfidence": "high",
+      "sourceVersion": "Open Food Facts (export API, 2026-08-08)",
+      "importDate": "2026-08-08"
     },
     "offCode": "8886303210238"
   },
@@ -3411,6 +4654,23 @@
     "gramsPerServing": 40,
     "priceInfo": {
       "source": "open-prices"
+    },
+    "nutritionPer100g": {
+      "per100g": true,
+      "kcal": 393,
+      "proteinG": 8.19,
+      "glucidesG": 74.7,
+      "sucresG": 22.5,
+      "lipidesG": 5.1,
+      "satureesG": 1.36,
+      "fibresG": 7.1,
+      "selG": 0.3,
+      "nutritionSource": "ciqual-2025",
+      "sourceFoodName": "Céréales pour petit déjeuner chocolatées, non\nfourrées, enrichies en vitamines et minéraux",
+      "sourceId": "32001",
+      "matchConfidence": "high",
+      "sourceVersion": "Anses, 2025, Table de composition nutritionnelle des aliments Ciqual (édition 2025-11-03)",
+      "importDate": "2026-08-08"
     }
   },
   {
@@ -3442,11 +4702,21 @@
       "source": "open-prices"
     },
     "nutritionPer100g": {
+      "per100g": true,
       "kcal": 358,
       "proteinG": 11,
-      "lipidesG": 6,
       "glucidesG": 60,
-      "selG": 0.02
+      "sucresG": 10,
+      "lipidesG": 6,
+      "satureesG": 2.5,
+      "fibresG": 10,
+      "selG": 0.02,
+      "nutritionSource": "open-food-facts",
+      "sourceFoodName": "Muesli aux fruits",
+      "sourceId": "3229820116716",
+      "matchConfidence": "high",
+      "sourceVersion": "Open Food Facts (export API, 2026-08-08)",
+      "importDate": "2026-08-08"
     },
     "offCode": "3229820116716"
   },
@@ -3479,11 +4749,21 @@
       "source": "open-prices"
     },
     "nutritionPer100g": {
+      "per100g": true,
       "kcal": 268,
       "proteinG": 0,
-      "lipidesG": 0,
       "glucidesG": 67,
-      "selG": 0.02
+      "sucresG": 66,
+      "lipidesG": 0,
+      "satureesG": 0,
+      "fibresG": null,
+      "selG": 0.02,
+      "nutritionSource": "open-food-facts",
+      "sourceFoodName": "Sirop d'érable",
+      "sourceId": "3088542500285",
+      "matchConfidence": "high",
+      "sourceVersion": "Open Food Facts (export API, 2026-08-08)",
+      "importDate": "2026-08-08"
     },
     "offCode": "3088542500285"
   },
@@ -3515,11 +4795,21 @@
       "source": "estimation"
     },
     "nutritionPer100g": {
+      "per100g": true,
       "kcal": 46,
       "proteinG": 0.2,
-      "lipidesG": 0.1,
       "glucidesG": 11,
-      "selG": 0.03
+      "sucresG": 11,
+      "lipidesG": 0.1,
+      "satureesG": 0,
+      "fibresG": 0,
+      "selG": 0.03,
+      "nutritionSource": "open-food-facts",
+      "sourceFoodName": "Jus de pommes pressées",
+      "sourceId": "3045320104165",
+      "matchConfidence": "high",
+      "sourceVersion": "Open Food Facts (export API, 2026-08-08)",
+      "importDate": "2026-08-08"
     },
     "offCode": "3045320104165"
   },
@@ -3551,11 +4841,21 @@
       "source": "estimation"
     },
     "nutritionPer100g": {
+      "per100g": true,
       "kcal": 0,
       "proteinG": 0,
-      "lipidesG": 0,
       "glucidesG": 0,
-      "selG": 0.01
+      "sucresG": 0,
+      "lipidesG": 0,
+      "satureesG": 0,
+      "fibresG": 0,
+      "selG": 0.01,
+      "nutritionSource": "open-food-facts",
+      "sourceFoodName": "Eau minérale naturelle gazeuse 50cl PET",
+      "sourceId": "8002270015328",
+      "matchConfidence": "high",
+      "sourceVersion": "Open Food Facts (export API, 2026-08-08)",
+      "importDate": "2026-08-08"
     },
     "offCode": "8002270015328"
   },
@@ -3587,11 +4887,21 @@
       "source": "estimation"
     },
     "nutritionPer100g": {
+      "per100g": true,
       "kcal": 284,
       "proteinG": 0,
-      "lipidesG": 0,
       "glucidesG": 71,
-      "selG": 0.02
+      "sucresG": 71,
+      "lipidesG": 0,
+      "satureesG": 0,
+      "fibresG": null,
+      "selG": 0.02,
+      "nutritionSource": "open-food-facts",
+      "sourceFoodName": "Sirop de menthe",
+      "sourceId": "3560070491476",
+      "matchConfidence": "high",
+      "sourceVersion": "Open Food Facts (export API, 2026-08-08)",
+      "importDate": "2026-08-08"
     },
     "offCode": "3560070491476"
   },
@@ -3625,13 +4935,22 @@
       "source": "open-prices"
     },
     "nutritionPer100g": {
-      "kcal": 453,
-      "proteinG": 13,
-      "lipidesG": 19,
-      "glucidesG": 56.7,
-      "selG": 1.1
-    },
-    "offCode": "3336971805021"
+      "per100g": true,
+      "kcal": 532,
+      "proteinG": 6,
+      "glucidesG": 51,
+      "sucresG": 1.49,
+      "lipidesG": 32.7,
+      "satureesG": 2.92,
+      "fibresG": 4.7,
+      "selG": 1.35,
+      "nutritionSource": "ciqual-2025",
+      "sourceFoodName": "Chips de pommes de terre nature ou aromatisées",
+      "sourceId": "4004",
+      "matchConfidence": "high",
+      "sourceVersion": "Anses, 2025, Table de composition nutritionnelle des aliments Ciqual (édition 2025-11-03)",
+      "importDate": "2026-08-08"
+    }
   },
   {
     "id": "barres-cereales",
@@ -3695,11 +5014,21 @@
       "source": "open-prices"
     },
     "nutritionPer100g": {
+      "per100g": true,
       "kcal": 397,
       "proteinG": 0.1,
-      "lipidesG": 0.5,
       "glucidesG": 97.5,
-      "selG": 0.03
+      "sucresG": 94.5,
+      "lipidesG": 0.5,
+      "satureesG": 0.5,
+      "fibresG": null,
+      "selG": 0.03,
+      "nutritionSource": "open-food-facts",
+      "sourceFoodName": "Bonbons Tic Tac x110 pastilles MENTHE - 54g",
+      "sourceId": "8000500166697",
+      "matchConfidence": "high",
+      "sourceVersion": "Open Food Facts (export API, 2026-08-08)",
+      "importDate": "2026-08-08"
     },
     "offCode": "8000500166697"
   },
@@ -3733,11 +5062,21 @@
       "source": "open-prices"
     },
     "nutritionPer100g": {
+      "per100g": true,
       "kcal": 254,
       "proteinG": 7.4,
-      "lipidesG": 19.8,
       "glucidesG": 7.5,
-      "selG": 1.18
+      "sucresG": 0.7,
+      "lipidesG": 19.8,
+      "satureesG": 2,
+      "fibresG": 8.2,
+      "selG": 1.18,
+      "nutritionSource": "open-food-facts",
+      "sourceFoodName": "Houmous",
+      "sourceId": "4056489758716",
+      "matchConfidence": "high",
+      "sourceVersion": "Open Food Facts (export API, 2026-08-08)",
+      "importDate": "2026-08-08"
     },
     "offCode": "4056489758716"
   },
@@ -3769,11 +5108,21 @@
       "source": "estimation"
     },
     "nutritionPer100g": {
+      "per100g": true,
       "kcal": 666,
       "proteinG": 26.4,
-      "lipidesG": 58.7,
       "glucidesG": 4.1,
-      "selG": 0.03
+      "sucresG": 1.2,
+      "lipidesG": 58.7,
+      "satureesG": 9.3,
+      "fibresG": 8,
+      "selG": 0.03,
+      "nutritionSource": "open-food-facts",
+      "sourceFoodName": "Tahini",
+      "sourceId": "5000362110206",
+      "matchConfidence": "high",
+      "sourceVersion": "Open Food Facts (export API, 2026-08-08)",
+      "importDate": "2026-08-08"
     },
     "offCode": "5000362110206"
   },
@@ -3805,11 +5154,21 @@
       "source": "estimation"
     },
     "nutritionPer100g": {
+      "per100g": true,
       "kcal": 363,
       "proteinG": 18,
-      "lipidesG": 31,
       "glucidesG": 5,
-      "selG": 0.04
+      "sucresG": 1.6,
+      "lipidesG": 31,
+      "satureesG": 3.3,
+      "fibresG": 35,
+      "selG": 0.04,
+      "nutritionSource": "open-food-facts",
+      "sourceFoodName": "Graines de chia",
+      "sourceId": "3273120027364",
+      "matchConfidence": "high",
+      "sourceVersion": "Open Food Facts (export API, 2026-08-08)",
+      "importDate": "2026-08-08"
     },
     "offCode": "3273120027364"
   },
@@ -3839,6 +5198,23 @@
     "gramsPerServing": 15,
     "priceInfo": {
       "source": "estimation"
+    },
+    "nutritionPer100g": {
+      "per100g": true,
+      "kcal": 528,
+      "proteinG": 19,
+      "glucidesG": 6.49,
+      "sucresG": 1.64,
+      "lipidesG": 40.3,
+      "satureesG": 4.26,
+      "fibresG": 24.4,
+      "selG": 0.1,
+      "nutritionSource": "ciqual-2025",
+      "sourceFoodName": "Lin, graine",
+      "sourceId": "15034",
+      "matchConfidence": "high",
+      "sourceVersion": "Anses, 2025, Table de composition nutritionnelle des aliments Ciqual (édition 2025-11-03)",
+      "importDate": "2026-08-08"
     }
   },
   {
@@ -3871,11 +5247,21 @@
       "source": "open-prices"
     },
     "nutritionPer100g": {
+      "per100g": true,
       "kcal": 712,
       "proteinG": 15.5,
-      "lipidesG": 69.1,
       "glucidesG": 3.7,
-      "selG": 0.02
+      "sucresG": 3,
+      "lipidesG": 69.1,
+      "satureesG": 6.8,
+      "fibresG": 6.8,
+      "selG": 0.02,
+      "nutritionSource": "open-food-facts",
+      "sourceFoodName": "Cerneaux de Noix",
+      "sourceId": "20005733",
+      "matchConfidence": "high",
+      "sourceVersion": "Open Food Facts (export API, 2026-08-08)",
+      "importDate": "2026-08-08"
     },
     "offCode": "20005733"
   },
@@ -3909,11 +5295,21 @@
       "source": "open-prices"
     },
     "nutritionPer100g": {
+      "per100g": true,
       "kcal": 614,
       "proteinG": 23.6,
-      "lipidesG": 51.6,
       "glucidesG": 7.8,
-      "selG": 1.5
+      "sucresG": 7.7,
+      "lipidesG": 51.6,
+      "satureesG": 6.2,
+      "fibresG": 12.1,
+      "selG": 1.5,
+      "nutritionSource": "open-food-facts",
+      "sourceFoodName": "Pistaches grillées et salées",
+      "sourceId": "4335619014442",
+      "matchConfidence": "high",
+      "sourceVersion": "Open Food Facts (export API, 2026-08-08)",
+      "importDate": "2026-08-08"
     },
     "offCode": "4335619014442"
   },
@@ -3945,6 +5341,23 @@
     "gramsPerServing": 30,
     "priceInfo": {
       "source": "estimation"
+    },
+    "nutritionPer100g": {
+      "per100g": true,
+      "kcal": 322,
+      "proteinG": 3,
+      "glucidesG": 73.2,
+      "sucresG": 70.3,
+      "lipidesG": 0.9,
+      "satureesG": 0.31,
+      "fibresG": 4.2,
+      "selG": 0.013,
+      "nutritionSource": "ciqual-2025",
+      "sourceFoodName": "Raisin sec",
+      "sourceId": "13046",
+      "matchConfidence": "exact",
+      "sourceVersion": "Anses, 2025, Table de composition nutritionnelle des aliments Ciqual (édition 2025-11-03)",
+      "importDate": "2026-08-08"
     }
   },
   {
@@ -3975,11 +5388,21 @@
       "source": "estimation"
     },
     "nutritionPer100g": {
+      "per100g": true,
       "kcal": 287,
       "proteinG": 2,
-      "lipidesG": 0.3,
       "glucidesG": 64,
-      "selG": 0.04
+      "sucresG": 57,
+      "lipidesG": 0.3,
+      "satureesG": 0.2,
+      "fibresG": 8,
+      "selG": 0.04,
+      "nutritionSource": "open-food-facts",
+      "sourceFoodName": "Dattes Deglet Nour de Tunisie",
+      "sourceId": "3068233500404",
+      "matchConfidence": "high",
+      "sourceVersion": "Open Food Facts (export API, 2026-08-08)",
+      "importDate": "2026-08-08"
     },
     "offCode": "3068233500404"
   },
@@ -4010,11 +5433,21 @@
       "source": "open-prices"
     },
     "nutritionPer100g": {
+      "per100g": true,
       "kcal": 48,
       "proteinG": 1.1,
-      "lipidesG": 1.5,
       "glucidesG": 7.2,
-      "selG": 0.1
+      "sucresG": 3.5,
+      "lipidesG": 1.5,
+      "satureesG": 0.2,
+      "fibresG": 0.8,
+      "selG": 0.1,
+      "nutritionSource": "open-food-facts",
+      "sourceFoodName": "Lait d'Avoine",
+      "sourceId": "7394376615979",
+      "matchConfidence": "high",
+      "sourceVersion": "Open Food Facts (export API, 2026-08-08)",
+      "importDate": "2026-08-08"
     },
     "offCode": "7394376615979"
   },
@@ -4049,11 +5482,21 @@
       "source": "open-prices"
     },
     "nutritionPer100g": {
+      "per100g": true,
       "kcal": 29,
       "proteinG": 0.5,
-      "lipidesG": 1.2,
       "glucidesG": 4.6,
-      "selG": 0.06
+      "sucresG": 3.3,
+      "lipidesG": 1.2,
+      "satureesG": 0.2,
+      "fibresG": null,
+      "selG": 0.06,
+      "nutritionSource": "open-food-facts",
+      "sourceFoodName": "Lait d'amande",
+      "sourceId": "3229820787008",
+      "matchConfidence": "high",
+      "sourceVersion": "Open Food Facts (export API, 2026-08-08)",
+      "importDate": "2026-08-08"
     },
     "offCode": "3229820787008"
   },
@@ -4088,11 +5531,21 @@
       "source": "open-prices"
     },
     "nutritionPer100g": {
+      "per100g": true,
       "kcal": 129,
       "proteinG": 3,
-      "lipidesG": 11,
       "glucidesG": 4.2,
-      "selG": 1.3
+      "sucresG": 0.4,
+      "lipidesG": 11,
+      "satureesG": 5.5,
+      "fibresG": 0.5,
+      "selG": 1.3,
+      "nutritionSource": "open-food-facts",
+      "sourceFoodName": "Sauce Carbonara",
+      "sourceId": "3038359010507",
+      "matchConfidence": "high",
+      "sourceVersion": "Open Food Facts (export API, 2026-08-08)",
+      "importDate": "2026-08-08"
     },
     "offCode": "3038359010507"
   },
@@ -4124,11 +5577,21 @@
       "source": "open-prices"
     },
     "nutritionPer100g": {
+      "per100g": true,
       "kcal": 1,
       "proteinG": 0.2,
-      "lipidesG": 0,
       "glucidesG": 0.3,
-      "selG": 0
+      "sucresG": 0,
+      "lipidesG": 0,
+      "satureesG": 0,
+      "fibresG": null,
+      "selG": 0,
+      "nutritionSource": "open-food-facts",
+      "sourceFoodName": "Senseo décaféiné",
+      "sourceId": "3228470065290",
+      "matchConfidence": "high",
+      "sourceVersion": "Open Food Facts (export API, 2026-08-08)",
+      "importDate": "2026-08-08"
     },
     "offCode": "3228470065290"
   },
@@ -4158,6 +5621,23 @@
     "gramsPerServing": 80,
     "priceInfo": {
       "source": "open-prices"
+    },
+    "nutritionPer100g": {
+      "per100g": true,
+      "kcal": 60.9,
+      "proteinG": 0.88,
+      "glucidesG": 11,
+      "sucresG": 8.9,
+      "lipidesG": 0.6,
+      "satureesG": 0.13,
+      "fibresG": 2.4,
+      "selG": 0.006,
+      "nutritionSource": "ciqual-2025",
+      "sourceFoodName": "Kiwi, chair sans peau, avec pépins, cru",
+      "sourceId": "13021",
+      "matchConfidence": "exact",
+      "sourceVersion": "Anses, 2025, Table de composition nutritionnelle des aliments Ciqual (édition 2025-11-03)",
+      "importDate": "2026-08-08"
     }
   },
   {
@@ -4186,6 +5666,23 @@
     "gramsPerServing": 150,
     "priceInfo": {
       "source": "estimation"
+    },
+    "nutritionPer100g": {
+      "per100g": true,
+      "kcal": 51.6,
+      "proteinG": 0.25,
+      "glucidesG": 11.7,
+      "sucresG": 10.5,
+      "lipidesG": 0.25,
+      "satureesG": 0.005,
+      "fibresG": 1.2,
+      "selG": 0.006,
+      "nutritionSource": "ciqual-2025",
+      "sourceFoodName": "Ananas, chair sans peau, cru",
+      "sourceId": "13002",
+      "matchConfidence": "exact",
+      "sourceVersion": "Anses, 2025, Table de composition nutritionnelle des aliments Ciqual (édition 2025-11-03)",
+      "importDate": "2026-08-08"
     }
   },
   {
@@ -4214,6 +5711,23 @@
     "gramsPerServing": 200,
     "priceInfo": {
       "source": "estimation"
+    },
+    "nutritionPer100g": {
+      "per100g": true,
+      "kcal": 71.1,
+      "proteinG": 0.63,
+      "glucidesG": 14.3,
+      "sucresG": 12.9,
+      "lipidesG": 0.25,
+      "satureesG": 0.005,
+      "fibresG": 1.6,
+      "selG": 0.006,
+      "nutritionSource": "ciqual-2025",
+      "sourceFoodName": "Mangue, chair sans peau, sans noyau, crue",
+      "sourceId": "13025",
+      "matchConfidence": "exact",
+      "sourceVersion": "Anses, 2025, Table de composition nutritionnelle des aliments Ciqual (édition 2025-11-03)",
+      "importDate": "2026-08-08"
     }
   },
   {
@@ -4244,11 +5758,21 @@
       "source": "estimation"
     },
     "nutritionPer100g": {
+      "per100g": true,
       "kcal": 10,
       "proteinG": 0,
-      "lipidesG": 0,
       "glucidesG": 1.9,
-      "selG": 0
+      "sucresG": 1.8,
+      "lipidesG": 0,
+      "satureesG": 0,
+      "fibresG": 0,
+      "selG": 0,
+      "nutritionSource": "open-food-facts",
+      "sourceFoodName": "Pasteque",
+      "sourceId": "3760304101021",
+      "matchConfidence": "high",
+      "sourceVersion": "Open Food Facts (export API, 2026-08-08)",
+      "importDate": "2026-08-08"
     },
     "offCode": "3760304101021"
   },
@@ -4278,6 +5802,23 @@
     "gramsPerServing": 125,
     "priceInfo": {
       "source": "estimation"
+    },
+    "nutritionPer100g": {
+      "per100g": true,
+      "kcal": 35.1,
+      "proteinG": 0.63,
+      "glucidesG": 6.03,
+      "sucresG": 5.6,
+      "lipidesG": 0.25,
+      "satureesG": 0.005,
+      "fibresG": 3.8,
+      "selG": 0.006,
+      "nutritionSource": "ciqual-2025",
+      "sourceFoodName": "Fraise, crue",
+      "sourceId": "13014",
+      "matchConfidence": "exact",
+      "sourceVersion": "Anses, 2025, Table de composition nutritionnelle des aliments Ciqual (édition 2025-11-03)",
+      "importDate": "2026-08-08"
     }
   },
   {
@@ -4306,6 +5847,23 @@
     "gramsPerServing": 125,
     "priceInfo": {
       "source": "estimation"
+    },
+    "nutritionPer100g": {
+      "per100g": true,
+      "kcal": 47.9,
+      "proteinG": 1.19,
+      "glucidesG": 5.83,
+      "sucresG": 5.4,
+      "lipidesG": 0.8,
+      "satureesG": 0.13,
+      "fibresG": 4.3,
+      "selG": 0.006,
+      "nutritionSource": "ciqual-2025",
+      "sourceFoodName": "Framboise, crue",
+      "sourceId": "13015",
+      "matchConfidence": "exact",
+      "sourceVersion": "Anses, 2025, Table de composition nutritionnelle des aliments Ciqual (édition 2025-11-03)",
+      "importDate": "2026-08-08"
     }
   },
   {
@@ -4334,6 +5892,23 @@
     "gramsPerServing": 125,
     "priceInfo": {
       "source": "estimation"
+    },
+    "nutritionPer100g": {
+      "per100g": true,
+      "kcal": 57.7,
+      "proteinG": 0.87,
+      "glucidesG": 10.6,
+      "sucresG": 9.96,
+      "lipidesG": 0.33,
+      "satureesG": 0.028,
+      "fibresG": 2.4,
+      "selG": 0.003,
+      "nutritionSource": "ciqual-2025",
+      "sourceFoodName": "Myrtille, crue",
+      "sourceId": "13028",
+      "matchConfidence": "exact",
+      "sourceVersion": "Anses, 2025, Table de composition nutritionnelle des aliments Ciqual (édition 2025-11-03)",
+      "importDate": "2026-08-08"
     }
   },
   {
@@ -4362,6 +5937,23 @@
     "gramsPerServing": 100,
     "priceInfo": {
       "source": "estimation"
+    },
+    "nutritionPer100g": {
+      "per100g": true,
+      "kcal": 71,
+      "proteinG": 0.7,
+      "glucidesG": 16.3,
+      "sucresG": 15.4,
+      "lipidesG": 0.25,
+      "satureesG": 0.025,
+      "fibresG": 1.11,
+      "selG": 0.005,
+      "nutritionSource": "ciqual-2025",
+      "sourceFoodName": "Raisin cru (aliment moyen)",
+      "sourceId": "13395",
+      "matchConfidence": "exact",
+      "sourceVersion": "Anses, 2025, Table de composition nutritionnelle des aliments Ciqual (édition 2025-11-03)",
+      "importDate": "2026-08-08"
     }
   },
   {
@@ -4390,6 +5982,23 @@
     "gramsPerServing": 150,
     "priceInfo": {
       "source": "estimation"
+    },
+    "nutritionPer100g": {
+      "per100g": true,
+      "kcal": 56.6,
+      "proteinG": 0.36,
+      "glucidesG": 12.3,
+      "sucresG": 9.75,
+      "lipidesG": 0.27,
+      "satureesG": 0.067,
+      "fibresG": 2.9,
+      "selG": 0.004,
+      "nutritionSource": "ciqual-2025",
+      "sourceFoodName": "Poire, chair et peau, crue",
+      "sourceId": "13037",
+      "matchConfidence": "exact",
+      "sourceVersion": "Anses, 2025, Table de composition nutritionnelle des aliments Ciqual (édition 2025-11-03)",
+      "importDate": "2026-08-08"
     }
   },
   {
@@ -4418,6 +6027,23 @@
     "gramsPerServing": 200,
     "priceInfo": {
       "source": "estimation"
+    },
+    "nutritionPer100g": {
+      "per100g": true,
+      "kcal": 33.5,
+      "proteinG": 0.84,
+      "glucidesG": 5.92,
+      "sucresG": 5.87,
+      "lipidesG": 0.25,
+      "satureesG": 0.075,
+      "fibresG": 1.1,
+      "selG": 1,
+      "nutritionSource": "ciqual-2025",
+      "sourceFoodName": "Pomelo (dit Pamplemousse), chair sans peau, sans\npépins, cru",
+      "sourceId": "13040",
+      "matchConfidence": "exact",
+      "sourceVersion": "Anses, 2025, Table de composition nutritionnelle des aliments Ciqual (édition 2025-11-03)",
+      "importDate": "2026-08-08"
     }
   },
   {
@@ -4446,6 +6072,23 @@
     "gramsPerServing": 50,
     "priceInfo": {
       "source": "estimation"
+    },
+    "nutritionPer100g": {
+      "per100g": true,
+      "kcal": 45.5,
+      "proteinG": 0.81,
+      "glucidesG": 9.17,
+      "sucresG": 8.6,
+      "lipidesG": 0.25,
+      "satureesG": 0.005,
+      "fibresG": 1.7,
+      "selG": 0.006,
+      "nutritionSource": "ciqual-2025",
+      "sourceFoodName": "Clémentine ou mandarine, chair sans peau, sans\npépins, crue",
+      "sourceId": "13024",
+      "matchConfidence": "exact",
+      "sourceVersion": "Anses, 2025, Table de composition nutritionnelle des aliments Ciqual (édition 2025-11-03)",
+      "importDate": "2026-08-08"
     }
   },
   {
@@ -4474,6 +6117,23 @@
     "gramsPerServing": 50,
     "priceInfo": {
       "source": "estimation"
+    },
+    "nutritionPer100g": {
+      "per100g": true,
+      "kcal": 44.1,
+      "proteinG": 0.81,
+      "glucidesG": 9.01,
+      "sucresG": 6.7,
+      "lipidesG": 0.25,
+      "satureesG": 0.005,
+      "fibresG": 1.7,
+      "selG": 0.006,
+      "nutritionSource": "ciqual-2025",
+      "sourceFoodName": "Abricot, dénoyauté, cru",
+      "sourceId": "13000",
+      "matchConfidence": "exact",
+      "sourceVersion": "Anses, 2025, Table de composition nutritionnelle des aliments Ciqual (édition 2025-11-03)",
+      "importDate": "2026-08-08"
     }
   },
   {
@@ -4502,6 +6162,23 @@
     "gramsPerServing": 55,
     "priceInfo": {
       "source": "estimation"
+    },
+    "nutritionPer100g": {
+      "per100g": true,
+      "kcal": 51.6,
+      "proteinG": 0.7,
+      "glucidesG": 9.92,
+      "sucresG": 9.92,
+      "lipidesG": 0.28,
+      "satureesG": 0.017,
+      "fibresG": 1.4,
+      "selG": 0,
+      "nutritionSource": "ciqual-2025",
+      "sourceFoodName": "Prune, sans noyau, crue",
+      "sourceId": "13100",
+      "matchConfidence": "exact",
+      "sourceVersion": "Anses, 2025, Table de composition nutritionnelle des aliments Ciqual (édition 2025-11-03)",
+      "importDate": "2026-08-08"
     }
   },
   {
@@ -4530,6 +6207,23 @@
     "gramsPerServing": 100,
     "priceInfo": {
       "source": "estimation"
+    },
+    "nutritionPer100g": {
+      "per100g": true,
+      "kcal": 53.7,
+      "proteinG": 0.81,
+      "glucidesG": 13,
+      "sucresG": 10,
+      "lipidesG": 0.15,
+      "satureesG": 0.005,
+      "fibresG": 1.6,
+      "selG": 0.006,
+      "nutritionSource": "ciqual-2025",
+      "sourceFoodName": "Ceriser, chair et peau, sans noyau, crue",
+      "sourceId": "13008",
+      "matchConfidence": "exact",
+      "sourceVersion": "Anses, 2025, Table de composition nutritionnelle des aliments Ciqual (édition 2025-11-03)",
+      "importDate": "2026-08-08"
     }
   },
   {
@@ -4558,6 +6252,23 @@
     "gramsPerServing": 50,
     "priceInfo": {
       "source": "estimation"
+    },
+    "nutritionPer100g": {
+      "per100g": true,
+      "kcal": 67.6,
+      "proteinG": 1.19,
+      "glucidesG": 13.5,
+      "sucresG": 12.2,
+      "lipidesG": 0.25,
+      "satureesG": 0.005,
+      "fibresG": 4.1,
+      "selG": 0.013,
+      "nutritionSource": "ciqual-2025",
+      "sourceFoodName": "Figue, crue",
+      "sourceId": "13012",
+      "matchConfidence": "exact",
+      "sourceVersion": "Anses, 2025, Table de composition nutritionnelle des aliments Ciqual (édition 2025-11-03)",
+      "importDate": "2026-08-08"
     }
   },
   {
@@ -4586,6 +6297,23 @@
     "gramsPerServing": 200,
     "priceInfo": {
       "source": "estimation"
+    },
+    "nutritionPer100g": {
+      "per100g": true,
+      "kcal": 81,
+      "proteinG": 1.44,
+      "glucidesG": 14.3,
+      "sucresG": 13.3,
+      "lipidesG": 1.2,
+      "satureesG": 0.07,
+      "fibresG": 2.3,
+      "selG": 0.006,
+      "nutritionSource": "ciqual-2025",
+      "sourceFoodName": "Grenade, chair sans peau, avec pépins, crue",
+      "sourceId": "13018",
+      "matchConfidence": "exact",
+      "sourceVersion": "Anses, 2025, Table de composition nutritionnelle des aliments Ciqual (édition 2025-11-03)",
+      "importDate": "2026-08-08"
     }
   },
   {
@@ -4614,6 +6342,23 @@
     "gramsPerServing": 150,
     "priceInfo": {
       "source": "estimation"
+    },
+    "nutritionPer100g": {
+      "per100g": true,
+      "kcal": 39.6,
+      "proteinG": 0.75,
+      "glucidesG": 8.53,
+      "sucresG": 8.1,
+      "lipidesG": 0.15,
+      "satureesG": 0.005,
+      "fibresG": 1.8,
+      "selG": 0.006,
+      "nutritionSource": "ciqual-2025",
+      "sourceFoodName": "Papaye, chair sans peau, crue",
+      "sourceId": "13035",
+      "matchConfidence": "exact",
+      "sourceVersion": "Anses, 2025, Table de composition nutritionnelle des aliments Ciqual (édition 2025-11-03)",
+      "importDate": "2026-08-08"
     }
   },
   {
@@ -4642,6 +6387,23 @@
     "gramsPerServing": 250,
     "priceInfo": {
       "source": "estimation"
+    },
+    "nutritionPer100g": {
+      "per100g": true,
+      "kcal": 22.9,
+      "proteinG": 0.98,
+      "glucidesG": 2.7,
+      "sucresG": 2.7,
+      "lipidesG": 0.18,
+      "satureesG": 0.034,
+      "fibresG": 3,
+      "selG": 0.005,
+      "nutritionSource": "ciqual-2025",
+      "sourceFoodName": "Aubergine, crue",
+      "sourceId": "20053",
+      "matchConfidence": "exact",
+      "sourceVersion": "Anses, 2025, Table de composition nutritionnelle des aliments Ciqual (édition 2025-11-03)",
+      "importDate": "2026-08-08"
     }
   },
   {
@@ -4672,6 +6434,23 @@
     "gramsPerServing": 100,
     "priceInfo": {
       "source": "estimation"
+    },
+    "nutritionPer100g": {
+      "per100g": true,
+      "kcal": 15.4,
+      "proteinG": 0.63,
+      "glucidesG": 2.41,
+      "sucresG": 1.3,
+      "lipidesG": 0.25,
+      "satureesG": 0.005,
+      "fibresG": 2.2,
+      "selG": 0.2,
+      "nutritionSource": "ciqual-2025",
+      "sourceFoodName": "Céleri branche, cru",
+      "sourceId": "20023",
+      "matchConfidence": "exact",
+      "sourceVersion": "Anses, 2025, Table de composition nutritionnelle des aliments Ciqual (édition 2025-11-03)",
+      "importDate": "2026-08-08"
     }
   },
   {
@@ -4701,11 +6480,21 @@
       "source": "open-prices"
     },
     "nutritionPer100g": {
+      "per100g": true,
       "kcal": 44,
       "proteinG": 2.3,
-      "lipidesG": 0.1,
       "glucidesG": 7.2,
-      "selG": 0
+      "sucresG": 6.7,
+      "lipidesG": 0.1,
+      "satureesG": 0,
+      "fibresG": 0,
+      "selG": 0,
+      "nutritionSource": "open-food-facts",
+      "sourceFoodName": "Betteraves rouges bio",
+      "sourceId": "20713232",
+      "matchConfidence": "high",
+      "sourceVersion": "Open Food Facts (export API, 2026-08-08)",
+      "importDate": "2026-08-08"
     },
     "offCode": "20713232"
   },
@@ -4737,11 +6526,21 @@
       "source": "open-prices"
     },
     "nutritionPer100g": {
+      "per100g": true,
       "kcal": 14,
       "proteinG": 0.7,
-      "lipidesG": 0,
       "glucidesG": 1.9,
-      "selG": 0.1
+      "sucresG": 1.9,
+      "lipidesG": 0,
+      "satureesG": 0,
+      "fibresG": 1.6,
+      "selG": 0.1,
+      "nutritionSource": "open-food-facts",
+      "sourceFoodName": "Radis",
+      "sourceId": "3280221111083",
+      "matchConfidence": "high",
+      "sourceVersion": "Open Food Facts (export API, 2026-08-08)",
+      "importDate": "2026-08-08"
     },
     "offCode": "3280221111083"
   },
@@ -4773,11 +6572,21 @@
       "source": "estimation"
     },
     "nutritionPer100g": {
+      "per100g": true,
       "kcal": 28,
       "proteinG": 0.9,
-      "lipidesG": 0.1,
       "glucidesG": 6,
-      "selG": 0.16
+      "sucresG": 3.8,
+      "lipidesG": 0.1,
+      "satureesG": 0,
+      "fibresG": 0,
+      "selG": 0.16,
+      "nutritionSource": "open-food-facts",
+      "sourceFoodName": "Navets",
+      "sourceId": "20253448",
+      "matchConfidence": "high",
+      "sourceVersion": "Open Food Facts (export API, 2026-08-08)",
+      "importDate": "2026-08-08"
     },
     "offCode": "20253448"
   },
@@ -4833,6 +6642,23 @@
     "gramsPerServing": 200,
     "priceInfo": {
       "source": "estimation"
+    },
+    "nutritionPer100g": {
+      "per100g": true,
+      "kcal": 81.2,
+      "proteinG": 1.57,
+      "glucidesG": 17.1,
+      "sucresG": 4.18,
+      "lipidesG": 0.05,
+      "satureesG": 0.018,
+      "fibresG": 3,
+      "selG": 0.14,
+      "nutritionSource": "ciqual-2025",
+      "sourceFoodName": "Patate douce, crue",
+      "sourceId": "4101",
+      "matchConfidence": "exact",
+      "sourceVersion": "Anses, 2025, Table de composition nutritionnelle des aliments Ciqual (édition 2025-11-03)",
+      "importDate": "2026-08-08"
     }
   },
   {
@@ -4861,6 +6687,23 @@
     "gramsPerServing": 300,
     "priceInfo": {
       "source": "estimation"
+    },
+    "nutritionPer100g": {
+      "per100g": true,
+      "kcal": 30.5,
+      "proteinG": 1,
+      "glucidesG": 5.4,
+      "sucresG": 2.2,
+      "lipidesG": 0.1,
+      "satureesG": 0.021,
+      "fibresG": 2,
+      "selG": 0.01,
+      "nutritionSource": "ciqual-2025",
+      "sourceFoodName": "Courge butternut (doubeurre), chair sans peau, crue",
+      "sourceId": "20138",
+      "matchConfidence": "exact",
+      "sourceVersion": "Anses, 2025, Table de composition nutritionnelle des aliments Ciqual (édition 2025-11-03)",
+      "importDate": "2026-08-08"
     }
   },
   {
@@ -4889,6 +6732,23 @@
     "gramsPerServing": 300,
     "priceInfo": {
       "source": "estimation"
+    },
+    "nutritionPer100g": {
+      "per100g": true,
+      "kcal": 20.1,
+      "proteinG": 1.05,
+      "glucidesG": 3.5,
+      "sucresG": 1.93,
+      "lipidesG": 0.1,
+      "satureesG": 0.051,
+      "fibresG": 0.5,
+      "selG": 0.003,
+      "nutritionSource": "ciqual-2025",
+      "sourceFoodName": "Potiron, cru",
+      "sourceId": "20044",
+      "matchConfidence": "exact",
+      "sourceVersion": "Anses, 2025, Table de composition nutritionnelle des aliments Ciqual (édition 2025-11-03)",
+      "importDate": "2026-08-08"
     }
   },
   {
@@ -4917,6 +6777,23 @@
     "gramsPerServing": 100,
     "priceInfo": {
       "source": "estimation"
+    },
+    "nutritionPer100g": {
+      "per100g": true,
+      "kcal": 16.6,
+      "proteinG": 1.19,
+      "glucidesG": 2.83,
+      "sucresG": 2.4,
+      "lipidesG": 0.25,
+      "satureesG": 0.005,
+      "fibresG": 1.1,
+      "selG": 0.006,
+      "nutritionSource": "ciqual-2025",
+      "sourceFoodName": "Endive, crue",
+      "sourceId": "20026",
+      "matchConfidence": "exact",
+      "sourceVersion": "Anses, 2025, Table de composition nutritionnelle des aliments Ciqual (édition 2025-11-03)",
+      "importDate": "2026-08-08"
     }
   },
   {
@@ -4945,6 +6822,23 @@
     "gramsPerServing": 200,
     "priceInfo": {
       "source": "estimation"
+    },
+    "nutritionPer100g": {
+      "per100g": true,
+      "kcal": 18.2,
+      "proteinG": 1,
+      "glucidesG": 2.63,
+      "sucresG": 2.2,
+      "lipidesG": 0.25,
+      "satureesG": 0.005,
+      "fibresG": 2.6,
+      "selG": 0.055,
+      "nutritionSource": "ciqual-2025",
+      "sourceFoodName": "Fenouil, cru",
+      "sourceId": "20028",
+      "matchConfidence": "exact",
+      "sourceVersion": "Anses, 2025, Table de composition nutritionnelle des aliments Ciqual (édition 2025-11-03)",
+      "importDate": "2026-08-08"
     }
   },
   {
@@ -4971,6 +6865,23 @@
     "gramsPerServing": 100,
     "priceInfo": {
       "source": "open-prices"
+    },
+    "nutritionPer100g": {
+      "per100g": true,
+      "kcal": 53,
+      "proteinG": 3.4,
+      "glucidesG": 7.1,
+      "sucresG": 3.43,
+      "lipidesG": 0.47,
+      "satureesG": 0.084,
+      "fibresG": 3.4,
+      "selG": 0.2,
+      "nutritionSource": "ciqual-2025",
+      "sourceFoodName": "Petits pois et carottes, surgelés, crus",
+      "sourceId": "20214",
+      "matchConfidence": "high",
+      "sourceVersion": "Anses, 2025, Table de composition nutritionnelle des aliments Ciqual (édition 2025-11-03)",
+      "importDate": "2026-08-08"
     }
   },
   {
@@ -4999,6 +6910,23 @@
     "gramsPerServing": 100,
     "priceInfo": {
       "source": "open-prices"
+    },
+    "nutritionPer100g": {
+      "per100g": true,
+      "kcal": 31.9,
+      "proteinG": 1.83,
+      "glucidesG": 4.14,
+      "sucresG": 3.26,
+      "lipidesG": 0.22,
+      "satureesG": 0.05,
+      "fibresG": 2.7,
+      "selG": 0.015,
+      "nutritionSource": "ciqual-2025",
+      "sourceFoodName": "Haricot vert, cru",
+      "sourceId": "20061",
+      "matchConfidence": "exact",
+      "sourceVersion": "Anses, 2025, Table de composition nutritionnelle des aliments Ciqual (édition 2025-11-03)",
+      "importDate": "2026-08-08"
     }
   },
   {
@@ -5029,11 +6957,21 @@
       "source": "estimation"
     },
     "nutritionPer100g": {
+      "per100g": true,
       "kcal": 31,
       "proteinG": 2.5,
-      "lipidesG": 0.3,
       "glucidesG": 3.2,
-      "selG": 0.05
+      "sucresG": 0.9,
+      "lipidesG": 0.3,
+      "satureesG": 0.1,
+      "fibresG": 2.5,
+      "selG": 0.05,
+      "nutritionSource": "open-food-facts",
+      "sourceFoodName": "Roquette",
+      "sourceId": "3245413157522",
+      "matchConfidence": "high",
+      "sourceVersion": "Open Food Facts (export API, 2026-08-08)",
+      "importDate": "2026-08-08"
     },
     "offCode": "3245413157522"
   },
@@ -5065,11 +7003,21 @@
       "source": "open-prices"
     },
     "nutritionPer100g": {
+      "per100g": true,
       "kcal": 32,
       "proteinG": 1.1,
-      "lipidesG": 0.5,
       "glucidesG": 4.3,
-      "selG": 0.05
+      "sucresG": 3.9,
+      "lipidesG": 0.5,
+      "satureesG": 0.1,
+      "fibresG": 2.8,
+      "selG": 0.05,
+      "nutritionSource": "open-food-facts",
+      "sourceFoodName": "Chou rouge emincé",
+      "sourceId": "3564706741027",
+      "matchConfidence": "high",
+      "sourceVersion": "Open Food Facts (export API, 2026-08-08)",
+      "importDate": "2026-08-08"
     },
     "offCode": "3564706741027"
   },
@@ -5099,6 +7047,23 @@
     "gramsPerServing": 150,
     "priceInfo": {
       "source": "estimation"
+    },
+    "nutritionPer100g": {
+      "per100g": true,
+      "kcal": 24.4,
+      "proteinG": 1.43,
+      "glucidesG": 2.74,
+      "sucresG": 2.74,
+      "lipidesG": 0.14,
+      "satureesG": 0.023,
+      "fibresG": 2.55,
+      "selG": 0.051,
+      "nutritionSource": "ciqual-2025",
+      "sourceFoodName": "Chou vert, cru",
+      "sourceId": "20069",
+      "matchConfidence": "exact",
+      "sourceVersion": "Anses, 2025, Table de composition nutritionnelle des aliments Ciqual (édition 2025-11-03)",
+      "importDate": "2026-08-08"
     }
   },
   {
@@ -5129,11 +7094,21 @@
       "source": "estimation"
     },
     "nutritionPer100g": {
+      "per100g": true,
       "kcal": 11,
       "proteinG": 0.8,
-      "lipidesG": 0,
       "glucidesG": 1.5,
-      "selG": 0.84
+      "sucresG": 1.3,
+      "lipidesG": 0,
+      "satureesG": 0,
+      "fibresG": 1.3,
+      "selG": 0.84,
+      "nutritionSource": "open-food-facts",
+      "sourceFoodName": "Blettes",
+      "sourceId": "3524670306073",
+      "matchConfidence": "high",
+      "sourceVersion": "Open Food Facts (export API, 2026-08-08)",
+      "importDate": "2026-08-08"
     },
     "offCode": "3524670306073"
   },
@@ -5161,6 +7136,23 @@
     "isCondiment": true,
     "priceInfo": {
       "source": "estimation"
+    },
+    "nutritionPer100g": {
+      "per100g": true,
+      "kcal": 42.5,
+      "proteinG": 2.97,
+      "glucidesG": 4.1,
+      "sucresG": 0.85,
+      "lipidesG": 0.63,
+      "satureesG": 0.1,
+      "fibresG": 4.3,
+      "selG": 0.59,
+      "nutritionSource": "ciqual-2025",
+      "sourceFoodName": "Persil, frais",
+      "sourceId": "11014",
+      "matchConfidence": "exact",
+      "sourceVersion": "Anses, 2025, Table de composition nutritionnelle des aliments Ciqual (édition 2025-11-03)",
+      "importDate": "2026-08-08"
     }
   },
   {
@@ -5187,6 +7179,23 @@
     "isCondiment": true,
     "priceInfo": {
       "source": "estimation"
+    },
+    "nutritionPer100g": {
+      "per100g": true,
+      "kcal": 35.2,
+      "proteinG": 3.15,
+      "glucidesG": 3.4,
+      "sucresG": 0.3,
+      "lipidesG": 0.64,
+      "satureesG": 0.041,
+      "fibresG": 1.6,
+      "selG": 0.01,
+      "nutritionSource": "ciqual-2025",
+      "sourceFoodName": "Basilic, frais",
+      "sourceId": "11033",
+      "matchConfidence": "exact",
+      "sourceVersion": "Anses, 2025, Table de composition nutritionnelle des aliments Ciqual (édition 2025-11-03)",
+      "importDate": "2026-08-08"
     }
   },
   {
@@ -5213,6 +7222,23 @@
     "isCondiment": true,
     "priceInfo": {
       "source": "estimation"
+    },
+    "nutritionPer100g": {
+      "per100g": true,
+      "kcal": 22.3,
+      "proteinG": 2.13,
+      "glucidesG": 0.87,
+      "sucresG": 0.87,
+      "lipidesG": 0.52,
+      "satureesG": 0.014,
+      "fibresG": 2.8,
+      "selG": 0.12,
+      "nutritionSource": "ciqual-2025",
+      "sourceFoodName": "Coriandre, fraiche",
+      "sourceId": "11094",
+      "matchConfidence": "exact",
+      "sourceVersion": "Anses, 2025, Table de composition nutritionnelle des aliments Ciqual (édition 2025-11-03)",
+      "importDate": "2026-08-08"
     }
   },
   {
@@ -5239,6 +7265,23 @@
     "isCondiment": true,
     "priceInfo": {
       "source": "estimation"
+    },
+    "nutritionPer100g": {
+      "per100g": true,
+      "kcal": 30.8,
+      "proteinG": 2.55,
+      "glucidesG": 2.85,
+      "sucresG": 2.09,
+      "lipidesG": 0.46,
+      "satureesG": 0.089,
+      "fibresG": 2.55,
+      "selG": 0.024,
+      "nutritionSource": "ciqual-2025",
+      "sourceFoodName": "Ciboule ou ciboulette, fraîche",
+      "sourceId": "11003",
+      "matchConfidence": "exact",
+      "sourceVersion": "Anses, 2025, Table de composition nutritionnelle des aliments Ciqual (édition 2025-11-03)",
+      "importDate": "2026-08-08"
     }
   },
   {
@@ -5265,6 +7308,23 @@
     "isCondiment": true,
     "priceInfo": {
       "source": "estimation"
+    },
+    "nutritionPer100g": {
+      "per100g": true,
+      "kcal": 57.6,
+      "proteinG": 3.52,
+      "glucidesG": 5.3,
+      "sucresG": 5.3,
+      "lipidesG": 0.84,
+      "satureesG": 0.22,
+      "fibresG": 7.4,
+      "selG": 0.076,
+      "nutritionSource": "ciqual-2025",
+      "sourceFoodName": "Menthe, fraîche",
+      "sourceId": "11027",
+      "matchConfidence": "exact",
+      "sourceVersion": "Anses, 2025, Table de composition nutritionnelle des aliments Ciqual (édition 2025-11-03)",
+      "importDate": "2026-08-08"
     }
   },
   {
@@ -5291,6 +7351,23 @@
     "isCondiment": true,
     "priceInfo": {
       "source": "estimation"
+    },
+    "nutritionPer100g": {
+      "per100g": true,
+      "kcal": 33.3,
+      "proteinG": 1.1,
+      "glucidesG": 3.4,
+      "sucresG": 1,
+      "lipidesG": 1.1,
+      "satureesG": 0.09,
+      "fibresG": 2.7,
+      "selG": 0.016,
+      "nutritionSource": "ciqual-2025",
+      "sourceFoodName": "Gingembre, racine fraîche",
+      "sourceId": "11074",
+      "matchConfidence": "exact",
+      "sourceVersion": "Anses, 2025, Table de composition nutritionnelle des aliments Ciqual (édition 2025-11-03)",
+      "importDate": "2026-08-08"
     }
   },
   {
@@ -5317,6 +7394,23 @@
     "isCondiment": true,
     "priceInfo": {
       "source": "estimation"
+    },
+    "nutritionPer100g": {
+      "per100g": true,
+      "kcal": 61.7,
+      "proteinG": 1.81,
+      "glucidesG": 12.2,
+      "sucresG": 3.3,
+      "lipidesG": 0.25,
+      "satureesG": 0.005,
+      "fibresG": 2.6,
+      "selG": 0.013,
+      "nutritionSource": "ciqual-2025",
+      "sourceFoodName": "Échalote, crue",
+      "sourceId": "20097",
+      "matchConfidence": "exact",
+      "sourceVersion": "Anses, 2025, Table de composition nutritionnelle des aliments Ciqual (édition 2025-11-03)",
+      "importDate": "2026-08-08"
     }
   },
   {
@@ -5343,6 +7437,23 @@
     "isCondiment": true,
     "priceInfo": {
       "source": "estimation"
+    },
+    "nutritionPer100g": {
+      "per100g": true,
+      "kcal": 37.4,
+      "proteinG": 1.87,
+      "glucidesG": 5.75,
+      "sucresG": 4.01,
+      "lipidesG": 0.44,
+      "satureesG": 0.042,
+      "fibresG": 1.5,
+      "selG": 0.023,
+      "nutritionSource": "ciqual-2025",
+      "sourceFoodName": "Piment, cru",
+      "sourceId": "20151",
+      "matchConfidence": "high",
+      "sourceVersion": "Anses, 2025, Table de composition nutritionnelle des aliments Ciqual (édition 2025-11-03)",
+      "importDate": "2026-08-08"
     }
   },
   {
@@ -5371,6 +7482,23 @@
     "gramsPerServing": 125,
     "priceInfo": {
       "source": "estimation"
+    },
+    "nutritionPer100g": {
+      "per100g": true,
+      "kcal": 46,
+      "proteinG": 1.13,
+      "glucidesG": 6.53,
+      "sucresG": 6.1,
+      "lipidesG": 0.7,
+      "satureesG": 0.07,
+      "fibresG": 5.2,
+      "selG": 0.006,
+      "nutritionSource": "ciqual-2025",
+      "sourceFoodName": "Mûre (de ronce), crue",
+      "sourceId": "13029",
+      "matchConfidence": "exact",
+      "sourceVersion": "Anses, 2025, Table de composition nutritionnelle des aliments Ciqual (édition 2025-11-03)",
+      "importDate": "2026-08-08"
     }
   },
   {
@@ -5399,6 +7527,23 @@
     "gramsPerServing": 125,
     "priceInfo": {
       "source": "estimation"
+    },
+    "nutritionPer100g": {
+      "per100g": true,
+      "kcal": 67.2,
+      "proteinG": 1.56,
+      "glucidesG": 7.06,
+      "sucresG": 6.63,
+      "lipidesG": 0.7,
+      "satureesG": 0.21,
+      "fibresG": 4.6,
+      "selG": 0.006,
+      "nutritionSource": "ciqual-2025",
+      "sourceFoodName": "Groseille, crue",
+      "sourceId": "13019",
+      "matchConfidence": "exact",
+      "sourceVersion": "Anses, 2025, Table de composition nutritionnelle des aliments Ciqual (édition 2025-11-03)",
+      "importDate": "2026-08-08"
     }
   },
   {
@@ -5425,6 +7570,23 @@
     "gramsPerServing": 300,
     "priceInfo": {
       "source": "estimation"
+    },
+    "nutritionPer100g": {
+      "per100g": true,
+      "kcal": 32.3,
+      "proteinG": 0.64,
+      "glucidesG": 5.41,
+      "sucresG": 2.76,
+      "lipidesG": 0.57,
+      "satureesG": 0.12,
+      "fibresG": 1.5,
+      "selG": 0.043,
+      "nutritionSource": "ciqual-2025",
+      "sourceFoodName": "Courge spaghetti, chair sans peau, crue",
+      "sourceId": "20145",
+      "matchConfidence": "exact",
+      "sourceVersion": "Anses, 2025, Table de composition nutritionnelle des aliments Ciqual (édition 2025-11-03)",
+      "importDate": "2026-08-08"
     }
   },
   {
@@ -5455,11 +7617,21 @@
       "source": "open-prices"
     },
     "nutritionPer100g": {
+      "per100g": true,
       "kcal": 101,
       "proteinG": 2.8,
-      "lipidesG": 2.6,
       "glucidesG": 16,
-      "selG": 0.58
+      "sucresG": 5.5,
+      "lipidesG": 2.6,
+      "satureesG": 0.5,
+      "fibresG": 3,
+      "selG": 0.58,
+      "nutritionSource": "open-food-facts",
+      "sourceFoodName": "Maïs épis",
+      "sourceId": "3227291082882",
+      "matchConfidence": "high",
+      "sourceVersion": "Open Food Facts (export API, 2026-08-08)",
+      "importDate": "2026-08-08"
     },
     "offCode": "3227291082882"
   },
@@ -5517,6 +7689,23 @@
     "gramsPerServing": 50,
     "priceInfo": {
       "source": "estimation"
+    },
+    "nutritionPer100g": {
+      "per100g": true,
+      "kcal": 15.5,
+      "proteinG": 2.3,
+      "glucidesG": 1.11,
+      "sucresG": 0.2,
+      "lipidesG": 0.1,
+      "satureesG": 0.027,
+      "fibresG": 0.5,
+      "selG": 0.1,
+      "nutritionSource": "ciqual-2025",
+      "sourceFoodName": "Cresson de fontaine, cru",
+      "sourceId": "20022",
+      "matchConfidence": "high",
+      "sourceVersion": "Anses, 2025, Table de composition nutritionnelle des aliments Ciqual (édition 2025-11-03)",
+      "importDate": "2026-08-08"
     }
   },
   {
@@ -5548,11 +7737,21 @@
       "source": "open-prices"
     },
     "nutritionPer100g": {
+      "per100g": true,
       "kcal": 268,
       "proteinG": 21,
-      "lipidesG": 20,
       "glucidesG": 1,
-      "selG": 1.5
+      "sucresG": 0.5,
+      "lipidesG": 20,
+      "satureesG": 14,
+      "fibresG": 0,
+      "selG": 1.5,
+      "nutritionSource": "open-food-facts",
+      "sourceFoodName": "Camembert",
+      "sourceId": "3176582033327",
+      "matchConfidence": "high",
+      "sourceVersion": "Open Food Facts (export API, 2026-08-08)",
+      "importDate": "2026-08-08"
     },
     "offCode": "3176582033327"
   },
@@ -5584,11 +7783,21 @@
       "source": "open-prices"
     },
     "nutritionPer100g": {
+      "per100g": true,
       "kcal": 365,
       "proteinG": 19,
-      "lipidesG": 31.7,
       "glucidesG": 0.8,
-      "selG": 3.7
+      "sucresG": 0,
+      "lipidesG": 31.7,
+      "satureesG": 22.5,
+      "fibresG": null,
+      "selG": 3.7,
+      "nutritionSource": "open-food-facts",
+      "sourceFoodName": "Roquefort AOP",
+      "sourceId": "4056489203643",
+      "matchConfidence": "high",
+      "sourceVersion": "Open Food Facts (export API, 2026-08-08)",
+      "importDate": "2026-08-08"
     },
     "offCode": "4056489203643"
   },
@@ -5622,11 +7831,21 @@
       "source": "open-prices"
     },
     "nutritionPer100g": {
+      "per100g": true,
       "kcal": 150,
       "proteinG": 7.5,
-      "lipidesG": 12,
       "glucidesG": 3,
-      "selG": 0
+      "sucresG": 3,
+      "lipidesG": 12,
+      "satureesG": 8.4,
+      "fibresG": null,
+      "selG": 0,
+      "nutritionSource": "open-food-facts",
+      "sourceFoodName": "Ricotta",
+      "sourceId": "3760056260519",
+      "matchConfidence": "high",
+      "sourceVersion": "Open Food Facts (export API, 2026-08-08)",
+      "importDate": "2026-08-08"
     },
     "offCode": "3760056260519"
   },
@@ -5654,6 +7873,23 @@
     "isCondiment": true,
     "priceInfo": {
       "source": "open-prices"
+    },
+    "nutritionPer100g": {
+      "per100g": true,
+      "kcal": 411,
+      "proteinG": 31.1,
+      "glucidesG": 1.14,
+      "sucresG": null,
+      "lipidesG": 31,
+      "satureesG": 20.6,
+      "fibresG": 0,
+      "selG": 1.57,
+      "nutritionSource": "ciqual-2025",
+      "sourceFoodName": "Parmesan",
+      "sourceId": "12120",
+      "matchConfidence": "exact",
+      "sourceVersion": "Anses, 2025, Table de composition nutritionnelle des aliments Ciqual (édition 2025-11-03)",
+      "importDate": "2026-08-08"
     }
   },
   {
@@ -5685,11 +7921,21 @@
       "source": "open-prices"
     },
     "nutritionPer100g": {
+      "per100g": true,
       "kcal": 88,
       "proteinG": 12,
-      "lipidesG": 3.7,
       "glucidesG": 1.6,
-      "selG": 0.76
+      "sucresG": 1.6,
+      "lipidesG": 3.7,
+      "satureesG": 2.4,
+      "fibresG": null,
+      "selG": 0.76,
+      "nutritionSource": "open-food-facts",
+      "sourceFoodName": "Cottage cheese",
+      "sourceId": "3033491997792",
+      "matchConfidence": "high",
+      "sourceVersion": "Open Food Facts (export API, 2026-08-08)",
+      "importDate": "2026-08-08"
     },
     "offCode": "3033491997792"
   },
@@ -5722,11 +7968,21 @@
       "source": "open-prices"
     },
     "nutritionPer100g": {
+      "per100g": true,
       "kcal": 76,
       "proteinG": 4.3,
-      "lipidesG": 4.5,
       "glucidesG": 4.5,
-      "selG": 0.1
+      "sucresG": 4.5,
+      "lipidesG": 4.5,
+      "satureesG": 2.9,
+      "fibresG": 0,
+      "selG": 0.1,
+      "nutritionSource": "open-food-facts",
+      "sourceFoodName": "faisselle",
+      "sourceId": "3184670001080",
+      "matchConfidence": "high",
+      "sourceVersion": "Open Food Facts (export API, 2026-08-08)",
+      "importDate": "2026-08-08"
     },
     "offCode": "3184670001080"
   },
@@ -5757,6 +8013,23 @@
     "gramsPerServing": 200,
     "priceInfo": {
       "source": "estimation"
+    },
+    "nutritionPer100g": {
+      "per100g": true,
+      "kcal": 63.9,
+      "proteinG": 3.42,
+      "glucidesG": 4.78,
+      "sucresG": 4.29,
+      "lipidesG": 3.49,
+      "satureesG": 2.12,
+      "fibresG": 0,
+      "selG": 0.12,
+      "nutritionSource": "ciqual-2025",
+      "sourceFoodName": "Lait entier (aliment moyen)",
+      "sourceId": "19016",
+      "matchConfidence": "high",
+      "sourceVersion": "Anses, 2025, Table de composition nutritionnelle des aliments Ciqual (édition 2025-11-03)",
+      "importDate": "2026-08-08"
     }
   },
   {
@@ -5814,11 +8087,21 @@
       "source": "open-prices"
     },
     "nutritionPer100g": {
+      "per100g": true,
       "kcal": 726,
       "proteinG": 0.6,
-      "lipidesG": 80,
       "glucidesG": 1,
-      "selG": 2.4
+      "sucresG": 1,
+      "lipidesG": 80,
+      "satureesG": 55,
+      "fibresG": 0,
+      "selG": 2.4,
+      "nutritionSource": "open-food-facts",
+      "sourceFoodName": "beurre demi-sel",
+      "sourceId": "3523230030793",
+      "matchConfidence": "high",
+      "sourceVersion": "Open Food Facts (export API, 2026-08-08)",
+      "importDate": "2026-08-08"
     },
     "offCode": "3523230030793"
   },
@@ -5847,11 +8130,21 @@
       "source": "open-prices"
     },
     "nutritionPer100g": {
+      "per100g": true,
       "kcal": 485,
       "proteinG": 0,
-      "lipidesG": 55,
       "glucidesG": 0,
-      "selG": 0.4
+      "sucresG": 0,
+      "lipidesG": 55,
+      "satureesG": 14,
+      "fibresG": 0,
+      "selG": 0.4,
+      "nutritionSource": "open-food-facts",
+      "sourceFoodName": "Margarine bio doux tartine & cuisson",
+      "sourceId": "3155250358788",
+      "matchConfidence": "high",
+      "sourceVersion": "Open Food Facts (export API, 2026-08-08)",
+      "importDate": "2026-08-08"
     },
     "offCode": "3155250358788"
   },
@@ -5884,11 +8177,21 @@
       "source": "open-prices"
     },
     "nutritionPer100g": {
+      "per100g": true,
       "kcal": 57,
       "proteinG": 9.5,
-      "lipidesG": 5,
       "glucidesG": 3.6,
-      "selG": 14
+      "sucresG": 3.6,
+      "lipidesG": 5,
+      "satureesG": 1,
+      "fibresG": 0.5,
+      "selG": 14,
+      "nutritionSource": "open-food-facts",
+      "sourceFoodName": "Skyr",
+      "sourceId": "3329770073265",
+      "matchConfidence": "high",
+      "sourceVersion": "Open Food Facts (export API, 2026-08-08)",
+      "importDate": "2026-08-08"
     },
     "offCode": "3329770073265"
   },
@@ -5922,11 +8225,21 @@
       "source": "open-prices"
     },
     "nutritionPer100g": {
+      "per100g": true,
       "kcal": 179,
       "proteinG": 19,
-      "lipidesG": 9.4,
       "glucidesG": 0.5,
-      "selG": 0.09
+      "sucresG": 0.4,
+      "lipidesG": 9.4,
+      "satureesG": 1.8,
+      "fibresG": 8.1,
+      "selG": 0.09,
+      "nutritionSource": "open-food-facts",
+      "sourceFoodName": "Tempeh",
+      "sourceId": "3259011142132",
+      "matchConfidence": "high",
+      "sourceVersion": "Open Food Facts (export API, 2026-08-08)",
+      "importDate": "2026-08-08"
     },
     "offCode": "3259011142132"
   },
@@ -5959,11 +8272,21 @@
       "source": "estimation"
     },
     "nutritionPer100g": {
+      "per100g": true,
       "kcal": 353,
       "proteinG": 13,
-      "lipidesG": 32,
       "glucidesG": 3.5,
-      "selG": 0.9
+      "sucresG": 1.3,
+      "lipidesG": 32,
+      "satureesG": 12,
+      "fibresG": null,
+      "selG": 0.9,
+      "nutritionSource": "open-food-facts",
+      "sourceFoodName": "Le Pâté De Campagne",
+      "sourceId": "30000131",
+      "matchConfidence": "high",
+      "sourceVersion": "Open Food Facts (export API, 2026-08-08)",
+      "importDate": "2026-08-08"
     },
     "offCode": "30000131"
   },
@@ -5994,11 +8317,21 @@
       "source": "open-prices"
     },
     "nutritionPer100g": {
+      "per100g": true,
       "kcal": 228,
       "proteinG": 14,
-      "lipidesG": 18,
       "glucidesG": 2.1,
-      "selG": 0.96
+      "sucresG": 0.9,
+      "lipidesG": 18,
+      "satureesG": 1.4,
+      "fibresG": 0.5,
+      "selG": 0.96,
+      "nutritionSource": "open-food-facts",
+      "sourceFoodName": "Rillettes thon",
+      "sourceId": "3245413780287",
+      "matchConfidence": "high",
+      "sourceVersion": "Open Food Facts (export API, 2026-08-08)",
+      "importDate": "2026-08-08"
     },
     "offCode": "3245413780287"
   },
@@ -6030,11 +8363,21 @@
       "source": "open-prices"
     },
     "nutritionPer100g": {
+      "per100g": true,
       "kcal": 393,
       "proteinG": 30,
-      "lipidesG": 30,
       "glucidesG": 0.7,
-      "selG": 4.8
+      "sucresG": 0.7,
+      "lipidesG": 30,
+      "satureesG": 12,
+      "fibresG": 0,
+      "selG": 4.8,
+      "nutritionSource": "open-food-facts",
+      "sourceFoodName": "Saucisson sec d'Auvergne IGP",
+      "sourceId": "3245390021298",
+      "matchConfidence": "high",
+      "sourceVersion": "Open Food Facts (export API, 2026-08-08)",
+      "importDate": "2026-08-08"
     },
     "offCode": "3245390021298"
   },
@@ -6067,11 +8410,21 @@
       "source": "open-prices"
     },
     "nutritionPer100g": {
+      "per100g": true,
       "kcal": 316,
       "proteinG": 15,
-      "lipidesG": 28,
       "glucidesG": 1.1,
-      "selG": 1.5
+      "sucresG": 0.8,
+      "lipidesG": 28,
+      "satureesG": 9.9,
+      "fibresG": 0,
+      "selG": 1.5,
+      "nutritionSource": "open-food-facts",
+      "sourceFoodName": "Terrine campagne",
+      "sourceId": "3275411808201",
+      "matchConfidence": "high",
+      "sourceVersion": "Open Food Facts (export API, 2026-08-08)",
+      "importDate": "2026-08-08"
     },
     "offCode": "3275411808201"
   },
@@ -6105,11 +8458,21 @@
       "source": "open-prices"
     },
     "nutritionPer100g": {
+      "per100g": true,
       "kcal": 378,
       "proteinG": 6.1,
-      "lipidesG": 19,
       "glucidesG": 41,
-      "selG": 1.1
+      "sucresG": 2.3,
+      "lipidesG": 19,
+      "satureesG": 13,
+      "fibresG": 1.4,
+      "selG": 1.1,
+      "nutritionSource": "open-food-facts",
+      "sourceFoodName": "Pâte feuilletée",
+      "sourceId": "3392590205406",
+      "matchConfidence": "high",
+      "sourceVersion": "Open Food Facts (export API, 2026-08-08)",
+      "importDate": "2026-08-08"
     },
     "offCode": "3392590205406"
   },
@@ -6141,6 +8504,23 @@
     "gramsPerServing": 150,
     "priceInfo": {
       "source": "open-prices"
+    },
+    "nutritionPer100g": {
+      "per100g": true,
+      "kcal": 269,
+      "proteinG": 8.39,
+      "glucidesG": 21.5,
+      "sucresG": 2,
+      "lipidesG": 16.4,
+      "satureesG": 9.19,
+      "fibresG": 1.39,
+      "selG": 1.01,
+      "nutritionSource": "ciqual-2025",
+      "sourceFoodName": "Quiche lorraine, préemballée",
+      "sourceId": "25405",
+      "matchConfidence": "exact",
+      "sourceVersion": "Anses, 2025, Table de composition nutritionnelle des aliments Ciqual (édition 2025-11-03)",
+      "importDate": "2026-08-08"
     }
   },
   {
@@ -6199,6 +8579,23 @@
     "isSpread": true,
     "priceInfo": {
       "source": "estimation"
+    },
+    "nutritionPer100g": {
+      "per100g": true,
+      "kcal": 367,
+      "proteinG": 0.34,
+      "glucidesG": 3.7,
+      "sucresG": 1.04,
+      "lipidesG": 39.1,
+      "satureesG": 25.2,
+      "fibresG": 0.52,
+      "selG": 0.4,
+      "nutritionSource": "ciqual-2025",
+      "sourceFoodName": "Beurre ou assimilé allégé (léger ou à teneur réduite en\nmatière grasse), doux (aliment moyen)",
+      "sourceId": "16412",
+      "matchConfidence": "high",
+      "sourceVersion": "Anses, 2025, Table de composition nutritionnelle des aliments Ciqual (édition 2025-11-03)",
+      "importDate": "2026-08-08"
     }
   },
   {
@@ -6231,11 +8628,21 @@
       "source": "open-prices"
     },
     "nutritionPer100g": {
+      "per100g": true,
       "kcal": 313,
       "proteinG": 2.1,
-      "lipidesG": 29,
       "glucidesG": 11,
-      "selG": 0
+      "sucresG": 11,
+      "lipidesG": 29,
+      "satureesG": 21,
+      "fibresG": null,
+      "selG": null,
+      "nutritionSource": "open-food-facts",
+      "sourceFoodName": "Crème fouettée",
+      "sourceId": "3254550005054",
+      "matchConfidence": "high",
+      "sourceVersion": "Open Food Facts (export API, 2026-08-08)",
+      "importDate": "2026-08-08"
     },
     "offCode": "3254550005054"
   },
@@ -6269,11 +8676,21 @@
       "source": "open-prices"
     },
     "nutritionPer100g": {
+      "per100g": true,
       "kcal": 283,
       "proteinG": 4.8,
-      "lipidesG": 20.9,
       "glucidesG": 18.7,
-      "selG": 0.31
+      "sucresG": 18.5,
+      "lipidesG": 20.9,
+      "satureesG": 10.2,
+      "fibresG": 0.5,
+      "selG": 0.31,
+      "nutritionSource": "open-food-facts",
+      "sourceFoodName": "Glace vanille pécan",
+      "sourceId": "3415581115017",
+      "matchConfidence": "high",
+      "sourceVersion": "Open Food Facts (export API, 2026-08-08)",
+      "importDate": "2026-08-08"
     },
     "offCode": "3415581115017"
   },
@@ -6309,11 +8726,21 @@
       "source": "open-prices"
     },
     "nutritionPer100g": {
+      "per100g": true,
       "kcal": 323,
       "proteinG": 7.5,
-      "lipidesG": 25,
       "glucidesG": 15,
-      "selG": 0.15
+      "sucresG": 14,
+      "lipidesG": 25,
+      "satureesG": 15,
+      "fibresG": 3.8,
+      "selG": 0.15,
+      "nutritionSource": "open-food-facts",
+      "sourceFoodName": "Mousse au chocolat intense",
+      "sourceId": "3608580765653",
+      "matchConfidence": "high",
+      "sourceVersion": "Open Food Facts (export API, 2026-08-08)",
+      "importDate": "2026-08-08"
     },
     "offCode": "3608580765653"
   },
@@ -6349,11 +8776,21 @@
       "source": "open-prices"
     },
     "nutritionPer100g": {
+      "per100g": true,
       "kcal": 298,
       "proteinG": 3.7,
-      "lipidesG": 14.4,
       "glucidesG": 34.5,
-      "selG": 0.12
+      "sucresG": 16.8,
+      "lipidesG": 14.4,
+      "satureesG": 10.7,
+      "fibresG": 0.7,
+      "selG": 0.12,
+      "nutritionSource": "open-food-facts",
+      "sourceFoodName": "Tiramisu",
+      "sourceId": "20337179",
+      "matchConfidence": "high",
+      "sourceVersion": "Open Food Facts (export API, 2026-08-08)",
+      "importDate": "2026-08-08"
     },
     "offCode": "20337179"
   },
@@ -6388,11 +8825,21 @@
       "source": "estimation"
     },
     "nutritionPer100g": {
+      "per100g": true,
       "kcal": 125,
       "proteinG": 3,
-      "lipidesG": 1.5,
       "glucidesG": 25,
-      "selG": 0.12
+      "sucresG": 16,
+      "lipidesG": 1.5,
+      "satureesG": 0.9,
+      "fibresG": 0.1,
+      "selG": 0.12,
+      "nutritionSource": "open-food-facts",
+      "sourceFoodName": "Flan pâtissier",
+      "sourceId": "3027030015139",
+      "matchConfidence": "high",
+      "sourceVersion": "Open Food Facts (export API, 2026-08-08)",
+      "importDate": "2026-08-08"
     },
     "offCode": "3027030015139"
   },
@@ -6425,11 +8872,21 @@
       "source": "estimation"
     },
     "nutritionPer100g": {
+      "per100g": true,
       "kcal": 110,
       "proteinG": 21,
-      "lipidesG": 2.6,
       "glucidesG": 0.6,
-      "selG": 0.1
+      "sucresG": 0,
+      "lipidesG": 2.6,
+      "satureesG": 0.6,
+      "fibresG": null,
+      "selG": 0.1,
+      "nutritionSource": "open-food-facts",
+      "sourceFoodName": "Escalope de Veau",
+      "sourceId": "3181238942441",
+      "matchConfidence": "high",
+      "sourceVersion": "Open Food Facts (export API, 2026-08-08)",
+      "importDate": "2026-08-08"
     },
     "offCode": "3181238942441"
   },
@@ -6458,11 +8915,21 @@
       "source": "estimation"
     },
     "nutritionPer100g": {
+      "per100g": true,
       "kcal": 129,
       "proteinG": 23,
-      "lipidesG": 4,
       "glucidesG": 0.5,
-      "selG": 0.44
+      "sucresG": 0.5,
+      "lipidesG": 4,
+      "satureesG": 1,
+      "fibresG": 0.5,
+      "selG": 0.44,
+      "nutritionSource": "open-food-facts",
+      "sourceFoodName": "Côtes de porc désossées marinées",
+      "sourceId": "3270160157068",
+      "matchConfidence": "high",
+      "sourceVersion": "Open Food Facts (export API, 2026-08-08)",
+      "importDate": "2026-08-08"
     },
     "offCode": "3270160157068"
   },
@@ -6490,6 +8957,23 @@
     "gramsPerServing": 150,
     "priceInfo": {
       "source": "estimation"
+    },
+    "nutritionPer100g": {
+      "per100g": true,
+      "kcal": 126,
+      "proteinG": 24.1,
+      "glucidesG": 0.3,
+      "sucresG": 0,
+      "lipidesG": 3.16,
+      "satureesG": 0.62,
+      "fibresG": 0,
+      "selG": 0.05,
+      "nutritionSource": "ciqual-2025",
+      "sourceFoodName": "Boeuf, rosbif rôti/cuit au four",
+      "sourceId": "6210",
+      "matchConfidence": "exact",
+      "sourceVersion": "Anses, 2025, Table de composition nutritionnelle des aliments Ciqual (édition 2025-11-03)",
+      "importDate": "2026-08-08"
     }
   },
   {
@@ -6518,11 +9002,21 @@
       "source": "estimation"
     },
     "nutritionPer100g": {
+      "per100g": true,
       "kcal": 172,
       "proteinG": 20,
-      "lipidesG": 10,
       "glucidesG": 0.5,
-      "selG": 0.17
+      "sucresG": 0.5,
+      "lipidesG": 10,
+      "satureesG": 2.9,
+      "fibresG": 0,
+      "selG": 0.17,
+      "nutritionSource": "open-food-facts",
+      "sourceFoodName": "Poulet entier",
+      "sourceId": "20109073",
+      "matchConfidence": "high",
+      "sourceVersion": "Open Food Facts (export API, 2026-08-08)",
+      "importDate": "2026-08-08"
     },
     "offCode": "20109073"
   },
@@ -6552,11 +9046,21 @@
       "source": "open-prices"
     },
     "nutritionPer100g": {
+      "per100g": true,
       "kcal": 93,
       "proteinG": 22,
-      "lipidesG": 0.6,
       "glucidesG": 0,
-      "selG": 1.3
+      "sucresG": 0,
+      "lipidesG": 0.6,
+      "satureesG": 0,
+      "fibresG": 0,
+      "selG": 1.3,
+      "nutritionSource": "open-food-facts",
+      "sourceFoodName": "Blanc de Dinde",
+      "sourceId": "3266980018245",
+      "matchConfidence": "high",
+      "sourceVersion": "Open Food Facts (export API, 2026-08-08)",
+      "importDate": "2026-08-08"
     },
     "offCode": "3266980018245"
   },
@@ -6586,11 +9090,21 @@
       "source": "estimation"
     },
     "nutritionPer100g": {
+      "per100g": true,
       "kcal": 219,
       "proteinG": 19,
-      "lipidesG": 16,
       "glucidesG": 1,
-      "selG": 0.8
+      "sucresG": 0,
+      "lipidesG": 16,
+      "satureesG": 8,
+      "fibresG": null,
+      "selG": 0.8,
+      "nutritionSource": "open-food-facts",
+      "sourceFoodName": "HACHÉ D'AGNEAU",
+      "sourceId": "2253777041594",
+      "matchConfidence": "high",
+      "sourceVersion": "Open Food Facts (export API, 2026-08-08)",
+      "importDate": "2026-08-08"
     },
     "offCode": "2253777041594"
   },
@@ -6618,6 +9132,23 @@
     "gramsPerServing": 100,
     "priceInfo": {
       "source": "open-prices"
+    },
+    "nutritionPer100g": {
+      "per100g": true,
+      "kcal": 361,
+      "proteinG": 13.7,
+      "glucidesG": 6.22,
+      "sucresG": 0.4,
+      "lipidesG": 31,
+      "satureesG": 11,
+      "fibresG": 1,
+      "selG": 1.46,
+      "nutritionSource": "ciqual-2025",
+      "sourceFoodName": "Confit de foie de volaille",
+      "sourceId": "8125",
+      "matchConfidence": "exact",
+      "sourceVersion": "Anses, 2025, Table de composition nutritionnelle des aliments Ciqual (édition 2025-11-03)",
+      "importDate": "2026-08-08"
     }
   },
   {
@@ -6644,6 +9175,23 @@
     "gramsPerServing": 150,
     "priceInfo": {
       "source": "estimation"
+    },
+    "nutritionPer100g": {
+      "per100g": true,
+      "kcal": 188,
+      "proteinG": 20.4,
+      "glucidesG": 0.58,
+      "sucresG": 0,
+      "lipidesG": 11.6,
+      "satureesG": 4.74,
+      "fibresG": 0,
+      "selG": 0.14,
+      "nutritionSource": "ciqual-2025",
+      "sourceFoodName": "Lapin, viande crue",
+      "sourceId": "34001",
+      "matchConfidence": "high",
+      "sourceVersion": "Anses, 2025, Table de composition nutritionnelle des aliments Ciqual (édition 2025-11-03)",
+      "importDate": "2026-08-08"
     }
   },
   {
@@ -6674,11 +9222,21 @@
       "source": "estimation"
     },
     "nutritionPer100g": {
+      "per100g": true,
       "kcal": 128,
       "proteinG": 20.8,
-      "lipidesG": 4.8,
       "glucidesG": 0.5,
-      "selG": 0.13
+      "sucresG": 0,
+      "lipidesG": 4.8,
+      "satureesG": 1.2,
+      "fibresG": null,
+      "selG": 0.13,
+      "nutritionSource": "open-food-facts",
+      "sourceFoodName": "Dorade Royale",
+      "sourceId": "20927646",
+      "matchConfidence": "high",
+      "sourceVersion": "Open Food Facts (export API, 2026-08-08)",
+      "importDate": "2026-08-08"
     },
     "offCode": "20927646"
   },
@@ -6710,11 +9268,21 @@
       "source": "open-prices"
     },
     "nutritionPer100g": {
+      "per100g": true,
       "kcal": 206,
       "proteinG": 13,
-      "lipidesG": 15,
       "glucidesG": 4.7,
-      "selG": 0.9
+      "sucresG": 3.1,
+      "lipidesG": 15,
+      "satureesG": 3.3,
+      "fibresG": 0.7,
+      "selG": 0.9,
+      "nutritionSource": "open-food-facts",
+      "sourceFoodName": "Filets de maquereaux",
+      "sourceId": "3560071175375",
+      "matchConfidence": "high",
+      "sourceVersion": "Open Food Facts (export API, 2026-08-08)",
+      "importDate": "2026-08-08"
     },
     "offCode": "3560071175375"
   },
@@ -6746,11 +9314,21 @@
       "source": "open-prices"
     },
     "nutritionPer100g": {
+      "per100g": true,
       "kcal": 152,
       "proteinG": 22,
-      "lipidesG": 7.2,
       "glucidesG": 0.5,
-      "selG": 3.1
+      "sucresG": 0.5,
+      "lipidesG": 7.2,
+      "satureesG": 1.7,
+      "fibresG": 0,
+      "selG": 3.1,
+      "nutritionSource": "open-food-facts",
+      "sourceFoodName": "Truite",
+      "sourceId": "3392780001634",
+      "matchConfidence": "high",
+      "sourceVersion": "Open Food Facts (export API, 2026-08-08)",
+      "importDate": "2026-08-08"
     },
     "offCode": "3392780001634"
   },
@@ -6780,6 +9358,23 @@
     "gramsPerServing": 130,
     "priceInfo": {
       "source": "estimation"
+    },
+    "nutritionPer100g": {
+      "per100g": true,
+      "kcal": 72.6,
+      "proteinG": 16.3,
+      "glucidesG": 0.51,
+      "sucresG": null,
+      "lipidesG": 0.61,
+      "satureesG": 0.015,
+      "fibresG": 0.085,
+      "selG": 0.48,
+      "nutritionSource": "ciqual-2025",
+      "sourceFoodName": "Lieu ou colin d'Alaska, cru",
+      "sourceId": "26006",
+      "matchConfidence": "high",
+      "sourceVersion": "Anses, 2025, Table de composition nutritionnelle des aliments Ciqual (édition 2025-11-03)",
+      "importDate": "2026-08-08"
     }
   },
   {
@@ -6808,6 +9403,23 @@
     "gramsPerServing": 130,
     "priceInfo": {
       "source": "estimation"
+    },
+    "nutritionPer100g": {
+      "per100g": true,
+      "kcal": 77.3,
+      "proteinG": 18,
+      "glucidesG": null,
+      "sucresG": null,
+      "lipidesG": 0.6,
+      "satureesG": 0.13,
+      "fibresG": 0,
+      "selG": 0.19,
+      "nutritionSource": "ciqual-2025",
+      "sourceFoodName": "Sole, crue",
+      "sourceId": "26058",
+      "matchConfidence": "exact",
+      "sourceVersion": "Anses, 2025, Table de composition nutritionnelle des aliments Ciqual (édition 2025-11-03)",
+      "importDate": "2026-08-08"
     }
   },
   {
@@ -6837,6 +9449,23 @@
     "gramsPerServing": 120,
     "priceInfo": {
       "source": "estimation"
+    },
+    "nutritionPer100g": {
+      "per100g": true,
+      "kcal": 229,
+      "proteinG": 8.69,
+      "glucidesG": 26.7,
+      "sucresG": 2.5,
+      "lipidesG": 9.5,
+      "satureesG": 1,
+      "fibresG": 1,
+      "selG": 2.13,
+      "nutritionSource": "ciqual-2025",
+      "sourceFoodName": "Calmar ou calamar ou encornet, à la romaine\n(beignet), préemballé",
+      "sourceId": "10002",
+      "matchConfidence": "exact",
+      "sourceVersion": "Anses, 2025, Table de composition nutritionnelle des aliments Ciqual (édition 2025-11-03)",
+      "importDate": "2026-08-08"
     }
   },
   {
@@ -6865,6 +9494,23 @@
     "gramsPerServing": 100,
     "priceInfo": {
       "source": "estimation"
+    },
+    "nutritionPer100g": {
+      "per100g": true,
+      "kcal": 83.6,
+      "proteinG": 17.9,
+      "glucidesG": 1.15,
+      "sucresG": null,
+      "lipidesG": 0.84,
+      "satureesG": 0.094,
+      "fibresG": 0,
+      "selG": 0.34,
+      "nutritionSource": "ciqual-2025",
+      "sourceFoodName": "Coquille Saint-Jacques, noix, crue",
+      "sourceId": "10045",
+      "matchConfidence": "exact",
+      "sourceVersion": "Anses, 2025, Table de composition nutritionnelle des aliments Ciqual (édition 2025-11-03)",
+      "importDate": "2026-08-08"
     }
   },
   {
@@ -6893,6 +9539,23 @@
     "gramsPerServing": 130,
     "priceInfo": {
       "source": "estimation"
+    },
+    "nutritionPer100g": {
+      "per100g": true,
+      "kcal": 155,
+      "proteinG": 24,
+      "glucidesG": 2.72,
+      "sucresG": null,
+      "lipidesG": 5.38,
+      "satureesG": 1,
+      "fibresG": 0,
+      "selG": 0.12,
+      "nutritionSource": "ciqual-2025",
+      "sourceFoodName": "Thon, cru",
+      "sourceId": "26053",
+      "matchConfidence": "high",
+      "sourceVersion": "Anses, 2025, Table de composition nutritionnelle des aliments Ciqual (édition 2025-11-03)",
+      "importDate": "2026-08-08"
     }
   },
   {
@@ -6921,11 +9584,21 @@
       "source": "open-prices"
     },
     "nutritionPer100g": {
+      "per100g": true,
       "kcal": 242,
       "proteinG": 23,
-      "lipidesG": 17,
       "glucidesG": 0,
-      "selG": 1.1
+      "sucresG": null,
+      "lipidesG": 17,
+      "satureesG": 3,
+      "fibresG": null,
+      "selG": 1.1,
+      "nutritionSource": "open-food-facts",
+      "sourceFoodName": "Anchois entiers",
+      "sourceId": "3560071527082",
+      "matchConfidence": "high",
+      "sourceVersion": "Open Food Facts (export API, 2026-08-08)",
+      "importDate": "2026-08-08"
     },
     "offCode": "3560071527082"
   },
@@ -6955,11 +9628,21 @@
       "source": "estimation"
     },
     "nutritionPer100g": {
+      "per100g": true,
       "kcal": 263,
       "proteinG": 29,
-      "lipidesG": 16,
       "glucidesG": 0.7,
-      "selG": 5
+      "sucresG": 0.4,
+      "lipidesG": 16,
+      "satureesG": 6,
+      "fibresG": 0,
+      "selG": 5,
+      "nutritionSource": "open-food-facts",
+      "sourceFoodName": "Fines Tranches de Jambon Cru",
+      "sourceId": "3449840002244",
+      "matchConfidence": "high",
+      "sourceVersion": "Open Food Facts (export API, 2026-08-08)",
+      "importDate": "2026-08-08"
     },
     "offCode": "3449840002244"
   },
@@ -6990,6 +9673,23 @@
     "gramsPerServing": 40,
     "priceInfo": {
       "source": "estimation"
+    },
+    "nutritionPer100g": {
+      "per100g": true,
+      "kcal": 197,
+      "proteinG": 3.56,
+      "glucidesG": 9.45,
+      "sucresG": 1.49,
+      "lipidesG": 15.4,
+      "satureesG": 4.13,
+      "fibresG": 2.96,
+      "selG": 1.27,
+      "nutritionSource": "ciqual-2025",
+      "sourceFoodName": "Spécialité végétale type pâté, préemballée",
+      "sourceId": "1031",
+      "matchConfidence": "high",
+      "sourceVersion": "Anses, 2025, Table de composition nutritionnelle des aliments Ciqual (édition 2025-11-03)",
+      "importDate": "2026-08-08"
     }
   },
   {
@@ -7018,11 +9718,21 @@
       "source": "open-prices"
     },
     "nutritionPer100g": {
+      "per100g": true,
       "kcal": 266,
       "proteinG": 11,
-      "lipidesG": 21,
       "glucidesG": 6.7,
-      "selG": 1.4
+      "sucresG": 6,
+      "lipidesG": 21,
+      "satureesG": 8.3,
+      "fibresG": 1.9,
+      "selG": 1.4,
+      "nutritionSource": "open-food-facts",
+      "sourceFoodName": "Boudins noirs aux Pommes",
+      "sourceId": "3245412991349",
+      "matchConfidence": "high",
+      "sourceVersion": "Open Food Facts (export API, 2026-08-08)",
+      "importDate": "2026-08-08"
     },
     "offCode": "3245412991349"
   },
@@ -7052,11 +9762,21 @@
       "source": "open-prices"
     },
     "nutritionPer100g": {
+      "per100g": true,
       "kcal": 497,
       "proteinG": 8,
-      "lipidesG": 16,
       "glucidesG": 0,
-      "selG": 0.63
+      "sucresG": 0,
+      "lipidesG": 16,
+      "satureesG": 7.8,
+      "fibresG": 0,
+      "selG": 0.63,
+      "nutritionSource": "open-food-facts",
+      "sourceFoodName": "Andouillette de troyes",
+      "sourceId": "3264420110085",
+      "matchConfidence": "high",
+      "sourceVersion": "Open Food Facts (export API, 2026-08-08)",
+      "importDate": "2026-08-08"
     },
     "offCode": "3264420110085"
   },
@@ -7084,6 +9804,23 @@
     "gramsPerServing": 30,
     "priceInfo": {
       "source": "open-prices"
+    },
+    "nutritionPer100g": {
+      "per100g": true,
+      "kcal": 118,
+      "proteinG": 23.1,
+      "glucidesG": 0.7,
+      "sucresG": 0.1,
+      "lipidesG": 2.6,
+      "satureesG": 1.07,
+      "fibresG": 0,
+      "selG": 3.18,
+      "nutritionSource": "ciqual-2025",
+      "sourceFoodName": "Filet de bacon",
+      "sourceId": "28727",
+      "matchConfidence": "high",
+      "sourceVersion": "Anses, 2025, Table de composition nutritionnelle des aliments Ciqual (édition 2025-11-03)",
+      "importDate": "2026-08-08"
     }
   },
   {
@@ -7115,11 +9852,21 @@
       "source": "open-prices"
     },
     "nutritionPer100g": {
+      "per100g": true,
       "kcal": 212,
       "proteinG": 14,
-      "lipidesG": 10,
       "glucidesG": 16,
-      "selG": 0.99
+      "sucresG": 0.6,
+      "lipidesG": 10,
+      "satureesG": 1.5,
+      "fibresG": 1.1,
+      "selG": 0.99,
+      "nutritionSource": "open-food-facts",
+      "sourceFoodName": "Nuggets poulet",
+      "sourceId": "3011250013549",
+      "matchConfidence": "high",
+      "sourceVersion": "Open Food Facts (export API, 2026-08-08)",
+      "importDate": "2026-08-08"
     },
     "offCode": "3011250013549"
   },
@@ -7152,11 +9899,21 @@
       "source": "open-prices"
     },
     "nutritionPer100g": {
+      "per100g": true,
       "kcal": 201,
       "proteinG": 15,
-      "lipidesG": 9.2,
       "glucidesG": 13,
-      "selG": 1.2
+      "sucresG": 1.8,
+      "lipidesG": 9.2,
+      "satureesG": 2.3,
+      "fibresG": 2.2,
+      "selG": 1.2,
+      "nutritionSource": "open-food-facts",
+      "sourceFoodName": "Cordon Bleu",
+      "sourceId": "3596690128096",
+      "matchConfidence": "high",
+      "sourceVersion": "Open Food Facts (export API, 2026-08-08)",
+      "importDate": "2026-08-08"
     },
     "offCode": "3596690128096"
   },
@@ -7219,11 +9976,21 @@
       "source": "open-prices"
     },
     "nutritionPer100g": {
+      "per100g": true,
       "kcal": 121,
       "proteinG": 7.5,
-      "lipidesG": 4.8,
       "glucidesG": 12,
-      "selG": 1.8
+      "sucresG": 4,
+      "lipidesG": 4.8,
+      "satureesG": 0.4,
+      "fibresG": 0.5,
+      "selG": 1.8,
+      "nutritionSource": "open-food-facts",
+      "sourceFoodName": "le Breizh Surimi",
+      "sourceId": "3521042004322",
+      "matchConfidence": "high",
+      "sourceVersion": "Open Food Facts (export API, 2026-08-08)",
+      "importDate": "2026-08-08"
     },
     "offCode": "3521042004322"
   },
@@ -7255,11 +10022,21 @@
       "source": "open-prices"
     },
     "nutritionPer100g": {
+      "per100g": true,
       "kcal": 166,
       "proteinG": 22,
-      "lipidesG": 8.7,
       "glucidesG": 0,
-      "selG": 3.5
+      "sucresG": 0,
+      "lipidesG": 8.7,
+      "satureesG": 1.7,
+      "fibresG": 0,
+      "selG": 3.5,
+      "nutritionSource": "open-food-facts",
+      "sourceFoodName": "Truite fumée - 120g",
+      "sourceId": "3250392422226",
+      "matchConfidence": "high",
+      "sourceVersion": "Open Food Facts (export API, 2026-08-08)",
+      "importDate": "2026-08-08"
     },
     "offCode": "3250392422226"
   },
@@ -7291,11 +10068,21 @@
       "source": "estimation"
     },
     "nutritionPer100g": {
+      "per100g": true,
       "kcal": 83,
       "proteinG": 18.2,
-      "lipidesG": 0.9,
       "glucidesG": 0.5,
-      "selG": 0.1
+      "sucresG": 0,
+      "lipidesG": 0.9,
+      "satureesG": 0,
+      "fibresG": 0,
+      "selG": 0.1,
+      "nutritionSource": "open-food-facts",
+      "sourceFoodName": "Lieu noir msc",
+      "sourceId": "4056489761167",
+      "matchConfidence": "high",
+      "sourceVersion": "Open Food Facts (export API, 2026-08-08)",
+      "importDate": "2026-08-08"
     },
     "offCode": "4056489761167"
   },
@@ -7328,11 +10115,21 @@
       "source": "open-prices"
     },
     "nutritionPer100g": {
+      "per100g": true,
       "kcal": 237,
       "proteinG": 8.1,
-      "lipidesG": 2.7,
       "glucidesG": 44.6,
-      "selG": 1
+      "sucresG": 2.6,
+      "lipidesG": 2.7,
+      "satureesG": 0.3,
+      "fibresG": 4.3,
+      "selG": 1,
+      "nutritionSource": "open-food-facts",
+      "sourceFoodName": "Pain spécial de Campagne",
+      "sourceId": "3564700756218",
+      "matchConfidence": "high",
+      "sourceVersion": "Open Food Facts (export API, 2026-08-08)",
+      "importDate": "2026-08-08"
     },
     "offCode": "3564700756218"
   },
@@ -7364,11 +10161,21 @@
       "source": "open-prices"
     },
     "nutritionPer100g": {
+      "per100g": true,
       "kcal": 214,
       "proteinG": 7.1,
-      "lipidesG": 1.2,
       "glucidesG": 42,
-      "selG": 1.2
+      "sucresG": 3.4,
+      "lipidesG": 1.2,
+      "satureesG": 0.3,
+      "fibresG": 6.3,
+      "selG": 1.2,
+      "nutritionSource": "open-food-facts",
+      "sourceFoodName": "Le pain au Seigle",
+      "sourceId": "3560070879762",
+      "matchConfidence": "high",
+      "sourceVersion": "Open Food Facts (export API, 2026-08-08)",
+      "importDate": "2026-08-08"
     },
     "offCode": "3560070879762"
   },
@@ -7400,11 +10207,21 @@
       "source": "open-prices"
     },
     "nutritionPer100g": {
+      "per100g": true,
       "kcal": 289,
       "proteinG": 12,
-      "lipidesG": 8.8,
       "glucidesG": 37,
-      "selG": 1
+      "sucresG": 1,
+      "lipidesG": 8.8,
+      "satureesG": 1,
+      "fibresG": 9,
+      "selG": 1,
+      "nutritionSource": "open-food-facts",
+      "sourceFoodName": "Pain nordique",
+      "sourceId": "3250393220517",
+      "matchConfidence": "high",
+      "sourceVersion": "Open Food Facts (export API, 2026-08-08)",
+      "importDate": "2026-08-08"
     },
     "offCode": "3250393220517"
   },
@@ -7439,11 +10256,21 @@
       "source": "open-prices"
     },
     "nutritionPer100g": {
+      "per100g": true,
       "kcal": 315,
       "proteinG": 8.9,
-      "lipidesG": 7.2,
       "glucidesG": 52,
-      "selG": 1.2
+      "sucresG": 8.2,
+      "lipidesG": 7.2,
+      "satureesG": 0.8,
+      "fibresG": 3.3,
+      "selG": 1.2,
+      "nutritionSource": "open-food-facts",
+      "sourceFoodName": "pains burger",
+      "sourceId": "3760049797862",
+      "matchConfidence": "high",
+      "sourceVersion": "Open Food Facts (export API, 2026-08-08)",
+      "importDate": "2026-08-08"
     },
     "offCode": "3760049797862"
   },
@@ -7476,11 +10303,21 @@
       "source": "estimation"
     },
     "nutritionPer100g": {
+      "per100g": true,
       "kcal": 329,
       "proteinG": 7.4,
-      "lipidesG": 8.7,
       "glucidesG": 54.3,
-      "selG": 1.15
+      "sucresG": 7.6,
+      "lipidesG": 8.7,
+      "satureesG": 1.6,
+      "fibresG": null,
+      "selG": 1.15,
+      "nutritionSource": "open-food-facts",
+      "sourceFoodName": "6 Pains Hot-Dog",
+      "sourceId": "3556071236000",
+      "matchConfidence": "high",
+      "sourceVersion": "Open Food Facts (export API, 2026-08-08)",
+      "importDate": "2026-08-08"
     },
     "offCode": "3556071236000"
   },
@@ -7514,11 +10351,21 @@
       "source": "open-prices"
     },
     "nutritionPer100g": {
+      "per100g": true,
       "kcal": 193,
       "proteinG": 6.9,
-      "lipidesG": 2.4,
       "glucidesG": 34,
-      "selG": 0
+      "sucresG": null,
+      "lipidesG": 2.4,
+      "satureesG": null,
+      "fibresG": null,
+      "selG": null,
+      "nutritionSource": "open-food-facts",
+      "sourceFoodName": "Naan",
+      "sourceId": "8713576004045",
+      "matchConfidence": "high",
+      "sourceVersion": "Open Food Facts (export API, 2026-08-08)",
+      "importDate": "2026-08-08"
     },
     "offCode": "8713576004045"
   },
@@ -7552,11 +10399,21 @@
       "source": "open-prices"
     },
     "nutritionPer100g": {
+      "per100g": true,
       "kcal": 326,
       "proteinG": 2.9,
-      "lipidesG": 1.2,
       "glucidesG": 74,
-      "selG": 0.39
+      "sucresG": 40,
+      "lipidesG": 1.2,
+      "satureesG": 0.2,
+      "fibresG": 3.6,
+      "selG": 0.39,
+      "nutritionSource": "open-food-facts",
+      "sourceFoodName": "Pain d'épices",
+      "sourceId": "3760020503994",
+      "matchConfidence": "high",
+      "sourceVersion": "Open Food Facts (export API, 2026-08-08)",
+      "importDate": "2026-08-08"
     },
     "offCode": "3760020503994"
   },
@@ -7593,11 +10450,21 @@
       "source": "estimation"
     },
     "nutritionPer100g": {
+      "per100g": true,
       "kcal": 347,
       "proteinG": 2,
-      "lipidesG": 19,
       "glucidesG": 38,
-      "selG": 0.67
+      "sucresG": 12,
+      "lipidesG": 19,
+      "satureesG": 12,
+      "fibresG": 2.1,
+      "selG": 0.67,
+      "nutritionSource": "open-food-facts",
+      "sourceFoodName": "Chausson aux pommes",
+      "sourceId": "2000000248585",
+      "matchConfidence": "high",
+      "sourceVersion": "Open Food Facts (export API, 2026-08-08)",
+      "importDate": "2026-08-08"
     },
     "offCode": "2000000248585"
   },
@@ -7632,11 +10499,21 @@
       "source": "open-prices"
     },
     "nutritionPer100g": {
+      "per100g": true,
       "kcal": 408,
       "proteinG": 7.2,
-      "lipidesG": 21,
       "glucidesG": 46,
-      "selG": 0.83
+      "sucresG": 11,
+      "lipidesG": 21,
+      "satureesG": 11,
+      "fibresG": 3,
+      "selG": 0.83,
+      "nutritionSource": "open-food-facts",
+      "sourceFoodName": "8 pains au chocolat",
+      "sourceId": "3560070711994",
+      "matchConfidence": "high",
+      "sourceVersion": "Open Food Facts (export API, 2026-08-08)",
+      "importDate": "2026-08-08"
     },
     "offCode": "3560070711994"
   },
@@ -7673,11 +10550,21 @@
       "source": "estimation"
     },
     "nutritionPer100g": {
+      "per100g": true,
       "kcal": 257,
       "proteinG": 6.8,
-      "lipidesG": 1.6,
       "glucidesG": 52,
-      "selG": 0
+      "sucresG": 11,
+      "lipidesG": 1.6,
+      "satureesG": 0.2,
+      "fibresG": 3.8,
+      "selG": 0,
+      "nutritionSource": "open-food-facts",
+      "sourceFoodName": "Pain aux raisins",
+      "sourceId": "3419390003602",
+      "matchConfidence": "high",
+      "sourceVersion": "Open Food Facts (export API, 2026-08-08)",
+      "importDate": "2026-08-08"
     },
     "offCode": "3419390003602"
   },
@@ -7713,11 +10600,21 @@
       "source": "estimation"
     },
     "nutritionPer100g": {
+      "per100g": true,
       "kcal": 445,
       "proteinG": 8.6,
-      "lipidesG": 24,
       "glucidesG": 46,
-      "selG": 0.28
+      "sucresG": 36,
+      "lipidesG": 24,
+      "satureesG": 4.7,
+      "fibresG": 2.9,
+      "selG": 0.28,
+      "nutritionSource": "open-food-facts",
+      "sourceFoodName": "Financiers",
+      "sourceId": "8008698040423",
+      "matchConfidence": "high",
+      "sourceVersion": "Open Food Facts (export API, 2026-08-08)",
+      "importDate": "2026-08-08"
     },
     "offCode": "8008698040423"
   },
@@ -7751,11 +10648,21 @@
       "source": "open-prices"
     },
     "nutritionPer100g": {
+      "per100g": true,
       "kcal": 483,
       "proteinG": 5.2,
-      "lipidesG": 24,
       "glucidesG": 61.5,
-      "selG": 0.27
+      "sucresG": 32,
+      "lipidesG": 24,
+      "satureesG": 12,
+      "fibresG": null,
+      "selG": 0.27,
+      "nutritionSource": "open-food-facts",
+      "sourceFoodName": "KING COOKIES",
+      "sourceId": "6111259343108",
+      "matchConfidence": "high",
+      "sourceVersion": "Open Food Facts (export API, 2026-08-08)",
+      "importDate": "2026-08-08"
     },
     "offCode": "6111259343108"
   },
@@ -7791,11 +10698,21 @@
       "source": "open-prices"
     },
     "nutritionPer100g": {
+      "per100g": true,
       "kcal": 305,
       "proteinG": 8.9,
-      "lipidesG": 6.7,
       "glucidesG": 50,
-      "selG": 0.87
+      "sucresG": 9.2,
+      "lipidesG": 6.7,
+      "satureesG": 0.7,
+      "fibresG": 4.3,
+      "selG": 0.87,
+      "nutritionSource": "open-food-facts",
+      "sourceFoodName": "Brioche Muffin",
+      "sourceId": "3760049790955",
+      "matchConfidence": "high",
+      "sourceVersion": "Open Food Facts (export API, 2026-08-08)",
+      "importDate": "2026-08-08"
     },
     "offCode": "3760049790955"
   },
@@ -7862,11 +10779,21 @@
       "source": "open-prices"
     },
     "nutritionPer100g": {
+      "per100g": true,
       "kcal": 487,
       "proteinG": 14,
-      "lipidesG": 22,
       "glucidesG": 56,
-      "selG": 1.5
+      "sucresG": 2,
+      "lipidesG": 22,
+      "satureesG": 3.5,
+      "fibresG": 4.5,
+      "selG": 1.5,
+      "nutritionSource": "open-food-facts",
+      "sourceFoodName": "gressins sésame",
+      "sourceId": "3560070420179",
+      "matchConfidence": "high",
+      "sourceVersion": "Open Food Facts (export API, 2026-08-08)",
+      "importDate": "2026-08-08"
     },
     "offCode": "3560070420179"
   },
@@ -7898,11 +10825,21 @@
       "source": "estimation"
     },
     "nutritionPer100g": {
+      "per100g": true,
       "kcal": 319,
       "proteinG": 11,
-      "lipidesG": 6.3,
       "glucidesG": 54,
-      "selG": 0.9
+      "sucresG": 7,
+      "lipidesG": 6.3,
+      "satureesG": 0.9,
+      "fibresG": 1.9,
+      "selG": 0.9,
+      "nutritionSource": "open-food-facts",
+      "sourceFoodName": "8 Tortillas Blé et maïs",
+      "sourceId": "3245413497901",
+      "matchConfidence": "high",
+      "sourceVersion": "Open Food Facts (export API, 2026-08-08)",
+      "importDate": "2026-08-08"
     },
     "offCode": "3245413497901"
   },
@@ -7935,11 +10872,21 @@
       "source": "open-prices"
     },
     "nutritionPer100g": {
+      "per100g": true,
       "kcal": 193,
       "proteinG": 4.9,
-      "lipidesG": 3,
       "glucidesG": 31,
-      "selG": 0.95
+      "sucresG": 2.2,
+      "lipidesG": 3,
+      "satureesG": 0.3,
+      "fibresG": 9.9,
+      "selG": 0.95,
+      "nutritionSource": "open-food-facts",
+      "sourceFoodName": "Pain complet aux graines de lin",
+      "sourceId": "3184340065039",
+      "matchConfidence": "high",
+      "sourceVersion": "Open Food Facts (export API, 2026-08-08)",
+      "importDate": "2026-08-08"
     },
     "offCode": "3184340065039"
   },
@@ -7973,11 +10920,21 @@
       "source": "estimation"
     },
     "nutritionPer100g": {
+      "per100g": true,
       "kcal": 468,
       "proteinG": 11,
-      "lipidesG": 19.8,
       "glucidesG": 59.6,
-      "selG": 3.2
+      "sucresG": 1.7,
+      "lipidesG": 19.8,
+      "satureesG": 2.3,
+      "fibresG": 3.2,
+      "selG": 3.2,
+      "nutritionSource": "open-food-facts",
+      "sourceFoodName": "Focaccia crackers",
+      "sourceId": "4335619009431",
+      "matchConfidence": "high",
+      "sourceVersion": "Open Food Facts (export API, 2026-08-08)",
+      "importDate": "2026-08-08"
     },
     "offCode": "4335619009431"
   },
@@ -8012,11 +10969,21 @@
       "source": "estimation"
     },
     "nutritionPer100g": {
+      "per100g": true,
       "kcal": 272,
       "proteinG": 8,
-      "lipidesG": 4.1,
       "glucidesG": 50,
-      "selG": 1.4
+      "sucresG": 1.4,
+      "lipidesG": 4.1,
+      "satureesG": 2.2,
+      "fibresG": null,
+      "selG": 1.4,
+      "nutritionSource": "open-food-facts",
+      "sourceFoodName": "Pain brie",
+      "sourceId": "2806055010500",
+      "matchConfidence": "high",
+      "sourceVersion": "Open Food Facts (export API, 2026-08-08)",
+      "importDate": "2026-08-08"
     },
     "offCode": "2806055010500"
   },
@@ -8049,11 +11016,21 @@
       "source": "estimation"
     },
     "nutritionPer100g": {
+      "per100g": true,
       "kcal": 321,
       "proteinG": 14,
-      "lipidesG": 14,
       "glucidesG": 34,
-      "selG": 1.5
+      "sucresG": 2.2,
+      "lipidesG": 14,
+      "satureesG": 7.2,
+      "fibresG": null,
+      "selG": 1.5,
+      "nutritionSource": "open-food-facts",
+      "sourceFoodName": "Fougasse",
+      "sourceId": "3511244340809",
+      "matchConfidence": "high",
+      "sourceVersion": "Open Food Facts (export API, 2026-08-08)",
+      "importDate": "2026-08-08"
     },
     "offCode": "3511244340809"
   },
@@ -8089,11 +11066,21 @@
     "easyToCook": true,
     "isCondiment": true,
     "nutritionPer100g": {
+      "per100g": true,
       "kcal": 360,
       "proteinG": 9.5,
-      "lipidesG": 1.6,
       "glucidesG": 79.5,
-      "selG": 1.18
+      "sucresG": 4.3,
+      "lipidesG": 1.6,
+      "satureesG": 0.4,
+      "fibresG": 4.5,
+      "selG": 1.18,
+      "nutritionSource": "open-food-facts",
+      "sourceFoodName": "Chapelure dorée",
+      "sourceId": "3165440007808",
+      "matchConfidence": "exact",
+      "sourceVersion": "Open Food Facts (export API, 2026-08-08)",
+      "importDate": "2026-08-08"
     }
   },
   {
@@ -8125,11 +11112,21 @@
     "sel": "moyen",
     "easyToCook": true,
     "nutritionPer100g": {
+      "per100g": true,
       "kcal": 27,
       "proteinG": 1.4,
-      "lipidesG": 0,
       "glucidesG": 4,
-      "selG": 0.8
+      "sucresG": 1.3,
+      "lipidesG": 0,
+      "satureesG": 0,
+      "fibresG": null,
+      "selG": 0.8,
+      "nutritionSource": "open-food-facts",
+      "sourceFoodName": "Coeurs d'artichauts",
+      "sourceId": "20543167",
+      "matchConfidence": "exact",
+      "sourceVersion": "Open Food Facts (export API, 2026-08-08)",
+      "importDate": "2026-08-08"
     }
   },
   {
@@ -8159,11 +11156,21 @@
     "easyToCook": true,
     "isCondiment": true,
     "nutritionPer100g": {
+      "per100g": true,
       "kcal": 312,
       "proteinG": 13.6,
-      "lipidesG": 9.5,
       "glucidesG": 25.6,
-      "selG": 4.7
+      "sucresG": 1.8,
+      "lipidesG": 9.5,
+      "satureesG": 0.8,
+      "fibresG": 33.5,
+      "selG": 4.7,
+      "nutritionSource": "open-food-facts",
+      "sourceFoodName": "Curry en poudre",
+      "sourceId": "20249939",
+      "matchConfidence": "exact",
+      "sourceVersion": "Open Food Facts (export API, 2026-08-08)",
+      "importDate": "2026-08-08"
     }
   },
   {
@@ -8197,11 +11204,21 @@
     "easyToCook": true,
     "isCondiment": true,
     "nutritionPer100g": {
+      "per100g": true,
       "kcal": 492,
       "proteinG": 4.7,
-      "lipidesG": 47,
       "glucidesG": 11,
-      "selG": 3.2
+      "sucresG": 5,
+      "lipidesG": 47,
+      "satureesG": 5.3,
+      "fibresG": 3,
+      "selG": 3.2,
+      "nutritionSource": "open-food-facts",
+      "sourceFoodName": "Sauce pesto avec basilic",
+      "sourceId": "8076809513753",
+      "matchConfidence": "exact",
+      "sourceVersion": "Open Food Facts (export API, 2026-08-08)",
+      "importDate": "2026-08-08"
     }
   },
   {
@@ -8231,11 +11248,21 @@
     "sel": "faible",
     "easyToCook": true,
     "nutritionPer100g": {
+      "per100g": true,
       "kcal": 14,
       "proteinG": 0,
-      "lipidesG": 0,
       "glucidesG": 3.3,
-      "selG": 0.03
+      "sucresG": 3.3,
+      "lipidesG": 0,
+      "satureesG": 0,
+      "fibresG": 0,
+      "selG": 0.03,
+      "nutritionSource": "open-food-facts",
+      "sourceFoodName": "Thé vert saveur menthe",
+      "sourceId": "3124480195326",
+      "matchConfidence": "exact",
+      "sourceVersion": "Open Food Facts (export API, 2026-08-08)",
+      "importDate": "2026-08-08"
     }
   },
   {
@@ -8269,11 +11296,21 @@
     "easyToCook": true,
     "gourmand": true,
     "nutritionPer100g": {
+      "per100g": true,
       "kcal": 476,
       "proteinG": 7.6,
-      "lipidesG": 19,
       "glucidesG": 66,
-      "selG": 0.49
+      "sucresG": 27,
+      "lipidesG": 19,
+      "satureesG": 6.3,
+      "fibresG": 5.2,
+      "selG": 0.49,
+      "nutritionSource": "open-food-facts",
+      "sourceFoodName": "Fourrés Chocolat Noir",
+      "sourceId": "3229820100234",
+      "matchConfidence": "exact",
+      "sourceVersion": "Open Food Facts (export API, 2026-08-08)",
+      "importDate": "2026-08-08"
     }
   },
   {
@@ -8307,11 +11344,21 @@
     "sel": "faible",
     "easyToCook": true,
     "nutritionPer100g": {
+      "per100g": true,
       "kcal": 621,
       "proteinG": 24.5,
-      "lipidesG": 53.3,
       "glucidesG": 4.8,
-      "selG": 0.01
+      "sucresG": 4.8,
+      "lipidesG": 53.3,
+      "satureesG": 4.3,
+      "fibresG": 12.1,
+      "selG": 0.01,
+      "nutritionSource": "open-food-facts",
+      "sourceFoodName": "Amandes",
+      "sourceId": "20724696",
+      "matchConfidence": "exact",
+      "sourceVersion": "Open Food Facts (export API, 2026-08-08)",
+      "importDate": "2026-08-08"
     }
   },
   {
@@ -8341,11 +11388,21 @@
     "easyToCook": true,
     "isCondiment": true,
     "nutritionPer100g": {
+      "per100g": true,
       "kcal": 0,
       "proteinG": 0,
-      "lipidesG": 0,
       "glucidesG": 0,
-      "selG": 0
+      "sucresG": 0,
+      "lipidesG": 0,
+      "satureesG": 0,
+      "fibresG": null,
+      "selG": 0,
+      "nutritionSource": "open-food-facts",
+      "sourceFoodName": "Gélatine alimentaire",
+      "sourceId": "3179142056583",
+      "matchConfidence": "exact",
+      "sourceVersion": "Open Food Facts (export API, 2026-08-08)",
+      "importDate": "2026-08-08"
     }
   },
   {
@@ -8374,11 +11431,21 @@
     "sel": "faible",
     "easyToCook": true,
     "nutritionPer100g": {
+      "per100g": true,
       "kcal": 44,
       "proteinG": 3.5,
-      "lipidesG": 1.3,
       "glucidesG": 2.5,
-      "selG": 0.02
+      "sucresG": 2.4,
+      "lipidesG": 1.3,
+      "satureesG": 0.3,
+      "fibresG": 4.3,
+      "selG": 0.02,
+      "nutritionSource": "open-food-facts",
+      "sourceFoodName": "Choux de Bruxelles",
+      "sourceId": "3270160599363",
+      "matchConfidence": "exact",
+      "sourceVersion": "Open Food Facts (export API, 2026-08-08)",
+      "importDate": "2026-08-08"
     }
   },
   {
@@ -8410,11 +11477,21 @@
     "sel": "moyen",
     "easyToCook": true,
     "nutritionPer100g": {
+      "per100g": true,
       "kcal": 338,
       "proteinG": 17,
-      "lipidesG": 30,
       "glucidesG": 1,
-      "selG": 1.3
+      "sucresG": 0.5,
+      "lipidesG": 30,
+      "satureesG": 21,
+      "fibresG": null,
+      "selG": 1.3,
+      "nutritionSource": "open-food-facts",
+      "sourceFoodName": "Pointe de Brie",
+      "sourceId": "3176582040103",
+      "matchConfidence": "exact",
+      "sourceVersion": "Open Food Facts (export API, 2026-08-08)",
+      "importDate": "2026-08-08"
     }
   },
   {
@@ -8446,11 +11523,21 @@
     "sel": "moyen",
     "easyToCook": true,
     "nutritionPer100g": {
+      "per100g": true,
       "kcal": 410,
       "proteinG": 26,
-      "lipidesG": 34,
       "glucidesG": 0.5,
-      "selG": 0.8
+      "sucresG": 0.5,
+      "lipidesG": 34,
+      "satureesG": 22,
+      "fibresG": null,
+      "selG": 0.8,
+      "nutritionSource": "open-food-facts",
+      "sourceFoodName": "Comté",
+      "sourceId": "3123930650026",
+      "matchConfidence": "exact",
+      "sourceVersion": "Open Food Facts (export API, 2026-08-08)",
+      "importDate": "2026-08-08"
     }
   },
   {
@@ -8484,11 +11571,21 @@
     "easyToCook": true,
     "gourmand": true,
     "nutritionPer100g": {
+      "per100g": true,
       "kcal": 146,
       "proteinG": 4.4,
-      "lipidesG": 5,
       "glucidesG": 20.1,
-      "selG": 0.27
+      "sucresG": 17.6,
+      "lipidesG": 5,
+      "satureesG": 3.4,
+      "fibresG": null,
+      "selG": 0.27,
+      "nutritionSource": "open-food-facts",
+      "sourceFoodName": "CREME DESSERT BIO AU CHOCOLAT",
+      "sourceId": "3661344288690",
+      "matchConfidence": "exact",
+      "sourceVersion": "Open Food Facts (export API, 2026-08-08)",
+      "importDate": "2026-08-08"
     }
   },
   {
@@ -8520,11 +11617,21 @@
     "sel": "faible",
     "easyToCook": true,
     "nutritionPer100g": {
+      "per100g": true,
       "kcal": 77,
       "proteinG": 3.7,
-      "lipidesG": 2,
       "glucidesG": 11,
-      "selG": 0.2
+      "sucresG": 10,
+      "lipidesG": 2,
+      "satureesG": 0.3,
+      "fibresG": 0.3,
+      "selG": 0.2,
+      "nutritionSource": "open-food-facts",
+      "sourceFoodName": "Yaourt au Soja Citron",
+      "sourceId": "3273220083000",
+      "matchConfidence": "exact",
+      "sourceVersion": "Open Food Facts (export API, 2026-08-08)",
+      "importDate": "2026-08-08"
     }
   },
   {
@@ -8556,11 +11663,21 @@
     "sel": "moyen",
     "easyToCook": true,
     "nutritionPer100g": {
+      "per100g": true,
       "kcal": 132,
       "proteinG": 18,
-      "lipidesG": 1.7,
       "glucidesG": 10,
-      "selG": 0.72
+      "sucresG": 0.8,
+      "lipidesG": 1.7,
+      "satureesG": 0.3,
+      "fibresG": 2.2,
+      "selG": 0.72,
+      "nutritionSource": "open-food-facts",
+      "sourceFoodName": "Seitan veggie",
+      "sourceId": "3229820796642",
+      "matchConfidence": "exact",
+      "sourceVersion": "Open Food Facts (export API, 2026-08-08)",
+      "importDate": "2026-08-08"
     }
   },
   {
@@ -8593,11 +11710,21 @@
     "sel": "moyen",
     "easyToCook": true,
     "nutritionPer100g": {
+      "per100g": true,
       "kcal": 388,
       "proteinG": 5.8,
-      "lipidesG": 20,
       "glucidesG": 45,
-      "selG": 1
+      "sucresG": 2,
+      "lipidesG": 20,
+      "satureesG": 9.2,
+      "fibresG": 2.3,
+      "selG": 1,
+      "nutritionSource": "open-food-facts",
+      "sourceFoodName": "HERTA TARTE EN OR Pâte Brisée 230g",
+      "sourceId": "3154230600121",
+      "matchConfidence": "exact",
+      "sourceVersion": "Open Food Facts (export API, 2026-08-08)",
+      "importDate": "2026-08-08"
     }
   },
   {
@@ -8624,11 +11751,21 @@
     "sel": "faible",
     "easyToCook": true,
     "nutritionPer100g": {
+      "per100g": true,
       "kcal": 207,
       "proteinG": 18,
-      "lipidesG": 15,
       "glucidesG": 0.5,
-      "selG": 0.22
+      "sucresG": 0.5,
+      "lipidesG": 15,
+      "satureesG": 6.2,
+      "fibresG": 0.5,
+      "selG": 0.22,
+      "nutritionSource": "open-food-facts",
+      "sourceFoodName": "steak haché pur boeuf 15%MG",
+      "sourceId": "20114008",
+      "matchConfidence": "exact",
+      "sourceVersion": "Open Food Facts (export API, 2026-08-08)",
+      "importDate": "2026-08-08"
     }
   },
   {
@@ -8657,11 +11794,21 @@
     "sel": "riche",
     "easyToCook": true,
     "nutritionPer100g": {
+      "per100g": true,
       "kcal": 227,
       "proteinG": 20,
-      "lipidesG": 16,
       "glucidesG": 0.8,
-      "selG": 3.3
+      "sucresG": 0,
+      "lipidesG": 16,
+      "satureesG": 3.6,
+      "fibresG": null,
+      "selG": 3.3,
+      "nutritionSource": "open-food-facts",
+      "sourceFoodName": "Filets de harengs fumés -25% de sel",
+      "sourceId": "3038680063715",
+      "matchConfidence": "exact",
+      "sourceVersion": "Open Food Facts (export API, 2026-08-08)",
+      "importDate": "2026-08-08"
     }
   },
   {
@@ -8688,11 +11835,21 @@
     "sel": "moyen",
     "easyToCook": true,
     "nutritionPer100g": {
+      "per100g": true,
       "kcal": 154,
       "proteinG": 20,
-      "lipidesG": 8,
       "glucidesG": 0.6,
-      "selG": 1
+      "sucresG": 0.6,
+      "lipidesG": 8,
+      "satureesG": 1.3,
+      "fibresG": null,
+      "selG": 1,
+      "nutritionSource": "open-food-facts",
+      "sourceFoodName": "Brochettes de medaillons de poulet à la provençale",
+      "sourceId": "20213916",
+      "matchConfidence": "exact",
+      "sourceVersion": "Open Food Facts (export API, 2026-08-08)",
+      "importDate": "2026-08-08"
     }
   },
   {
@@ -8721,11 +11878,21 @@
     "sel": "riche",
     "easyToCook": true,
     "nutritionPer100g": {
+      "per100g": true,
       "kcal": 200,
       "proteinG": 21,
-      "lipidesG": 13,
       "glucidesG": 0.5,
-      "selG": 1.8
+      "sucresG": 0.5,
+      "lipidesG": 13,
+      "satureesG": 1.3,
+      "fibresG": 0,
+      "selG": 1.8,
+      "nutritionSource": "open-food-facts",
+      "sourceFoodName": "Poulpe Ail et Persil",
+      "sourceId": "3418840238557",
+      "matchConfidence": "exact",
+      "sourceVersion": "Open Food Facts (export API, 2026-08-08)",
+      "importDate": "2026-08-08"
     }
   },
   {
@@ -8752,11 +11919,21 @@
     "sel": "faible",
     "easyToCook": true,
     "nutritionPer100g": {
+      "per100g": true,
       "kcal": 176,
       "proteinG": 21,
-      "lipidesG": 10,
       "glucidesG": 0.7,
-      "selG": 0.17
+      "sucresG": 0.4,
+      "lipidesG": 10,
+      "satureesG": 5,
+      "fibresG": 0.5,
+      "selG": 0.17,
+      "nutritionSource": "open-food-facts",
+      "sourceFoodName": "4 escalopes hachées pur veau",
+      "sourceId": "3270160147571",
+      "matchConfidence": "exact",
+      "sourceVersion": "Open Food Facts (export API, 2026-08-08)",
+      "importDate": "2026-08-08"
     }
   },
   {
@@ -8791,11 +11968,21 @@
     "easyToCook": true,
     "gourmand": true,
     "nutritionPer100g": {
+      "per100g": true,
       "kcal": 419,
       "proteinG": 5.5,
-      "lipidesG": 21,
       "glucidesG": 54,
-      "selG": 0.71
+      "sucresG": 23,
+      "lipidesG": 21,
+      "satureesG": 2,
+      "fibresG": 1.5,
+      "selG": 0.71,
+      "nutritionSource": "open-food-facts",
+      "sourceFoodName": "Petites Madeleines",
+      "sourceId": "3178530410105",
+      "matchConfidence": "exact",
+      "sourceVersion": "Open Food Facts (export API, 2026-08-08)",
+      "importDate": "2026-08-08"
     }
   },
   {
@@ -8831,11 +12018,21 @@
     "easyToCook": true,
     "gourmand": true,
     "nutritionPer100g": {
+      "per100g": true,
       "kcal": 495,
       "proteinG": 6.4,
-      "lipidesG": 21,
       "glucidesG": 69,
-      "selG": 0.89
+      "sucresG": 24,
+      "lipidesG": 21,
+      "satureesG": 14,
+      "fibresG": 2,
+      "selG": 0.89,
+      "nutritionSource": "open-food-facts",
+      "sourceFoodName": "Galette bretonne pur beurre",
+      "sourceId": "3250391737109",
+      "matchConfidence": "exact",
+      "sourceVersion": "Open Food Facts (export API, 2026-08-08)",
+      "importDate": "2026-08-08"
     }
   },
   {
@@ -8868,11 +12065,21 @@
     "sel": "moyen",
     "easyToCook": true,
     "nutritionPer100g": {
+      "per100g": true,
       "kcal": 301,
       "proteinG": 10,
-      "lipidesG": 6.2,
       "glucidesG": 49,
-      "selG": 1
+      "sucresG": 2.8,
+      "lipidesG": 6.2,
+      "satureesG": 0.8,
+      "fibresG": 4.4,
+      "selG": 1,
+      "nutritionSource": "open-food-facts",
+      "sourceFoodName": "Baguette aux céréales",
+      "sourceId": "2000000228662",
+      "matchConfidence": "exact",
+      "sourceVersion": "Open Food Facts (export API, 2026-08-08)",
+      "importDate": "2026-08-08"
     }
   }
 ]

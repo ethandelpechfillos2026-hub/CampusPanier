@@ -1,0 +1,13 @@
+[
+  { "id": "lait", "shortName": "Lait", "raison": "Marque marocaine (Jaouda), teneur en matière grasse non précisée dans le catalogue — impossible de choisir entre lait entier/demi-écrémé/écrémé Ciqual sans info supplémentaire." },
+  { "id": "cabillaud", "shortName": "Cabillaud", "raison": "Le produit réel est un plat préparé (« Cabillaud sauce Citron riz aux petits légumes »), pas du cabillaud seul. Aucune fiche Ciqual de plat composé équivalente trouvée." },
+  { "id": "the", "shortName": "Thé", "raison": "Aucune fiche Ciqual pour le thé sec en sachets — seules des boissons au thé prêtes à boire existent dans la table, non pertinentes pour un produit sec." },
+  { "id": "nouilles-chinoises", "shortName": "Nouilles chinoises", "raison": "Type de nouille ambigu (blé/œuf vs riz) d'après le nom du produit (« nouilles en nid ») — plusieurs candidats Ciqual non équivalents nutritionnellement." },
+  { "id": "barres-cereales", "shortName": "Barres de céréales", "raison": "Produit réel très spécifique (noix + chocolat noir, sucré-salé) ; plusieurs sous-types Ciqual possibles (chocolat, fruits, amandes/noisettes) sans correspondance univoque." },
+  { "id": "panais", "shortName": "Panais", "raison": "Le produit réel est un mélange de légumes racines (carottes, betteraves, patates douces, panais), pas du panais seul. Aucune fiche Ciqual pour ce mélange précis." },
+  { "id": "salade-frisee", "shortName": "Salade frisée", "raison": "Le produit réel est un mélange de salades (frisée, iceberg, scarole, chicorée rouge), pas de la frisée seule. La fiche Ciqual « frisée » ne représente pas fidèlement le mélange." },
+  { "id": "lait-ecreme", "shortName": "Lait écrémé", "raison": "Incohérence dans le catalogue : l'identifiant/nom affiché indique « lait écrémé » mais le produit réel est du lait 1/2 écrémé (« Viva lait 1/2 écrémé »). À corriger côté catalogue avant sourcing." },
+  { "id": "ravioli-frais", "shortName": "Ravioli frais", "raison": "Le produit réel est du raviolini au jambon cru. Ciqual propose des raviolis fromage/légumes/bœuf mais aucun au jambon — pas de correspondance fiable." },
+  { "id": "filet-dinde-fume", "shortName": "Filet de dinde fumé", "raison": "Aucune fiche Ciqual pour la dinde fumée en filet trouvée." },
+  { "id": "tarte-fine", "shortName": "Tarte fine", "raison": "Produit trop spécifique (tarte fine champignons-gorgonzola) — aucun équivalent générique dans Ciqual." }
+]

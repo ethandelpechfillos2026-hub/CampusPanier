@@ -352,7 +352,7 @@ export default function ResultsContent({
                       Calories
                     </p>
                     <p className="text-sm font-bold text-campus-ink">
-                      {selectedProduct.nutritionPer100g.kcal} kcal
+                      {selectedProduct.nutritionPer100g.kcal ?? "—"} kcal
                     </p>
                   </div>
                   <div className="rounded-xl bg-campus-terracotta/10 p-3">
@@ -360,34 +360,64 @@ export default function ResultsContent({
                       Protéines
                     </p>
                     <p className="text-sm font-bold text-campus-ink">
-                      {selectedProduct.nutritionPer100g.proteinG} g
+                      {selectedProduct.nutritionPer100g.proteinG ?? "—"} g
                     </p>
                   </div>
                   <div className="rounded-xl bg-campus-terracotta/10 p-3">
                     <p className="text-[11px] uppercase tracking-wide text-campus-muted">
-                      Lipides
+                      Lipides {selectedProduct.nutritionPer100g.satureesG != null ? "(dont AGS)" : ""}
                     </p>
                     <p className="text-sm font-bold text-campus-ink">
-                      {selectedProduct.nutritionPer100g.lipidesG} g
+                      {selectedProduct.nutritionPer100g.lipidesG ?? "—"} g
+                      {selectedProduct.nutritionPer100g.satureesG != null && (
+                        <span className="ml-1 text-xs font-normal text-campus-muted">
+                          ({selectedProduct.nutritionPer100g.satureesG} g)
+                        </span>
+                      )}
                     </p>
                   </div>
                   <div className="rounded-xl bg-campus-terracotta/10 p-3">
                     <p className="text-[11px] uppercase tracking-wide text-campus-muted">
-                      Glucides
+                      Glucides {selectedProduct.nutritionPer100g.sucresG != null ? "(dont sucres)" : ""}
                     </p>
                     <p className="text-sm font-bold text-campus-ink">
-                      {selectedProduct.nutritionPer100g.glucidesG} g
+                      {selectedProduct.nutritionPer100g.glucidesG ?? "—"} g
+                      {selectedProduct.nutritionPer100g.sucresG != null && (
+                        <span className="ml-1 text-xs font-normal text-campus-muted">
+                          ({selectedProduct.nutritionPer100g.sucresG} g)
+                        </span>
+                      )}
                     </p>
                   </div>
-                  <div className="col-span-2 rounded-xl bg-campus-terracotta/10 p-3">
+                  <div className="rounded-xl bg-campus-terracotta/10 p-3">
+                    <p className="text-[11px] uppercase tracking-wide text-campus-muted">
+                      Fibres
+                    </p>
+                    <p className="text-sm font-bold text-campus-ink">
+                      {selectedProduct.nutritionPer100g.fibresG ?? "—"} g
+                    </p>
+                  </div>
+                  <div className="rounded-xl bg-campus-terracotta/10 p-3">
                     <p className="text-[11px] uppercase tracking-wide text-campus-muted">
                       Sel
                     </p>
                     <p className="text-sm font-bold text-campus-ink">
-                      {selectedProduct.nutritionPer100g.selG} g
+                      {selectedProduct.nutritionPer100g.selG ?? "—"} g
                     </p>
                   </div>
                 </div>
+                <p className="mt-2 text-[11px] text-campus-muted">
+                  {selectedProduct.nutritionPer100g.nutritionSource === "ciqual-2025"
+                    ? "Source : Anses, 2025, Table de composition nutritionnelle des aliments Ciqual."
+                    : selectedProduct.nutritionPer100g.nutritionSource === "open-food-facts"
+                      ? "Source : Open Food Facts."
+                      : selectedProduct.nutritionPer100g.nutritionSource === "manufacturer"
+                        ? "Source : étiquette fabricant."
+                        : null}
+                  {selectedProduct.nutritionPer100g.matchConfidence === "review" && (
+                    <span className="ml-1 italic">(correspondance à vérifier)</span>
+                  )}
+                </p>
               </>
             ) : (
               <div className="mt-4 grid grid-cols-2 gap-2">
