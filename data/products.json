@@ -139,6 +139,7 @@
     "glucides": "moyen",
     "sel": "riche",
     "easyToCook": true,
+    "isCondiment": true,
     "priceInfo": {
       "source": "open-prices"
     }
@@ -3478,6 +3479,7 @@
     "glucides": "faible",
     "sel": "moyen",
     "easyToCook": true,
+    "isCondiment": true,
     "weeklyServings": 3,
     "servingUnit": "portion",
     "ultraTransforme": true,
