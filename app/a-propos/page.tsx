@@ -1,8 +1,10 @@
 import Link from "next/link";
+import PhoneFrame from "@/components/PhoneFrame";
 
 export default function AProposPage() {
   return (
-    <div className="space-y-6">
+    <PhoneFrame>
+    <div className="flex-1 overflow-y-auto space-y-6 px-5 py-5">
       <div>
         <h1 className="text-2xl font-bold text-campus-ink">À propos</h1>
         <p className="mt-1 text-campus-muted">
@@ -10,7 +12,7 @@ export default function AProposPage() {
         </p>
       </div>
 
-      <section className="card space-y-4">
+      <section className="space-y-4 rounded-2xl border-2 border-campus-sand bg-white p-4">
         <h2 className="text-lg font-semibold">Pourquoi CampusPanier ?</h2>
         <p className="leading-relaxed text-campus-muted">
           Faire ses courses en étant étudiant·e, c&apos;est jongler entre un
@@ -25,7 +27,7 @@ export default function AProposPage() {
         </p>
       </section>
 
-      <section className="card space-y-4">
+      <section className="space-y-4 rounded-2xl border-2 border-campus-sand bg-white p-4">
         <h2 className="text-lg font-semibold">Comment ça marche ?</h2>
         <ol className="list-inside list-decimal space-y-2 text-campus-muted">
           <li>Tu indiques ton budget et tes contraintes alimentaires.</li>
@@ -33,13 +35,15 @@ export default function AProposPage() {
           <li>Tu obtiens une liste prête à emporter au supermarché.</li>
         </ol>
         <p className="text-sm text-campus-muted">
-          Les prix affichés sont des données mockées à titre indicatif. Ils
-          seront remplacés par une source fiable lors de la prochaine étape du
-          projet.
+          Les prix affichés proviennent d&apos;un catalogue construit à partir
+          de relevés publics Open Food Facts / Open Prices. Selon le produit,
+          il peut s&apos;agir d&apos;un relevé récent, d&apos;un relevé plus
+          ancien ou d&apos;une estimation générique — la fiabilité de chaque
+          prix est indiquée directement sous le produit dans ta liste.
         </p>
       </section>
 
-      <section className="card space-y-4">
+      <section className="space-y-4 rounded-2xl border-2 border-campus-sand bg-white p-4">
         <h2 className="text-lg font-semibold">Pilote rentrée 2026</h2>
         <p className="leading-relaxed text-campus-muted">
           CampusPanier est testé en conditions réelles sur 1 à 2 campus français
@@ -52,5 +56,6 @@ export default function AProposPage() {
         Créer ma liste de courses
       </Link>
     </div>
+    </PhoneFrame>
   );
 }

@@ -8,6 +8,7 @@ import {
   findSharedListByCode,
   getActiveSharedListId,
   joinSharedList,
+  leaveSharedList,
   setActiveSharedListId,
   subscribeToSharedList,
   toggleSharedListItem,
@@ -145,10 +146,22 @@ export default function SharedListTab({
     }
   }
 
-  function handleLeave() {
+  async function handleLeave() {
+    const currentListId = sharedList?.id;
+    // On détache l'appareil tout de suite, sans attendre la réponse réseau —
+    // "Quitter" doit rester instantané même hors ligne. La mise à jour
+    // Firestore (retirer la personne des membres visibles par les autres)
+    // se fait en best-effort juste après.
     setActiveSharedListId(null);
     setListId(null);
     setSharedList(null);
+    if (currentListId) {
+      try {
+        await leaveSharedList(currentListId, userId);
+      } catch (err) {
+        console.error("[CampusPanier] Erreur en quittant la liste partagée:", err);
+      }
+    }
   }
 
   async function handleToggle(productId: string, item: SharedListItem) {

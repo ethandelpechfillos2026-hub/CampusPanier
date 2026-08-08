@@ -161,34 +161,41 @@ export default function MenuContent({
                         Annuler
                       </button>
                     </div>
-                  ) : entries.length === 0 && slot === "dejeuner" && isCantineDay ? (
-                    <p className="text-sm text-campus-muted">
-                      🍽️ Tu manges à la cantine ce midi — rien à préparer.
-                    </p>
-                  ) : entries.length === 0 ? (
-                    <p className="text-sm text-campus-muted">
-                      Rien de prévu ici avec ce budget — augmente-le
-                      légèrement pour un menu complet tous les jours.
-                    </p>
                   ) : (
                     <>
-                      <ul className="space-y-2">
-                        {entries.map(({ product, count }) => (
-                          <li
-                            key={product.id}
-                            className="flex items-center justify-between gap-3 text-sm"
-                          >
-                            <span className="font-medium text-campus-ink">
-                              {product.shortName ?? product.name}
-                            </span>
-                            <span className="shrink-0 font-semibold text-campus-terracotta">
-                              {formatDayEntryQuantity(product, count)}
-                            </span>
-                          </li>
-                        ))}
-                      </ul>
+                      {entries.length === 0 && slot === "dejeuner" && isCantineDay ? (
+                        <p className="text-sm text-campus-muted">
+                          🍽️ Tu manges à la cantine ce midi — rien à préparer.
+                        </p>
+                      ) : entries.length === 0 ? (
+                        <p className="text-sm text-campus-muted">
+                          Rien de prévu ici avec ce budget — augmente-le
+                          légèrement pour un menu complet tous les jours.
+                          {loggable &&
+                            " Tu es quand même sorti·e manger ? Tu peux le noter ci-dessous."}
+                        </p>
+                      ) : (
+                        <ul className="space-y-2">
+                          {entries.map(({ product, count }) => (
+                            <li
+                              key={product.id}
+                              className="flex items-center justify-between gap-3 text-sm"
+                            >
+                              <span className="font-medium text-campus-ink">
+                                {product.shortName ?? product.name}
+                              </span>
+                              <span className="shrink-0 font-semibold text-campus-terracotta">
+                                {formatDayEntryQuantity(product, count)}
+                              </span>
+                            </li>
+                          ))}
+                        </ul>
+                      )}
 
-                      {loggable && (
+                      {/* Cantine ce midi : le repas est déjà "hors maison" par
+                          définition, pas besoin de proposer en plus de le
+                          logger comme repas dehors imprévu. */}
+                      {loggable && !(entries.length === 0 && slot === "dejeuner" && isCantineDay) && (
                         <div className="mt-3 border-t border-campus-sand pt-3">
                           {pickerFor === slot ? (
                             <div className="flex flex-wrap items-center gap-2">

@@ -12,6 +12,18 @@ import {
 
 const products = productsData as Product[];
 
+// Identifiants des féculents "de base" du catalogue (riz, pâtes, pommes de
+// terre...) — liste unique partagée avec generateMenu.ts (familles de
+// produits) pour éviter que les deux fichiers dérivent chacun de leur côté.
+// Si un produit y figure sans exister dans le catalogue (ex : retiré lors
+// d'un nettoyage), il est simplement ignoré partout, sans effet — mais
+// autant n'avoir qu'un seul endroit à mettre à jour.
+export const FECULENT_IDS = new Set([
+  "riz", "pates", "pommes-de-terre", "quinoa", "semoule-couscous",
+  "riz-complet", "pates-completes", "spaghetti", "polenta",
+  "patate-douce", "nouilles-chinoises",
+]);
+
 function matchesDiet(product: Product, diet: UserPreferences["diet"]): boolean {
   return product.dietTags.includes(diet);
 }
@@ -370,11 +382,6 @@ export function generateShoppingList(
   // pouvait être satisfait par un simple pois chiches + fromage + concombre
   // — nutritionnellement correct, mais ça ressemble plus à une salade froide
   // qu'à un vrai plat cuisiné avec une base.
-  const FECULENT_IDS = new Set([
-    "riz", "pates", "pommes-de-terre", "quinoa", "semoule-couscous",
-    "riz-complet", "pates-completes", "spaghetti", "polenta",
-    "patate-douce", "nouilles-chinoises",
-  ]);
   const hasFeculent = selected.some((p) => FECULENT_IDS.has(p.id));
   if (!hasFeculent) {
     const feculentCandidates = filtered

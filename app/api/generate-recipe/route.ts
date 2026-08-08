@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { Allergen, DietType } from "@/lib/types";
 
-// Route serveur — la clé Groq (process.env.GROQ_API_KEY, sans préfixe
+// Route serveur — la clé Groq (process.env.campuspanierrecette, sans préfixe
 // NEXT_PUBLIC_) ne quitte jamais le serveur et n'est jamais envoyée au
 // navigateur. Génère une recette à partir des ingrédients du panier de
 // l'utilisateur, en respectant son régime et ses allergies.

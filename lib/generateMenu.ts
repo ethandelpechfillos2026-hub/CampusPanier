@@ -1,3 +1,4 @@
+import { FECULENT_IDS } from "@/lib/generateShoppingList";
 import {
   CATEGORY_ORDER,
   MealOutEntry,
@@ -181,8 +182,9 @@ const PRODUCT_FAMILIES: string[][] = [
   // Variantes de lait à boire — redondantes entre elles (pas de raison
   // d'avoir "lait" ET "lait entier" ET "lait écrémé" le même matin).
   ["lait", "lait-entier", "lait-ecreme"],
-  // Féculents principaux du déjeuner/dîner.
-  ["riz", "pates", "pommes-de-terre", "quinoa", "semoule-couscous", "riz-complet", "pates-completes", "spaghetti", "boulgour", "polenta", "patate-douce", "nouilles-chinoises"],
+  // Féculents principaux du déjeuner/dîner — voir FECULENT_IDS dans
+  // generateShoppingList.ts, la même liste sert aux deux endroits.
+  Array.from(FECULENT_IDS),
   // Douceurs/collations sucrées — pour éviter d'empiler chips + cookies +
   // financiers + tiramisu le même jour quand plusieurs sont sélectionnés.
   [

@@ -14,15 +14,33 @@ function summarize(prefs: UserPreferences): string {
   return `${prefs.budget} € · ${dietLabel}`;
 }
 
+// Compare TOUS les champs qui influencent réellement la liste générée
+// (voir generateShoppingList.ts) — pas seulement budget/régime/allergies.
+// Sans les champs ajoutés depuis (cantine, enseigne, mode performance,
+// profil corporel), deux profils avec des jours de cantine ou une enseigne
+// différents pouvaient être vus à tort comme "le même favori" : l'étoile
+// affichait "déjà enregistré" pour un profil qui produirait en réalité une
+// liste différente, et le retirer supprimait le mauvais favori.
 function samePreferences(a: UserPreferences, b: UserPreferences): boolean {
   return (
     a.budget === b.budget &&
     a.diet === b.diet &&
     a.dailyCalories === b.dailyCalories &&
+    a.sex === b.sex &&
+    a.weightKg === b.weightKg &&
+    a.heightCm === b.heightCm &&
+    a.age === b.age &&
+    a.performanceMode === b.performanceMode &&
+    a.preferredEnseigne === b.preferredEnseigne &&
+    (a.preferredZone ?? null) === (b.preferredZone ?? null) &&
+    JSON.stringify([...a.canteenDays].sort()) ===
+      JSON.stringify([...b.canteenDays].sort()) &&
     JSON.stringify([...a.allergies].sort()) ===
       JSON.stringify([...b.allergies].sort()) &&
     JSON.stringify([...a.macroPreferences].sort()) ===
-      JSON.stringify([...b.macroPreferences].sort())
+      JSON.stringify([...b.macroPreferences].sort()) &&
+    JSON.stringify(a.macroOverride ?? null) ===
+      JSON.stringify(b.macroOverride ?? null)
   );
 }
 

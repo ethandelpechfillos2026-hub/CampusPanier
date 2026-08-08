@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import { onAuthStateChanged, signOut, type User } from "firebase/auth";
 import BudgetStep from "@/components/BudgetStep";
@@ -145,13 +146,18 @@ export default function CampusPanierApp() {
           </div>
         </div>
         {user && (
-          <button
-            type="button"
-            onClick={handleSignOut}
-            className="text-xs text-campus-muted underline"
-          >
-            Se déconnecter
-          </button>
+          <div className="flex items-center gap-3">
+            <Link href="/parametres" className="text-xs text-campus-muted underline">
+              Réglages
+            </Link>
+            <button
+              type="button"
+              onClick={handleSignOut}
+              className="text-xs text-campus-muted underline"
+            >
+              Se déconnecter
+            </button>
+          </div>
         )}
       </header>
 

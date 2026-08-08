@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useState } from "react";
 import { computeMacroTargets } from "@/lib/macros";
 import {
@@ -101,6 +102,31 @@ export default function ProfileForm({ onComplete, initialProfile }: ProfileFormP
   const [canteenDays, setCanteenDays] = useState<number[]>(
     initialProfile?.canteenDays ?? []
   );
+
+  // Consentement explicite RGPD (article 9) — requis avant de saisir régime,
+  // allergies, poids, taille, âge ou objectifs caloriques, qui peuvent
+  // révéler des informations de santé ou de convictions (ex : "sans porc").
+  // Recueilli une seule fois : si déjà donné (profil existant), on ne le
+  // redemande pas à chaque modification, mais on ne l'invente jamais pour un
+  // profil qui ne l'a pas (voir migration défensive dans authProfile.ts).
+  const [healthConsent, setHealthConsent] = useState(
+    initialProfile?.healthConsent ?? false
+  );
+  const [healthConsentAt, setHealthConsentAt] = useState<string | null>(
+    initialProfile?.healthConsentAt ?? null
+  );
+  const [consentError, setConsentError] = useState(false);
+
+  function toggleHealthConsent() {
+    setConsentError(false);
+    setHealthConsent((prev) => {
+      const next = !prev;
+      if (next && !healthConsentAt) {
+        setHealthConsentAt(new Date().toISOString());
+      }
+      return next;
+    });
+  }
 
   function toggleCanteenDay(day: number) {
     setCanteenDays((prev) =>
@@ -206,6 +232,11 @@ export default function ProfileForm({ onComplete, initialProfile }: ProfileFormP
   }
 
   function handleNext() {
+    if (step === 1 && !healthConsent) {
+      setConsentError(true);
+      return;
+    }
+
     if (step < STEPS.length) {
       setStep(step + 1);
       return;
@@ -239,6 +270,8 @@ export default function ProfileForm({ onComplete, initialProfile }: ProfileFormP
       canteenDays,
       preferredEnseigne,
       preferredZone: preferredZone || null,
+      healthConsent,
+      healthConsentAt,
     });
   }
 
@@ -272,6 +305,40 @@ export default function ProfileForm({ onComplete, initialProfile }: ProfileFormP
       <div className="flex-1">
         {step === 1 && (
           <div className="space-y-5">
+            <div className="rounded-2xl border-2 border-campus-sand bg-white p-4">
+              <label className="flex cursor-pointer items-start gap-3">
+                <input
+                  type="checkbox"
+                  checked={healthConsent}
+                  onChange={toggleHealthConsent}
+                  className="mt-0.5 h-5 w-5 shrink-0 accent-campus-terracotta"
+                />
+                <span className="text-xs leading-relaxed text-campus-muted">
+                  J&apos;accepte que CampusPanier enregistre les informations
+                  de mon profil (régime, allergies, poids, taille, âge,
+                  objectifs caloriques) pour personnaliser mes listes de
+                  courses et recettes. Ces informations peuvent révéler des
+                  données de santé ou des convictions au sens du RGPD — elles
+                  ne sont utilisées que pour cette finalité, jamais vendues ni
+                  utilisées à des fins publicitaires. Voir notre{" "}
+                  <Link
+                    href="/confidentialite"
+                    target="_blank"
+                    className="font-semibold text-campus-terracotta underline"
+                  >
+                    politique de confidentialité
+                  </Link>
+                  .
+                </span>
+              </label>
+              {consentError && (
+                <p className="mt-2 text-xs font-semibold text-red-600">
+                  Coche cette case pour continuer — c&apos;est nécessaire
+                  avant de renseigner ces informations.
+                </p>
+              )}
+            </div>
+
             <div className="grid grid-cols-2 gap-3">
               {DIET_OPTIONS.map((option) => (
                 <button
@@ -520,7 +587,17 @@ export default function ProfileForm({ onComplete, initialProfile }: ProfileFormP
                   </p>
                   <p className="text-xs text-campus-muted">
                     Sert à estimer tes besoins en protéines/lipides/glucides
-                    en grammes — jamais stocké ailleurs que dans ce calcul.
+                    en grammes. Ces informations sont enregistrées dans ton
+                    profil pour ce calcul uniquement — jamais partagées à des
+                    fins publicitaires (voir notre{" "}
+                    <Link
+                      href="/confidentialite"
+                      target="_blank"
+                      className="font-semibold text-campus-terracotta underline"
+                    >
+                      politique de confidentialité
+                    </Link>
+                    ).
                   </p>
                 </div>
 

@@ -4,23 +4,43 @@ Comme demandé : tout ce qui est mentions légales, CGU/CGV et Stripe reste dans
 
 ---
 
+## Phase 0 — QA code déjà faite (8 août 2026)
+
+Avant de te redonner une checklist, j'ai relu à fond chaque moteur de l'app (liste de courses, menu, calories, recettes, coloc, badges/favoris) ligne par ligne, pas juste testé au hasard. 7 vrais bugs trouvés et corrigés, vérifiés avec `tsc`/`eslint`/vérifications de données à chaque fois :
+
+1. Un pain ("Miche surprise") était mal étiqueté dans le catalogue — exclu à tort des régimes végétarien et sans porc alors que ce n'est ni de la viande ni du porc.
+2. Deux listes de féculents maintenues séparément (liste de courses / menu jour par jour) avaient divergé avec le temps, dont une référence à un produit retiré du catalogue — fusionnées en une seule source pour ne plus jamais désynchroniser.
+3. Impossible de logger "j'ai mangé dehors" quand ton budget ne prévoyait déjà rien à un repas — maintenant possible, sauf pour un déjeuner cantine (déjà hors maison par définition).
+4. "Mes recettes" pouvait proposer une recette avec ZÉRO ingrédient déjà prévu ce jour-là — contredisait la promesse de l'onglet. Filtré, avec un message différent selon la vraie raison (rien ne correspond à ton régime, vs rien ne correspond à aujourd'hui précisément).
+5. "Quitter cette liste" (coloc) ne faisait que débrancher ton téléphone — tu restais listé·e comme membre aux yeux des autres indéfiniment. Corrige maintenant vraiment ton départ.
+6. L'étoile "favori" pouvait confondre deux profils pourtant différents (cantine, enseigne préférée, mode performance, profil corporel) parce que ces critères n'étaient pas comparés — corrigé.
+7. Un commentaire de code périmé référençait encore l'ancien nom de variable pour la clé Groq — nettoyé.
+
+Rien de tout ça n'était visible facilement en testant à l'œil sur ton téléphone (ce sont des cas précis : ce pain particulier, ce jour de budget serré, ce profil favori précis) — d'où l'intérêt de ce passage en plus de tes tests. Le catalogue de recettes (28 recettes) reste correct et sans doublon/référence cassée, mais objectivement plus mince que la concurrence (Jow, KOSTO) — à traiter dans une session dédiée "contenu", pas en vitesse ici.
+
+---
+
 ## Phase 1 — QA manuelle (à faire toi-même, ~30-45 min)
 
-Avant d'ajouter quoi que ce soit de nouveau, vérifie que tout ce qui a été construit récemment marche vraiment sur ton téléphone. Coche au fur et à mesure :
+Ce qui suit, seul un vrai téléphone peut le révéler (rendu visuel, ressenti, connexion réseau réelle). Coche au fur et à mesure :
 
-1. Profil végane + allergie gluten + petit budget (15€) → liste cohérente ou message "budget insuffisant" propre.
+1. Profil végane + allergie gluten + petit budget (15€) → liste cohérente ou message "budget insuffisant" propre (avec les liens Cop1/Linkee/Agoraé, vérifiés à jour).
 2. Profil omnivore + gros budget (80€) + Mode Performance + "prise de masse" → calories/macros affichées cohérentes, aliments bruts.
-3. Profil sans porc + "Gourmand" coché → un vrai repas à chaque créneau, pas que du plaisir sucré/gras.
+3. Profil sans porc + "Gourmand" coché → un vrai repas à chaque créneau, pas que du plaisir sucré/gras. Vérifie que le pain "Miche surprise" peut maintenant apparaître.
 4. Active "Cantine le midi" → déjeuner vide en semaine avec le message cantine, week-end normal, total de la liste plus bas qu'sans l'option.
-5. Ajuste tes macros à la main (étape 3 du profil) → le nombre de calories affiché change bien en bougeant les curseurs.
-6. Va dans "Mes recettes", change de jour → les recettes proposées changent selon ce qui est réellement prévu ce jour-là.
-7. Génère 3-4 recettes IA d'affilée → elles varient et respectent régime/allergies.
-8. Historique → ouvre une liste passée, teste impression/export PDF, vérifie que les quantités ×2/×3 s'affichent bien si présentes.
-9. Installe l'app sur l'écran d'accueil (iPhone et/ou Android) → l'icône s'affiche bien.
-10. Coche tous les articles d'une liste jusqu'au bout → badge "Liste parfaite".
-11. Si possible, teste la liste coloc à deux téléphones → ordre et coches restent synchronisés.
+5. Nouveau : à l'étape 1 du profil, essaie de cliquer "Suivant" SANS cocher la case de consentement santé → doit bloquer avec un message. Coche-la → passe normalement.
+6. Ajuste tes macros à la main (étape 3 du profil) → le nombre de calories affiché change bien en bougeant les curseurs.
+7. Va dans "Mes recettes", change de jour → les recettes proposées changent selon ce qui est réellement prévu ce jour-là. Teste un jour avec un budget très serré où rien ne colle → nouveau message distinct affiché.
+8. Génère 3-4 recettes IA d'affilée → elles varient et respectent régime/allergies.
+9. Nouveau : dans "Mon menu", sur un jour où un repas est vide (budget serré, pas cantine) → le bouton "J'ai mangé dehors" doit maintenant être proposé même sans repas prévu.
+10. Enregistre une liste en favori, change juste l'enseigne préférée ou la cantine, régénère → l'étoile ne doit PAS afficher "déjà favori" (avant ce correctif, elle le faisait à tort).
+11. Historique → ouvre une liste passée, teste impression/export PDF, vérifie que les quantités ×2/×3 s'affichent bien si présentes.
+12. Installe l'app sur l'écran d'accueil (iPhone et/ou Android) → l'icône s'affiche bien.
+13. Coche tous les articles d'une liste jusqu'au bout → badge "Liste parfaite".
+14. Si possible, teste la liste coloc à deux téléphones → ordre et coches restent synchronisés, et vérifie que "Quitter cette liste" fait bien disparaître la personne de la liste des membres vue par l'autre téléphone.
+15. Nouveau : va dans "Réglages" (lien en haut à droite une fois connecté·e) → vérifie les 4 liens légaux et le parcours de suppression de compte (sans le confirmer si tu veux garder ton compte de test !).
 
-**Note tout ce qui te semble bizarre**, même des petits détails — c'est ce qui a permis de corriger tous les bugs de la session précédente.
+**Note tout ce qui te semble bizarre**, même des petits détails — c'est ce qui a permis de corriger tous les bugs des sessions précédentes.
 
 ---
 

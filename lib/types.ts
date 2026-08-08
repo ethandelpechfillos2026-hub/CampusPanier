@@ -207,6 +207,16 @@ export interface UserProfile extends BodyStats {
   allergies: Allergen[];
   dailyCalories: number | null;
   macroPreferences: MacroPreference[];
+  // Consentement explicite RGPD (article 9) pour le traitement des données
+  // de profil pouvant révéler des informations de santé ou alimentaires
+  // (allergies, poids, taille, âge, objectifs caloriques, régime type
+  // "sans porc"). Recueilli à l'étape 1 du formulaire de profil, avant toute
+  // saisie de ces champs — voir components/ProfileForm.tsx. `false`/`null`
+  // pour les comptes créés avant l'ajout de ce consentement (voir migration
+  // défensive dans lib/authProfile.ts) : à traiter comme "consentement non
+  // recueilli", pas comme un refus.
+  healthConsent: boolean;
+  healthConsentAt: string | null;
 }
 
 export interface UserPreferences extends BodyStats {

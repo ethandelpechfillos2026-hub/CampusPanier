@@ -1,6 +1,8 @@
 import {
+  arrayRemove,
   arrayUnion,
   collection,
+  deleteField,
   doc,
   getDoc,
   getDocs,
@@ -129,6 +131,42 @@ export async function toggleSharedListItem(
     [`items.${productId}.checked`]: checked,
     [`items.${productId}.checkedBy`]: checked ? userName : null,
   });
+}
+
+// Quitte UNE liste partagée précise (bouton "Quitter cette liste") — retire
+// l'utilisateur·rice de `memberIds`/`memberNames` pour que les autres
+// colocataires ne la voient plus listée comme membre actif, plutôt que de se
+// contenter d'arrêter de suivre la liste sur cet appareil (ce que faisait ce
+// bouton avant : la personne restait indéfiniment listée aux yeux des autres).
+// Ne supprime jamais la liste elle-même ni les articles déjà cochés.
+export async function leaveSharedList(listId: string, userId: string): Promise<void> {
+  await updateDoc(doc(db, COLLECTION, listId), {
+    memberIds: arrayRemove(userId),
+    [`memberNames.${userId}`]: deleteField(),
+  });
+}
+
+// Suppression de compte (droit à l'effacement RGPD) : retire l'utilisateur·rice
+// de toutes les listes partagées où iel figure comme membre. Best-effort —
+// ne supprime jamais la liste elle-même ni les articles déjà cochés (les
+// autres colocataires en dépendent), seulement le lien vers ce compte.
+// Ne touche pas non plus au champ `ownerId`/`ownerName` : si la personne qui
+// se supprime était propriétaire, la liste reste consultable par les autres
+// membres, avec le nom du/de la propriétaire figé tel qu'il était.
+export async function leaveAllSharedLists(userId: string): Promise<void> {
+  const q = query(
+    collection(db, COLLECTION),
+    where("memberIds", "array-contains", userId)
+  );
+  const snap = await getDocs(q);
+  await Promise.all(
+    snap.docs.map((docSnap) =>
+      updateDoc(docSnap.ref, {
+        memberIds: arrayRemove(userId),
+        [`memberNames.${userId}`]: deleteField(),
+      })
+    )
+  );
 }
 
 export async function getSharedList(listId: string): Promise<SharedList | null> {

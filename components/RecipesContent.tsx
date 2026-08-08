@@ -7,7 +7,7 @@ import {
   DAY_SLOT_ORDER,
   WEEKDAY_LABELS,
 } from "@/lib/generateMenu";
-import { suggestRecipes } from "@/lib/generateRecipes";
+import { countDietCompatibleRecipes, suggestRecipes } from "@/lib/generateRecipes";
 import { generateRecipeWithAI } from "@/lib/generateRecipeWithAI";
 import { products } from "@/lib/generateShoppingList";
 import { recordRecipeViewed } from "@/lib/stats";
@@ -57,6 +57,10 @@ export default function RecipesContent({
   }, [days, selectedDay, result.items]);
 
   const matches = suggestRecipes(dayIds, preferences);
+  const dietCompatibleCount = useMemo(
+    () => countDietCompatibleRecipes(preferences),
+    [preferences]
+  );
 
   // Pour distinguer, parmi les ingrédients manquants ce jour-là, ceux qui
   // sont déjà dans la liste de la semaine mais prévus un AUTRE jour
@@ -215,8 +219,9 @@ export default function RecipesContent({
       {matches.length === 0 ? (
         <div className="rounded-2xl border border-campus-sand bg-white p-5 text-center">
           <p className="text-sm text-campus-muted">
-            Pas encore de recette compatible avec ton régime ou tes
-            allergies — essaie un autre jour de la semaine.
+            {dietCompatibleCount === 0
+              ? "Pas encore de recette compatible avec ton régime ou tes allergies — essaie la recette générée par IA ci-dessus."
+              : "Aucune recette ne colle à ce qui est prévu aujourd'hui précisément — essaie un autre jour de la semaine, ou génère une recette par IA ci-dessus."}
           </p>
         </div>
       ) : (

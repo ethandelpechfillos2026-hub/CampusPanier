@@ -6804,7 +6804,9 @@
     "category": "boulangerie",
     "mealSlot": "petit-dejeuner",
     "dietTags": [
-      "omnivore"
+      "omnivore",
+      "vegetarien",
+      "sans-porc"
     ],
     "allergens": [
       "oeuf",

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Link from "next/link";
 import { GoogleAuthProvider, signInWithCredential } from "firebase/auth";
 import { auth } from "@/lib/firebase";
 
@@ -99,7 +100,19 @@ export default function SignIn() {
       <div ref={buttonRef} />
       <p className="max-w-xs text-xs text-campus-muted">
         On utilise Google uniquement pour créer ton compte en toute sécurité.
-        Aucune donnée n&apos;est revendue ni partagée.
+        Tes données ne sont ni vendues ni utilisées à des fins publicitaires —
+        elles servent uniquement à faire fonctionner CampusPanier (voir nos{" "}
+        <Link href="/cgu" className="font-semibold text-campus-terracotta underline">
+          CGU
+        </Link>{" "}
+        et notre{" "}
+        <Link
+          href="/confidentialite"
+          className="font-semibold text-campus-terracotta underline"
+        >
+          politique de confidentialité
+        </Link>
+        ). En continuant, tu acceptes ces documents.
       </p>
       {error && <p className="text-xs text-red-600">{error}</p>}
     </div>

@@ -29,6 +29,14 @@ function isRecipeCompatible(recipe: Recipe, preferences: UserPreferences): boole
 // ingrédients "dans ta liste" pouvait en fait piocher dans des produits
 // réservés à d'autres jours du planning (ex : le riz prévu mercredi), ce
 // qui déséquilibrait le reste de la semaine une fois utilisé en avance.
+// Nombre de recettes compatibles avec le régime/les allergies, tous jours
+// confondus — sert à distinguer, côté interface, "aucune recette ne
+// correspond à ton régime" de "aucune recette ne colle à ce qui est prévu
+// aujourd'hui précisément" (voir RecipesContent.tsx).
+export function countDietCompatibleRecipes(preferences: UserPreferences): number {
+  return recipes.filter((recipe) => isRecipeCompatible(recipe, preferences)).length;
+}
+
 export function suggestRecipes(
   cartIds: Set<string>,
   preferences: UserPreferences,
@@ -50,6 +58,11 @@ export function suggestRecipes(
         missingProducts,
       };
     })
+    // Une recette avec ZÉRO ingrédient déjà prévu aujourd'hui n'est pas "à
+    // cuisiner avec ce qui est prévu ce jour-là" — ce serait juste une
+    // recette au hasard entièrement à acheter, ce qui contredit la promesse
+    // de cet onglet (voir aussi le message vide dédié dans RecipesContent).
+    .filter((match) => match.matchedCount > 0)
     .sort((a, b) => {
       const ratioA = a.matchedCount / a.totalCount;
       const ratioB = b.matchedCount / b.totalCount;
