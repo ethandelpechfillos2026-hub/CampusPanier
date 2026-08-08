@@ -3,6 +3,7 @@ import { getActiveMacroTargets, getEffectiveDailyCalories } from "@/lib/macros";
 import {
   CATEGORY_ORDER,
   MEAL_SLOT_ORDER,
+  NutriLevel,
   PriceInfo,
   Product,
   ShoppingListItem,
@@ -95,6 +96,74 @@ function filterProducts(preferences: UserPreferences): Product[] {
     });
 }
 
+// Seuils utilisés pour dériver un niveau qualitatif (faible/moyen/riche) à
+// partir d'un gramme précis pour 100 g — repris tels quels de la fonction
+// `level()` de scripts/build-catalog.mjs (mêmes seuils que ceux qui ont
+// servi à fixer Product.protein/lipides/glucides/sel à la construction du
+// catalogue), pour que le score utilise la MÊME grille de lecture, juste
+// avec une donnée plus précise et plus à jour (nutritionPer100g) quand elle
+// existe. Sucres et fibres n'ont pas de champ qualitatif équivalent sur
+// Product : seuils choisis sur des repères reconnus plutôt qu'inventés —
+// sucres : feux tricolores UK FSA (faible ≤5 g, élevé ≥22,5 g/100 g) ;
+// fibres : seuils de l'allégation UE (source de fibres ≥3 g, riche en
+// fibres ≥6 g/100 g, règlement (CE) n°1924/2006 annexe).
+const PROTEIN_LOW = 5;
+const PROTEIN_HIGH = 15;
+const LIPIDES_LOW = 3;
+const LIPIDES_HIGH = 17.5;
+const GLUCIDES_LOW = 10;
+const GLUCIDES_HIGH = 30;
+const SEL_LOW = 0.3;
+const SEL_HIGH = 1.5;
+const SUCRES_LOW = 5;
+const SUCRES_HIGH = 22.5;
+const FIBRES_LOW = 3;
+const FIBRES_HIGH = 6;
+
+function levelFromGrams(
+  value: number | null | undefined,
+  low: number,
+  high: number
+): NutriLevel {
+  if (value === null || value === undefined) return "moyen";
+  if (value <= low) return "faible";
+  if (value >= high) return "riche";
+  return "moyen";
+}
+
+// Niveau "effectif" : dérivé des grammes précis de nutritionPer100g quand ce
+// produit en a un (source Open Food Facts ou Ciqual, voir lib/types.ts),
+// sinon repli sur le niveau qualitatif fixé à la construction du catalogue
+// — jamais d'erreur ni de valeur manquante, juste une précision qui
+// s'améliore quand la donnée existe. C'est la même logique de repli que
+// findSubstitutes ci-dessous applique déjà pour comparer deux produits entre
+// eux ; ici on l'applique au score de sélection lui-même.
+function effectiveProteinLevel(product: Product): NutriLevel {
+  const g = product.nutritionPer100g?.proteinG;
+  return g != null ? levelFromGrams(g, PROTEIN_LOW, PROTEIN_HIGH) : product.protein;
+}
+function effectiveLipidesLevel(product: Product): NutriLevel {
+  const g = product.nutritionPer100g?.lipidesG;
+  return g != null ? levelFromGrams(g, LIPIDES_LOW, LIPIDES_HIGH) : product.lipides;
+}
+function effectiveGlucidesLevel(product: Product): NutriLevel {
+  const g = product.nutritionPer100g?.glucidesG;
+  return g != null ? levelFromGrams(g, GLUCIDES_LOW, GLUCIDES_HIGH) : product.glucides;
+}
+function effectiveSelLevel(product: Product): NutriLevel {
+  const g = product.nutritionPer100g?.selG;
+  return g != null ? levelFromGrams(g, SEL_LOW, SEL_HIGH) : product.sel;
+}
+// Pas de champ qualitatif de repli sur Product pour ces deux-là : "moyen"
+// (neutre, ni bonus ni malus) tant que nutritionPer100g.sucresG/fibresG est
+// absent — jamais 0 ni une valeur supposée.
+function effectiveSucresLevel(product: Product): NutriLevel {
+  return levelFromGrams(product.nutritionPer100g?.sucresG, SUCRES_LOW, SUCRES_HIGH);
+}
+function effectiveFibresLevel(product: Product): NutriLevel {
+  return levelFromGrams(product.nutritionPer100g?.fibresG, FIBRES_LOW, FIBRES_HIGH);
+}
+
 // Score a product against the user's nutritional preferences. This is a
 // simple heuristic to prioritize matching items when filling the basket —
 // not a real nutrition engine (no per-meal or per-day calorie modeling).
@@ -104,11 +173,21 @@ function score(product: Product, preferences: UserPreferences): number {
   let s = 0;
   const prefs = preferences.macroPreferences;
 
-  if (prefs.includes("riche-proteines") && product.protein === "riche") s += 2;
-  if (prefs.includes("faible-lipides") && product.lipides === "faible") s += 2;
-  if (prefs.includes("riche-glucides") && product.glucides === "riche") s += 2;
-  if (prefs.includes("faible-sel") && product.sel === "faible") s += 2;
-  if (prefs.includes("faible-sel") && product.sel === "riche") s -= 2;
+  const proteinLevel = effectiveProteinLevel(product);
+  const lipidesLevel = effectiveLipidesLevel(product);
+  const glucidesLevel = effectiveGlucidesLevel(product);
+  const selLevel = effectiveSelLevel(product);
+  const sucresLevel = effectiveSucresLevel(product);
+  const fibresLevel = effectiveFibresLevel(product);
+
+  if (prefs.includes("riche-proteines") && proteinLevel === "riche") s += 2;
+  if (prefs.includes("faible-lipides") && lipidesLevel === "faible") s += 2;
+  if (prefs.includes("riche-glucides") && glucidesLevel === "riche") s += 2;
+  if (prefs.includes("faible-sel") && selLevel === "faible") s += 2;
+  if (prefs.includes("faible-sel") && selLevel === "riche") s -= 2;
+  if (prefs.includes("faible-sucre") && sucresLevel === "faible") s += 2;
+  if (prefs.includes("faible-sucre") && sucresLevel === "riche") s -= 2;
+  if (prefs.includes("riche-fibres") && fibresLevel === "riche") s += 2;
   if (prefs.includes("facile") && product.easyToCook) s += 2;
 
   // Objectifs "silhouette" : des heuristiques simples (pas un vrai bilan
@@ -116,12 +195,12 @@ function score(product: Product, preferences: UserPreferences): number {
   // kcal, ou catégorie pour la peau (fruits et légumes = vitamines/
   // antioxydants).
   if (prefs.includes("prise-masse")) {
-    if (product.protein === "riche") s += 2;
+    if (proteinLevel === "riche") s += 2;
     if (product.kcal >= 250) s += 1;
   }
   if (prefs.includes("seche")) {
-    if (product.protein === "riche") s += 2;
-    if (product.lipides === "faible") s += 1;
+    if (proteinLevel === "riche") s += 2;
+    if (lipidesLevel === "faible") s += 1;
     if (product.kcal <= 200) s += 1;
   }
   if (prefs.includes("belle-peau") && product.category === "fruits-legumes") {
@@ -162,9 +241,10 @@ function score(product: Product, preferences: UserPreferences): number {
   // Objectifs en grammes : ceux fixés à la main (sportif·ves avisé·es...)
   // priment sur le calcul automatique à partir du profil corporel — voir
   // lib/macros.ts. On regarde la part de chaque macro dans les calories
-  // totales visées pour orienter le score, plutôt que le gramme exact
-  // (le catalogue n'a que des niveaux faible/moyen/riche, pas de grammes
-  // précis par produit).
+  // totales visées pour orienter le score, plutôt que le gramme exact —
+  // proteinLevel/lipidesLevel/glucidesLevel ci-dessus utilisent déjà les
+  // grammes précis du produit (nutritionPer100g) quand ils existent, avec
+  // repli sur les niveaux qualitatifs sinon.
   const macroTargets = getActiveMacroTargets(preferences, preferences.dailyCalories);
   const highProteinNeed =
     macroTargets !== null ||
@@ -174,7 +254,7 @@ function score(product: Product, preferences: UserPreferences): number {
   // condiments, biscuits, épices — plutôt que de viande, poisson, œufs ou
   // fromage, nettement plus chers au kilo mais bien plus riches en
   // protéines.
-  if (highProteinNeed && product.protein === "riche") {
+  if (highProteinNeed && proteinLevel === "riche") {
     s += 4;
   }
 
@@ -186,17 +266,17 @@ function score(product: Product, preferences: UserPreferences): number {
     // privilégie nettement les produits faibles en lipides et on évite les
     // plus riches, sinon la sélection ignorait complètement cet objectif.
     if (lipidesShare <= 0.22) {
-      if (product.lipides === "faible") s += 3;
-      if (product.lipides === "riche") s -= 3;
+      if (lipidesLevel === "faible") s += 3;
+      if (lipidesLevel === "riche") s -= 3;
     } else if (lipidesShare >= 0.4) {
-      if (product.lipides === "riche") s += 2;
+      if (lipidesLevel === "riche") s += 2;
     }
 
     if (glucidesShare >= 0.55) {
-      if (product.glucides === "riche") s += 2;
+      if (glucidesLevel === "riche") s += 2;
     } else if (glucidesShare <= 0.3) {
-      if (product.glucides === "riche") s -= 2;
-      if (product.glucides === "faible") s += 2;
+      if (glucidesLevel === "riche") s -= 2;
+      if (glucidesLevel === "faible") s += 2;
     }
   }
 

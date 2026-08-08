@@ -37,6 +37,8 @@ export type MacroPreference =
   | "faible-lipides"
   | "riche-glucides"
   | "faible-sel"
+  | "faible-sucre"
+  | "riche-fibres"
   | "facile"
   | "prise-masse"
   | "seche"
@@ -431,6 +433,8 @@ export const MACRO_OPTIONS: { value: MacroPreference; label: string }[] = [
   { value: "faible-lipides", label: "Faible en lipides" },
   { value: "riche-glucides", label: "Riche en glucides" },
   { value: "faible-sel", label: "Faible en sel" },
+  { value: "faible-sucre", label: "Faible en sucre" },
+  { value: "riche-fibres", label: "Riche en fibres" },
   { value: "facile", label: "Recettes faciles" },
   { value: "prise-masse", label: "Prise de masse" },
   { value: "seche", label: "Sèche / cut" },

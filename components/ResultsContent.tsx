@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, useState } from "react";
+import NutritionSummaryCard from "@/components/NutritionSummaryCard";
 import StatsHeader from "@/components/StatsHeader";
 import {
   findSubstitutes,
@@ -169,6 +170,10 @@ export default function ResultsContent({
 
       <StatsHeader result={result} refreshSignal={completionSignal} />
 
+      {result.items.length > 0 && (
+        <NutritionSummaryCard items={result.items} macroTargets={macroTargets} />
+      )}
+
       {result.isBudgetInsufficient && (
         <div className="rounded-2xl border border-campus-terracotta/40 bg-campus-terracotta/10 p-4">
           <p className="text-sm font-bold text-campus-ink">
@@ -274,6 +279,15 @@ export default function ResultsContent({
                                   ×{quantity}
                                 </span>
                               )}
+                              {product.nutritionPer100g?.matchConfidence ===
+                                "review" && (
+                                <span
+                                  title="Valeur nutritionnelle estimée, pas une correspondance exacte — voir détail dans la fiche produit."
+                                  className="ml-1.5 rounded-full bg-amber-100 px-1.5 py-0.5 text-[9px] font-bold uppercase tracking-wide text-amber-700"
+                                >
+                                  ≈ estimation
+                                </span>
+                              )}
                             </span>
                             {!isChecked && (
                               <span
@@ -325,9 +339,17 @@ export default function ResultsContent({
             onClick={(event) => event.stopPropagation()}
           >
             <div className="flex items-start justify-between gap-3">
-              <h3 className="text-lg font-bold text-campus-ink">
-                {selectedProduct.name}
-              </h3>
+              <div>
+                <h3 className="text-lg font-bold text-campus-ink">
+                  {selectedProduct.name}
+                </h3>
+                {selectedProduct.nutritionPer100g?.matchConfidence ===
+                  "review" && (
+                  <span className="mt-1 inline-block rounded-full bg-amber-100 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-amber-700">
+                    ≈ Valeurs estimées
+                  </span>
+                )}
+              </div>
               <button
                 type="button"
                 onClick={() => setSelectedProduct(null)}
