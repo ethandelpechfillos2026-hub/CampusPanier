@@ -220,19 +220,23 @@ function round(amount: number): number {
 }
 
 // Au-delà de ce nombre de produits DIFFÉRENTS dans une catégorie, la phase 2
-// augmente plutôt la quantité d'un produit déjà choisi — sans ça, un gros
-// budget finissait avec 5-6 viandes/poissons différents, ou 8-10 légumes
-// différents, en une seule petite portion chacun, plutôt qu'une plus grosse
-// quantité de moins de produits — plus cohérent à cuisiner et plus rapide à
-// préparer, comme demandé ("augmente les quantités du même produit plutôt
-// que plein de produits différents"). Plafonds volontairement bas sur
-// toutes les catégories, pas seulement viande-poisson.
+// augmente plutôt la quantité d'un produit déjà choisi — sans plafond du
+// tout, un gros budget finissait avec 8-10 légumes ou viandes/poissons
+// différents en une seule petite portion chacun, plus dur à cuisiner.
+// Plafonds relevés le 8 août 2026 (retour utilisateur : repas trop
+// répétitifs, déjeuner identique au dîner) — generateMenu.ts répartit
+// maintenant chaque produit sur des CRÉNEAUX précis plutôt que des jours
+// entiers, donc plus il y a de produits différents dans ces catégories,
+// plus le déjeuner peut réellement différer du dîner et les jours entre
+// eux. Boulangerie reste à 3 : les petits-déjeuners sont déjà couverts par
+// la rotation des familles de pains/laitages, une variété plus large n'y
+// change pas grand-chose.
 const MAX_DISTINCT_PER_CATEGORY: Partial<Record<Product["category"], number>> = {
-  epicerie: 4,
-  "fruits-legumes": 4,
-  frais: 3,
+  epicerie: 5,
+  "fruits-legumes": 5,
+  frais: 4,
   boulangerie: 3,
-  "viande-poisson": 3,
+  "viande-poisson": 4,
 };
 const DEFAULT_MAX_QUANTITY_PER_ITEM = 3;
 // La boulangerie ne profite pas du "boost" de quantité : comme le pain se

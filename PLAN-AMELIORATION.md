@@ -20,6 +20,17 @@ Rien de tout ça n'était visible facilement en testant à l'œil sur ton télé
 
 ---
 
+## Phase 0bis — Repas trop répétitifs (8 août 2026, corrigé)
+
+Retour direct : le déjeuner était souvent identique au dîner (mêmes produits, juste des quantités différentes), et ça se répétait à l'identique de jour en jour. Confirmé par simulation avant correction — 0 variation sur une semaine type. Deux changements :
+
+1. Le moteur de menu répartit maintenant chaque féculent/légume/fromage/viande sur des CRÉNEAUX précis (ce jour ET ce repas), plus sur des jours entiers coupés artificiellement en deux. Déjeuner et dîner peuvent donc vraiment différer, et qui est au déjeuner vs au dîner change d'un jour à l'autre.
+2. Le nombre de produits différents autorisés par catégorie a été relevé (ex : viande-poisson 3→4, légumes 4→5) — plus de budget veut dire plus de vraie variété, pas juste plus de quantité du même produit.
+
+Revérifié par simulation après correction : 0 jour sur 7 avec déjeuner identique au dîner, sur un budget confortable (60€) comme sur un budget serré (25€). Les petits budgets restent forcément plus répétitifs que les gros (moins de produits achetables), mais varient quand même sur la semaine.
+
+---
+
 ## Phase 1 — QA manuelle (à faire toi-même, ~30-45 min)
 
 Ce qui suit, seul un vrai téléphone peut le révéler (rendu visuel, ressenti, connexion réseau réelle). Coche au fur et à mesure :
@@ -28,6 +39,7 @@ Ce qui suit, seul un vrai téléphone peut le révéler (rendu visuel, ressenti,
 2. Profil omnivore + gros budget (80€) + Mode Performance + "prise de masse" → calories/macros affichées cohérentes, aliments bruts.
 3. Profil sans porc + "Gourmand" coché → un vrai repas à chaque créneau, pas que du plaisir sucré/gras. Vérifie que le pain "Miche surprise" peut maintenant apparaître.
 4. Active "Cantine le midi" → déjeuner vide en semaine avec le message cantine, week-end normal, total de la liste plus bas qu'sans l'option.
+   Nouveau : avec un budget confortable (50€+), vérifie sur plusieurs jours que le déjeuner et le dîner ne sont plus systématiquement identiques.
 5. Nouveau : à l'étape 1 du profil, essaie de cliquer "Suivant" SANS cocher la case de consentement santé → doit bloquer avec un message. Coche-la → passe normalement.
 6. Ajuste tes macros à la main (étape 3 du profil) → le nombre de calories affiché change bien en bougeant les curseurs.
 7. Va dans "Mes recettes", change de jour → les recettes proposées changent selon ce qui est réellement prévu ce jour-là. Teste un jour avec un budget très serré où rien ne colle → nouveau message distinct affiché.

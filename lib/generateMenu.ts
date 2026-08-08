@@ -92,21 +92,27 @@ export interface WeeklyPlan {
   days: DayPlan[];
 }
 
-// Étale `total` occurrences de façon RIGOUREUSEMENT égale sur les jours
-// autorisés (tous les 7 jours par défaut, ou un sous-ensemble pour les
-// "familles" de produits interchangeables — voir plus bas). Avant, un
-// étalement par lots entiers (ex : 3 jours avec 1 baguette entière, 4 jours
-// sans rien) donnait des matins très différents les uns des autres. Une
-// part égale chaque jour (ex : ¾ de baguette tous les jours plutôt qu'une
-// baguette entière 3 jours et rien les 4 autres) donne une semaine
-// équivalente d'un jour à l'autre, comme demandé.
-function evenlySpread(total: number, allowedDays: number[]): number[] {
-  const counts = new Array(7).fill(0);
-  const n = allowedDays.length;
+// Étale `total` occurrences de façon RIGOUREUSEMENT égale sur les
+// emplacements autorisés (jours pour petit-déj/collation, ou créneaux
+// jour+repas pour déjeuner/dîner — voir buildMainMealSlotMap plus bas).
+// `length` est la taille du tableau retourné (7 pour un étalement par jour,
+// ou le nombre de créneaux déjeuner/dîner réellement disponibles dans la
+// semaine). Avant, un étalement par lots entiers (ex : 3 jours avec 1
+// baguette entière, 4 jours sans rien) donnait des matins très différents
+// les uns des autres. Une part égale à chaque emplacement autorisé (ex : ¾
+// de baguette tous les jours plutôt qu'une baguette entière 3 jours et rien
+// les 4 autres) donne une semaine équivalente d'un jour à l'autre.
+function distributeEvenly(
+  total: number,
+  allowedIndices: number[],
+  length: number
+): number[] {
+  const counts = new Array(length).fill(0);
+  const n = allowedIndices.length;
   if (n === 0 || total === 0) return counts;
-  const perDay = total / n;
-  for (const day of allowedDays) {
-    counts[day] = perDay;
+  const perSlot = total / n;
+  for (const index of allowedIndices) {
+    counts[index] = perSlot;
   }
   return counts;
 }
@@ -198,6 +204,9 @@ const PRODUCT_FAMILIES: string[][] = [
 // Pour chaque produit membre d'une famille présente en plusieurs
 // exemplaires dans le panier, calcule les jours (0-6) qui lui sont réservés
 // — les autres jours reviennent aux autres membres de la même famille.
+// Sert uniquement au petit-déjeuner et aux collations (pas de distinction
+// déjeuner/dîner à faire pour ces créneaux) — voir buildMainMealSlotMap
+// pour le déjeuner/dîner.
 function buildFamilyDayMap(items: ShoppingListItem[]): Map<string, number[]> {
   const map = new Map<string, number[]>();
   const presentIds = new Set(items.map((item) => item.product.id));
@@ -214,17 +223,84 @@ function buildFamilyDayMap(items: ShoppingListItem[]): Map<string, number[]> {
     });
   }
 
-  // Rotation des accompagnements du déjeuner-dîner (légumes, féculents pas
-  // déjà couverts par une famille, fromages/charcuterie, viandes/poissons...)
-  // : sans ça, TOUS les articles achetés dans une catégorie pour ce créneau
-  // (pois chiches, concombre, salade, chou-fleur, oignon, camembert,
-  // rillettes, jambon de dinde...) se retrouvaient combinés dans le même
-  // repas — bien trop long à préparer pour un étudiant. On les fait plutôt
-  // tourner un seul par catégorie et par jour, avec une part plus grosse à
-  // chaque apparition (ex : 250 g de blanc de dinde un soir plutôt que
-  // 130 g de poulet + sole + Saint-Jacques le même soir). Ça laisse au
-  // maximum un féculent + un légume + un produit "frais" + une
-  // viande/poisson par jour, répartis ensuite entre déjeuner et dîner.
+  return map;
+}
+
+// Un créneau "déjeuner" ou "dîner" concret de la semaine — la maison en a
+// deux par jour, sauf un jour de cantine qui n'en a qu'un (le dîner ; le
+// déjeuner est mangé à la cantine, jamais à la maison).
+interface MainMealSlot {
+  day: number;
+  slot: "dejeuner" | "diner";
+}
+
+// Construit la liste ordonnée des créneaux déjeuner/dîner réellement
+// disponibles à la maison cette semaine (9 à 14 selon le nombre de jours de
+// cantine) — la base sur laquelle la rotation ci-dessous répartit féculents,
+// légumes, fromages/charcuterie et viandes/poissons.
+function buildMainMealSlots(canteenDays: number[]): MainMealSlot[] {
+  const slots: MainMealSlot[] = [];
+  for (let day = 0; day < 7; day++) {
+    if (!canteenDays.includes(day)) slots.push({ day, slot: "dejeuner" });
+    slots.push({ day, slot: "diner" });
+  }
+  return slots;
+}
+
+// Règle produit non négociable (retour utilisateur du 8 août 2026) : le
+// déjeuner ne doit pas être un décalque du dîner, et les repas ne doivent
+// pas se répéter à l'identique de jour en jour. Avant, un féculent ou une
+// protéine actif un jour donné se retrouvait systématiquement à la fois au
+// déjeuner ET au dîner de ce jour-là (juste des quantités différentes) —
+// exactement ce qui lasse vite. On répartit maintenant chaque membre d'un
+// groupe interchangeable (féculents, ou légumes/fromages/viandes-poissons
+// de la même catégorie) sur un SOUS-ENSEMBLE de créneaux déjeuner/dîner
+// précis, pas de jours entiers.
+//
+// La clé de répartition `(jour + décalage repas) % nombre de membres` (et
+// non un simple index de créneau) est volontairement choisie pour éviter un
+// piège : avec seulement 2 membres, répartir par index brut du créneau
+// (0, 1, 2, 3...) aurait donné "toujours le membre A au déjeuner, toujours
+// le membre B au dîner" — le déjeuner et le dîner différeraient bien entre
+// eux, mais chacun resterait identique tous les jours de la semaine, ce qui
+// ne résout que la moitié du problème. Le décalage +1 pour le dîner casse
+// cette alignement : le déjeuner et le dîner d'un même jour sont TOUJOURS
+// deux membres différents, ET qui a le rôle "déjeuner" vs "dîner" change
+// d'un jour à l'autre — les deux axes de répétition (repas du jour, jour de
+// la semaine) sont couverts en même temps.
+function buildMainMealSlotMap(
+  items: ShoppingListItem[],
+  mealSlots: MainMealSlot[]
+): Map<string, number[]> {
+  const map = new Map<string, number[]>();
+
+  function assignRotation(memberIds: string[]) {
+    const n = memberIds.length;
+    memberIds.forEach((id, memberIndex) => {
+      const allowedIndices = mealSlots
+        .map((_, index) => index)
+        .filter((index) => {
+          const { day, slot } = mealSlots[index];
+          const rotationKey = (day + (slot === "diner" ? 1 : 0)) % n;
+          return rotationKey === memberIndex;
+        });
+      map.set(id, allowedIndices);
+    });
+  }
+
+  const presentIds = new Set(items.map((item) => item.product.id));
+  const feculentFamily = Array.from(FECULENT_IDS).filter((id) => presentIds.has(id));
+  if (feculentFamily.length > 1) assignRotation(feculentFamily);
+
+  // Rotation des accompagnements (légumes, fromages/charcuterie,
+  // viandes/poissons...) : sans ça, TOUS les articles achetés dans une
+  // catégorie pour ce créneau (pois chiches, concombre, salade, chou-fleur,
+  // oignon, camembert, rillettes, jambon de dinde...) se retrouvaient
+  // combinés dans le même repas — bien trop long à préparer pour un
+  // étudiant. On les fait plutôt tourner un seul par catégorie et par
+  // créneau, avec une part plus grosse à chaque apparition (ex : 250 g de
+  // blanc de dinde un soir plutôt que 130 g de poulet + sole + Saint-Jacques
+  // le même soir).
   for (const category of CATEGORY_ORDER) {
     const members = items
       .filter(
@@ -236,14 +312,7 @@ function buildFamilyDayMap(items: ShoppingListItem[]): Map<string, number[]> {
           !map.has(item.product.id) // priorité aux familles déjà assignées (ex : pommes de terre/patate douce dans les féculents)
       )
       .map((item) => item.product.id);
-    if (members.length <= 1) continue;
-
-    members.forEach((id, memberIndex) => {
-      const allowedDays = [0, 1, 2, 3, 4, 5, 6].filter(
-        (day) => day % members.length === memberIndex
-      );
-      map.set(id, allowedDays);
-    });
+    if (members.length > 1) assignRotation(members);
   }
 
   return map;
@@ -254,17 +323,14 @@ function emptyDaySlots(): Record<DaySlot, DayEntry[]> {
 }
 
 // Construit un planning jour par jour : chaque produit de la liste (tous ont
-// désormais une quantité hebdomadaire précise) est étalé sur les 7 jours.
-// "Déjeuner & Dîner" (un seul mealSlot côté produit) est réparti à parts
-// égales entre les deux repas au niveau de l'affichage — féculent, légume
-// et protéine du jour se retrouvent moitié au déjeuner, moitié au dîner,
-// plutôt que, par exemple, tout le féculent au déjeuner et seulement la
-// protéine au dîner (repas déséquilibré). Les deux repas du jour sont donc
-// similaires en quantité mais jamais identiques, ce qui est plus simple à
-// préparer et plus logique qu'une répartition aléatoire par article.
-// `canteenDays` : indices (0 = Lundi ... 4 = Vendredi) des jours où tout
-// part au dîner (le déjeuner est mangé à la cantine, pas à la maison) —
-// les autres jours gardent le partage normal entre les deux repas.
+// désormais une quantité hebdomadaire précise) est étalé sur la semaine.
+// Petit-déjeuner et collations s'étalent sur les 7 jours (voir
+// buildFamilyDayMap) ; déjeuner et dîner s'étalent directement sur les
+// créneaux réellement disponibles (voir buildMainMealSlotMap), ce qui
+// garantit que les deux repas d'un même jour, et les mêmes repas de jours
+// différents, ne sont pas systématiquement identiques quand il y a de la
+// variété dans le panier. `canteenDays` (0 = Lundi ... 4 = Vendredi) retire
+// le déjeuner à la maison ces jours-là (mangé à la cantine).
 export function buildWeeklyPlan(
   items: ShoppingListItem[],
   canteenDays: number[] = []
@@ -274,9 +340,11 @@ export function buildWeeklyPlan(
     slots: emptyDaySlots(),
   }));
 
-  const mainsByDay: DayEntry[][] = Array.from({ length: 7 }, () => []);
   const familyDayMap = buildFamilyDayMap(items);
   const allWeekDays = [0, 1, 2, 3, 4, 5, 6];
+  const mealSlots = buildMainMealSlots(canteenDays);
+  const allMealSlotIndices = mealSlots.map((_, index) => index);
+  const mainMealSlotMap = buildMainMealSlotMap(items, mealSlots);
 
   for (const item of items) {
     const { product, quantity } = item;
@@ -292,60 +360,41 @@ export function buildWeeklyPlan(
 
     const total = product.weeklyServings * quantity;
 
-    // Un produit membre d'une "famille" (voir plus haut) n'a droit qu'à ses
-    // jours réservés, pour ne jamais tomber le même jour qu'un autre membre
-    // de la même famille — sinon "Mon menu" propose baguette + biscottes +
-    // pain de mie le même petit-déjeuner. Dans les deux cas, la quantité
-    // hebdomadaire est répartie à parts égales sur les jours autorisés.
-    const allowedDays = familyDayMap.get(product.id) ?? allWeekDays;
-    const perDayCounts = evenlySpread(total, allowedDays);
+    if (product.mealSlot === "petit-dejeuner" || product.mealSlot === "encas-extra") {
+      // Un produit membre d'une "famille" (voir plus haut) n'a droit qu'à
+      // ses jours réservés, pour ne jamais tomber le même jour qu'un autre
+      // membre de la même famille — sinon "Mon menu" propose baguette +
+      // biscottes + pain de mie le même petit-déjeuner.
+      const allowedDays = familyDayMap.get(product.id) ?? allWeekDays;
+      const perDayCounts = distributeEvenly(total, allowedDays, 7);
+      perDayCounts.forEach((count, dayIndex) => {
+        if (count === 0) return;
+        const entry: DayEntry = { product, count };
+        if (product.mealSlot === "petit-dejeuner") {
+          days[dayIndex].slots.petitDejeuner.push(entry);
+        } else {
+          days[dayIndex].slots.collation.push(entry);
+        }
+      });
+      continue;
+    }
 
-    perDayCounts.forEach((count, dayIndex) => {
+    // Déjeuner/dîner : réparti directement sur les créneaux autorisés (voir
+    // buildMainMealSlotMap) — jamais sur des jours entiers ensuite coupés en
+    // deux, pour que déjeuner et dîner puissent vraiment différer.
+    const allowedSlotIndices = mainMealSlotMap.get(product.id) ?? allMealSlotIndices;
+    const perSlotCounts = distributeEvenly(total, allowedSlotIndices, mealSlots.length);
+    perSlotCounts.forEach((count, slotIndex) => {
       if (count === 0) return;
+      const { day, slot } = mealSlots[slotIndex];
       const entry: DayEntry = { product, count };
-      if (product.mealSlot === "petit-dejeuner") {
-        days[dayIndex].slots.petitDejeuner.push(entry);
-      } else if (product.mealSlot === "encas-extra") {
-        days[dayIndex].slots.collation.push(entry);
+      if (slot === "dejeuner") {
+        days[day].slots.dejeuner.push(entry);
       } else {
-        mainsByDay[dayIndex].push(entry);
+        days[day].slots.diner.push(entry);
       }
     });
   }
-
-  // Répartit les articles "déjeuner-dîner" du jour ENTRE les deux repas de
-  // façon déséquilibrée à dessein (60/40) plutôt que pile à moitié — un
-  // partage à parts strictement égales donnait deux repas IDENTIQUES (même
-  // articles, mêmes quantités), ce qui devient vite lassant à répétition.
-  // Chaque article penche tantôt vers le déjeuner, tantôt vers le dîner
-  // (l'alternance dépend de l'article et du jour), pour que les deux repas
-  // ne soient jamais identiques tout en gardant un total de la journée
-  // équivalent — sans revenir au problème initial où un repas se
-  // retrouvait avec tout le féculent et l'autre avec rien que la protéine.
-  const LEAN_SHARE = 0.6;
-  mainsByDay.forEach((mains, dayIndex) => {
-    if (canteenDays.includes(dayIndex)) {
-      // Cantine ce jour-là : tout au dîner, rien au déjeuner à la maison.
-      mains.forEach((entry) => {
-        days[dayIndex].slots.diner.push(entry);
-      });
-      return;
-    }
-
-    mains.forEach((entry, entryIndex) => {
-      const leansLunch = (entryIndex + dayIndex) % 2 === 0;
-      const majorShare = round2(entry.count * LEAN_SHARE);
-      const minorShare = round2(entry.count - majorShare);
-      const lunchShare = leansLunch ? majorShare : minorShare;
-      const dinnerShare = leansLunch ? minorShare : majorShare;
-      if (lunchShare > 0) {
-        days[dayIndex].slots.dejeuner.push({ product: entry.product, count: lunchShare });
-      }
-      if (dinnerShare > 0) {
-        days[dayIndex].slots.diner.push({ product: entry.product, count: dinnerShare });
-      }
-    });
-  });
 
   return { days };
 }
