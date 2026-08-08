@@ -7,7 +7,6 @@
     "gramsPerServing": 100,
     "name": "Pâtes (500 g)",
     "price": 0.89,
-    "priceSource": "estimation",
     "unit": "paquet",
     "category": "epicerie",
     "mealSlot": "dejeuner-diner",
@@ -25,7 +24,10 @@
     "lipides": "faible",
     "glucides": "riche",
     "sel": "faible",
-    "easyToCook": true
+    "easyToCook": true,
+    "priceInfo": {
+      "source": "estimation"
+    }
   },
   {
     "id": "riz",
@@ -35,7 +37,6 @@
     "gramsPerServing": 100,
     "name": "Riz basmati (1 kg)",
     "price": 1.79,
-    "priceSource": "estimation",
     "unit": "sachet",
     "category": "epicerie",
     "mealSlot": "dejeuner-diner",
@@ -51,7 +52,10 @@
     "lipides": "faible",
     "glucides": "riche",
     "sel": "faible",
-    "easyToCook": true
+    "easyToCook": true,
+    "priceInfo": {
+      "source": "estimation"
+    }
   },
   {
     "id": "lentilles",
@@ -61,7 +65,6 @@
     "gramsPerServing": 80,
     "name": "Lentilles vertes (500 g)",
     "price": 1.49,
-    "priceSource": "estimation",
     "unit": "sachet",
     "category": "epicerie",
     "mealSlot": "dejeuner-diner",
@@ -77,7 +80,10 @@
     "lipides": "faible",
     "glucides": "moyen",
     "sel": "faible",
-    "easyToCook": true
+    "easyToCook": true,
+    "priceInfo": {
+      "source": "estimation"
+    }
   },
   {
     "id": "pois-chiches",
@@ -87,7 +93,6 @@
     "gramsPerServing": 150,
     "name": "Pois chiches (400 g)",
     "price": 0.79,
-    "priceSource": "estimation",
     "unit": "boîte",
     "category": "epicerie",
     "mealSlot": "dejeuner-diner",
@@ -103,7 +108,10 @@
     "lipides": "faible",
     "glucides": "moyen",
     "sel": "moyen",
-    "easyToCook": true
+    "easyToCook": true,
+    "priceInfo": {
+      "source": "estimation"
+    }
   },
   {
     "id": "sauce-tomate",
@@ -113,7 +121,6 @@
     "gramsPerServing": 100,
     "name": "Sauce Tomate concentrée cuisinée aux petits légumes",
     "price": 0.97,
-    "priceSource": "open-prices",
     "unit": "boîte",
     "category": "epicerie",
     "mealSlot": "dejeuner-diner",
@@ -131,7 +138,10 @@
     "lipides": "moyen",
     "glucides": "moyen",
     "sel": "riche",
-    "easyToCook": true
+    "easyToCook": true,
+    "priceInfo": {
+      "source": "open-prices"
+    }
   },
   {
     "id": "huile-olive",
@@ -140,7 +150,6 @@
     "servingUnit": "cuillère à soupe",
     "name": "Huile d'olive (1 L)",
     "price": 4.99,
-    "priceSource": "estimation",
     "unit": "bouteille",
     "category": "epicerie",
     "mealSlot": "dejeuner-diner",
@@ -157,7 +166,10 @@
     "glucides": "faible",
     "sel": "faible",
     "easyToCook": true,
-    "isCondiment": true
+    "isCondiment": true,
+    "priceInfo": {
+      "source": "estimation"
+    }
   },
   {
     "id": "cafe",
@@ -166,7 +178,6 @@
     "servingUnit": "tasse",
     "name": "Café moulu pur arabica des petits producteurs",
     "price": 4.96,
-    "priceSource": "open-prices",
     "unit": "paquet",
     "category": "epicerie",
     "mealSlot": "petit-dejeuner",
@@ -183,7 +194,10 @@
     "glucides": "faible",
     "sel": "faible",
     "easyToCook": true,
-    "gramsPerServing": 200
+    "gramsPerServing": 200,
+    "priceInfo": {
+      "source": "open-prices"
+    }
   },
   {
     "id": "beurre-cacahuete",
@@ -192,7 +206,6 @@
     "servingUnit": "cuillère",
     "name": "Pur beurre de cacahuète",
     "price": 4.29,
-    "priceSource": "open-prices",
     "unit": "pot",
     "category": "epicerie",
     "mealSlot": "petit-dejeuner",
@@ -213,7 +226,10 @@
     "easyToCook": true,
     "gourmand": true,
     "gramsPerServing": 15,
-    "isSpread": true
+    "isSpread": true,
+    "priceInfo": {
+      "source": "open-prices"
+    }
   },
   {
     "id": "noix-cajou",
@@ -222,7 +238,6 @@
     "servingUnit": "poignée",
     "name": "Noix de cajou & cranberries",
     "price": 2.99,
-    "priceSource": "estimation",
     "unit": "sachet",
     "category": "epicerie",
     "mealSlot": "encas-extra",
@@ -241,7 +256,10 @@
     "sel": "faible",
     "easyToCook": true,
     "gourmand": true,
-    "gramsPerServing": 30
+    "gramsPerServing": 30,
+    "priceInfo": {
+      "source": "estimation"
+    }
   },
   {
     "id": "carottes",
@@ -251,7 +269,6 @@
     "gramsPerServing": 100,
     "name": "Carottes rapees citron dnp 320g",
     "price": 1.64,
-    "priceSource": "open-prices",
     "unit": "sachet",
     "category": "fruits-legumes",
     "mealSlot": "dejeuner-diner",
@@ -270,7 +287,10 @@
     "lipides": "moyen",
     "glucides": "faible",
     "sel": "moyen",
-    "easyToCook": true
+    "easyToCook": true,
+    "priceInfo": {
+      "source": "open-prices"
+    }
   },
   {
     "id": "tomates",
@@ -280,7 +300,6 @@
     "gramsPerServing": 100,
     "name": "Tomates Cerises",
     "price": 0.99,
-    "priceSource": "open-prices",
     "unit": "barquette",
     "category": "fruits-legumes",
     "mealSlot": "dejeuner-diner",
@@ -296,7 +315,10 @@
     "lipides": "faible",
     "glucides": "faible",
     "sel": "moyen",
-    "easyToCook": true
+    "easyToCook": true,
+    "priceInfo": {
+      "source": "open-prices"
+    }
   },
   {
     "id": "bananes",
@@ -305,7 +327,6 @@
     "servingUnit": "banane",
     "name": "Bananes (1 kg)",
     "price": 1.69,
-    "priceSource": "estimation",
     "unit": "kg",
     "category": "fruits-legumes",
     "mealSlot": "encas-extra",
@@ -322,7 +343,10 @@
     "glucides": "moyen",
     "sel": "faible",
     "easyToCook": true,
-    "gramsPerServing": 120
+    "gramsPerServing": 120,
+    "priceInfo": {
+      "source": "estimation"
+    }
   },
   {
     "id": "pommes",
@@ -331,7 +355,6 @@
     "servingUnit": "pomme",
     "name": "Pommes (1 kg)",
     "price": 2.49,
-    "priceSource": "estimation",
     "unit": "sachet",
     "category": "fruits-legumes",
     "mealSlot": "encas-extra",
@@ -348,7 +371,10 @@
     "glucides": "moyen",
     "sel": "faible",
     "easyToCook": true,
-    "gramsPerServing": 150
+    "gramsPerServing": 150,
+    "priceInfo": {
+      "source": "estimation"
+    }
   },
   {
     "id": "pommes-de-terre",
@@ -358,7 +384,6 @@
     "gramsPerServing": 200,
     "name": "Pommes de terre (2 kg)",
     "price": 2.49,
-    "priceSource": "estimation",
     "unit": "sac",
     "category": "fruits-legumes",
     "mealSlot": "dejeuner-diner",
@@ -374,7 +399,10 @@
     "lipides": "faible",
     "glucides": "riche",
     "sel": "faible",
-    "easyToCook": true
+    "easyToCook": true,
+    "priceInfo": {
+      "source": "estimation"
+    }
   },
   {
     "id": "oignons",
@@ -384,7 +412,6 @@
     "gramsPerServing": 50,
     "name": "Oignons (1 kg)",
     "price": 1.49,
-    "priceSource": "estimation",
     "unit": "filet",
     "category": "fruits-legumes",
     "mealSlot": "dejeuner-diner",
@@ -400,7 +427,10 @@
     "lipides": "faible",
     "glucides": "faible",
     "sel": "faible",
-    "easyToCook": true
+    "easyToCook": true,
+    "priceInfo": {
+      "source": "estimation"
+    }
   },
   {
     "id": "lait",
@@ -409,7 +439,6 @@
     "servingUnit": "verre",
     "name": "Lait de la ferme jaouda",
     "price": 4,
-    "priceSource": "open-prices",
     "unit": "brique",
     "category": "frais",
     "mealSlot": "petit-dejeuner",
@@ -427,7 +456,10 @@
     "glucides": "faible",
     "sel": "faible",
     "easyToCook": true,
-    "gramsPerServing": 200
+    "gramsPerServing": 200,
+    "priceInfo": {
+      "source": "open-prices"
+    }
   },
   {
     "id": "yaourt-nature",
@@ -436,7 +468,6 @@
     "servingUnit": "yaourt",
     "name": "Yaourts nature (x4)",
     "price": 1.29,
-    "priceSource": "estimation",
     "unit": "pack",
     "category": "frais",
     "mealSlot": "petit-dejeuner",
@@ -454,7 +485,10 @@
     "glucides": "faible",
     "sel": "faible",
     "easyToCook": true,
-    "gramsPerServing": 125
+    "gramsPerServing": 125,
+    "priceInfo": {
+      "source": "estimation"
+    }
   },
   {
     "id": "fromage-rape",
@@ -464,7 +498,6 @@
     "gramsPerServing": 25,
     "name": "Fromage râpé (200 g)",
     "price": 2.19,
-    "priceSource": "estimation",
     "unit": "sachet",
     "category": "frais",
     "mealSlot": "dejeuner-diner",
@@ -482,7 +515,10 @@
     "glucides": "faible",
     "sel": "riche",
     "easyToCook": true,
-    "gourmand": true
+    "gourmand": true,
+    "priceInfo": {
+      "source": "estimation"
+    }
   },
   {
     "id": "oeufs",
@@ -491,7 +527,6 @@
     "servingUnit": "œuf",
     "name": "Œufs (x10)",
     "price": 2.29,
-    "priceSource": "estimation",
     "unit": "boîte",
     "category": "frais",
     "mealSlot": "petit-dejeuner",
@@ -509,7 +544,10 @@
     "glucides": "faible",
     "sel": "faible",
     "easyToCook": true,
-    "gramsPerServing": 55
+    "gramsPerServing": 55,
+    "priceInfo": {
+      "source": "estimation"
+    }
   },
   {
     "id": "tofu",
@@ -519,7 +557,6 @@
     "gramsPerServing": 100,
     "name": "Tofu nature",
     "price": 3.01,
-    "priceSource": "open-prices",
     "unit": "barquette",
     "category": "frais",
     "mealSlot": "dejeuner-diner",
@@ -535,7 +572,10 @@
     "lipides": "moyen",
     "glucides": "faible",
     "sel": "faible",
-    "easyToCook": true
+    "easyToCook": true,
+    "priceInfo": {
+      "source": "open-prices"
+    }
   },
   {
     "id": "pain-complet",
@@ -544,7 +584,6 @@
     "servingUnit": "tranche",
     "name": "Pain de mie american sandwich complet sans sucres ajoutés 600g",
     "price": 1.86,
-    "priceSource": "open-prices",
     "unit": "pain",
     "category": "boulangerie",
     "mealSlot": "petit-dejeuner",
@@ -562,7 +601,10 @@
     "glucides": "riche",
     "sel": "moyen",
     "easyToCook": true,
-    "ultraTransforme": true
+    "ultraTransforme": true,
+    "priceInfo": {
+      "source": "open-prices"
+    }
   },
   {
     "id": "baguette",
@@ -571,7 +613,6 @@
     "servingUnit": "baguette",
     "name": "4 Baguettes viennoises 340g",
     "price": 1.6,
-    "priceSource": "open-prices",
     "unit": "pain",
     "category": "boulangerie",
     "mealSlot": "petit-dejeuner",
@@ -589,7 +630,10 @@
     "lipides": "moyen",
     "glucides": "riche",
     "sel": "moyen",
-    "easyToCook": true
+    "easyToCook": true,
+    "priceInfo": {
+      "source": "open-prices"
+    }
   },
   {
     "id": "pains-mie",
@@ -598,7 +642,6 @@
     "servingUnit": "tranche",
     "name": "Pain de mie Bio grandes tranches à la farine complète 500g",
     "price": 2.35,
-    "priceSource": "open-prices",
     "unit": "paquet",
     "category": "boulangerie",
     "mealSlot": "petit-dejeuner",
@@ -616,7 +659,10 @@
     "glucides": "riche",
     "sel": "moyen",
     "easyToCook": true,
-    "ultraTransforme": true
+    "ultraTransforme": true,
+    "priceInfo": {
+      "source": "open-prices"
+    }
   },
   {
     "id": "poulet",
@@ -626,7 +672,6 @@
     "gramsPerServing": 120,
     "name": "Rôti de Poulet - 100% filet",
     "price": 2.65,
-    "priceSource": "open-prices",
     "unit": "barquette",
     "category": "viande-poisson",
     "mealSlot": "dejeuner-diner",
@@ -640,7 +685,10 @@
     "lipides": "faible",
     "glucides": "faible",
     "sel": "riche",
-    "easyToCook": true
+    "easyToCook": true,
+    "priceInfo": {
+      "source": "open-prices"
+    }
   },
   {
     "id": "thon",
@@ -650,7 +698,6 @@
     "gramsPerServing": 70,
     "name": "Joly Thon Entier",
     "price": 1.49,
-    "priceSource": "estimation",
     "unit": "boîte",
     "category": "viande-poisson",
     "mealSlot": "dejeuner-diner",
@@ -664,7 +711,10 @@
     "lipides": "faible",
     "glucides": "faible",
     "sel": "moyen",
-    "easyToCook": true
+    "easyToCook": true,
+    "priceInfo": {
+      "source": "estimation"
+    }
   },
   {
     "id": "steak-hache",
@@ -673,7 +723,6 @@
     "servingUnit": "steak",
     "name": "Steaks hachés 5%MG",
     "price": 6.16,
-    "priceSource": "open-prices",
     "unit": "barquette",
     "category": "viande-poisson",
     "mealSlot": "dejeuner-diner",
@@ -688,7 +737,10 @@
     "glucides": "faible",
     "sel": "faible",
     "easyToCook": true,
-    "gramsPerServing": 100
+    "gramsPerServing": 100,
+    "priceInfo": {
+      "source": "open-prices"
+    }
   },
   {
     "id": "saucisses",
@@ -697,7 +749,6 @@
     "servingUnit": "saucisse",
     "name": "Saucisses de Toulouse (x4)",
     "price": 3.29,
-    "priceSource": "estimation",
     "unit": "barquette",
     "category": "viande-poisson",
     "mealSlot": "dejeuner-diner",
@@ -713,7 +764,10 @@
     "easyToCook": true,
     "gourmand": true,
     "ultraTransforme": true,
-    "gramsPerServing": 50
+    "gramsPerServing": 50,
+    "priceInfo": {
+      "source": "estimation"
+    }
   },
   {
     "id": "cabillaud",
@@ -723,7 +777,6 @@
     "gramsPerServing": 300,
     "name": "Cabillaud sauce Citron riz aux petits légumes",
     "price": 4.38,
-    "priceSource": "open-prices",
     "unit": "barquette",
     "category": "viande-poisson",
     "mealSlot": "dejeuner-diner",
@@ -740,7 +793,10 @@
     "lipides": "moyen",
     "glucides": "moyen",
     "sel": "moyen",
-    "easyToCook": true
+    "easyToCook": true,
+    "priceInfo": {
+      "source": "open-prices"
+    }
   },
   {
     "id": "quinoa",
@@ -750,7 +806,6 @@
     "gramsPerServing": 100,
     "name": "Quinoa (500 g)",
     "price": 3.49,
-    "priceSource": "estimation",
     "unit": "sachet",
     "category": "epicerie",
     "mealSlot": "dejeuner-diner",
@@ -766,7 +821,10 @@
     "lipides": "faible",
     "glucides": "riche",
     "sel": "faible",
-    "easyToCook": true
+    "easyToCook": true,
+    "priceInfo": {
+      "source": "estimation"
+    }
   },
   {
     "id": "semoule-couscous",
@@ -776,7 +834,6 @@
     "gramsPerServing": 100,
     "name": "Semoule de couscous moyenne (1 kg)",
     "price": 1.79,
-    "priceSource": "estimation",
     "unit": "paquet",
     "category": "epicerie",
     "mealSlot": "dejeuner-diner",
@@ -794,7 +851,10 @@
     "lipides": "faible",
     "glucides": "riche",
     "sel": "faible",
-    "easyToCook": true
+    "easyToCook": true,
+    "priceInfo": {
+      "source": "estimation"
+    }
   },
   {
     "id": "farine",
@@ -804,7 +864,6 @@
     "gramsPerServing": 100,
     "name": "Farine de blé T55 (1 kg)",
     "price": 0.85,
-    "priceSource": "estimation",
     "unit": "paquet",
     "category": "epicerie",
     "mealSlot": "dejeuner-diner",
@@ -823,7 +882,10 @@
     "glucides": "riche",
     "sel": "faible",
     "easyToCook": true,
-    "isCondiment": true
+    "isCondiment": true,
+    "priceInfo": {
+      "source": "estimation"
+    }
   },
   {
     "id": "sucre",
@@ -832,7 +894,6 @@
     "servingUnit": "cuillère à café",
     "name": "Sucre en poudre (1 kg)",
     "price": 0.99,
-    "priceSource": "estimation",
     "unit": "paquet",
     "category": "epicerie",
     "mealSlot": "petit-dejeuner",
@@ -849,7 +910,10 @@
     "glucides": "riche",
     "sel": "faible",
     "easyToCook": true,
-    "isCondiment": true
+    "isCondiment": true,
+    "priceInfo": {
+      "source": "estimation"
+    }
   },
   {
     "id": "miel",
@@ -858,7 +922,6 @@
     "servingUnit": "cuillère à soupe",
     "name": "Miel toutes fleurs (350 g)",
     "price": 4.5,
-    "priceSource": "estimation",
     "unit": "pot",
     "category": "epicerie",
     "mealSlot": "petit-dejeuner",
@@ -876,7 +939,10 @@
     "easyToCook": true,
     "gourmand": true,
     "isCondiment": true,
-    "isSpread": true
+    "isSpread": true,
+    "priceInfo": {
+      "source": "estimation"
+    }
   },
   {
     "id": "confiture",
@@ -885,7 +951,6 @@
     "servingUnit": "cuillère à soupe",
     "name": "Confiture de fraises (370 g)",
     "price": 1.99,
-    "priceSource": "estimation",
     "unit": "pot",
     "category": "epicerie",
     "mealSlot": "petit-dejeuner",
@@ -904,7 +969,10 @@
     "easyToCook": true,
     "gourmand": true,
     "isCondiment": true,
-    "isSpread": true
+    "isSpread": true,
+    "priceInfo": {
+      "source": "estimation"
+    }
   },
   {
     "id": "cereales-muesli",
@@ -914,7 +982,6 @@
     "gramsPerServing": 40,
     "name": "Muesli croustillant aux fruits (500 g)",
     "price": 2.99,
-    "priceSource": "estimation",
     "unit": "paquet",
     "category": "epicerie",
     "mealSlot": "petit-dejeuner",
@@ -932,7 +999,10 @@
     "lipides": "moyen",
     "glucides": "riche",
     "sel": "faible",
-    "easyToCook": true
+    "easyToCook": true,
+    "priceInfo": {
+      "source": "estimation"
+    }
   },
   {
     "id": "flocons-avoine",
@@ -942,7 +1012,6 @@
     "gramsPerServing": 50,
     "name": "Flocons d'avoine (500 g)",
     "price": 1.89,
-    "priceSource": "estimation",
     "unit": "paquet",
     "category": "epicerie",
     "mealSlot": "petit-dejeuner",
@@ -960,7 +1029,10 @@
     "lipides": "moyen",
     "glucides": "riche",
     "sel": "faible",
-    "easyToCook": true
+    "easyToCook": true,
+    "priceInfo": {
+      "source": "estimation"
+    }
   },
   {
     "id": "pate-a-tartiner",
@@ -969,7 +1041,6 @@
     "servingUnit": "cuillère à soupe",
     "name": "Pâte à tartiner chocolat-noisettes (400 g)",
     "price": 3.49,
-    "priceSource": "estimation",
     "unit": "pot",
     "category": "epicerie",
     "mealSlot": "petit-dejeuner",
@@ -991,7 +1062,10 @@
     "gourmand": true,
     "isCondiment": true,
     "ultraTransforme": true,
-    "isSpread": true
+    "isSpread": true,
+    "priceInfo": {
+      "source": "estimation"
+    }
   },
   {
     "id": "sauce-soja",
@@ -1000,7 +1074,6 @@
     "servingUnit": "cuillère à soupe",
     "name": "Sauce soja (250 ml)",
     "price": 1.99,
-    "priceSource": "estimation",
     "unit": "bouteille",
     "category": "epicerie",
     "mealSlot": "dejeuner-diner",
@@ -1019,7 +1092,10 @@
     "glucides": "faible",
     "sel": "riche",
     "easyToCook": true,
-    "isCondiment": true
+    "isCondiment": true,
+    "priceInfo": {
+      "source": "estimation"
+    }
   },
   {
     "id": "moutarde",
@@ -1028,7 +1104,6 @@
     "servingUnit": "cuillère à café",
     "name": "Moutarde de Dijon (370 g)",
     "price": 1.29,
-    "priceSource": "estimation",
     "unit": "pot",
     "category": "epicerie",
     "mealSlot": "dejeuner-diner",
@@ -1045,7 +1120,10 @@
     "glucides": "faible",
     "sel": "riche",
     "easyToCook": true,
-    "isCondiment": true
+    "isCondiment": true,
+    "priceInfo": {
+      "source": "estimation"
+    }
   },
   {
     "id": "mayonnaise",
@@ -1054,7 +1132,6 @@
     "servingUnit": "cuillère à soupe",
     "name": "Mayonnaise (415 g)",
     "price": 1.79,
-    "priceSource": "estimation",
     "unit": "pot",
     "category": "epicerie",
     "mealSlot": "dejeuner-diner",
@@ -1074,7 +1151,10 @@
     "easyToCook": true,
     "gourmand": true,
     "isCondiment": true,
-    "ultraTransforme": true
+    "ultraTransforme": true,
+    "priceInfo": {
+      "source": "estimation"
+    }
   },
   {
     "id": "the",
@@ -1083,7 +1163,6 @@
     "servingUnit": "tasse",
     "name": "Thé vert (25 sachets)",
     "price": 2.49,
-    "priceSource": "estimation",
     "unit": "boîte",
     "category": "epicerie",
     "mealSlot": "petit-dejeuner",
@@ -1100,7 +1179,10 @@
     "glucides": "faible",
     "sel": "faible",
     "easyToCook": true,
-    "gramsPerServing": 200
+    "gramsPerServing": 200,
+    "priceInfo": {
+      "source": "estimation"
+    }
   },
   {
     "id": "haricots-rouges",
@@ -1110,7 +1192,6 @@
     "gramsPerServing": 150,
     "name": "Haricots rouges (400 g)",
     "price": 0.89,
-    "priceSource": "estimation",
     "unit": "boîte",
     "category": "epicerie",
     "mealSlot": "dejeuner-diner",
@@ -1126,7 +1207,10 @@
     "lipides": "faible",
     "glucides": "moyen",
     "sel": "moyen",
-    "easyToCook": true
+    "easyToCook": true,
+    "priceInfo": {
+      "source": "estimation"
+    }
   },
   {
     "id": "mais-doux",
@@ -1136,7 +1220,6 @@
     "gramsPerServing": 100,
     "name": "Maïs doux (285 g)",
     "price": 0.79,
-    "priceSource": "estimation",
     "unit": "boîte",
     "category": "epicerie",
     "mealSlot": "dejeuner-diner",
@@ -1152,7 +1235,10 @@
     "lipides": "faible",
     "glucides": "moyen",
     "sel": "moyen",
-    "easyToCook": true
+    "easyToCook": true,
+    "priceInfo": {
+      "source": "estimation"
+    }
   },
   {
     "id": "courgettes",
@@ -1162,7 +1248,6 @@
     "gramsPerServing": 100,
     "name": "Courgettes (1 kg)",
     "price": 1.79,
-    "priceSource": "estimation",
     "unit": "kg",
     "category": "fruits-legumes",
     "mealSlot": "dejeuner-diner",
@@ -1178,7 +1263,10 @@
     "lipides": "faible",
     "glucides": "faible",
     "sel": "faible",
-    "easyToCook": true
+    "easyToCook": true,
+    "priceInfo": {
+      "source": "estimation"
+    }
   },
   {
     "id": "poivrons",
@@ -1188,7 +1276,6 @@
     "gramsPerServing": 100,
     "name": "Poivrons tricolores (500 g)",
     "price": 2.49,
-    "priceSource": "estimation",
     "unit": "barquette",
     "category": "fruits-legumes",
     "mealSlot": "dejeuner-diner",
@@ -1204,7 +1291,10 @@
     "lipides": "faible",
     "glucides": "faible",
     "sel": "faible",
-    "easyToCook": true
+    "easyToCook": true,
+    "priceInfo": {
+      "source": "estimation"
+    }
   },
   {
     "id": "brocoli",
@@ -1214,7 +1304,6 @@
     "gramsPerServing": 150,
     "name": "Brocoli",
     "price": 1.99,
-    "priceSource": "estimation",
     "unit": "pièce",
     "category": "fruits-legumes",
     "mealSlot": "dejeuner-diner",
@@ -1230,7 +1319,10 @@
     "lipides": "faible",
     "glucides": "faible",
     "sel": "faible",
-    "easyToCook": true
+    "easyToCook": true,
+    "priceInfo": {
+      "source": "estimation"
+    }
   },
   {
     "id": "champignons",
@@ -1240,7 +1332,6 @@
     "gramsPerServing": 100,
     "name": "Champignons de Paris (250 g)",
     "price": 1.49,
-    "priceSource": "estimation",
     "unit": "barquette",
     "category": "fruits-legumes",
     "mealSlot": "dejeuner-diner",
@@ -1256,7 +1347,10 @@
     "lipides": "faible",
     "glucides": "faible",
     "sel": "faible",
-    "easyToCook": true
+    "easyToCook": true,
+    "priceInfo": {
+      "source": "estimation"
+    }
   },
   {
     "id": "salade-verte",
@@ -1266,7 +1360,6 @@
     "gramsPerServing": 50,
     "name": "Salade verte",
     "price": 1.19,
-    "priceSource": "estimation",
     "unit": "pièce",
     "category": "fruits-legumes",
     "mealSlot": "dejeuner-diner",
@@ -1282,7 +1375,10 @@
     "lipides": "faible",
     "glucides": "faible",
     "sel": "faible",
-    "easyToCook": true
+    "easyToCook": true,
+    "priceInfo": {
+      "source": "estimation"
+    }
   },
   {
     "id": "concombre",
@@ -1292,7 +1388,6 @@
     "gramsPerServing": 100,
     "name": "Concombre",
     "price": 0.79,
-    "priceSource": "estimation",
     "unit": "pièce",
     "category": "fruits-legumes",
     "mealSlot": "dejeuner-diner",
@@ -1308,7 +1403,10 @@
     "lipides": "faible",
     "glucides": "faible",
     "sel": "faible",
-    "easyToCook": true
+    "easyToCook": true,
+    "priceInfo": {
+      "source": "estimation"
+    }
   },
   {
     "id": "avocat",
@@ -1317,7 +1415,6 @@
     "servingUnit": "avocat",
     "name": "Avocats (x2)",
     "price": 1.99,
-    "priceSource": "estimation",
     "unit": "filet",
     "category": "fruits-legumes",
     "mealSlot": "dejeuner-diner",
@@ -1334,7 +1431,10 @@
     "glucides": "faible",
     "sel": "faible",
     "easyToCook": true,
-    "gramsPerServing": 170
+    "gramsPerServing": 170,
+    "priceInfo": {
+      "source": "estimation"
+    }
   },
   {
     "id": "citron",
@@ -1343,7 +1443,6 @@
     "servingUnit": "citron",
     "name": "Citrons (filet)",
     "price": 1.49,
-    "priceSource": "estimation",
     "unit": "filet",
     "category": "fruits-legumes",
     "mealSlot": "dejeuner-diner",
@@ -1359,7 +1458,10 @@
     "lipides": "faible",
     "glucides": "faible",
     "sel": "faible",
-    "easyToCook": true
+    "easyToCook": true,
+    "priceInfo": {
+      "source": "estimation"
+    }
   },
   {
     "id": "orange",
@@ -1368,7 +1470,6 @@
     "servingUnit": "orange",
     "name": "Oranges (1,5 kg)",
     "price": 2.99,
-    "priceSource": "estimation",
     "unit": "filet",
     "category": "fruits-legumes",
     "mealSlot": "encas-extra",
@@ -1385,7 +1486,10 @@
     "glucides": "moyen",
     "sel": "faible",
     "easyToCook": true,
-    "gramsPerServing": 200
+    "gramsPerServing": 200,
+    "priceInfo": {
+      "source": "estimation"
+    }
   },
   {
     "id": "ail",
@@ -1394,7 +1498,6 @@
     "servingUnit": "gousse",
     "name": "Tête d'ail",
     "price": 0.99,
-    "priceSource": "estimation",
     "unit": "tête",
     "category": "fruits-legumes",
     "mealSlot": "dejeuner-diner",
@@ -1411,7 +1514,10 @@
     "glucides": "moyen",
     "sel": "faible",
     "easyToCook": true,
-    "isCondiment": true
+    "isCondiment": true,
+    "priceInfo": {
+      "source": "estimation"
+    }
   },
   {
     "id": "poireaux",
@@ -1421,7 +1527,6 @@
     "gramsPerServing": 100,
     "name": "Poireaux (botte)",
     "price": 1.99,
-    "priceSource": "estimation",
     "unit": "botte",
     "category": "fruits-legumes",
     "mealSlot": "dejeuner-diner",
@@ -1437,7 +1542,10 @@
     "lipides": "faible",
     "glucides": "faible",
     "sel": "faible",
-    "easyToCook": true
+    "easyToCook": true,
+    "priceInfo": {
+      "source": "estimation"
+    }
   },
   {
     "id": "epinards",
@@ -1447,7 +1555,6 @@
     "gramsPerServing": 100,
     "name": "Jeunes pousses d'épinards (200 g)",
     "price": 1.79,
-    "priceSource": "estimation",
     "unit": "sachet",
     "category": "fruits-legumes",
     "mealSlot": "dejeuner-diner",
@@ -1463,7 +1570,10 @@
     "lipides": "faible",
     "glucides": "faible",
     "sel": "faible",
-    "easyToCook": true
+    "easyToCook": true,
+    "priceInfo": {
+      "source": "estimation"
+    }
   },
   {
     "id": "chou-fleur",
@@ -1473,7 +1583,6 @@
     "gramsPerServing": 150,
     "name": "Chou-fleur",
     "price": 1.99,
-    "priceSource": "estimation",
     "unit": "pièce",
     "category": "fruits-legumes",
     "mealSlot": "dejeuner-diner",
@@ -1489,7 +1598,10 @@
     "lipides": "faible",
     "glucides": "faible",
     "sel": "faible",
-    "easyToCook": true
+    "easyToCook": true,
+    "priceInfo": {
+      "source": "estimation"
+    }
   },
   {
     "id": "yaourt-grec",
@@ -1498,7 +1610,6 @@
     "servingUnit": "yaourt",
     "name": "Yaourts grecs (x4)",
     "price": 2.49,
-    "priceSource": "estimation",
     "unit": "pack",
     "category": "frais",
     "mealSlot": "petit-dejeuner",
@@ -1516,7 +1627,10 @@
     "glucides": "faible",
     "sel": "faible",
     "easyToCook": true,
-    "gramsPerServing": 125
+    "gramsPerServing": 125,
+    "priceInfo": {
+      "source": "estimation"
+    }
   },
   {
     "id": "fromage-blanc",
@@ -1526,7 +1640,6 @@
     "gramsPerServing": 100,
     "name": "Fromage blanc (500 g)",
     "price": 1.69,
-    "priceSource": "estimation",
     "unit": "pot",
     "category": "frais",
     "mealSlot": "petit-dejeuner",
@@ -1543,7 +1656,10 @@
     "lipides": "faible",
     "glucides": "faible",
     "sel": "faible",
-    "easyToCook": true
+    "easyToCook": true,
+    "priceInfo": {
+      "source": "estimation"
+    }
   },
   {
     "id": "beurre",
@@ -1552,7 +1668,6 @@
     "servingUnit": "noisette",
     "name": "Beurre doux (250 g)",
     "price": 2.29,
-    "priceSource": "estimation",
     "unit": "plaquette",
     "category": "frais",
     "mealSlot": "petit-dejeuner",
@@ -1572,7 +1687,10 @@
     "easyToCook": true,
     "gourmand": true,
     "isCondiment": true,
-    "isSpread": true
+    "isSpread": true,
+    "priceInfo": {
+      "source": "estimation"
+    }
   },
   {
     "id": "creme-fraiche",
@@ -1581,7 +1699,6 @@
     "servingUnit": "cuillère à soupe",
     "name": "Crème fraîche épaisse (200 g)",
     "price": 1.09,
-    "priceSource": "estimation",
     "unit": "pot",
     "category": "frais",
     "mealSlot": "dejeuner-diner",
@@ -1600,7 +1717,10 @@
     "sel": "faible",
     "easyToCook": true,
     "gourmand": true,
-    "isCondiment": true
+    "isCondiment": true,
+    "priceInfo": {
+      "source": "estimation"
+    }
   },
   {
     "id": "mozzarella",
@@ -1610,7 +1730,6 @@
     "gramsPerServing": 60,
     "name": "Mozzarella (125 g)",
     "price": 0.89,
-    "priceSource": "estimation",
     "unit": "boule",
     "category": "frais",
     "mealSlot": "dejeuner-diner",
@@ -1628,7 +1747,10 @@
     "glucides": "faible",
     "sel": "moyen",
     "easyToCook": true,
-    "gourmand": true
+    "gourmand": true,
+    "priceInfo": {
+      "source": "estimation"
+    }
   },
   {
     "id": "jambon-dinde",
@@ -1637,7 +1759,6 @@
     "servingUnit": "tranche",
     "name": "Jambon de dinde (4 tranches)",
     "price": 2.19,
-    "priceSource": "estimation",
     "unit": "paquet",
     "category": "frais",
     "mealSlot": "dejeuner-diner",
@@ -1653,7 +1774,10 @@
     "sel": "riche",
     "easyToCook": true,
     "ultraTransforme": true,
-    "gramsPerServing": 20
+    "gramsPerServing": 20,
+    "priceInfo": {
+      "source": "estimation"
+    }
   },
   {
     "id": "lait-soja",
@@ -1662,7 +1786,6 @@
     "servingUnit": "verre",
     "name": "Lait de soja nature (1 L)",
     "price": 1.79,
-    "priceSource": "estimation",
     "unit": "brique",
     "category": "frais",
     "mealSlot": "petit-dejeuner",
@@ -1679,7 +1802,10 @@
     "glucides": "faible",
     "sel": "faible",
     "easyToCook": true,
-    "gramsPerServing": 200
+    "gramsPerServing": 200,
+    "priceInfo": {
+      "source": "estimation"
+    }
   },
   {
     "id": "compote",
@@ -1688,7 +1814,6 @@
     "servingUnit": "gourde",
     "name": "Compotes pomme (x12)",
     "price": 1.99,
-    "priceSource": "estimation",
     "unit": "pack",
     "category": "frais",
     "mealSlot": "encas-extra",
@@ -1705,7 +1830,10 @@
     "glucides": "moyen",
     "sel": "faible",
     "easyToCook": true,
-    "gramsPerServing": 90
+    "gramsPerServing": 90,
+    "priceInfo": {
+      "source": "estimation"
+    }
   },
   {
     "id": "jus-orange",
@@ -1714,7 +1842,6 @@
     "servingUnit": "verre",
     "name": "Jus d'orange (1 L)",
     "price": 2.29,
-    "priceSource": "estimation",
     "unit": "bouteille",
     "category": "frais",
     "mealSlot": "petit-dejeuner",
@@ -1731,7 +1858,10 @@
     "glucides": "moyen",
     "sel": "faible",
     "easyToCook": true,
-    "gramsPerServing": 200
+    "gramsPerServing": 200,
+    "priceInfo": {
+      "source": "estimation"
+    }
   },
   {
     "id": "baguette-tradition",
@@ -1740,7 +1870,6 @@
     "servingUnit": "baguette",
     "name": "Baguette tradition",
     "price": 1.1,
-    "priceSource": "estimation",
     "unit": "pain",
     "category": "boulangerie",
     "mealSlot": "petit-dejeuner",
@@ -1758,7 +1887,10 @@
     "lipides": "faible",
     "glucides": "riche",
     "sel": "moyen",
-    "easyToCook": true
+    "easyToCook": true,
+    "priceInfo": {
+      "source": "estimation"
+    }
   },
   {
     "id": "croissants",
@@ -1767,7 +1899,6 @@
     "servingUnit": "croissant",
     "name": "Croissants pur beurre (x4)",
     "price": 2.29,
-    "priceSource": "estimation",
     "unit": "sachet",
     "category": "boulangerie",
     "mealSlot": "petit-dejeuner",
@@ -1789,7 +1920,10 @@
     "easyToCook": true,
     "gourmand": true,
     "ultraTransforme": true,
-    "gramsPerServing": 50
+    "gramsPerServing": 50,
+    "priceInfo": {
+      "source": "estimation"
+    }
   },
   {
     "id": "pain-cereales",
@@ -1798,7 +1932,6 @@
     "servingUnit": "tranche",
     "name": "Pain de mie aux céréales (500 g)",
     "price": 2.49,
-    "priceSource": "estimation",
     "unit": "paquet",
     "category": "boulangerie",
     "mealSlot": "petit-dejeuner",
@@ -1817,7 +1950,10 @@
     "glucides": "riche",
     "sel": "moyen",
     "easyToCook": true,
-    "ultraTransforme": true
+    "ultraTransforme": true,
+    "priceInfo": {
+      "source": "estimation"
+    }
   },
   {
     "id": "wraps",
@@ -1826,7 +1962,6 @@
     "servingUnit": "wrap",
     "name": "Tortillas de blé (x8)",
     "price": 1.99,
-    "priceSource": "estimation",
     "unit": "paquet",
     "category": "boulangerie",
     "mealSlot": "dejeuner-diner",
@@ -1846,7 +1981,10 @@
     "sel": "moyen",
     "easyToCook": true,
     "ultraTransforme": true,
-    "gramsPerServing": 60
+    "gramsPerServing": 60,
+    "priceInfo": {
+      "source": "estimation"
+    }
   },
   {
     "id": "biscottes",
@@ -1855,7 +1993,6 @@
     "servingUnit": "biscotte",
     "name": "Biscottes (300 g)",
     "price": 1.79,
-    "priceSource": "estimation",
     "unit": "paquet",
     "category": "boulangerie",
     "mealSlot": "petit-dejeuner",
@@ -1873,7 +2010,10 @@
     "lipides": "faible",
     "glucides": "riche",
     "sel": "moyen",
-    "easyToCook": true
+    "easyToCook": true,
+    "priceInfo": {
+      "source": "estimation"
+    }
   },
   {
     "id": "brioche",
@@ -1882,7 +2022,6 @@
     "servingUnit": "tranche",
     "name": "Brioche tranchée (400 g)",
     "price": 1.99,
-    "priceSource": "estimation",
     "unit": "paquet",
     "category": "boulangerie",
     "mealSlot": "petit-dejeuner",
@@ -1903,7 +2042,10 @@
     "sel": "moyen",
     "easyToCook": true,
     "gourmand": true,
-    "ultraTransforme": true
+    "ultraTransforme": true,
+    "priceInfo": {
+      "source": "estimation"
+    }
   },
   {
     "id": "escalope-dinde",
@@ -1913,7 +2055,6 @@
     "gramsPerServing": 120,
     "name": "Escalopes de dinde (x2)",
     "price": 3.99,
-    "priceSource": "estimation",
     "unit": "barquette",
     "category": "viande-poisson",
     "mealSlot": "dejeuner-diner",
@@ -1927,7 +2068,10 @@
     "lipides": "faible",
     "glucides": "faible",
     "sel": "faible",
-    "easyToCook": true
+    "easyToCook": true,
+    "priceInfo": {
+      "source": "estimation"
+    }
   },
   {
     "id": "lardons",
@@ -1937,7 +2081,6 @@
     "gramsPerServing": 50,
     "name": "Lardons fumés (200 g)",
     "price": 2.29,
-    "priceSource": "estimation",
     "unit": "sachet",
     "category": "viande-poisson",
     "mealSlot": "dejeuner-diner",
@@ -1952,7 +2095,10 @@
     "sel": "riche",
     "easyToCook": true,
     "gourmand": true,
-    "ultraTransforme": true
+    "ultraTransforme": true,
+    "priceInfo": {
+      "source": "estimation"
+    }
   },
   {
     "id": "merguez",
@@ -1961,7 +2107,6 @@
     "servingUnit": "merguez",
     "name": "Merguez (x4)",
     "price": 3.49,
-    "priceSource": "estimation",
     "unit": "barquette",
     "category": "viande-poisson",
     "mealSlot": "dejeuner-diner",
@@ -1978,7 +2123,10 @@
     "easyToCook": true,
     "gourmand": true,
     "ultraTransforme": true,
-    "gramsPerServing": 50
+    "gramsPerServing": 50,
+    "priceInfo": {
+      "source": "estimation"
+    }
   },
   {
     "id": "saumon",
@@ -1988,7 +2136,6 @@
     "gramsPerServing": 120,
     "name": "Pavés de saumon (x2)",
     "price": 3.99,
-    "priceSource": "estimation",
     "unit": "barquette",
     "category": "viande-poisson",
     "mealSlot": "dejeuner-diner",
@@ -2002,7 +2149,10 @@
     "lipides": "riche",
     "glucides": "faible",
     "sel": "faible",
-    "easyToCook": true
+    "easyToCook": true,
+    "priceInfo": {
+      "source": "estimation"
+    }
   },
   {
     "id": "crevettes",
@@ -2012,7 +2162,6 @@
     "gramsPerServing": 100,
     "name": "Crevettes décortiquées (200 g)",
     "price": 3.49,
-    "priceSource": "estimation",
     "unit": "sachet",
     "category": "viande-poisson",
     "mealSlot": "dejeuner-diner",
@@ -2026,7 +2175,10 @@
     "lipides": "faible",
     "glucides": "faible",
     "sel": "riche",
-    "easyToCook": true
+    "easyToCook": true,
+    "priceInfo": {
+      "source": "estimation"
+    }
   },
   {
     "id": "sardines",
@@ -2036,7 +2188,6 @@
     "gramsPerServing": 90,
     "name": "Sardines à l'huile (x4)",
     "price": 1.29,
-    "priceSource": "estimation",
     "unit": "boîte",
     "category": "viande-poisson",
     "mealSlot": "dejeuner-diner",
@@ -2050,7 +2201,10 @@
     "lipides": "riche",
     "glucides": "faible",
     "sel": "moyen",
-    "easyToCook": true
+    "easyToCook": true,
+    "priceInfo": {
+      "source": "estimation"
+    }
   },
   {
     "id": "chorizo",
@@ -2060,7 +2214,6 @@
     "gramsPerServing": 40,
     "name": "Chorizo doux tranché (100 g)",
     "price": 2.49,
-    "priceSource": "estimation",
     "unit": "sachet",
     "category": "viande-poisson",
     "mealSlot": "dejeuner-diner",
@@ -2075,7 +2228,10 @@
     "sel": "riche",
     "easyToCook": true,
     "gourmand": true,
-    "ultraTransforme": true
+    "ultraTransforme": true,
+    "priceInfo": {
+      "source": "estimation"
+    }
   },
   {
     "id": "filet-poulet-cru",
@@ -2085,7 +2241,6 @@
     "gramsPerServing": 130,
     "name": "Filets de poulet crus (x2)",
     "price": 4.49,
-    "priceSource": "estimation",
     "unit": "barquette",
     "category": "viande-poisson",
     "mealSlot": "dejeuner-diner",
@@ -2099,7 +2254,10 @@
     "lipides": "faible",
     "glucides": "faible",
     "sel": "faible",
-    "easyToCook": true
+    "easyToCook": true,
+    "priceInfo": {
+      "source": "estimation"
+    }
   },
   {
     "id": "cotelettes-agneau",
@@ -2108,7 +2266,6 @@
     "servingUnit": "côtelette",
     "name": "Côtelettes d'agneau (x4)",
     "price": 5.99,
-    "priceSource": "estimation",
     "unit": "barquette",
     "category": "viande-poisson",
     "mealSlot": "dejeuner-diner",
@@ -2123,14 +2280,16 @@
     "glucides": "faible",
     "sel": "faible",
     "easyToCook": false,
-    "gramsPerServing": 80
+    "gramsPerServing": 80,
+    "priceInfo": {
+      "source": "estimation"
+    }
   },
   {
     "id": "pates-completes",
     "shortName": "Pâtes complètes",
     "name": "Pâtes spaghetti au blé complet integral 500g",
     "price": 1.6,
-    "priceSource": "open-prices",
     "unit": "paquet",
     "category": "epicerie",
     "mealSlot": "dejeuner-diner",
@@ -2151,14 +2310,16 @@
     "easyToCook": true,
     "weeklyServings": 3,
     "servingUnit": "portion",
-    "gramsPerServing": 80
+    "gramsPerServing": 80,
+    "priceInfo": {
+      "source": "open-prices"
+    }
   },
   {
     "id": "spaghetti",
     "shortName": "Spaghetti",
     "name": "Spaghetti n°5",
     "price": 7.49,
-    "priceSource": "open-prices",
     "unit": "paquet",
     "category": "epicerie",
     "mealSlot": "dejeuner-diner",
@@ -2178,14 +2339,16 @@
     "easyToCook": true,
     "weeklyServings": 3,
     "servingUnit": "portion",
-    "gramsPerServing": 80
+    "gramsPerServing": 80,
+    "priceInfo": {
+      "source": "open-prices"
+    }
   },
   {
     "id": "nouilles-chinoises",
     "shortName": "Nouilles chinoises",
     "name": "nouilles en nid",
     "price": 1.63,
-    "priceSource": "open-prices",
     "unit": "paquet",
     "category": "epicerie",
     "mealSlot": "dejeuner-diner",
@@ -2206,14 +2369,16 @@
     "easyToCook": true,
     "weeklyServings": 3,
     "servingUnit": "portion",
-    "gramsPerServing": 80
+    "gramsPerServing": 80,
+    "priceInfo": {
+      "source": "open-prices"
+    }
   },
   {
     "id": "riz-complet",
     "shortName": "Riz complet",
     "name": "Riz complet (1 kg)",
     "price": 2.1,
-    "priceSource": "estimation",
     "unit": "sachet",
     "category": "epicerie",
     "mealSlot": "dejeuner-diner",
@@ -2232,14 +2397,16 @@
     "easyToCook": true,
     "weeklyServings": 3,
     "servingUnit": "portion",
-    "gramsPerServing": 80
+    "gramsPerServing": 80,
+    "priceInfo": {
+      "source": "estimation"
+    }
   },
   {
     "id": "polenta",
     "shortName": "Polenta",
     "name": "Polenta",
     "price": 1.82,
-    "priceSource": "open-prices",
     "unit": "paquet",
     "category": "epicerie",
     "mealSlot": "dejeuner-diner",
@@ -2260,14 +2427,16 @@
     "easyToCook": true,
     "weeklyServings": 3,
     "servingUnit": "portion",
-    "gramsPerServing": 60
+    "gramsPerServing": 60,
+    "priceInfo": {
+      "source": "open-prices"
+    }
   },
   {
     "id": "farine-complete",
     "shortName": "Farine complète",
     "name": "Farine complète (1 kg)",
     "price": 1.8,
-    "priceSource": "estimation",
     "unit": "paquet",
     "category": "epicerie",
     "mealSlot": "dejeuner-diner",
@@ -2289,14 +2458,16 @@
     "weeklyServings": 3,
     "servingUnit": "portion",
     "gramsPerServing": 50,
-    "isCondiment": true
+    "isCondiment": true,
+    "priceInfo": {
+      "source": "estimation"
+    }
   },
   {
     "id": "farine-sans-gluten",
     "shortName": "Farine sans gluten",
     "name": "Farine sans gluten (1 kg)",
     "price": 3.2,
-    "priceSource": "estimation",
     "unit": "paquet",
     "category": "epicerie",
     "mealSlot": "dejeuner-diner",
@@ -2316,14 +2487,16 @@
     "weeklyServings": 3,
     "servingUnit": "portion",
     "gramsPerServing": 50,
-    "isCondiment": true
+    "isCondiment": true,
+    "priceInfo": {
+      "source": "estimation"
+    }
   },
   {
     "id": "levure-chimique",
     "shortName": "Levure chimique",
     "name": "levure pâtisserie",
     "price": 2.5,
-    "priceSource": "estimation",
     "unit": "sachet",
     "category": "epicerie",
     "mealSlot": "encas-extra",
@@ -2340,14 +2513,16 @@
     "glucides": "riche",
     "sel": "faible",
     "easyToCook": true,
-    "isCondiment": true
+    "isCondiment": true,
+    "priceInfo": {
+      "source": "estimation"
+    }
   },
   {
     "id": "haricots-verts-conserve",
     "shortName": "Haricots verts (conserve)",
     "name": "Haricots Verts extra-fins 1/2",
     "price": 2.95,
-    "priceSource": "open-prices",
     "unit": "boîte",
     "category": "epicerie",
     "mealSlot": "dejeuner-diner",
@@ -2366,14 +2541,16 @@
     "easyToCook": true,
     "weeklyServings": 3,
     "servingUnit": "portion",
-    "gramsPerServing": 120
+    "gramsPerServing": 120,
+    "priceInfo": {
+      "source": "open-prices"
+    }
   },
   {
     "id": "petits-pois-conserve",
     "shortName": "Petits pois (conserve)",
     "name": "Petits Pois et Carottes 1/2",
     "price": 2.12,
-    "priceSource": "open-prices",
     "unit": "boîte",
     "category": "epicerie",
     "mealSlot": "dejeuner-diner",
@@ -2392,14 +2569,16 @@
     "easyToCook": true,
     "weeklyServings": 3,
     "servingUnit": "portion",
-    "gramsPerServing": 120
+    "gramsPerServing": 120,
+    "priceInfo": {
+      "source": "open-prices"
+    }
   },
   {
     "id": "champignons-conserve",
     "shortName": "Champignons (conserve)",
     "name": "Champignons de Paris 1er choix émincés",
     "price": 1.07,
-    "priceSource": "open-prices",
     "unit": "boîte",
     "category": "epicerie",
     "mealSlot": "dejeuner-diner",
@@ -2418,14 +2597,16 @@
     "easyToCook": true,
     "weeklyServings": 3,
     "servingUnit": "portion",
-    "gramsPerServing": 100
+    "gramsPerServing": 100,
+    "priceInfo": {
+      "source": "open-prices"
+    }
   },
   {
     "id": "cornichons",
     "shortName": "Cornichons",
     "name": "Cornichons aigres-doux Recette Paysanne",
     "price": 2.56,
-    "priceSource": "open-prices",
     "unit": "pot",
     "category": "epicerie",
     "mealSlot": "encas-extra",
@@ -2440,14 +2621,16 @@
     "glucides": "faible",
     "sel": "moyen",
     "easyToCook": true,
-    "isCondiment": true
+    "isCondiment": true,
+    "priceInfo": {
+      "source": "open-prices"
+    }
   },
   {
     "id": "harissa",
     "shortName": "Harissa",
     "name": "Harissa du Cap-Bon",
     "price": 0.85,
-    "priceSource": "open-prices",
     "unit": "pot",
     "category": "epicerie",
     "mealSlot": "dejeuner-diner",
@@ -2462,14 +2645,16 @@
     "glucides": "moyen",
     "sel": "riche",
     "easyToCook": true,
-    "isCondiment": true
+    "isCondiment": true,
+    "priceInfo": {
+      "source": "open-prices"
+    }
   },
   {
     "id": "cumin",
     "shortName": "Cumin",
     "name": "Cumin en poudre (pot)",
     "price": 1.9,
-    "priceSource": "estimation",
     "unit": "pot",
     "category": "epicerie",
     "mealSlot": "dejeuner-diner",
@@ -2486,14 +2671,16 @@
     "glucides": "moyen",
     "sel": "faible",
     "easyToCook": true,
-    "isCondiment": true
+    "isCondiment": true,
+    "priceInfo": {
+      "source": "estimation"
+    }
   },
   {
     "id": "paprika",
     "shortName": "Paprika",
     "name": "Paprika en poudre (pot)",
     "price": 1.9,
-    "priceSource": "estimation",
     "unit": "pot",
     "category": "epicerie",
     "mealSlot": "dejeuner-diner",
@@ -2510,14 +2697,16 @@
     "glucides": "moyen",
     "sel": "faible",
     "easyToCook": true,
-    "isCondiment": true
+    "isCondiment": true,
+    "priceInfo": {
+      "source": "estimation"
+    }
   },
   {
     "id": "poivre",
     "shortName": "Poivre",
     "name": "Poivre noir moulu",
     "price": 2.43,
-    "priceSource": "open-prices",
     "unit": "moulin",
     "category": "epicerie",
     "mealSlot": "dejeuner-diner",
@@ -2534,14 +2723,16 @@
     "glucides": "moyen",
     "sel": "moyen",
     "easyToCook": true,
-    "isCondiment": true
+    "isCondiment": true,
+    "priceInfo": {
+      "source": "open-prices"
+    }
   },
   {
     "id": "herbes-de-provence",
     "shortName": "Herbes de Provence",
     "name": "Herbes de Provence (pot)",
     "price": 1.7,
-    "priceSource": "estimation",
     "unit": "pot",
     "category": "epicerie",
     "mealSlot": "dejeuner-diner",
@@ -2558,14 +2749,16 @@
     "glucides": "moyen",
     "sel": "faible",
     "easyToCook": true,
-    "isCondiment": true
+    "isCondiment": true,
+    "priceInfo": {
+      "source": "estimation"
+    }
   },
   {
     "id": "ketchup",
     "shortName": "Ketchup",
     "name": "Tomato Ketchup BIO",
     "price": 2.98,
-    "priceSource": "open-prices",
     "unit": "flacon",
     "category": "epicerie",
     "mealSlot": "dejeuner-diner",
@@ -2582,14 +2775,16 @@
     "sel": "riche",
     "easyToCook": true,
     "isCondiment": true,
-    "ultraTransforme": true
+    "ultraTransforme": true,
+    "priceInfo": {
+      "source": "open-prices"
+    }
   },
   {
     "id": "vinaigre-balsamique",
     "shortName": "Vinaigre balsamique",
     "name": "Vinaigre Balsamique de Modène 25 cl",
     "price": 4.31,
-    "priceSource": "open-prices",
     "unit": "bouteille",
     "category": "epicerie",
     "mealSlot": "dejeuner-diner",
@@ -2604,14 +2799,16 @@
     "glucides": "moyen",
     "sel": "faible",
     "easyToCook": true,
-    "isCondiment": true
+    "isCondiment": true,
+    "priceInfo": {
+      "source": "open-prices"
+    }
   },
   {
     "id": "tabasco",
     "shortName": "Tabasco",
     "name": "Tabasco Sauce Epicée Sriracha 256ml",
     "price": 4.81,
-    "priceSource": "open-prices",
     "unit": "flacon",
     "category": "epicerie",
     "mealSlot": "dejeuner-diner",
@@ -2626,14 +2823,16 @@
     "glucides": "moyen",
     "sel": "riche",
     "easyToCook": true,
-    "isCondiment": true
+    "isCondiment": true,
+    "priceInfo": {
+      "source": "open-prices"
+    }
   },
   {
     "id": "lait-coco",
     "shortName": "Lait de coco",
     "name": "Lait de coco",
     "price": 1.16,
-    "priceSource": "open-prices",
     "unit": "boîte",
     "category": "epicerie",
     "mealSlot": "dejeuner-diner",
@@ -2652,14 +2851,16 @@
     "easyToCook": true,
     "weeklyServings": 3,
     "servingUnit": "portion",
-    "gramsPerServing": 100
+    "gramsPerServing": 100,
+    "priceInfo": {
+      "source": "open-prices"
+    }
   },
   {
     "id": "cereales-chocolatees",
     "shortName": "Céréales chocolatées",
     "name": "NESTLE CHOCAPIC Céréales 645g",
     "price": 4.66,
-    "priceSource": "open-prices",
     "unit": "paquet",
     "category": "epicerie",
     "mealSlot": "petit-dejeuner",
@@ -2680,14 +2881,16 @@
     "weeklyServings": 3,
     "servingUnit": "portion",
     "ultraTransforme": true,
-    "gramsPerServing": 40
+    "gramsPerServing": 40,
+    "priceInfo": {
+      "source": "open-prices"
+    }
   },
   {
     "id": "muesli-fruits",
     "shortName": "Muesli aux fruits",
     "name": "Muesli Raisin, Figue, Datte, Abricot",
     "price": 2.43,
-    "priceSource": "open-prices",
     "unit": "paquet",
     "category": "epicerie",
     "mealSlot": "petit-dejeuner",
@@ -2706,14 +2909,16 @@
     "easyToCook": true,
     "weeklyServings": 3,
     "servingUnit": "portion",
-    "gramsPerServing": 50
+    "gramsPerServing": 50,
+    "priceInfo": {
+      "source": "open-prices"
+    }
   },
   {
     "id": "sirop-erable",
     "shortName": "Sirop d'érable",
     "name": "Sirop d'érable",
     "price": 4.87,
-    "priceSource": "open-prices",
     "unit": "bouteille",
     "category": "epicerie",
     "mealSlot": "petit-dejeuner",
@@ -2733,14 +2938,16 @@
     "gourmand": true,
     "weeklyServings": 3,
     "servingUnit": "portion",
-    "gramsPerServing": 20
+    "gramsPerServing": 20,
+    "priceInfo": {
+      "source": "open-prices"
+    }
   },
   {
     "id": "jus-pomme",
     "shortName": "Jus de pomme",
     "name": "Jus de pomme (1 L)",
     "price": 1.8,
-    "priceSource": "estimation",
     "unit": "brique",
     "category": "epicerie",
     "mealSlot": "petit-dejeuner",
@@ -2759,14 +2966,16 @@
     "easyToCook": true,
     "weeklyServings": 3,
     "servingUnit": "portion",
-    "gramsPerServing": 200
+    "gramsPerServing": 200,
+    "priceInfo": {
+      "source": "estimation"
+    }
   },
   {
     "id": "eau-gazeuse",
     "shortName": "Eau gazeuse",
     "name": "Eau gazeuse (1,5 L)",
     "price": 0.6,
-    "priceSource": "estimation",
     "unit": "bouteille",
     "category": "epicerie",
     "mealSlot": "encas-extra",
@@ -2785,14 +2994,16 @@
     "easyToCook": true,
     "weeklyServings": 3,
     "servingUnit": "portion",
-    "gramsPerServing": 250
+    "gramsPerServing": 250,
+    "priceInfo": {
+      "source": "estimation"
+    }
   },
   {
     "id": "sirop-menthe",
     "shortName": "Sirop de menthe",
     "name": "Duval sirop de menthe 750 ML",
     "price": 2.5,
-    "priceSource": "estimation",
     "unit": "bouteille",
     "category": "epicerie",
     "mealSlot": "encas-extra",
@@ -2811,14 +3022,16 @@
     "weeklyServings": 3,
     "servingUnit": "portion",
     "ultraTransforme": true,
-    "gramsPerServing": 20
+    "gramsPerServing": 20,
+    "priceInfo": {
+      "source": "estimation"
+    }
   },
   {
     "id": "chips",
     "shortName": "Chips",
     "name": "Chips recette paysanne nature",
     "price": 1.5,
-    "priceSource": "open-prices",
     "unit": "paquet",
     "category": "epicerie",
     "mealSlot": "encas-extra",
@@ -2839,14 +3052,16 @@
     "weeklyServings": 3,
     "servingUnit": "portion",
     "ultraTransforme": true,
-    "gramsPerServing": 30
+    "gramsPerServing": 30,
+    "priceInfo": {
+      "source": "open-prices"
+    }
   },
   {
     "id": "barres-cereales",
     "shortName": "Barres de céréales",
     "name": "Sweet & Salty Nut chocolat noir et mélange de noix, 5 barres de 30 g",
     "price": 3.6,
-    "priceSource": "open-prices",
     "unit": "boîte",
     "category": "epicerie",
     "mealSlot": "encas-extra",
@@ -2870,14 +3085,16 @@
     "weeklyServings": 3,
     "servingUnit": "portion",
     "ultraTransforme": true,
-    "gramsPerServing": 30
+    "gramsPerServing": 30,
+    "priceInfo": {
+      "source": "open-prices"
+    }
   },
   {
     "id": "bonbons",
     "shortName": "Bonbons",
     "name": "Bonbons Tic Tac x110 pastilles MENTHE - 54g",
     "price": 2.86,
-    "priceSource": "open-prices",
     "unit": "paquet",
     "category": "epicerie",
     "mealSlot": "encas-extra",
@@ -2897,14 +3114,16 @@
     "weeklyServings": 3,
     "servingUnit": "portion",
     "ultraTransforme": true,
-    "gramsPerServing": 30
+    "gramsPerServing": 30,
+    "priceInfo": {
+      "source": "open-prices"
+    }
   },
   {
     "id": "houmous",
     "shortName": "Houmous",
     "name": "Houmous extra - Pois chiches français & graines de sésame",
     "price": 3.1,
-    "priceSource": "open-prices",
     "unit": "pot",
     "category": "epicerie",
     "mealSlot": "dejeuner-diner",
@@ -2923,14 +3142,16 @@
     "easyToCook": true,
     "weeklyServings": 3,
     "servingUnit": "portion",
-    "gramsPerServing": 50
+    "gramsPerServing": 50,
+    "priceInfo": {
+      "source": "open-prices"
+    }
   },
   {
     "id": "tahini",
     "shortName": "Tahini",
     "name": "Tahini (pot)",
     "price": 3.9,
-    "priceSource": "estimation",
     "unit": "pot",
     "category": "epicerie",
     "mealSlot": "dejeuner-diner",
@@ -2947,14 +3168,16 @@
     "glucides": "faible",
     "sel": "faible",
     "easyToCook": true,
-    "isCondiment": true
+    "isCondiment": true,
+    "priceInfo": {
+      "source": "estimation"
+    }
   },
   {
     "id": "graines-chia",
     "shortName": "Graines de chia",
     "name": "Graines de chia (200 g)",
     "price": 3.5,
-    "priceSource": "estimation",
     "unit": "sachet",
     "category": "epicerie",
     "mealSlot": "petit-dejeuner",
@@ -2973,14 +3196,16 @@
     "easyToCook": true,
     "weeklyServings": 3,
     "servingUnit": "portion",
-    "gramsPerServing": 15
+    "gramsPerServing": 15,
+    "priceInfo": {
+      "source": "estimation"
+    }
   },
   {
     "id": "graines-lin",
     "shortName": "Graines de lin",
     "name": "Graines de lin (250 g)",
     "price": 2.2,
-    "priceSource": "estimation",
     "unit": "sachet",
     "category": "epicerie",
     "mealSlot": "petit-dejeuner",
@@ -2999,14 +3224,16 @@
     "easyToCook": true,
     "weeklyServings": 3,
     "servingUnit": "portion",
-    "gramsPerServing": 15
+    "gramsPerServing": 15,
+    "priceInfo": {
+      "source": "estimation"
+    }
   },
   {
     "id": "noix",
     "shortName": "Noix",
     "name": "Cerneaux de Noix",
     "price": 3.37,
-    "priceSource": "open-prices",
     "unit": "sachet",
     "category": "epicerie",
     "mealSlot": "encas-extra",
@@ -3027,14 +3254,16 @@
     "easyToCook": true,
     "weeklyServings": 3,
     "servingUnit": "portion",
-    "gramsPerServing": 30
+    "gramsPerServing": 30,
+    "priceInfo": {
+      "source": "open-prices"
+    }
   },
   {
     "id": "pistaches",
     "shortName": "Pistaches",
     "name": "Pistaches grillées et salées",
     "price": 2.35,
-    "priceSource": "open-prices",
     "unit": "sachet",
     "category": "epicerie",
     "mealSlot": "encas-extra",
@@ -3055,14 +3284,16 @@
     "easyToCook": true,
     "weeklyServings": 3,
     "servingUnit": "portion",
-    "gramsPerServing": 30
+    "gramsPerServing": 30,
+    "priceInfo": {
+      "source": "open-prices"
+    }
   },
   {
     "id": "raisins-secs",
     "shortName": "Raisins secs",
     "name": "Raisins secs (250 g)",
     "price": 2.2,
-    "priceSource": "estimation",
     "unit": "sachet",
     "category": "epicerie",
     "mealSlot": "encas-extra",
@@ -3081,14 +3312,16 @@
     "easyToCook": true,
     "weeklyServings": 3,
     "servingUnit": "portion",
-    "gramsPerServing": 30
+    "gramsPerServing": 30,
+    "priceInfo": {
+      "source": "estimation"
+    }
   },
   {
     "id": "dattes",
     "shortName": "Dattes",
     "name": "Dattes (250 g)",
     "price": 2.9,
-    "priceSource": "estimation",
     "unit": "sachet",
     "category": "epicerie",
     "mealSlot": "encas-extra",
@@ -3107,14 +3340,16 @@
     "easyToCook": true,
     "weeklyServings": 3,
     "servingUnit": "portion",
-    "gramsPerServing": 30
+    "gramsPerServing": 30,
+    "priceInfo": {
+      "source": "estimation"
+    }
   },
   {
     "id": "lait-avoine",
     "shortName": "Lait d'avoine",
     "name": "Lait d'Avoine",
     "price": 2.52,
-    "priceSource": "open-prices",
     "unit": "brique",
     "category": "epicerie",
     "mealSlot": "petit-dejeuner",
@@ -3132,14 +3367,16 @@
     "weeklyServings": 3,
     "servingUnit": "portion",
     "ultraTransforme": true,
-    "gramsPerServing": 200
+    "gramsPerServing": 200,
+    "priceInfo": {
+      "source": "open-prices"
+    }
   },
   {
     "id": "lait-amande",
     "shortName": "Lait d'amande",
     "name": "Lait d'amande",
     "price": 2.68,
-    "priceSource": "open-prices",
     "unit": "brique",
     "category": "epicerie",
     "mealSlot": "petit-dejeuner",
@@ -3161,14 +3398,16 @@
     "weeklyServings": 3,
     "servingUnit": "portion",
     "ultraTransforme": true,
-    "gramsPerServing": 200
+    "gramsPerServing": 200,
+    "priceInfo": {
+      "source": "open-prices"
+    }
   },
   {
     "id": "sauce-carbonara",
     "shortName": "Sauce carbonara",
     "name": "Sauce Carbonara",
     "price": 3.43,
-    "priceSource": "open-prices",
     "unit": "pot",
     "category": "epicerie",
     "mealSlot": "dejeuner-diner",
@@ -3189,14 +3428,16 @@
     "weeklyServings": 3,
     "servingUnit": "portion",
     "ultraTransforme": true,
-    "gramsPerServing": 80
+    "gramsPerServing": 80,
+    "priceInfo": {
+      "source": "open-prices"
+    }
   },
   {
     "id": "cafe-decafeine",
     "shortName": "Café décaféiné",
     "name": "NESCAFÉ SPECIAL FILTRE Décaféiné, Café Soluble, Flacon de 200g",
     "price": 7.91,
-    "priceSource": "open-prices",
     "unit": "paquet",
     "category": "epicerie",
     "mealSlot": "petit-dejeuner",
@@ -3215,14 +3456,16 @@
     "easyToCook": true,
     "weeklyServings": 3,
     "servingUnit": "portion",
-    "gramsPerServing": 200
+    "gramsPerServing": 200,
+    "priceInfo": {
+      "source": "open-prices"
+    }
   },
   {
     "id": "kiwi",
     "shortName": "Kiwis",
     "name": "Fruits Kiwi Sungold",
     "price": 0.77,
-    "priceSource": "open-prices",
     "unit": "filet",
     "category": "fruits-legumes",
     "mealSlot": "encas-extra",
@@ -3241,14 +3484,16 @@
     "easyToCook": true,
     "weeklyServings": 3,
     "servingUnit": "portion",
-    "gramsPerServing": 80
+    "gramsPerServing": 80,
+    "priceInfo": {
+      "source": "open-prices"
+    }
   },
   {
     "id": "ananas",
     "shortName": "Ananas",
     "name": "Ananas (pièce)",
     "price": 2.5,
-    "priceSource": "estimation",
     "unit": "pièce",
     "category": "fruits-legumes",
     "mealSlot": "encas-extra",
@@ -3267,14 +3512,16 @@
     "easyToCook": true,
     "weeklyServings": 3,
     "servingUnit": "portion",
-    "gramsPerServing": 150
+    "gramsPerServing": 150,
+    "priceInfo": {
+      "source": "estimation"
+    }
   },
   {
     "id": "mangue",
     "shortName": "Mangue",
     "name": "Mangue (pièce)",
     "price": 2.2,
-    "priceSource": "estimation",
     "unit": "pièce",
     "category": "fruits-legumes",
     "mealSlot": "encas-extra",
@@ -3293,14 +3540,16 @@
     "easyToCook": true,
     "weeklyServings": 3,
     "servingUnit": "portion",
-    "gramsPerServing": 200
+    "gramsPerServing": 200,
+    "priceInfo": {
+      "source": "estimation"
+    }
   },
   {
     "id": "pasteque",
     "shortName": "Pastèque",
     "name": "Pastèque (pièce)",
     "price": 3.5,
-    "priceSource": "estimation",
     "unit": "pièce",
     "category": "fruits-legumes",
     "mealSlot": "encas-extra",
@@ -3319,14 +3568,16 @@
     "easyToCook": true,
     "weeklyServings": 3,
     "servingUnit": "portion",
-    "gramsPerServing": 250
+    "gramsPerServing": 250,
+    "priceInfo": {
+      "source": "estimation"
+    }
   },
   {
     "id": "fraises",
     "shortName": "Fraises",
     "name": "Fraises (barquette 250 g)",
     "price": 3.2,
-    "priceSource": "estimation",
     "unit": "barquette",
     "category": "fruits-legumes",
     "mealSlot": "encas-extra",
@@ -3345,14 +3596,16 @@
     "easyToCook": true,
     "weeklyServings": 3,
     "servingUnit": "portion",
-    "gramsPerServing": 125
+    "gramsPerServing": 125,
+    "priceInfo": {
+      "source": "estimation"
+    }
   },
   {
     "id": "framboises",
     "shortName": "Framboises",
     "name": "Framboises (barquette 125 g)",
     "price": 2.9,
-    "priceSource": "estimation",
     "unit": "barquette",
     "category": "fruits-legumes",
     "mealSlot": "encas-extra",
@@ -3371,14 +3624,16 @@
     "easyToCook": true,
     "weeklyServings": 3,
     "servingUnit": "portion",
-    "gramsPerServing": 125
+    "gramsPerServing": 125,
+    "priceInfo": {
+      "source": "estimation"
+    }
   },
   {
     "id": "myrtilles",
     "shortName": "Myrtilles",
     "name": "Myrtilles (barquette 125 g)",
     "price": 3.4,
-    "priceSource": "estimation",
     "unit": "barquette",
     "category": "fruits-legumes",
     "mealSlot": "encas-extra",
@@ -3397,14 +3652,16 @@
     "easyToCook": true,
     "weeklyServings": 3,
     "servingUnit": "portion",
-    "gramsPerServing": 125
+    "gramsPerServing": 125,
+    "priceInfo": {
+      "source": "estimation"
+    }
   },
   {
     "id": "raisin",
     "shortName": "Raisin",
     "name": "Raisin (grappe)",
     "price": 2.8,
-    "priceSource": "estimation",
     "unit": "grappe",
     "category": "fruits-legumes",
     "mealSlot": "encas-extra",
@@ -3423,14 +3680,16 @@
     "easyToCook": true,
     "weeklyServings": 3,
     "servingUnit": "portion",
-    "gramsPerServing": 100
+    "gramsPerServing": 100,
+    "priceInfo": {
+      "source": "estimation"
+    }
   },
   {
     "id": "poire",
     "shortName": "Poires",
     "name": "Poires (sachet)",
     "price": 2.3,
-    "priceSource": "estimation",
     "unit": "sachet",
     "category": "fruits-legumes",
     "mealSlot": "encas-extra",
@@ -3449,14 +3708,16 @@
     "easyToCook": true,
     "weeklyServings": 3,
     "servingUnit": "portion",
-    "gramsPerServing": 150
+    "gramsPerServing": 150,
+    "priceInfo": {
+      "source": "estimation"
+    }
   },
   {
     "id": "pamplemousse",
     "shortName": "Pamplemousse",
     "name": "Pamplemousse (pièce)",
     "price": 1.1,
-    "priceSource": "estimation",
     "unit": "pièce",
     "category": "fruits-legumes",
     "mealSlot": "encas-extra",
@@ -3475,14 +3736,16 @@
     "easyToCook": true,
     "weeklyServings": 3,
     "servingUnit": "portion",
-    "gramsPerServing": 200
+    "gramsPerServing": 200,
+    "priceInfo": {
+      "source": "estimation"
+    }
   },
   {
     "id": "clementine",
     "shortName": "Clémentines",
     "name": "Clémentines (filet 1 kg)",
     "price": 2.6,
-    "priceSource": "estimation",
     "unit": "filet",
     "category": "fruits-legumes",
     "mealSlot": "encas-extra",
@@ -3501,14 +3764,16 @@
     "easyToCook": true,
     "weeklyServings": 3,
     "servingUnit": "portion",
-    "gramsPerServing": 50
+    "gramsPerServing": 50,
+    "priceInfo": {
+      "source": "estimation"
+    }
   },
   {
     "id": "abricot",
     "shortName": "Abricots",
     "name": "Abricots (barquette 500 g)",
     "price": 3.1,
-    "priceSource": "estimation",
     "unit": "barquette",
     "category": "fruits-legumes",
     "mealSlot": "encas-extra",
@@ -3527,14 +3792,16 @@
     "easyToCook": true,
     "weeklyServings": 3,
     "servingUnit": "portion",
-    "gramsPerServing": 50
+    "gramsPerServing": 50,
+    "priceInfo": {
+      "source": "estimation"
+    }
   },
   {
     "id": "prune",
     "shortName": "Prunes",
     "name": "Prunes Kuipje 500 Gram (alesto)",
     "price": 2.2,
-    "priceSource": "estimation",
     "unit": "barquette",
     "category": "fruits-legumes",
     "mealSlot": "encas-extra",
@@ -3553,14 +3820,16 @@
     "easyToCook": true,
     "weeklyServings": 3,
     "servingUnit": "portion",
-    "gramsPerServing": 55
+    "gramsPerServing": 55,
+    "priceInfo": {
+      "source": "estimation"
+    }
   },
   {
     "id": "cerises",
     "shortName": "Cerises",
     "name": "Cerises (barquette 500 g)",
     "price": 4.5,
-    "priceSource": "estimation",
     "unit": "barquette",
     "category": "fruits-legumes",
     "mealSlot": "encas-extra",
@@ -3579,14 +3848,16 @@
     "easyToCook": true,
     "weeklyServings": 3,
     "servingUnit": "portion",
-    "gramsPerServing": 100
+    "gramsPerServing": 100,
+    "priceInfo": {
+      "source": "estimation"
+    }
   },
   {
     "id": "figues",
     "shortName": "Figues",
     "name": "Figues (barquette 250 g)",
     "price": 3.8,
-    "priceSource": "estimation",
     "unit": "barquette",
     "category": "fruits-legumes",
     "mealSlot": "encas-extra",
@@ -3605,14 +3876,16 @@
     "easyToCook": true,
     "weeklyServings": 3,
     "servingUnit": "portion",
-    "gramsPerServing": 50
+    "gramsPerServing": 50,
+    "priceInfo": {
+      "source": "estimation"
+    }
   },
   {
     "id": "grenade",
     "shortName": "Grenade",
     "name": "Grenade (pièce)",
     "price": 2.2,
-    "priceSource": "estimation",
     "unit": "pièce",
     "category": "fruits-legumes",
     "mealSlot": "encas-extra",
@@ -3631,14 +3904,16 @@
     "easyToCook": true,
     "weeklyServings": 3,
     "servingUnit": "portion",
-    "gramsPerServing": 200
+    "gramsPerServing": 200,
+    "priceInfo": {
+      "source": "estimation"
+    }
   },
   {
     "id": "papaye",
     "shortName": "Papaye",
     "name": "Papaye (pièce)",
     "price": 2.9,
-    "priceSource": "estimation",
     "unit": "pièce",
     "category": "fruits-legumes",
     "mealSlot": "encas-extra",
@@ -3657,14 +3932,16 @@
     "easyToCook": true,
     "weeklyServings": 3,
     "servingUnit": "portion",
-    "gramsPerServing": 150
+    "gramsPerServing": 150,
+    "priceInfo": {
+      "source": "estimation"
+    }
   },
   {
     "id": "aubergine",
     "shortName": "Aubergine",
     "name": "Aubergine (pièce)",
     "price": 1.4,
-    "priceSource": "estimation",
     "unit": "pièce",
     "category": "fruits-legumes",
     "mealSlot": "dejeuner-diner",
@@ -3683,14 +3960,16 @@
     "easyToCook": true,
     "weeklyServings": 3,
     "servingUnit": "portion",
-    "gramsPerServing": 250
+    "gramsPerServing": 250,
+    "priceInfo": {
+      "source": "estimation"
+    }
   },
   {
     "id": "celeri",
     "shortName": "Céleri",
     "name": "Céleri Branche",
     "price": 2.2,
-    "priceSource": "estimation",
     "unit": "botte",
     "category": "fruits-legumes",
     "mealSlot": "dejeuner-diner",
@@ -3709,14 +3988,16 @@
     "easyToCook": true,
     "weeklyServings": 3,
     "servingUnit": "portion",
-    "gramsPerServing": 100
+    "gramsPerServing": 100,
+    "priceInfo": {
+      "source": "estimation"
+    }
   },
   {
     "id": "betterave",
     "shortName": "Betterave",
     "name": "Betteraves rouges à l'échalote",
     "price": 1.89,
-    "priceSource": "open-prices",
     "unit": "sachet",
     "category": "fruits-legumes",
     "mealSlot": "dejeuner-diner",
@@ -3734,14 +4015,16 @@
     "easyToCook": true,
     "weeklyServings": 3,
     "servingUnit": "portion",
-    "gramsPerServing": 150
+    "gramsPerServing": 150,
+    "priceInfo": {
+      "source": "open-prices"
+    }
   },
   {
     "id": "radis",
     "shortName": "Radis",
     "name": "Radis",
     "price": 2.8,
-    "priceSource": "open-prices",
     "unit": "botte",
     "category": "fruits-legumes",
     "mealSlot": "encas-extra",
@@ -3760,14 +4043,16 @@
     "easyToCook": true,
     "weeklyServings": 3,
     "servingUnit": "portion",
-    "gramsPerServing": 80
+    "gramsPerServing": 80,
+    "priceInfo": {
+      "source": "open-prices"
+    }
   },
   {
     "id": "navet",
     "shortName": "Navets",
     "name": "Navets",
     "price": 2.2,
-    "priceSource": "estimation",
     "unit": "sachet",
     "category": "fruits-legumes",
     "mealSlot": "dejeuner-diner",
@@ -3786,14 +4071,16 @@
     "easyToCook": true,
     "weeklyServings": 3,
     "servingUnit": "portion",
-    "gramsPerServing": 150
+    "gramsPerServing": 150,
+    "priceInfo": {
+      "source": "estimation"
+    }
   },
   {
     "id": "panais",
     "shortName": "Panais",
     "name": "Mélange de légumes racines (carottes, betteraves, patates douces, panais)",
     "price": 2.43,
-    "priceSource": "open-prices",
     "unit": "sachet",
     "category": "fruits-legumes",
     "mealSlot": "dejeuner-diner",
@@ -3810,14 +4097,16 @@
     "easyToCook": true,
     "weeklyServings": 3,
     "servingUnit": "portion",
-    "gramsPerServing": 150
+    "gramsPerServing": 150,
+    "priceInfo": {
+      "source": "open-prices"
+    }
   },
   {
     "id": "patate-douce",
     "shortName": "Patate douce",
     "name": "Patate douce (sachet 1 kg)",
     "price": 2.6,
-    "priceSource": "estimation",
     "unit": "sachet",
     "category": "fruits-legumes",
     "mealSlot": "dejeuner-diner",
@@ -3836,14 +4125,16 @@
     "easyToCook": true,
     "weeklyServings": 3,
     "servingUnit": "portion",
-    "gramsPerServing": 200
+    "gramsPerServing": 200,
+    "priceInfo": {
+      "source": "estimation"
+    }
   },
   {
     "id": "courge-butternut",
     "shortName": "Butternut",
     "name": "Courge butternut (pièce)",
     "price": 2.4,
-    "priceSource": "estimation",
     "unit": "pièce",
     "category": "fruits-legumes",
     "mealSlot": "dejeuner-diner",
@@ -3862,14 +4153,16 @@
     "easyToCook": true,
     "weeklyServings": 3,
     "servingUnit": "portion",
-    "gramsPerServing": 300
+    "gramsPerServing": 300,
+    "priceInfo": {
+      "source": "estimation"
+    }
   },
   {
     "id": "potiron",
     "shortName": "Potiron",
     "name": "Potiron (part 1 kg)",
     "price": 2.2,
-    "priceSource": "estimation",
     "unit": "part",
     "category": "fruits-legumes",
     "mealSlot": "dejeuner-diner",
@@ -3888,14 +4181,16 @@
     "easyToCook": true,
     "weeklyServings": 3,
     "servingUnit": "portion",
-    "gramsPerServing": 300
+    "gramsPerServing": 300,
+    "priceInfo": {
+      "source": "estimation"
+    }
   },
   {
     "id": "endive",
     "shortName": "Endives",
     "name": "Endives (sachet 500 g)",
     "price": 1.9,
-    "priceSource": "estimation",
     "unit": "sachet",
     "category": "fruits-legumes",
     "mealSlot": "dejeuner-diner",
@@ -3914,14 +4209,16 @@
     "easyToCook": true,
     "weeklyServings": 3,
     "servingUnit": "portion",
-    "gramsPerServing": 100
+    "gramsPerServing": 100,
+    "priceInfo": {
+      "source": "estimation"
+    }
   },
   {
     "id": "fenouil",
     "shortName": "Fenouil",
     "name": "Fenouil (pièce)",
     "price": 1.6,
-    "priceSource": "estimation",
     "unit": "pièce",
     "category": "fruits-legumes",
     "mealSlot": "dejeuner-diner",
@@ -3940,14 +4237,16 @@
     "easyToCook": true,
     "weeklyServings": 3,
     "servingUnit": "portion",
-    "gramsPerServing": 200
+    "gramsPerServing": 200,
+    "priceInfo": {
+      "source": "estimation"
+    }
   },
   {
     "id": "petits-pois-frais",
     "shortName": "Petits pois frais",
     "name": "Petits Pois & Jeunes Carottes Extra Fins",
     "price": 1.23,
-    "priceSource": "open-prices",
     "unit": "sachet",
     "category": "fruits-legumes",
     "mealSlot": "dejeuner-diner",
@@ -3964,14 +4263,16 @@
     "easyToCook": true,
     "weeklyServings": 3,
     "servingUnit": "portion",
-    "gramsPerServing": 100
+    "gramsPerServing": 100,
+    "priceInfo": {
+      "source": "open-prices"
+    }
   },
   {
     "id": "haricots-verts-frais",
     "shortName": "Haricots verts frais",
     "name": "Haricots verts XF P.Vapeur 1kg",
     "price": 2.43,
-    "priceSource": "open-prices",
     "unit": "sachet",
     "category": "fruits-legumes",
     "mealSlot": "dejeuner-diner",
@@ -3990,14 +4291,16 @@
     "easyToCook": true,
     "weeklyServings": 3,
     "servingUnit": "portion",
-    "gramsPerServing": 100
+    "gramsPerServing": 100,
+    "priceInfo": {
+      "source": "open-prices"
+    }
   },
   {
     "id": "roquette",
     "shortName": "Roquette",
     "name": "Roquette (sachet)",
     "price": 1.8,
-    "priceSource": "estimation",
     "unit": "sachet",
     "category": "fruits-legumes",
     "mealSlot": "dejeuner-diner",
@@ -4016,14 +4319,16 @@
     "easyToCook": true,
     "weeklyServings": 3,
     "servingUnit": "portion",
-    "gramsPerServing": 50
+    "gramsPerServing": 50,
+    "priceInfo": {
+      "source": "estimation"
+    }
   },
   {
     "id": "chou-rouge",
     "shortName": "Chou rouge",
     "name": "Chou rouge lacto-fermenté BIO Nutriform",
     "price": 3.69,
-    "priceSource": "open-prices",
     "unit": "pièce",
     "category": "fruits-legumes",
     "mealSlot": "dejeuner-diner",
@@ -4042,14 +4347,16 @@
     "easyToCook": true,
     "weeklyServings": 3,
     "servingUnit": "portion",
-    "gramsPerServing": 150
+    "gramsPerServing": 150,
+    "priceInfo": {
+      "source": "open-prices"
+    }
   },
   {
     "id": "chou-vert",
     "shortName": "Chou vert",
     "name": "Chou vert (pièce)",
     "price": 1.3,
-    "priceSource": "estimation",
     "unit": "pièce",
     "category": "fruits-legumes",
     "mealSlot": "dejeuner-diner",
@@ -4068,14 +4375,16 @@
     "easyToCook": true,
     "weeklyServings": 3,
     "servingUnit": "portion",
-    "gramsPerServing": 150
+    "gramsPerServing": 150,
+    "priceInfo": {
+      "source": "estimation"
+    }
   },
   {
     "id": "blette",
     "shortName": "Blettes",
     "name": "Blettes",
     "price": 2.2,
-    "priceSource": "estimation",
     "unit": "botte",
     "category": "fruits-legumes",
     "mealSlot": "dejeuner-diner",
@@ -4094,14 +4403,16 @@
     "easyToCook": true,
     "weeklyServings": 3,
     "servingUnit": "portion",
-    "gramsPerServing": 150
+    "gramsPerServing": 150,
+    "priceInfo": {
+      "source": "estimation"
+    }
   },
   {
     "id": "persil",
     "shortName": "Persil",
     "name": "Persil frais (botte)",
     "price": 1.1,
-    "priceSource": "estimation",
     "unit": "botte",
     "category": "fruits-legumes",
     "mealSlot": "dejeuner-diner",
@@ -4118,14 +4429,16 @@
     "glucides": "faible",
     "sel": "faible",
     "easyToCook": true,
-    "isCondiment": true
+    "isCondiment": true,
+    "priceInfo": {
+      "source": "estimation"
+    }
   },
   {
     "id": "basilic",
     "shortName": "Basilic",
     "name": "Basilic frais (pot)",
     "price": 1.5,
-    "priceSource": "estimation",
     "unit": "pot",
     "category": "fruits-legumes",
     "mealSlot": "dejeuner-diner",
@@ -4142,14 +4455,16 @@
     "glucides": "faible",
     "sel": "faible",
     "easyToCook": true,
-    "isCondiment": true
+    "isCondiment": true,
+    "priceInfo": {
+      "source": "estimation"
+    }
   },
   {
     "id": "coriandre",
     "shortName": "Coriandre",
     "name": "Coriandre fraîche (botte)",
     "price": 1.3,
-    "priceSource": "estimation",
     "unit": "botte",
     "category": "fruits-legumes",
     "mealSlot": "dejeuner-diner",
@@ -4166,14 +4481,16 @@
     "glucides": "faible",
     "sel": "faible",
     "easyToCook": true,
-    "isCondiment": true
+    "isCondiment": true,
+    "priceInfo": {
+      "source": "estimation"
+    }
   },
   {
     "id": "ciboulette",
     "shortName": "Ciboulette",
     "name": "Ciboulette (pot)",
     "price": 1.4,
-    "priceSource": "estimation",
     "unit": "pot",
     "category": "fruits-legumes",
     "mealSlot": "dejeuner-diner",
@@ -4190,14 +4507,16 @@
     "glucides": "faible",
     "sel": "faible",
     "easyToCook": true,
-    "isCondiment": true
+    "isCondiment": true,
+    "priceInfo": {
+      "source": "estimation"
+    }
   },
   {
     "id": "menthe-fraiche",
     "shortName": "Menthe fraîche",
     "name": "Menthe fraîche (botte)",
     "price": 1.2,
-    "priceSource": "estimation",
     "unit": "botte",
     "category": "fruits-legumes",
     "mealSlot": "encas-extra",
@@ -4214,14 +4533,16 @@
     "glucides": "moyen",
     "sel": "faible",
     "easyToCook": true,
-    "isCondiment": true
+    "isCondiment": true,
+    "priceInfo": {
+      "source": "estimation"
+    }
   },
   {
     "id": "gingembre-frais",
     "shortName": "Gingembre frais",
     "name": "Gingembre frais (racine)",
     "price": 1.5,
-    "priceSource": "estimation",
     "unit": "racine",
     "category": "fruits-legumes",
     "mealSlot": "dejeuner-diner",
@@ -4238,14 +4559,16 @@
     "glucides": "moyen",
     "sel": "faible",
     "easyToCook": true,
-    "isCondiment": true
+    "isCondiment": true,
+    "priceInfo": {
+      "source": "estimation"
+    }
   },
   {
     "id": "echalote",
     "shortName": "Échalote",
     "name": "Échalote (filet)",
     "price": 1.6,
-    "priceSource": "estimation",
     "unit": "filet",
     "category": "fruits-legumes",
     "mealSlot": "dejeuner-diner",
@@ -4262,14 +4585,16 @@
     "glucides": "moyen",
     "sel": "faible",
     "easyToCook": true,
-    "isCondiment": true
+    "isCondiment": true,
+    "priceInfo": {
+      "source": "estimation"
+    }
   },
   {
     "id": "piment",
     "shortName": "Piment frais",
     "name": "Piment frais (sachet)",
     "price": 1.8,
-    "priceSource": "estimation",
     "unit": "sachet",
     "category": "fruits-legumes",
     "mealSlot": "dejeuner-diner",
@@ -4286,14 +4611,16 @@
     "glucides": "faible",
     "sel": "faible",
     "easyToCook": true,
-    "isCondiment": true
+    "isCondiment": true,
+    "priceInfo": {
+      "source": "estimation"
+    }
   },
   {
     "id": "mure",
     "shortName": "Mûres",
     "name": "Mûres (barquette 125 g)",
     "price": 3.3,
-    "priceSource": "estimation",
     "unit": "barquette",
     "category": "fruits-legumes",
     "mealSlot": "encas-extra",
@@ -4312,14 +4639,16 @@
     "easyToCook": true,
     "weeklyServings": 3,
     "servingUnit": "portion",
-    "gramsPerServing": 125
+    "gramsPerServing": 125,
+    "priceInfo": {
+      "source": "estimation"
+    }
   },
   {
     "id": "groseille",
     "shortName": "Groseilles",
     "name": "Groseilles (barquette 125 g)",
     "price": 3,
-    "priceSource": "estimation",
     "unit": "barquette",
     "category": "fruits-legumes",
     "mealSlot": "encas-extra",
@@ -4338,14 +4667,16 @@
     "easyToCook": true,
     "weeklyServings": 3,
     "servingUnit": "portion",
-    "gramsPerServing": 125
+    "gramsPerServing": 125,
+    "priceInfo": {
+      "source": "estimation"
+    }
   },
   {
     "id": "courge-spaghetti",
     "shortName": "Courge spaghetti",
     "name": "Biologique Courge Spaghetti",
     "price": 2.2,
-    "priceSource": "estimation",
     "unit": "pièce",
     "category": "fruits-legumes",
     "mealSlot": "dejeuner-diner",
@@ -4362,14 +4693,16 @@
     "easyToCook": true,
     "weeklyServings": 3,
     "servingUnit": "portion",
-    "gramsPerServing": 300
+    "gramsPerServing": 300,
+    "priceInfo": {
+      "source": "estimation"
+    }
   },
   {
     "id": "mais-epi",
     "shortName": "Maïs en épi",
     "name": "BIO Maïs doux précuit",
     "price": 2.92,
-    "priceSource": "open-prices",
     "unit": "pièce",
     "category": "fruits-legumes",
     "mealSlot": "dejeuner-diner",
@@ -4388,14 +4721,16 @@
     "easyToCook": true,
     "weeklyServings": 3,
     "servingUnit": "portion",
-    "gramsPerServing": 150
+    "gramsPerServing": 150,
+    "priceInfo": {
+      "source": "open-prices"
+    }
   },
   {
     "id": "salade-frisee",
     "shortName": "Salade frisée",
     "name": "Salade Composée Frisée Iceberg Scarole Chicorée rouge",
     "price": 2.02,
-    "priceSource": "open-prices",
     "unit": "pièce",
     "category": "fruits-legumes",
     "mealSlot": "dejeuner-diner",
@@ -4414,14 +4749,16 @@
     "easyToCook": true,
     "weeklyServings": 3,
     "servingUnit": "portion",
-    "gramsPerServing": 100
+    "gramsPerServing": 100,
+    "priceInfo": {
+      "source": "open-prices"
+    }
   },
   {
     "id": "cresson",
     "shortName": "Cresson",
     "name": "Cresson (botte)",
     "price": 1.6,
-    "priceSource": "estimation",
     "unit": "botte",
     "category": "fruits-legumes",
     "mealSlot": "dejeuner-diner",
@@ -4440,14 +4777,16 @@
     "easyToCook": true,
     "weeklyServings": 3,
     "servingUnit": "portion",
-    "gramsPerServing": 50
+    "gramsPerServing": 50,
+    "priceInfo": {
+      "source": "estimation"
+    }
   },
   {
     "id": "camembert",
     "shortName": "Camembert",
     "name": "PRESIDENT CAMEMBERT 250g",
     "price": 1.97,
-    "priceSource": "open-prices",
     "unit": "pièce",
     "category": "frais",
     "mealSlot": "dejeuner-diner",
@@ -4467,14 +4806,16 @@
     "easyToCook": true,
     "weeklyServings": 3,
     "servingUnit": "portion",
-    "gramsPerServing": 30
+    "gramsPerServing": 30,
+    "priceInfo": {
+      "source": "open-prices"
+    }
   },
   {
     "id": "roquefort",
     "shortName": "Roquefort",
     "name": "Roquefort Société",
     "price": 3.1,
-    "priceSource": "open-prices",
     "unit": "part",
     "category": "frais",
     "mealSlot": "dejeuner-diner",
@@ -4493,14 +4834,16 @@
     "easyToCook": true,
     "weeklyServings": 3,
     "servingUnit": "portion",
-    "gramsPerServing": 30
+    "gramsPerServing": 30,
+    "priceInfo": {
+      "source": "open-prices"
+    }
   },
   {
     "id": "ricotta",
     "shortName": "Ricotta",
     "name": "Ricotta & Épinards",
     "price": 3.31,
-    "priceSource": "open-prices",
     "unit": "pot",
     "category": "frais",
     "mealSlot": "dejeuner-diner",
@@ -4521,14 +4864,16 @@
     "easyToCook": true,
     "weeklyServings": 3,
     "servingUnit": "portion",
-    "gramsPerServing": 50
+    "gramsPerServing": 50,
+    "priceInfo": {
+      "source": "open-prices"
+    }
   },
   {
     "id": "parmesan",
     "shortName": "Parmesan",
     "name": "Parmesan",
     "price": 1.74,
-    "priceSource": "open-prices",
     "unit": "sachet",
     "category": "frais",
     "mealSlot": "dejeuner-diner",
@@ -4545,14 +4890,16 @@
     "glucides": "faible",
     "sel": "riche",
     "easyToCook": true,
-    "isCondiment": true
+    "isCondiment": true,
+    "priceInfo": {
+      "source": "open-prices"
+    }
   },
   {
     "id": "cottage-cheese",
     "shortName": "Cottage cheese",
     "name": "Cottage cheese",
     "price": 3.95,
-    "priceSource": "open-prices",
     "unit": "pot",
     "category": "frais",
     "mealSlot": "petit-dejeuner",
@@ -4572,14 +4919,16 @@
     "easyToCook": true,
     "weeklyServings": 3,
     "servingUnit": "portion",
-    "gramsPerServing": 100
+    "gramsPerServing": 100,
+    "priceInfo": {
+      "source": "open-prices"
+    }
   },
   {
     "id": "faisselle",
     "shortName": "Faisselle",
     "name": "faisselle",
     "price": 2.62,
-    "priceSource": "open-prices",
     "unit": "pot",
     "category": "frais",
     "mealSlot": "petit-dejeuner",
@@ -4599,14 +4948,16 @@
     "easyToCook": true,
     "weeklyServings": 3,
     "servingUnit": "portion",
-    "gramsPerServing": 100
+    "gramsPerServing": 100,
+    "priceInfo": {
+      "source": "open-prices"
+    }
   },
   {
     "id": "lait-entier",
     "shortName": "Lait entier",
     "name": "Lait entier (1 L)",
     "price": 1.09,
-    "priceSource": "estimation",
     "unit": "brique",
     "category": "frais",
     "mealSlot": "petit-dejeuner",
@@ -4626,14 +4977,16 @@
     "easyToCook": true,
     "weeklyServings": 3,
     "servingUnit": "portion",
-    "gramsPerServing": 200
+    "gramsPerServing": 200,
+    "priceInfo": {
+      "source": "estimation"
+    }
   },
   {
     "id": "lait-ecreme",
     "shortName": "Lait écrémé",
     "name": "Viva lait 1/2 écrémé",
     "price": 1.04,
-    "priceSource": "open-prices",
     "unit": "brique",
     "category": "frais",
     "mealSlot": "petit-dejeuner",
@@ -4652,14 +5005,16 @@
     "easyToCook": true,
     "weeklyServings": 3,
     "servingUnit": "portion",
-    "gramsPerServing": 200
+    "gramsPerServing": 200,
+    "priceInfo": {
+      "source": "open-prices"
+    }
   },
   {
     "id": "beurre-demi-sel",
     "shortName": "Beurre demi-sel",
     "name": "beurre demi-sel",
     "price": 2.44,
-    "priceSource": "open-prices",
     "unit": "plaquette",
     "category": "frais",
     "mealSlot": "petit-dejeuner",
@@ -4677,14 +5032,16 @@
     "sel": "riche",
     "easyToCook": true,
     "isCondiment": true,
-    "isSpread": true
+    "isSpread": true,
+    "priceInfo": {
+      "source": "open-prices"
+    }
   },
   {
     "id": "margarine",
     "shortName": "Margarine",
     "name": "Margarine bio doux tartine & cuisson",
     "price": 2.64,
-    "priceSource": "open-prices",
     "unit": "pot",
     "category": "frais",
     "mealSlot": "petit-dejeuner",
@@ -4700,14 +5057,16 @@
     "sel": "moyen",
     "easyToCook": true,
     "isCondiment": true,
-    "ultraTransforme": true
+    "ultraTransforme": true,
+    "priceInfo": {
+      "source": "open-prices"
+    }
   },
   {
     "id": "skyr",
     "shortName": "Skyr",
     "name": "Skyr nature 0%",
     "price": 3.61,
-    "priceSource": "open-prices",
     "unit": "pot",
     "category": "frais",
     "mealSlot": "petit-dejeuner",
@@ -4727,14 +5086,16 @@
     "easyToCook": true,
     "weeklyServings": 3,
     "servingUnit": "portion",
-    "gramsPerServing": 150
+    "gramsPerServing": 150,
+    "priceInfo": {
+      "source": "open-prices"
+    }
   },
   {
     "id": "tempeh",
     "shortName": "Tempeh",
     "name": "Tempeh",
     "price": 4.34,
-    "priceSource": "open-prices",
     "unit": "barquette",
     "category": "frais",
     "mealSlot": "dejeuner-diner",
@@ -4753,14 +5114,16 @@
     "easyToCook": true,
     "weeklyServings": 3,
     "servingUnit": "portion",
-    "gramsPerServing": 100
+    "gramsPerServing": 100,
+    "priceInfo": {
+      "source": "open-prices"
+    }
   },
   {
     "id": "pate-campagne",
     "shortName": "Pâté de campagne",
     "name": "Pâté campagne breton IGP",
     "price": 2.8,
-    "priceSource": "estimation",
     "unit": "pot",
     "category": "frais",
     "mealSlot": "dejeuner-diner",
@@ -4780,14 +5143,16 @@
     "weeklyServings": 3,
     "servingUnit": "portion",
     "ultraTransforme": true,
-    "gramsPerServing": 40
+    "gramsPerServing": 40,
+    "priceInfo": {
+      "source": "estimation"
+    }
   },
   {
     "id": "rillettes",
     "shortName": "Rillettes",
     "name": "Rillettes de poulet rôti",
     "price": 2.76,
-    "priceSource": "open-prices",
     "unit": "pot",
     "category": "frais",
     "mealSlot": "dejeuner-diner",
@@ -4805,14 +5170,16 @@
     "weeklyServings": 3,
     "servingUnit": "portion",
     "ultraTransforme": true,
-    "gramsPerServing": 40
+    "gramsPerServing": 40,
+    "priceInfo": {
+      "source": "open-prices"
+    }
   },
   {
     "id": "saucisson-sec",
     "shortName": "Saucisson sec",
     "name": "Bâton de berger Mini x15 (Saucisson sec supérieur)",
     "price": 3.67,
-    "priceSource": "open-prices",
     "unit": "pièce",
     "category": "frais",
     "mealSlot": "encas-extra",
@@ -4831,14 +5198,16 @@
     "weeklyServings": 3,
     "servingUnit": "portion",
     "ultraTransforme": true,
-    "gramsPerServing": 30
+    "gramsPerServing": 30,
+    "priceInfo": {
+      "source": "open-prices"
+    }
   },
   {
     "id": "terrine",
     "shortName": "Terrine",
     "name": "Terrine de campagne dorée au four",
     "price": 1.4,
-    "priceSource": "open-prices",
     "unit": "pot",
     "category": "frais",
     "mealSlot": "dejeuner-diner",
@@ -4858,14 +5227,16 @@
     "weeklyServings": 3,
     "servingUnit": "portion",
     "ultraTransforme": true,
-    "gramsPerServing": 40
+    "gramsPerServing": 40,
+    "priceInfo": {
+      "source": "open-prices"
+    }
   },
   {
     "id": "pate-feuilletee",
     "shortName": "Pâte feuilletée",
     "name": "HERTA TARTE EN OR Pâte Feuilletée 230g",
     "price": 1.16,
-    "priceSource": "open-prices",
     "unit": "rouleau",
     "category": "frais",
     "mealSlot": "dejeuner-diner",
@@ -4886,14 +5257,16 @@
     "weeklyServings": 3,
     "servingUnit": "portion",
     "ultraTransforme": true,
-    "gramsPerServing": 100
+    "gramsPerServing": 100,
+    "priceInfo": {
+      "source": "open-prices"
+    }
   },
   {
     "id": "quiche-prete",
     "shortName": "Quiche lorraine",
     "name": "Quiche Lorraine pur beurre",
     "price": 3.56,
-    "priceSource": "open-prices",
     "unit": "pièce",
     "category": "frais",
     "mealSlot": "dejeuner-diner",
@@ -4914,14 +5287,16 @@
     "weeklyServings": 3,
     "servingUnit": "portion",
     "ultraTransforme": true,
-    "gramsPerServing": 150
+    "gramsPerServing": 150,
+    "priceInfo": {
+      "source": "open-prices"
+    }
   },
   {
     "id": "ravioli-frais",
     "shortName": "Ravioli frais",
     "name": "RAVIOLINI jambon cru",
     "price": 2.8,
-    "priceSource": "estimation",
     "unit": "paquet",
     "category": "frais",
     "mealSlot": "dejeuner-diner",
@@ -4942,14 +5317,16 @@
     "weeklyServings": 3,
     "servingUnit": "portion",
     "ultraTransforme": true,
-    "gramsPerServing": 200
+    "gramsPerServing": 200,
+    "priceInfo": {
+      "source": "estimation"
+    }
   },
   {
     "id": "beurre-allege",
     "shortName": "Beurre allégé",
     "name": "Beurre allégé (250 g)",
     "price": 2.3,
-    "priceSource": "estimation",
     "unit": "plaquette",
     "category": "frais",
     "mealSlot": "petit-dejeuner",
@@ -4968,14 +5345,16 @@
     "sel": "moyen",
     "easyToCook": true,
     "isCondiment": true,
-    "isSpread": true
+    "isSpread": true,
+    "priceInfo": {
+      "source": "estimation"
+    }
   },
   {
     "id": "creme-fouettee",
     "shortName": "Crème fouettée",
     "name": "Crème sous pression à la vanille 250g",
     "price": 2.82,
-    "priceSource": "open-prices",
     "unit": "bombe",
     "category": "frais",
     "mealSlot": "encas-extra",
@@ -4996,14 +5375,16 @@
     "weeklyServings": 3,
     "servingUnit": "portion",
     "ultraTransforme": true,
-    "gramsPerServing": 30
+    "gramsPerServing": 30,
+    "priceInfo": {
+      "source": "open-prices"
+    }
   },
   {
     "id": "glace-vanille",
     "shortName": "Glace vanille",
     "name": "Crème glacée Vanille de Madagascar",
     "price": 3.41,
-    "priceSource": "open-prices",
     "unit": "pot",
     "category": "frais",
     "mealSlot": "encas-extra",
@@ -5024,14 +5405,16 @@
     "weeklyServings": 3,
     "servingUnit": "portion",
     "ultraTransforme": true,
-    "gramsPerServing": 100
+    "gramsPerServing": 100,
+    "priceInfo": {
+      "source": "open-prices"
+    }
   },
   {
     "id": "mousse-chocolat",
     "shortName": "Mousse au chocolat",
     "name": "Mousse au chocolat à L'ANCIENNE",
     "price": 4.16,
-    "priceSource": "open-prices",
     "unit": "pack",
     "category": "frais",
     "mealSlot": "encas-extra",
@@ -5054,14 +5437,16 @@
     "weeklyServings": 3,
     "servingUnit": "portion",
     "ultraTransforme": true,
-    "gramsPerServing": 100
+    "gramsPerServing": 100,
+    "priceInfo": {
+      "source": "open-prices"
+    }
   },
   {
     "id": "tiramisu",
     "shortName": "Tiramisu",
     "name": "Le Tiramisu Cappuccino",
     "price": 2.84,
-    "priceSource": "open-prices",
     "unit": "part",
     "category": "frais",
     "mealSlot": "encas-extra",
@@ -5084,14 +5469,16 @@
     "weeklyServings": 3,
     "servingUnit": "portion",
     "ultraTransforme": true,
-    "gramsPerServing": 100
+    "gramsPerServing": 100,
+    "priceInfo": {
+      "source": "open-prices"
+    }
   },
   {
     "id": "flan",
     "shortName": "Flan pâtissier",
     "name": "Flan pâtissier",
     "price": 2.8,
-    "priceSource": "estimation",
     "unit": "part",
     "category": "frais",
     "mealSlot": "encas-extra",
@@ -5113,14 +5500,16 @@
     "weeklyServings": 3,
     "servingUnit": "portion",
     "ultraTransforme": true,
-    "gramsPerServing": 100
+    "gramsPerServing": 100,
+    "priceInfo": {
+      "source": "estimation"
+    }
   },
   {
     "id": "escalope-veau",
     "shortName": "Escalope de veau",
     "name": "2 Escalopes de Veau à la milanaise",
     "price": 5.5,
-    "priceSource": "estimation",
     "unit": "barquette",
     "category": "viande-poisson",
     "mealSlot": "dejeuner-diner",
@@ -5140,14 +5529,16 @@
     "easyToCook": true,
     "weeklyServings": 3,
     "servingUnit": "portion",
-    "gramsPerServing": 120
+    "gramsPerServing": 120,
+    "priceInfo": {
+      "source": "estimation"
+    }
   },
   {
     "id": "cotes-porc",
     "shortName": "Côtes de porc",
     "name": "Côtes de porc désossées marinées",
     "price": 5.5,
-    "priceSource": "estimation",
     "unit": "barquette",
     "category": "viande-poisson",
     "mealSlot": "dejeuner-diner",
@@ -5163,14 +5554,16 @@
     "easyToCook": true,
     "weeklyServings": 3,
     "servingUnit": "portion",
-    "gramsPerServing": 150
+    "gramsPerServing": 150,
+    "priceInfo": {
+      "source": "estimation"
+    }
   },
   {
     "id": "roti-boeuf",
     "shortName": "Rôti de bœuf",
     "name": "Rôti de Boeuf Doré au four",
     "price": 5.5,
-    "priceSource": "estimation",
     "unit": "pièce",
     "category": "viande-poisson",
     "mealSlot": "dejeuner-diner",
@@ -5187,14 +5580,16 @@
     "easyToCook": true,
     "weeklyServings": 3,
     "servingUnit": "portion",
-    "gramsPerServing": 150
+    "gramsPerServing": 150,
+    "priceInfo": {
+      "source": "estimation"
+    }
   },
   {
     "id": "poulet-entier",
     "shortName": "Poulet entier",
     "name": "Poulet entier (env. 1,5 kg)",
     "price": 7.5,
-    "priceSource": "estimation",
     "unit": "pièce",
     "category": "viande-poisson",
     "mealSlot": "dejeuner-diner",
@@ -5211,14 +5606,16 @@
     "easyToCook": true,
     "weeklyServings": 3,
     "servingUnit": "portion",
-    "gramsPerServing": 200
+    "gramsPerServing": 200,
+    "priceInfo": {
+      "source": "estimation"
+    }
   },
   {
     "id": "blanc-dinde",
     "shortName": "Blanc de dinde",
     "name": "Blanc de dinde doré au four",
     "price": 2.76,
-    "priceSource": "open-prices",
     "unit": "barquette",
     "category": "viande-poisson",
     "mealSlot": "dejeuner-diner",
@@ -5235,14 +5632,16 @@
     "easyToCook": true,
     "weeklyServings": 3,
     "servingUnit": "portion",
-    "gramsPerServing": 120
+    "gramsPerServing": 120,
+    "priceInfo": {
+      "source": "open-prices"
+    }
   },
   {
     "id": "agneau-hache",
     "shortName": "Agneau haché",
     "name": "Pavé d'Agneau Haché",
     "price": 5.5,
-    "priceSource": "estimation",
     "unit": "barquette",
     "category": "viande-poisson",
     "mealSlot": "dejeuner-diner",
@@ -5259,14 +5658,16 @@
     "easyToCook": true,
     "weeklyServings": 3,
     "servingUnit": "portion",
-    "gramsPerServing": 120
+    "gramsPerServing": 120,
+    "priceInfo": {
+      "source": "estimation"
+    }
   },
   {
     "id": "foie-volaille",
     "shortName": "Foie de volaille",
     "name": "Foies de volailles confits",
     "price": 3.34,
-    "priceSource": "open-prices",
     "unit": "barquette",
     "category": "viande-poisson",
     "mealSlot": "dejeuner-diner",
@@ -5283,14 +5684,16 @@
     "easyToCook": true,
     "weeklyServings": 3,
     "servingUnit": "portion",
-    "gramsPerServing": 100
+    "gramsPerServing": 100,
+    "priceInfo": {
+      "source": "open-prices"
+    }
   },
   {
     "id": "lapin",
     "shortName": "Lapin",
     "name": "Lapin (pièce, env. 1,2 kg)",
     "price": 8.9,
-    "priceSource": "estimation",
     "unit": "pièce",
     "category": "viande-poisson",
     "mealSlot": "dejeuner-diner",
@@ -5307,14 +5710,16 @@
     "easyToCook": true,
     "weeklyServings": 3,
     "servingUnit": "portion",
-    "gramsPerServing": 150
+    "gramsPerServing": 150,
+    "priceInfo": {
+      "source": "estimation"
+    }
   },
   {
     "id": "dorade",
     "shortName": "Dorade",
     "name": "Filets de dorade-sébaste surgelés",
     "price": 5.5,
-    "priceSource": "estimation",
     "unit": "pièce",
     "category": "viande-poisson",
     "mealSlot": "dejeuner-diner",
@@ -5331,14 +5736,16 @@
     "easyToCook": true,
     "weeklyServings": 3,
     "servingUnit": "portion",
-    "gramsPerServing": 150
+    "gramsPerServing": 150,
+    "priceInfo": {
+      "source": "estimation"
+    }
   },
   {
     "id": "maquereau",
     "shortName": "Maquereau",
     "name": "Filets maquereau naturel",
     "price": 1.3,
-    "priceSource": "open-prices",
     "unit": "pièce",
     "category": "viande-poisson",
     "mealSlot": "dejeuner-diner",
@@ -5355,14 +5762,16 @@
     "easyToCook": true,
     "weeklyServings": 3,
     "servingUnit": "portion",
-    "gramsPerServing": 120
+    "gramsPerServing": 120,
+    "priceInfo": {
+      "source": "open-prices"
+    }
   },
   {
     "id": "truite",
     "shortName": "Truite",
     "name": "Truite Fumée de France",
     "price": 3.44,
-    "priceSource": "open-prices",
     "unit": "pièce",
     "category": "viande-poisson",
     "mealSlot": "dejeuner-diner",
@@ -5379,14 +5788,16 @@
     "easyToCook": true,
     "weeklyServings": 3,
     "servingUnit": "portion",
-    "gramsPerServing": 150
+    "gramsPerServing": 150,
+    "priceInfo": {
+      "source": "open-prices"
+    }
   },
   {
     "id": "colin",
     "shortName": "Colin",
     "name": "Filets de colin (barquette)",
     "price": 5.5,
-    "priceSource": "estimation",
     "unit": "barquette",
     "category": "viande-poisson",
     "mealSlot": "dejeuner-diner",
@@ -5403,14 +5814,16 @@
     "easyToCook": true,
     "weeklyServings": 3,
     "servingUnit": "portion",
-    "gramsPerServing": 130
+    "gramsPerServing": 130,
+    "priceInfo": {
+      "source": "estimation"
+    }
   },
   {
     "id": "sole",
     "shortName": "Sole",
     "name": "Sole (pièce)",
     "price": 6.9,
-    "priceSource": "estimation",
     "unit": "pièce",
     "category": "viande-poisson",
     "mealSlot": "dejeuner-diner",
@@ -5427,14 +5840,16 @@
     "easyToCook": true,
     "weeklyServings": 3,
     "servingUnit": "portion",
-    "gramsPerServing": 130
+    "gramsPerServing": 130,
+    "priceInfo": {
+      "source": "estimation"
+    }
   },
   {
     "id": "calamars",
     "shortName": "Calamars",
     "name": "Calamars à la Romaine",
     "price": 5.5,
-    "priceSource": "estimation",
     "unit": "barquette",
     "category": "viande-poisson",
     "mealSlot": "dejeuner-diner",
@@ -5453,14 +5868,16 @@
     "easyToCook": true,
     "weeklyServings": 3,
     "servingUnit": "portion",
-    "gramsPerServing": 120
+    "gramsPerServing": 120,
+    "priceInfo": {
+      "source": "estimation"
+    }
   },
   {
     "id": "saint-jacques",
     "shortName": "Noix de Saint-Jacques",
     "name": "Noix de Saint-Jacques (barquette)",
     "price": 9.9,
-    "priceSource": "estimation",
     "unit": "barquette",
     "category": "viande-poisson",
     "mealSlot": "dejeuner-diner",
@@ -5477,14 +5894,16 @@
     "easyToCook": true,
     "weeklyServings": 3,
     "servingUnit": "portion",
-    "gramsPerServing": 100
+    "gramsPerServing": 100,
+    "priceInfo": {
+      "source": "estimation"
+    }
   },
   {
     "id": "thon-frais",
     "shortName": "Thon frais",
     "name": "Thon frais (pavé)",
     "price": 6.5,
-    "priceSource": "estimation",
     "unit": "pavé",
     "category": "viande-poisson",
     "mealSlot": "dejeuner-diner",
@@ -5501,14 +5920,16 @@
     "easyToCook": true,
     "weeklyServings": 3,
     "servingUnit": "portion",
-    "gramsPerServing": 130
+    "gramsPerServing": 130,
+    "priceInfo": {
+      "source": "estimation"
+    }
   },
   {
     "id": "anchois",
     "shortName": "Anchois",
     "name": "Anchois entiers à l'huile d'olive vierge extra",
     "price": 2.81,
-    "priceSource": "open-prices",
     "unit": "boîte",
     "category": "viande-poisson",
     "mealSlot": "dejeuner-diner",
@@ -5523,14 +5944,16 @@
     "glucides": "faible",
     "sel": "riche",
     "easyToCook": true,
-    "isCondiment": true
+    "isCondiment": true,
+    "priceInfo": {
+      "source": "open-prices"
+    }
   },
   {
     "id": "jambon-cru",
     "shortName": "Jambon cru",
     "name": "Jambon cru (paquet)",
     "price": 3.9,
-    "priceSource": "estimation",
     "unit": "paquet",
     "category": "viande-poisson",
     "mealSlot": "dejeuner-diner",
@@ -5547,14 +5970,16 @@
     "weeklyServings": 3,
     "servingUnit": "portion",
     "ultraTransforme": true,
-    "gramsPerServing": 30
+    "gramsPerServing": 30,
+    "priceInfo": {
+      "source": "estimation"
+    }
   },
   {
     "id": "pate-de-foie",
     "shortName": "Pâté végétal",
     "name": "Pâté végétal façon foie gras (100 g)",
     "price": 3.2,
-    "priceSource": "estimation",
     "unit": "pot",
     "category": "viande-poisson",
     "mealSlot": "dejeuner-diner",
@@ -5574,14 +5999,16 @@
     "weeklyServings": 3,
     "servingUnit": "portion",
     "ultraTransforme": true,
-    "gramsPerServing": 40
+    "gramsPerServing": 40,
+    "priceInfo": {
+      "source": "estimation"
+    }
   },
   {
     "id": "boudin-noir",
     "shortName": "Boudin noir",
     "name": "Boudin à l'ancienne",
     "price": 2.95,
-    "priceSource": "open-prices",
     "unit": "barquette",
     "category": "viande-poisson",
     "mealSlot": "dejeuner-diner",
@@ -5598,14 +6025,16 @@
     "weeklyServings": 3,
     "servingUnit": "portion",
     "ultraTransforme": true,
-    "gramsPerServing": 100
+    "gramsPerServing": 100,
+    "priceInfo": {
+      "source": "open-prices"
+    }
   },
   {
     "id": "andouillette",
     "shortName": "Andouillette",
     "name": "Véritables Andouillettes De Troyes",
     "price": 3.49,
-    "priceSource": "open-prices",
     "unit": "pièce",
     "category": "viande-poisson",
     "mealSlot": "dejeuner-diner",
@@ -5622,14 +6051,16 @@
     "weeklyServings": 3,
     "servingUnit": "portion",
     "ultraTransforme": true,
-    "gramsPerServing": 120
+    "gramsPerServing": 120,
+    "priceInfo": {
+      "source": "open-prices"
+    }
   },
   {
     "id": "bacon",
     "shortName": "Bacon",
     "name": "Bacon Fumé au bois de hêtre",
     "price": 2.25,
-    "priceSource": "open-prices",
     "unit": "paquet",
     "category": "viande-poisson",
     "mealSlot": "petit-dejeuner",
@@ -5646,14 +6077,16 @@
     "weeklyServings": 3,
     "servingUnit": "portion",
     "ultraTransforme": true,
-    "gramsPerServing": 30
+    "gramsPerServing": 30,
+    "priceInfo": {
+      "source": "open-prices"
+    }
   },
   {
     "id": "nuggets-poulet",
     "shortName": "Nuggets de poulet",
     "name": "Nuggets Extra Croustillant x10",
     "price": 2.41,
-    "priceSource": "open-prices",
     "unit": "boîte",
     "category": "viande-poisson",
     "mealSlot": "dejeuner-diner",
@@ -5673,14 +6106,16 @@
     "weeklyServings": 3,
     "servingUnit": "portion",
     "ultraTransforme": true,
-    "gramsPerServing": 100
+    "gramsPerServing": 100,
+    "priceInfo": {
+      "source": "open-prices"
+    }
   },
   {
     "id": "cordon-bleu",
     "shortName": "Cordon bleu",
     "name": "Cordon bleu Le Gaulois",
     "price": 2.06,
-    "priceSource": "open-prices",
     "unit": "boîte",
     "category": "viande-poisson",
     "mealSlot": "dejeuner-diner",
@@ -5700,14 +6135,16 @@
     "weeklyServings": 3,
     "servingUnit": "portion",
     "ultraTransforme": true,
-    "gramsPerServing": 120
+    "gramsPerServing": 120,
+    "priceInfo": {
+      "source": "open-prices"
+    }
   },
   {
     "id": "filet-dinde-fume",
     "shortName": "Filet de dinde fumé",
     "name": "Filet de dinde fumé (100 g)",
     "price": 3.5,
-    "priceSource": "estimation",
     "unit": "paquet",
     "category": "viande-poisson",
     "mealSlot": "dejeuner-diner",
@@ -5725,14 +6162,16 @@
     "weeklyServings": 3,
     "servingUnit": "portion",
     "ultraTransforme": true,
-    "gramsPerServing": 30
+    "gramsPerServing": 30,
+    "priceInfo": {
+      "source": "estimation"
+    }
   },
   {
     "id": "surimi",
     "shortName": "Surimi",
     "name": "Surimi Le Moelleux",
     "price": 4.18,
-    "priceSource": "open-prices",
     "unit": "paquet",
     "category": "viande-poisson",
     "mealSlot": "dejeuner-diner",
@@ -5754,14 +6193,16 @@
     "weeklyServings": 3,
     "servingUnit": "portion",
     "ultraTransforme": true,
-    "gramsPerServing": 50
+    "gramsPerServing": 50,
+    "priceInfo": {
+      "source": "open-prices"
+    }
   },
   {
     "id": "truite-fumee",
     "shortName": "Truite fumée",
     "name": "Truite Fumée de France",
     "price": 3.44,
-    "priceSource": "open-prices",
     "unit": "paquet",
     "category": "viande-poisson",
     "mealSlot": "dejeuner-diner",
@@ -5778,14 +6219,16 @@
     "easyToCook": true,
     "weeklyServings": 3,
     "servingUnit": "portion",
-    "gramsPerServing": 40
+    "gramsPerServing": 40,
+    "priceInfo": {
+      "source": "open-prices"
+    }
   },
   {
     "id": "lieu-noir",
     "shortName": "Lieu noir",
     "name": "Filets de lieu noir (pièce)",
     "price": 5.9,
-    "priceSource": "estimation",
     "unit": "pièce",
     "category": "viande-poisson",
     "mealSlot": "dejeuner-diner",
@@ -5802,14 +6245,16 @@
     "easyToCook": true,
     "weeklyServings": 3,
     "servingUnit": "portion",
-    "gramsPerServing": 130
+    "gramsPerServing": 130,
+    "priceInfo": {
+      "source": "estimation"
+    }
   },
   {
     "id": "pain-de-campagne",
     "shortName": "Pain de campagne",
     "name": "pain grillé pelletier",
     "price": 2.3,
-    "priceSource": "open-prices",
     "unit": "pain",
     "category": "boulangerie",
     "mealSlot": "dejeuner-diner",
@@ -5829,14 +6274,16 @@
     "sel": "riche",
     "easyToCook": true,
     "weeklyServings": 3,
-    "servingUnit": "portion"
+    "servingUnit": "portion",
+    "priceInfo": {
+      "source": "open-prices"
+    }
   },
   {
     "id": "pain-seigle",
     "shortName": "Pain de seigle",
     "name": "Pain de mie grandes tranches Seigle & Graines 500g",
     "price": 2.44,
-    "priceSource": "open-prices",
     "unit": "pain",
     "category": "boulangerie",
     "mealSlot": "dejeuner-diner",
@@ -5855,14 +6302,16 @@
     "easyToCook": true,
     "weeklyServings": 3,
     "servingUnit": "portion",
-    "ultraTransforme": true
+    "ultraTransforme": true,
+    "priceInfo": {
+      "source": "open-prices"
+    }
   },
   {
     "id": "pain-nordique",
     "shortName": "Pain nordique",
     "name": "Pain nordique",
     "price": 1.71,
-    "priceSource": "open-prices",
     "unit": "paquet",
     "category": "boulangerie",
     "mealSlot": "petit-dejeuner",
@@ -5881,14 +6330,16 @@
     "easyToCook": true,
     "weeklyServings": 3,
     "servingUnit": "portion",
-    "ultraTransforme": true
+    "ultraTransforme": true,
+    "priceInfo": {
+      "source": "open-prices"
+    }
   },
   {
     "id": "pain-burger",
     "shortName": "Pain burger",
     "name": "pain Burger complet",
     "price": 1.52,
-    "priceSource": "open-prices",
     "unit": "paquet",
     "category": "boulangerie",
     "mealSlot": "dejeuner-diner",
@@ -5910,14 +6361,16 @@
     "weeklyServings": 3,
     "servingUnit": "portion",
     "ultraTransforme": true,
-    "gramsPerServing": 80
+    "gramsPerServing": 80,
+    "priceInfo": {
+      "source": "open-prices"
+    }
   },
   {
     "id": "pain-hot-dog",
     "shortName": "Pain hot-dog",
     "name": "PAINS HOT DOG prédécoupés",
     "price": 1.8,
-    "priceSource": "estimation",
     "unit": "paquet",
     "category": "boulangerie",
     "mealSlot": "dejeuner-diner",
@@ -5937,14 +6390,16 @@
     "weeklyServings": 3,
     "servingUnit": "portion",
     "ultraTransforme": true,
-    "gramsPerServing": 60
+    "gramsPerServing": 60,
+    "priceInfo": {
+      "source": "estimation"
+    }
   },
   {
     "id": "naan",
     "shortName": "Naan",
     "name": "Street food saveur cheese naan",
     "price": 1.58,
-    "priceSource": "open-prices",
     "unit": "paquet",
     "category": "boulangerie",
     "mealSlot": "dejeuner-diner",
@@ -5965,14 +6420,16 @@
     "weeklyServings": 3,
     "servingUnit": "portion",
     "ultraTransforme": true,
-    "gramsPerServing": 90
+    "gramsPerServing": 90,
+    "priceInfo": {
+      "source": "open-prices"
+    }
   },
   {
     "id": "pain-epices",
     "shortName": "Pain d'épices",
     "name": "Pain d'épices miel",
     "price": 2.31,
-    "priceSource": "open-prices",
     "unit": "pain",
     "category": "boulangerie",
     "mealSlot": "petit-dejeuner",
@@ -5993,14 +6450,16 @@
     "gourmand": true,
     "weeklyServings": 3,
     "servingUnit": "portion",
-    "ultraTransforme": true
+    "ultraTransforme": true,
+    "priceInfo": {
+      "source": "open-prices"
+    }
   },
   {
     "id": "chausson-pomme",
     "shortName": "Chausson aux pommes",
     "name": "Chaussons aux Pommes",
     "price": 1.8,
-    "priceSource": "estimation",
     "unit": "pièce",
     "category": "boulangerie",
     "mealSlot": "petit-dejeuner",
@@ -6024,14 +6483,16 @@
     "weeklyServings": 3,
     "servingUnit": "portion",
     "ultraTransforme": true,
-    "gramsPerServing": 100
+    "gramsPerServing": 100,
+    "priceInfo": {
+      "source": "estimation"
+    }
   },
   {
     "id": "pain-au-chocolat",
     "shortName": "Pain au chocolat",
     "name": "pain au chocolat pasquier x8",
     "price": 2.4,
-    "priceSource": "open-prices",
     "unit": "pièce",
     "category": "boulangerie",
     "mealSlot": "petit-dejeuner",
@@ -6053,14 +6514,16 @@
     "weeklyServings": 3,
     "servingUnit": "portion",
     "ultraTransforme": true,
-    "gramsPerServing": 65
+    "gramsPerServing": 65,
+    "priceInfo": {
+      "source": "open-prices"
+    }
   },
   {
     "id": "pain-aux-raisins",
     "shortName": "Pain aux raisins",
     "name": "Pain aux raisins (pièce)",
     "price": 1.4,
-    "priceSource": "estimation",
     "unit": "pièce",
     "category": "boulangerie",
     "mealSlot": "petit-dejeuner",
@@ -6084,14 +6547,16 @@
     "weeklyServings": 3,
     "servingUnit": "portion",
     "ultraTransforme": true,
-    "gramsPerServing": 70
+    "gramsPerServing": 70,
+    "priceInfo": {
+      "source": "estimation"
+    }
   },
   {
     "id": "financier",
     "shortName": "Financier",
     "name": "Petits fours financiers",
     "price": 1.8,
-    "priceSource": "estimation",
     "unit": "pièce",
     "category": "boulangerie",
     "mealSlot": "encas-extra",
@@ -6114,14 +6579,16 @@
     "weeklyServings": 3,
     "servingUnit": "portion",
     "ultraTransforme": true,
-    "gramsPerServing": 40
+    "gramsPerServing": 40,
+    "priceInfo": {
+      "source": "estimation"
+    }
   },
   {
     "id": "cookie",
     "shortName": "Cookie",
     "name": "Cookie cacao pépites Sans Sucre",
     "price": 3.04,
-    "priceSource": "open-prices",
     "unit": "pièce",
     "category": "boulangerie",
     "mealSlot": "encas-extra",
@@ -6142,14 +6609,16 @@
     "weeklyServings": 3,
     "servingUnit": "portion",
     "ultraTransforme": true,
-    "gramsPerServing": 35
+    "gramsPerServing": 35,
+    "priceInfo": {
+      "source": "open-prices"
+    }
   },
   {
     "id": "muffin",
     "shortName": "Muffin",
     "name": "Brioche Muffin x 5 250g",
     "price": 1.66,
-    "priceSource": "open-prices",
     "unit": "pièce",
     "category": "boulangerie",
     "mealSlot": "encas-extra",
@@ -6172,14 +6641,16 @@
     "weeklyServings": 3,
     "servingUnit": "portion",
     "ultraTransforme": true,
-    "gramsPerServing": 60
+    "gramsPerServing": 60,
+    "priceInfo": {
+      "source": "open-prices"
+    }
   },
   {
     "id": "tarte-fine",
     "shortName": "Tarte fine",
     "name": "Tarte fine Champignons Gorgonzola",
     "price": 3.5,
-    "priceSource": "open-prices",
     "unit": "pièce",
     "category": "boulangerie",
     "mealSlot": "encas-extra",
@@ -6201,14 +6672,16 @@
     "weeklyServings": 3,
     "servingUnit": "portion",
     "ultraTransforme": true,
-    "gramsPerServing": 100
+    "gramsPerServing": 100,
+    "priceInfo": {
+      "source": "open-prices"
+    }
   },
   {
     "id": "gressins",
     "shortName": "Gressins",
     "name": "Gressins au sésame",
     "price": 1.11,
-    "priceSource": "open-prices",
     "unit": "paquet",
     "category": "boulangerie",
     "mealSlot": "encas-extra",
@@ -6230,14 +6703,16 @@
     "weeklyServings": 3,
     "servingUnit": "portion",
     "ultraTransforme": true,
-    "gramsPerServing": 20
+    "gramsPerServing": 20,
+    "priceInfo": {
+      "source": "open-prices"
+    }
   },
   {
     "id": "tortilla-mais",
     "shortName": "Tortillas de maïs",
     "name": "Tortillas de maïs (paquet)",
     "price": 2,
-    "priceSource": "estimation",
     "unit": "paquet",
     "category": "boulangerie",
     "mealSlot": "dejeuner-diner",
@@ -6256,14 +6731,16 @@
     "easyToCook": true,
     "weeklyServings": 3,
     "servingUnit": "portion",
-    "gramsPerServing": 40
+    "gramsPerServing": 40,
+    "priceInfo": {
+      "source": "estimation"
+    }
   },
   {
     "id": "pain-complet-graines",
     "shortName": "Pain complet aux graines",
     "name": "Pain complet de seigle aux graines de tournesol",
     "price": 2.67,
-    "priceSource": "open-prices",
     "unit": "pain",
     "category": "boulangerie",
     "mealSlot": "petit-dejeuner",
@@ -6283,14 +6760,16 @@
     "sel": "moyen",
     "easyToCook": true,
     "weeklyServings": 3,
-    "servingUnit": "portion"
+    "servingUnit": "portion",
+    "priceInfo": {
+      "source": "open-prices"
+    }
   },
   {
     "id": "focaccia",
     "shortName": "Focaccia",
     "name": "Focaccia alla genovese",
     "price": 1.8,
-    "priceSource": "estimation",
     "unit": "pièce",
     "category": "boulangerie",
     "mealSlot": "dejeuner-diner",
@@ -6311,14 +6790,16 @@
     "easyToCook": true,
     "weeklyServings": 3,
     "servingUnit": "portion",
-    "gramsPerServing": 80
+    "gramsPerServing": 80,
+    "priceInfo": {
+      "source": "estimation"
+    }
   },
   {
     "id": "pain-brie",
     "shortName": "Pain brié",
     "name": "Miche surprise Pain spécial aux céréales",
     "price": 1.8,
-    "priceSource": "estimation",
     "unit": "pain",
     "category": "boulangerie",
     "mealSlot": "petit-dejeuner",
@@ -6338,14 +6819,16 @@
     "sel": "moyen",
     "easyToCook": true,
     "weeklyServings": 3,
-    "servingUnit": "portion"
+    "servingUnit": "portion",
+    "priceInfo": {
+      "source": "estimation"
+    }
   },
   {
     "id": "fougasse",
     "shortName": "Fougasse",
     "name": "La fougasses d’aigues mortes",
     "price": 1.8,
-    "priceSource": "estimation",
     "unit": "pièce",
     "category": "boulangerie",
     "mealSlot": "dejeuner-diner",
@@ -6365,6 +6848,9 @@
     "easyToCook": true,
     "weeklyServings": 3,
     "servingUnit": "portion",
-    "gramsPerServing": 80
+    "gramsPerServing": 80,
+    "priceInfo": {
+      "source": "estimation"
+    }
   }
 ]

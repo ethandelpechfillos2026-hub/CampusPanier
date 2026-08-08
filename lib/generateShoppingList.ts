@@ -3,6 +3,7 @@ import { getActiveMacroTargets, getEffectiveDailyCalories } from "@/lib/macros";
 import {
   CATEGORY_ORDER,
   MEAL_SLOT_ORDER,
+  PriceInfo,
   Product,
   ShoppingListItem,
   ShoppingListResult,
@@ -481,6 +482,47 @@ export function formatPrice(amount: number): string {
     style: "currency",
     currency: "EUR",
   }).format(amount);
+}
+
+// Règle produit non négociable : on n'appelle jamais un prix "relevé" s'il
+// manque l'enseigne, la ville OU la date — les trois doivent être connues à
+// la fois, sinon c'est une estimation, point final. Ça inclut les 93 prix
+// "open-prices" historiques importés avant la mise en place de ce suivi
+// (détail non conservé à l'époque) : ils basculent automatiquement en
+// "estimation" ci-dessous plutôt que d'être présentés comme fiables.
+const FRESH_PRICE_MAX_AGE_DAYS = 90;
+
+export type PriceReliability = "fresh" | "old" | "estimation";
+
+function daysSince(isoDate: string): number {
+  const then = new Date(isoDate).getTime();
+  if (Number.isNaN(then)) return Infinity;
+  return Math.floor((Date.now() - then) / (1000 * 60 * 60 * 24));
+}
+
+// Trois états possibles, jamais plus — voir le principe ci-dessus. "fresh"
+// et "old" exigent tous les trois enseigne+zone+date ; sans ça, ou si le
+// produit n'a pas du tout de priceInfo, c'est une estimation.
+export function getPriceReliability(priceInfo: PriceInfo | undefined): PriceReliability {
+  if (!priceInfo || priceInfo.source !== "open-prices") return "estimation";
+  if (!priceInfo.enseigne || !priceInfo.zone || !priceInfo.date) return "estimation";
+  return daysSince(priceInfo.date) > FRESH_PRICE_MAX_AGE_DAYS ? "old" : "fresh";
+}
+
+// Une seule ligne, honnête, sous chaque produit dans "Ma liste" — jamais un
+// écran séparé ni de jargon. Trois formulations possibles seulement :
+// "Relevé : Carrefour, Lyon · 12 août", "Relevé ancien : ..." au-delà de
+// FRESH_PRICE_MAX_AGE_DAYS, ou simplement "Estimation".
+export function formatPriceProvenance(priceInfo: PriceInfo | undefined): string {
+  const reliability = getPriceReliability(priceInfo);
+  if (reliability === "estimation") return "Estimation";
+
+  const date = new Date(priceInfo!.date!).toLocaleDateString("fr-FR", {
+    day: "numeric",
+    month: "long",
+  });
+  const label = reliability === "fresh" ? "Relevé" : "Relevé ancien";
+  return `${label} : ${priceInfo!.enseigne}, ${priceInfo!.zone} · ${date}`;
 }
 
 export { products };

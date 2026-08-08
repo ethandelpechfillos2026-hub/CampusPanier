@@ -29,6 +29,24 @@ export type MacroPreference =
   | "belle-peau"
   | "gourmand";
 
+// Provenance et fiabilité du prix d'un produit — sépare explicitement "on a
+// un vrai prix observé, avec son enseigne/sa ville/sa date" de "on n'a
+// qu'une estimation moyenne par rayon", pour pouvoir l'afficher honnêtement
+// plutôt que de montrer un simple nombre sans contexte (voir
+// scripts/build-catalog.mjs pour comment ce champ est rempli).
+export interface PriceInfo {
+  source: "open-prices" | "estimation";
+  // Date ISO (YYYY-MM-DD) du relevé — absente si l'estimation est générique,
+  // ou si le prix vient d'un relevé Open Prices importé avant la mise en
+  // place de ce suivi (détail non conservé à l'époque).
+  date?: string;
+  // Enseigne du relevé (ex: "Carrefour", "Lidl") — seulement si Open Prices
+  // la connaît pour ce relevé précis.
+  enseigne?: string;
+  // Ville du relevé — seulement si Open Prices la connaît.
+  zone?: string;
+}
+
 export interface Product {
   id: string;
   name: string;
@@ -37,6 +55,13 @@ export interface Product {
   // absent, on retombe sur `name`.
   shortName?: string;
   price: number;
+  // Provenance/fiabilité de `price` ci-dessus — voir PriceInfo. Absent pour
+  // les tout premiers produits du catalogue construits avant ce suivi.
+  priceInfo?: PriceInfo;
+  // Code-barres Open Food Facts d'origine — conservé pour pouvoir rafraîchir
+  // le prix plus tard (scripts/build-catalog.mjs) sans redemander une
+  // recherche complète à OFF, qui pourrait retomber sur une fiche différente.
+  offCode?: string;
   unit: string;
   category: ProductCategory;
   dietTags: DietType[];
@@ -58,9 +83,6 @@ export interface Product {
   // pâtes), on précise le poids en grammes d'une portion — le planning
   // affiche alors directement "160 g" plutôt que "2 portions".
   gramsPerServing?: number;
-  // Présent seulement sur les produits régénérés via scripts/build-catalog.mjs —
-  // indique si le prix vient d'un vrai relevé Open Prices ou d'une estimation.
-  priceSource?: "open-prices" | "estimation";
   // Produit "plaisir" (sucré, gras, gourmand) plutôt qu'équilibré — sert à la
   // préférence "Gourmand", pour se faire plaisir même avec un petit budget.
   gourmand?: boolean;

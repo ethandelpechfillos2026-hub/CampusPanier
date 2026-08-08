@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "build-catalog": "node scripts/build-catalog.mjs"
+    "build-catalog": "node scripts/build-catalog.mjs",
+    "audit-prices": "node scripts/audit-prices.mjs"
   },
   "dependencies": {
     "firebase": "^10.14.1",

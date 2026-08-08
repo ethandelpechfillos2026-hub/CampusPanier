@@ -43,16 +43,16 @@
   },
   {
     "id": "poulet-roti",
-    "name": "Poulet rôti et pommes de terre",
+    "name": "Poulet et pommes de terre sautés",
     "icon": "🍗",
-    "prepTime": 40,
-    "difficulty": "moyen",
+    "prepTime": 22,
+    "difficulty": "facile",
     "ingredientIds": ["poulet", "pommes-de-terre", "oignons", "huile-olive"],
     "steps": [
-      "Préchauffe le four à 200°C.",
-      "Coupe les pommes de terre et l'oignon en morceaux, arrose d'huile d'olive.",
-      "Dispose le poulet sur les légumes dans un plat.",
-      "Enfourne 35-40 minutes jusqu'à ce que le poulet soit bien cuit."
+      "Coupe les pommes de terre en petits dés (plus c'est petit, plus ça cuit vite) et le poulet en morceaux.",
+      "Fais revenir les pommes de terre à couvert dans l'huile d'olive 12-15 minutes, en remuant de temps en temps.",
+      "Ajoute le poulet et l'oignon émincé, poursuis la cuisson 8-10 minutes à découvert jusqu'à ce que le poulet soit bien cuit.",
+      "Assaisonne et sers directement dans la poêle."
     ]
   },
   {
@@ -101,12 +101,13 @@
     "id": "cabillaud-legumes",
     "name": "Cabillaud et légumes",
     "icon": "🐟",
-    "prepTime": 30,
-    "difficulty": "moyen",
+    "prepTime": 22,
+    "difficulty": "facile",
     "ingredientIds": ["cabillaud", "carottes", "pommes-de-terre", "huile-olive"],
     "steps": [
-      "Coupe les carottes et pommes de terre en morceaux, fais-les cuire à la vapeur 15 minutes.",
-      "Fais dorer les filets de cabillaud dans l'huile d'olive 3-4 minutes de chaque côté.",
+      "Coupe les carottes et pommes de terre en petits dés pour qu'elles cuisent plus vite.",
+      "Fais-les cuire à la vapeur ou à l'eau 12-15 minutes.",
+      "Pendant ce temps, fais dorer les filets de cabillaud dans l'huile d'olive 3-4 minutes de chaque côté.",
       "Sers le poisson avec les légumes."
     ]
   },
@@ -239,13 +240,13 @@
     "id": "couscous-legumes",
     "name": "Couscous végétarien",
     "icon": "🍛",
-    "prepTime": 30,
-    "difficulty": "moyen",
+    "prepTime": 22,
+    "difficulty": "facile",
     "ingredientIds": ["semoule-couscous", "courgettes", "poivrons", "pois-chiches", "oignons"],
     "steps": [
-      "Fais revenir l'oignon, les courgettes et les poivrons coupés en morceaux.",
-      "Ajoute les pois chiches égouttés et un peu d'eau, laisse mijoter 15 minutes.",
-      "Prépare la semoule selon le paquet.",
+      "Coupe l'oignon, les courgettes et les poivrons en petits dés, fais-les revenir 5 minutes.",
+      "Ajoute les pois chiches égouttés et un peu d'eau, laisse mijoter 10-12 minutes.",
+      "Pendant ce temps, prépare la semoule selon le paquet (souvent prête en 5 minutes).",
       "Sers les légumes et les pois chiches sur la semoule."
     ]
   },
@@ -379,13 +380,13 @@
     "id": "soupe-legumes-hiver",
     "name": "Soupe de légumes d'hiver",
     "icon": "🍜",
-    "prepTime": 30,
+    "prepTime": 22,
     "difficulty": "facile",
     "ingredientIds": ["poireaux", "pommes-de-terre", "carottes", "oignons", "creme-fraiche"],
     "steps": [
-      "Coupe tous les légumes en morceaux.",
+      "Coupe tous les légumes en petits morceaux pour qu'ils cuisent plus vite.",
       "Fais-les revenir quelques minutes avec l'oignon dans une grande casserole.",
-      "Couvre d'eau et laisse cuire 20 minutes jusqu'à ce que les légumes soient tendres.",
+      "Couvre d'eau et laisse cuire 12-15 minutes jusqu'à ce que les légumes soient tendres.",
       "Mixe le tout, ajoute une cuillère de crème fraîche et sers bien chaud."
     ]
   }

@@ -9,7 +9,7 @@ import {
   getNewlyUnlockedAchievements,
   markAchievementsSeen,
 } from "@/lib/achievements";
-import { formatPrice } from "@/lib/generateShoppingList";
+import { formatPrice, getPriceReliability } from "@/lib/generateShoppingList";
 import { DashboardStats, getDashboardStats } from "@/lib/stats";
 import { ShoppingListResult } from "@/lib/types";
 import { computeXp, getLevelInfo } from "@/lib/xp";
@@ -58,6 +58,14 @@ export default function StatsHeader({
     Math.round((result.total / result.budget) * 100)
   );
   const weeklySavings = Math.max(0, result.remaining);
+
+  // Le total n'est "estimé" que si au moins une ligne n'est pas un relevé
+  // frais (enseigne+ville+date récents) — pour ne jamais afficher un total
+  // comme s'il était exact quand une partie de la liste ne l'est pas.
+  const uncertainCount = result.items.filter(
+    (item) => getPriceReliability(item.product.priceInfo) !== "fresh"
+  ).length;
+  const isTotalEstimated = uncertainCount > 0;
   const xp = computeXp(stats);
   const levelInfo = getLevelInfo(xp);
 
@@ -93,8 +101,8 @@ export default function StatsHeader({
           <div className="mt-4">
             <div className="flex items-center justify-between text-xs font-semibold text-white/85">
               <span>
-                Budget de la semaine : {formatPrice(result.total)} /{" "}
-                {formatPrice(result.budget)}
+                {isTotalEstimated ? "Total estimé" : "Budget de la semaine"} :{" "}
+                {formatPrice(result.total)} / {formatPrice(result.budget)}
               </span>
             </div>
             <div className="mt-1.5 h-2.5 overflow-hidden rounded-full bg-white/25">
@@ -108,6 +116,14 @@ export default function StatsHeader({
                 ? `${formatPrice(Math.abs(result.remaining))} de dépassement`
                 : `${formatPrice(result.remaining)} restants ✓`}
             </p>
+            {isTotalEstimated && (
+              <p className="mt-1 text-[11px] text-white/70">
+                {uncertainCount} article{uncertainCount > 1 ? "s" : ""} sur{" "}
+                {result.items.length}{" "}
+                {uncertainCount > 1 ? "sont des estimations" : "est une estimation"}{" "}
+                ou un relevé ancien.
+              </p>
+            )}
           </div>
 
           <div className="mt-4 rounded-2xl bg-white/15 p-3 backdrop-blur-sm">

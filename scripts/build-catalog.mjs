@@ -28,9 +28,12 @@
 // 3. Si Open Food Facts ne trouve rien de fiable, le produit est purement
 //    ignoré (pas de fallback inventé) — puisque c'est un ajout, pas une
 //    donnée existante à protéger.
-// 4. Si Open Prices n'a pas de prix crowdsourcé, on utilise une estimation
-//    générique par rayon (clairement marquée priceSource: "estimation"),
-//    jamais un prix inventé au produit près.
+// 4. Si Open Prices n'a pas de relevé français, on utilise une estimation
+//    générique par rayon (clairement marquée priceInfo.source: "estimation"),
+//    jamais un prix inventé au produit près. Quand un relevé existe, on
+//    garde le PLUS RÉCENT situé en France (avec son enseigne/sa ville/sa
+//    date dans priceInfo) plutôt qu'une moyenne de relevés potentiellement
+//    d'autres pays ou de plusieurs années — voir fetchRealPrice().
 // 5. Écriture de sauvegarde tous les 15 produits ajoutés — si le script est
 //    interrompu (réseau coupé, fermeture du terminal...), rien n'est perdu
 //    et on peut simplement relancer la même commande : les produits déjà
@@ -185,6 +188,13 @@ async function searchProduct(query) {
 }
 
 // Best-effort : base communautaire, pas de prix pour tout.
+//
+// Renvoie le relevé Open Prices le PLUS RÉCENT situé en France (et lui
+// seul), avec son enseigne/sa ville/sa date — plutôt qu'une moyenne aveugle
+// de tous les relevés retournés (ancienne méthode : mélangeait des relevés
+// d'autres pays et de plusieurs années sans qu'on puisse le voir). Un seul
+// relevé attribuable et honnête vaut mieux qu'une moyenne qu'on ne peut
+// justifier auprès de personne.
 async function fetchRealPrice(code) {
   try {
     const url = `${PRICES_URL}?product_code=${encodeURIComponent(code)}&size=20`;
@@ -194,10 +204,24 @@ async function fetchRealPrice(code) {
     if (!res.ok) return null;
     const data = await res.json();
     const items = data.items || data.results || (Array.isArray(data) ? data : []);
-    const prices = items.map((i) => i.price).filter((p) => typeof p === "number" && p > 0);
-    if (prices.length === 0) return null;
-    const avg = prices.reduce((a, b) => a + b, 0) / prices.length;
-    return Math.round(avg * 100) / 100;
+
+    const frenchItems = items.filter(
+      (i) =>
+        typeof i.price === "number" &&
+        i.price > 0 &&
+        i.location?.osm_address_country_code === "FR"
+    );
+    if (frenchItems.length === 0) return null;
+
+    frenchItems.sort((a, b) => (a.date < b.date ? 1 : a.date > b.date ? -1 : 0));
+    const mostRecent = frenchItems[0];
+
+    return {
+      price: Math.round(mostRecent.price * 100) / 100,
+      date: mostRecent.date,
+      enseigne: mostRecent.location?.osm_brand || undefined,
+      zone: mostRecent.location?.osm_address_city || undefined,
+    };
   } catch {
     return null;
   }
@@ -224,14 +248,23 @@ async function buildProduct(query) {
 
   const nutriments = off.nutriments || {};
   const realPrice = off.code ? await fetchRealPrice(off.code) : null;
-  const price = realPrice ?? CATEGORY_PRICE_DEFAULTS[query.category];
+  const price = realPrice?.price ?? CATEGORY_PRICE_DEFAULTS[query.category];
+  const priceInfo = realPrice
+    ? {
+        source: "open-prices",
+        date: realPrice.date,
+        enseigne: realPrice.enseigne,
+        zone: realPrice.zone,
+      }
+    : { source: "estimation" };
 
   const product = {
     id: query.id,
     shortName: query.shortName,
     name: pickName(off, query.search),
     price,
-    priceSource: realPrice ? "open-prices" : "estimation",
+    priceInfo,
+    offCode: off.code,
     unit: query.unit,
     category: query.category,
     mealSlot: query.mealSlot,
@@ -522,7 +555,13 @@ async function main() {
     current.push(product);
     added += 1;
     sinceCheckpoint += 1;
-    console.log(`  + ${product.name} (${product.price} € · ${product.priceSource})`);
+    const logDetail =
+      product.priceInfo.source === "open-prices"
+        ? [product.priceInfo.enseigne, product.priceInfo.zone, product.priceInfo.date]
+            .filter(Boolean)
+            .join(", ") || "open-prices (détail indisponible)"
+        : "estimation";
+    console.log(`  + ${product.name} (${product.price} € · ${logDetail})`);
 
     if (sinceCheckpoint >= CHECKPOINT_EVERY) {
       await writeFile(PRODUCTS_PATH, JSON.stringify(current, null, 2) + "\n");

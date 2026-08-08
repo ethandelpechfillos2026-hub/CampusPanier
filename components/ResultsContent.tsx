@@ -2,7 +2,11 @@
 
 import { useRef, useState } from "react";
 import StatsHeader from "@/components/StatsHeader";
-import { formatPrice } from "@/lib/generateShoppingList";
+import {
+  formatPrice,
+  formatPriceProvenance,
+  getPriceReliability,
+} from "@/lib/generateShoppingList";
 import { getActiveMacroTargets } from "@/lib/macros";
 import { recordListFullyChecked } from "@/lib/stats";
 import {
@@ -172,6 +176,11 @@ export default function ResultsContent({
         </div>
       ) : (
         <div className="space-y-4">
+          <p className="text-[11px] text-campus-muted">
+            Sous chaque article : &quot;Relevé&quot; (enseigne, ville, date),
+            &quot;Relevé ancien&quot; si ça date, ou &quot;Estimation&quot;
+            quand on n&apos;a rien de précis.
+          </p>
           {grouped.map(({ category, items }) => (
             <section
               key={category}
@@ -183,31 +192,46 @@ export default function ResultsContent({
               <ul className="space-y-1">
                 {items.map(({ product, quantity }) => {
                   const isChecked = checkedIds.has(product.id);
+                  const provenance = formatPriceProvenance(product.priceInfo);
+                  const reliability = getPriceReliability(product.priceInfo);
                   return (
                     <li key={product.id}>
-                      <label className="flex cursor-pointer items-center gap-3 rounded-xl px-1 py-2.5 transition-colors hover:bg-orange-50/60">
+                      <label className="flex cursor-pointer items-start gap-3 rounded-xl px-1 py-2.5 transition-colors hover:bg-orange-50/60">
                         <input
                           type="checkbox"
                           checked={isChecked}
                           onChange={() => toggleChecked(product.id)}
-                          className="h-5 w-5 shrink-0 rounded-md border-2 border-campus-sand accent-campus-terracotta"
+                          className="mt-0.5 h-5 w-5 shrink-0 rounded-md border-2 border-campus-sand accent-campus-terracotta"
                         />
-                        <span
-                          className={`flex-1 text-sm font-medium ${
-                            isChecked
-                              ? "text-campus-muted line-through"
-                              : "text-campus-ink"
-                          }`}
-                        >
-                          {product.name}
-                          {quantity > 1 && (
-                            <span className="ml-1.5 text-xs font-bold text-campus-terracotta">
-                              ×{quantity}
+                        <span className="flex-1">
+                          <span
+                            className={`block text-sm font-medium ${
+                              isChecked
+                                ? "text-campus-muted line-through"
+                                : "text-campus-ink"
+                            }`}
+                          >
+                            {product.name}
+                            {quantity > 1 && (
+                              <span className="ml-1.5 text-xs font-bold text-campus-terracotta">
+                                ×{quantity}
+                              </span>
+                            )}
+                          </span>
+                          {!isChecked && (
+                            <span
+                              className={`block text-[11px] ${
+                                reliability === "old"
+                                  ? "text-amber-600"
+                                  : "text-campus-muted"
+                              }`}
+                            >
+                              {provenance}
                             </span>
                           )}
                         </span>
                         <span
-                          className={`text-sm font-semibold ${
+                          className={`shrink-0 text-sm font-semibold ${
                             isChecked
                               ? "text-campus-muted line-through"
                               : "text-campus-ink"
