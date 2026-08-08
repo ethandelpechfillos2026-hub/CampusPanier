@@ -64,6 +64,18 @@ export interface PriceInfo {
   zone?: string;
 }
 
+// Vraies valeurs nutritionnelles pour 100 g, sourcées depuis Open Food
+// Facts (voir scripts/fetch-nutrition.mjs) — jamais inventées. Les niveaux
+// qualitatifs (NutriLevel) restent le filet de sécurité pour tout produit
+// qui n'a pas encore cette donnée précise.
+export interface NutritionFacts {
+  kcal: number;
+  proteinG: number;
+  lipidesG: number;
+  glucidesG: number;
+  selG: number;
+}
+
 export interface Product {
   id: string;
   name: string;
@@ -129,6 +141,11 @@ export interface Product {
   // generateShoppingList.ts), sans quoi le petit-déjeuner se résumait à du
   // pain nu — pas très appétissant.
   isSpread?: boolean;
+  // Voir NutritionFacts ci-dessus — absent tant que Open Food Facts n'a pas
+  // été interrogé (ou n'a rien de fiable) pour ce produit précis. Quand
+  // présent, l'app l'utilise à la place des niveaux qualitatifs (popup
+  // nutrition, échange de produit) ; absent = comportement inchangé.
+  nutritionPer100g?: NutritionFacts;
 }
 
 export type Sex = "homme" | "femme";

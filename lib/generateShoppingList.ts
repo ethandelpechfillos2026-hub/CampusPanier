@@ -705,16 +705,40 @@ export function findSubstitutes(
   // est "qui ne va pas changer le budget", la proximité nutritionnelle
   // vient en second. kcal et prix sont normalisés en écart relatif (%) pour
   // rester comparables aux écarts de niveau (0, 1 ou 2 crans).
+  //
+  // Quand les DEUX produits ont de vraies valeurs nutritionnelles (voir
+  // scripts/fetch-nutrition.mjs), l'écart en grammes (relatif) remplace
+  // l'écart de niveau qualitatif — bien plus précis pour distinguer deux
+  // produits qui seraient tous les deux "riche en protéines" par exemple.
+  // Dès qu'un seul des deux n'a pas cette donnée, on retombe sur les
+  // niveaux qualitatifs pour rester comparable.
   function distance(candidate: Product): number {
-    const proteinDiff = Math.abs(
-      LEVEL_RANK[candidate.protein] - LEVEL_RANK[product.protein]
+    const bothHaveRealNutrition = Boolean(
+      candidate.nutritionPer100g && product.nutritionPer100g
     );
-    const lipidesDiff = Math.abs(
-      LEVEL_RANK[candidate.lipides] - LEVEL_RANK[product.lipides]
-    );
-    const glucidesDiff = Math.abs(
-      LEVEL_RANK[candidate.glucides] - LEVEL_RANK[product.glucides]
-    );
+
+    let proteinDiff: number;
+    let lipidesDiff: number;
+    let glucidesDiff: number;
+
+    if (bothHaveRealNutrition) {
+      const a = candidate.nutritionPer100g!;
+      const b = product.nutritionPer100g!;
+      proteinDiff = Math.abs(a.proteinG - b.proteinG) / Math.max(b.proteinG, 1);
+      lipidesDiff = Math.abs(a.lipidesG - b.lipidesG) / Math.max(b.lipidesG, 1);
+      glucidesDiff = Math.abs(a.glucidesG - b.glucidesG) / Math.max(b.glucidesG, 1);
+    } else {
+      proteinDiff = Math.abs(
+        LEVEL_RANK[candidate.protein] - LEVEL_RANK[product.protein]
+      );
+      lipidesDiff = Math.abs(
+        LEVEL_RANK[candidate.lipides] - LEVEL_RANK[product.lipides]
+      );
+      glucidesDiff = Math.abs(
+        LEVEL_RANK[candidate.glucides] - LEVEL_RANK[product.glucides]
+      );
+    }
+
     const kcalDiff = Math.abs(candidate.kcal - product.kcal) / Math.max(product.kcal, 1);
     const priceDiff =
       Math.abs(candidate.price - product.price) / Math.max(product.price, 0.01);

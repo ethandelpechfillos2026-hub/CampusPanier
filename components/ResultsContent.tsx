@@ -341,48 +341,98 @@ export default function ResultsContent({
               {formatPrice(selectedProduct.price)}
             </p>
 
-            <div className="mt-4 grid grid-cols-2 gap-2">
-              <div className="rounded-xl bg-campus-terracotta/10 p-3">
-                <p className="text-[11px] uppercase tracking-wide text-campus-muted">
-                  Calories
+            {selectedProduct.nutritionPer100g ? (
+              <>
+                <p className="mt-3 text-[11px] font-semibold uppercase tracking-wide text-campus-muted">
+                  Pour 100 g
                 </p>
-                <p className="text-sm font-bold text-campus-ink">
-                  {selectedProduct.kcal} kcal
-                </p>
+                <div className="mt-1 grid grid-cols-2 gap-2">
+                  <div className="rounded-xl bg-campus-terracotta/10 p-3">
+                    <p className="text-[11px] uppercase tracking-wide text-campus-muted">
+                      Calories
+                    </p>
+                    <p className="text-sm font-bold text-campus-ink">
+                      {selectedProduct.nutritionPer100g.kcal} kcal
+                    </p>
+                  </div>
+                  <div className="rounded-xl bg-campus-terracotta/10 p-3">
+                    <p className="text-[11px] uppercase tracking-wide text-campus-muted">
+                      Protéines
+                    </p>
+                    <p className="text-sm font-bold text-campus-ink">
+                      {selectedProduct.nutritionPer100g.proteinG} g
+                    </p>
+                  </div>
+                  <div className="rounded-xl bg-campus-terracotta/10 p-3">
+                    <p className="text-[11px] uppercase tracking-wide text-campus-muted">
+                      Lipides
+                    </p>
+                    <p className="text-sm font-bold text-campus-ink">
+                      {selectedProduct.nutritionPer100g.lipidesG} g
+                    </p>
+                  </div>
+                  <div className="rounded-xl bg-campus-terracotta/10 p-3">
+                    <p className="text-[11px] uppercase tracking-wide text-campus-muted">
+                      Glucides
+                    </p>
+                    <p className="text-sm font-bold text-campus-ink">
+                      {selectedProduct.nutritionPer100g.glucidesG} g
+                    </p>
+                  </div>
+                  <div className="col-span-2 rounded-xl bg-campus-terracotta/10 p-3">
+                    <p className="text-[11px] uppercase tracking-wide text-campus-muted">
+                      Sel
+                    </p>
+                    <p className="text-sm font-bold text-campus-ink">
+                      {selectedProduct.nutritionPer100g.selG} g
+                    </p>
+                  </div>
+                </div>
+              </>
+            ) : (
+              <div className="mt-4 grid grid-cols-2 gap-2">
+                <div className="rounded-xl bg-campus-terracotta/10 p-3">
+                  <p className="text-[11px] uppercase tracking-wide text-campus-muted">
+                    Calories
+                  </p>
+                  <p className="text-sm font-bold text-campus-ink">
+                    {selectedProduct.kcal} kcal
+                  </p>
+                </div>
+                <div className="rounded-xl bg-campus-terracotta/10 p-3">
+                  <p className="text-[11px] uppercase tracking-wide text-campus-muted">
+                    Protéines
+                  </p>
+                  <p className="text-sm font-bold text-campus-ink">
+                    {LEVEL_LABELS[selectedProduct.protein]}
+                  </p>
+                </div>
+                <div className="rounded-xl bg-campus-terracotta/10 p-3">
+                  <p className="text-[11px] uppercase tracking-wide text-campus-muted">
+                    Lipides
+                  </p>
+                  <p className="text-sm font-bold text-campus-ink">
+                    {LEVEL_LABELS[selectedProduct.lipides]}
+                  </p>
+                </div>
+                <div className="rounded-xl bg-campus-terracotta/10 p-3">
+                  <p className="text-[11px] uppercase tracking-wide text-campus-muted">
+                    Glucides
+                  </p>
+                  <p className="text-sm font-bold text-campus-ink">
+                    {LEVEL_LABELS[selectedProduct.glucides]}
+                  </p>
+                </div>
+                <div className="col-span-2 rounded-xl bg-campus-terracotta/10 p-3">
+                  <p className="text-[11px] uppercase tracking-wide text-campus-muted">
+                    Sel
+                  </p>
+                  <p className="text-sm font-bold text-campus-ink">
+                    {LEVEL_LABELS[selectedProduct.sel]}
+                  </p>
+                </div>
               </div>
-              <div className="rounded-xl bg-campus-terracotta/10 p-3">
-                <p className="text-[11px] uppercase tracking-wide text-campus-muted">
-                  Protéines
-                </p>
-                <p className="text-sm font-bold text-campus-ink">
-                  {LEVEL_LABELS[selectedProduct.protein]}
-                </p>
-              </div>
-              <div className="rounded-xl bg-campus-terracotta/10 p-3">
-                <p className="text-[11px] uppercase tracking-wide text-campus-muted">
-                  Lipides
-                </p>
-                <p className="text-sm font-bold text-campus-ink">
-                  {LEVEL_LABELS[selectedProduct.lipides]}
-                </p>
-              </div>
-              <div className="rounded-xl bg-campus-terracotta/10 p-3">
-                <p className="text-[11px] uppercase tracking-wide text-campus-muted">
-                  Glucides
-                </p>
-                <p className="text-sm font-bold text-campus-ink">
-                  {LEVEL_LABELS[selectedProduct.glucides]}
-                </p>
-              </div>
-              <div className="col-span-2 rounded-xl bg-campus-terracotta/10 p-3">
-                <p className="text-[11px] uppercase tracking-wide text-campus-muted">
-                  Sel
-                </p>
-                <p className="text-sm font-bold text-campus-ink">
-                  {LEVEL_LABELS[selectedProduct.sel]}
-                </p>
-              </div>
-            </div>
+            )}
 
             {selectedProduct.allergens.length > 0 && (
               <p className="mt-3 text-xs text-campus-muted">
