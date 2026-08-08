@@ -170,10 +170,6 @@ export default function ResultsContent({
 
       <StatsHeader result={result} refreshSignal={completionSignal} />
 
-      {result.items.length > 0 && (
-        <NutritionSummaryCard items={result.items} macroTargets={macroTargets} />
-      )}
-
       {result.isBudgetInsufficient && (
         <div className="rounded-2xl border border-campus-terracotta/40 bg-campus-terracotta/10 p-4">
           <p className="text-sm font-bold text-campus-ink">
@@ -319,6 +315,10 @@ export default function ResultsContent({
             </section>
           ))}
         </div>
+      )}
+
+      {result.items.length > 0 && (
+        <NutritionSummaryCard items={result.items} macroTargets={macroTargets} />
       )}
 
       <button type="button" onClick={onRestart} className="btn-primary">
