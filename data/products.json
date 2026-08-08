@@ -743,10 +743,10 @@
   },
   {
     "id": "lait",
-    "shortName": "Lait",
+    "shortName": "Lait demi-écrémé",
     "weeklyServings": 7,
     "servingUnit": "verre",
-    "name": "Lait de la ferme jaouda",
+    "name": "Lait de la ferme jaouda — lait demi-écrémé",
     "price": 4,
     "unit": "brique",
     "category": "frais",
@@ -768,6 +768,23 @@
     "gramsPerServing": 200,
     "priceInfo": {
       "source": "open-prices"
+    },
+    "nutritionPer100g": {
+      "per100g": true,
+      "kcal": 47.5,
+      "proteinG": 3.46,
+      "glucidesG": 4.97,
+      "sucresG": 4.91,
+      "lipidesG": 1.55,
+      "satureesG": 0.98,
+      "fibresG": 0,
+      "selG": 0.087,
+      "sourceFoodName": "Lait demi-écrémé (aliment moyen)",
+      "sourceId": "19033",
+      "matchConfidence": "high",
+      "nutritionSource": "ciqual-2025",
+      "sourceVersion": "Anses, 2025, Table de composition nutritionnelle des aliments Ciqual (édition 2025-11-03)",
+      "importDate": "2026-08-08"
     }
   },
   {
@@ -1908,6 +1925,23 @@
     "gramsPerServing": 200,
     "priceInfo": {
       "source": "estimation"
+    },
+    "nutritionPer100g": {
+      "per100g": true,
+      "kcal": 0.4,
+      "proteinG": 0.1,
+      "glucidesG": 0,
+      "sucresG": 0,
+      "lipidesG": 0,
+      "satureesG": 0,
+      "fibresG": 0,
+      "selG": 0.004,
+      "sourceFoodName": "Thé infusé, sans sucres ajoutés",
+      "sourceId": "18020",
+      "matchConfidence": "high",
+      "nutritionSource": "ciqual-2025",
+      "sourceVersion": "Anses, 2025, Table de composition nutritionnelle des aliments Ciqual (édition 2025-11-03)",
+      "importDate": "2026-08-08"
     }
   },
   {
@@ -3822,6 +3856,23 @@
     "gramsPerServing": 80,
     "priceInfo": {
       "source": "open-prices"
+    },
+    "nutritionPer100g": {
+      "per100g": true,
+      "kcal": 371,
+      "proteinG": 11.9,
+      "glucidesG": 71,
+      "sucresG": 0.5,
+      "lipidesG": 3,
+      "satureesG": 1,
+      "fibresG": 4,
+      "selG": 0.99,
+      "sourceFoodName": "Pâtes ou nouilles asiatiques sèches, au blé et aux oeufs, nature, crues",
+      "sourceId": "9863",
+      "matchConfidence": "review",
+      "nutritionSource": "ciqual-2025",
+      "sourceVersion": "Anses, 2025, Table de composition nutritionnelle des aliments Ciqual (édition 2025-11-03)",
+      "importDate": "2026-08-08"
     }
   },
   {
@@ -4983,6 +5034,23 @@
     "gramsPerServing": 30,
     "priceInfo": {
       "source": "open-prices"
+    },
+    "nutritionPer100g": {
+      "per100g": true,
+      "kcal": 444,
+      "proteinG": 8.69,
+      "glucidesG": 60.6,
+      "sucresG": 20.4,
+      "lipidesG": 18.2,
+      "satureesG": 4.03,
+      "fibresG": 4.6,
+      "selG": 0.45,
+      "sourceFoodName": "Barre céréalière aux amandes ou noisettes",
+      "sourceId": "31114",
+      "matchConfidence": "review",
+      "nutritionSource": "ciqual-2025",
+      "sourceVersion": "Anses, 2025, Table de composition nutritionnelle des aliments Ciqual (édition 2025-11-03)",
+      "importDate": "2026-08-08"
     }
   },
   {
@@ -6614,6 +6682,23 @@
     "gramsPerServing": 150,
     "priceInfo": {
       "source": "open-prices"
+    },
+    "nutritionPer100g": {
+      "per100g": true,
+      "kcal": 54.88,
+      "proteinG": 1.29,
+      "glucidesG": 10.3,
+      "sucresG": 5.04,
+      "lipidesG": 0.19,
+      "satureesG": 0.04,
+      "fibresG": 3.4,
+      "selG": 0.12,
+      "sourceFoodName": "Moyenne calculée à parts égales : Carotte crue (Ciqual 20009) + Betterave rouge crue (20091) + Patate douce crue (4101) + Panais cru (20181)",
+      "sourceId": "20009+20091+4101+20181",
+      "matchConfidence": "review",
+      "nutritionSource": "ciqual-2025",
+      "sourceVersion": "Anses, 2025, Table de composition nutritionnelle des aliments Ciqual (édition 2025-11-03)",
+      "importDate": "2026-08-08"
     }
   },
   {
@@ -7661,6 +7746,23 @@
     "gramsPerServing": 100,
     "priceInfo": {
       "source": "open-prices"
+    },
+    "nutritionPer100g": {
+      "per100g": true,
+      "kcal": 26,
+      "proteinG": 1.7,
+      "glucidesG": 2.13,
+      "sucresG": 0.7,
+      "lipidesG": 0.3,
+      "satureesG": 0.073,
+      "fibresG": 4,
+      "selG": 0.11,
+      "sourceFoodName": "Salade ou chicorée frisée, crue",
+      "sourceId": "20012",
+      "matchConfidence": "review",
+      "nutritionSource": "ciqual-2025",
+      "sourceVersion": "Anses, 2025, Table de composition nutritionnelle des aliments Ciqual (édition 2025-11-03)",
+      "importDate": "2026-08-08"
     }
   },
   {
@@ -8034,7 +8136,7 @@
   },
   {
     "id": "lait-ecreme",
-    "shortName": "Lait écrémé",
+    "shortName": "Lait demi-écrémé (Viva)",
     "name": "Viva lait 1/2 écrémé",
     "price": 1.04,
     "unit": "brique",
@@ -8058,6 +8160,23 @@
     "gramsPerServing": 200,
     "priceInfo": {
       "source": "open-prices"
+    },
+    "nutritionPer100g": {
+      "per100g": true,
+      "kcal": 47.5,
+      "proteinG": 3.46,
+      "glucidesG": 4.97,
+      "sucresG": 4.91,
+      "lipidesG": 1.55,
+      "satureesG": 0.98,
+      "fibresG": 0,
+      "selG": 0.087,
+      "sourceFoodName": "Lait demi-écrémé (aliment moyen)",
+      "sourceId": "19033",
+      "matchConfidence": "high",
+      "nutritionSource": "ciqual-2025",
+      "sourceVersion": "Anses, 2025, Table de composition nutritionnelle des aliments Ciqual (édition 2025-11-03)",
+      "importDate": "2026-08-08"
     }
   },
   {
@@ -8551,6 +8670,23 @@
     "gramsPerServing": 200,
     "priceInfo": {
       "source": "estimation"
+    },
+    "nutritionPer100g": {
+      "per100g": true,
+      "kcal": 268,
+      "proteinG": 11.3,
+      "glucidesG": 37.3,
+      "sucresG": 3.83,
+      "lipidesG": 7.69,
+      "satureesG": 4.28,
+      "fibresG": 2.23,
+      "selG": 1.13,
+      "sourceFoodName": "Pâtes fraîches farcies (raviolis, tortellinis, ravioles du Dauphiné), au fromage, préemballées, crues",
+      "sourceId": "25181",
+      "matchConfidence": "review",
+      "nutritionSource": "ciqual-2025",
+      "sourceVersion": "Anses, 2025, Table de composition nutritionnelle des aliments Ciqual (édition 2025-11-03)",
+      "importDate": "2026-08-08"
     }
   },
   {
