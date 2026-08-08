@@ -6852,5 +6852,656 @@
     "priceInfo": {
       "source": "estimation"
     }
+  },
+  {
+    "id": "chapelure",
+    "shortName": "Chapelure",
+    "name": "Chapelure dorée",
+    "price": 0.58,
+    "priceInfo": {
+      "source": "open-prices",
+      "date": "2026-05-16",
+      "enseigne": "E. Leclerc",
+      "zone": "Nancy"
+    },
+    "offCode": "3165440007808",
+    "unit": "paquet",
+    "category": "epicerie",
+    "mealSlot": "dejeuner-diner",
+    "dietTags": [
+      "omnivore",
+      "vegetarien",
+      "vegan",
+      "sans-porc"
+    ],
+    "allergens": [
+      "gluten"
+    ],
+    "kcal": 360,
+    "protein": "moyen",
+    "lipides": "faible",
+    "glucides": "riche",
+    "sel": "moyen",
+    "easyToCook": true,
+    "isCondiment": true
+  },
+  {
+    "id": "artichauts-marines",
+    "shortName": "Cœurs d'artichauts",
+    "name": "Coeurs d'artichauts",
+    "price": 1.67,
+    "priceInfo": {
+      "source": "open-prices",
+      "date": "2025-01-29",
+      "enseigne": "Lidl",
+      "zone": "Saint-Priest"
+    },
+    "offCode": "20543167",
+    "unit": "boîte",
+    "category": "epicerie",
+    "mealSlot": "dejeuner-diner",
+    "dietTags": [
+      "omnivore",
+      "vegetarien",
+      "vegan",
+      "sans-porc"
+    ],
+    "allergens": [],
+    "kcal": 27,
+    "protein": "faible",
+    "lipides": "faible",
+    "glucides": "faible",
+    "sel": "moyen",
+    "easyToCook": true
+  },
+  {
+    "id": "curry-poudre",
+    "shortName": "Curry en poudre",
+    "name": "Curry en poudre",
+    "price": 2.5,
+    "priceInfo": {
+      "source": "estimation"
+    },
+    "offCode": "20249939",
+    "unit": "pot",
+    "category": "epicerie",
+    "mealSlot": "dejeuner-diner",
+    "dietTags": [
+      "omnivore",
+      "vegetarien",
+      "vegan",
+      "sans-porc"
+    ],
+    "allergens": [],
+    "kcal": 312,
+    "protein": "moyen",
+    "lipides": "moyen",
+    "glucides": "moyen",
+    "sel": "riche",
+    "easyToCook": true,
+    "isCondiment": true
+  },
+  {
+    "id": "pesto",
+    "shortName": "Pesto",
+    "name": "Sauce pesto avec basilic",
+    "price": 2.15,
+    "priceInfo": {
+      "source": "open-prices",
+      "date": "2024-04-20",
+      "enseigne": "Auchan",
+      "zone": "Grenoble"
+    },
+    "offCode": "8076809513753",
+    "unit": "pot",
+    "category": "epicerie",
+    "mealSlot": "dejeuner-diner",
+    "dietTags": [
+      "omnivore",
+      "sans-porc"
+    ],
+    "allergens": [
+      "lactose",
+      "fruits-a-coque"
+    ],
+    "kcal": 492,
+    "protein": "faible",
+    "lipides": "riche",
+    "glucides": "moyen",
+    "sel": "riche",
+    "easyToCook": true,
+    "isCondiment": true
+  },
+  {
+    "id": "the-vert",
+    "shortName": "Thé vert",
+    "name": "Thé vert saveur menthe",
+    "price": 2.67,
+    "priceInfo": {
+      "source": "open-prices",
+      "date": "2026-06-29",
+      "enseigne": "Carrefour City",
+      "zone": "Grenoble"
+    },
+    "offCode": "3124480195326",
+    "unit": "boîte",
+    "category": "epicerie",
+    "mealSlot": "petit-dejeuner",
+    "dietTags": [
+      "omnivore",
+      "sans-porc"
+    ],
+    "allergens": [],
+    "kcal": 14,
+    "protein": "faible",
+    "lipides": "faible",
+    "glucides": "faible",
+    "sel": "faible",
+    "easyToCook": true
+  },
+  {
+    "id": "chocolat-noir",
+    "shortName": "Chocolat noir",
+    "name": "Fourrés Chocolat Noir",
+    "price": 2.96,
+    "priceInfo": {
+      "source": "open-prices",
+      "date": "2026-06-03",
+      "zone": "La Rochelle"
+    },
+    "offCode": "3229820100234",
+    "unit": "tablette",
+    "category": "epicerie",
+    "mealSlot": "encas-extra",
+    "dietTags": [
+      "omnivore",
+      "vegetarien",
+      "sans-porc"
+    ],
+    "allergens": [
+      "gluten",
+      "lactose"
+    ],
+    "kcal": 476,
+    "protein": "moyen",
+    "lipides": "riche",
+    "glucides": "riche",
+    "sel": "moyen",
+    "easyToCook": true,
+    "gourmand": true
+  },
+  {
+    "id": "amandes",
+    "shortName": "Amandes",
+    "name": "Amandes",
+    "price": 2.79,
+    "priceInfo": {
+      "source": "open-prices",
+      "date": "2026-01-30",
+      "enseigne": "Lidl",
+      "zone": "Grenoble"
+    },
+    "offCode": "20724696",
+    "unit": "sachet",
+    "category": "epicerie",
+    "mealSlot": "encas-extra",
+    "dietTags": [
+      "omnivore",
+      "vegetarien",
+      "vegan",
+      "sans-porc"
+    ],
+    "allergens": [
+      "fruits-a-coque"
+    ],
+    "kcal": 621,
+    "protein": "riche",
+    "lipides": "riche",
+    "glucides": "faible",
+    "sel": "faible",
+    "easyToCook": true
+  },
+  {
+    "id": "gelatine",
+    "shortName": "Gélatine",
+    "name": "Gélatine alimentaire",
+    "price": 1.51,
+    "priceInfo": {
+      "source": "open-prices",
+      "date": "2025-03-10",
+      "enseigne": "Intermarché",
+      "zone": "Grenoble"
+    },
+    "offCode": "3179142056583",
+    "unit": "sachet",
+    "category": "epicerie",
+    "mealSlot": "encas-extra",
+    "dietTags": [
+      "omnivore"
+    ],
+    "allergens": [],
+    "kcal": 0,
+    "protein": "faible",
+    "lipides": "faible",
+    "glucides": "faible",
+    "sel": "faible",
+    "easyToCook": true,
+    "isCondiment": true
+  },
+  {
+    "id": "choux-bruxelles",
+    "shortName": "Choux de Bruxelles",
+    "name": "Choux de Bruxelles",
+    "price": 2.2,
+    "priceInfo": {
+      "source": "estimation"
+    },
+    "offCode": "3270160599363",
+    "unit": "sachet",
+    "category": "fruits-legumes",
+    "mealSlot": "dejeuner-diner",
+    "dietTags": [
+      "omnivore",
+      "vegetarien",
+      "vegan",
+      "sans-porc"
+    ],
+    "allergens": [],
+    "kcal": 44,
+    "protein": "faible",
+    "lipides": "faible",
+    "glucides": "faible",
+    "sel": "faible",
+    "easyToCook": true
+  },
+  {
+    "id": "brie",
+    "shortName": "Brie",
+    "name": "Pointe de Brie",
+    "price": 1.98,
+    "priceInfo": {
+      "source": "open-prices",
+      "date": "2026-03-28",
+      "enseigne": "Centre Commercial E.Leclerc",
+      "zone": "Clichy"
+    },
+    "offCode": "3176582040103",
+    "unit": "pièce",
+    "category": "frais",
+    "mealSlot": "dejeuner-diner",
+    "dietTags": [
+      "omnivore",
+      "sans-porc"
+    ],
+    "allergens": [
+      "lactose"
+    ],
+    "kcal": 338,
+    "protein": "riche",
+    "lipides": "riche",
+    "glucides": "faible",
+    "sel": "moyen",
+    "easyToCook": true
+  },
+  {
+    "id": "comte",
+    "shortName": "Comté",
+    "name": "Comté",
+    "price": 3.28,
+    "priceInfo": {
+      "source": "open-prices",
+      "date": "2026-03-08",
+      "enseigne": "Centre Commercial E.Leclerc",
+      "zone": "Gennevilliers"
+    },
+    "offCode": "3123930650026",
+    "unit": "part",
+    "category": "frais",
+    "mealSlot": "dejeuner-diner",
+    "dietTags": [
+      "omnivore",
+      "sans-porc"
+    ],
+    "allergens": [
+      "lactose"
+    ],
+    "kcal": 410,
+    "protein": "riche",
+    "lipides": "riche",
+    "glucides": "faible",
+    "sel": "moyen",
+    "easyToCook": true
+  },
+  {
+    "id": "creme-dessert",
+    "shortName": "Crème dessert",
+    "name": "CREME DESSERT BIO AU CHOCOLAT",
+    "price": 1.74,
+    "priceInfo": {
+      "source": "open-prices",
+      "date": "2026-03-24",
+      "enseigne": "Centre Commercial E.Leclerc",
+      "zone": "Clichy"
+    },
+    "offCode": "3661344288690",
+    "unit": "pack",
+    "category": "frais",
+    "mealSlot": "encas-extra",
+    "dietTags": [
+      "omnivore",
+      "vegetarien",
+      "sans-porc"
+    ],
+    "allergens": [
+      "lactose"
+    ],
+    "kcal": 146,
+    "protein": "faible",
+    "lipides": "moyen",
+    "glucides": "moyen",
+    "sel": "faible",
+    "easyToCook": true,
+    "gourmand": true
+  },
+  {
+    "id": "yaourt-soja",
+    "shortName": "Yaourt au soja",
+    "name": "Yaourt au Soja Citron",
+    "price": 1.79,
+    "priceInfo": {
+      "source": "open-prices",
+      "date": "2024-07-15",
+      "enseigne": "Carrefour Market",
+      "zone": "Veynes"
+    },
+    "offCode": "3273220083000",
+    "unit": "pack",
+    "category": "frais",
+    "mealSlot": "petit-dejeuner",
+    "dietTags": [
+      "omnivore",
+      "sans-porc"
+    ],
+    "allergens": [],
+    "kcal": 77,
+    "protein": "faible",
+    "lipides": "faible",
+    "glucides": "moyen",
+    "sel": "faible",
+    "easyToCook": true
+  },
+  {
+    "id": "seitan",
+    "shortName": "Seitan",
+    "name": "Seitan veggie",
+    "price": 4.38,
+    "priceInfo": {
+      "source": "open-prices",
+      "date": "2025-01-03",
+      "enseigne": "E. Leclerc",
+      "zone": "Perpignan"
+    },
+    "offCode": "3229820796642",
+    "unit": "barquette",
+    "category": "frais",
+    "mealSlot": "dejeuner-diner",
+    "dietTags": [
+      "omnivore",
+      "sans-porc"
+    ],
+    "allergens": [
+      "gluten"
+    ],
+    "kcal": 132,
+    "protein": "riche",
+    "lipides": "faible",
+    "glucides": "faible",
+    "sel": "moyen",
+    "easyToCook": true
+  },
+  {
+    "id": "pate-brisee",
+    "shortName": "Pâte brisée",
+    "name": "HERTA TARTE EN OR Pâte Brisée 230g",
+    "price": 1.18,
+    "priceInfo": {
+      "source": "open-prices",
+      "date": "2026-02-22",
+      "enseigne": "Centre Commercial E.Leclerc",
+      "zone": "Gennevilliers"
+    },
+    "offCode": "3154230600121",
+    "unit": "rouleau",
+    "category": "frais",
+    "mealSlot": "dejeuner-diner",
+    "dietTags": [
+      "omnivore",
+      "vegetarien",
+      "sans-porc"
+    ],
+    "allergens": [
+      "gluten"
+    ],
+    "kcal": 388,
+    "protein": "moyen",
+    "lipides": "riche",
+    "glucides": "riche",
+    "sel": "moyen",
+    "easyToCook": true
+  },
+  {
+    "id": "boeuf-hache-15",
+    "shortName": "Bœuf haché 15%",
+    "name": "steak haché pur boeuf 15%MG",
+    "price": 5.5,
+    "priceInfo": {
+      "source": "estimation"
+    },
+    "offCode": "20114008",
+    "unit": "barquette",
+    "category": "viande-poisson",
+    "mealSlot": "dejeuner-diner",
+    "dietTags": [
+      "omnivore",
+      "sans-porc"
+    ],
+    "allergens": [],
+    "kcal": 207,
+    "protein": "riche",
+    "lipides": "moyen",
+    "glucides": "faible",
+    "sel": "faible",
+    "easyToCook": true
+  },
+  {
+    "id": "hareng",
+    "shortName": "Hareng fumé",
+    "name": "Filets de harengs fumés -25% de sel",
+    "price": 5.5,
+    "priceInfo": {
+      "source": "estimation"
+    },
+    "offCode": "3038680063715",
+    "unit": "paquet",
+    "category": "viande-poisson",
+    "mealSlot": "dejeuner-diner",
+    "dietTags": [
+      "omnivore",
+      "sans-porc"
+    ],
+    "allergens": [],
+    "kcal": 227,
+    "protein": "riche",
+    "lipides": "moyen",
+    "glucides": "faible",
+    "sel": "riche",
+    "easyToCook": true
+  },
+  {
+    "id": "brochettes-poulet",
+    "shortName": "Brochettes de poulet",
+    "name": "Brochettes de medaillons de poulet à la provençale",
+    "price": 5.5,
+    "priceInfo": {
+      "source": "estimation"
+    },
+    "offCode": "20213916",
+    "unit": "barquette",
+    "category": "viande-poisson",
+    "mealSlot": "dejeuner-diner",
+    "dietTags": [
+      "omnivore",
+      "sans-porc"
+    ],
+    "allergens": [],
+    "kcal": 154,
+    "protein": "riche",
+    "lipides": "moyen",
+    "glucides": "faible",
+    "sel": "moyen",
+    "easyToCook": true
+  },
+  {
+    "id": "poulpe",
+    "shortName": "Poulpe",
+    "name": "Poulpe Ail et Persil",
+    "price": 5.5,
+    "priceInfo": {
+      "source": "estimation"
+    },
+    "offCode": "3418840238557",
+    "unit": "barquette",
+    "category": "viande-poisson",
+    "mealSlot": "dejeuner-diner",
+    "dietTags": [
+      "omnivore",
+      "sans-porc"
+    ],
+    "allergens": [],
+    "kcal": 200,
+    "protein": "riche",
+    "lipides": "moyen",
+    "glucides": "faible",
+    "sel": "riche",
+    "easyToCook": true
+  },
+  {
+    "id": "veau-hache",
+    "shortName": "Veau haché",
+    "name": "4 escalopes hachées pur veau",
+    "price": 5.5,
+    "priceInfo": {
+      "source": "estimation"
+    },
+    "offCode": "3270160147571",
+    "unit": "barquette",
+    "category": "viande-poisson",
+    "mealSlot": "dejeuner-diner",
+    "dietTags": [
+      "omnivore",
+      "sans-porc"
+    ],
+    "allergens": [],
+    "kcal": 176,
+    "protein": "riche",
+    "lipides": "moyen",
+    "glucides": "faible",
+    "sel": "faible",
+    "easyToCook": true
+  },
+  {
+    "id": "madeleine",
+    "shortName": "Madeleines",
+    "name": "Petites Madeleines",
+    "price": 2.21,
+    "priceInfo": {
+      "source": "open-prices",
+      "date": "2024-02-27",
+      "enseigne": "Intermarché",
+      "zone": "Grenoble"
+    },
+    "offCode": "3178530410105",
+    "unit": "paquet",
+    "category": "boulangerie",
+    "mealSlot": "encas-extra",
+    "dietTags": [
+      "omnivore",
+      "sans-porc"
+    ],
+    "allergens": [
+      "oeuf",
+      "gluten",
+      "lactose"
+    ],
+    "kcal": 419,
+    "protein": "moyen",
+    "lipides": "riche",
+    "glucides": "riche",
+    "sel": "moyen",
+    "easyToCook": true,
+    "gourmand": true
+  },
+  {
+    "id": "galette-bretonne",
+    "shortName": "Galette bretonne",
+    "name": "Galette bretonne pur beurre",
+    "price": 1.14,
+    "priceInfo": {
+      "source": "open-prices",
+      "date": "2025-02-09",
+      "enseigne": "Intermarché",
+      "zone": "Clichy"
+    },
+    "offCode": "3250391737109",
+    "unit": "paquet",
+    "category": "boulangerie",
+    "mealSlot": "encas-extra",
+    "dietTags": [
+      "omnivore",
+      "sans-porc"
+    ],
+    "allergens": [
+      "oeuf",
+      "gluten",
+      "lactose",
+      "arachide"
+    ],
+    "kcal": 495,
+    "protein": "moyen",
+    "lipides": "riche",
+    "glucides": "riche",
+    "sel": "moyen",
+    "easyToCook": true,
+    "gourmand": true
+  },
+  {
+    "id": "baguette-graines",
+    "shortName": "Baguette aux céréales",
+    "name": "Baguette aux céréales",
+    "price": 1.2,
+    "priceInfo": {
+      "source": "open-prices",
+      "date": "2024-10-20",
+      "enseigne": "Super U",
+      "zone": "Noisiel"
+    },
+    "offCode": "2000000228662",
+    "unit": "pain",
+    "category": "boulangerie",
+    "mealSlot": "petit-dejeuner",
+    "dietTags": [
+      "omnivore",
+      "vegetarien",
+      "sans-porc"
+    ],
+    "allergens": [
+      "gluten"
+    ],
+    "kcal": 301,
+    "protein": "moyen",
+    "lipides": "moyen",
+    "glucides": "riche",
+    "sel": "moyen",
+    "easyToCook": true
   }
 ]

@@ -72,6 +72,7 @@ const FIELDS = [
   "allergens_tags",
   "ingredients_analysis_tags",
   "ingredients_text_fr",
+  "categories_tags",
 ].join(",");
 
 function normalize(text) {
@@ -152,6 +153,71 @@ async function fetchWithRetry(url, options, label) {
   throw lastError;
 }
 
+// Catégories OFF qui signalent un plat composite/préparé plutôt qu'un
+// ingrédient brut — un ingrédient de base (ex: "asperges") ne doit jamais
+// matcher une catégorie "plats préparés"/"pâtes"/"pizzas"/"sandwichs".
+const COMPOSITE_DISH_CATEGORY_HINTS = [
+  "meals",
+  "prepared-meals",
+  "pizzas",
+  "sandwiches",
+  "one-dish-meals",
+  "prepared-salads",
+  "quiches",
+  "ready-to-eat-meals",
+];
+
+function looksLikeCompositeDishCategory(p) {
+  const tags = (p.categories_tags || []).map((t) => t.toLowerCase());
+  return COMPOSITE_DISH_CATEGORY_HINTS.some((hint) =>
+    tags.some((t) => t.includes(hint))
+  );
+}
+
+// Mots qui trahissent un plat composite/une recette dans le NOM du produit
+// plutôt qu'un ingrédient brut — trouvés après une régénération du
+// catalogue qui a fait remonter des faux positifs bien réels : "boulgour"
+// -> des galettes toutes prêtes, "melon" -> une eau pétillante parfumée,
+// "asperges" -> des pâtes toutes prêtes, "citron vert" -> un plat de poulet
+// cuisiné, "gambas" -> des pâtes au pesto, "nuoc-mam" -> des nems surgelés.
+// Si un de ces mots apparaît dans le nom SANS apparaître dans le terme
+// cherché, ce n'est presque jamais le bon produit.
+// Note : volontairement PAS "sauce", "eau" ou "boisson" ici — trop
+// génériques, ça aurait rejeté à tort de vrais bons matchs (ex: "Sauce
+// pesto avec basilic" est le bon produit pour une recherche "pesto"). Le
+// filtre par catégorie ci-dessus (looksLikeCompositeDishCategory) reste la
+// meilleure protection pour ces cas-là.
+const DISH_INDICATOR_WORDS = [
+  "galette",
+  "galettes",
+  "pasta",
+  "tagliatelles",
+  "compotee",
+  "rillettes",
+  "nems",
+  "sparkling",
+  "farci",
+  "farcie",
+  "garni",
+  "garnie",
+  "tarte",
+  "pizza",
+  "sandwich",
+  "brochette",
+  "brochettes",
+  "gratin",
+  "veloute",
+  "quiche",
+];
+
+function hasUnrelatedDishIndicator(name, searchTerm) {
+  const normName = normalize(name);
+  const normSearch = normalize(searchTerm);
+  return DISH_INDICATOR_WORDS.some(
+    (word) => normName.includes(word) && !normSearch.includes(word)
+  );
+}
+
 // Ne garde un résultat que si le terme cherché apparaît vraiment dans son
 // nom — évite les faux positifs (ex: "huile d'olive" -> un gazpacho).
 function findBestMatch(products, searchTerm) {
@@ -165,11 +231,22 @@ function findBestMatch(products, searchTerm) {
     .split(" ")
     .filter((w) => w.length > 2);
 
-  return products.find((p) => {
+  const candidates = products.filter((p) => {
     if (!p.nutriments || p.nutriments["energy-kcal_100g"] === undefined) return false;
     const name = normalize(pickName(p, ""));
-    return keywords.every((k) => name.includes(k));
+    if (!keywords.every((k) => name.includes(k))) return false;
+    if (looksLikeCompositeDishCategory(p)) return false;
+    if (hasUnrelatedDishIndicator(name, searchTerm)) return false;
+    return true;
   });
+
+  if (candidates.length === 0) return null;
+
+  // Entre plusieurs candidats valides, le nom le plus court/simple est
+  // presque toujours le bon ingrédient brut plutôt qu'une variante
+  // composée (ex: "Comté" plutôt que "Comté AOP tranches fines x12 250g").
+  candidates.sort((a, b) => pickName(a, "").length - pickName(b, "").length);
+  return candidates[0];
 }
 
 async function searchProduct(query) {
