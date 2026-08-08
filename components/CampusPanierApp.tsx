@@ -13,12 +13,17 @@ import SignIn from "@/components/SignIn";
 import { getCloudProfile, saveCloudProfile, updateLastBudget } from "@/lib/authProfile";
 import { addFavorite, findFavorite, getFavorites, removeFavorite } from "@/lib/favorites";
 import { auth } from "@/lib/firebase";
-import { generateShoppingList } from "@/lib/generateShoppingList";
+import {
+  generateShoppingList,
+  recomputeAfterSwap,
+  replaceItem,
+} from "@/lib/generateShoppingList";
 import { playClickSound } from "@/lib/sound";
 import { recordListGenerated } from "@/lib/stats";
 import {
   FavoriteList,
   MealOutEntry,
+  Product,
   ShoppingListResult,
   UserPreferences,
   UserProfile,
@@ -127,6 +132,19 @@ export default function CampusPanierApp() {
   function handleBudgetSubmit(budget: number) {
     if (!profile) return;
     generateList({ budget, ...profile });
+  }
+
+  // Échange un produit de "Ma liste" contre un autre (bouton "Échanger" du
+  // popup produit, voir ResultsContent.tsx) — ne touche ni les préférences
+  // ni le budget saisi, juste le contenu de la liste déjà générée. Comme
+  // "resumeList", n'est pas persisté sur le profil : rouvrir l'app ou faire
+  // "Refaire" régénère la liste à partir du profil/budget, sans garder les
+  // échanges faits à la main (limite connue, à améliorer plus tard si
+  // besoin).
+  function handleSwapProduct(oldProductId: string, newProduct: Product) {
+    if (!result) return;
+    const newItems = replaceItem(result.items, oldProductId, newProduct);
+    setResult(recomputeAfterSwap(newItems, result));
   }
 
   function handleRestart() {
@@ -288,6 +306,7 @@ export default function CampusPanierApp() {
                 onRestart={handleRestart}
                 isFavorited={Boolean(currentFavorite)}
                 onToggleFavorite={handleToggleFavorite}
+                onSwapProduct={handleSwapProduct}
               />
             )}
             {resultsTab === "menu" && (

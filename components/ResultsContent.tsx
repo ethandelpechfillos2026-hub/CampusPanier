@@ -3,6 +3,7 @@
 import { useRef, useState } from "react";
 import StatsHeader from "@/components/StatsHeader";
 import {
+  findSubstitute,
   formatPrice,
   formatPriceProvenance,
   getPriceReliability,
@@ -10,9 +11,12 @@ import {
 import { getActiveMacroTargets } from "@/lib/macros";
 import { recordListFullyChecked } from "@/lib/stats";
 import {
+  ALLERGEN_OPTIONS,
   CATEGORY_LABELS,
   CATEGORY_ORDER,
   MACRO_OPTIONS,
+  NutriLevel,
+  Product,
   ShoppingListResult,
   UserPreferences,
 } from "@/lib/types";
@@ -23,7 +27,18 @@ interface ResultsContentProps {
   onRestart: () => void;
   isFavorited: boolean;
   onToggleFavorite: () => void;
+  onSwapProduct: (oldProductId: string, newProduct: Product) => void;
 }
+
+// Libellés du "tableau nutritionnel" du popup produit — les seules données
+// dont on dispose sont ces niveaux qualitatifs (voir Product dans
+// lib/types.ts), pas de grammes précis : pas question d'inventer une
+// précision qu'on n'a pas.
+const LEVEL_LABELS: Record<NutriLevel, string> = {
+  faible: "Faible",
+  moyen: "Moyen",
+  riche: "Riche",
+};
 
 export default function ResultsContent({
   result,
@@ -31,6 +46,7 @@ export default function ResultsContent({
   onRestart,
   isFavorited,
   onToggleFavorite,
+  onSwapProduct,
 }: ResultsContentProps) {
   const [checkedIds, setCheckedIds] = useState<Set<string>>(new Set());
   const hasRecordedCompletionRef = useRef(false);
@@ -39,6 +55,38 @@ export default function ResultsContent({
   // rafraîchit que quand une nouvelle liste est générée, jamais en cochant
   // les articles de la liste actuelle.
   const [completionSignal, setCompletionSignal] = useState(0);
+  // Popup nutrition/échange ouvert en cliquant sur un produit (pas sur sa
+  // case à cocher, voir plus bas) — retour utilisateur (8 août 2026).
+  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
+  const [swapError, setSwapError] = useState<string | null>(null);
+
+  function handleOpenProduct(product: Product) {
+    setSwapError(null);
+    setSelectedProduct(product);
+  }
+
+  function handleSwap(product: Product) {
+    const excludeIds = new Set(result.items.map((item) => item.product.id));
+    const substitute = findSubstitute(product, preferences, excludeIds);
+    if (!substitute) {
+      setSwapError(
+        "Aucun remplacement à valeur nutritionnelle proche trouvé dans le catalogue pour ce produit."
+      );
+      return;
+    }
+    // Le produit remplacé n'a pas encore été acheté sous sa nouvelle
+    // identité — on retire son éventuelle coche plutôt que de la laisser
+    // trainer sur un id qui n'est plus dans la liste.
+    setCheckedIds((prev) => {
+      if (!prev.has(product.id)) return prev;
+      const next = new Set(prev);
+      next.delete(product.id);
+      return next;
+    });
+    onSwapProduct(product.id, substitute);
+    setSelectedProduct(null);
+    setSwapError(null);
+  }
 
   function toggleChecked(id: string) {
     setCheckedIds((prev) => {
@@ -196,50 +244,63 @@ export default function ResultsContent({
                   const reliability = getPriceReliability(product.priceInfo);
                   return (
                     <li key={product.id}>
-                      <label className="flex cursor-pointer items-start gap-3 rounded-xl px-1 py-2.5 transition-colors hover:bg-orange-50/60">
+                      {/* Case à cocher et reste de la ligne séparés
+                          volontairement (retour utilisateur, 8 août 2026) :
+                          cocher se fait uniquement en appuyant sur la case,
+                          cliquer sur le produit ouvre le popup nutrition/
+                          échange ci-dessous, plutôt que les deux gestes se
+                          marchant dessus comme avec un <label> englobant. */}
+                      <div className="flex items-start gap-3 rounded-xl px-1 py-1 transition-colors hover:bg-orange-50/60">
                         <input
                           type="checkbox"
                           checked={isChecked}
                           onChange={() => toggleChecked(product.id)}
-                          className="mt-0.5 h-5 w-5 shrink-0 rounded-md border-2 border-campus-sand accent-campus-terracotta"
+                          aria-label={`Cocher ${product.name}`}
+                          className="mt-3.5 h-5 w-5 shrink-0 rounded-md border-2 border-campus-sand accent-campus-terracotta"
                         />
-                        <span className="flex-1">
+                        <button
+                          type="button"
+                          onClick={() => handleOpenProduct(product)}
+                          className="flex flex-1 items-start gap-3 py-1.5 text-left"
+                        >
+                          <span className="flex-1">
+                            <span
+                              className={`block text-sm font-medium ${
+                                isChecked
+                                  ? "text-campus-muted line-through"
+                                  : "text-campus-ink"
+                              }`}
+                            >
+                              {product.name}
+                              {quantity > 1 && (
+                                <span className="ml-1.5 text-xs font-bold text-campus-terracotta">
+                                  ×{quantity}
+                                </span>
+                              )}
+                            </span>
+                            {!isChecked && (
+                              <span
+                                className={`block text-[11px] ${
+                                  reliability === "old"
+                                    ? "text-amber-600"
+                                    : "text-campus-muted"
+                                }`}
+                              >
+                                {provenance}
+                              </span>
+                            )}
+                          </span>
                           <span
-                            className={`block text-sm font-medium ${
+                            className={`shrink-0 text-sm font-semibold ${
                               isChecked
                                 ? "text-campus-muted line-through"
                                 : "text-campus-ink"
                             }`}
                           >
-                            {product.name}
-                            {quantity > 1 && (
-                              <span className="ml-1.5 text-xs font-bold text-campus-terracotta">
-                                ×{quantity}
-                              </span>
-                            )}
+                            {formatPrice(product.price * quantity)}
                           </span>
-                          {!isChecked && (
-                            <span
-                              className={`block text-[11px] ${
-                                reliability === "old"
-                                  ? "text-amber-600"
-                                  : "text-campus-muted"
-                              }`}
-                            >
-                              {provenance}
-                            </span>
-                          )}
-                        </span>
-                        <span
-                          className={`shrink-0 text-sm font-semibold ${
-                            isChecked
-                              ? "text-campus-muted line-through"
-                              : "text-campus-ink"
-                          }`}
-                        >
-                          {formatPrice(product.price * quantity)}
-                        </span>
-                      </label>
+                        </button>
+                      </div>
                     </li>
                   );
                 })}
@@ -256,6 +317,117 @@ export default function ResultsContent({
       <p className="text-center text-xs text-campus-muted">
         Prix indicatifs · Non contractuels
       </p>
+
+      {selectedProduct && (
+        <div
+          className="fixed inset-0 z-50 flex items-end justify-center bg-black/40 sm:items-center sm:px-5"
+          onClick={() => setSelectedProduct(null)}
+        >
+          <div
+            className="w-full max-w-sm rounded-t-3xl bg-white p-5 sm:rounded-3xl"
+            onClick={(event) => event.stopPropagation()}
+          >
+            <div className="flex items-start justify-between gap-3">
+              <h3 className="text-lg font-bold text-campus-ink">
+                {selectedProduct.name}
+              </h3>
+              <button
+                type="button"
+                onClick={() => setSelectedProduct(null)}
+                aria-label="Fermer"
+                className="shrink-0 text-2xl leading-none text-campus-muted"
+              >
+                ×
+              </button>
+            </div>
+            <p className="mt-1 text-sm text-campus-muted">
+              {formatPrice(selectedProduct.price)}
+            </p>
+
+            <div className="mt-4 grid grid-cols-2 gap-2">
+              <div className="rounded-xl bg-campus-terracotta/10 p-3">
+                <p className="text-[11px] uppercase tracking-wide text-campus-muted">
+                  Calories
+                </p>
+                <p className="text-sm font-bold text-campus-ink">
+                  {selectedProduct.kcal} kcal
+                </p>
+              </div>
+              <div className="rounded-xl bg-campus-terracotta/10 p-3">
+                <p className="text-[11px] uppercase tracking-wide text-campus-muted">
+                  Protéines
+                </p>
+                <p className="text-sm font-bold text-campus-ink">
+                  {LEVEL_LABELS[selectedProduct.protein]}
+                </p>
+              </div>
+              <div className="rounded-xl bg-campus-terracotta/10 p-3">
+                <p className="text-[11px] uppercase tracking-wide text-campus-muted">
+                  Lipides
+                </p>
+                <p className="text-sm font-bold text-campus-ink">
+                  {LEVEL_LABELS[selectedProduct.lipides]}
+                </p>
+              </div>
+              <div className="rounded-xl bg-campus-terracotta/10 p-3">
+                <p className="text-[11px] uppercase tracking-wide text-campus-muted">
+                  Glucides
+                </p>
+                <p className="text-sm font-bold text-campus-ink">
+                  {LEVEL_LABELS[selectedProduct.glucides]}
+                </p>
+              </div>
+              <div className="col-span-2 rounded-xl bg-campus-terracotta/10 p-3">
+                <p className="text-[11px] uppercase tracking-wide text-campus-muted">
+                  Sel
+                </p>
+                <p className="text-sm font-bold text-campus-ink">
+                  {LEVEL_LABELS[selectedProduct.sel]}
+                </p>
+              </div>
+            </div>
+
+            {selectedProduct.allergens.length > 0 && (
+              <p className="mt-3 text-xs text-campus-muted">
+                Allergènes :{" "}
+                {selectedProduct.allergens
+                  .map(
+                    (allergen) =>
+                      ALLERGEN_OPTIONS.find((option) => option.value === allergen)
+                        ?.label ?? allergen
+                  )
+                  .join(", ")}
+              </p>
+            )}
+
+            {swapError && (
+              <p className="mt-3 text-xs font-semibold text-red-600">{swapError}</p>
+            )}
+
+            <div className="mt-5 flex flex-col gap-2">
+              <button
+                type="button"
+                onClick={() => handleSwap(selectedProduct)}
+                className="btn-primary"
+              >
+                🔄 Échanger ce produit
+              </button>
+              <p className="text-center text-[11px] text-campus-muted">
+                Remplace par un produit à valeur nutritionnelle proche, sans
+                changer le budget de la liste — dans la limite de ce que
+                propose le catalogue.
+              </p>
+              <button
+                type="button"
+                onClick={() => setSelectedProduct(null)}
+                className="btn-secondary"
+              >
+                Fermer
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

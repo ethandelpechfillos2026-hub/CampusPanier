@@ -655,6 +655,104 @@ export function generateShoppingList(
   };
 }
 
+// Rang numérique d'un niveau nutritionnel — sert uniquement à mesurer un
+// écart ("faible" à "riche" = 2 crans) dans findSubstitute ci-dessous, pas à
+// autre chose.
+const LEVEL_RANK: Record<Product["protein"], number> = {
+  faible: 0,
+  moyen: 1,
+  riche: 2,
+};
+
+// Trouve un produit de remplacement pour un article de la liste — retour
+// utilisateur (8 août 2026) : pouvoir échanger un produit qu'on n'aime pas
+// (ex : les lentilles) contre un autre à valeur nutritionnelle proche, sans
+// faire bouger le budget de la liste. Toujours dans la même catégorie ET le
+// même créneau de repas que l'original, pour rester cohérent avec "Mon
+// menu" (jamais un produit de petit-déjeuner en remplacement d'un dîner).
+// Respecte toujours le régime et les allergies déjà filtrés par
+// filterProducts — un remplacement ne doit jamais réintroduire un allergène
+// écarté ailleurs dans l'application.
+export function findSubstitute(
+  product: Product,
+  preferences: UserPreferences,
+  excludeIds: Set<string>
+): Product | null {
+  const candidates = filterProducts(preferences).filter(
+    (p) =>
+      p.id !== product.id &&
+      !excludeIds.has(p.id) &&
+      p.category === product.category &&
+      p.mealSlot === product.mealSlot &&
+      // Même "rôle" dans le repas, pas seulement même catégorie/créneau —
+      // sans ça, une confiture (condiment à tartiner) pouvait être
+      // "remplacée" par un jus de fruits : même catégorie/créneau, niveaux
+      // nutritionnels proches par coïncidence, mais un rôle complètement
+      // différent dans le petit-déjeuner.
+      Boolean(p.isCondiment) === Boolean(product.isCondiment) &&
+      Boolean(p.isSpread) === Boolean(product.isSpread)
+  );
+
+  if (candidates.length === 0) return null;
+
+  // Le prix pèse le plus lourd : l'objectif principal du retour utilisateur
+  // est "qui ne va pas changer le budget", la proximité nutritionnelle
+  // vient en second. kcal et prix sont normalisés en écart relatif (%) pour
+  // rester comparables aux écarts de niveau (0, 1 ou 2 crans).
+  function distance(candidate: Product): number {
+    const proteinDiff = Math.abs(
+      LEVEL_RANK[candidate.protein] - LEVEL_RANK[product.protein]
+    );
+    const lipidesDiff = Math.abs(
+      LEVEL_RANK[candidate.lipides] - LEVEL_RANK[product.lipides]
+    );
+    const glucidesDiff = Math.abs(
+      LEVEL_RANK[candidate.glucides] - LEVEL_RANK[product.glucides]
+    );
+    const kcalDiff = Math.abs(candidate.kcal - product.kcal) / Math.max(product.kcal, 1);
+    const priceDiff =
+      Math.abs(candidate.price - product.price) / Math.max(product.price, 0.01);
+
+    return (
+      proteinDiff * 2 + lipidesDiff + glucidesDiff + kcalDiff * 2 + priceDiff * 4
+    );
+  }
+
+  return [...candidates].sort((a, b) => distance(a) - distance(b))[0];
+}
+
+// Recalcule les totaux d'une liste après un échange de produit (voir
+// findSubstitute) — le budget, le coût plancher et le "budget insuffisant"
+// ne dépendent pas d'un échange dans une même catégorie/créneau, seul le
+// total change.
+export function recomputeAfterSwap(
+  items: ShoppingListItem[],
+  previous: ShoppingListResult
+): ShoppingListResult {
+  const total = round(
+    items.reduce((sum, item) => sum + item.product.price * item.quantity, 0)
+  );
+  return {
+    ...previous,
+    items,
+    total,
+    remaining: round(Math.max(0, previous.budget - total)),
+    isOverBudget: total > previous.budget,
+  };
+}
+
+// Remplace un article de la liste par un autre produit, en conservant la
+// même quantité achetée (voir ResultsContent.tsx, bouton "Échanger").
+export function replaceItem(
+  items: ShoppingListItem[],
+  oldProductId: string,
+  newProduct: Product
+): ShoppingListItem[] {
+  return items.map((item) =>
+    item.product.id === oldProductId ? { ...item, product: newProduct } : item
+  );
+}
+
 export function formatPrice(amount: number): string {
   return new Intl.NumberFormat("fr-FR", {
     style: "currency",
