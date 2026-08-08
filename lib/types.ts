@@ -257,6 +257,16 @@ export interface UserProfile extends BodyStats {
   // avant l'ajout de ce champ (voir migration défensive dans
   // lib/authProfile.ts).
   lastBudget: number | null;
+  // Échanges de produits mémorisés (voir ResultsContent.tsx, bouton
+  // "Échanger") — clé : id du produit remplacé, valeur : id du produit
+  // choisi à la place. Rattaché au compte (pas au localStorage) pour la
+  // même raison que lastBudget : "je n'aime pas les lentilles" doit rester
+  // vrai à la prochaine liste générée, sur n'importe quel appareil.
+  // Toujours revalidé contre le régime/les allergies actuels avant d'être
+  // réappliqué (voir applyStoredSubstitutions dans
+  // lib/generateShoppingList.ts) — jamais réappliqué à l'aveugle. `null` =
+  // aucun échange fait, ou profil créé avant l'ajout de ce champ.
+  productSubstitutions: Record<string, string> | null;
 }
 
 export interface UserPreferences extends BodyStats {

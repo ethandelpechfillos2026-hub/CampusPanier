@@ -26,6 +26,8 @@ export async function getCloudProfile(uid: string): Promise<UserProfile | null> 
     // Profils créés avant l'ajout de ce champ (voir lib/types.ts) : pas de
     // dernière liste connue, retombe normalement sur l'écran budget.
     lastBudget: data.lastBudget ?? null,
+    // Profils créés avant l'ajout de ce champ : aucun échange mémorisé.
+    productSubstitutions: data.productSubstitutions ?? null,
   };
 }
 
@@ -49,4 +51,14 @@ export async function saveCloudProfile(uid: string, profile: UserProfile): Promi
 // périmée.
 export async function updateLastBudget(uid: string, budget: number): Promise<void> {
   await updateDoc(doc(db, "profiles", uid), { lastBudget: budget });
+}
+
+// Mémorise les échanges de produits faits depuis "Ma liste" (voir
+// ResultsContent.tsx), pour qu'ils survivent à une reconnexion — même
+// principe et même mise à jour ciblée que updateLastBudget ci-dessus.
+export async function updateProductSubstitutions(
+  uid: string,
+  substitutions: Record<string, string>
+): Promise<void> {
+  await updateDoc(doc(db, "profiles", uid), { productSubstitutions: substitutions });
 }

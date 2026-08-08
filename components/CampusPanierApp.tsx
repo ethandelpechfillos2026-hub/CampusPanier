@@ -10,10 +10,16 @@ import RecipesContent from "@/components/RecipesContent";
 import ResultsContent from "@/components/ResultsContent";
 import SharedListTab from "@/components/SharedListTab";
 import SignIn from "@/components/SignIn";
-import { getCloudProfile, saveCloudProfile, updateLastBudget } from "@/lib/authProfile";
+import {
+  getCloudProfile,
+  saveCloudProfile,
+  updateLastBudget,
+  updateProductSubstitutions,
+} from "@/lib/authProfile";
 import { addFavorite, findFavorite, getFavorites, removeFavorite } from "@/lib/favorites";
 import { auth } from "@/lib/firebase";
 import {
+  applyStoredSubstitutions,
   generateShoppingList,
   recomputeAfterSwap,
   replaceItem,
@@ -71,7 +77,10 @@ export default function CampusPanierApp() {
         // connexion (jamais de liste générée) : onboarding puis écran
         // budget comme avant.
         if (savedProfile && savedProfile.lastBudget !== null) {
-          resumeList({ budget: savedProfile.lastBudget, ...savedProfile });
+          resumeList(
+            { budget: savedProfile.lastBudget, ...savedProfile },
+            savedProfile.productSubstitutions
+          );
         } else {
           setView(savedProfile ? "budget" : "profile");
         }
@@ -91,9 +100,17 @@ export default function CampusPanierApp() {
   // Reconstruit la dernière liste (même budget, profil à jour) sans la
   // compter comme une nouvelle génération — sinon rouvrir l'app gonflerait
   // l'historique et les statistiques à chaque fois, sans action réelle de
-  // l'utilisateur·rice.
-  function resumeList(prefs: UserPreferences) {
-    const newResult = generateShoppingList(prefs);
+  // l'utilisateur·rice. Réapplique aussi les échanges de produits mémorisés
+  // (voir applyStoredSubstitutions) pour que "je n'aime pas les lentilles"
+  // reste vrai d'une connexion à l'autre.
+  function resumeList(
+    prefs: UserPreferences,
+    substitutions: Record<string, string> | null
+  ) {
+    const rawResult = generateShoppingList(prefs);
+    const items = applyStoredSubstitutions(rawResult.items, substitutions, prefs);
+    const newResult =
+      items === rawResult.items ? rawResult : recomputeAfterSwap(items, rawResult);
     setPreferences(prefs);
     setResult(newResult);
     setMealsOut([]);
@@ -101,8 +118,14 @@ export default function CampusPanierApp() {
     setView("results");
   }
 
-  function generateList(prefs: UserPreferences) {
-    const newResult = generateShoppingList(prefs);
+  function generateList(
+    prefs: UserPreferences,
+    substitutions: Record<string, string> | null
+  ) {
+    const rawResult = generateShoppingList(prefs);
+    const items = applyStoredSubstitutions(rawResult.items, substitutions, prefs);
+    const newResult =
+      items === rawResult.items ? rawResult : recomputeAfterSwap(items, rawResult);
     setPreferences(prefs);
     setResult(newResult);
     setMealsOut([]);
@@ -131,20 +154,32 @@ export default function CampusPanierApp() {
 
   function handleBudgetSubmit(budget: number) {
     if (!profile) return;
-    generateList({ budget, ...profile });
+    generateList({ budget, ...profile }, profile.productSubstitutions);
   }
 
   // Échange un produit de "Ma liste" contre un autre (bouton "Échanger" du
-  // popup produit, voir ResultsContent.tsx) — ne touche ni les préférences
-  // ni le budget saisi, juste le contenu de la liste déjà générée. Comme
-  // "resumeList", n'est pas persisté sur le profil : rouvrir l'app ou faire
-  // "Refaire" régénère la liste à partir du profil/budget, sans garder les
-  // échanges faits à la main (limite connue, à améliorer plus tard si
-  // besoin).
+  // popup produit, voir ResultsContent.tsx) — met à jour la liste affichée
+  // ET mémorise l'échange sur le profil Firestore (comme lastBudget), pour
+  // qu'il soit réappliqué à la prochaine liste générée ou à la prochaine
+  // connexion (voir resumeList/generateList) — retour utilisateur : "je
+  // n'aime pas les lentilles" doit rester vrai, pas juste pour la session.
   function handleSwapProduct(oldProductId: string, newProduct: Product) {
     if (!result) return;
     const newItems = replaceItem(result.items, oldProductId, newProduct);
     setResult(recomputeAfterSwap(newItems, result));
+
+    if (user) {
+      const updatedSubstitutions = {
+        ...(profile?.productSubstitutions ?? {}),
+        [oldProductId]: newProduct.id,
+      };
+      setProfile((prev) =>
+        prev ? { ...prev, productSubstitutions: updatedSubstitutions } : prev
+      );
+      updateProductSubstitutions(user.uid, updatedSubstitutions).catch((error) => {
+        console.error("Erreur d'enregistrement de l'échange de produit:", error);
+      });
+    }
   }
 
   function handleRestart() {
@@ -227,7 +262,9 @@ export default function CampusPanierApp() {
               <button
                 key={fav.id}
                 type="button"
-                onClick={() => generateList(fav.preferences)}
+                onClick={() =>
+                  generateList(fav.preferences, profile?.productSubstitutions ?? null)
+                }
                 className="chip chip-default"
               >
                 ★ {fav.label}

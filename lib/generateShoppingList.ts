@@ -785,6 +785,41 @@ export function replaceItem(
   );
 }
 
+// Ré-applique les échanges de produits mémorisés sur le compte (voir
+// UserProfile.productSubstitutions, ResultsContent.tsx) à une liste tout
+// juste générée — pour que "reconnecte-toi et retombe sur ta liste" (voir
+// CampusPanierApp.tsx) retrouve aussi les échanges faits la dernière fois,
+// pas seulement le budget. Toujours revalidé contre le régime/les
+// allergies ACTUELS via filterProducts : un échange qui ne conviendrait
+// plus (ex: régime changé depuis, ou produit retiré du catalogue) est
+// simplement ignoré plutôt que réappliqué à l'aveugle — la liste fraîche
+// reste donc toujours sûre même si la mémorisation est périmée.
+export function applyStoredSubstitutions(
+  items: ShoppingListItem[],
+  substitutions: Record<string, string> | null,
+  preferences: UserPreferences
+): ShoppingListItem[] {
+  if (!substitutions) return items;
+  const entries = Object.entries(substitutions);
+  if (entries.length === 0) return items;
+
+  const catalogById = new Map(filterProducts(preferences).map((p) => [p.id, p]));
+  const presentIds = new Set(items.map((item) => item.product.id));
+  let result = items;
+
+  for (const [oldId, newId] of entries) {
+    if (!presentIds.has(oldId) || presentIds.has(newId)) continue;
+    const newProduct = catalogById.get(newId);
+    if (!newProduct) continue;
+
+    result = replaceItem(result, oldId, newProduct);
+    presentIds.delete(oldId);
+    presentIds.add(newId);
+  }
+
+  return result;
+}
+
 export function formatPrice(amount: number): string {
   return new Intl.NumberFormat("fr-FR", {
     style: "currency",

@@ -286,6 +286,10 @@ export default function ProfileForm({ onComplete, initialProfile }: ProfileFormP
       // profil (préservée telle quelle si la personne modifie son profil
       // plus tard), `null` pour un tout premier profil.
       lastBudget: initialProfile?.lastBudget ?? null,
+      // Idem pour les échanges de produits mémorisés (voir
+      // ResultsContent.tsx) — ce formulaire ne les modifie jamais, juste
+      // les reporter tels quels.
+      productSubstitutions: initialProfile?.productSubstitutions ?? null,
     });
   }
 
