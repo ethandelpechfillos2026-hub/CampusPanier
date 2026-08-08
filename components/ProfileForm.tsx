@@ -12,6 +12,7 @@ import {
   CALORIE_MIN,
   CALORIE_STEP,
   DIET_OPTIONS,
+  ENSEIGNE_OPTIONS,
   GLUCIDES_G_MAX,
   GLUCIDES_G_MIN,
   HEIGHT_DEFAULT,
@@ -107,6 +108,17 @@ export default function ProfileForm({ onComplete, initialProfile }: ProfileFormP
     );
   }
 
+  // Enseigne/ville où la personne fait ses courses — optionnel, sert à
+  // préférer un relevé de prix de cette enseigne quand le catalogue en a un
+  // (voir lib/generateShoppingList.ts). "Peu importe" = null, comportement
+  // par défaut inchangé.
+  const [preferredEnseigne, setPreferredEnseigne] = useState<string | null>(
+    initialProfile?.preferredEnseigne ?? null
+  );
+  const [preferredZone, setPreferredZone] = useState(
+    initialProfile?.preferredZone ?? ""
+  );
+
   const currentStep = STEPS[step - 1];
   const computedMacroTargets =
     calorieMode === "custom"
@@ -119,6 +131,8 @@ export default function ProfileForm({ onComplete, initialProfile }: ProfileFormP
             macroOverride: null,
             performanceMode,
             canteenDays,
+            preferredEnseigne,
+            preferredZone: preferredZone || null,
           },
           caloriesValue
         )
@@ -223,6 +237,8 @@ export default function ProfileForm({ onComplete, initialProfile }: ProfileFormP
           : null,
       performanceMode,
       canteenDays,
+      preferredEnseigne,
+      preferredZone: preferredZone || null,
     });
   }
 
@@ -297,6 +313,54 @@ export default function ProfileForm({ onComplete, initialProfile }: ProfileFormP
                   </button>
                 ))}
               </div>
+            </div>
+
+            <div className="rounded-2xl border-2 border-campus-terracotta/30 bg-campus-terracotta/5 p-4">
+              <p className="text-sm font-bold text-campus-ink">
+                🏬 Ton enseigne (optionnel)
+              </p>
+              <p className="mt-0.5 text-xs text-campus-muted">
+                Quand on a un relevé de prix pour cette enseigne, on le
+                préfère à l&apos;estimation générique. Sinon, rien ne change.
+              </p>
+              <div className="mt-3 flex flex-wrap gap-1.5">
+                <button
+                  type="button"
+                  onClick={() => setPreferredEnseigne(null)}
+                  aria-pressed={preferredEnseigne === null}
+                  className={`rounded-full px-3 py-1.5 text-xs font-bold transition-colors ${
+                    preferredEnseigne === null
+                      ? "bg-campus-terracotta text-white"
+                      : "bg-white text-campus-ink border-2 border-campus-sand"
+                  }`}
+                >
+                  Peu importe
+                </button>
+                {ENSEIGNE_OPTIONS.map((enseigne) => (
+                  <button
+                    key={enseigne}
+                    type="button"
+                    onClick={() => setPreferredEnseigne(enseigne)}
+                    aria-pressed={preferredEnseigne === enseigne}
+                    className={`rounded-full px-3 py-1.5 text-xs font-bold transition-colors ${
+                      preferredEnseigne === enseigne
+                        ? "bg-campus-terracotta text-white"
+                        : "bg-white text-campus-ink border-2 border-campus-sand"
+                    }`}
+                  >
+                    {enseigne}
+                  </button>
+                ))}
+              </div>
+              {preferredEnseigne && (
+                <input
+                  type="text"
+                  value={preferredZone}
+                  onChange={(e) => setPreferredZone(e.target.value)}
+                  placeholder="Ta ville (optionnel)"
+                  className="mt-3 w-full rounded-xl border-2 border-campus-sand px-3 py-2 text-sm"
+                />
+              )}
             </div>
           </div>
         )}

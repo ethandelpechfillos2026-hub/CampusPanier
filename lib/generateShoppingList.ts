@@ -23,15 +23,64 @@ function matchesAllergies(
   return !product.allergens.some((allergen) => allergies.includes(allergen));
 }
 
-function filterProducts(preferences: UserPreferences): Product[] {
-  return products.filter(
-    (product) =>
-      matchesDiet(product, preferences.diet) &&
-      matchesAllergies(product, preferences.allergies) &&
-      // Mode Performance : uniquement des produits bruts/peu transformés —
-      // exclusion pure, pas juste une préférence de score, comme demandé.
-      (!preferences.performanceMode || !product.ultraTransforme)
+// Résout le prix "effectif" d'un produit selon l'enseigne préférée de la
+// personne (si elle en a choisi une, et si le catalogue a un relevé pour
+// cette enseigne dans Product.priceObservations) — AVANT de lancer le reste
+// de l'algorithme. Comme ça, le prix utilisé pour construire la liste
+// (budget, tri, sélection) et celui affiché ensuite sont TOUJOURS le même
+// nombre : pas de décalage possible entre "ce qui a été compté dans le
+// budget" et "ce qui s'affiche à l'écran". Si aucune préférence n'est
+// définie, ou si le catalogue n'a rien pour cette enseigne, comportement
+// strictement inchangé (repli sur price/priceInfo par défaut).
+function resolveEffectivePriceInfo(
+  product: Product,
+  preferences: UserPreferences
+): { price: number; priceInfo: PriceInfo | undefined } {
+  const fallback = { price: product.price, priceInfo: product.priceInfo };
+  if (!preferences.preferredEnseigne) return fallback;
+
+  const observations = product.priceObservations ?? [];
+  const hasAmount = (o: PriceInfo): o is PriceInfo & { amount: number } =>
+    typeof o.amount === "number";
+
+  const exactZoneMatch = observations.find(
+    (o) =>
+      o.enseigne === preferences.preferredEnseigne &&
+      preferences.preferredZone !== null &&
+      o.zone === preferences.preferredZone &&
+      hasAmount(o)
   );
+  if (exactZoneMatch) {
+    return { price: exactZoneMatch.amount as number, priceInfo: exactZoneMatch };
+  }
+
+  // Pas de relevé dans cette ville précise : la même enseigne ailleurs reste
+  // plus pertinent que le prix générique par défaut.
+  const sameEnseigne = observations.find(
+    (o) => o.enseigne === preferences.preferredEnseigne && hasAmount(o)
+  );
+  if (sameEnseigne) {
+    return { price: sameEnseigne.amount as number, priceInfo: sameEnseigne };
+  }
+
+  return fallback;
+}
+
+function filterProducts(preferences: UserPreferences): Product[] {
+  return products
+    .filter(
+      (product) =>
+        matchesDiet(product, preferences.diet) &&
+        matchesAllergies(product, preferences.allergies) &&
+        // Mode Performance : uniquement des produits bruts/peu transformés —
+        // exclusion pure, pas juste une préférence de score, comme demandé.
+        (!preferences.performanceMode || !product.ultraTransforme)
+    )
+    .map((product) => {
+      const { price, priceInfo } = resolveEffectivePriceInfo(product, preferences);
+      if (price === product.price && priceInfo === product.priceInfo) return product;
+      return { ...product, price, priceInfo };
+    });
 }
 
 // Score a product against the user's nutritional preferences. This is a

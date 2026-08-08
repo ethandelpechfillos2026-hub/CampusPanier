@@ -8,12 +8,15 @@ export async function getCloudProfile(uid: string): Promise<UserProfile | null> 
 
   const data = snap.data() as UserProfile;
   // Migration défensive : les profils enregistrés avant l'introduction de
-  // `canteenDays` (ex-`eatsLunchAtCanteen` booléen) n'ont pas ce champ en
-  // base. Sans ce filet, `canteenDays.includes(...)` planterait au premier
-  // rendu pour ces profils existants.
+  // `canteenDays` (ex-`eatsLunchAtCanteen` booléen) ou de
+  // `preferredEnseigne`/`preferredZone` n'ont pas ces champs en base. Sans ce
+  // filet, `canteenDays.includes(...)` planterait au premier rendu pour ces
+  // profils existants.
   return {
     ...data,
     canteenDays: Array.isArray(data.canteenDays) ? data.canteenDays : [],
+    preferredEnseigne: data.preferredEnseigne ?? null,
+    preferredZone: data.preferredZone ?? null,
   };
 }
 

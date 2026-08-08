@@ -266,12 +266,13 @@ async function searchProduct(query) {
 
 // Best-effort : base communautaire, pas de prix pour tout.
 //
-// Renvoie le relevé Open Prices le PLUS RÉCENT situé en France (et lui
-// seul), avec son enseigne/sa ville/sa date — plutôt qu'une moyenne aveugle
-// de tous les relevés retournés (ancienne méthode : mélangeait des relevés
-// d'autres pays et de plusieurs années sans qu'on puisse le voir). Un seul
-// relevé attribuable et honnête vaut mieux qu'une moyenne qu'on ne peut
-// justifier auprès de personne.
+// Renvoie le relevé Open Prices le PLUS RÉCENT situé en France comme valeur
+// par défaut (`best`), PLUS un relevé par enseigne distincte (`observations`,
+// le plus récent de chaque) — pour permettre plus tard de préférer un
+// relevé de l'enseigne choisie par la personne dans son profil (voir
+// Product.priceObservations et lib/generateShoppingList.ts). Jamais de
+// moyenne aveugle : chaque prix renvoyé est un relevé unique, attribuable à
+// une enseigne/ville/date précise.
 async function fetchRealPrice(code) {
   try {
     const url = `${PRICES_URL}?product_code=${encodeURIComponent(code)}&size=20`;
@@ -291,14 +292,26 @@ async function fetchRealPrice(code) {
     if (frenchItems.length === 0) return null;
 
     frenchItems.sort((a, b) => (a.date < b.date ? 1 : a.date > b.date ? -1 : 0));
-    const mostRecent = frenchItems[0];
 
-    return {
-      price: Math.round(mostRecent.price * 100) / 100,
-      date: mostRecent.date,
-      enseigne: mostRecent.location?.osm_brand || undefined,
-      zone: mostRecent.location?.osm_address_city || undefined,
-    };
+    function toPriceInfo(item) {
+      return {
+        amount: Math.round(item.price * 100) / 100,
+        date: item.date,
+        enseigne: item.location?.osm_brand || undefined,
+        zone: item.location?.osm_address_city || undefined,
+      };
+    }
+
+    const best = toPriceInfo(frenchItems[0]);
+
+    const observationsByEnseigne = new Map();
+    for (const item of frenchItems) {
+      const enseigne = item.location?.osm_brand;
+      if (!enseigne || observationsByEnseigne.has(enseigne)) continue;
+      observationsByEnseigne.set(enseigne, toPriceInfo(item));
+    }
+
+    return { best, observations: [...observationsByEnseigne.values()] };
   } catch {
     return null;
   }
@@ -325,15 +338,19 @@ async function buildProduct(query) {
 
   const nutriments = off.nutriments || {};
   const realPrice = off.code ? await fetchRealPrice(off.code) : null;
-  const price = realPrice?.price ?? CATEGORY_PRICE_DEFAULTS[query.category];
+  const price = realPrice?.best.amount ?? CATEGORY_PRICE_DEFAULTS[query.category];
   const priceInfo = realPrice
-    ? {
-        source: "open-prices",
-        date: realPrice.date,
-        enseigne: realPrice.enseigne,
-        zone: realPrice.zone,
-      }
+    ? { source: "open-prices", ...realPrice.best }
     : { source: "estimation" };
+  // Un relevé par enseigne distincte (au-delà du relevé par défaut
+  // ci-dessus) — permet de préférer plus tard l'enseigne choisie par la
+  // personne dans son profil (voir lib/generateShoppingList.ts). Absent
+  // (undefined) si une seule enseigne connue ou aucun relevé du tout, pour
+  // ne pas stocker un tableau redondant avec `priceInfo`.
+  const priceObservations =
+    realPrice && realPrice.observations.length > 1
+      ? realPrice.observations.map((o) => ({ source: "open-prices", ...o }))
+      : undefined;
 
   const product = {
     id: query.id,
@@ -341,6 +358,7 @@ async function buildProduct(query) {
     name: pickName(off, query.search),
     price,
     priceInfo,
+    ...(priceObservations ? { priceObservations } : {}),
     offCode: off.code,
     unit: query.unit,
     category: query.category,
@@ -638,7 +656,10 @@ async function main() {
             .filter(Boolean)
             .join(", ") || "open-prices (détail indisponible)"
         : "estimation";
-    console.log(`  + ${product.name} (${product.price} € · ${logDetail})`);
+    const extraEnseignes = product.priceObservations
+      ? ` · +${product.priceObservations.length - 1} autre(s) enseigne(s)`
+      : "";
+    console.log(`  + ${product.name} (${product.price} € · ${logDetail}${extraEnseignes})`);
 
     if (sinceCheckpoint >= CHECKPOINT_EVERY) {
       await writeFile(PRODUCTS_PATH, JSON.stringify(current, null, 2) + "\n");

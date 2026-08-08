@@ -36,6 +36,9 @@ export type MacroPreference =
 // scripts/build-catalog.mjs pour comment ce champ est rempli).
 export interface PriceInfo {
   source: "open-prices" | "estimation";
+  // Prix en euros de CE relevé précis — absent pour une estimation générique
+  // (dans ce cas, seul Product.price fait foi).
+  amount?: number;
   // Date ISO (YYYY-MM-DD) du relevé — absente si l'estimation est générique,
   // ou si le prix vient d'un relevé Open Prices importé avant la mise en
   // place de ce suivi (détail non conservé à l'époque).
@@ -58,6 +61,14 @@ export interface Product {
   // Provenance/fiabilité de `price` ci-dessus — voir PriceInfo. Absent pour
   // les tout premiers produits du catalogue construits avant ce suivi.
   priceInfo?: PriceInfo;
+  // Autres relevés Open Prices connus pour ce produit, un par enseigne
+  // distincte (le plus récent de chaque) — sert à proposer un prix plus
+  // pertinent quand la personne a choisi une enseigne préférée dans son
+  // profil (voir getEffectivePriceInfo dans lib/generateShoppingList.ts).
+  // `priceInfo` ci-dessus reste le relevé par défaut utilisé quand aucune
+  // préférence d'enseigne ne correspond. Peut être absent ou vide : rien ne
+  // change alors par rapport au comportement par défaut.
+  priceObservations?: PriceInfo[];
   // Code-barres Open Food Facts d'origine — conservé pour pouvoir rafraîchir
   // le prix plus tard (scripts/build-catalog.mjs) sans redemander une
   // recherche complète à OFF, qui pourrait retomber sur une fiche différente.
@@ -140,7 +151,34 @@ export interface BodyStats {
   // partager entre midi et soir — sinon la part "midi" achetée n'est jamais
   // consommée et finit en restes.
   canteenDays: number[];
+  // Enseigne où la personne fait plutôt ses courses (ex: "Lidl") — optionnel
+  // ("peu importe" = null). Sert à préférer, quand elle existe, une donnée
+  // de Product.priceObservations relevée dans CETTE enseigne plutôt que le
+  // prix par défaut du catalogue (voir getEffectivePriceInfo dans
+  // lib/generateShoppingList.ts). N'a un effet visible que si le catalogue
+  // a effectivement un relevé pour cette enseigne — sinon, comportement
+  // inchangé.
+  preferredEnseigne: string | null;
+  // Ville où la personne fait ses courses — optionnelle, affinage en plus
+  // de l'enseigne (les deux doivent correspondre pour un match "exact").
+  preferredZone: string | null;
 }
+
+// Enseignes proposées dans le profil — grandes surfaces généralistes les
+// plus courantes en France. Liste volontairement courte (pas 30 enseignes)
+// pour rester simple ; une personne dont l'enseigne n'y est pas peut laisser
+// "Peu importe".
+export const ENSEIGNE_OPTIONS = [
+  "Lidl",
+  "Carrefour",
+  "E.Leclerc",
+  "Auchan",
+  "Intermarché",
+  "Système U",
+  "Casino",
+  "Aldi",
+  "Monoprix",
+] as const;
 
 // Un repas mangé "dehors" de façon imprévue (ex : pizza avec des ami·es), à
 // la différence de la cantine qui est régulière et connue à l'avance. Loggé
