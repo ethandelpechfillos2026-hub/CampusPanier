@@ -238,6 +238,34 @@ const MAX_DISTINCT_PER_CATEGORY: Partial<Record<Product["category"], number>> = 
   boulangerie: 3,
   "viande-poisson": 4,
 };
+
+// Au-delà de ce budget, le plafond de variété ci-dessus augmente plutôt que
+// de rester fixe — retour utilisateur (8 août 2026) : avec peu de budget,
+// des repas qui se ressemblent est normal et acceptable, mais avec un gros
+// budget et de la marge, rien ne justifie de se limiter à si peu de produits
+// différents. Chaque tranche de VARIETY_BUDGET_STEP € au-dessus du seuil
+// débloque un produit distinct de plus par catégorie, jusqu'à
+// VARIETY_MAX_BONUS. Boulangerie n'en profite pas : le petit-déjeuner est
+// déjà couvert par la rotation des familles de pains (voir
+// generateMenu.ts), plus de variété n'y change pas grand-chose.
+const VARIETY_BUDGET_THRESHOLD = 80;
+const VARIETY_BUDGET_STEP = 20;
+const VARIETY_MAX_BONUS = 3;
+
+function distinctCapFor(
+  category: Product["category"],
+  budget: number
+): number | undefined {
+  const base = MAX_DISTINCT_PER_CATEGORY[category];
+  if (base === undefined || category === "boulangerie") return base;
+  if (budget < VARIETY_BUDGET_THRESHOLD) return base;
+  const bonus = Math.min(
+    VARIETY_MAX_BONUS,
+    1 + Math.floor((budget - VARIETY_BUDGET_THRESHOLD) / VARIETY_BUDGET_STEP)
+  );
+  return base + bonus;
+}
+
 const DEFAULT_MAX_QUANTITY_PER_ITEM = 3;
 // La boulangerie ne profite pas du "boost" de quantité : comme le pain se
 // répartit ensuite sur ses quelques jours réservés (voir generateMenu.ts,
@@ -422,7 +450,7 @@ export function generateShoppingList(
   }
 
   for (const product of remaining) {
-    const cap = MAX_DISTINCT_PER_CATEGORY[product.category];
+    const cap = distinctCapFor(product.category, preferences.budget);
     const atCap =
       cap !== undefined && (categoryCounts.get(product.category) ?? 0) >= cap;
 
@@ -502,7 +530,7 @@ export function generateShoppingList(
         });
 
       for (const product of extraCandidates) {
-        const cap = MAX_DISTINCT_PER_CATEGORY[product.category];
+        const cap = distinctCapFor(product.category, preferences.budget);
         const atCap =
           cap !== undefined && (categoryCounts.get(product.category) ?? 0) >= cap;
         if (atCap) continue;
@@ -518,6 +546,39 @@ export function generateShoppingList(
           total += product.price;
         }
       }
+    }
+  }
+
+  // Marge restante : s'il reste un vrai reliquat de budget une fois tout le
+  // nécessaire couvert, on l'utilise pour ajouter d'autres produits
+  // distincts plutôt que de le laisser inutilisé — retour utilisateur : "je
+  // ne vois pas le problème à avoir plus de diversité" quand il reste de
+  // l'argent. Ignore volontairement le plafond de variété par catégorie
+  // (déjà relevé pour les gros budgets ci-dessus, mais ici on va plus loin :
+  // n'importe quel reliquat sert à varier plutôt qu'à dormir dans le
+  // budget). Plafonné en nombre d'articles pour ne pas non plus finir avec
+  // une multitude de produits en une seule petite portion chacun.
+  const LEFTOVER_VARIETY_THRESHOLD = 3;
+  const MAX_LEFTOVER_VARIETY_ITEMS = 4;
+  if (preferences.budget - total >= LEFTOVER_VARIETY_THRESHOLD) {
+    const leftoverCandidates = filtered
+      .filter((p) => !selectedIds.has(p.id))
+      .sort((a, b) => {
+        const scoreDiff = score(b, preferences) - score(a, preferences);
+        if (scoreDiff !== 0) return scoreDiff;
+        return a.price - b.price;
+      });
+
+    let leftoverAdded = 0;
+    for (const product of leftoverCandidates) {
+      if (leftoverAdded >= MAX_LEFTOVER_VARIETY_ITEMS) break;
+      if (total + product.price > preferences.budget) continue;
+
+      selected.push(product);
+      selectedIds.add(product.id);
+      quantities.set(product.id, 1);
+      total += product.price;
+      leftoverAdded += 1;
     }
   }
 

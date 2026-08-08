@@ -121,22 +121,69 @@ function roundToQuarter(value: number): number {
   return Math.round(value * 4) / 4;
 }
 
-// Formate une quantité fractionnaire en glyphe lisible ("¼", "½", "¾") pour
-// les produits qui se comptent à l'unité (baguette, œuf, yaourt...) — les
-// grammes précis n'ont pas de sens pour ce genre d'article.
+// Unités masculines du catalogue (voir data/products.json, servingUnit) —
+// ensemble fermé et connu, donc une table plutôt qu'une détection
+// automatique du genre. Sert uniquement à accorder "un/une demi-" dans
+// formatFractionalUnit ci-dessous. Tout le reste (non listé) est traité
+// comme féminin, ce qui couvre la majorité des unités actuelles (cuillère,
+// tranche, portion, part...).
+const MASCULINE_SERVING_UNITS = new Set([
+  "avocat",
+  "citron",
+  "croissant",
+  "steak",
+  "verre",
+  "wrap",
+  "yaourt",
+  "œuf",
+]);
+
+// Met au pluriel une unité de portion, y compris les unités composées
+// ("cuillère à soupe" -> "cuillères à soupe") où seul le premier mot varie —
+// un simple ajout de "s" en fin de chaîne donnerait à tort
+// "cuillère à soupes".
+function pluralizeServingUnit(unit: string): string {
+  const spaceIndex = unit.indexOf(" ");
+  if (spaceIndex === -1) return `${unit}s`;
+  return `${unit.slice(0, spaceIndex)}s${unit.slice(spaceIndex)}`;
+}
+
+// Formate une quantité fractionnaire en mots français ("un quart de
+// baguette", "une demi-cuillère à soupe", "2 cuillères à soupe et quart")
+// pour les produits qui se comptent à l'unité (baguette, œuf, yaourt...) —
+// les grammes précis n'ont pas de sens pour ce genre d'article. Remplace
+// d'anciens glyphes (¼, ½, ¾) jugés moins clairs à lire par une utilisatrice
+// (retour du 8 août 2026 : "pourquoi pas juste la moitié d'une cuillère à
+// soupe, c'est plus français, plus facile à comprendre").
 function formatFractionalUnit(value: number, unit: string): string {
   const whole = Math.floor(value);
   const frac = round2(value - whole);
-  let fracGlyph = "";
-  if (frac === 0.25) fracGlyph = "¼";
-  else if (frac === 0.5) fracGlyph = "½";
-  else if (frac === 0.75) fracGlyph = "¾";
+  const masculine = MASCULINE_SERVING_UNITS.has(unit);
 
-  const unitLabel = value > 1 ? `${unit}s` : unit;
-  const numberLabel =
-    whole === 0 ? fracGlyph : fracGlyph ? `${whole} ${fracGlyph}` : `${whole}`;
+  if (frac === 0) {
+    // Ne devrait normalement pas arriver à 0 (voir displayValue dans
+    // formatDayEntryQuantity, minimum ¼ affiché) — filet de sécurité.
+    const count = whole === 0 ? 1 : whole;
+    return `${count} ${count > 1 ? pluralizeServingUnit(unit) : unit}`;
+  }
 
-  return `${numberLabel} ${unitLabel}`;
+  if (whole === 0) {
+    if (frac === 0.5) return `${masculine ? "un" : "une"} demi-${unit}`;
+    if (frac === 0.75) return `trois quarts de ${unit}`;
+    return `un quart de ${unit}`;
+  }
+
+  // Nombre mixte (ex : 1 ¾) : en français, "demi"/"quart" se placent après
+  // le nombre entier ("une heure et demie", "deux heures et quart") plutôt
+  // qu'accolés avec un trait d'union comme pour une fraction pure ci-dessus.
+  const unitLabel = whole > 1 ? pluralizeServingUnit(unit) : unit;
+  const tail =
+    frac === 0.5
+      ? `et ${masculine ? "demi" : "demie"}`
+      : frac === 0.75
+        ? "et trois quarts"
+        : "et quart";
+  return `${whole} ${unitLabel} ${tail}`;
 }
 
 function round2(value: number): number {
