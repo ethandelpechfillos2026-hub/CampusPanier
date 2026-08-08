@@ -566,7 +566,9 @@
       "vegan",
       "sans-porc"
     ],
-    "allergens": [],
+    "allergens": [
+      "soja"
+    ],
     "kcal": 151,
     "protein": "riche",
     "lipides": "moyen",
@@ -705,7 +707,9 @@
       "omnivore",
       "sans-porc"
     ],
-    "allergens": [],
+    "allergens": [
+      "poisson"
+    ],
     "kcal": 175,
     "protein": "riche",
     "lipides": "faible",
@@ -786,7 +790,8 @@
     ],
     "allergens": [
       "gluten",
-      "lactose"
+      "lactose",
+      "poisson"
     ],
     "kcal": 141,
     "protein": "moyen",
@@ -1084,7 +1089,8 @@
       "sans-porc"
     ],
     "allergens": [
-      "gluten"
+      "gluten",
+      "soja"
     ],
     "kcal": 60,
     "protein": "moyen",
@@ -1113,7 +1119,9 @@
       "vegan",
       "sans-porc"
     ],
-    "allergens": [],
+    "allergens": [
+      "moutarde"
+    ],
     "kcal": 66,
     "protein": "faible",
     "lipides": "faible",
@@ -1141,7 +1149,8 @@
       "sans-porc"
     ],
     "allergens": [
-      "oeuf"
+      "oeuf",
+      "moutarde"
     ],
     "kcal": 680,
     "protein": "faible",
@@ -1795,7 +1804,9 @@
       "vegan",
       "sans-porc"
     ],
-    "allergens": [],
+    "allergens": [
+      "soja"
+    ],
     "kcal": 33,
     "protein": "moyen",
     "lipides": "faible",
@@ -2143,7 +2154,9 @@
       "omnivore",
       "sans-porc"
     ],
-    "allergens": [],
+    "allergens": [
+      "poisson"
+    ],
     "kcal": 208,
     "protein": "riche",
     "lipides": "riche",
@@ -2169,7 +2182,9 @@
       "omnivore",
       "sans-porc"
     ],
-    "allergens": [],
+    "allergens": [
+      "crustaces"
+    ],
     "kcal": 99,
     "protein": "riche",
     "lipides": "faible",
@@ -2195,7 +2210,9 @@
       "omnivore",
       "sans-porc"
     ],
-    "allergens": [],
+    "allergens": [
+      "poisson"
+    ],
     "kcal": 208,
     "protein": "riche",
     "lipides": "riche",
@@ -2792,7 +2809,9 @@
       "omnivore",
       "sans-porc"
     ],
-    "allergens": [],
+    "allergens": [
+      "sulfites"
+    ],
     "kcal": 112,
     "protein": "faible",
     "lipides": "faible",
@@ -2899,7 +2918,8 @@
       "sans-porc"
     ],
     "allergens": [
-      "gluten"
+      "gluten",
+      "sulfites"
     ],
     "kcal": 352,
     "protein": "moyen",
@@ -3133,7 +3153,9 @@
       "vegan",
       "sans-porc"
     ],
-    "allergens": [],
+    "allergens": [
+      "sesame"
+    ],
     "kcal": 317,
     "protein": "moyen",
     "lipides": "riche",
@@ -3161,7 +3183,9 @@
       "vegan",
       "sans-porc"
     ],
-    "allergens": [],
+    "allergens": [
+      "sesame"
+    ],
     "kcal": 595,
     "protein": "moyen",
     "lipides": "riche",
@@ -3303,7 +3327,9 @@
       "vegan",
       "sans-porc"
     ],
-    "allergens": [],
+    "allergens": [
+      "sulfites"
+    ],
     "kcal": 300,
     "protein": "faible",
     "lipides": "faible",
@@ -3979,7 +4005,9 @@
       "vegan",
       "sans-porc"
     ],
-    "allergens": [],
+    "allergens": [
+      "celeri"
+    ],
     "kcal": 12,
     "protein": "faible",
     "lipides": "faible",
@@ -5105,7 +5133,9 @@
       "vegan",
       "sans-porc"
     ],
-    "allergens": [],
+    "allergens": [
+      "soja"
+    ],
     "kcal": 179,
     "protein": "riche",
     "lipides": "moyen",
@@ -5727,7 +5757,9 @@
       "omnivore",
       "sans-porc"
     ],
-    "allergens": [],
+    "allergens": [
+      "poisson"
+    ],
     "kcal": 105,
     "protein": "riche",
     "lipides": "moyen",
@@ -5753,7 +5785,9 @@
       "omnivore",
       "sans-porc"
     ],
-    "allergens": [],
+    "allergens": [
+      "poisson"
+    ],
     "kcal": 238,
     "protein": "riche",
     "lipides": "riche",
@@ -5779,7 +5813,9 @@
       "omnivore",
       "sans-porc"
     ],
-    "allergens": [],
+    "allergens": [
+      "poisson"
+    ],
     "kcal": 155,
     "protein": "riche",
     "lipides": "moyen",
@@ -5805,7 +5841,9 @@
       "omnivore",
       "sans-porc"
     ],
-    "allergens": [],
+    "allergens": [
+      "poisson"
+    ],
     "kcal": 82,
     "protein": "riche",
     "lipides": "faible",
@@ -5831,7 +5869,9 @@
       "omnivore",
       "sans-porc"
     ],
-    "allergens": [],
+    "allergens": [
+      "poisson"
+    ],
     "kcal": 82,
     "protein": "riche",
     "lipides": "faible",
@@ -5858,7 +5898,8 @@
       "sans-porc"
     ],
     "allergens": [
-      "gluten"
+      "gluten",
+      "mollusques"
     ],
     "kcal": 235,
     "protein": "moyen",
@@ -5885,7 +5926,9 @@
       "omnivore",
       "sans-porc"
     ],
-    "allergens": [],
+    "allergens": [
+      "mollusques"
+    ],
     "kcal": 90,
     "protein": "riche",
     "lipides": "faible",
@@ -5911,7 +5954,9 @@
       "omnivore",
       "sans-porc"
     ],
-    "allergens": [],
+    "allergens": [
+      "poisson"
+    ],
     "kcal": 130,
     "protein": "riche",
     "lipides": "faible",
@@ -5937,7 +5982,9 @@
       "omnivore",
       "sans-porc"
     ],
-    "allergens": [],
+    "allergens": [
+      "poisson"
+    ],
     "kcal": 250,
     "protein": "riche",
     "lipides": "moyen",
@@ -6182,7 +6229,8 @@
     "allergens": [
       "oeuf",
       "gluten",
-      "lactose"
+      "lactose",
+      "poisson"
     ],
     "kcal": 110,
     "protein": "moyen",
@@ -6210,7 +6258,9 @@
       "omnivore",
       "sans-porc"
     ],
-    "allergens": [],
+    "allergens": [
+      "poisson"
+    ],
     "kcal": 155,
     "protein": "riche",
     "lipides": "moyen",
@@ -6236,7 +6286,9 @@
       "omnivore",
       "sans-porc"
     ],
-    "allergens": [],
+    "allergens": [
+      "poisson"
+    ],
     "kcal": 87,
     "protein": "riche",
     "lipides": "faible",
@@ -6692,7 +6744,8 @@
       "sans-porc"
     ],
     "allergens": [
-      "gluten"
+      "gluten",
+      "sesame"
     ],
     "kcal": 475,
     "protein": "riche",
@@ -7224,7 +7277,9 @@
       "omnivore",
       "sans-porc"
     ],
-    "allergens": [],
+    "allergens": [
+      "soja"
+    ],
     "kcal": 77,
     "protein": "faible",
     "lipides": "faible",
@@ -7331,7 +7386,9 @@
       "omnivore",
       "sans-porc"
     ],
-    "allergens": [],
+    "allergens": [
+      "poisson"
+    ],
     "kcal": 227,
     "protein": "riche",
     "lipides": "moyen",
@@ -7379,7 +7436,9 @@
       "omnivore",
       "sans-porc"
     ],
-    "allergens": [],
+    "allergens": [
+      "mollusques"
+    ],
     "kcal": 200,
     "protein": "riche",
     "lipides": "moyen",

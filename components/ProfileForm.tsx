@@ -145,6 +145,15 @@ export default function ProfileForm({ onComplete, initialProfile }: ProfileFormP
     initialProfile?.preferredZone ?? ""
   );
 
+  // L'étape "Préférences" (riche en protéines, recettes faciles, prise de
+  // masse...) ne s'affiche que pour qui ne précise pas de calories exactes
+  // ("peu importe") — retour utilisateur : donner à la fois un objectif
+  // calorique précis ET des préférences qualitatives vagues est
+  // contradictoire. Le Mode Performance force toujours calorieMode="custom"
+  // et fixe déjà ses propres préférences automatiquement (voir
+  // applyPerformanceMacros), donc il n'a de toute façon pas besoin de cette
+  // étape.
+  const totalSteps = calorieMode === "custom" ? STEPS.length - 1 : STEPS.length;
   const currentStep = STEPS[step - 1];
   const computedMacroTargets =
     calorieMode === "custom"
@@ -237,7 +246,7 @@ export default function ProfileForm({ onComplete, initialProfile }: ProfileFormP
       return;
     }
 
-    if (step < STEPS.length) {
+    if (step < totalSteps) {
       setStep(step + 1);
       return;
     }
@@ -283,10 +292,10 @@ export default function ProfileForm({ onComplete, initialProfile }: ProfileFormP
     <div className="flex h-full flex-col gap-6">
       <div>
         <p className="text-xs font-semibold uppercase tracking-wide text-campus-muted">
-          Étape {step} sur {STEPS.length}
+          Étape {step} sur {totalSteps}
         </p>
         <div className="mt-3 flex gap-1.5">
-          {STEPS.map((s) => (
+          {STEPS.slice(0, totalSteps).map((s) => (
             <div
               key={s.id}
               className={`h-1.5 flex-1 rounded-full transition-colors ${
@@ -434,22 +443,48 @@ export default function ProfileForm({ onComplete, initialProfile }: ProfileFormP
 
         {step === 2 && (
           <div className="space-y-4">
-            <div className="flex flex-wrap gap-2">
-              {ALLERGEN_OPTIONS.map((option) => (
-                <button
-                  key={option.value}
-                  type="button"
-                  onClick={() => toggleAllergy(option.value)}
-                  className={`chip ${
-                    allergies.includes(option.value) ? "chip-selected" : "chip-default"
-                  }`}
-                >
-                  {option.label}
-                </button>
-              ))}
+            {/* Disposition en 2 colonnes plutôt qu'en bulles à la ligne :
+                avec 14 allergènes (liste officielle UE des allergènes à
+                déclaration obligatoire) plutôt que 5, un flux de bulles
+                devenait long et peu lisible à parcourir. */}
+            <div className="grid grid-cols-2 gap-2">
+              {ALLERGEN_OPTIONS.map((option) => {
+                const selected = allergies.includes(option.value);
+                return (
+                  <button
+                    key={option.value}
+                    type="button"
+                    onClick={() => toggleAllergy(option.value)}
+                    aria-pressed={selected}
+                    className={`flex items-center gap-2 rounded-xl border-2 px-3 py-2.5 text-left text-sm font-medium transition-colors ${
+                      selected
+                        ? "border-campus-terracotta bg-campus-terracotta/10 text-campus-terracotta"
+                        : "border-campus-sand bg-white text-campus-ink hover:border-campus-terracotta/50"
+                    }`}
+                  >
+                    <span
+                      className={`flex h-4 w-4 shrink-0 items-center justify-center rounded-md border-2 text-[10px] font-bold ${
+                        selected
+                          ? "border-campus-terracotta bg-campus-terracotta text-white"
+                          : "border-campus-sand"
+                      }`}
+                    >
+                      {selected ? "✓" : ""}
+                    </span>
+                    <span className="leading-tight">{option.label}</span>
+                  </button>
+                );
+              })}
             </div>
             <p className="text-sm leading-relaxed text-campus-muted">
               Optionnel — aucune sélection si tu n&apos;as pas d&apos;allergie.
+            </p>
+            <p className="text-xs leading-relaxed text-campus-muted">
+              On écarte les produits dont l&apos;ingrédient principal
+              correspond à ce que tu coches ici. En cas d&apos;allergie
+              sévère, vérifie toujours l&apos;étiquette du produit toi-même —
+              on ne peut pas garantir la détection des traces ou des
+              ingrédients cachés dans les plats préparés.
             </p>
           </div>
         )}
@@ -538,6 +573,13 @@ export default function ProfileForm({ onComplete, initialProfile }: ProfileFormP
             {performanceMode && (
               <p className="-mt-4 text-xs text-campus-muted">
                 Calories obligatoires en Mode Performance.
+              </p>
+            )}
+            {!performanceMode && (
+              <p className="-mt-2 text-xs text-campus-muted">
+                {calorieMode === "unknown"
+                  ? "Une dernière étape suivra pour préciser ce qui compte pour toi (riche en protéines, recettes faciles...)."
+                  : "Avec un objectif précis, pas besoin de préférences en plus — l'étape suivante sera la dernière."}
               </p>
             )}
 
@@ -842,7 +884,7 @@ export default function ProfileForm({ onComplete, initialProfile }: ProfileFormP
 
       <div className="flex flex-col gap-3 pt-2">
         <button type="button" onClick={handleNext} className="btn-primary">
-          {step === STEPS.length ? "Terminer" : "Suivant"}
+          {step === totalSteps ? "Terminer" : "Suivant"}
         </button>
         {step > 1 && (
           <button type="button" onClick={handleBack} className="btn-secondary">

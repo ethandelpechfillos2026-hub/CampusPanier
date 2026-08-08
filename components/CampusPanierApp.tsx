@@ -14,6 +14,7 @@ import { getCloudProfile, saveCloudProfile } from "@/lib/authProfile";
 import { addFavorite, findFavorite, getFavorites, removeFavorite } from "@/lib/favorites";
 import { auth } from "@/lib/firebase";
 import { generateShoppingList } from "@/lib/generateShoppingList";
+import { getLastBudget, saveLastBudget } from "@/lib/lastSession";
 import { playClickSound } from "@/lib/sound";
 import { recordListGenerated } from "@/lib/stats";
 import {
@@ -56,7 +57,19 @@ export default function CampusPanierApp() {
       try {
         const savedProfile = await getCloudProfile(firebaseUser.uid);
         setProfile(savedProfile);
-        setView(savedProfile ? "budget" : "profile");
+        // Retombe directement sur "Ma liste" avec la dernière liste générée
+        // plutôt que sur l'écran budget — retour utilisateur : devoir
+        // repasser par le budget (ou par les favoris, vides pour qui n'en a
+        // pas enregistré) à chaque ouverture était pénible. Le budget est le
+        // seul réglage mémorisé ici ; le reste vient toujours du profil à
+        // jour, jamais d'une copie figée, pour refléter un éventuel
+        // changement de profil fait entre-temps.
+        const lastBudget = savedProfile ? getLastBudget() : null;
+        if (savedProfile && lastBudget !== null) {
+          resumeList({ budget: lastBudget, ...savedProfile });
+        } else {
+          setView(savedProfile ? "budget" : "profile");
+        }
       } catch (error) {
         console.error("Erreur de chargement du profil Firestore:", error);
         setProfile(null);
@@ -67,7 +80,21 @@ export default function CampusPanierApp() {
     });
 
     return () => unsubscribe();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  // Reconstruit la dernière liste (même budget, profil à jour) sans la
+  // compter comme une nouvelle génération — sinon rouvrir l'app gonflerait
+  // l'historique et les statistiques à chaque fois, sans action réelle de
+  // l'utilisateur·rice.
+  function resumeList(prefs: UserPreferences) {
+    const newResult = generateShoppingList(prefs);
+    setPreferences(prefs);
+    setResult(newResult);
+    setMealsOut([]);
+    setResultsTab("liste");
+    setView("results");
+  }
 
   function generateList(prefs: UserPreferences) {
     const newResult = generateShoppingList(prefs);
@@ -75,6 +102,7 @@ export default function CampusPanierApp() {
     setResult(newResult);
     setMealsOut([]);
     recordListGenerated(newResult);
+    saveLastBudget(prefs.budget);
     setResultsTab("liste");
     setView("results");
   }

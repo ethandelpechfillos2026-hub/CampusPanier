@@ -27,9 +27,18 @@ const DIET_LABELS: Record<DietType, string> = {
 const ALLERGEN_LABELS: Record<Allergen, string> = {
   gluten: "gluten",
   lactose: "lactose",
-  "fruits-a-coque": "fruits à coque",
   oeuf: "œuf",
   arachide: "arachide",
+  "fruits-a-coque": "fruits à coque",
+  soja: "soja",
+  poisson: "poisson",
+  crustaces: "crustacés",
+  mollusques: "mollusques",
+  celeri: "céleri",
+  moutarde: "moutarde",
+  sesame: "sésame",
+  sulfites: "sulfites",
+  lupin: "lupin",
 };
 
 export async function POST(request: NextRequest) {

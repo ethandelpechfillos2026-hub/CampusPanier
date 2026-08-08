@@ -34,7 +34,13 @@ export default function ConfidentialitePage() {
         <p className="mt-3 font-semibold">b) Profil enregistré (base Firestore, document &quot;profiles&quot;)</p>
         <ul className="mt-1 list-disc space-y-1 pl-5">
           <li>Type d&apos;alimentation (omnivore, végétarien, végan, sans porc).</li>
-          <li>Allergies déclarées (gluten, lactose, fruits à coque, œuf, arachide).</li>
+          <li>
+            Allergies déclarées, parmi les 14 allergènes à déclaration
+            obligatoire au sens de la réglementation européenne (gluten,
+            lactose, œuf, arachide, fruits à coque, soja, poisson,
+            crustacés, mollusques, céleri, moutarde, sésame, sulfites,
+            lupin).
+          </li>
           <li>Objectif calorique quotidien, préférences de macronutriments (ex. riche en protéines, prise de masse, sèche).</li>
           <li>Sexe, poids, taille, âge (si renseignés, pour affiner le calcul des repères nutritionnels).</li>
           <li>Mode Performance (activé/désactivé) et objectif associé.</li>

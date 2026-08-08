@@ -1,11 +1,25 @@
 export type DietType = "omnivore" | "vegetarien" | "vegan" | "sans-porc";
 
+// Les 14 allergènes à déclaration obligatoire au sens du règlement européen
+// INCO (UE) n°1169/2011 — la liste de référence utilisée sur tous les
+// emballages alimentaires en France. Étendue le 8 août 2026 (retour
+// utilisateur : "il n'y a pas que 5 allergies") depuis une première liste de
+// 5 qui ne couvrait que les cas les plus fréquents.
 export type Allergen =
   | "gluten"
   | "lactose"
-  | "fruits-a-coque"
   | "oeuf"
-  | "arachide";
+  | "arachide"
+  | "fruits-a-coque"
+  | "soja"
+  | "poisson"
+  | "crustaces"
+  | "mollusques"
+  | "celeri"
+  | "moutarde"
+  | "sesame"
+  | "sulfites"
+  | "lupin";
 
 export type ProductCategory =
   | "epicerie"
@@ -371,12 +385,23 @@ export const DIET_OPTIONS: { value: DietType; label: string }[] = [
   { value: "sans-porc", label: "Sans porc" },
 ];
 
+// Ordonnés du plus courant au plus rare, pour que la colonne de gauche
+// (voir ProfileForm) regroupe les cas les plus fréquents.
 export const ALLERGEN_OPTIONS: { value: Allergen; label: string }[] = [
   { value: "gluten", label: "Gluten" },
   { value: "lactose", label: "Lactose" },
-  { value: "fruits-a-coque", label: "Fruits à coque" },
   { value: "oeuf", label: "Œuf" },
   { value: "arachide", label: "Arachide" },
+  { value: "fruits-a-coque", label: "Fruits à coque" },
+  { value: "soja", label: "Soja" },
+  { value: "poisson", label: "Poisson" },
+  { value: "crustaces", label: "Crustacés" },
+  { value: "mollusques", label: "Mollusques" },
+  { value: "celeri", label: "Céleri" },
+  { value: "moutarde", label: "Moutarde" },
+  { value: "sesame", label: "Sésame" },
+  { value: "sulfites", label: "Sulfites" },
+  { value: "lupin", label: "Lupin" },
 ];
 
 export const CATEGORY_LABELS: Record<ProductCategory, string> = {
