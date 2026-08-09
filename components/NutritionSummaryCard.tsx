@@ -4,6 +4,7 @@ import {
   computeShoppingListNutrition,
   EU_REFERENCE_INTAKE_2000KCAL,
 } from "@/lib/nutritionSummary";
+import { useTranslation } from "@/lib/i18n/LanguageContext";
 import { MacroTargets } from "@/lib/macros";
 import { ShoppingListItem } from "@/lib/types";
 
@@ -40,16 +41,17 @@ function CoverageBar({
   pct: number | null;
   overThreshold?: number;
 }) {
+  const { t } = useTranslation();
   const pctColor =
     pct === null
       ? "text-campus-muted"
       : pct >= overThreshold
-        ? "text-red-600"
+        ? "text-red-600 dark:text-red-400"
         : pct >= 100
-          ? "text-amber-600"
+          ? "text-amber-600 dark:text-amber-400"
           : "text-campus-ink";
   const barColor =
-    pct !== null && pct >= overThreshold ? "bg-red-500" : "bg-campus-terracotta";
+    pct !== null && pct >= overThreshold ? "bg-red-500 dark:bg-red-600" : "bg-campus-terracotta";
 
   return (
     <div>
@@ -64,7 +66,7 @@ function CoverageBar({
             <span className="text-campus-muted">
               {" "}
               / {targetG}
-              {unit} visé
+              {unit} {t("nutritionSummary.target")}
             </span>
           )}
           {pct !== null && (
@@ -103,6 +105,7 @@ export default function NutritionSummaryCard({
   extraBudgetForCalorieTarget = null,
   calorieTargetHardToReach = false,
 }: NutritionSummaryCardProps) {
+  const { t } = useTranslation();
   const summary = computeShoppingListNutrition(items);
   const { dailyAverage, itemsCounted, itemsExcluded, totalItems } = summary;
 
@@ -116,113 +119,109 @@ export default function NutritionSummaryCard({
   return (
     <div className="rounded-2xl border border-campus-sand bg-campus-surface p-5">
       <h2 className="text-sm font-bold text-campus-ink">
-        🍎 Bilan nutritionnel (moyenne par jour)
+        {t("nutritionSummary.title")}
       </h2>
       <p className="mt-0.5 text-[11px] text-campus-muted">
-        Calculé sur {itemsCounted}/{totalItems} article
-        {totalItems > 1 ? "s" : ""} de ta liste (poids et fiche
-        nutritionnelle connus).
+        {t("nutritionSummary.calculatedOn", {
+          counted: itemsCounted,
+          total: totalItems,
+          plural: totalItems > 1 ? "s" : "",
+        })}
       </p>
 
       {macroTargets ? (
         <div className="mt-4 space-y-3">
           <p className="text-[10px] font-bold uppercase tracking-wide text-campus-terracotta">
-            Par rapport à ton objectif personnalisé
+            {t("nutritionSummary.personalTitle")}
           </p>
           <CoverageBar
-            label="Calories"
+            label={t("nutritionSummary.calories")}
             valueG={Math.round(dailyAverage.kcal)}
             targetG={macroTargets.calories}
             unit=" kcal"
             pct={personal.kcalPct}
           />
           <CoverageBar
-            label="Protéines"
+            label={t("profileForm.proteins")}
             valueG={dailyAverage.proteinG}
             targetG={macroTargets.proteinG}
             pct={personal.proteinPct}
           />
           <CoverageBar
-            label="Lipides"
+            label={t("profileForm.lipids")}
             valueG={dailyAverage.lipidesG}
             targetG={macroTargets.lipidesG}
             pct={personal.lipidesPct}
           />
           <CoverageBar
-            label="Glucides"
+            label={t("profileForm.carbs")}
             valueG={dailyAverage.glucidesG}
             targetG={macroTargets.glucidesG}
             pct={personal.glucidesPct}
           />
           {extraBudgetForCalorieTarget != null && (
             <p className="rounded-xl bg-campus-terracotta/10 p-2.5 text-[11px] text-campus-ink">
-              💡 Il faudrait environ{" "}
+              {t("nutritionSummary.extraBudgetHintPrefix")}{" "}
               <span className="font-bold">
                 +{extraBudgetForCalorieTarget}€/semaine
               </span>{" "}
-              de budget pour atteindre ton objectif calorique avec des
-              aliments bien choisis.
+              {t("nutritionSummary.extraBudgetHintSuffix")}
             </p>
           )}
           {calorieTargetHardToReach && (
             <p className="rounded-xl bg-campus-terracotta/10 p-2.5 text-[11px] text-campus-ink">
-              💡 Même avec beaucoup plus de budget, cet objectif calorique
-              reste difficile à atteindre avec ton régime/tes allergies
-              actuels — essaie de le revoir à la baisse.
+              {t("nutritionSummary.hardToReach")}
             </p>
           )}
         </div>
       ) : (
         <p className="mt-3 rounded-xl bg-campus-terracotta/10 p-2.5 text-[11px] text-campus-muted">
-          Complète ton profil (sexe, poids, taille, âge) pour comparer ces
-          chiffres à ton objectif personnalisé.
+          {t("nutritionSummary.completeProfile")}
         </p>
       )}
 
       <div className="mt-4 space-y-3 border-t border-campus-sand pt-4">
         <p className="text-[10px] font-bold uppercase tracking-wide text-campus-muted">
-          Par rapport au repère officiel UE (indicatif, tout le monde)
+          {t("nutritionSummary.referenceTitle")}
         </p>
         <CoverageBar
-          label="Sucres"
+          label={t("nutritionSummary.sugars")}
           valueG={dailyAverage.sucresG}
           targetG={EU_REFERENCE_INTAKE_2000KCAL.sucresG}
           pct={reference.sucresPct}
         />
         <CoverageBar
-          label="Acides gras saturés"
+          label={t("nutritionSummary.saturatedFat")}
           valueG={dailyAverage.satureesG}
           targetG={EU_REFERENCE_INTAKE_2000KCAL.satureesG}
           pct={reference.satureesPct}
         />
         <CoverageBar
-          label="Sel"
+          label={t("nutritionSummary.salt")}
           valueG={dailyAverage.selG}
           targetG={EU_REFERENCE_INTAKE_2000KCAL.selG}
           pct={reference.selPct}
         />
         <div className="flex items-baseline justify-between gap-2">
-          <p className="text-xs font-medium text-campus-ink">Fibres</p>
+          <p className="text-xs font-medium text-campus-ink">{t("nutritionSummary.fibres")}</p>
           <p className="text-xs font-semibold text-campus-ink">
             {dailyAverage.fibresG}g
             <span className="ml-1 font-normal text-campus-muted">
-              (pas de repère officiel)
+              {t("nutritionSummary.noOfficialTarget")}
             </span>
           </p>
         </div>
         <p className="text-[10px] text-campus-muted">
-          Repère UE = même valeur pour tout adulte, base{" "}
-          {EU_REFERENCE_INTAKE_2000KCAL.kcal} kcal/j (règlement (UE)
-          n°1169/2011) — contrairement à la section du haut, il ne tient pas
-          compte de ton profil.
+          {t("nutritionSummary.euReferenceHint", { kcal: EU_REFERENCE_INTAKE_2000KCAL.kcal })}
         </p>
       </div>
 
       {itemsExcluded > 0 && (
         <p className="mt-3 text-[10px] text-campus-muted">
-          {itemsExcluded} article{itemsExcluded > 1 ? "s" : ""} non
-          comptabilisé{itemsExcluded > 1 ? "s" : ""} (condiment dosé
-          librement, ou vendu à l&apos;unité sans poids précis connu).
+          {t("nutritionSummary.excludedItems", {
+            count: itemsExcluded,
+            plural: itemsExcluded > 1 ? "s" : "",
+          })}
         </p>
       )}
     </div>

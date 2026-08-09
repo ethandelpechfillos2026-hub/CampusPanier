@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import Mascot from "@/components/Mascot";
 import { formatPrice, products } from "@/lib/generateShoppingList";
+import { useTranslation } from "@/lib/i18n/LanguageContext";
 import {
   createSharedList,
   findSharedListByCode,
@@ -14,7 +15,7 @@ import {
   toggleSharedListItem,
 } from "@/lib/sharedList";
 import {
-  CATEGORY_LABELS,
+  CATEGORY_LABEL_KEYS,
   CATEGORY_ORDER,
   ProductCategory,
   SharedList,
@@ -84,6 +85,7 @@ export default function SharedListTab({
   userId,
   userName,
 }: SharedListTabProps) {
+  const { t } = useTranslation();
   const [listId, setListId] = useState<string | null | undefined>(undefined);
   const [sharedList, setSharedList] = useState<SharedList | null>(null);
   const [joinCode, setJoinCode] = useState("");
@@ -117,7 +119,7 @@ export default function SharedListTab({
       setListId(created.id);
     } catch (err) {
       console.error("[CampusPanier] Erreur création liste partagée:", err);
-      setError("Impossible de créer la liste partagée. Réessaie.");
+      setError(t("sharedListTab.createError"));
     } finally {
       setBusy(false);
     }
@@ -130,7 +132,7 @@ export default function SharedListTab({
     try {
       const found = await findSharedListByCode(joinCode);
       if (!found) {
-        setError("Aucune liste ne correspond à ce code. Vérifie-le.");
+        setError(t("sharedListTab.noListForCode"));
         return;
       }
       if (!found.memberIds.includes(userId)) {
@@ -140,7 +142,7 @@ export default function SharedListTab({
       setListId(found.id);
     } catch (err) {
       console.error("[CampusPanier] Erreur pour rejoindre la liste:", err);
-      setError("Impossible de rejoindre cette liste. Réessaie.");
+      setError(t("sharedListTab.joinError"));
     } finally {
       setBusy(false);
     }
@@ -190,21 +192,20 @@ export default function SharedListTab({
           <Mascot mood="happy" size={44} />
           <div>
             <h1 className="text-2xl font-bold text-campus-ink">
-              Liste de coloc
+              {t("sharedListTab.title")}
             </h1>
             <p className="text-sm text-campus-muted">
-              Partage tes courses et cochez ensemble, en temps réel.
+              {t("sharedListTab.subtitle")}
             </p>
           </div>
         </div>
 
         <div className="rounded-2xl border border-campus-sand bg-campus-surface p-4">
           <p className="text-sm font-bold text-campus-ink">
-            Créer une liste à partager
+            {t("sharedListTab.createTitle")}
           </p>
           <p className="mt-1 text-xs text-campus-muted">
-            Transforme ta liste actuelle ({result.items.length} articles) en
-            liste de coloc. Tu recevras un code à partager.
+            {t("sharedListTab.createHint", { count: result.items.length })}
           </p>
           <button
             type="button"
@@ -212,23 +213,23 @@ export default function SharedListTab({
             disabled={busy || result.items.length === 0}
             className="btn-primary mt-3"
           >
-            {busy ? "Création..." : "Créer la liste"}
+            {busy ? t("sharedListTab.creating") : t("sharedListTab.createButton")}
           </button>
         </div>
 
         <div className="rounded-2xl border border-campus-sand bg-campus-surface p-4">
           <p className="text-sm font-bold text-campus-ink">
-            Rejoindre avec un code
+            {t("sharedListTab.joinTitle")}
           </p>
           <p className="mt-1 text-xs text-campus-muted">
-            Demande le code à ton/ta colocataire qui a créé la liste.
+            {t("sharedListTab.joinHint")}
           </p>
           <div className="mt-3 grid grid-cols-[minmax(0,1fr)_auto] gap-2">
             <input
               type="text"
               value={joinCode}
               onChange={(event) => setJoinCode(event.target.value.toUpperCase())}
-              placeholder="Ex : F3T8QM"
+              placeholder={t("sharedListTab.joinPlaceholder")}
               maxLength={6}
               className="min-h-[48px] w-full min-w-0 rounded-2xl border-2 border-campus-sand px-3 text-center text-base font-bold uppercase tracking-widest text-campus-ink focus:border-campus-terracotta focus:outline-none"
             />
@@ -238,13 +239,13 @@ export default function SharedListTab({
               disabled={busy || joinCode.trim().length === 0}
               className="btn-secondary w-auto px-4"
             >
-              {busy ? "..." : "Rejoindre"}
+              {busy ? "..." : t("sharedListTab.joinButton")}
             </button>
           </div>
         </div>
 
         {error && (
-          <p className="text-center text-sm text-red-600">{error}</p>
+          <p className="text-center text-sm text-red-600 dark:text-red-400">{error}</p>
         )}
       </div>
     );
@@ -252,7 +253,7 @@ export default function SharedListTab({
 
   const groups = groupSharedItems(sharedList.items, sharedList.itemOrder ?? []);
   const memberList = sharedList.memberIds.map(
-    (id) => sharedList.memberNames[id] ?? "Colocataire"
+    (id) => sharedList.memberNames[id] ?? t("sharedListTab.roommateFallback")
   );
   const checkedCount = Object.values(sharedList.items).filter(
     (item) => item.checked
@@ -265,7 +266,7 @@ export default function SharedListTab({
         <div className="flex items-start justify-between gap-3">
           <div>
             <p className="text-xs font-semibold uppercase tracking-wide text-campus-muted">
-              Code d&apos;invitation
+              {t("sharedListTab.inviteCode")}
             </p>
             <p className="text-2xl font-extrabold tracking-widest text-campus-terracotta">
               {sharedList.inviteCode}
@@ -276,14 +277,14 @@ export default function SharedListTab({
             onClick={handleCopyCode}
             className="shrink-0 rounded-full bg-campus-sand px-3 py-2 text-xs font-bold text-campus-ink"
           >
-            {copied ? "Copié ✓" : "Copier"}
+            {copied ? t("sharedListTab.copied") : t("sharedListTab.copy")}
           </button>
         </div>
         <p className="mt-2 text-xs text-campus-muted">
           👥 {memberList.join(", ")}
         </p>
         <p className="mt-1 text-xs text-campus-muted">
-          {checkedCount}/{totalCount} articles cochés ·{" "}
+          {t("sharedListTab.itemsChecked", { checked: checkedCount, total: totalCount })} ·{" "}
           {formatPrice(sharedList.total)} / {formatPrice(sharedList.budget)}
         </p>
       </div>
@@ -295,12 +296,12 @@ export default function SharedListTab({
             className="rounded-2xl border border-campus-sand bg-campus-surface p-4"
           >
             <h2 className="mb-3 text-xs font-bold uppercase tracking-wide text-campus-muted">
-              {CATEGORY_LABELS[group.category]}
+              {t(CATEGORY_LABEL_KEYS[group.category])}
             </h2>
             <ul className="space-y-1">
               {group.entries.map(([productId, item]) => (
                 <li key={productId}>
-                  <label className="flex cursor-pointer items-center gap-3 rounded-xl px-1 py-2.5 transition-colors hover:bg-orange-50/60">
+                  <label className="flex cursor-pointer items-center gap-3 rounded-xl px-1 py-2.5 transition-colors hover:bg-orange-50/60 dark:hover:bg-white/5">
                     <input
                       type="checkbox"
                       checked={item.checked}
@@ -319,7 +320,7 @@ export default function SharedListTab({
                       </span>
                       {item.checked && item.checkedBy && (
                         <span className="block text-[11px] text-campus-muted">
-                          coché par {item.checkedBy}
+                          {t("sharedListTab.checkedBy", { name: item.checkedBy })}
                         </span>
                       )}
                     </span>
@@ -341,10 +342,10 @@ export default function SharedListTab({
       </div>
 
       <button type="button" onClick={handleLeave} className="btn-secondary">
-        Quitter cette liste
+        {t("sharedListTab.leaveButton")}
       </button>
       <p className="text-center text-xs text-campus-muted">
-        Prix indicatifs · Non contractuels
+        {t("resultsContent.priceDisclaimer")}
       </p>
     </div>
   );

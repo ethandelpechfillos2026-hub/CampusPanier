@@ -3,6 +3,7 @@
 import { useEffect } from "react";
 import Mascot from "@/components/Mascot";
 import { Achievement } from "@/lib/achievements";
+import { useTranslation } from "@/lib/i18n/LanguageContext";
 import { playCelebrationSound } from "@/lib/sound";
 
 interface CelebrationOverlayProps {
@@ -16,6 +17,7 @@ export default function CelebrationOverlay({
   achievement,
   onDismiss,
 }: CelebrationOverlayProps) {
+  const { t } = useTranslation();
   useEffect(() => {
     playCelebrationSound();
   }, [achievement.id]);
@@ -39,20 +41,20 @@ export default function CelebrationOverlay({
 
         <div className="relative">
           <p className="text-xs font-bold uppercase tracking-wide text-campus-terracotta">
-            Nouveau badge débloqué
+            {t("celebrationOverlay.newBadge")}
           </p>
           <div className="my-3 flex justify-center">
             <Mascot mood="excited" size={92} />
           </div>
           <p className="text-4xl">{achievement.icon}</p>
           <p className="mt-2 text-lg font-bold text-campus-ink">
-            {achievement.label}
+            {t(achievement.labelKey)}
           </p>
           <p className="mt-1 text-sm text-campus-muted">
-            {achievement.description}
+            {t(achievement.descriptionKey)}
           </p>
           <button type="button" onClick={onDismiss} className="btn-primary mt-5">
-            Continuer
+            {t("celebrationOverlay.continue")}
           </button>
         </div>
       </div>

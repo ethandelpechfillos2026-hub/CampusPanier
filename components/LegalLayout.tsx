@@ -1,5 +1,8 @@
+"use client";
+
 import Link from "next/link";
 import { ReactNode } from "react";
+import { useTranslation } from "@/lib/i18n/LanguageContext";
 
 interface LegalLayoutProps {
   title: string;
@@ -11,6 +14,7 @@ interface LegalLayoutProps {
 // confidentialité, cookies) — cohérente visuellement avec le reste de l'app,
 // avec un lien de retour et un style de texte adapté à de longs paragraphes.
 export default function LegalLayout({ title, updated, children }: LegalLayoutProps) {
+  const { t } = useTranslation();
   return (
     <div className="flex-1 overflow-y-auto px-5 py-5">
       <div className="space-y-5 pb-8">
@@ -19,12 +23,12 @@ export default function LegalLayout({ title, updated, children }: LegalLayoutPro
             href="/"
             className="text-xs font-semibold text-campus-terracotta underline"
           >
-            ← Retour à l&apos;app
+            {t("legalLayout.backToApp")}
           </Link>
           <h1 className="mt-3 text-2xl font-bold text-campus-ink">{title}</h1>
           {updated && (
             <p className="mt-1 text-xs text-campus-muted">
-              Dernière mise à jour : {updated}
+              {t("legalLayout.lastUpdated", { date: updated })}
             </p>
           )}
         </div>

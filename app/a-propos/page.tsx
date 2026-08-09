@@ -1,59 +1,52 @@
+"use client";
+
 import Link from "next/link";
 import PhoneFrame from "@/components/PhoneFrame";
+import { useTranslation } from "@/lib/i18n/LanguageContext";
 
 export default function AProposPage() {
+  const { t } = useTranslation();
   return (
     <PhoneFrame>
     <div className="flex-1 overflow-y-auto space-y-6 px-5 py-5">
       <div>
-        <h1 className="text-2xl font-bold text-campus-ink">À propos</h1>
+        <h1 className="text-2xl font-bold text-campus-ink">{t("aPropos.title")}</h1>
         <p className="mt-1 text-campus-muted">
-          Le concept derrière CampusPanier
+          {t("aPropos.subtitle")}
         </p>
       </div>
 
       <section className="space-y-4 rounded-2xl border-2 border-campus-sand bg-campus-surface p-4">
-        <h2 className="text-lg font-semibold">Pourquoi CampusPanier ?</h2>
+        <h2 className="text-lg font-semibold">{t("aPropos.whyTitle")}</h2>
         <p className="leading-relaxed text-campus-muted">
-          Faire ses courses en étant étudiant·e, c&apos;est jongler entre un
-          budget serré, des contraintes alimentaires et peu de temps. CampusPanier
-          t&apos;aide à construire une liste de courses réaliste en quelques
-          clics — sans prise de tête, sans jugement.
+          {t("aPropos.whyP1")}
         </p>
         <p className="leading-relaxed text-campus-muted">
-          L&apos;application génère une sélection de produits adaptée à ton
-          budget hebdomadaire, ton type d&apos;alimentation, tes allergies et
-          tes préférences personnelles.
+          {t("aPropos.whyP2")}
         </p>
       </section>
 
       <section className="space-y-4 rounded-2xl border-2 border-campus-sand bg-campus-surface p-4">
-        <h2 className="text-lg font-semibold">Comment ça marche ?</h2>
+        <h2 className="text-lg font-semibold">{t("aPropos.howTitle")}</h2>
         <ol className="list-inside list-decimal space-y-2 text-campus-muted">
-          <li>Tu indiques ton budget et tes contraintes alimentaires.</li>
-          <li>L&apos;app filtre un catalogue de produits et compose ton panier.</li>
-          <li>Tu obtiens une liste prête à emporter au supermarché.</li>
+          <li>{t("aPropos.howStep1")}</li>
+          <li>{t("aPropos.howStep2")}</li>
+          <li>{t("aPropos.howStep3")}</li>
         </ol>
         <p className="text-sm text-campus-muted">
-          Les prix affichés proviennent d&apos;un catalogue construit à partir
-          de relevés publics Open Food Facts / Open Prices. Selon le produit,
-          il peut s&apos;agir d&apos;un relevé récent, d&apos;un relevé plus
-          ancien ou d&apos;une estimation générique — la fiabilité de chaque
-          prix est indiquée directement sous le produit dans ta liste.
+          {t("aPropos.pricesNote")}
         </p>
       </section>
 
       <section className="space-y-4 rounded-2xl border-2 border-campus-sand bg-campus-surface p-4">
-        <h2 className="text-lg font-semibold">Pilote rentrée 2026</h2>
+        <h2 className="text-lg font-semibold">{t("aPropos.pilotTitle")}</h2>
         <p className="leading-relaxed text-campus-muted">
-          CampusPanier est testé en conditions réelles sur 1 à 2 campus français
-          à la rentrée 2026. Ton retour nous aidera à améliorer l&apos;outil
-          avant un déploiement plus large.
+          {t("aPropos.pilotText")}
         </p>
       </section>
 
       <Link href="/" className="btn-primary inline-flex">
-        Créer ma liste de courses
+        {t("aPropos.createListButton")}
       </Link>
     </div>
     </PhoneFrame>

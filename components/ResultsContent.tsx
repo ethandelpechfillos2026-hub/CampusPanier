@@ -9,11 +9,12 @@ import {
   formatPriceProvenance,
   getPriceReliability,
 } from "@/lib/generateShoppingList";
+import { useTranslation } from "@/lib/i18n/LanguageContext";
 import { getActiveMacroTargets } from "@/lib/macros";
 import { recordListFullyChecked } from "@/lib/stats";
 import {
   ALLERGEN_OPTIONS,
-  CATEGORY_LABELS,
+  CATEGORY_LABEL_KEYS,
   CATEGORY_ORDER,
   MACRO_OPTIONS,
   NutriLevel,
@@ -35,10 +36,10 @@ interface ResultsContentProps {
 // dont on dispose sont ces niveaux qualitatifs (voir Product dans
 // lib/types.ts), pas de grammes précis : pas question d'inventer une
 // précision qu'on n'a pas.
-const LEVEL_LABELS: Record<NutriLevel, string> = {
-  faible: "Faible",
-  moyen: "Moyen",
-  riche: "Riche",
+const LEVEL_LABEL_KEYS: Record<NutriLevel, string> = {
+  faible: "resultsContent.levelLow",
+  moyen: "resultsContent.levelMedium",
+  riche: "resultsContent.levelHigh",
 };
 
 export default function ResultsContent({
@@ -49,6 +50,7 @@ export default function ResultsContent({
   onToggleFavorite,
   onSwapProduct,
 }: ResultsContentProps) {
+  const { t } = useTranslation();
   const [checkedIds, setCheckedIds] = useState<Set<string>>(new Set());
   const hasRecordedCompletionRef = useRef(false);
   // Incrémenté quand la liste vient d'être entièrement cochée, pour dire au
@@ -114,42 +116,44 @@ export default function ResultsContent({
     <div className="space-y-5">
       <div className="flex items-start justify-between gap-3">
         <div>
-          <h1 className="text-2xl font-bold text-campus-ink">Ta liste</h1>
+          <h1 className="text-2xl font-bold text-campus-ink">{t("resultsContent.title")}</h1>
           <p className="mt-1 text-sm text-campus-muted">
-            Budget {formatPrice(preferences.budget)}/sem.
+            {t("resultsContent.budgetPerWeek", { budget: formatPrice(preferences.budget) })}
             {preferences.dailyCalories &&
-              ` · ~${
-                preferences.canteenDays.length > 0 && macroTargets
-                  ? macroTargets.calories
-                  : preferences.dailyCalories
-              } kcal/j${preferences.canteenDays.length > 0 ? " à la maison" : ""}`}
+              t("resultsContent.calorieSuffix", {
+                kcal:
+                  preferences.canteenDays.length > 0 && macroTargets
+                    ? macroTargets.calories
+                    : preferences.dailyCalories,
+              }) + (preferences.canteenDays.length > 0 ? t("resultsContent.atHomeSuffix") : "")}
           </p>
           {macroTargets && (
             <p className="mt-1 text-xs text-campus-muted">
-              Repère : ~{macroTargets.proteinG}g protéines ·{" "}
-              {macroTargets.lipidesG}g lipides · {macroTargets.glucidesG}g
-              glucides / jour
+              {t("resultsContent.macroSummary", {
+                protein: macroTargets.proteinG,
+                lipides: macroTargets.lipidesG,
+                glucides: macroTargets.glucidesG,
+              })}
             </p>
           )}
           {preferences.canteenDays.length > 0 && preferences.dailyCalories && (
             <p className="mt-1 text-[11px] text-campus-terracotta">
-              🍽️ Objectif total {preferences.dailyCalories} kcal/j — la
-              cantine du midi couvre le reste.
+              {t("resultsContent.canteenObjective", { kcal: preferences.dailyCalories })}
             </p>
           )}
           {preferences.macroPreferences.length > 0 && (
             <ul className="mt-1.5 space-y-0.5">
               {preferences.macroPreferences.map((value) => {
-                const label = MACRO_OPTIONS.find(
+                const labelKey = MACRO_OPTIONS.find(
                   (option) => option.value === value
-                )?.label;
-                if (!label) return null;
+                )?.labelKey;
+                if (!labelKey) return null;
                 return (
                   <li
                     key={value}
                     className="text-xs text-campus-muted before:mr-1.5 before:text-campus-terracotta before:content-['•']"
                   >
-                    {label}
+                    {t(labelKey)}
                   </li>
                 );
               })}
@@ -160,7 +164,7 @@ export default function ResultsContent({
           type="button"
           onClick={onToggleFavorite}
           aria-label={
-            isFavorited ? "Retirer des listes favorites" : "Enregistrer cette liste"
+            isFavorited ? t("resultsContent.removeFavorite") : t("resultsContent.addFavorite")
           }
           className="shrink-0 text-2xl leading-none text-campus-terracotta"
         >
@@ -173,15 +177,14 @@ export default function ResultsContent({
       {result.isBudgetInsufficient && (
         <div className="rounded-2xl border border-campus-terracotta/40 bg-campus-terracotta/10 p-4">
           <p className="text-sm font-bold text-campus-ink">
-            Ton budget ne couvre pas un panier complet
+            {t("resultsContent.budgetInsufficientTitle")}
           </p>
           <p className="mt-1 text-sm text-campus-muted">
-            Il manquerait environ{" "}
-            {formatPrice(
-              Math.max(0, result.minimalBalancedCost - preferences.budget)
-            )}{" "}
-            pour un panier équilibré. Tu n&apos;es pas seul·e — des
-            associations étudiantes peuvent t&apos;aider, sans jugement.
+            {t("resultsContent.budgetInsufficientText", {
+              amount: formatPrice(
+                Math.max(0, result.minimalBalancedCost - preferences.budget)
+              ),
+            })}
           </p>
           <ul className="mt-3 space-y-1.5 text-sm">
             <li>
@@ -191,7 +194,7 @@ export default function ResultsContent({
                 rel="noreferrer"
                 className="font-semibold text-campus-terracotta underline"
               >
-                Cop1 — Solidarités étudiantes
+                {t("resultsContent.cop1Label")}
               </a>
             </li>
             <li>
@@ -201,13 +204,12 @@ export default function ResultsContent({
                 rel="noreferrer"
                 className="font-semibold text-campus-terracotta underline"
               >
-                Linkee — colis alimentaires étudiants
+                {t("resultsContent.linkeeLabel")}
               </a>
             </li>
             <li>
-              <span className="font-semibold text-campus-ink">Agoraé</span> —
-              épicerie solidaire de ton campus, renseigne-toi auprès de ton
-              BDE ou du CROUS
+              <span className="font-semibold text-campus-ink">Agoraé</span>{" "}
+              {t("resultsContent.agoraeText")}
             </li>
           </ul>
         </div>
@@ -216,16 +218,13 @@ export default function ResultsContent({
       {result.items.length === 0 ? (
         <div className="rounded-2xl border border-campus-sand bg-campus-surface p-5 text-center">
           <p className="text-sm text-campus-muted">
-            Aucun produit ne correspond à tes critères. Essaie d&apos;augmenter
-            ton budget ou d&apos;ajuster tes filtres.
+            {t("resultsContent.noItemsText")}
           </p>
         </div>
       ) : (
         <div className="space-y-4">
           <p className="text-[11px] text-campus-muted">
-            Sous chaque article : &quot;Relevé&quot; (enseigne, ville, date),
-            &quot;Relevé ancien&quot; si ça date, ou &quot;Estimation&quot;
-            quand on n&apos;a rien de précis.
+            {t("resultsContent.priceLegend")}
           </p>
           {grouped.map(({ category, items }) => (
             <section
@@ -233,7 +232,7 @@ export default function ResultsContent({
               className="rounded-2xl border border-campus-sand bg-campus-surface p-4"
             >
               <h2 className="mb-3 text-xs font-bold uppercase tracking-wide text-campus-muted">
-                {CATEGORY_LABELS[category]}
+                {t(CATEGORY_LABEL_KEYS[category])}
               </h2>
               <ul className="space-y-1">
                 {items.map(({ product, quantity }) => {
@@ -248,12 +247,12 @@ export default function ResultsContent({
                           cliquer sur le produit ouvre le popup nutrition/
                           échange ci-dessous, plutôt que les deux gestes se
                           marchant dessus comme avec un <label> englobant. */}
-                      <div className="flex items-start gap-3 rounded-xl px-1 py-1 transition-colors hover:bg-orange-50/60">
+                      <div className="flex items-start gap-3 rounded-xl px-1 py-1 transition-colors hover:bg-orange-50/60 dark:hover:bg-white/5">
                         <input
                           type="checkbox"
                           checked={isChecked}
                           onChange={() => toggleChecked(product.id)}
-                          aria-label={`Cocher ${product.name}`}
+                          aria-label={t("resultsContent.checkItem", { name: product.name })}
                           className="mt-3.5 h-5 w-5 shrink-0 rounded-md border-2 border-campus-sand accent-campus-terracotta"
                         />
                         <button
@@ -278,10 +277,10 @@ export default function ResultsContent({
                               {product.nutritionPer100g?.matchConfidence ===
                                 "review" && (
                                 <span
-                                  title="Valeur nutritionnelle estimée, pas une correspondance exacte — voir détail dans la fiche produit."
-                                  className="ml-1.5 rounded-full bg-amber-100 px-1.5 py-0.5 text-[9px] font-bold uppercase tracking-wide text-amber-700"
+                                  title={t("resultsContent.estimatedTooltip")}
+                                  className="ml-1.5 rounded-full bg-amber-100 px-1.5 py-0.5 text-[9px] font-bold uppercase tracking-wide text-amber-700 dark:bg-amber-900/40 dark:text-amber-300"
                                 >
-                                  ≈ estimation
+                                  {t("resultsContent.estimationBadge")}
                                 </span>
                               )}
                             </span>
@@ -289,7 +288,7 @@ export default function ResultsContent({
                               <span
                                 className={`block text-[11px] ${
                                   reliability === "old"
-                                    ? "text-amber-600"
+                                    ? "text-amber-600 dark:text-amber-400"
                                     : "text-campus-muted"
                                 }`}
                               >
@@ -327,11 +326,11 @@ export default function ResultsContent({
       )}
 
       <button type="button" onClick={onRestart} className="btn-primary">
-        Refaire
+        {t("resultsContent.redo")}
       </button>
 
       <p className="text-center text-xs text-campus-muted">
-        Prix indicatifs · Non contractuels
+        {t("resultsContent.priceDisclaimer")}
       </p>
 
       {selectedProduct && (
@@ -350,15 +349,15 @@ export default function ResultsContent({
                 </h3>
                 {selectedProduct.nutritionPer100g?.matchConfidence ===
                   "review" && (
-                  <span className="mt-1 inline-block rounded-full bg-amber-100 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-amber-700">
-                    ≈ Valeurs estimées
+                  <span className="mt-1 inline-block rounded-full bg-amber-100 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-amber-700 dark:bg-amber-900/40 dark:text-amber-300">
+                    {t("resultsContent.estimatedValuesBadge")}
                   </span>
                 )}
               </div>
               <button
                 type="button"
                 onClick={() => setSelectedProduct(null)}
-                aria-label="Fermer"
+                aria-label={t("common.close")}
                 className="shrink-0 text-2xl leading-none text-campus-muted"
               >
                 ×
@@ -371,12 +370,12 @@ export default function ResultsContent({
             {selectedProduct.nutritionPer100g ? (
               <>
                 <p className="mt-3 text-[11px] font-semibold uppercase tracking-wide text-campus-muted">
-                  Pour 100 g
+                  {t("resultsContent.per100g")}
                 </p>
                 <div className="mt-1 grid grid-cols-2 gap-2">
                   <div className="rounded-xl bg-campus-terracotta/10 p-3">
                     <p className="text-[11px] uppercase tracking-wide text-campus-muted">
-                      Calories
+                      {t("resultsContent.calories")}
                     </p>
                     <p className="text-sm font-bold text-campus-ink">
                       {selectedProduct.nutritionPer100g.kcal ?? "—"} kcal
@@ -384,7 +383,7 @@ export default function ResultsContent({
                   </div>
                   <div className="rounded-xl bg-campus-terracotta/10 p-3">
                     <p className="text-[11px] uppercase tracking-wide text-campus-muted">
-                      Protéines
+                      {t("profileForm.proteins")}
                     </p>
                     <p className="text-sm font-bold text-campus-ink">
                       {selectedProduct.nutritionPer100g.proteinG ?? "—"} g
@@ -392,7 +391,7 @@ export default function ResultsContent({
                   </div>
                   <div className="rounded-xl bg-campus-terracotta/10 p-3">
                     <p className="text-[11px] uppercase tracking-wide text-campus-muted">
-                      Lipides {selectedProduct.nutritionPer100g.satureesG != null ? "(dont AGS)" : ""}
+                      {t("profileForm.lipids")} {selectedProduct.nutritionPer100g.satureesG != null ? t("resultsContent.ofWhichSaturated") : ""}
                     </p>
                     <p className="text-sm font-bold text-campus-ink">
                       {selectedProduct.nutritionPer100g.lipidesG ?? "—"} g
@@ -405,7 +404,7 @@ export default function ResultsContent({
                   </div>
                   <div className="rounded-xl bg-campus-terracotta/10 p-3">
                     <p className="text-[11px] uppercase tracking-wide text-campus-muted">
-                      Glucides {selectedProduct.nutritionPer100g.sucresG != null ? "(dont sucres)" : ""}
+                      {t("profileForm.carbs")} {selectedProduct.nutritionPer100g.sucresG != null ? t("resultsContent.ofWhichSugar") : ""}
                     </p>
                     <p className="text-sm font-bold text-campus-ink">
                       {selectedProduct.nutritionPer100g.glucidesG ?? "—"} g
@@ -418,7 +417,7 @@ export default function ResultsContent({
                   </div>
                   <div className="rounded-xl bg-campus-terracotta/10 p-3">
                     <p className="text-[11px] uppercase tracking-wide text-campus-muted">
-                      Fibres
+                      {t("resultsContent.fibres")}
                     </p>
                     <p className="text-sm font-bold text-campus-ink">
                       {selectedProduct.nutritionPer100g.fibresG ?? "—"} g
@@ -426,7 +425,7 @@ export default function ResultsContent({
                   </div>
                   <div className="rounded-xl bg-campus-terracotta/10 p-3">
                     <p className="text-[11px] uppercase tracking-wide text-campus-muted">
-                      Sel
+                      {t("resultsContent.salt")}
                     </p>
                     <p className="text-sm font-bold text-campus-ink">
                       {selectedProduct.nutritionPer100g.selG ?? "—"} g
@@ -435,11 +434,11 @@ export default function ResultsContent({
                 </div>
                 <p className="mt-2 text-[11px] text-campus-muted">
                   {selectedProduct.nutritionPer100g.nutritionSource === "ciqual-2025"
-                    ? "Source : Anses, 2025, Table de composition nutritionnelle des aliments Ciqual."
+                    ? t("resultsContent.sourceCiqual")
                     : selectedProduct.nutritionPer100g.nutritionSource === "open-food-facts"
-                      ? "Source : Open Food Facts."
+                      ? t("resultsContent.sourceOff")
                       : selectedProduct.nutritionPer100g.nutritionSource === "manufacturer"
-                        ? "Source : étiquette fabricant."
+                        ? t("resultsContent.sourceManufacturer")
                         : null}
                 </p>
                 {selectedProduct.nutritionPer100g.sourceNote && (
@@ -452,7 +451,7 @@ export default function ResultsContent({
               <div className="mt-4 grid grid-cols-2 gap-2">
                 <div className="rounded-xl bg-campus-terracotta/10 p-3">
                   <p className="text-[11px] uppercase tracking-wide text-campus-muted">
-                    Calories
+                    {t("resultsContent.calories")}
                   </p>
                   <p className="text-sm font-bold text-campus-ink">
                     {selectedProduct.kcal} kcal
@@ -460,34 +459,34 @@ export default function ResultsContent({
                 </div>
                 <div className="rounded-xl bg-campus-terracotta/10 p-3">
                   <p className="text-[11px] uppercase tracking-wide text-campus-muted">
-                    Protéines
+                    {t("profileForm.proteins")}
                   </p>
                   <p className="text-sm font-bold text-campus-ink">
-                    {LEVEL_LABELS[selectedProduct.protein]}
+                    {t(LEVEL_LABEL_KEYS[selectedProduct.protein])}
                   </p>
                 </div>
                 <div className="rounded-xl bg-campus-terracotta/10 p-3">
                   <p className="text-[11px] uppercase tracking-wide text-campus-muted">
-                    Lipides
+                    {t("profileForm.lipids")}
                   </p>
                   <p className="text-sm font-bold text-campus-ink">
-                    {LEVEL_LABELS[selectedProduct.lipides]}
+                    {t(LEVEL_LABEL_KEYS[selectedProduct.lipides])}
                   </p>
                 </div>
                 <div className="rounded-xl bg-campus-terracotta/10 p-3">
                   <p className="text-[11px] uppercase tracking-wide text-campus-muted">
-                    Glucides
+                    {t("profileForm.carbs")}
                   </p>
                   <p className="text-sm font-bold text-campus-ink">
-                    {LEVEL_LABELS[selectedProduct.glucides]}
+                    {t(LEVEL_LABEL_KEYS[selectedProduct.glucides])}
                   </p>
                 </div>
                 <div className="col-span-2 rounded-xl bg-campus-terracotta/10 p-3">
                   <p className="text-[11px] uppercase tracking-wide text-campus-muted">
-                    Sel
+                    {t("resultsContent.salt")}
                   </p>
                   <p className="text-sm font-bold text-campus-ink">
-                    {LEVEL_LABELS[selectedProduct.sel]}
+                    {t(LEVEL_LABEL_KEYS[selectedProduct.sel])}
                   </p>
                 </div>
               </div>
@@ -495,12 +494,14 @@ export default function ResultsContent({
 
             {selectedProduct.allergens.length > 0 && (
               <p className="mt-3 text-xs text-campus-muted">
-                Allergènes :{" "}
+                {t("resultsContent.allergensLabel")}{" "}
                 {selectedProduct.allergens
                   .map(
-                    (allergen) =>
-                      ALLERGEN_OPTIONS.find((option) => option.value === allergen)
-                        ?.label ?? allergen
+                    (allergen) => {
+                      const key = ALLERGEN_OPTIONS.find((option) => option.value === allergen)
+                        ?.labelKey;
+                      return key ? t(key) : allergen;
+                    }
                   )
                   .join(", ")}
               </p>
@@ -508,18 +509,15 @@ export default function ResultsContent({
 
             <div className="mt-5 border-t border-campus-sand pt-4">
               <p className="text-xs font-bold uppercase tracking-wide text-campus-muted">
-                🔄 Échanger contre...
+                {t("resultsContent.swapTitle")}
               </p>
               <p className="mt-1 text-[11px] text-campus-muted">
-                Valeur nutritionnelle proche, prix aussi proche que possible
-                pour ne pas changer le budget de la liste — dans la limite de
-                ce que propose le catalogue.
+                {t("resultsContent.swapHint")}
               </p>
 
               {substitutes.length === 0 ? (
-                <p className="mt-3 text-xs font-semibold text-red-600">
-                  Aucun remplacement à valeur nutritionnelle proche trouvé
-                  dans le catalogue pour ce produit.
+                <p className="mt-3 text-xs font-semibold text-red-600 dark:text-red-400">
+                  {t("resultsContent.noSubstitutes")}
                 </p>
               ) : (
                 <ul className="mt-3 space-y-2">
@@ -544,15 +542,15 @@ export default function ResultsContent({
                               {candidate.name}
                             </span>
                             <span className="block text-[11px] text-campus-muted">
-                              {candidate.kcal} kcal · Protéines{" "}
-                              {LEVEL_LABELS[candidate.protein].toLowerCase()}
+                              {candidate.kcal} kcal · {t("profileForm.proteins")}{" "}
+                              {t(LEVEL_LABEL_KEYS[candidate.protein]).toLowerCase()}
                             </span>
                           </span>
                           <span className="shrink-0 text-right text-xs font-bold text-campus-terracotta">
                             {formatPrice(candidate.price)}
                             <span className="block font-normal text-campus-muted">
                               {delta === 0
-                                ? "budget inchangé"
+                                ? t("resultsContent.budgetUnchanged")
                                 : `${delta > 0 ? "+" : ""}${formatPrice(delta)}`}
                             </span>
                           </span>
@@ -570,7 +568,7 @@ export default function ResultsContent({
                 onClick={() => setSelectedProduct(null)}
                 className="btn-secondary"
               >
-                Fermer
+                {t("common.close")}
               </button>
             </div>
           </div>

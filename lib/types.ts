@@ -271,10 +271,10 @@ export interface MealOutEntry {
 // Estimations rapides à choisir plutôt que de faire deviner un chiffre
 // précis à la personne — elle ne connaît de toute façon pas les calories
 // exactes d'un repas pris dehors.
-export const MEAL_OUT_PRESETS: { label: string; kcal: number }[] = [
-  { label: "Léger", kcal: 500 },
-  { label: "Repas normal", kcal: 700 },
-  { label: "Copieux (fast-food, pizza...)", kcal: 900 },
+export const MEAL_OUT_PRESETS: { label: string; labelKey: string; kcal: number }[] = [
+  { label: "Léger", labelKey: "mealOutPreset.leger", kcal: 500 },
+  { label: "Repas normal", labelKey: "mealOutPreset.normal", kcal: 700 },
+  { label: "Copieux (fast-food, pizza...)", labelKey: "mealOutPreset.copieux", kcal: 900 },
 ];
 
 export interface UserProfile extends BodyStats {
@@ -454,9 +454,13 @@ export const AGE_MIN = 15;
 export const AGE_MAX = 80;
 export const AGE_DEFAULT = 20;
 
-export const SEX_OPTIONS: { value: Sex; label: string }[] = [
-  { value: "femme", label: "Femme" },
-  { value: "homme", label: "Homme" },
+// `label` reste le texte français : c'est le repli utilisé hors contexte React
+// (ex: lib/favorites.ts, qui ne peut pas appeler useTranslation()). `labelKey`
+// est la clé de dictionnaire (voir lib/i18n/dictionaries/) utilisée par les
+// composants via t(option.labelKey) pour afficher la version traduite.
+export const SEX_OPTIONS: { value: Sex; label: string; labelKey: string }[] = [
+  { value: "femme", label: "Femme", labelKey: "sexOptions.femme" },
+  { value: "homme", label: "Homme", labelKey: "sexOptions.homme" },
 ];
 
 export const PROTEIN_G_MIN = 40;
@@ -466,44 +470,44 @@ export const LIPIDES_G_MAX = 150;
 export const GLUCIDES_G_MIN = 50;
 export const GLUCIDES_G_MAX = 500;
 
-export const MACRO_OPTIONS: { value: MacroPreference; label: string }[] = [
-  { value: "riche-proteines", label: "Riche en protéines" },
-  { value: "faible-lipides", label: "Faible en lipides" },
-  { value: "riche-glucides", label: "Riche en glucides" },
-  { value: "faible-sel", label: "Faible en sel" },
-  { value: "faible-sucre", label: "Faible en sucre" },
-  { value: "riche-fibres", label: "Riche en fibres" },
-  { value: "facile", label: "Recettes faciles" },
-  { value: "prise-masse", label: "Prise de masse" },
-  { value: "seche", label: "Sèche / cut" },
-  { value: "belle-peau", label: "Belle peau" },
-  { value: "gourmand", label: "Gourmand" },
+export const MACRO_OPTIONS: { value: MacroPreference; label: string; labelKey: string }[] = [
+  { value: "riche-proteines", label: "Riche en protéines", labelKey: "macroOptions.richeProteines" },
+  { value: "faible-lipides", label: "Faible en lipides", labelKey: "macroOptions.faibleLipides" },
+  { value: "riche-glucides", label: "Riche en glucides", labelKey: "macroOptions.richeGlucides" },
+  { value: "faible-sel", label: "Faible en sel", labelKey: "macroOptions.faibleSel" },
+  { value: "faible-sucre", label: "Faible en sucre", labelKey: "macroOptions.faibleSucre" },
+  { value: "riche-fibres", label: "Riche en fibres", labelKey: "macroOptions.richeFibres" },
+  { value: "facile", label: "Recettes faciles", labelKey: "macroOptions.facile" },
+  { value: "prise-masse", label: "Prise de masse", labelKey: "macroOptions.priseMasse" },
+  { value: "seche", label: "Sèche / cut", labelKey: "macroOptions.seche" },
+  { value: "belle-peau", label: "Belle peau", labelKey: "macroOptions.bellePeau" },
+  { value: "gourmand", label: "Gourmand", labelKey: "macroOptions.gourmand" },
 ];
 
-export const DIET_OPTIONS: { value: DietType; label: string }[] = [
-  { value: "omnivore", label: "Omnivore" },
-  { value: "vegetarien", label: "Végétarien" },
-  { value: "vegan", label: "Végan" },
-  { value: "sans-porc", label: "Sans porc" },
+export const DIET_OPTIONS: { value: DietType; label: string; labelKey: string }[] = [
+  { value: "omnivore", label: "Omnivore", labelKey: "dietOptions.omnivore" },
+  { value: "vegetarien", label: "Végétarien", labelKey: "dietOptions.vegetarien" },
+  { value: "vegan", label: "Végan", labelKey: "dietOptions.vegan" },
+  { value: "sans-porc", label: "Sans porc", labelKey: "dietOptions.sansPorc" },
 ];
 
 // Ordonnés du plus courant au plus rare, pour que la colonne de gauche
 // (voir ProfileForm) regroupe les cas les plus fréquents.
-export const ALLERGEN_OPTIONS: { value: Allergen; label: string }[] = [
-  { value: "gluten", label: "Gluten" },
-  { value: "lactose", label: "Lactose" },
-  { value: "oeuf", label: "Œuf" },
-  { value: "arachide", label: "Arachide" },
-  { value: "fruits-a-coque", label: "Fruits à coque" },
-  { value: "soja", label: "Soja" },
-  { value: "poisson", label: "Poisson" },
-  { value: "crustaces", label: "Crustacés" },
-  { value: "mollusques", label: "Mollusques" },
-  { value: "celeri", label: "Céleri" },
-  { value: "moutarde", label: "Moutarde" },
-  { value: "sesame", label: "Sésame" },
-  { value: "sulfites", label: "Sulfites" },
-  { value: "lupin", label: "Lupin" },
+export const ALLERGEN_OPTIONS: { value: Allergen; label: string; labelKey: string }[] = [
+  { value: "gluten", label: "Gluten", labelKey: "allergenOptions.gluten" },
+  { value: "lactose", label: "Lactose", labelKey: "allergenOptions.lactose" },
+  { value: "oeuf", label: "Œuf", labelKey: "allergenOptions.oeuf" },
+  { value: "arachide", label: "Arachide", labelKey: "allergenOptions.arachide" },
+  { value: "fruits-a-coque", label: "Fruits à coque", labelKey: "allergenOptions.fruitsACoque" },
+  { value: "soja", label: "Soja", labelKey: "allergenOptions.soja" },
+  { value: "poisson", label: "Poisson", labelKey: "allergenOptions.poisson" },
+  { value: "crustaces", label: "Crustacés", labelKey: "allergenOptions.crustaces" },
+  { value: "mollusques", label: "Mollusques", labelKey: "allergenOptions.mollusques" },
+  { value: "celeri", label: "Céleri", labelKey: "allergenOptions.celeri" },
+  { value: "moutarde", label: "Moutarde", labelKey: "allergenOptions.moutarde" },
+  { value: "sesame", label: "Sésame", labelKey: "allergenOptions.sesame" },
+  { value: "sulfites", label: "Sulfites", labelKey: "allergenOptions.sulfites" },
+  { value: "lupin", label: "Lupin", labelKey: "allergenOptions.lupin" },
 ];
 
 export const CATEGORY_LABELS: Record<ProductCategory, string> = {
@@ -512,6 +516,16 @@ export const CATEGORY_LABELS: Record<ProductCategory, string> = {
   frais: "Frais",
   boulangerie: "Boulangerie",
   "viande-poisson": "Viande et poisson",
+};
+
+// Clés de dictionnaire associées à CATEGORY_LABELS — voir la note sur
+// `labelKey` plus haut dans ce fichier.
+export const CATEGORY_LABEL_KEYS: Record<ProductCategory, string> = {
+  epicerie: "category.epicerie",
+  "fruits-legumes": "category.fruitsLegumes",
+  frais: "category.frais",
+  boulangerie: "category.boulangerie",
+  "viande-poisson": "category.viandePoisson",
 };
 
 export const CATEGORY_ORDER: ProductCategory[] = [
@@ -526,6 +540,13 @@ export const MEAL_SLOT_LABELS: Record<MealSlot, string> = {
   "petit-dejeuner": "Petit-déjeuner",
   "dejeuner-diner": "Déjeuner & Dîner",
   "encas-extra": "Encas & Extras",
+};
+
+// Clés de dictionnaire associées à MEAL_SLOT_LABELS.
+export const MEAL_SLOT_LABEL_KEYS: Record<MealSlot, string> = {
+  "petit-dejeuner": "mealSlot.petitDejeuner",
+  "dejeuner-diner": "mealSlot.dejeunerDiner",
+  "encas-extra": "mealSlot.encasExtra",
 };
 
 export const MEAL_SLOT_ICONS: Record<MealSlot, string> = {

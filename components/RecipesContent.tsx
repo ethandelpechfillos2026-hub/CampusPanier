@@ -5,11 +5,12 @@ import Mascot from "@/components/Mascot";
 import {
   buildWeeklyPlan,
   DAY_SLOT_ORDER,
-  WEEKDAY_LABELS,
+  WEEKDAY_LABEL_KEYS,
 } from "@/lib/generateMenu";
 import { countDietCompatibleRecipes, suggestRecipes } from "@/lib/generateRecipes";
 import { generateRecipeWithAI } from "@/lib/generateRecipeWithAI";
 import { products } from "@/lib/generateShoppingList";
+import { useTranslation } from "@/lib/i18n/LanguageContext";
 import { recordRecipeViewed } from "@/lib/stats";
 import {
   GeneratedRecipe,
@@ -28,6 +29,7 @@ export default function RecipesContent({
   preferences,
   onRestart,
 }: RecipesContentProps) {
+  const { t, language } = useTranslation();
   const [openId, setOpenId] = useState<string | null>(null);
   const [selectedDay, setSelectedDay] = useState(0);
 
@@ -92,14 +94,15 @@ export default function RecipesContent({
         ingredientNames,
         preferences.diet,
         preferences.allergies,
-        aiRecipeHistory
+        aiRecipeHistory,
+        language
       );
       setAiRecipe(recipe);
       setAiRecipeHistory((prev) => [...prev, recipe.name]);
       recordRecipeViewed(`ai-${Date.now()}`);
     } catch (error) {
       const message =
-        error instanceof Error ? error.message : "La génération a échoué.";
+        error instanceof Error ? error.message : t("recipesContent.aiGenerationFailed");
       setAiError(message);
     } finally {
       setAiLoading(false);
@@ -109,17 +112,16 @@ export default function RecipesContent({
   return (
     <div className="space-y-5">
       <div>
-        <h1 className="text-2xl font-bold text-campus-ink">Mes recettes</h1>
+        <h1 className="text-2xl font-bold text-campus-ink">{t("recipesContent.title")}</h1>
         <p className="mt-1 text-sm text-campus-muted">
-          À cuisiner avec ce qui est déjà prévu ce jour-là dans &quot;Mon
-          menu&quot; — pas avec des produits réservés à un autre jour.
+          {t("recipesContent.subtitle")}
         </p>
       </div>
 
       <div className="flex gap-1.5 overflow-x-auto pb-1">
-        {WEEKDAY_LABELS.map((label, index) => (
+        {WEEKDAY_LABEL_KEYS.map((labelKey, index) => (
           <button
-            key={label}
+            key={labelKey}
             type="button"
             onClick={() => setSelectedDay(index)}
             className={`shrink-0 rounded-full px-3.5 py-2 text-xs font-semibold transition-colors ${
@@ -128,7 +130,7 @@ export default function RecipesContent({
                 : "bg-campus-surface text-campus-muted border border-campus-sand"
             }`}
           >
-            {label.slice(0, 3)}
+            {t(labelKey).slice(0, 3)}
           </button>
         ))}
       </div>
@@ -139,11 +141,10 @@ export default function RecipesContent({
             <Mascot mood="happy" size={48} />
             <div className="flex-1">
               <p className="text-sm font-bold text-campus-ink">
-                Envie d&apos;autre chose ?
+                {t("recipesContent.aiPromptTitle")}
               </p>
               <p className="text-xs text-campus-muted">
-                Génère une recette originale avec l&apos;IA, à partir de ce
-                qui est prévu ce jour-là.
+                {t("recipesContent.aiPromptHint")}
               </p>
             </div>
           </div>
@@ -158,15 +159,16 @@ export default function RecipesContent({
                   {aiRecipe.name}
                 </p>
                 <p className="mt-1 text-xs text-campus-muted">
-                  {aiRecipe.prepTime} min · {aiRecipe.difficulty} · ✨
-                  généré par IA
+                  {aiRecipe.prepTime} min ·{" "}
+                  {aiRecipe.difficulty === "moyen" ? t("recipesContent.difficultyMoyen") : t("recipesContent.difficultyFacile")}{" "}
+                  · ✨ {t("recipesContent.aiGeneratedBy")}
                 </p>
               </div>
             </div>
 
             <div>
               <h3 className="mb-2 text-xs font-bold uppercase tracking-wide text-campus-muted">
-                Ingrédients utilisés
+                {t("recipesContent.usedIngredients")}
               </h3>
               <ul className="space-y-1 text-sm text-campus-ink">
                 {aiRecipe.usedIngredients.map((ingredient, index) => (
@@ -180,7 +182,7 @@ export default function RecipesContent({
 
             <div>
               <h3 className="mb-2 text-xs font-bold uppercase tracking-wide text-campus-muted">
-                Préparation
+                {t("recipesContent.preparation")}
               </h3>
               <ol className="space-y-2 text-sm text-campus-ink">
                 {aiRecipe.steps.map((step, index) => (
@@ -209,10 +211,10 @@ export default function RecipesContent({
           className="btn-primary mt-3 disabled:opacity-60"
         >
           {aiLoading
-            ? "Génération en cours..."
+            ? t("recipesContent.aiGenerating")
             : aiRecipe
-            ? "🔄 Générer une autre recette"
-            : "✨ Générer une recette IA"}
+            ? t("recipesContent.aiRegenerateButton")
+            : t("recipesContent.aiGenerateButton")}
         </button>
       </div>
 
@@ -220,8 +222,8 @@ export default function RecipesContent({
         <div className="rounded-2xl border border-campus-sand bg-campus-surface p-5 text-center">
           <p className="text-sm text-campus-muted">
             {dietCompatibleCount === 0
-              ? "Pas encore de recette compatible avec ton régime ou tes allergies — essaie la recette générée par IA ci-dessus."
-              : "Aucune recette ne colle à ce qui est prévu aujourd'hui précisément — essaie un autre jour de la semaine, ou génère une recette par IA ci-dessus."}
+              ? t("recipesContent.noCompatibleRecipe")
+              : t("recipesContent.noMatchToday")}
           </p>
         </div>
       ) : (
@@ -249,8 +251,9 @@ export default function RecipesContent({
                       {recipe.name}
                     </span>
                     <span className="mt-1 block text-xs text-campus-muted">
-                      {recipe.prepTime} min · {recipe.difficulty} ·{" "}
-                      {matchedCount}/{totalCount} déjà prévus ce jour-là
+                      {recipe.prepTime} min ·{" "}
+                      {recipe.difficulty === "moyen" ? t("recipesContent.difficultyMoyen") : t("recipesContent.difficultyFacile")}{" "}
+                      · {matchedCount}/{totalCount} {t("recipesContent.alreadyPlannedToday")}
                     </span>
                   </span>
                   <span className="text-campus-muted">{isOpen ? "−" : "+"}</span>
@@ -260,7 +263,7 @@ export default function RecipesContent({
                   <div className="space-y-4 border-t border-campus-sand p-4">
                     <div>
                       <h3 className="mb-2 text-xs font-bold uppercase tracking-wide text-campus-muted">
-                        Ingrédients
+                        {t("recipesContent.ingredients")}
                       </h3>
                       <ul className="space-y-1 text-sm">
                         {recipe.ingredientIds.map((id) => {
@@ -278,9 +281,9 @@ export default function RecipesContent({
                               <span>
                                 {product?.shortName ?? product?.name ?? id}
                                 {scheduledAnotherDay
-                                  ? " (prévu un autre jour)"
+                                  ? ` ${t("recipesContent.scheduledAnotherDay")}`
                                   : missing
-                                  ? " (à ajouter)"
+                                  ? ` ${t("recipesContent.toAdd")}`
                                   : ""}
                               </span>
                             </li>
@@ -291,7 +294,7 @@ export default function RecipesContent({
 
                     <div>
                       <h3 className="mb-2 text-xs font-bold uppercase tracking-wide text-campus-muted">
-                        Préparation
+                        {t("recipesContent.preparation")}
                       </h3>
                       <ol className="space-y-2 text-sm text-campus-ink">
                         {recipe.steps.map((step, index) => (
@@ -313,7 +316,7 @@ export default function RecipesContent({
       )}
 
       <button type="button" onClick={onRestart} className="btn-primary">
-        Refaire
+        {t("resultsContent.redo")}
       </button>
     </div>
   );

@@ -10,6 +10,7 @@ import {
   markAchievementsSeen,
 } from "@/lib/achievements";
 import { formatPrice, getPriceReliability } from "@/lib/generateShoppingList";
+import { useTranslation } from "@/lib/i18n/LanguageContext";
 import { DashboardStats, getDashboardStats } from "@/lib/stats";
 import { ShoppingListResult } from "@/lib/types";
 import { computeXp, getLevelInfo } from "@/lib/xp";
@@ -33,6 +34,7 @@ export default function StatsHeader({
   result,
   refreshSignal,
 }: StatsHeaderProps) {
+  const { t } = useTranslation();
   const [stats, setStats] = useState<DashboardStats>(EMPTY_STATS);
   const [showBadges, setShowBadges] = useState(false);
   const [showHistory, setShowHistory] = useState(false);
@@ -83,16 +85,16 @@ export default function StatsHeader({
 
         <div className="relative">
           <div className="flex items-center justify-between">
-            <p className="text-sm font-medium text-white/85">Ta progression</p>
+            <p className="text-sm font-medium text-white/85">{t("statsHeader.progress")}</p>
             {stats.streakWeeks > 0 && (
               <span className="flex items-center gap-1 rounded-full bg-white/20 px-3 py-1 text-xs font-bold backdrop-blur-sm">
-                🔥 {stats.streakWeeks} semaine{stats.streakWeeks > 1 ? "s" : ""}
+                🔥 {t("statsHeader.streak", { count: stats.streakWeeks, plural: stats.streakWeeks > 1 ? "s" : "" })}
               </span>
             )}
           </div>
 
           <p className="mt-3 text-xs uppercase tracking-wide text-white/70">
-            Économisé cette semaine
+            {t("statsHeader.savedThisWeek")}
           </p>
           <p className="text-3xl font-extrabold leading-tight">
             {formatPrice(weeklySavings)}
@@ -101,7 +103,7 @@ export default function StatsHeader({
           <div className="mt-4">
             <div className="flex items-center justify-between text-xs font-semibold text-white/85">
               <span>
-                {isTotalEstimated ? "Total estimé" : "Budget de la semaine"} :{" "}
+                {isTotalEstimated ? t("statsHeader.estimatedTotal") : t("statsHeader.weekBudget")} :{" "}
                 {formatPrice(result.total)} / {formatPrice(result.budget)}
               </span>
             </div>
@@ -113,15 +115,14 @@ export default function StatsHeader({
             </div>
             <p className="mt-1.5 text-xs text-white/85">
               {result.isOverBudget
-                ? `${formatPrice(Math.abs(result.remaining))} de dépassement`
-                : `${formatPrice(result.remaining)} restants ✓`}
+                ? t("statsHeader.overBudget", { amount: formatPrice(Math.abs(result.remaining)) })
+                : t("statsHeader.remaining", { amount: formatPrice(result.remaining) })}
             </p>
             {isTotalEstimated && (
               <p className="mt-1 text-[11px] text-white/70">
-                {uncertainCount} article{uncertainCount > 1 ? "s" : ""} sur{" "}
-                {result.items.length}{" "}
-                {uncertainCount > 1 ? "sont des estimations" : "est une estimation"}{" "}
-                ou un relevé ancien.
+                {uncertainCount > 1
+                  ? t("statsHeader.estimatedItemsPlural", { count: uncertainCount, total: result.items.length })
+                  : t("statsHeader.estimatedItemsSingular", { count: uncertainCount, total: result.items.length })}
               </p>
             )}
           </div>
@@ -149,8 +150,7 @@ export default function StatsHeader({
                 {stats.listsGenerated}
               </p>
               <p className="text-[11px] font-medium text-white/80">
-                liste{stats.listsGenerated > 1 ? "s" : ""} générée
-                {stats.listsGenerated > 1 ? "s" : ""}
+                {t("statsHeader.listsGenerated", { plural: stats.listsGenerated > 1 ? "s" : "" })}
               </p>
             </div>
             <div className="rounded-2xl bg-white/15 px-3 py-2.5 backdrop-blur-sm">
@@ -158,8 +158,7 @@ export default function StatsHeader({
                 {stats.recipesTried}
               </p>
               <p className="text-[11px] font-medium text-white/80">
-                recette{stats.recipesTried > 1 ? "s" : ""} essayée
-                {stats.recipesTried > 1 ? "s" : ""}
+                {t("statsHeader.recipesTried", { plural: stats.recipesTried > 1 ? "s" : "" })}
               </p>
             </div>
           </div>
@@ -170,14 +169,14 @@ export default function StatsHeader({
               onClick={() => setShowBadges(true)}
               className="flex-1 rounded-full bg-white/20 py-2 text-xs font-bold backdrop-blur-sm transition-colors hover:bg-white/30"
             >
-              🏆 Mes badges
+              {t("statsHeader.myBadges")}
             </button>
             <button
               type="button"
               onClick={() => setShowHistory(true)}
               className="flex-1 rounded-full bg-white/20 py-2 text-xs font-bold backdrop-blur-sm transition-colors hover:bg-white/30"
             >
-              📊 Historique
+              {t("statsHeader.history")}
             </button>
           </div>
         </div>

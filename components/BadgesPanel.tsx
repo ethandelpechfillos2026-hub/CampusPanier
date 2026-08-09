@@ -2,6 +2,7 @@
 
 import Mascot from "@/components/Mascot";
 import { ACHIEVEMENTS } from "@/lib/achievements";
+import { useTranslation } from "@/lib/i18n/LanguageContext";
 import { DashboardStats } from "@/lib/stats";
 
 interface BadgesPanelProps {
@@ -10,6 +11,7 @@ interface BadgesPanelProps {
 }
 
 export default function BadgesPanel({ stats, onClose }: BadgesPanelProps) {
+  const { t } = useTranslation();
   const unlockedCount = ACHIEVEMENTS.filter((a) => a.isUnlocked(stats)).length;
 
   return (
@@ -19,16 +21,16 @@ export default function BadgesPanel({ stats, onClose }: BadgesPanelProps) {
           <div className="flex items-center gap-2.5">
             <Mascot mood="happy" size={48} />
             <div>
-              <h2 className="text-lg font-bold text-campus-ink">Tes badges</h2>
+              <h2 className="text-lg font-bold text-campus-ink">{t("badgesPanel.title")}</h2>
               <p className="text-xs text-campus-muted">
-                {unlockedCount}/{ACHIEVEMENTS.length} débloqués
+                {t("badgesPanel.unlockedCount", { unlocked: unlockedCount, total: ACHIEVEMENTS.length })}
               </p>
             </div>
           </div>
           <button
             type="button"
             onClick={onClose}
-            aria-label="Fermer"
+            aria-label={t("common.close")}
             className="shrink-0 rounded-full bg-campus-sand px-2.5 py-1 text-sm font-bold text-campus-ink"
           >
             ✕
@@ -59,10 +61,10 @@ export default function BadgesPanel({ stats, onClose }: BadgesPanelProps) {
                     unlocked ? "text-campus-ink" : "text-campus-muted"
                   }`}
                 >
-                  {achievement.label}
+                  {t(achievement.labelKey)}
                 </p>
                 <p className="mt-0.5 text-[11px] text-campus-muted">
-                  {achievement.description}
+                  {t(achievement.descriptionKey)}
                 </p>
               </div>
             );
@@ -70,7 +72,7 @@ export default function BadgesPanel({ stats, onClose }: BadgesPanelProps) {
         </div>
 
         <button type="button" onClick={onClose} className="btn-secondary mt-4">
-          Fermer
+          {t("common.close")}
         </button>
       </div>
     </div>

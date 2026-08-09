@@ -24,6 +24,7 @@ import {
   recomputeAfterSwap,
   replaceItem,
 } from "@/lib/generateShoppingList";
+import { useTranslation } from "@/lib/i18n/LanguageContext";
 import { playClickSound } from "@/lib/sound";
 import { recordListGenerated } from "@/lib/stats";
 import {
@@ -39,6 +40,7 @@ type View = "signin" | "profile" | "budget" | "results";
 type ResultsTab = "liste" | "menu" | "recettes" | "coloc";
 
 export default function CampusPanierApp() {
+  const { t } = useTranslation();
   const [ready, setReady] = useState(false);
   const [user, setUser] = useState<User | null>(null);
   const [view, setView] = useState<View>("signin");
@@ -233,20 +235,20 @@ export default function CampusPanierApp() {
             <p className="text-base font-bold leading-tight text-campus-ink">
               CampusPanier
             </p>
-            <p className="text-xs text-campus-muted">Courses étudiant·es</p>
+            <p className="text-xs text-campus-muted">{t("app.tagline")}</p>
           </div>
         </div>
         {user && (
           <div className="flex items-center gap-3">
             <Link href="/parametres" className="text-xs text-campus-muted underline">
-              Réglages
+              {t("app.settings")}
             </Link>
             <button
               type="button"
               onClick={handleSignOut}
               className="text-xs text-campus-muted underline"
             >
-              Se déconnecter
+              {t("app.signOut")}
             </button>
           </div>
         )}
@@ -255,7 +257,7 @@ export default function CampusPanierApp() {
       {showFavorites && (
         <div className="border-b border-campus-sand/80 px-5 py-3">
           <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-campus-muted">
-            Refaire une liste enregistrée
+            {t("app.savedListsTitle")}
           </p>
           <div className="flex flex-wrap gap-2">
             {favorites.map((fav) => (
@@ -285,7 +287,7 @@ export default function CampusPanierApp() {
                 : "border-transparent text-campus-muted"
             }`}
           >
-            Ma liste
+            {t("app.tabList")}
           </button>
           <button
             type="button"
@@ -296,7 +298,7 @@ export default function CampusPanierApp() {
                 : "border-transparent text-campus-muted"
             }`}
           >
-            Mon menu
+            {t("app.tabMenu")}
           </button>
           <button
             type="button"
@@ -307,7 +309,7 @@ export default function CampusPanierApp() {
                 : "border-transparent text-campus-muted"
             }`}
           >
-            Mes recettes
+            {t("app.tabRecipes")}
           </button>
           <button
             type="button"
@@ -318,7 +320,7 @@ export default function CampusPanierApp() {
                 : "border-transparent text-campus-muted"
             }`}
           >
-            👥 Coloc
+            {t("app.tabRoommates")}
           </button>
         </div>
       )}
@@ -366,7 +368,7 @@ export default function CampusPanierApp() {
               <SharedListTab
                 result={result}
                 userId={user.uid}
-                userName={user.displayName ?? user.email ?? "Toi"}
+                userName={user.displayName ?? user.email ?? t("app.youFallback")}
               />
             )}
           </>

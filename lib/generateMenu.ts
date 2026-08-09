@@ -18,6 +18,20 @@ export const WEEKDAY_LABELS = [
   "Dimanche",
 ];
 
+// Clés de dictionnaire associées à WEEKDAY_LABELS — voir la note sur
+// `labelKey` dans lib/types.ts. `label` reste le texte français : c'est le
+// repli utilisé par formatDailyServing() ci-dessous, qui construit une
+// chaîne hors contexte React (ne peut pas appeler useTranslation()).
+export const WEEKDAY_LABEL_KEYS = [
+  "weekday.monday",
+  "weekday.tuesday",
+  "weekday.wednesday",
+  "weekday.thursday",
+  "weekday.friday",
+  "weekday.saturday",
+  "weekday.sunday",
+];
+
 export interface MenuSection {
   slot: MealSlot;
   items: ShoppingListItem[];
@@ -74,6 +88,14 @@ export const DAY_SLOT_LABELS: Record<DaySlot, string> = {
   dejeuner: "Déjeuner",
   diner: "Dîner",
   collation: "Collation",
+};
+
+// Clés de dictionnaire associées à DAY_SLOT_LABELS.
+export const DAY_SLOT_LABEL_KEYS: Record<DaySlot, string> = {
+  petitDejeuner: "daySlot.petitDejeuner",
+  dejeuner: "daySlot.dejeuner",
+  diner: "daySlot.diner",
+  collation: "daySlot.collation",
 };
 
 export const DAY_SLOT_ICONS: Record<DaySlot, string> = {

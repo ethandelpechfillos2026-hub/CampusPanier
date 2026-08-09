@@ -4,6 +4,8 @@ import { useState } from "react";
 import Mascot from "@/components/Mascot";
 import PrintableListView from "@/components/PrintableListView";
 import { formatPrice } from "@/lib/generateShoppingList";
+import { useTranslation } from "@/lib/i18n/LanguageContext";
+import { INTL_LOCALE } from "@/lib/i18n/locale";
 import { getListHistory, ListHistoryEntry } from "@/lib/stats";
 
 interface HistoryPanelProps {
@@ -15,6 +17,7 @@ const CHART_HEIGHT = 140;
 const CHART_PADDING = 24;
 
 export default function HistoryPanel({ onClose }: HistoryPanelProps) {
+  const { t, language } = useTranslation();
   const history = getListHistory(); // le plus récent en premier
   const [selected, setSelected] = useState<ListHistoryEntry | null>(null);
 
@@ -42,18 +45,17 @@ export default function HistoryPanel({ onClose }: HistoryPanelProps) {
             <Mascot mood="happy" size={44} />
             <div>
               <h2 className="text-lg font-bold text-campus-ink">
-                Historique &amp; évolution
+                {t("historyPanel.title")}
               </h2>
               <p className="text-xs text-campus-muted">
-                {history.length} liste{history.length > 1 ? "s" : ""} générée
-                {history.length > 1 ? "s" : ""}
+                {t("historyPanel.listsGenerated", { count: history.length, plural: history.length > 1 ? "s" : "" })}
               </p>
             </div>
           </div>
           <button
             type="button"
             onClick={onClose}
-            aria-label="Fermer"
+            aria-label={t("common.close")}
             className="shrink-0 rounded-full bg-campus-sand px-2.5 py-1 text-sm font-bold text-campus-ink"
           >
             ✕
@@ -62,7 +64,7 @@ export default function HistoryPanel({ onClose }: HistoryPanelProps) {
 
         {chartEntries.length === 0 ? (
           <p className="mt-4 text-sm text-campus-muted">
-            Génère quelques listes pour voir ton évolution ici.
+            {t("historyPanel.generateSome")}
           </p>
         ) : (
           <div className="mt-4 rounded-2xl border border-campus-sand bg-campus-cream/60 p-3">
@@ -70,7 +72,7 @@ export default function HistoryPanel({ onClose }: HistoryPanelProps) {
               viewBox={`0 0 ${CHART_WIDTH} ${CHART_HEIGHT}`}
               className="w-full"
               role="img"
-              aria-label="Évolution du budget dépensé par rapport au budget prévu"
+              aria-label={t("historyPanel.chartAriaLabel")}
             >
               {chartEntries.map((entry, index) => {
                 const x = CHART_PADDING + index * barGroupWidth;
@@ -111,15 +113,15 @@ export default function HistoryPanel({ onClose }: HistoryPanelProps) {
             <div className="mt-2 flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-[10px] text-campus-muted">
               <span className="flex items-center gap-1">
                 <span className="h-2 w-2 rounded-full bg-campus-sand" />{" "}
-                Budget
+                {t("historyPanel.legendBudget")}
               </span>
               <span className="flex items-center gap-1">
                 <span className="h-2 w-2 rounded-full bg-campus-success" />{" "}
-                Sous budget
+                {t("historyPanel.legendUnderBudget")}
               </span>
               <span className="flex items-center gap-1">
                 <span className="h-2 w-2 rounded-full bg-campus-danger" />{" "}
-                Dépassé
+                {t("historyPanel.legendOverBudget")}
               </span>
             </div>
           </div>
@@ -128,12 +130,12 @@ export default function HistoryPanel({ onClose }: HistoryPanelProps) {
         <div className="mt-4 space-y-2">
           {history.length === 0 ? (
             <p className="text-sm text-campus-muted">
-              Aucune liste générée pour l&apos;instant.
+              {t("historyPanel.noListsYet")}
             </p>
           ) : (
             history.map((entry, index) => {
               const dateLabel = new Date(entry.timestamp).toLocaleDateString(
-                "fr-FR",
+                INTL_LOCALE[language],
                 { day: "numeric", month: "short", year: "numeric" }
               );
               return (
@@ -148,7 +150,9 @@ export default function HistoryPanel({ onClose }: HistoryPanelProps) {
                       {dateLabel}
                     </p>
                     <p className="text-xs text-campus-muted">
-                      {entry.items ? `${entry.items.length} article${entry.items.length > 1 ? "s" : ""}` : "Détail indisponible"}
+                      {entry.items
+                        ? t("historyPanel.itemsCount", { count: entry.items.length, plural: entry.items.length > 1 ? "s" : "" })
+                        : t("historyPanel.detailUnavailable")}
                     </p>
                   </div>
                   <div className="text-right">
@@ -176,7 +180,7 @@ export default function HistoryPanel({ onClose }: HistoryPanelProps) {
           onClick={onClose}
           className="btn-secondary mt-4"
         >
-          Fermer
+          {t("common.close")}
         </button>
       </div>
 

@@ -5,12 +5,13 @@ import {
   applyMealsOut,
   buildWeeklyPlan,
   DAY_SLOT_ICONS,
-  DAY_SLOT_LABELS,
+  DAY_SLOT_LABEL_KEYS,
   DAY_SLOT_ORDER,
   DaySlot,
   formatDayEntryQuantity,
-  WEEKDAY_LABELS,
+  WEEKDAY_LABEL_KEYS,
 } from "@/lib/generateMenu";
+import { useTranslation } from "@/lib/i18n/LanguageContext";
 import { getRemainingHomeMealTarget } from "@/lib/macros";
 import {
   MEAL_OUT_PRESETS,
@@ -40,6 +41,7 @@ export default function MenuContent({
   mealsOut,
   onMealsOutChange,
 }: MenuContentProps) {
+  const { t } = useTranslation();
   const rawPlan = buildWeeklyPlan(result.items, preferences.canteenDays);
   const { days, bonusItems } = applyMealsOut(rawPlan, mealsOut);
   const [selectedDay, setSelectedDay] = useState(0);
@@ -83,16 +85,16 @@ export default function MenuContent({
   return (
     <div className="space-y-5">
       <div>
-        <h1 className="text-2xl font-bold text-campus-ink">Mon menu</h1>
+        <h1 className="text-2xl font-bold text-campus-ink">{t("menuContent.title")}</h1>
         <p className="mt-1 text-sm text-campus-muted">
-          Quoi manger chaque jour, avec les quantités du jour
+          {t("menuContent.subtitle")}
         </p>
       </div>
 
       {isEmpty ? (
         <div className="rounded-2xl border border-campus-sand bg-campus-surface p-5 text-center">
           <p className="text-sm text-campus-muted">
-            Génère d&apos;abord une liste pour voir ton menu.
+            {t("menuContent.generateFirst")}
           </p>
         </div>
       ) : (
@@ -100,22 +102,24 @@ export default function MenuContent({
           {mealsOut.length > 0 && (
             <div className="rounded-2xl border-2 border-campus-terracotta/30 bg-campus-terracotta/5 p-4 text-sm">
               <p className="font-bold text-campus-ink">
-                🍕 {mealsOut.length} repas mangé{mealsOut.length > 1 ? "s" : ""}{" "}
-                dehors cette semaine (~{mealsOutKcalTotal} kcal)
+                {t("menuContent.mealsOutSummary", {
+                  count: mealsOut.length,
+                  plural: mealsOut.length > 1 ? "s" : "",
+                  kcal: mealsOutKcalTotal,
+                })}
               </p>
               {remainingTarget !== null && (
                 <p className="mt-1 text-xs text-campus-muted">
-                  Nouvel objectif : ~{remainingTarget} kcal par repas maison
-                  restant, pour compenser sur le reste de la semaine.
+                  {t("menuContent.newTargetHint", { kcal: remainingTarget })}
                 </p>
               )}
             </div>
           )}
 
           <div className="flex gap-1.5 overflow-x-auto pb-1">
-            {WEEKDAY_LABELS.map((label, index) => (
+            {WEEKDAY_LABEL_KEYS.map((labelKey, index) => (
               <button
-                key={label}
+                key={labelKey}
                 type="button"
                 onClick={() => {
                   setSelectedDay(index);
@@ -127,7 +131,7 @@ export default function MenuContent({
                     : "bg-campus-surface text-campus-muted border border-campus-sand"
                 }`}
               >
-                {label.slice(0, 3)}
+                {t(labelKey).slice(0, 3)}
               </button>
             ))}
           </div>
@@ -145,34 +149,32 @@ export default function MenuContent({
                 >
                   <h2 className="mb-3 flex items-center gap-2 text-sm font-bold text-campus-ink">
                     <span className="text-lg">{DAY_SLOT_ICONS[slot]}</span>
-                    {DAY_SLOT_LABELS[slot]}
+                    {t(DAY_SLOT_LABEL_KEYS[slot])}
                   </h2>
 
                   {mealOut ? (
                     <div className="flex items-center justify-between gap-3">
                       <p className="text-sm text-campus-muted">
-                        🍕 Mangé dehors (~{mealOut.estimatedKcal} kcal)
+                        {t("menuContent.eatenOut", { kcal: mealOut.estimatedKcal })}
                       </p>
                       <button
                         type="button"
                         onClick={() => undoMealOut(slot)}
                         className="shrink-0 text-xs font-bold text-campus-terracotta underline"
                       >
-                        Annuler
+                        {t("menuContent.cancel")}
                       </button>
                     </div>
                   ) : (
                     <>
                       {entries.length === 0 && slot === "dejeuner" && isCantineDay ? (
                         <p className="text-sm text-campus-muted">
-                          🍽️ Tu manges à la cantine ce midi — rien à préparer.
+                          {t("menuContent.canteenNoPrep")}
                         </p>
                       ) : entries.length === 0 ? (
                         <p className="text-sm text-campus-muted">
-                          Rien de prévu ici avec ce budget — augmente-le
-                          légèrement pour un menu complet tous les jours.
-                          {loggable &&
-                            " Tu es quand même sorti·e manger ? Tu peux le noter ci-dessous."}
+                          {t("menuContent.nothingPlanned")}
+                          {loggable && t("menuContent.eatenOutAnywayHint")}
                         </p>
                       ) : (
                         <ul className="space-y-2">
@@ -206,7 +208,7 @@ export default function MenuContent({
                                   onClick={() => logMealOut(slot, preset.kcal)}
                                   className="btn-shortcut"
                                 >
-                                  {preset.label} (~{preset.kcal} kcal)
+                                  {t("menuContent.presetKcal", { label: t(preset.labelKey), kcal: preset.kcal })}
                                 </button>
                               ))}
                               <button
@@ -214,7 +216,7 @@ export default function MenuContent({
                                 onClick={() => setPickerFor(null)}
                                 className="text-xs text-campus-muted underline"
                               >
-                                Annuler
+                                {t("menuContent.cancel")}
                               </button>
                             </div>
                           ) : (
@@ -223,7 +225,7 @@ export default function MenuContent({
                               onClick={() => setPickerFor(slot)}
                               className="text-xs font-bold text-campus-terracotta underline"
                             >
-                              🍕 J&apos;ai mangé dehors
+                              {t("menuContent.loggedOutside")}
                             </button>
                           )}
                         </div>
@@ -238,12 +240,10 @@ export default function MenuContent({
           {bonusItems.length > 0 && (
             <div className="rounded-2xl border border-campus-sand bg-campus-surface p-4">
               <h2 className="mb-1 text-sm font-bold text-campus-ink">
-                🎁 En bonus cette semaine
+                {t("menuContent.bonusTitle")}
               </h2>
               <p className="mb-3 text-xs text-campus-muted">
-                Déjà acheté pour un repas que tu n&apos;as finalement pas fait
-                à la maison — à caser dans un autre repas, en accompagnement,
-                ou à congeler.
+                {t("menuContent.bonusHint")}
               </p>
               <ul className="space-y-2">
                 {bonusItems.map(({ product, count }) => (
@@ -266,13 +266,11 @@ export default function MenuContent({
       )}
 
       <button type="button" onClick={onRestart} className="btn-primary">
-        Refaire
+        {t("resultsContent.redo")}
       </button>
 
       <p className="text-center text-xs text-campus-muted">
-        Répartition indicative pour t&apos;aider à organiser ta semaine — le
-        détail complet des quantités hebdomadaires est dans l&apos;onglet
-        &quot;Ma liste&quot;.
+        {t("menuContent.footerHint")}
       </p>
     </div>
   );

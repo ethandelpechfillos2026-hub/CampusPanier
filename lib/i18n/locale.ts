@@ -13,3 +13,13 @@ export const LOCALE_LABELS: Record<Locale, string> = {
 };
 
 export const DEFAULT_LOCALE: Locale = "fr";
+
+// Code de locale Intl (toLocaleDateString, toLocaleString...) associé à
+// chaque langue de l'app — utilisé partout où on formate une date ou un
+// nombre pour qu'il suive la langue choisie plutôt que d'être figé en
+// français (voir HistoryPanel.tsx, PrintableListView.tsx...).
+export const INTL_LOCALE: Record<Locale, string> = {
+  fr: "fr-FR",
+  en: "en-US",
+  es: "es-ES",
+};
