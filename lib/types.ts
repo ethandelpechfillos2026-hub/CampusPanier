@@ -327,6 +327,17 @@ export interface ShoppingListResult {
   isOverBudget: boolean;
   minimalBalancedCost: number;
   isBudgetInsufficient: boolean;
+  // Budget supplémentaire (en euros) estimé nécessaire pour atteindre
+  // l'objectif calorique visé (voir lib/generateShoppingList.ts,
+  // estimateExtraBudgetForCalorieTarget) — `null` si aucun objectif
+  // calorique n'est défini, s'il est déjà atteint, ou si même beaucoup plus
+  // de budget ne suffirait pas (voir calorieTargetHardToReach dans ce cas).
+  extraBudgetForCalorieTarget: number | null;
+  // `true` si l'objectif calorique reste hors d'atteinte même avec
+  // beaucoup plus de budget (régime/allergies très restrictifs, ou
+  // objectif extrêmement élevé) — message différent de "il faudrait
+  // rajouter X€" dans ce cas.
+  calorieTargetHardToReach: boolean;
 }
 
 export interface Recipe {

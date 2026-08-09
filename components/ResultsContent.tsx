@@ -318,7 +318,12 @@ export default function ResultsContent({
       )}
 
       {result.items.length > 0 && (
-        <NutritionSummaryCard items={result.items} macroTargets={macroTargets} />
+        <NutritionSummaryCard
+          items={result.items}
+          macroTargets={macroTargets}
+          extraBudgetForCalorieTarget={result.extraBudgetForCalorieTarget}
+          calorieTargetHardToReach={result.calorieTargetHardToReach}
+        />
       )}
 
       <button type="button" onClick={onRestart} className="btn-primary">

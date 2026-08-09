@@ -10,6 +10,14 @@ import { ShoppingListItem } from "@/lib/types";
 interface NutritionSummaryCardProps {
   items: ShoppingListItem[];
   macroTargets: MacroTargets | null;
+  // Voir lib/generateShoppingList.ts (estimateExtraBudgetForCalorieTarget) —
+  // budget en plus estimé nécessaire pour atteindre l'objectif calorique,
+  // ou signal que même beaucoup plus de budget n'y suffirait pas. Absents
+  // (undefined) si l'appelant n'a pas encore cette donnée (ex : ancien
+  // résultat mémorisé avant l'ajout de ce champ) — traité comme "pas
+  // d'estimation disponible", pas comme une erreur.
+  extraBudgetForCalorieTarget?: number | null;
+  calorieTargetHardToReach?: boolean;
 }
 
 // Une ligne "valeur / cible (%)" par nutriment. Affiche toujours la cible à
@@ -92,6 +100,8 @@ function CoverageBar({
 export default function NutritionSummaryCard({
   items,
   macroTargets,
+  extraBudgetForCalorieTarget = null,
+  calorieTargetHardToReach = false,
 }: NutritionSummaryCardProps) {
   const summary = computeShoppingListNutrition(items);
   const { dailyAverage, itemsCounted, itemsExcluded, totalItems } = summary;
@@ -144,6 +154,23 @@ export default function NutritionSummaryCard({
             targetG={macroTargets.glucidesG}
             pct={personal.glucidesPct}
           />
+          {extraBudgetForCalorieTarget != null && (
+            <p className="rounded-xl bg-campus-terracotta/10 p-2.5 text-[11px] text-campus-ink">
+              💡 Il faudrait environ{" "}
+              <span className="font-bold">
+                +{extraBudgetForCalorieTarget}€/semaine
+              </span>{" "}
+              de budget pour atteindre ton objectif calorique avec des
+              aliments bien choisis.
+            </p>
+          )}
+          {calorieTargetHardToReach && (
+            <p className="rounded-xl bg-campus-terracotta/10 p-2.5 text-[11px] text-campus-ink">
+              💡 Même avec beaucoup plus de budget, cet objectif calorique
+              reste difficile à atteindre avec ton régime/tes allergies
+              actuels — essaie de le revoir à la baisse.
+            </p>
+          )}
         </div>
       ) : (
         <p className="mt-3 rounded-xl bg-campus-terracotta/10 p-2.5 text-[11px] text-campus-muted">

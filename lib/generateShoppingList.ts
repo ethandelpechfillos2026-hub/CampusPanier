@@ -413,28 +413,27 @@ function kcalPerEuro(product: Product): number {
 // calorique n'est défini (targetWeeklyKcal reste null dans ce cas).
 const CALORIE_CATCHUP_RATIO = 0.8;
 
-export function generateShoppingList(
-  preferences: UserPreferences
-): ShoppingListResult {
-  const filtered = filterProducts(preferences);
-
-  // Objectif calorique hebdomadaire réel (réduit si cantine le midi, voir
-  // lib/macros.ts) — sert au rattrapage calorique des phases 2/3 ci-dessous.
-  // `null` si aucun objectif calorique n'est défini : le comportement de
-  // génération reste alors strictement identique à avant (pas de
-  // rattrapage). Passe par getActiveMacroTargets (pas directement
-  // getEffectiveDailyCalories) pour respecter un objectif en grammes fixé à
-  // la main (macroOverride) quand il existe — exactement le même chiffre
-  // que celui affiché dans le bilan nutritionnel (lib/nutritionSummary.ts,
-  // computePersonalCoverage) : sans ça, les courses pouvaient viser un total
-  // différent de celui auquel le bilan les comparait ensuite, donnant
-  // l'impression d'un panier insuffisant alors que l'écart venait d'une
-  // incohérence d'objectif, pas d'un vrai manque (retour utilisateur, 9 août
-  // 2026).
+// Objectif calorique hebdomadaire réel (réduit si cantine le midi, voir
+// lib/macros.ts) — sert au rattrapage calorique de generateShoppingListCore
+// ci-dessous ET à l'estimation de budget manquant (estimateExtraBudget
+// ForCalorieTarget) : une seule et même source pour les deux, pour être
+// certain qu'elles visent exactement le même chiffre. `null` si aucun
+// objectif calorique n'est défini. Passe par getActiveMacroTargets (pas
+// directement getEffectiveDailyCalories) pour respecter un objectif en
+// grammes fixé à la main (macroOverride) quand il existe — exactement le
+// même chiffre que celui affiché dans le bilan nutritionnel (lib/
+// nutritionSummary.ts, computePersonalCoverage) : sans ça, les courses
+// pouvaient viser un total différent de celui auquel le bilan les
+// comparait ensuite, donnant l'impression d'un panier insuffisant alors que
+// l'écart venait d'une incohérence d'objectif, pas d'un vrai manque (retour
+// utilisateur, 9 août 2026).
+function computeTargetWeeklyKcal(preferences: UserPreferences): number | null {
   const activeMacroTargets = getActiveMacroTargets(
     preferences,
     preferences.dailyCalories
   );
+  if (activeMacroTargets !== null) return activeMacroTargets.calories * 7;
+
   // Repli sur l'objectif calorique "brut" (juste réduit pour la cantine, pas
   // besoin du profil corporel complet) si getActiveMacroTargets renvoie
   // `null` — ça arrive dès que sexe/poids/taille/âge ne sont pas tous
@@ -446,12 +445,19 @@ export function generateShoppingList(
     preferences,
     preferences.dailyCalories
   );
-  const targetWeeklyKcal =
-    activeMacroTargets !== null
-      ? activeMacroTargets.calories * 7
-      : fallbackDailyCalories !== null
-        ? fallbackDailyCalories * 7
-        : null;
+  return fallbackDailyCalories !== null ? fallbackDailyCalories * 7 : null;
+}
+
+// Cœur de la génération pour UN budget donné (preferences.budget) — la
+// fonction exportée generateShoppingList ci-dessous l'appelle une première
+// fois pour le budget réel, puis éventuellement plusieurs fois de plus à
+// des budgets plus élevés pour estimer combien il manque pour atteindre
+// l'objectif calorique (voir estimateExtraBudgetForCalorieTarget).
+function generateShoppingListCore(
+  preferences: UserPreferences
+): Omit<ShoppingListResult, "extraBudgetForCalorieTarget" | "calorieTargetHardToReach"> {
+  const filtered = filterProducts(preferences);
+  const targetWeeklyKcal = computeTargetWeeklyKcal(preferences);
 
   // Catégories réellement atteignables pour ce régime/ces allergies (un
   // profil végan ne verra jamais "Viande et poisson" — c'est un choix de
@@ -864,6 +870,86 @@ export function generateShoppingList(
     isOverBudget: roundedTotal > preferences.budget,
     minimalBalancedCost,
     isBudgetInsufficient: preferences.budget < minimalBalancedCost,
+  };
+}
+
+// Pas au-delà pour l'estimation "il faut rajouter X€" — au-delà, soit
+// l'objectif est extrême, soit le régime/les allergies limitent trop le
+// catalogue pour que rajouter du budget suffise encore à combler l'écart.
+// Dans ce cas, calorieTargetHardToReach passe à `true` plutôt que de donner
+// un chiffre qui laisserait croire qu'un peu plus de budget suffirait.
+const CALORIE_TARGET_SEARCH_STEP_EUR = 2;
+const CALORIE_TARGET_SEARCH_MAX_EXTRA_EUR = 200;
+
+// Cherche, par pas de CALORIE_TARGET_SEARCH_STEP_EUR€, le budget
+// supplémentaire minimal qui permettrait à generateShoppingListCore
+// d'atteindre targetWeeklyKcal — en relançant la génération complète à
+// chaque palier (donc avec les MÊMES règles que la vraie liste : plafonds
+// de variété, féculent garanti, etc.), pas une estimation simplifiée qui
+// pourrait ne pas correspondre à ce qu'une vraie régénération donnerait.
+// Retour utilisateur (9 août 2026) : "il faut rajouter X€ pour atteindre ce
+// total calorique par jour".
+function estimateExtraBudgetForCalorieTarget(
+  preferences: UserPreferences,
+  targetWeeklyKcal: number,
+  currentWeeklyKcal: number
+): { extraBudget: number | null; hardToReach: boolean } {
+  if (currentWeeklyKcal >= targetWeeklyKcal) {
+    return { extraBudget: null, hardToReach: false };
+  }
+
+  for (
+    let extra = CALORIE_TARGET_SEARCH_STEP_EUR;
+    extra <= CALORIE_TARGET_SEARCH_MAX_EXTRA_EUR;
+    extra += CALORIE_TARGET_SEARCH_STEP_EUR
+  ) {
+    const candidate = generateShoppingListCore({
+      ...preferences,
+      budget: preferences.budget + extra,
+    });
+    const candidateWeeklyKcal = candidate.items.reduce(
+      (sum, item) => sum + weeklyKcalOf(item.product, item.quantity),
+      0
+    );
+    if (candidateWeeklyKcal >= targetWeeklyKcal) {
+      return { extraBudget: extra, hardToReach: false };
+    }
+  }
+
+  return { extraBudget: null, hardToReach: true };
+}
+
+// Génère la liste de courses pour le budget demandé, puis — s'il existe un
+// objectif calorique non atteint — estime combien de budget en plus il
+// faudrait pour l'atteindre (voir estimateExtraBudgetForCalorieTarget).
+// Coûte quelques appels supplémentaires à generateShoppingListCore
+// uniquement dans ce cas précis (sinon un seul appel, comme avant) :
+// acceptable pour une génération déclenchée par une action explicite
+// (bouton "Générer"), jamais dans une boucle chaude.
+export function generateShoppingList(
+  preferences: UserPreferences
+): ShoppingListResult {
+  const result = generateShoppingListCore(preferences);
+
+  const targetWeeklyKcal = computeTargetWeeklyKcal(preferences);
+  if (targetWeeklyKcal === null) {
+    return { ...result, extraBudgetForCalorieTarget: null, calorieTargetHardToReach: false };
+  }
+
+  const currentWeeklyKcal = result.items.reduce(
+    (sum, item) => sum + weeklyKcalOf(item.product, item.quantity),
+    0
+  );
+  const { extraBudget, hardToReach } = estimateExtraBudgetForCalorieTarget(
+    preferences,
+    targetWeeklyKcal,
+    currentWeeklyKcal
+  );
+
+  return {
+    ...result,
+    extraBudgetForCalorieTarget: extraBudget,
+    calorieTargetHardToReach: hardToReach,
   };
 }
 
