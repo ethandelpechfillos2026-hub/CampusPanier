@@ -114,7 +114,7 @@ export default function NutritionSummaryCard({
   const reference = computeReferenceCoverage(dailyAverage);
 
   return (
-    <div className="rounded-2xl border border-campus-sand bg-white p-5">
+    <div className="rounded-2xl border border-campus-sand bg-campus-surface p-5">
       <h2 className="text-sm font-bold text-campus-ink">
         🍎 Bilan nutritionnel (moyenne par jour)
       </h2>

@@ -14,7 +14,7 @@ export default function BadgesPanel({ stats, onClose }: BadgesPanelProps) {
 
   return (
     <div className="fixed inset-0 z-50 flex items-end justify-center bg-black/40 px-4 pb-4 sm:items-center">
-      <div className="max-h-[85vh] w-full max-w-[420px] overflow-y-auto rounded-3xl bg-white p-5 shadow-2xl">
+      <div className="max-h-[85vh] w-full max-w-[420px] overflow-y-auto rounded-3xl bg-campus-surface p-5 shadow-2xl">
         <div className="flex items-start justify-between gap-3">
           <div className="flex items-center gap-2.5">
             <Mascot mood="happy" size={48} />

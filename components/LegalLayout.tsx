@@ -29,7 +29,7 @@ export default function LegalLayout({ title, updated, children }: LegalLayoutPro
           )}
         </div>
 
-        <div className="space-y-5 rounded-2xl border-2 border-campus-sand bg-white p-5 text-sm leading-relaxed text-campus-ink">
+        <div className="space-y-5 rounded-2xl border-2 border-campus-sand bg-campus-surface p-5 text-sm leading-relaxed text-campus-ink">
           {children}
         </div>
       </div>

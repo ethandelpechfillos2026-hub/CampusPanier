@@ -125,7 +125,7 @@ export default function RecipesContent({
             className={`shrink-0 rounded-full px-3.5 py-2 text-xs font-semibold transition-colors ${
               selectedDay === index
                 ? "bg-campus-terracotta text-white"
-                : "bg-white text-campus-muted border border-campus-sand"
+                : "bg-campus-surface text-campus-muted border border-campus-sand"
             }`}
           >
             {label.slice(0, 3)}
@@ -150,7 +150,7 @@ export default function RecipesContent({
         ) : (
           <div className="space-y-4">
             <div className="flex items-center gap-3">
-              <span className="flex h-16 w-16 shrink-0 items-center justify-center rounded-xl bg-white text-3xl">
+              <span className="flex h-16 w-16 shrink-0 items-center justify-center rounded-xl bg-campus-surface text-3xl">
                 {aiRecipe.icon}
               </span>
               <div className="flex-1">
@@ -217,7 +217,7 @@ export default function RecipesContent({
       </div>
 
       {matches.length === 0 ? (
-        <div className="rounded-2xl border border-campus-sand bg-white p-5 text-center">
+        <div className="rounded-2xl border border-campus-sand bg-campus-surface p-5 text-center">
           <p className="text-sm text-campus-muted">
             {dietCompatibleCount === 0
               ? "Pas encore de recette compatible avec ton régime ou tes allergies — essaie la recette générée par IA ci-dessus."
@@ -231,7 +231,7 @@ export default function RecipesContent({
             return (
               <div
                 key={recipe.id}
-                className="overflow-hidden rounded-2xl border border-campus-sand bg-white"
+                className="overflow-hidden rounded-2xl border border-campus-sand bg-campus-surface"
               >
                 <button
                   type="button"

@@ -36,7 +36,7 @@ export default function HistoryPanel({ onClose }: HistoryPanelProps) {
 
   return (
     <div className="fixed inset-0 z-50 flex items-end justify-center bg-black/40 px-4 pb-4 sm:items-center print:static print:h-auto print:overflow-visible print:bg-transparent print:p-0">
-      <div className="max-h-[85vh] w-full max-w-[420px] overflow-y-auto rounded-3xl bg-white p-5 shadow-2xl print:hidden">
+      <div className="max-h-[85vh] w-full max-w-[420px] overflow-y-auto rounded-3xl bg-campus-surface p-5 shadow-2xl print:hidden">
         <div className="flex items-start justify-between gap-3">
           <div className="flex items-center gap-2.5">
             <Mascot mood="happy" size={44} />
@@ -141,7 +141,7 @@ export default function HistoryPanel({ onClose }: HistoryPanelProps) {
                   key={`${entry.timestamp}-${index}`}
                   type="button"
                   onClick={() => setSelected(entry)}
-                  className="flex w-full items-center justify-between rounded-2xl border border-campus-sand bg-white px-3.5 py-3 text-left transition-colors hover:border-campus-terracotta/40"
+                  className="flex w-full items-center justify-between rounded-2xl border border-campus-sand bg-campus-surface px-3.5 py-3 text-left transition-colors hover:border-campus-terracotta/40"
                 >
                   <div>
                     <p className="text-sm font-semibold text-campus-ink">

@@ -198,7 +198,7 @@ export default function SharedListTab({
           </div>
         </div>
 
-        <div className="rounded-2xl border border-campus-sand bg-white p-4">
+        <div className="rounded-2xl border border-campus-sand bg-campus-surface p-4">
           <p className="text-sm font-bold text-campus-ink">
             Créer une liste à partager
           </p>
@@ -216,7 +216,7 @@ export default function SharedListTab({
           </button>
         </div>
 
-        <div className="rounded-2xl border border-campus-sand bg-white p-4">
+        <div className="rounded-2xl border border-campus-sand bg-campus-surface p-4">
           <p className="text-sm font-bold text-campus-ink">
             Rejoindre avec un code
           </p>
@@ -261,7 +261,7 @@ export default function SharedListTab({
 
   return (
     <div className="space-y-5">
-      <div className="rounded-3xl border border-campus-sand bg-white p-4">
+      <div className="rounded-3xl border border-campus-sand bg-campus-surface p-4">
         <div className="flex items-start justify-between gap-3">
           <div>
             <p className="text-xs font-semibold uppercase tracking-wide text-campus-muted">
@@ -292,7 +292,7 @@ export default function SharedListTab({
         {groups.map((group) => (
           <section
             key={group.category}
-            className="rounded-2xl border border-campus-sand bg-white p-4"
+            className="rounded-2xl border border-campus-sand bg-campus-surface p-4"
           >
             <h2 className="mb-3 text-xs font-bold uppercase tracking-wide text-campus-muted">
               {CATEGORY_LABELS[group.category]}

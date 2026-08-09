@@ -22,7 +22,7 @@ export default function CelebrationOverlay({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 px-6">
-      <div className="relative w-full max-w-[320px] overflow-hidden rounded-3xl bg-white p-6 text-center shadow-2xl">
+      <div className="relative w-full max-w-[320px] overflow-hidden rounded-3xl bg-campus-surface p-6 text-center shadow-2xl">
         <div className="pointer-events-none absolute inset-0">
           {Array.from({ length: 16 }).map((_, i) => (
             <span

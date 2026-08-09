@@ -290,6 +290,10 @@ export default function ProfileForm({ onComplete, initialProfile }: ProfileFormP
       // ResultsContent.tsx) — ce formulaire ne les modifie jamais, juste
       // les reporter tels quels.
       productSubstitutions: initialProfile?.productSubstitutions ?? null,
+      // Idem pour le thème/la langue (voir app/parametres/page.tsx) — ce
+      // formulaire ne les modifie jamais non plus.
+      theme: initialProfile?.theme ?? null,
+      language: initialProfile?.language ?? null,
     });
   }
 
@@ -323,7 +327,7 @@ export default function ProfileForm({ onComplete, initialProfile }: ProfileFormP
       <div className="flex-1">
         {step === 1 && (
           <div className="space-y-5">
-            <div className="rounded-2xl border-2 border-campus-sand bg-white p-4">
+            <div className="rounded-2xl border-2 border-campus-sand bg-campus-surface p-4">
               <label className="flex cursor-pointer items-start gap-3">
                 <input
                   type="checkbox"
@@ -391,7 +395,7 @@ export default function ProfileForm({ onComplete, initialProfile }: ProfileFormP
                     className={`flex-1 rounded-full px-2 py-2 text-xs font-bold transition-colors ${
                       canteenDays.includes(option.value)
                         ? "bg-campus-terracotta text-white"
-                        : "bg-white text-campus-ink border-2 border-campus-sand"
+                        : "bg-campus-surface text-campus-ink border-2 border-campus-sand"
                     }`}
                   >
                     {option.label}
@@ -416,7 +420,7 @@ export default function ProfileForm({ onComplete, initialProfile }: ProfileFormP
                   className={`rounded-full px-3 py-1.5 text-xs font-bold transition-colors ${
                     preferredEnseigne === null
                       ? "bg-campus-terracotta text-white"
-                      : "bg-white text-campus-ink border-2 border-campus-sand"
+                      : "bg-campus-surface text-campus-ink border-2 border-campus-sand"
                   }`}
                 >
                   Peu importe
@@ -430,7 +434,7 @@ export default function ProfileForm({ onComplete, initialProfile }: ProfileFormP
                     className={`rounded-full px-3 py-1.5 text-xs font-bold transition-colors ${
                       preferredEnseigne === enseigne
                         ? "bg-campus-terracotta text-white"
-                        : "bg-white text-campus-ink border-2 border-campus-sand"
+                        : "bg-campus-surface text-campus-ink border-2 border-campus-sand"
                     }`}
                   >
                     {enseigne}
@@ -468,7 +472,7 @@ export default function ProfileForm({ onComplete, initialProfile }: ProfileFormP
                     className={`flex items-center gap-2 rounded-xl border-2 px-3 py-2.5 text-left text-sm font-medium transition-colors ${
                       selected
                         ? "border-campus-terracotta bg-campus-terracotta/10 text-campus-terracotta"
-                        : "border-campus-sand bg-white text-campus-ink hover:border-campus-terracotta/50"
+                        : "border-campus-sand bg-campus-surface text-campus-ink hover:border-campus-terracotta/50"
                     }`}
                   >
                     <span
@@ -519,7 +523,7 @@ export default function ProfileForm({ onComplete, initialProfile }: ProfileFormP
                   className={`shrink-0 rounded-full px-4 py-2 text-xs font-bold transition-colors ${
                     performanceMode
                       ? "bg-campus-terracotta text-white"
-                      : "bg-white text-campus-ink border-2 border-campus-sand"
+                      : "bg-campus-surface text-campus-ink border-2 border-campus-sand"
                   }`}
                 >
                   {performanceMode ? "Activé" : "Activer"}

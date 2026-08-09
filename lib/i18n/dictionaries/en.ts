@@ -1,0 +1,45 @@
+// English translations — see fr.ts for the reference structure/comments.
+// Any key missing here falls back to French automatically (lib/i18n/
+// LanguageContext.tsx), it never crashes or shows a raw key.
+const en: Partial<Record<string, string>> = {
+  "common.next": "Next",
+  "common.back": "Back",
+  "common.close": "Close",
+  "common.cancel": "Cancel",
+  "common.save": "Save",
+  "common.confirm": "Confirm",
+  "common.loading": "Loading...",
+  "common.error": "Something went wrong.",
+  "common.appName": "CampusPanier",
+
+  "settings.backToApp": "← Back to the app",
+  "settings.title": "Settings",
+  "settings.connectedAs": "Signed in as {{email}}",
+  "settings.appearanceTitle": "Appearance",
+  "settings.themeLabel": "Theme",
+  "settings.themeLight": "Light",
+  "settings.themeDark": "Dark",
+  "settings.themeSystem": "System",
+  "settings.languageLabel": "Language",
+  "settings.legalTitle": "Legal documents",
+  "settings.legalMentions": "Legal notice",
+  "settings.legalCgu": "Terms of use",
+  "settings.legalPrivacy": "Privacy policy",
+  "settings.legalCookies": "Cookies and trackers",
+  "settings.dataTitle": "My data",
+  "settings.clearHistoryLabel": "Clear my list history",
+  "settings.clearHistoryConfirm": "Delete the entire history of your past shopping lists? This can't be undone.",
+  "settings.clearHistoryDone": "History cleared.",
+  "settings.exportDataLabel": "Export my data (GDPR)",
+  "settings.exportDataHint": "Download a copy of your profile, favorites and history as JSON.",
+  "settings.deleteAccountTitle": "Delete my account",
+  "settings.deleteAccountWarning": "This permanently deletes: your profile (diet, allergies, calories, weight/height/age...), your Google sign-in account linked to CampusPanier, and all data stored only on this device (favorites, history, viewed recipes). If you're a member of a shared list, your name is removed from it but the list stays visible to your roommates. This action cannot be undone.",
+  "settings.deleteAccountConfirmLabel": "Type {{word}} to confirm",
+  "settings.deleteAccountButton": "Permanently delete my account",
+  "settings.deleteAccountInProgress": "Deleting...",
+  "settings.deleteAccountReauthMessage": "For security reasons, Google requires a recent sign-in before deleting the account. Sign out, sign back in, then come back here to try again.",
+  "settings.deleteAccountGenericError": "Deletion failed. Try again, or contact support if the problem persists.",
+  "settings.reauthSignOutButton": "Sign out to try again",
+};
+
+export default en;

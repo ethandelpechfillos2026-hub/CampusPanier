@@ -1,0 +1,45 @@
+// Traducciones en español — ver fr.ts para la estructura de referencia. Toda
+// clave ausente aquí recurre automáticamente al francés (lib/i18n/
+// LanguageContext.tsx), nunca falla ni muestra una clave sin traducir.
+const es: Partial<Record<string, string>> = {
+  "common.next": "Siguiente",
+  "common.back": "Atrás",
+  "common.close": "Cerrar",
+  "common.cancel": "Cancelar",
+  "common.save": "Guardar",
+  "common.confirm": "Confirmar",
+  "common.loading": "Cargando...",
+  "common.error": "Ha ocurrido un error.",
+  "common.appName": "CampusPanier",
+
+  "settings.backToApp": "← Volver a la app",
+  "settings.title": "Ajustes",
+  "settings.connectedAs": "Conectado·a como {{email}}",
+  "settings.appearanceTitle": "Apariencia",
+  "settings.themeLabel": "Tema",
+  "settings.themeLight": "Claro",
+  "settings.themeDark": "Oscuro",
+  "settings.themeSystem": "Sistema",
+  "settings.languageLabel": "Idioma",
+  "settings.legalTitle": "Documentos legales",
+  "settings.legalMentions": "Aviso legal",
+  "settings.legalCgu": "Condiciones generales de uso",
+  "settings.legalPrivacy": "Política de privacidad",
+  "settings.legalCookies": "Cookies y rastreadores",
+  "settings.dataTitle": "Mis datos",
+  "settings.clearHistoryLabel": "Borrar el historial de mis listas",
+  "settings.clearHistoryConfirm": "¿Borrar todo el historial de tus listas de compra pasadas? Esta acción es irreversible.",
+  "settings.clearHistoryDone": "Historial borrado.",
+  "settings.exportDataLabel": "Exportar mis datos (RGPD)",
+  "settings.exportDataHint": "Descarga una copia de tu perfil, tus favoritos y tu historial en formato JSON.",
+  "settings.deleteAccountTitle": "Eliminar mi cuenta",
+  "settings.deleteAccountWarning": "Esta acción elimina definitivamente: tu perfil (dieta, alergias, calorías, peso/altura/edad...), tu cuenta de Google asociada a CampusPanier, y todos los datos guardados únicamente en este dispositivo (favoritos, historial, recetas vistas). Si eres miembro de una lista compartida, tu nombre se elimina de ella pero la lista sigue visible para tus compañeros. Esta acción es irreversible.",
+  "settings.deleteAccountConfirmLabel": "Escribe {{word}} para confirmar",
+  "settings.deleteAccountButton": "Eliminar definitivamente mi cuenta",
+  "settings.deleteAccountInProgress": "Eliminando...",
+  "settings.deleteAccountReauthMessage": "Por razones de seguridad, Google exige un inicio de sesión reciente antes de eliminar la cuenta. Cierra sesión, vuelve a iniciarla y luego regresa aquí para volver a intentarlo.",
+  "settings.deleteAccountGenericError": "La eliminación ha fallado. Vuelve a intentarlo o contacta con soporte si el problema persiste.",
+  "settings.reauthSignOutButton": "Cerrar sesión para volver a intentarlo",
+};
+
+export default es;

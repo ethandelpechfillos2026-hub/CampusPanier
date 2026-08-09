@@ -90,7 +90,7 @@ export default function MenuContent({
       </div>
 
       {isEmpty ? (
-        <div className="rounded-2xl border border-campus-sand bg-white p-5 text-center">
+        <div className="rounded-2xl border border-campus-sand bg-campus-surface p-5 text-center">
           <p className="text-sm text-campus-muted">
             Génère d&apos;abord une liste pour voir ton menu.
           </p>
@@ -124,7 +124,7 @@ export default function MenuContent({
                 className={`shrink-0 rounded-full px-3.5 py-2 text-xs font-semibold transition-colors ${
                   selectedDay === index
                     ? "bg-campus-terracotta text-white"
-                    : "bg-white text-campus-muted border border-campus-sand"
+                    : "bg-campus-surface text-campus-muted border border-campus-sand"
                 }`}
               >
                 {label.slice(0, 3)}
@@ -141,7 +141,7 @@ export default function MenuContent({
               return (
                 <section
                   key={slot}
-                  className="rounded-2xl border border-campus-sand bg-white p-4"
+                  className="rounded-2xl border border-campus-sand bg-campus-surface p-4"
                 >
                   <h2 className="mb-3 flex items-center gap-2 text-sm font-bold text-campus-ink">
                     <span className="text-lg">{DAY_SLOT_ICONS[slot]}</span>
@@ -236,7 +236,7 @@ export default function MenuContent({
           </div>
 
           {bonusItems.length > 0 && (
-            <div className="rounded-2xl border border-campus-sand bg-white p-4">
+            <div className="rounded-2xl border border-campus-sand bg-campus-surface p-4">
               <h2 className="mb-1 text-sm font-bold text-campus-ink">
                 🎁 En bonus cette semaine
               </h2>

@@ -155,7 +155,7 @@ export default function PrintableListView({
             <button
               type="button"
               onClick={() => window.print()}
-              className="rounded-full bg-white px-4 py-2 text-xs font-bold text-campus-ink"
+              className="rounded-full bg-campus-surface px-4 py-2 text-xs font-bold text-campus-ink"
             >
               🖨️ Imprimer
             </button>

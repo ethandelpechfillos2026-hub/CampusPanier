@@ -1,6 +1,7 @@
 import { deleteDoc, doc, getDoc, setDoc, updateDoc } from "firebase/firestore";
 import { db } from "@/lib/firebase";
-import { UserProfile } from "@/lib/types";
+import { Locale } from "@/lib/i18n/locale";
+import { Theme, UserProfile } from "@/lib/types";
 
 export async function getCloudProfile(uid: string): Promise<UserProfile | null> {
   const snap = await getDoc(doc(db, "profiles", uid));
@@ -28,6 +29,11 @@ export async function getCloudProfile(uid: string): Promise<UserProfile | null> 
     lastBudget: data.lastBudget ?? null,
     // Profils créés avant l'ajout de ce champ : aucun échange mémorisé.
     productSubstitutions: data.productSubstitutions ?? null,
+    // Profils créés avant l'ajout du thème/de la langue (voir lib/i18n/) :
+    // pas de préférence enregistrée côté compte — LanguageProvider/
+    // ThemeProvider retombent sur localStorage puis sur system/fr.
+    theme: data.theme ?? null,
+    language: data.language ?? null,
   };
 }
 
@@ -61,4 +67,24 @@ export async function updateProductSubstitutions(
   substitutions: Record<string, string>
 ): Promise<void> {
   await updateDoc(doc(db, "profiles", uid), { productSubstitutions: substitutions });
+}
+
+// Synchronise le thème/la langue choisis sur le compte (voir lib/i18n/
+// LanguageContext.tsx, components/ThemeProvider.tsx) — appelée dès qu'une
+// personne connectée change l'un des deux dans les réglages, pour que le
+// choix suive le compte d'un appareil à l'autre comme lastBudget. Mise à
+// jour ciblée (pas un saveCloudProfile complet), même principe que
+// updateLastBudget ci-dessus. N'échoue pas si le document profil n'existe
+// pas encore (ex: réglage changé avant la fin du premier profil) — la
+// prochaine sauvegarde complète (saveCloudProfile) inclura la valeur
+// mémorisée en localStorage entre-temps.
+export async function updateDisplaySettings(
+  uid: string,
+  settings: { theme?: Theme; language?: Locale }
+): Promise<void> {
+  try {
+    await updateDoc(doc(db, "profiles", uid), settings);
+  } catch {
+    // Document profil pas encore créé — pas grave, voir commentaire ci-dessus.
+  }
 }

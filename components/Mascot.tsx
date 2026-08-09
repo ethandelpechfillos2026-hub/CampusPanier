@@ -142,7 +142,7 @@ export default function Mascot({
       </svg>
 
       {message && (
-        <div className="relative mb-1 max-w-[190px] rounded-2xl rounded-bl-sm bg-white px-3 py-2 text-xs font-medium leading-snug text-campus-ink shadow-md">
+        <div className="relative mb-1 max-w-[190px] rounded-2xl rounded-bl-sm bg-campus-surface px-3 py-2 text-xs font-medium leading-snug text-campus-ink shadow-md">
           {message}
         </div>
       )}

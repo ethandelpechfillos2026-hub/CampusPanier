@@ -1,4 +1,11 @@
+import { Locale } from "@/lib/i18n/locale";
+
 export type DietType = "omnivore" | "vegetarien" | "vegan" | "sans-porc";
+
+// "system" suit le thème du système d'exploitation/navigateur plutôt qu'un
+// choix figé — voir components/ThemeProvider.tsx pour la résolution en
+// clair/sombre effectif.
+export type Theme = "light" | "dark" | "system";
 
 // Les 14 allergènes à déclaration obligatoire au sens du règlement européen
 // INCO (UE) n°1169/2011 — la liste de référence utilisée sur tous les
@@ -304,6 +311,15 @@ export interface UserProfile extends BodyStats {
   // lib/generateShoppingList.ts) — jamais réappliqué à l'aveugle. `null` =
   // aucun échange fait, ou profil créé avant l'ajout de ce champ.
   productSubstitutions: Record<string, string> | null;
+  // Thème et langue (retour utilisateur, 9 août 2026, voir lib/i18n/) —
+  // mémorisés d'abord en localStorage (affichage correct immédiat, avant
+  // même la connexion : écran de connexion, pages légales) PUIS synchronisés
+  // ici pour suivre le compte d'un appareil à l'autre, comme lastBudget.
+  // `null` = jamais choisi explicitement, ou profil créé avant l'ajout de
+  // ces champs (voir migration défensive dans lib/authProfile.ts) — retombe
+  // sur "system"/"fr" dans ce cas.
+  theme: Theme | null;
+  language: Locale | null;
 }
 
 export interface UserPreferences extends BodyStats {

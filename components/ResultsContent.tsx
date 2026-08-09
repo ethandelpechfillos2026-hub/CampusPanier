@@ -214,7 +214,7 @@ export default function ResultsContent({
       )}
 
       {result.items.length === 0 ? (
-        <div className="rounded-2xl border border-campus-sand bg-white p-5 text-center">
+        <div className="rounded-2xl border border-campus-sand bg-campus-surface p-5 text-center">
           <p className="text-sm text-campus-muted">
             Aucun produit ne correspond à tes critères. Essaie d&apos;augmenter
             ton budget ou d&apos;ajuster tes filtres.
@@ -230,7 +230,7 @@ export default function ResultsContent({
           {grouped.map(({ category, items }) => (
             <section
               key={category}
-              className="rounded-2xl border border-campus-sand bg-white p-4"
+              className="rounded-2xl border border-campus-sand bg-campus-surface p-4"
             >
               <h2 className="mb-3 text-xs font-bold uppercase tracking-wide text-campus-muted">
                 {CATEGORY_LABELS[category]}
@@ -340,7 +340,7 @@ export default function ResultsContent({
           onClick={() => setSelectedProduct(null)}
         >
           <div
-            className="max-h-[85vh] w-full max-w-sm overflow-y-auto rounded-t-3xl bg-white p-5 sm:rounded-3xl"
+            className="max-h-[85vh] w-full max-w-sm overflow-y-auto rounded-t-3xl bg-campus-surface p-5 sm:rounded-3xl"
             onClick={(event) => event.stopPropagation()}
           >
             <div className="flex items-start justify-between gap-3">

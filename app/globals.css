@@ -3,12 +3,53 @@
 @tailwind utilities;
 
 @layer base {
+  /* Valeurs en "R G B" (sans virgules) pour être utilisables avec la syntaxe
+     rgb(var(--x) / <alpha-value>) de Tailwind (voir tailwind.config.ts). Le
+     thème sombre (.dark, voir components/ThemeProvider.tsx) redéfinit
+     chacune de ces variables — tout le reste de l'app (300+ usages de
+     classes campus-*) suit automatiquement, sans modification composant par
+     composant. */
+  :root {
+    --campus-cream: 255 248 240;
+    --campus-sand: 245 230 211;
+    --campus-terracotta: 224 122 95;
+    --campus-terracotta-dark: 201 106 82;
+    --campus-sage: 129 178 154;
+    --campus-sage-dark: 106 154 130;
+    --campus-success: 76 175 125;
+    --campus-danger: 224 82 82;
+    --campus-ink: 61 64 91;
+    --campus-muted: 107 114 128;
+    --campus-surface: 255 255 255;
+    --campus-surface-2: 255 248 240;
+  }
+
+  /* Contraste vérifié à l'œil (pas d'outil automatisé disponible dans cet
+     environnement) plutôt qu'un simple "inverser les couleurs" — l'accent
+     terracotta est légèrement éclairci pour rester lisible sur fond sombre,
+     l'encre (texte principal) devient un blanc cassé plutôt qu'un blanc pur
+     (moins agressif sur de grands aplats de texte). */
+  .dark {
+    --campus-cream: 28 25 23;
+    --campus-sand: 61 52 46;
+    --campus-terracotta: 233 141 116;
+    --campus-terracotta-dark: 219 121 96;
+    --campus-sage: 141 191 168;
+    --campus-sage-dark: 122 170 148;
+    --campus-success: 110 199 152;
+    --campus-danger: 240 128 128;
+    --campus-ink: 240 238 234;
+    --campus-muted: 168 168 178;
+    --campus-surface: 38 34 31;
+    --campus-surface-2: 30 27 25;
+  }
+
   html {
     -webkit-tap-highlight-color: transparent;
   }
 
   body {
-    @apply bg-gradient-to-br from-orange-50 via-amber-50 to-orange-100 text-campus-ink antialiased;
+    @apply bg-gradient-to-br from-orange-50 via-amber-50 to-orange-100 text-campus-ink antialiased dark:from-neutral-950 dark:via-neutral-900 dark:to-neutral-950;
   }
 
   input[type="range"] {
@@ -16,12 +57,12 @@
   }
 
   input[type="range"]::-webkit-slider-thumb {
-    @apply h-6 w-6 appearance-none rounded-full border-2 border-white bg-campus-terracotta shadow-md;
+    @apply h-6 w-6 appearance-none rounded-full border-2 border-white bg-campus-terracotta shadow-md dark:border-campus-surface;
     margin-top: -8px;
   }
 
   input[type="range"]::-moz-range-thumb {
-    @apply h-6 w-6 rounded-full border-2 border-white bg-campus-terracotta shadow-md;
+    @apply h-6 w-6 rounded-full border-2 border-white bg-campus-terracotta shadow-md dark:border-campus-surface;
   }
 
   input[type="range"]::-webkit-slider-runnable-track {
@@ -31,15 +72,15 @@
 
 @layer components {
   .btn-primary {
-    @apply inline-flex min-h-[48px] w-full items-center justify-center rounded-full bg-campus-terracotta px-6 py-3 text-base font-semibold text-white transition-colors hover:bg-campus-terracottaDark focus:outline-none focus:ring-2 focus:ring-campus-terracotta focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50;
+    @apply inline-flex min-h-[48px] w-full items-center justify-center rounded-full bg-campus-terracotta px-6 py-3 text-base font-semibold text-white transition-colors hover:bg-campus-terracottaDark focus:outline-none focus:ring-2 focus:ring-campus-terracotta focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 dark:focus:ring-offset-campus-surface2;
   }
 
   .btn-secondary {
-    @apply inline-flex min-h-[48px] w-full items-center justify-center rounded-full border-2 border-campus-sand bg-white px-6 py-3 text-base font-semibold text-campus-ink transition-colors hover:border-campus-terracotta/40 hover:bg-orange-50 focus:outline-none focus:ring-2 focus:ring-campus-terracotta/30 focus:ring-offset-2;
+    @apply inline-flex min-h-[48px] w-full items-center justify-center rounded-full border-2 border-campus-sand bg-campus-surface px-6 py-3 text-base font-semibold text-campus-ink transition-colors hover:border-campus-terracotta/40 hover:bg-orange-50 focus:outline-none focus:ring-2 focus:ring-campus-terracotta/30 focus:ring-offset-2 dark:hover:bg-campus-sand/40 dark:focus:ring-offset-campus-surface2;
   }
 
   .btn-shortcut {
-    @apply inline-flex min-h-[40px] flex-1 items-center justify-center rounded-full border-2 border-campus-sand bg-white px-3 py-2 text-sm font-semibold text-campus-ink transition-colors hover:border-campus-terracotta hover:text-campus-terracotta;
+    @apply inline-flex min-h-[40px] flex-1 items-center justify-center rounded-full border-2 border-campus-sand bg-campus-surface px-3 py-2 text-sm font-semibold text-campus-ink transition-colors hover:border-campus-terracotta hover:text-campus-terracotta;
   }
 
   .btn-shortcut-active {
@@ -51,7 +92,7 @@
   }
 
   .chip-default {
-    @apply border-campus-sand bg-white text-campus-ink hover:border-campus-terracotta/50;
+    @apply border-campus-sand bg-campus-surface text-campus-ink hover:border-campus-terracotta/50;
   }
 
   .chip-selected {
@@ -63,7 +104,7 @@
   }
 
   .diet-btn-default {
-    @apply border-campus-sand bg-white text-campus-ink hover:border-campus-terracotta/50;
+    @apply border-campus-sand bg-campus-surface text-campus-ink hover:border-campus-terracotta/50;
   }
 
   .diet-btn-selected {
@@ -80,6 +121,17 @@
       #fbd9bb 55%,
       #f3bd93 80%,
       #eba573 100%
+    );
+  }
+
+  .dark .phone-frame {
+    background-image: linear-gradient(
+      165deg,
+      #201c19 0%,
+      #241f1c 30%,
+      #2a201a 60%,
+      #2e2118 85%,
+      #33230f 100%
     );
   }
 }
