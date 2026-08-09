@@ -375,10 +375,60 @@ function maxQuantityFor(category: Product["category"]): number {
   return MAX_QUANTITY_PER_ITEM[category] ?? DEFAULT_MAX_QUANTITY_PER_ITEM;
 }
 
+// Calories hebdomadaires réellement apportées par CE produit à la quantité
+// donnée — même formule que le bilan nutritionnel (lib/nutritionSummary.ts) :
+// nutritionPer100g.kcal × gramsPerServing/100 × weeklyServings × quantité.
+// 0 si une des trois données manque plutôt qu'une estimation inventée — ce
+// qui exclut de fait les condiments dosés librement et les quelques
+// produits pas encore placés dans le planning journalier, cohérent avec ce
+// que compte déjà le bilan nutritionnel affiché à l'écran.
+function weeklyKcalOf(product: Product, quantity: number): number {
+  const kcal100g = product.nutritionPer100g?.kcal;
+  if (!product.weeklyServings || !product.gramsPerServing || kcal100g == null) {
+    return 0;
+  }
+  const kcalPerServing = (kcal100g * product.gramsPerServing) / 100;
+  return product.weeklyServings * quantity * kcalPerServing;
+}
+
+// Calories hebdomadaires apportées par euro dépensé sur CE produit (pour un
+// seul article acheté, l'unité telle que vendue) — sert à repérer les
+// aliments les plus rentables en calories (féculents, pain, légumineuses...)
+// quand le budget est trop juste pour atteindre l'objectif calorique
+// (voir CALORIE_CATCHUP_RATIO ci-dessous).
+function kcalPerEuro(product: Product): number {
+  if (product.price <= 0) return 0;
+  return weeklyKcalOf(product, 1) / product.price;
+}
+
+// Seuil minimal de couverture calorique visé sur le total de la semaine —
+// retour utilisateur (9 août 2026) : avec un petit budget (25€), le total
+// calorique du panier retombait à ~34% de l'objectif, jugé trop bas même en
+// acceptant qu'un budget serré limite les options ("même si on est étudiant,
+// on peut se faire plaisir... on pourrait monter au moins à 80%"). En
+// dessous de ce seuil, les phases 2/3 ci-dessous priorisent les aliments les
+// plus rentables en calories (kcal par euro) — sans ignorer la pertinence
+// nutritionnelle pour autant, voir phase2Score qui l'additionne au score
+// habituel plutôt que de le remplacer. Aucun effet si aucun objectif
+// calorique n'est défini (targetWeeklyKcal reste null dans ce cas).
+const CALORIE_CATCHUP_RATIO = 0.8;
+
 export function generateShoppingList(
   preferences: UserPreferences
 ): ShoppingListResult {
   const filtered = filterProducts(preferences);
+
+  // Objectif calorique hebdomadaire réel (réduit si cantine le midi, voir
+  // lib/macros.ts) et plafond de rentabilité calorique du catalogue filtré
+  // — servent au rattrapage calorique des phases 2/3 ci-dessous. `null` si
+  // aucun objectif calorique n'est défini : le comportement de génération
+  // reste alors strictement identique à avant (pas de rattrapage).
+  const effectiveDailyCalories = getEffectiveDailyCalories(
+    preferences,
+    preferences.dailyCalories
+  );
+  const targetWeeklyKcal =
+    effectiveDailyCalories !== null ? effectiveDailyCalories * 7 : null;
 
   // Catégories réellement atteignables pour ce régime/ces allergies (un
   // profil végan ne verra jamais "Viande et poisson" — c'est un choix de
@@ -406,6 +456,43 @@ export function generateShoppingList(
   const selectedIds = new Set<string>();
   const quantities = new Map<string, number>();
   let total = 0;
+
+  // Vrai en dessous de CALORIE_CATCHUP_RATIO du total calorique
+  // hebdomadaire visé — recalculé à chaque appel (pas mis en cache) pour
+  // refléter l'état réel de `selected`/`quantities` à cet instant précis,
+  // avant chaque phase qui dépense encore du budget.
+  function isCalorieShortfall(): boolean {
+    if (targetWeeklyKcal === null) return false;
+    const current = selected.reduce(
+      (sum, p) => sum + weeklyKcalOf(p, quantities.get(p.id) ?? 1),
+      0
+    );
+    return current < targetWeeklyKcal * CALORIE_CATCHUP_RATIO;
+  }
+
+  // Comparateur utilisé dans toutes les phases qui dépensent le budget
+  // restant (2, 3, le rattrapage cantine, la marge de fin) : en rattrapage
+  // calorique, l'efficacité calorique (kcal par euro) devient le CRITÈRE
+  // PRINCIPAL de tri — pas juste un petit bonus additionné à score(), qui
+  // s'est avéré trop faible face aux bonus protéines déjà empilés dans
+  // score() (jusqu'à +11 pour une viande maigre avec "riche-proteines" +
+  // "faible-lipides", qui écrasaient un bonus additif raisonnable). score()
+  // ne sert plus que de départage entre produits à efficacité comparable,
+  // et de critère normal hors rattrapage. Retour utilisateur (9 août 2026) :
+  // "je veux que tu fasses le maximum pour l'atteindre".
+  function compareForBudgetFill(
+    a: Product,
+    b: Product,
+    calorieBonusActive: boolean
+  ): number {
+    if (calorieBonusActive) {
+      const efficiencyDiff = kcalPerEuro(b) - kcalPerEuro(a);
+      if (efficiencyDiff !== 0) return efficiencyDiff;
+    }
+    const scoreDiff = score(b, preferences) - score(a, preferences);
+    if (scoreDiff !== 0) return scoreDiff;
+    return a.price - b.price;
+  }
 
   // Phase 1 : un article par catégorie, en priorisant ceux qui correspondent
   // le mieux aux préférences nutritionnelles, pour un panier équilibré.
@@ -572,21 +659,29 @@ export function generateShoppingList(
 
   // Phase 2 : compléter avec les articles restants (y compris les extras
   // gourmands), en priorisant toujours ceux qui correspondent le mieux aux
-  // préférences, puis les moins chers.
-  const remaining = filtered
-    .filter((p) => !selectedIds.has(p.id))
-    .sort((a, b) => {
-      const scoreDiff = score(b, preferences) - score(a, preferences);
-      if (scoreDiff !== 0) return scoreDiff;
-      return a.price - b.price;
-    });
-
+  // préférences, puis les moins chers — SAUF en rattrapage calorique, où
+  // l'efficacité calorique passe devant (voir compareForBudgetFill).
+  //
+  // Le rattrapage est réévalué à CHAQUE article (pas une fois pour toute la
+  // phase) : sans ça, un gros budget qui démarre en dessous du seuil restait
+  // en mode "efficacité calorique" pour tout le reste du remplissage, bien
+  // après avoir dépassé l'objectif — jusqu'à 256% de l'objectif calorique
+  // observé en test, au détriment de la variété. En réévaluant à chaque
+  // ajout, la priorité à l'efficacité s'arrête dès que l'objectif est
+  // couvert, et le remplissage redevient piloté par les préférences
+  // habituelles pour le reste du budget.
   const categoryCounts = new Map<Product["category"], number>();
   for (const p of selected) {
     categoryCounts.set(p.category, (categoryCounts.get(p.category) ?? 0) + 1);
   }
 
-  for (const product of remaining) {
+  let phase2Pool = filtered.filter((p) => !selectedIds.has(p.id));
+  while (phase2Pool.length > 0) {
+    const shortfallNow = isCalorieShortfall();
+    phase2Pool.sort((a, b) => compareForBudgetFill(a, b, shortfallNow));
+    const product = phase2Pool[0];
+    phase2Pool = phase2Pool.slice(1);
+
     const cap = distinctCapFor(product.category, preferences.budget);
     const atCap =
       cap !== undefined && (categoryCounts.get(product.category) ?? 0) >= cap;
@@ -603,11 +698,7 @@ export function generateShoppingList(
             p.category === product.category &&
             (quantities.get(p.id) ?? 1) < maxQuantityFor(p.category)
         )
-        .sort((a, b) => {
-          const scoreDiff = score(b, preferences) - score(a, preferences);
-          if (scoreDiff !== 0) return scoreDiff;
-          return a.price - b.price;
-        })[0];
+        .sort((a, b) => compareForBudgetFill(a, b, shortfallNow))[0];
 
       if (boostCandidate && total + boostCandidate.price <= preferences.budget) {
         quantities.set(
@@ -658,15 +749,13 @@ export function generateShoppingList(
     }
 
     if (freedBudget > 0) {
-      const extraCandidates = filtered
-        .filter((p) => !selectedIds.has(p.id))
-        .sort((a, b) => {
-          const scoreDiff = score(b, preferences) - score(a, preferences);
-          if (scoreDiff !== 0) return scoreDiff;
-          return a.price - b.price;
-        });
+      let extraPool = filtered.filter((p) => !selectedIds.has(p.id));
+      while (extraPool.length > 0) {
+        const shortfallNow = isCalorieShortfall();
+        extraPool.sort((a, b) => compareForBudgetFill(a, b, shortfallNow));
+        const product = extraPool[0];
+        extraPool = extraPool.slice(1);
 
-      for (const product of extraCandidates) {
         const cap = distinctCapFor(product.category, preferences.budget);
         const atCap =
           cap !== undefined && (categoryCounts.get(product.category) ?? 0) >= cap;
@@ -698,17 +787,13 @@ export function generateShoppingList(
   const LEFTOVER_VARIETY_THRESHOLD = 3;
   const MAX_LEFTOVER_VARIETY_ITEMS = 4;
   if (preferences.budget - total >= LEFTOVER_VARIETY_THRESHOLD) {
-    const leftoverCandidates = filtered
-      .filter((p) => !selectedIds.has(p.id))
-      .sort((a, b) => {
-        const scoreDiff = score(b, preferences) - score(a, preferences);
-        if (scoreDiff !== 0) return scoreDiff;
-        return a.price - b.price;
-      });
-
+    let leftoverPool = filtered.filter((p) => !selectedIds.has(p.id));
     let leftoverAdded = 0;
-    for (const product of leftoverCandidates) {
-      if (leftoverAdded >= MAX_LEFTOVER_VARIETY_ITEMS) break;
+    while (leftoverPool.length > 0 && leftoverAdded < MAX_LEFTOVER_VARIETY_ITEMS) {
+      const shortfallNow = isCalorieShortfall();
+      leftoverPool.sort((a, b) => compareForBudgetFill(a, b, shortfallNow));
+      const product = leftoverPool[0];
+      leftoverPool = leftoverPool.slice(1);
       if (total + product.price > preferences.budget) continue;
 
       selected.push(product);
@@ -717,6 +802,30 @@ export function generateShoppingList(
       total += product.price;
       leftoverAdded += 1;
     }
+  }
+
+  // Phase 3 : rattrapage calorique final. Si malgré tout ce qui précède, le
+  // total calorique reste sous CALORIE_CATCHUP_RATIO et qu'il reste un peu
+  // de budget — même trop peu pour un article distinct de plus — on rachète
+  // en priorité une portion supplémentaire des produits DÉJÀ choisis les
+  // plus rentables en calories (riz, pâtes, pain, pommes de terre...), dans
+  // la limite de maxQuantityFor. Retour utilisateur (9 août 2026) : avec un
+  // petit budget, mieux vaut plus de portions d'aliments pas chers et bien
+  // choisis que rester loin de l'objectif calorique. S'arrête dès que
+  // l'objectif est atteint, qu'il n'y a plus rien d'abordable/boostable, ou
+  // que tout est déjà au plafond de quantité — jamais de dépassement du
+  // budget saisi.
+  while (isCalorieShortfall()) {
+    const boostable = selected
+      .filter((p) => (quantities.get(p.id) ?? 1) < maxQuantityFor(p.category))
+      .filter((p) => total + p.price <= preferences.budget)
+      .sort((a, b) => kcalPerEuro(b) - kcalPerEuro(a));
+
+    const next = boostable[0];
+    if (!next) break;
+
+    quantities.set(next.id, (quantities.get(next.id) ?? 1) + 1);
+    total += next.price;
   }
 
   const roundedTotal = round(total);

@@ -302,7 +302,7 @@
     "glucides": "faible",
     "sel": "faible",
     "easyToCook": true,
-    "gramsPerServing": 200,
+    "gramsPerServing": 7,
     "priceInfo": {
       "source": "open-prices"
     },
