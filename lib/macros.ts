@@ -94,7 +94,20 @@ export function getActiveMacroTargets(
   if (!stats.macroOverride) return computed;
 
   const { proteinG, lipidesG, glucidesG } = stats.macroOverride;
-  const calories = proteinG * 4 + lipidesG * 9 + glucidesG * 4;
+  const fullDayCalories = proteinG * 4 + lipidesG * 9 + glucidesG * 4;
+  // Repas cantine non prévus dans les courses (retour utilisateur, 9 août
+  // 2026) : même réduction que le calcul automatique ci-dessus
+  // (getEffectiveDailyCalories), appliquée aux calories du repère fixé à la
+  // main. Les grammes eux-mêmes ne changent pas — c'est ce que la personne
+  // vise à manger dans la journée, cantine comprise — seul le total de
+  // calories utilisé pour dimensionner LES COURSES (lib/
+  // generateShoppingList.ts, bilan affiché) reflète qu'un repas est pris
+  // ailleurs. Avant ce correctif, cette réduction ne s'appliquait qu'au
+  // calcul automatique : avec un objectif en grammes fixé à la main ET des
+  // jours de cantine, les courses visaient le bon total réduit, mais le
+  // bilan affiché comparait à tort au total plein — donnant l'impression
+  // d'un panier bien plus insuffisant qu'il ne l'était réellement.
+  const calories = getEffectiveDailyCalories(stats, fullDayCalories) ?? fullDayCalories;
 
   return { calories, proteinG, lipidesG, glucidesG };
 }

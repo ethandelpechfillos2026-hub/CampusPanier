@@ -419,16 +419,39 @@ export function generateShoppingList(
   const filtered = filterProducts(preferences);
 
   // Objectif calorique hebdomadaire réel (réduit si cantine le midi, voir
-  // lib/macros.ts) et plafond de rentabilité calorique du catalogue filtré
-  // — servent au rattrapage calorique des phases 2/3 ci-dessous. `null` si
-  // aucun objectif calorique n'est défini : le comportement de génération
-  // reste alors strictement identique à avant (pas de rattrapage).
-  const effectiveDailyCalories = getEffectiveDailyCalories(
+  // lib/macros.ts) — sert au rattrapage calorique des phases 2/3 ci-dessous.
+  // `null` si aucun objectif calorique n'est défini : le comportement de
+  // génération reste alors strictement identique à avant (pas de
+  // rattrapage). Passe par getActiveMacroTargets (pas directement
+  // getEffectiveDailyCalories) pour respecter un objectif en grammes fixé à
+  // la main (macroOverride) quand il existe — exactement le même chiffre
+  // que celui affiché dans le bilan nutritionnel (lib/nutritionSummary.ts,
+  // computePersonalCoverage) : sans ça, les courses pouvaient viser un total
+  // différent de celui auquel le bilan les comparait ensuite, donnant
+  // l'impression d'un panier insuffisant alors que l'écart venait d'une
+  // incohérence d'objectif, pas d'un vrai manque (retour utilisateur, 9 août
+  // 2026).
+  const activeMacroTargets = getActiveMacroTargets(
+    preferences,
+    preferences.dailyCalories
+  );
+  // Repli sur l'objectif calorique "brut" (juste réduit pour la cantine, pas
+  // besoin du profil corporel complet) si getActiveMacroTargets renvoie
+  // `null` — ça arrive dès que sexe/poids/taille/âge ne sont pas tous
+  // connus, alors qu'un objectif de calories peut très bien exister sans
+  // ça (curseur "Objectif calorique" seul, sans profil corporel). Sans ce
+  // repli, le rattrapage calorique se désactivait silencieusement pour ces
+  // profils-là alors qu'un vrai objectif était pourtant défini.
+  const fallbackDailyCalories = getEffectiveDailyCalories(
     preferences,
     preferences.dailyCalories
   );
   const targetWeeklyKcal =
-    effectiveDailyCalories !== null ? effectiveDailyCalories * 7 : null;
+    activeMacroTargets !== null
+      ? activeMacroTargets.calories * 7
+      : fallbackDailyCalories !== null
+        ? fallbackDailyCalories * 7
+        : null;
 
   // Catégories réellement atteignables pour ce régime/ces allergies (un
   // profil végan ne verra jamais "Viande et poisson" — c'est un choix de
