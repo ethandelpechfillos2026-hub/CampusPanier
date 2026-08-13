@@ -127,11 +127,8 @@ export default function IngredientPickerStep({
         >
           {t("ingredientPicker.confirmButton")}
         </button>
-        <button
-          type="button"
-          onClick={onBack}
-          className="text-center text-xs text-campus-muted underline"
-        >
+        <button type="button" onClick={onBack} className="btn-back">
+          <span aria-hidden="true">←</span>
           {t("ingredientPicker.backButton")}
         </button>
       </div>

@@ -136,11 +136,8 @@ export default function WeekPlanReview({
         <button type="button" onClick={onValidate} className="btn-primary">
           {t("weekPlanReview.validateButton")}
         </button>
-        <button
-          type="button"
-          onClick={onRestart}
-          className="text-center text-xs text-campus-muted underline"
-        >
+        <button type="button" onClick={onRestart} className="btn-back">
+          <span aria-hidden="true">←</span>
           {t("weekPlanReview.restartButton")}
         </button>
       </div>

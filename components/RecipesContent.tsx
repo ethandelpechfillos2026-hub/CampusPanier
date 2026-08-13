@@ -14,6 +14,7 @@ import { useTranslation } from "@/lib/i18n/LanguageContext";
 import { recordRecipeViewed } from "@/lib/stats";
 import {
   GeneratedRecipe,
+  Recipe,
   ShoppingListResult,
   UserPreferences,
 } from "@/lib/types";
@@ -22,6 +23,32 @@ interface RecipesContentProps {
   result: ShoppingListResult;
   preferences: UserPreferences;
   onRestart: () => void;
+}
+
+// Vraie photo (voir public/recipes/, sourcée via l'API Pexels — retour
+// utilisateur du 13 août 2026 : "je veux des vraies photos, pas des
+// émojis ou des trucs qui font vraiment IA") au lieu de l'emoji recipe.icon.
+// Repli sur l'emoji si l'image ne charge pas (recette future sans photo
+// encore associée) plutôt qu'une case cassée.
+function RecipeThumbnail({ recipe }: { recipe: Recipe }) {
+  const [imgFailed, setImgFailed] = useState(false);
+
+  if (imgFailed) {
+    return (
+      <span className="flex h-16 w-16 shrink-0 items-center justify-center rounded-xl bg-campus-sand text-3xl">
+        {recipe.icon}
+      </span>
+    );
+  }
+
+  return (
+    <img
+      src={`/recipes/${recipe.id}.jpg`}
+      alt=""
+      className="h-16 w-16 shrink-0 rounded-xl bg-campus-sand object-cover"
+      onError={() => setImgFailed(true)}
+    />
+  );
 }
 
 export default function RecipesContent({
@@ -243,9 +270,7 @@ export default function RecipesContent({
                   }}
                   className="flex w-full items-center gap-3 p-4 text-left"
                 >
-                  <span className="flex h-16 w-16 shrink-0 items-center justify-center rounded-xl bg-campus-sand text-3xl">
-                    {recipe.icon}
-                  </span>
+                  <RecipeThumbnail recipe={recipe} />
                   <span className="flex-1">
                     <span className="block text-sm font-bold text-campus-ink">
                       {recipe.name}

@@ -104,11 +104,8 @@ export default function PathChoiceStep({
         </div>
       </div>
 
-      <button
-        type="button"
-        onClick={onEditBudget}
-        className="text-center text-xs text-campus-muted underline"
-      >
+      <button type="button" onClick={onEditBudget} className="btn-back">
+        <span aria-hidden="true">←</span>
         {t("pathChoice.editBudgetButton")}
       </button>
     </div>

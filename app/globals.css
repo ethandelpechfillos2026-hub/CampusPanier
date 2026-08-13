@@ -87,6 +87,16 @@
     @apply border-campus-terracotta bg-campus-terracotta/10 text-campus-terracotta;
   }
 
+  /* Bouton "retour" (étape précédente, modifier le budget/profil...) —
+     remplace un ancien style de lien souligné (retour utilisateur du 13 août
+     2026 : "les boutons retour... ils sont soulignés et un peu mal faits").
+     Toujours en dessous d'un .btn-primary, donc volontairement discret : pas
+     de bordure ni de fond par défaut, juste une pastille de survol, comme un
+     vrai bouton plutôt qu'un lien hypertexte. */
+  .btn-back {
+    @apply inline-flex min-h-[44px] w-full items-center justify-center gap-1.5 rounded-full px-6 py-2.5 text-sm font-semibold text-campus-muted transition-colors hover:bg-campus-sand/60 hover:text-campus-ink focus:outline-none focus:ring-2 focus:ring-campus-terracotta/30 focus:ring-offset-2 dark:hover:bg-campus-sand/30 dark:focus:ring-offset-campus-surface2;
+  }
+
   .chip {
     @apply inline-flex cursor-pointer select-none items-center rounded-full border-2 px-4 py-2.5 text-sm font-medium transition-colors;
   }

@@ -62,11 +62,8 @@ export default function BudgetStep({ onSubmit, onEditProfile }: BudgetStepProps)
         <button type="button" onClick={() => onSubmit(budget)} className="btn-primary">
           {t("budgetStep.generateButton")}
         </button>
-        <button
-          type="button"
-          onClick={onEditProfile}
-          className="text-center text-xs text-campus-muted underline"
-        >
+        <button type="button" onClick={onEditProfile} className="btn-back">
+          <span aria-hidden="true">←</span>
           {t("budgetStep.editProfileButton")}
         </button>
       </div>
