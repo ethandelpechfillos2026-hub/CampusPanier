@@ -660,6 +660,94 @@ function generateShoppingListCore(
     }
   }
 
+  // Phase 1d-bis : garantir aussi un produit laitier/céréalier "à part
+  // entière" au petit-déjeuner (yaourt, fromage blanc, flocons d'avoine,
+  // œufs...), pas seulement pain + pâte à tartiner. Sans ça, la garantie
+  // "un vrai repas par créneau" de la phase 1b était déjà satisfaite par le
+  // pain seul (mealSlot petit-dejeuner, pas un condiment, assez de calories)
+  // — et comme le pain et sa pâte à tartiner sont souvent les SEULS produits
+  // sans concurrent direct dans leur catégorie ce jour-là, ils se
+  // retrouvaient servis identiques tous les matins de la semaine (voir
+  // generateMenu.ts, buildFamilyDayMap : un produit seul dans sa famille est
+  // étalé sur les 7 jours). Retour utilisateur (13 août 2026) : petit-déjeuner
+  // "pas assez diversifié". Liste explicite (plutôt que "tout ce qui n'est
+  // pas pain/condiment/pâte à tartiner") : des produits comme les graines de
+  // lin/chia ou le café ont bien mealSlot petit-dejeuner sans être condiment
+  // ni pâte à tartiner, mais ce sont des ajouts/boissons, pas un vrai repas à
+  // eux seuls — sans cette liste, ils satisfaisaient déjà la garantie sans
+  // rien changer au problème observé. Repose sur le score() habituel pour le
+  // choix parmi ces candidats — en Mode Performance, ça favorise déjà
+  // flocons d'avoine/fromage blanc (voir le bonus dédié plus haut).
+  const BREAKFAST_BASE_IDS = new Set([
+    "lait", "lait-entier", "lait-ecreme", "lait-soja", "yaourt-nature",
+    "yaourt-grec", "yaourt-soja", "fromage-blanc", "skyr", "petit-suisse",
+    "faisselle", "cottage-cheese", "oeufs", "flocons-avoine",
+    "cereales-muesli", "cereales-chocolatees", "muesli-fruits",
+  ]);
+  const hasBreakfastDairyOrCereal = selected.some((p) =>
+    BREAKFAST_BASE_IDS.has(p.id)
+  );
+  if (hasBreadForBreakfast && !hasBreakfastDairyOrCereal) {
+    const breakfastCandidates = filtered
+      .filter((p) => BREAKFAST_BASE_IDS.has(p.id) && !selectedIds.has(p.id))
+      .sort((a, b) => {
+        const scoreDiff = score(b, preferences) - score(a, preferences);
+        if (scoreDiff !== 0) return scoreDiff;
+        return a.price - b.price;
+      });
+
+    const breakfastItem = breakfastCandidates[0];
+    if (breakfastItem && total + breakfastItem.price <= preferences.budget) {
+      selected.push(breakfastItem);
+      selectedIds.add(breakfastItem.id);
+      quantities.set(breakfastItem.id, 1);
+      total += breakfastItem.price;
+    }
+  }
+
+  // Phase 1d-ter : garantir au moins DEUX légumes différents pour déjeuner/
+  // dîner quand le budget le permet (une seule boucle, donc au plus +2
+  // articles). Un légume sans "rival" dans sa catégorie ce créneau-là devient
+  // omniprésent — servi à TOUS les repas de la semaine sans exception, midi
+  // et soir, tous les jours (la rotation par catégorie de generateMenu.ts,
+  // buildMainMealSlotMap, ne s'active qu'à partir de 2 membres). Retour
+  // utilisateur (13 août 2026) : "les repas sont trop répétitifs, ça ne
+  // change pas" (constaté même à zéro légume non-condiment sélectionné,
+  // d'où `< 2` et pas seulement `=== 1`). Volontairement limité à 2 (pas
+  // plus) : le plafond de variété habituel (distinctCapFor) prend le relais
+  // ensuite si le budget permet d'aller plus loin en phase 2.
+  const MIN_DEJEUNER_DINER_VEGGIES = 2;
+  while (
+    selected.filter(
+      (p) =>
+        p.category === "fruits-legumes" &&
+        p.mealSlot === "dejeuner-diner" &&
+        !p.isCondiment
+    ).length < MIN_DEJEUNER_DINER_VEGGIES
+  ) {
+    const veggieCandidates = filtered
+      .filter(
+        (p) =>
+          p.category === "fruits-legumes" &&
+          p.mealSlot === "dejeuner-diner" &&
+          !p.isCondiment &&
+          !selectedIds.has(p.id)
+      )
+      .sort((a, b) => {
+        const scoreDiff = score(b, preferences) - score(a, preferences);
+        if (scoreDiff !== 0) return scoreDiff;
+        return a.price - b.price;
+      });
+
+    const veggie = veggieCandidates[0];
+    if (!veggie || total + veggie.price > preferences.budget) break;
+
+    selected.push(veggie);
+    selectedIds.add(veggie.id);
+    quantities.set(veggie.id, 1);
+    total += veggie.price;
+  }
+
   // Phase 1e (Mode Performance) : double la quantité achetée de la
   // protéine principale et du féculent du déjeuner/dîner, ainsi que du
   // fromage blanc/des flocons d'avoine du petit-déjeuner — retour
