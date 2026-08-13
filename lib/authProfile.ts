@@ -29,6 +29,11 @@ export async function getCloudProfile(uid: string): Promise<UserProfile | null> 
     lastBudget: data.lastBudget ?? null,
     // Profils créés avant l'ajout de ce champ : aucun échange mémorisé.
     productSubstitutions: data.productSubstitutions ?? null,
+    // Profils créés avant l'ajout de ce champ, ou dernière génération non
+    // restreinte (voir lib/types.ts) : rien à réappliquer au resume.
+    lastAllowedProductIds: Array.isArray(data.lastAllowedProductIds)
+      ? data.lastAllowedProductIds
+      : null,
     // Profils créés avant l'ajout du thème/de la langue (voir lib/i18n/) :
     // pas de préférence enregistrée côté compte — LanguageProvider/
     // ThemeProvider retombent sur localStorage puis sur system/fr.
@@ -49,14 +54,26 @@ export async function saveCloudProfile(uid: string, profile: UserProfile): Promi
   await setDoc(doc(db, "profiles", uid), profile);
 }
 
-// Mémorise le budget de la dernière liste générée, à même le profil
-// Firestore — c'est ce qui permet de retomber directement sur "Ma liste" à
-// la prochaine connexion avec ce même compte Google, peu importe
-// l'appareil. Mise à jour ciblée (pas un `saveCloudProfile` complet) pour ne
-// jamais écraser par erreur un autre champ du profil avec une copie locale
-// périmée.
-export async function updateLastBudget(uid: string, budget: number): Promise<void> {
-  await updateDoc(doc(db, "profiles", uid), { lastBudget: budget });
+// Mémorise le budget ET la restriction d'ingrédients éventuelle (parcours
+// "Je choisis mes ingrédients", voir lib/generateShoppingList.ts) de la
+// dernière liste générée, à même le profil Firestore — c'est ce qui permet
+// de retomber directement sur LA MÊME "Ma liste" à la prochaine connexion
+// avec ce même compte Google, peu importe l'appareil. Avant l'ajout du
+// second paramètre (retour d'audit, 13 août 2026), une liste construite à
+// partir d'ingrédients choisis était silencieusement remplacée par une
+// liste non restreinte au resume — le budget seul ne suffit pas à
+// reproduire la même liste dans ce cas. Mise à jour ciblée (pas un
+// `saveCloudProfile` complet) pour ne jamais écraser par erreur un autre
+// champ du profil avec une copie locale périmée.
+export async function updateLastBudget(
+  uid: string,
+  budget: number,
+  allowedProductIds: string[] | null = null
+): Promise<void> {
+  await updateDoc(doc(db, "profiles", uid), {
+    lastBudget: budget,
+    lastAllowedProductIds: allowedProductIds,
+  });
 }
 
 // Mémorise les échanges de produits faits depuis "Ma liste" (voir

@@ -105,9 +105,21 @@ export default function CampusPanierApp() {
         // connexion (jamais de liste générée) : onboarding puis écran
         // budget comme avant.
         if (savedProfile && savedProfile.lastBudget !== null) {
+          // Reconstruit aussi la restriction d'ingrédients de la dernière
+          // génération si elle en avait une (voir lib/types.ts,
+          // lastAllowedProductIds) — sans ça, une liste construite via "Je
+          // choisis mes ingrédients" se serait vue remplacée par une liste
+          // non restreinte à cette reconnexion (retour d'audit, 13 août
+          // 2026).
+          const lastRestrictTo =
+            savedProfile.lastAllowedProductIds &&
+            savedProfile.lastAllowedProductIds.length > 0
+              ? new Set(savedProfile.lastAllowedProductIds)
+              : undefined;
           resumeList(
             { budget: savedProfile.lastBudget, ...savedProfile },
-            savedProfile.productSubstitutions
+            savedProfile.productSubstitutions,
+            lastRestrictTo
           );
         } else {
           setView(savedProfile ? "budget" : "profile");
@@ -150,46 +162,68 @@ export default function CampusPanierApp() {
   }
 
   // Mémorise cette génération comme une VRAIE action de la personne
-  // (historique, stats, dernier budget) — factorisé pour être partagé entre
-  // les trois façons d'obtenir une liste qui doivent compter (directe,
-  // planifiée automatiquement, planifiée à partir d'ingrédients), à la
-  // différence de resumeList ci-dessous qui ne doit PAS compter (juste
-  // rouvrir l'app sur la dernière liste).
-  function finalizeGeneration(newResult: ShoppingListResult, prefs: UserPreferences) {
+  // (historique, stats, dernier budget ET dernière restriction d'ingrédients
+  // éventuelle) — factorisé pour être partagé entre les trois façons
+  // d'obtenir une liste qui doivent compter (directe, planifiée
+  // automatiquement, planifiée à partir d'ingrédients), à la différence de
+  // resumeList ci-dessous qui ne doit PAS compter (juste rouvrir l'app sur
+  // la dernière liste). `restrictTo`, quand fourni, est aussi persisté :
+  // sans ça, une liste construite à partir d'ingrédients choisis se serait
+  // vue remplacée par une liste non restreinte à la prochaine connexion —
+  // le budget seul ne suffit pas à la reproduire (retour d'audit, 13 août
+  // 2026, voir lib/authProfile.ts).
+  function finalizeGeneration(
+    newResult: ShoppingListResult,
+    prefs: UserPreferences,
+    restrictTo?: Set<string>
+  ) {
     recordListGenerated(newResult);
+    const allowedIdsArray = restrictTo ? Array.from(restrictTo) : null;
     // Mémorisé sur le profil Firestore (pas en local) pour que "reconnecte
     // directement sur la liste" fonctionne avec ce compte Google, peu
     // importe l'appareil. On garde aussi `profile` à jour côté client pour
     // qu'une modification de profil juste après ne réécrase pas ce budget
     // avec une valeur périmée (voir handleProfileComplete/ProfileForm).
     if (user) {
-      updateLastBudget(user.uid, prefs.budget).catch((error) => {
+      updateLastBudget(user.uid, prefs.budget, allowedIdsArray).catch((error) => {
         console.error("Erreur d'enregistrement du dernier budget:", error);
       });
     }
-    setProfile((prev) => (prev ? { ...prev, lastBudget: prefs.budget } : prev));
+    setProfile((prev) =>
+      prev
+        ? { ...prev, lastBudget: prefs.budget, lastAllowedProductIds: allowedIdsArray }
+        : prev
+    );
   }
 
-  // Reconstruit la dernière liste (même budget, profil à jour) sans la
+  // Reconstruit la dernière liste (même budget, profil à jour, et même
+  // restriction d'ingrédients éventuelle — voir `restrictTo`) sans la
   // compter comme une nouvelle génération — sinon rouvrir l'app gonflerait
   // l'historique et les statistiques à chaque fois, sans action réelle de
   // l'utilisateur·rice (voir computeAndApplyList/finalizeGeneration
   // ci-dessus : ici on appelle seulement le premier, jamais le second).
   function resumeList(
     prefs: UserPreferences,
-    substitutions: Record<string, string> | null
+    substitutions: Record<string, string> | null,
+    restrictTo?: Set<string>
   ) {
-    computeAndApplyList(prefs, substitutions);
+    computeAndApplyList(prefs, substitutions, restrictTo);
     setResultsTab("liste");
     setView("results");
   }
 
+  // `restrictTo` optionnel : `undefined` pour l'option directe (comportement
+  // historique), ou repris d'un favori construit à partir d'ingrédients
+  // choisis (voir le rendu des favoris plus bas) — jamais utilisé pour une
+  // toute nouvelle génération "directe", qui n'a par définition aucune
+  // restriction.
   function generateList(
     prefs: UserPreferences,
-    substitutions: Record<string, string> | null
+    substitutions: Record<string, string> | null,
+    restrictTo?: Set<string>
   ) {
-    const newResult = computeAndApplyList(prefs, substitutions);
-    finalizeGeneration(newResult, prefs);
+    const newResult = computeAndApplyList(prefs, substitutions, restrictTo);
+    finalizeGeneration(newResult, prefs, restrictTo);
     setResultsTab("liste");
     setView("results");
   }
@@ -239,7 +273,10 @@ export default function CampusPanierApp() {
   // Option 2B : mêmes étapes que 2A, sauf que la génération est restreinte
   // aux produits choisis à la main (voir lib/generateShoppingList.ts,
   // paramètre allowedProductIds) — le budget reste une limite stricte,
-  // comme partout ailleurs dans l'app.
+  // comme partout ailleurs dans l'app. `selectedIds` est aussi transmis à
+  // finalizeGeneration pour être persisté (voir plus haut) : sans ça, se
+  // reconnecter ou rappeler cette liste en favori l'aurait silencieusement
+  // remplacée par une liste non restreinte.
   function handleIngredientsConfirmed(selectedIds: Set<string>) {
     if (!preferences) return;
     const newResult = computeAndApplyList(
@@ -247,7 +284,7 @@ export default function CampusPanierApp() {
       profile?.productSubstitutions ?? null,
       selectedIds
     );
-    finalizeGeneration(newResult, preferences);
+    finalizeGeneration(newResult, preferences, selectedIds);
     setResultsTab("liste");
     setView("planReview");
   }
@@ -292,9 +329,16 @@ export default function CampusPanierApp() {
 
   function handleToggleFavorite() {
     if (!preferences) return;
-    const existing = findFavorite(preferences, favorites);
+    // Un favori doit se souvenir de la restriction d'ingrédients éventuelle
+    // (voir lib/favorites.ts) — sinon deux listes aux mêmes préférences mais
+    // des ingrédients choisis différents seraient vues comme un seul et
+    // même favori.
+    const allowedIdsArray = allowedProductIds ? Array.from(allowedProductIds) : null;
+    const existing = findFavorite(preferences, favorites, allowedIdsArray);
     setFavorites(
-      existing ? removeFavorite(existing.id) : addFavorite(preferences)
+      existing
+        ? removeFavorite(existing.id)
+        : addFavorite(preferences, allowedIdsArray)
     );
   }
 
@@ -315,7 +359,11 @@ export default function CampusPanierApp() {
 
   const showTabs = view === "results" && result && preferences;
   const currentFavorite = preferences
-    ? findFavorite(preferences, favorites)
+    ? findFavorite(
+        preferences,
+        favorites,
+        allowedProductIds ? Array.from(allowedProductIds) : null
+      )
     : undefined;
   const showFavorites = (view === "profile" || view === "budget") && favorites.length > 0;
 
@@ -363,7 +411,17 @@ export default function CampusPanierApp() {
                 key={fav.id}
                 type="button"
                 onClick={() =>
-                  generateList(fav.preferences, profile?.productSubstitutions ?? null)
+                  generateList(
+                    fav.preferences,
+                    profile?.productSubstitutions ?? null,
+                    // Reconstruit la restriction d'ingrédients de ce favori
+                    // précis, si elle en avait une (voir lib/favorites.ts) —
+                    // sinon ce favori régénérerait une liste non restreinte,
+                    // différente de celle enregistrée.
+                    fav.allowedProductIds && fav.allowedProductIds.length > 0
+                      ? new Set(fav.allowedProductIds)
+                      : undefined
+                  )
                 }
                 className="chip chip-default"
               >

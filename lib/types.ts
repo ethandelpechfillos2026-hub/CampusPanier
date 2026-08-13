@@ -311,6 +311,16 @@ export interface UserProfile extends BodyStats {
   // lib/generateShoppingList.ts) — jamais réappliqué à l'aveugle. `null` =
   // aucun échange fait, ou profil créé avant l'ajout de ce champ.
   productSubstitutions: Record<string, string> | null;
+  // Ingrédients choisis à la main lors de la dernière génération, si elle
+  // venait du parcours "Je choisis mes ingrédients" (voir
+  // components/IngredientPickerStep.tsx, lib/generateShoppingList.ts —
+  // paramètre allowedProductIds). Mémorisé comme lastBudget, pour la même
+  // raison : sans ça, se reconnecter régénérait une liste normale, non
+  // restreinte, différente de celle validée la dernière fois — silencieusement,
+  // sans le dire (retour d'audit, 13 août 2026). `null` = dernière génération
+  // non restreinte (parcours direct ou planification automatique), ou profil
+  // créé avant l'ajout de ce champ.
+  lastAllowedProductIds: string[] | null;
   // Thème et langue (retour utilisateur, 9 août 2026, voir lib/i18n/) —
   // mémorisés d'abord en localStorage (affichage correct immédiat, avant
   // même la connexion : écran de connexion, pages légales) PUIS synchronisés
@@ -390,6 +400,12 @@ export interface FavoriteList {
   label: string;
   preferences: UserPreferences;
   createdAt: number;
+  // Même rôle que UserProfile.lastAllowedProductIds ci-dessus, mais pour un
+  // favori précis plutôt que "la dernière liste" — sans ça, rappeler un
+  // favori construit à partir d'ingrédients choisis régénérait une liste non
+  // restreinte, différente de celle enregistrée. `null`/absent = favori non
+  // restreint (comportement d'avant ce champ).
+  allowedProductIds?: string[] | null;
 }
 
 // Un article dans une liste partagée entre colocataires. Contrairement à

@@ -44,6 +44,22 @@ function samePreferences(a: UserPreferences, b: UserPreferences): boolean {
   );
 }
 
+// Deux favoris avec exactement les mêmes préférences mais des ingrédients
+// choisis différents (parcours "Je choisis mes ingrédients", voir
+// IngredientPickerStep.tsx) produisent des listes différentes — sans cette
+// comparaison, l'étoile aurait affiché "déjà enregistré" pour une
+// combinaison en réalité jamais sauvegardée (retour d'audit, 13 août 2026).
+// `null`/absent des deux côtés = deux favoris non restreints, égaux comme
+// avant l'ajout de ce champ.
+function sameAllowedProductIds(
+  a: string[] | null | undefined,
+  b: string[] | null | undefined
+): boolean {
+  const normalize = (ids: string[] | null | undefined) =>
+    ids && ids.length > 0 ? [...ids].sort() : null;
+  return JSON.stringify(normalize(a)) === JSON.stringify(normalize(b));
+}
+
 export function getFavorites(): FavoriteList[] {
   if (typeof window === "undefined") return [];
   try {
@@ -56,9 +72,14 @@ export function getFavorites(): FavoriteList[] {
 
 export function findFavorite(
   prefs: UserPreferences,
-  favorites: FavoriteList[]
+  favorites: FavoriteList[],
+  allowedProductIds?: string[] | null
 ): FavoriteList | undefined {
-  return favorites.find((f) => samePreferences(f.preferences, prefs));
+  return favorites.find(
+    (f) =>
+      samePreferences(f.preferences, prefs) &&
+      sameAllowedProductIds(f.allowedProductIds, allowedProductIds)
+  );
 }
 
 function persist(favorites: FavoriteList[]): FavoriteList[] {
@@ -66,15 +87,19 @@ function persist(favorites: FavoriteList[]): FavoriteList[] {
   return favorites;
 }
 
-export function addFavorite(prefs: UserPreferences): FavoriteList[] {
+export function addFavorite(
+  prefs: UserPreferences,
+  allowedProductIds?: string[] | null
+): FavoriteList[] {
   const favorites = getFavorites();
-  if (findFavorite(prefs, favorites)) return favorites;
+  if (findFavorite(prefs, favorites, allowedProductIds)) return favorites;
 
   const next: FavoriteList = {
     id: `${Date.now()}`,
     label: summarize(prefs),
     preferences: prefs,
     createdAt: Date.now(),
+    allowedProductIds: allowedProductIds ?? null,
   };
 
   return persist([next, ...favorites].slice(0, MAX_FAVORITES));
