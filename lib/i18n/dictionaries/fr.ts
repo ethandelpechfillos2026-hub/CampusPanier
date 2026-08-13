@@ -355,6 +355,41 @@ const fr = {
   "budgetStep.generateButton": "Générer ma liste",
   "budgetStep.editProfileButton": "Modifier mes préférences (régime, allergies, calories...)",
 
+  // PathChoiceStep (components/PathChoiceStep.tsx) — écran affiché après le
+  // budget, avant la génération : liste directe (comportement historique)
+  // ou planificateur de repas (nouveau, deux façons de démarrer).
+  "pathChoice.title": "Comment veux-tu procéder ?",
+  "pathChoice.subtitle": "Ton profil et ton budget sont prêts — choisis ta façon de faire.",
+  "pathChoice.directTitle": "Générer ma liste",
+  "pathChoice.directHint": "Une liste de courses complète, tout de suite, comme d'habitude.",
+  "pathChoice.orDivider": "ou",
+  "pathChoice.planTitle": "Planifier ma semaine",
+  "pathChoice.planHint": "Construis d'abord tes repas jour par jour, la liste de courses en découle automatiquement.",
+  "pathChoice.autoTitle": "Génération automatique",
+  "pathChoice.autoHint": "L'app propose directement une semaine complète adaptée à ton profil.",
+  "pathChoice.ingredientsTitle": "Je choisis mes ingrédients",
+  "pathChoice.ingredientsHint": "Sélectionne les aliments que tu veux utiliser, l'app compose les repas autour.",
+  "pathChoice.editBudgetButton": "Modifier mon budget",
+
+  // IngredientPickerStep (components/IngredientPickerStep.tsx) — parcours
+  // "Je choisis mes ingrédients" du planificateur.
+  "ingredientPicker.title": "Choisis tes ingrédients",
+  "ingredientPicker.subtitle": "Sélectionne ce que tu veux manger cette semaine — l'app compose tes repas et ta liste à partir de ça.",
+  "ingredientPicker.selectedCount": "{{count}} sélectionné(s)",
+  "ingredientPicker.minHint": "Choisis-en au moins {{min}} pour continuer",
+  "ingredientPicker.confirmButton": "Construire ma semaine",
+  "ingredientPicker.backButton": "← Revenir au choix du parcours",
+
+  // WeekPlanReview (components/WeekPlanReview.tsx) — écran "Semaine à
+  // valider" avant de rejoindre les onglets Résultats habituels (Ma liste,
+  // Mon menu, Mes recettes, Coloc).
+  "weekPlanReview.title": "Ta semaine",
+  "weekPlanReview.subtitle": "Vérifie chaque jour, échange ce qui ne te plaît pas, puis valide. Total : {{total}}.",
+  "weekPlanReview.nothingPlanned": "Rien de prévu ici.",
+  "weekPlanReview.validateButton": "Valider ma semaine",
+  "weekPlanReview.restartButton": "Recommencer",
+  "weekPlanReview.swapHint": "Choisis un remplaçant pour ce repas.",
+
   // SignIn (components/SignIn.tsx)
   "signIn.missingGoogleConfig": "Configuration Google manquante (NEXT_PUBLIC_GOOGLE_CLIENT_ID).",
   "signIn.connectionError": "Erreur de connexion ({{code}}). Réessaie.",

@@ -79,7 +79,23 @@ function resolveEffectivePriceInfo(
   return fallback;
 }
 
-function filterProducts(preferences: UserPreferences): Product[] {
+// Exportée pour être réutilisée telle quelle par l'écran "Je choisis mes
+// ingrédients" (planificateur de repas, voir components/IngredientPickerStep.tsx) :
+// la personne doit choisir parmi EXACTEMENT le même pool de produits
+// (régime, allergies, Mode Performance déjà respectés) que celui que
+// l'algorithme utiliserait pour une génération directe — jamais une liste
+// dupliquée qui pourrait diverger de celle-ci avec le temps.
+//
+// `allowedProductIds`, quand fourni, restreint ENSUITE ce pool aux seuls
+// produits choisis par la personne (voir generateShoppingListCore/
+// generateShoppingList ci-dessous) — c'est le seul ajout nécessaire pour
+// que "Je choisis mes ingrédients" réutilise l'intégralité du moteur
+// existant (quantités, budget, rattrapage calorique...) sans dupliquer une
+// seule ligne de cette logique. `undefined` = comportement inchangé.
+export function filterProducts(
+  preferences: UserPreferences,
+  allowedProductIds?: Set<string>
+): Product[] {
   return products
     .filter(
       (product) =>
@@ -87,7 +103,8 @@ function filterProducts(preferences: UserPreferences): Product[] {
         matchesAllergies(product, preferences.allergies) &&
         // Mode Performance : uniquement des produits bruts/peu transformés —
         // exclusion pure, pas juste une préférence de score, comme demandé.
-        (!preferences.performanceMode || !product.ultraTransforme)
+        (!preferences.performanceMode || !product.ultraTransforme) &&
+        (!allowedProductIds || allowedProductIds.has(product.id))
     )
     .map((product) => {
       const { price, priceInfo } = resolveEffectivePriceInfo(product, preferences);
@@ -454,9 +471,10 @@ function computeTargetWeeklyKcal(preferences: UserPreferences): number | null {
 // des budgets plus élevés pour estimer combien il manque pour atteindre
 // l'objectif calorique (voir estimateExtraBudgetForCalorieTarget).
 function generateShoppingListCore(
-  preferences: UserPreferences
+  preferences: UserPreferences,
+  allowedProductIds?: Set<string>
 ): Omit<ShoppingListResult, "extraBudgetForCalorieTarget" | "calorieTargetHardToReach"> {
-  const filtered = filterProducts(preferences);
+  const filtered = filterProducts(preferences, allowedProductIds);
   const targetWeeklyKcal = computeTargetWeeklyKcal(preferences);
 
   // Catégories réellement atteignables pour ce régime/ces allergies (un
@@ -892,7 +910,8 @@ const CALORIE_TARGET_SEARCH_MAX_EXTRA_EUR = 200;
 function estimateExtraBudgetForCalorieTarget(
   preferences: UserPreferences,
   targetWeeklyKcal: number,
-  currentWeeklyKcal: number
+  currentWeeklyKcal: number,
+  allowedProductIds?: Set<string>
 ): { extraBudget: number | null; hardToReach: boolean } {
   if (currentWeeklyKcal >= targetWeeklyKcal) {
     return { extraBudget: null, hardToReach: false };
@@ -903,10 +922,10 @@ function estimateExtraBudgetForCalorieTarget(
     extra <= CALORIE_TARGET_SEARCH_MAX_EXTRA_EUR;
     extra += CALORIE_TARGET_SEARCH_STEP_EUR
   ) {
-    const candidate = generateShoppingListCore({
-      ...preferences,
-      budget: preferences.budget + extra,
-    });
+    const candidate = generateShoppingListCore(
+      { ...preferences, budget: preferences.budget + extra },
+      allowedProductIds
+    );
     const candidateWeeklyKcal = candidate.items.reduce(
       (sum, item) => sum + weeklyKcalOf(item.product, item.quantity),
       0
@@ -926,10 +945,17 @@ function estimateExtraBudgetForCalorieTarget(
 // uniquement dans ce cas précis (sinon un seul appel, comme avant) :
 // acceptable pour une génération déclenchée par une action explicite
 // (bouton "Générer"), jamais dans une boucle chaude.
+// `allowedProductIds` (optionnel) restreint la génération aux seuls produits
+// de cet ensemble — sert au parcours "Je choisis mes ingrédients" du
+// planificateur de semaine (voir components/IngredientPickerStep.tsx), qui
+// réutilise ainsi tout ce moteur (quantités, budget strict, rattrapage
+// calorique) sans le dupliquer. `undefined` = comportement inchangé, utilisé
+// partout ailleurs dans l'app (génération directe, reprise de session...).
 export function generateShoppingList(
-  preferences: UserPreferences
+  preferences: UserPreferences,
+  allowedProductIds?: Set<string>
 ): ShoppingListResult {
-  const result = generateShoppingListCore(preferences);
+  const result = generateShoppingListCore(preferences, allowedProductIds);
 
   const targetWeeklyKcal = computeTargetWeeklyKcal(preferences);
   if (targetWeeklyKcal === null) {
@@ -943,7 +969,8 @@ export function generateShoppingList(
   const { extraBudget, hardToReach } = estimateExtraBudgetForCalorieTarget(
     preferences,
     targetWeeklyKcal,
-    currentWeeklyKcal
+    currentWeeklyKcal,
+    allowedProductIds
   );
 
   return {
@@ -977,12 +1004,19 @@ const SUBSTITUTE_OPTIONS_COUNT = 4;
 // Respecte toujours le régime et les allergies déjà filtrés par
 // filterProducts — un remplacement ne doit jamais réintroduire un allergène
 // écarté ailleurs dans l'application.
+// `allowedProductIds` (optionnel) : quand la liste vient du parcours "Je
+// choisis mes ingrédients" (voir generateShoppingList ci-dessus), les
+// remplacements proposés restent dans le même ensemble d'ingrédients choisis
+// — sinon "échanger" pourrait réintroduire un produit que la personne n'a
+// justement pas sélectionné. `undefined` = comportement inchangé (tout le
+// catalogue filtré, comme dans "Ma liste" générée directement).
 export function findSubstitutes(
   product: Product,
   preferences: UserPreferences,
-  excludeIds: Set<string>
+  excludeIds: Set<string>,
+  allowedProductIds?: Set<string>
 ): Product[] {
-  const candidates = filterProducts(preferences).filter(
+  const candidates = filterProducts(preferences, allowedProductIds).filter(
     (p) =>
       p.id !== product.id &&
       !excludeIds.has(p.id) &&

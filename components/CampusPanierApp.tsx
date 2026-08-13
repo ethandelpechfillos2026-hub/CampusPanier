@@ -4,12 +4,15 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { onAuthStateChanged, signOut, type User } from "firebase/auth";
 import BudgetStep from "@/components/BudgetStep";
+import IngredientPickerStep from "@/components/IngredientPickerStep";
 import MenuContent from "@/components/MenuContent";
+import PathChoiceStep from "@/components/PathChoiceStep";
 import ProfileForm from "@/components/ProfileForm";
 import RecipesContent from "@/components/RecipesContent";
 import ResultsContent from "@/components/ResultsContent";
 import SharedListTab from "@/components/SharedListTab";
 import SignIn from "@/components/SignIn";
+import WeekPlanReview from "@/components/WeekPlanReview";
 import {
   getCloudProfile,
   saveCloudProfile,
@@ -36,7 +39,21 @@ import {
   UserProfile,
 } from "@/lib/types";
 
-type View = "signin" | "profile" | "budget" | "results";
+// "pathChoice" (Générer ma liste vs Planifier ma semaine), "ingredientPicker"
+// (parcours "Je choisis mes ingrédients") et "planReview" (semaine à valider
+// avant de rejoindre les onglets Résultats habituels) sont les trois écrans
+// du planificateur de repas — voir components/PathChoiceStep.tsx,
+// IngredientPickerStep.tsx et WeekPlanReview.tsx. Tout le reste du flux
+// (signin/profile/budget/results) reste inchangé, "results" restant la seule
+// destination finale, commune aux deux parcours.
+type View =
+  | "signin"
+  | "profile"
+  | "budget"
+  | "pathChoice"
+  | "ingredientPicker"
+  | "planReview"
+  | "results";
 type ResultsTab = "liste" | "menu" | "recettes" | "coloc";
 
 export default function CampusPanierApp() {
@@ -54,6 +71,15 @@ export default function CampusPanierApp() {
   // ("Ma liste" ↔ "Mon menu"), et remis à zéro à chaque nouvelle liste
   // générée (nouvelle semaine).
   const [mealsOut, setMealsOut] = useState<MealOutEntry[]>([]);
+  // Ensemble des produits choisis à la main par la personne dans le parcours
+  // "Je choisis mes ingrédients" (voir IngredientPickerStep.tsx) — sert à
+  // restreindre les remplacements proposés dans "Semaine à valider" au même
+  // ensemble d'ingrédients (voir WeekPlanReview.tsx). `undefined` pour tous
+  // les autres parcours (liste directe, planification automatique) : aucune
+  // restriction, comportement inchangé.
+  const [allowedProductIds, setAllowedProductIds] = useState<
+    Set<string> | undefined
+  >(undefined);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (firebaseUser) => {
@@ -99,38 +125,37 @@ export default function CampusPanierApp() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // Reconstruit la dernière liste (même budget, profil à jour) sans la
-  // compter comme une nouvelle génération — sinon rouvrir l'app gonflerait
-  // l'historique et les statistiques à chaque fois, sans action réelle de
-  // l'utilisateur·rice. Réapplique aussi les échanges de produits mémorisés
-  // (voir applyStoredSubstitutions) pour que "je n'aime pas les lentilles"
-  // reste vrai d'une connexion à l'autre.
-  function resumeList(
+  // Cœur partagé de toute génération de liste, quel que soit le parcours
+  // (reprise de session, liste directe, planification automatique ou à
+  // partir d'ingrédients choisis) — un seul endroit qui appelle
+  // generateShoppingList/applyStoredSubstitutions, pour ne jamais avoir deux
+  // implémentations de "comment on transforme des préférences en liste" qui
+  // pourraient diverger. `restrictTo` (optionnel) vient du parcours "Je
+  // choisis mes ingrédients" (voir IngredientPickerStep.tsx) — voir
+  // lib/generateShoppingList.ts pour ce que ça change dans le moteur.
+  function computeAndApplyList(
     prefs: UserPreferences,
-    substitutions: Record<string, string> | null
-  ) {
-    const rawResult = generateShoppingList(prefs);
+    substitutions: Record<string, string> | null,
+    restrictTo?: Set<string>
+  ): ShoppingListResult {
+    const rawResult = generateShoppingList(prefs, restrictTo);
     const items = applyStoredSubstitutions(rawResult.items, substitutions, prefs);
     const newResult =
       items === rawResult.items ? rawResult : recomputeAfterSwap(items, rawResult);
     setPreferences(prefs);
     setResult(newResult);
+    setAllowedProductIds(restrictTo);
     setMealsOut([]);
-    setResultsTab("liste");
-    setView("results");
+    return newResult;
   }
 
-  function generateList(
-    prefs: UserPreferences,
-    substitutions: Record<string, string> | null
-  ) {
-    const rawResult = generateShoppingList(prefs);
-    const items = applyStoredSubstitutions(rawResult.items, substitutions, prefs);
-    const newResult =
-      items === rawResult.items ? rawResult : recomputeAfterSwap(items, rawResult);
-    setPreferences(prefs);
-    setResult(newResult);
-    setMealsOut([]);
+  // Mémorise cette génération comme une VRAIE action de la personne
+  // (historique, stats, dernier budget) — factorisé pour être partagé entre
+  // les trois façons d'obtenir une liste qui doivent compter (directe,
+  // planifiée automatiquement, planifiée à partir d'ingrédients), à la
+  // différence de resumeList ci-dessous qui ne doit PAS compter (juste
+  // rouvrir l'app sur la dernière liste).
+  function finalizeGeneration(newResult: ShoppingListResult, prefs: UserPreferences) {
     recordListGenerated(newResult);
     // Mémorisé sur le profil Firestore (pas en local) pour que "reconnecte
     // directement sur la liste" fonctionne avec ce compte Google, peu
@@ -143,6 +168,28 @@ export default function CampusPanierApp() {
       });
     }
     setProfile((prev) => (prev ? { ...prev, lastBudget: prefs.budget } : prev));
+  }
+
+  // Reconstruit la dernière liste (même budget, profil à jour) sans la
+  // compter comme une nouvelle génération — sinon rouvrir l'app gonflerait
+  // l'historique et les statistiques à chaque fois, sans action réelle de
+  // l'utilisateur·rice (voir computeAndApplyList/finalizeGeneration
+  // ci-dessus : ici on appelle seulement le premier, jamais le second).
+  function resumeList(
+    prefs: UserPreferences,
+    substitutions: Record<string, string> | null
+  ) {
+    computeAndApplyList(prefs, substitutions);
+    setResultsTab("liste");
+    setView("results");
+  }
+
+  function generateList(
+    prefs: UserPreferences,
+    substitutions: Record<string, string> | null
+  ) {
+    const newResult = computeAndApplyList(prefs, substitutions);
+    finalizeGeneration(newResult, prefs);
     setResultsTab("liste");
     setView("results");
   }
@@ -154,9 +201,59 @@ export default function CampusPanierApp() {
     setView("budget");
   }
 
+  // N'appelle plus generateList directement : le budget est désormais suivi
+  // du choix du parcours (voir View, PathChoiceStep.tsx) — "Générer ma
+  // liste" (inchangé) ou "Planifier ma semaine" (nouveau, auto ou à partir
+  // d'ingrédients choisis). Les préférences sont mémorisées ici, avant même
+  // la génération, pour être disponibles sur les écrans du planificateur.
   function handleBudgetSubmit(budget: number) {
     if (!profile) return;
-    generateList({ budget, ...profile }, profile.productSubstitutions);
+    setPreferences({ budget, ...profile });
+    setView("pathChoice");
+  }
+
+  // Option 1 : comportement historique, inchangé.
+  function handleChoosePathDirect() {
+    if (!preferences) return;
+    generateList(preferences, profile?.productSubstitutions ?? null);
+  }
+
+  // Option 2A : réutilise EXACTEMENT le même moteur que l'option directe
+  // (aucune restriction d'ingrédients) — seule différence, la destination :
+  // "Semaine à valider" plutôt que directement les onglets Résultats.
+  function handleChoosePathAutoPlan() {
+    if (!preferences) return;
+    const newResult = computeAndApplyList(
+      preferences,
+      profile?.productSubstitutions ?? null
+    );
+    finalizeGeneration(newResult, preferences);
+    setResultsTab("liste");
+    setView("planReview");
+  }
+
+  function handleChoosePathIngredients() {
+    setView("ingredientPicker");
+  }
+
+  // Option 2B : mêmes étapes que 2A, sauf que la génération est restreinte
+  // aux produits choisis à la main (voir lib/generateShoppingList.ts,
+  // paramètre allowedProductIds) — le budget reste une limite stricte,
+  // comme partout ailleurs dans l'app.
+  function handleIngredientsConfirmed(selectedIds: Set<string>) {
+    if (!preferences) return;
+    const newResult = computeAndApplyList(
+      preferences,
+      profile?.productSubstitutions ?? null,
+      selectedIds
+    );
+    finalizeGeneration(newResult, preferences);
+    setResultsTab("liste");
+    setView("planReview");
+  }
+
+  function handleValidateWeekPlan() {
+    setView("results");
   }
 
   // Échange un produit de "Ma liste" contre un autre (bouton "Échanger" du
@@ -187,6 +284,7 @@ export default function CampusPanierApp() {
   function handleRestart() {
     setPreferences(null);
     setResult(null);
+    setAllowedProductIds(undefined);
     setMealsOut([]);
     setResultsTab("liste");
     setView("budget");
@@ -334,6 +432,31 @@ export default function CampusPanierApp() {
           <BudgetStep
             onSubmit={handleBudgetSubmit}
             onEditProfile={() => setView("profile")}
+          />
+        )}
+        {view === "pathChoice" && preferences && (
+          <PathChoiceStep
+            onChooseDirect={handleChoosePathDirect}
+            onChooseAutoPlan={handleChoosePathAutoPlan}
+            onChooseIngredients={handleChoosePathIngredients}
+            onEditBudget={() => setView("budget")}
+          />
+        )}
+        {view === "ingredientPicker" && preferences && (
+          <IngredientPickerStep
+            preferences={preferences}
+            onBack={() => setView("pathChoice")}
+            onConfirm={handleIngredientsConfirmed}
+          />
+        )}
+        {view === "planReview" && result && preferences && (
+          <WeekPlanReview
+            result={result}
+            preferences={preferences}
+            allowedProductIds={allowedProductIds}
+            onSwapProduct={handleSwapProduct}
+            onValidate={handleValidateWeekPlan}
+            onRestart={handleRestart}
           />
         )}
         {view === "results" && result && preferences && (
