@@ -326,17 +326,31 @@ function buildMainMealSlots(canteenDays: number[]): MainMealSlot[] {
 // de la même catégorie) sur un SOUS-ENSEMBLE de créneaux déjeuner/dîner
 // précis, pas de jours entiers.
 //
-// La clé de répartition `(jour + décalage repas) % nombre de membres` (et
-// non un simple index de créneau) est volontairement choisie pour éviter un
-// piège : avec seulement 2 membres, répartir par index brut du créneau
-// (0, 1, 2, 3...) aurait donné "toujours le membre A au déjeuner, toujours
-// le membre B au dîner" — le déjeuner et le dîner différeraient bien entre
-// eux, mais chacun resterait identique tous les jours de la semaine, ce qui
-// ne résout que la moitié du problème. Le décalage +1 pour le dîner casse
-// cette alignement : le déjeuner et le dîner d'un même jour sont TOUJOURS
-// deux membres différents, ET qui a le rôle "déjeuner" vs "dîner" change
-// d'un jour à l'autre — les deux axes de répétition (repas du jour, jour de
-// la semaine) sont couverts en même temps.
+// `mealSlots` est déjà trié chronologiquement (jour 0 → 6, et pour un même
+// jour déjeuner avant dîner) — on répartit donc simplement les membres en
+// tourniquet sur cet ordre (`index % nombre de membres`), comme des cartes
+// distribuées une à une autour d'une table. Deux créneaux consécutifs dans
+// cette liste reçoivent alors TOUJOURS des membres différents (dès que
+// n ≥ 2, l'index avance de 1 à chaque créneau donc `index % n` change),
+// ce qui couvre à la fois le déjeuner/dîner d'un même jour (toujours
+// consécutifs dans la liste) ET la paire dîner d'un jour / déjeuner du jour
+// suivant (également consécutifs quand ce jour n'est pas un jour de
+// cantine).
+//
+// Une précédente version utilisait la clé `(jour + décalage dîner) % n` :
+// elle évitait bien la répétition au sein d'un même jour, mais avait un
+// défaut caché — le dîner du jour J (valeur J+1) et le déjeuner du jour J+1
+// (valeur J+1, sans décalage) tombaient sur la MÊME valeur, donc toujours
+// le même membre des deux côtés. Résultat observé en production le 13 août
+// 2026 : chaque déjeuner d'un jour sans cantine (mercredi, samedi,
+// dimanche) reproduisait EXACTEMENT le dîner de la veille, plat pour plat
+// et gramme pour gramme — précisément le défaut que cette fonction est
+// censée éviter. Le tourniquet sur l'ordre réel des créneaux n'a pas ce
+// piège : il répartit aussi plus équitablement le nombre de créneaux par
+// membre (écart d'au plus 1 entre membres), ce qui évite au passage qu'un
+// membre n'hérite d'un seul créneau dans toute la semaine et y reçoive donc
+// sa quantité hebdomadaire entière d'un coup (ex : 720 g d'escalope de veau
+// observés en un seul dîner avec l'ancienne répartition).
 function buildMainMealSlotMap(
   items: ShoppingListItem[],
   mealSlots: MainMealSlot[]
@@ -348,11 +362,7 @@ function buildMainMealSlotMap(
     memberIds.forEach((id, memberIndex) => {
       const allowedIndices = mealSlots
         .map((_, index) => index)
-        .filter((index) => {
-          const { day, slot } = mealSlots[index];
-          const rotationKey = (day + (slot === "diner" ? 1 : 0)) % n;
-          return rotationKey === memberIndex;
-        });
+        .filter((index) => index % n === memberIndex);
       map.set(id, allowedIndices);
     });
   }
