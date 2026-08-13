@@ -389,5 +389,1685 @@
       "Couvre d'eau et laisse cuire 12-15 minutes jusqu'à ce que les légumes soient tendres.",
       "Mixe le tout, ajoute une cuillère de crème fraîche et sers bien chaud."
     ]
+  },
+  {
+    "id": "tofu-poivrons-riz",
+    "name": "Tofu sauce soja et poivrons",
+    "icon": "🥢",
+    "prepTime": 18,
+    "difficulty": "facile",
+    "ingredientIds": ["riz", "tofu", "poivrons", "oignons", "sauce-soja", "huile-olive"],
+    "steps": [
+      "Cuis le riz selon le paquet.",
+      "Coupe le tofu en dés et fais-le dorer dans l'huile d'olive.",
+      "Ajoute les poivrons et l'oignon émincés, fais sauter 6-7 minutes.",
+      "Arrose de sauce soja en fin de cuisson et sers sur le riz."
+    ]
+  },
+  {
+    "id": "curry-legumes-lait-coco",
+    "name": "Curry de légumes au lait de coco",
+    "icon": "🍛",
+    "prepTime": 25,
+    "difficulty": "facile",
+    "ingredientIds": ["patate-douce", "courgettes", "poivrons", "lait-coco", "curry-poudre", "riz"],
+    "steps": [
+      "Cuis le riz selon le paquet.",
+      "Coupe la patate douce, les courgettes et les poivrons en dés.",
+      "Fais-les revenir 5 minutes puis ajoute le curry en poudre et le lait de coco.",
+      "Laisse mijoter 15 minutes à couvert jusqu'à ce que les légumes soient tendres, puis sers sur le riz."
+    ]
+  },
+  {
+    "id": "chili-vegan-tomates-fraiches",
+    "name": "Chili végan aux tomates fraîches",
+    "icon": "🌶️",
+    "prepTime": 25,
+    "difficulty": "facile",
+    "ingredientIds": ["haricots-rouges", "mais-doux", "tomates", "poivrons", "oignons", "cumin"],
+    "steps": [
+      "Fais revenir l'oignon et les poivrons coupés en dés avec le cumin.",
+      "Ajoute les tomates coupées et laisse compoter 5 minutes en écrasant un peu à la fourchette.",
+      "Ajoute les haricots rouges et le maïs égouttés.",
+      "Laisse mijoter 12 minutes à couvert et sers bien chaud."
+    ]
+  },
+  {
+    "id": "buddha-bowl-pois-chiches",
+    "name": "Buddha bowl pois chiches et avocat",
+    "icon": "🥗",
+    "prepTime": 20,
+    "difficulty": "facile",
+    "ingredientIds": ["quinoa", "pois-chiches", "avocat", "epinards", "citron", "huile-olive"],
+    "steps": [
+      "Cuis le quinoa selon le paquet.",
+      "Égoutte et rince les pois chiches.",
+      "Dispose le quinoa, les pois chiches, l'avocat tranché et les épinards dans un bol.",
+      "Arrose d'huile d'olive et de jus de citron avant de servir."
+    ]
+  },
+  {
+    "id": "tempeh-sauce-soja-brocoli",
+    "name": "Tempeh sauté au brocoli",
+    "icon": "🥦",
+    "prepTime": 20,
+    "difficulty": "facile",
+    "ingredientIds": ["tempeh", "brocoli", "sauce-soja", "gingembre-frais", "riz"],
+    "steps": [
+      "Cuis le riz selon le paquet.",
+      "Coupe le tempeh en tranches et fais-le dorer à la poêle.",
+      "Ajoute le brocoli en petits bouquets et le gingembre râpé, fais sauter 8 minutes.",
+      "Arrose de sauce soja et sers sur le riz."
+    ]
+  },
+  {
+    "id": "seitan-champignons-poele",
+    "name": "Seitan aux champignons",
+    "icon": "🍄",
+    "prepTime": 20,
+    "difficulty": "facile",
+    "ingredientIds": ["seitan", "champignons", "ail", "persil", "huile-olive", "pates-completes"],
+    "steps": [
+      "Cuis les pâtes complètes selon le paquet.",
+      "Coupe le seitan en lamelles et fais-le dorer dans l'huile d'olive.",
+      "Ajoute les champignons émincés et l'ail, fais sauter 6-7 minutes.",
+      "Parsème de persil et sers sur les pâtes."
+    ]
+  },
+  {
+    "id": "dahl-lentilles",
+    "name": "Dahl de lentilles au lait de coco",
+    "icon": "🍲",
+    "prepTime": 25,
+    "difficulty": "facile",
+    "ingredientIds": ["lentilles", "oignons", "curry-poudre", "lait-coco", "riz"],
+    "steps": [
+      "Cuis le riz selon le paquet.",
+      "Fais revenir l'oignon émincé avec le curry en poudre.",
+      "Ajoute les lentilles rincées et le lait de coco, couvre d'eau si besoin.",
+      "Laisse mijoter 15-18 minutes à couvert jusqu'à ce que les lentilles soient fondantes, puis sers sur le riz."
+    ]
+  },
+  {
+    "id": "wrap-houmous-legumes",
+    "name": "Wrap houmous et crudités",
+    "icon": "🌯",
+    "prepTime": 10,
+    "difficulty": "facile",
+    "ingredientIds": ["wraps", "houmous", "concombre", "poivrons", "salade-verte"],
+    "steps": [
+      "Tartine le wrap d'une bonne couche de houmous.",
+      "Ajoute le concombre et les poivrons coupés en lamelles.",
+      "Termine avec quelques feuilles de salade verte.",
+      "Roule serré et coupe en deux avant de servir."
+    ]
+  },
+  {
+    "id": "salade-quinoa-avocat-mangue",
+    "name": "Salade de quinoa, avocat et mangue",
+    "icon": "🥭",
+    "prepTime": 15,
+    "difficulty": "facile",
+    "ingredientIds": ["quinoa", "avocat", "mangue", "citron", "coriandre"],
+    "steps": [
+      "Cuis le quinoa selon le paquet, puis laisse-le refroidir.",
+      "Coupe l'avocat et la mangue en dés.",
+      "Mélange le quinoa, l'avocat et la mangue dans un saladier.",
+      "Arrose de jus de citron, parsème de coriandre ciselée et sers frais."
+    ]
+  },
+  {
+    "id": "poelee-ratatouille-express",
+    "name": "Ratatouille express",
+    "icon": "🍆",
+    "prepTime": 25,
+    "difficulty": "facile",
+    "ingredientIds": ["aubergine", "courgettes", "tomates", "ail", "basilic", "huile-olive"],
+    "steps": [
+      "Coupe l'aubergine et les courgettes en dés.",
+      "Fais-les revenir 10 minutes dans l'huile d'olive avec l'ail émincé.",
+      "Ajoute les tomates coupées et laisse mijoter 12 minutes à couvert.",
+      "Parsème de basilic frais avant de servir."
+    ]
+  },
+  {
+    "id": "soupe-potiron-coco",
+    "name": "Soupe de potiron au lait de coco",
+    "icon": "🎃",
+    "prepTime": 25,
+    "difficulty": "facile",
+    "ingredientIds": ["potiron", "oignons", "lait-coco", "gingembre-frais", "huile-olive"],
+    "steps": [
+      "Coupe le potiron et l'oignon en morceaux, fais-les revenir dans l'huile d'olive.",
+      "Ajoute le gingembre râpé et couvre d'eau.",
+      "Laisse cuire 15 minutes jusqu'à ce que le potiron soit tendre.",
+      "Mixe avec le lait de coco et sers bien chaud."
+    ]
+  },
+  {
+    "id": "galettes-riz-avocat-crudites",
+    "name": "Galettes de riz avocat-crudités",
+    "icon": "🥒",
+    "prepTime": 10,
+    "difficulty": "facile",
+    "ingredientIds": ["galette-de-riz", "avocat", "concombre", "radis"],
+    "steps": [
+      "Écrase l'avocat à la fourchette.",
+      "Tartine les galettes de riz d'avocat écrasé.",
+      "Ajoute des rondelles de concombre et de radis.",
+      "Sers aussitôt, à la croque au doigt."
+    ]
+  },
+  {
+    "id": "porridge-graines-fruits-secs",
+    "name": "Porridge aux graines et fruits secs",
+    "icon": "🥣",
+    "prepTime": 8,
+    "difficulty": "facile",
+    "ingredientIds": ["flocons-avoine", "lait-avoine", "graines-chia", "dattes", "amandes"],
+    "steps": [
+      "Fais chauffer le lait d'avoine dans une casserole.",
+      "Ajoute les flocons d'avoine et les graines de chia, laisse épaissir 4-5 minutes.",
+      "Coupe les dattes en petits morceaux.",
+      "Verse dans un bol, ajoute les dattes et les amandes concassées."
+    ]
+  },
+  {
+    "id": "patate-douce-four-pois-chiches",
+    "name": "Patate douce rôtie et pois chiches épicés",
+    "icon": "🍠",
+    "prepTime": 30,
+    "difficulty": "facile",
+    "ingredientIds": ["patate-douce", "pois-chiches", "cumin", "paprika", "huile-olive"],
+    "steps": [
+      "Coupe la patate douce en dés et mélange avec l'huile d'olive, le cumin et le paprika.",
+      "Fais cuire au four 20-25 minutes à 200°C en remuant à mi-cuisson.",
+      "Égoutte les pois chiches et ajoute-les 5 minutes avant la fin de cuisson.",
+      "Sers chaud, directement sur la plaque."
+    ]
+  },
+  {
+    "id": "pates-sautees-legumes-soja",
+    "name": "Pâtes sautées aux légumes et sauce soja",
+    "icon": "🍜",
+    "prepTime": 18,
+    "difficulty": "facile",
+    "ingredientIds": ["pates", "poivrons", "champignons", "sauce-soja", "gingembre-frais", "huile-olive"],
+    "steps": [
+      "Cuis les pâtes selon le paquet.",
+      "Fais revenir les poivrons et les champignons émincés dans l'huile d'olive avec le gingembre râpé.",
+      "Ajoute les pâtes égouttées dans la poêle.",
+      "Arrose de sauce soja, mélange bien et sers chaud."
+    ]
+  },
+  {
+    "id": "taboule-quinoa-menthe",
+    "name": "Taboulé de quinoa à la menthe",
+    "icon": "🌿",
+    "prepTime": 15,
+    "difficulty": "facile",
+    "ingredientIds": ["quinoa", "tomates", "concombre", "menthe-fraiche", "citron", "huile-olive"],
+    "steps": [
+      "Cuis le quinoa selon le paquet, puis laisse-le refroidir.",
+      "Coupe les tomates et le concombre en petits dés.",
+      "Mélange le quinoa avec les légumes et la menthe ciselée.",
+      "Arrose de jus de citron et d'huile d'olive, mélange et sers frais."
+    ]
+  },
+  {
+    "id": "houmous-crudites",
+    "name": "Assiette houmous et bâtonnets de légumes",
+    "icon": "🥕",
+    "prepTime": 8,
+    "difficulty": "facile",
+    "ingredientIds": ["houmous", "concombre", "poivrons", "radis", "pain-cereales"],
+    "steps": [
+      "Coupe le concombre et les poivrons en bâtonnets.",
+      "Dispose le houmous au centre d'une assiette.",
+      "Entoure des bâtonnets de légumes et des radis coupés en deux.",
+      "Sers avec des tranches de pain aux céréales grillées."
+    ]
+  },
+  {
+    "id": "riz-cantonais-vegetal",
+    "name": "Riz cantonais végétal",
+    "icon": "🍚",
+    "prepTime": 20,
+    "difficulty": "facile",
+    "ingredientIds": ["riz", "petits-pois-conserve", "mais-doux", "oignons", "sauce-soja", "huile-olive"],
+    "steps": [
+      "Cuis le riz selon le paquet, idéalement à l'avance pour qu'il soit bien sec.",
+      "Fais revenir l'oignon émincé dans l'huile d'olive.",
+      "Ajoute le riz, les petits pois et le maïs égouttés, fais sauter 5 minutes.",
+      "Arrose de sauce soja et sers bien chaud."
+    ]
+  },
+  {
+    "id": "curry-butternut-pois-chiches",
+    "name": "Curry de butternut et pois chiches",
+    "icon": "🍛",
+    "prepTime": 28,
+    "difficulty": "facile",
+    "ingredientIds": ["courge-butternut", "pois-chiches", "lait-coco", "curry-poudre", "riz"],
+    "steps": [
+      "Cuis le riz selon le paquet.",
+      "Coupe le butternut en petits dés.",
+      "Fais-le revenir avec le curry en poudre, puis ajoute le lait de coco.",
+      "Laisse mijoter 15 minutes, ajoute les pois chiches égouttés en fin de cuisson et sers sur le riz."
+    ]
+  },
+  {
+    "id": "smoothie-bol-banane-fruits-rouges",
+    "name": "Smoothie bowl banane et fruits rouges",
+    "icon": "🍇",
+    "prepTime": 8,
+    "difficulty": "facile",
+    "ingredientIds": ["bananes", "framboises", "myrtilles", "lait-amande", "graines-chia"],
+    "steps": [
+      "Mixe une banane avec un peu de lait d'amande jusqu'à obtenir une texture épaisse.",
+      "Verse dans un bol.",
+      "Dispose les framboises et les myrtilles par-dessus.",
+      "Parsème de graines de chia et déguste aussitôt."
+    ]
+  },
+  {
+    "id": "risotto-champignons",
+    "name": "Risotto aux champignons",
+    "icon": "🍚",
+    "prepTime": 30,
+    "difficulty": "moyen",
+    "ingredientIds": ["riz", "champignons", "oignons", "fromage-rape", "creme-fraiche"],
+    "steps": [
+      "Fais revenir l'oignon émincé, ajoute le riz et fais-le nacrer 2 minutes.",
+      "Ajoute les champignons émincés et couvre d'eau chaude petit à petit, en remuant régulièrement.",
+      "Poursuis la cuisson 18-20 minutes en ajoutant de l'eau au fur et à mesure.",
+      "Hors du feu, ajoute la crème fraîche et le fromage râpé, mélange et sers aussitôt."
+    ]
+  },
+  {
+    "id": "gratin-chou-fleur-fromage",
+    "name": "Gratin de chou-fleur au fromage",
+    "icon": "🧀",
+    "prepTime": 30,
+    "difficulty": "facile",
+    "ingredientIds": ["chou-fleur", "fromage-rape", "creme-fraiche", "chapelure"],
+    "steps": [
+      "Fais cuire le chou-fleur en petits bouquets à l'eau bouillante 10 minutes.",
+      "Égoutte-le et dispose-le dans un plat.",
+      "Nappe de crème fraîche, recouvre de fromage râpé et de chapelure.",
+      "Passe au four 15 minutes à 200°C jusqu'à ce que ce soit doré."
+    ]
+  },
+  {
+    "id": "quiche-legumes-maison",
+    "name": "Quiche aux légumes maison",
+    "icon": "🥧",
+    "prepTime": 35,
+    "difficulty": "moyen",
+    "ingredientIds": ["pate-brisee", "oeufs", "creme-fraiche", "epinards", "fromage-rape"],
+    "steps": [
+      "Étale la pâte brisée dans un moule.",
+      "Fais tomber rapidement les épinards à la poêle pour enlever l'eau.",
+      "Bats les œufs avec la crème fraîche, ajoute les épinards et le fromage râpé.",
+      "Verse sur la pâte et fais cuire 25-30 minutes à 200°C."
+    ]
+  },
+  {
+    "id": "tartiflette-legere",
+    "name": "Tartiflette légère",
+    "icon": "🧀",
+    "prepTime": 35,
+    "difficulty": "moyen",
+    "ingredientIds": ["pommes-de-terre", "oignons", "camembert", "creme-fraiche"],
+    "steps": [
+      "Fais cuire les pommes de terre coupées en rondelles à l'eau 15 minutes.",
+      "Fais revenir l'oignon émincé à la poêle.",
+      "Dispose les pommes de terre et l'oignon dans un plat, nappe de crème fraîche.",
+      "Recouvre de tranches de camembert et passe au four 15 minutes à 200°C."
+    ]
+  },
+  {
+    "id": "galettes-pois-chiches-oeuf",
+    "name": "Galettes de pois chiches épicées",
+    "icon": "🧆",
+    "prepTime": 20,
+    "difficulty": "moyen",
+    "ingredientIds": ["pois-chiches", "oeufs", "cumin", "farine", "huile-olive"],
+    "steps": [
+      "Écrase les pois chiches égouttés à la fourchette.",
+      "Ajoute l'œuf, le cumin et la farine, mélange jusqu'à obtenir une pâte épaisse.",
+      "Forme des petites galettes avec les mains.",
+      "Fais-les dorer 3-4 minutes de chaque côté dans l'huile d'olive."
+    ]
+  },
+  {
+    "id": "salade-cesar-vegetarienne",
+    "name": "Salade César végétarienne",
+    "icon": "🥗",
+    "prepTime": 15,
+    "difficulty": "facile",
+    "ingredientIds": ["salade-verte", "oeufs", "fromage-rape", "pain-de-campagne", "moutarde"],
+    "steps": [
+      "Fais cuire les œufs durs 9 minutes puis écale-les.",
+      "Coupe le pain de campagne en dés et fais-le dorer à la poêle pour des croûtons.",
+      "Dispose la salade verte, les œufs coupés en quartiers et les croûtons.",
+      "Ajoute une pointe de moutarde délayée dans un filet d'huile, parsème de fromage râpé."
+    ]
+  },
+  {
+    "id": "pates-carbonara-vegetariennes",
+    "name": "Pâtes carbonara aux champignons",
+    "icon": "🍝",
+    "prepTime": 18,
+    "difficulty": "facile",
+    "ingredientIds": ["pates", "oeufs", "creme-fraiche", "fromage-rape", "champignons"],
+    "steps": [
+      "Cuis les pâtes selon le paquet.",
+      "Fais revenir les champignons émincés à la poêle.",
+      "Hors du feu, mélange les champignons avec la crème fraîche, un œuf battu et le fromage râpé.",
+      "Égoutte les pâtes et mélange avec la préparation encore chaude."
+    ]
+  },
+  {
+    "id": "omelette-champignons-fromage",
+    "name": "Omelette aux champignons et fromage",
+    "icon": "🍳",
+    "prepTime": 10,
+    "difficulty": "facile",
+    "ingredientIds": ["oeufs", "champignons", "fromage-rape", "persil"],
+    "steps": [
+      "Bats les œufs dans un bol.",
+      "Fais revenir les champignons émincés quelques minutes.",
+      "Verse les œufs battus, ajoute le fromage râpé et le persil.",
+      "Laisse cuire à feu doux 4-5 minutes puis plie l'omelette."
+    ]
+  },
+  {
+    "id": "soupe-potiron-creme",
+    "name": "Velouté de potiron à la crème",
+    "icon": "🍜",
+    "prepTime": 25,
+    "difficulty": "facile",
+    "ingredientIds": ["potiron", "oignons", "creme-fraiche"],
+    "steps": [
+      "Coupe le potiron et l'oignon en morceaux.",
+      "Fais-les revenir quelques minutes puis couvre d'eau.",
+      "Laisse cuire 15-18 minutes jusqu'à ce que le potiron soit bien tendre.",
+      "Mixe avec la crème fraîche et sers bien chaud."
+    ]
+  },
+  {
+    "id": "wrap-houmous-oeuf-dur",
+    "name": "Wrap houmous et œuf dur",
+    "icon": "🌯",
+    "prepTime": 12,
+    "difficulty": "facile",
+    "ingredientIds": ["wraps", "oeufs", "houmous", "salade-verte", "tomates"],
+    "steps": [
+      "Fais cuire les œufs durs 9 minutes, écale-les et coupe-les en tranches.",
+      "Tartine le wrap de houmous.",
+      "Ajoute la salade, les tomates coupées et les œufs.",
+      "Roule serré et coupe en deux avant de servir."
+    ]
+  },
+  {
+    "id": "tarte-fine-legumes-fromage",
+    "name": "Tarte fine aux légumes et fromage",
+    "icon": "🥧",
+    "prepTime": 30,
+    "difficulty": "facile",
+    "ingredientIds": ["pate-feuilletee", "courgettes", "tomates", "fromage-rape", "herbes-de-provence"],
+    "steps": [
+      "Étale la pâte feuilletée sur une plaque.",
+      "Dispose des fines rondelles de courgettes et de tomates.",
+      "Parsème de fromage râpé et d'herbes de Provence.",
+      "Fais cuire 20-25 minutes à 200°C jusqu'à ce que la pâte soit dorée."
+    ]
+  },
+  {
+    "id": "riz-au-lait-maison",
+    "name": "Riz au lait maison",
+    "icon": "🍚",
+    "prepTime": 30,
+    "difficulty": "moyen",
+    "ingredientIds": ["riz", "lait", "sucre"],
+    "steps": [
+      "Verse le riz et le lait dans une casserole.",
+      "Porte à ébullition puis baisse le feu.",
+      "Laisse cuire à feu doux 20-25 minutes en remuant de temps en temps, jusqu'à ce que le riz soit fondant.",
+      "Ajoute le sucre, mélange et laisse tiédir avant de servir."
+    ]
+  },
+  {
+    "id": "flan-courgettes-fromage",
+    "name": "Flan de courgettes au fromage",
+    "icon": "🍮",
+    "prepTime": 35,
+    "difficulty": "moyen",
+    "ingredientIds": ["courgettes", "oeufs", "lait", "fromage-rape"],
+    "steps": [
+      "Coupe les courgettes en fines rondelles et fais-les revenir 5 minutes pour enlever l'eau.",
+      "Bats les œufs avec le lait et le fromage râpé.",
+      "Dispose les courgettes dans un moule et verse la préparation dessus.",
+      "Fais cuire 25 minutes au four à 180°C jusqu'à ce que le flan soit pris."
+    ]
+  },
+  {
+    "id": "bruschetta-tomate-mozzarella",
+    "name": "Bruschetta tomate-mozzarella",
+    "icon": "🍅",
+    "prepTime": 10,
+    "difficulty": "facile",
+    "ingredientIds": ["pain-de-campagne", "tomates", "mozzarella", "basilic", "huile-olive"],
+    "steps": [
+      "Fais griller les tranches de pain de campagne.",
+      "Coupe les tomates et la mozzarella en dés.",
+      "Dépose le mélange sur le pain grillé.",
+      "Parsème de basilic frais et arrose d'huile d'olive."
+    ]
+  },
+  {
+    "id": "curry-oeufs-legumes",
+    "name": "Curry d'œufs et légumes",
+    "icon": "🍛",
+    "prepTime": 25,
+    "difficulty": "facile",
+    "ingredientIds": ["oeufs", "patate-douce", "lait-coco", "curry-poudre"],
+    "steps": [
+      "Fais cuire les œufs durs 9 minutes, écale-les et coupe-les en deux.",
+      "Coupe la patate douce en dés et fais-la revenir avec le curry en poudre.",
+      "Ajoute le lait de coco et laisse mijoter 15 minutes à couvert.",
+      "Ajoute les œufs en fin de cuisson et sers bien chaud."
+    ]
+  },
+  {
+    "id": "muffins-sales-fromage-epinards",
+    "name": "Muffins salés fromage-épinards",
+    "icon": "🧁",
+    "prepTime": 30,
+    "difficulty": "moyen",
+    "ingredientIds": ["farine", "oeufs", "lait", "fromage-rape", "epinards", "levure-chimique"],
+    "steps": [
+      "Fais tomber rapidement les épinards à la poêle pour enlever l'eau.",
+      "Mélange la farine et la levure chimique, ajoute les œufs et le lait.",
+      "Incorpore le fromage râpé et les épinards.",
+      "Verse dans des moules à muffins et fais cuire 20 minutes à 180°C."
+    ]
+  },
+  {
+    "id": "crepes-champignons-fromage",
+    "name": "Crêpes salées champignons-fromage",
+    "icon": "🥞",
+    "prepTime": 25,
+    "difficulty": "moyen",
+    "ingredientIds": ["farine", "oeufs", "lait", "champignons", "fromage-rape"],
+    "steps": [
+      "Mélange la farine, les œufs et le lait pour obtenir une pâte lisse.",
+      "Fais cuire des crêpes fines dans une poêle chaude.",
+      "Fais revenir les champignons émincés à part.",
+      "Garnis chaque crêpe de champignons et de fromage râpé, replie et sers chaud."
+    ]
+  },
+  {
+    "id": "yaourt-grec-miel-noix",
+    "name": "Yaourt grec, miel et noix",
+    "icon": "🍯",
+    "prepTime": 5,
+    "difficulty": "facile",
+    "ingredientIds": ["yaourt-grec", "miel", "noix", "graines-lin"],
+    "steps": [
+      "Verse le yaourt grec dans un bol.",
+      "Arrose d'un filet de miel.",
+      "Ajoute les noix concassées et les graines de lin.",
+      "Mélange légèrement et déguste."
+    ]
+  },
+  {
+    "id": "faisselle-fruits-rouges",
+    "name": "Faisselle aux fruits rouges",
+    "icon": "🍓",
+    "prepTime": 5,
+    "difficulty": "facile",
+    "ingredientIds": ["faisselle", "fraises", "framboises", "sucre"],
+    "steps": [
+      "Dépose la faisselle dans un bol.",
+      "Coupe les fraises en morceaux.",
+      "Ajoute les fraises et les framboises par-dessus.",
+      "Saupoudre d'un peu de sucre et sers frais."
+    ]
+  },
+  {
+    "id": "cookies-avoine-choco-maison",
+    "name": "Cookies avoine-chocolat maison",
+    "icon": "🍪",
+    "prepTime": 25,
+    "difficulty": "moyen",
+    "ingredientIds": ["flocons-avoine", "farine", "beurre", "sucre", "oeufs", "chocolat-noir"],
+    "steps": [
+      "Mélange le beurre ramolli avec le sucre jusqu'à obtenir une texture crémeuse.",
+      "Ajoute l'œuf, puis la farine et les flocons d'avoine.",
+      "Incorpore le chocolat noir concassé en morceaux.",
+      "Forme des petits tas sur une plaque et fais cuire 12-15 minutes à 180°C."
+    ]
+  },
+  {
+    "id": "clafoutis-cerises",
+    "name": "Clafoutis aux cerises",
+    "icon": "🍒",
+    "prepTime": 40,
+    "difficulty": "moyen",
+    "ingredientIds": ["cerises", "oeufs", "lait", "farine", "sucre", "beurre"],
+    "steps": [
+      "Beurre un moule et dispose les cerises au fond.",
+      "Bats les œufs avec le sucre, ajoute la farine puis le lait petit à petit.",
+      "Verse la préparation sur les cerises.",
+      "Fais cuire 30-35 minutes à 180°C jusqu'à ce que le dessus soit doré."
+    ]
+  },
+  {
+    "id": "gratin-patates-douces-fromage",
+    "name": "Gratin de patates douces au fromage",
+    "icon": "🍠",
+    "prepTime": 35,
+    "difficulty": "facile",
+    "ingredientIds": ["patate-douce", "creme-fraiche", "fromage-rape", "herbes-de-provence"],
+    "steps": [
+      "Coupe les patates douces en fines rondelles.",
+      "Fais-les cuire 10 minutes à l'eau bouillante.",
+      "Dispose-les dans un plat, nappe de crème fraîche et parsème d'herbes de Provence.",
+      "Recouvre de fromage râpé et fais gratiner 15 minutes au four à 200°C."
+    ]
+  },
+  {
+    "id": "salade-endives-noix-camembert",
+    "name": "Salade d'endives, noix et camembert",
+    "icon": "🥗",
+    "prepTime": 12,
+    "difficulty": "facile",
+    "ingredientIds": ["endive", "noix", "camembert", "huile-olive", "citron"],
+    "steps": [
+      "Coupe les endives en lanières.",
+      "Coupe le camembert en petits morceaux.",
+      "Dispose les endives, le camembert et les noix dans un saladier.",
+      "Arrose d'huile d'olive et d'un filet de citron avant de servir."
+    ]
+  },
+  {
+    "id": "oeufs-cocotte-creme-epinards",
+    "name": "Œufs cocotte aux épinards",
+    "icon": "🥚",
+    "prepTime": 18,
+    "difficulty": "facile",
+    "ingredientIds": ["oeufs", "creme-fraiche", "epinards", "pain-de-campagne"],
+    "steps": [
+      "Fais tomber rapidement les épinards à la poêle.",
+      "Répartis les épinards dans des petits ramequins, ajoute un peu de crème fraîche.",
+      "Casse un œuf par-dessus dans chaque ramequin.",
+      "Fais cuire 10-12 minutes au four à 180°C et sers avec du pain de campagne."
+    ]
+  },
+  {
+    "id": "fromage-blanc-granola-miel",
+    "name": "Fromage blanc, granola et myrtilles",
+    "icon": "🍯",
+    "prepTime": 5,
+    "difficulty": "facile",
+    "ingredientIds": ["fromage-blanc", "cereales-muesli", "miel", "myrtilles"],
+    "steps": [
+      "Verse le fromage blanc dans un bol.",
+      "Ajoute le muesli par-dessus pour un peu de croquant.",
+      "Ajoute les myrtilles.",
+      "Arrose d'un filet de miel et sers aussitôt."
+    ]
+  },
+  {
+    "id": "poulet-curry-lait-coco",
+    "name": "Poulet au curry et lait de coco",
+    "icon": "🍛",
+    "prepTime": 25,
+    "difficulty": "facile",
+    "ingredientIds": ["filet-poulet-cru", "lait-coco", "curry-poudre", "poivrons", "riz"],
+    "steps": [
+      "Cuis le riz selon le paquet.",
+      "Coupe le poulet en morceaux et fais-le dorer à la poêle.",
+      "Ajoute les poivrons émincés et le curry en poudre, fais revenir 3 minutes.",
+      "Verse le lait de coco, laisse mijoter 12-15 minutes et sers sur le riz."
+    ]
+  },
+  {
+    "id": "brochettes-poulet-legumes-grillees",
+    "name": "Brochettes de poulet et légumes grillés",
+    "icon": "🍢",
+    "prepTime": 20,
+    "difficulty": "facile",
+    "ingredientIds": ["brochettes-poulet", "courgettes", "poivrons", "huile-olive", "herbes-de-provence"],
+    "steps": [
+      "Coupe les courgettes et poivrons en morceaux.",
+      "Fais mariner brochettes et légumes avec l'huile d'olive et les herbes de Provence.",
+      "Fais griller les brochettes à la poêle ou au grill 12-15 minutes en les retournant.",
+      "Fais revenir les légumes à part et sers ensemble."
+    ]
+  },
+  {
+    "id": "dinde-champignons-creme",
+    "name": "Escalope de dinde à la crème et champignons",
+    "icon": "🍗",
+    "prepTime": 22,
+    "difficulty": "facile",
+    "ingredientIds": ["escalope-dinde", "champignons", "creme-fraiche", "pates"],
+    "steps": [
+      "Cuis les pâtes selon le paquet.",
+      "Fais dorer les escalopes de dinde à la poêle 4-5 minutes de chaque côté, réserve.",
+      "Fais revenir les champignons émincés dans la même poêle, ajoute la crème fraîche.",
+      "Remets les escalopes dans la sauce quelques minutes et sers avec les pâtes."
+    ]
+  },
+  {
+    "id": "poelee-boeuf-champignons-creme",
+    "name": "Poêlée de bœuf aux champignons et crème",
+    "icon": "🍲",
+    "prepTime": 30,
+    "difficulty": "moyen",
+    "ingredientIds": ["steak-hache", "champignons", "oignons", "creme-fraiche", "pommes-de-terre"],
+    "steps": [
+      "Fais cuire les pommes de terre coupées en dés à l'eau 15 minutes.",
+      "Fais revenir l'oignon et les champignons émincés à la poêle.",
+      "Émiette le steak haché dans la poêle et fais-le bien cuire.",
+      "Ajoute la crème fraîche, mélange et sers avec les pommes de terre."
+    ]
+  },
+  {
+    "id": "tajine-agneau-legumes",
+    "name": "Tajine d'agneau aux légumes",
+    "icon": "🍲",
+    "prepTime": 35,
+    "difficulty": "moyen",
+    "ingredientIds": ["agneau-hache", "patate-douce", "pois-chiches", "cumin", "paprika"],
+    "steps": [
+      "Fais revenir l'agneau haché avec le cumin et le paprika.",
+      "Ajoute la patate douce coupée en dés et couvre d'eau.",
+      "Laisse mijoter 20 minutes à couvert.",
+      "Ajoute les pois chiches égouttés en fin de cuisson et laisse chauffer 5 minutes."
+    ]
+  },
+  {
+    "id": "lapin-moutarde",
+    "name": "Lapin à la moutarde",
+    "icon": "🐰",
+    "prepTime": 35,
+    "difficulty": "moyen",
+    "ingredientIds": ["lapin", "moutarde", "creme-fraiche", "champignons"],
+    "steps": [
+      "Badigeonne les morceaux de lapin de moutarde.",
+      "Fais-les dorer à la poêle 5 minutes de chaque côté.",
+      "Ajoute les champignons émincés et un peu d'eau, laisse mijoter 20 minutes à couvert.",
+      "Termine avec la crème fraîche et sers bien chaud."
+    ]
+  },
+  {
+    "id": "dorade-citron-persil-four",
+    "name": "Dorade au four, citron et persil",
+    "icon": "🐟",
+    "prepTime": 30,
+    "difficulty": "facile",
+    "ingredientIds": ["dorade", "citron", "persil", "huile-olive", "pommes-de-terre"],
+    "steps": [
+      "Coupe les pommes de terre en rondelles et dispose-les dans un plat avec un filet d'huile d'olive.",
+      "Dépose la dorade par-dessus, arrose de jus de citron et d'huile d'olive.",
+      "Parsème de persil.",
+      "Fais cuire 20-25 minutes au four à 200°C."
+    ]
+  },
+  {
+    "id": "colin-tomates-basilic",
+    "name": "Colin aux tomates fraîches et basilic",
+    "icon": "🐟",
+    "prepTime": 22,
+    "difficulty": "facile",
+    "ingredientIds": ["colin", "tomates", "basilic", "huile-olive", "riz"],
+    "steps": [
+      "Cuis le riz selon le paquet.",
+      "Fais revenir les tomates coupées dans l'huile d'olive quelques minutes.",
+      "Ajoute les filets de colin et laisse cuire à couvert 8-10 minutes.",
+      "Parsème de basilic frais et sers sur le riz."
+    ]
+  },
+  {
+    "id": "maquereau-grille-salade",
+    "name": "Maquereau grillé et salade fraîche",
+    "icon": "🐟",
+    "prepTime": 15,
+    "difficulty": "facile",
+    "ingredientIds": ["maquereau", "salade-verte", "citron", "tomates", "huile-olive"],
+    "steps": [
+      "Fais griller le maquereau à la poêle 4-5 minutes de chaque côté.",
+      "Prépare la salade avec les tomates coupées.",
+      "Assaisonne d'huile d'olive et de jus de citron.",
+      "Sers le poisson chaud avec la salade fraîche."
+    ]
+  },
+  {
+    "id": "hareng-pommes-de-terre-tiedes",
+    "name": "Hareng fumé et pommes de terre tièdes",
+    "icon": "🐟",
+    "prepTime": 15,
+    "difficulty": "facile",
+    "ingredientIds": ["hareng", "pommes-de-terre", "echalote", "huile-olive"],
+    "steps": [
+      "Fais cuire les pommes de terre à l'eau 15 minutes.",
+      "Coupe-les encore tièdes en rondelles.",
+      "Émince l'échalote et mélange avec les pommes de terre et l'huile d'olive.",
+      "Dispose le hareng fumé par-dessus et sers tiède."
+    ]
+  },
+  {
+    "id": "truite-amandes",
+    "name": "Truite aux amandes",
+    "icon": "🐟",
+    "prepTime": 18,
+    "difficulty": "facile",
+    "ingredientIds": ["truite", "amandes", "beurre", "citron"],
+    "steps": [
+      "Fais fondre le beurre dans une poêle.",
+      "Fais cuire la truite 4-5 minutes de chaque côté.",
+      "Ajoute les amandes concassées en fin de cuisson pour les faire légèrement dorer.",
+      "Arrose de jus de citron et sers aussitôt."
+    ]
+  },
+  {
+    "id": "truite-fumee-creme-pain",
+    "name": "Truite fumée, crème et pain de seigle",
+    "icon": "🐟",
+    "prepTime": 8,
+    "difficulty": "facile",
+    "ingredientIds": ["truite-fumee", "creme-fraiche", "pain-seigle", "citron"],
+    "steps": [
+      "Fais griller les tranches de pain de seigle.",
+      "Tartine-les d'une fine couche de crème fraîche.",
+      "Dépose la truite fumée par-dessus.",
+      "Arrose d'un filet de citron et sers frais."
+    ]
+  },
+  {
+    "id": "calamars-a-la-plancha",
+    "name": "Calamars à la plancha, ail et persil",
+    "icon": "🦑",
+    "prepTime": 15,
+    "difficulty": "facile",
+    "ingredientIds": ["calamars", "ail", "persil", "citron", "huile-olive"],
+    "steps": [
+      "Fais chauffer l'huile d'olive avec l'ail émincé.",
+      "Ajoute les calamars et fais-les saisir 3-4 minutes à feu vif.",
+      "Parsème de persil.",
+      "Arrose de jus de citron et sers aussitôt."
+    ]
+  },
+  {
+    "id": "poulpe-pommes-de-terre-paprika",
+    "name": "Poulpe et pommes de terre au paprika",
+    "icon": "🐙",
+    "prepTime": 30,
+    "difficulty": "moyen",
+    "ingredientIds": ["poulpe", "pommes-de-terre", "paprika", "huile-olive", "persil"],
+    "steps": [
+      "Fais cuire les pommes de terre en dés à l'eau 15 minutes.",
+      "Fais revenir le poulpe dans l'huile d'olive avec le paprika 5-6 minutes.",
+      "Mélange avec les pommes de terre égouttées.",
+      "Parsème de persil et sers chaud."
+    ]
+  },
+  {
+    "id": "saint-jacques-poelees-beurre",
+    "name": "Noix de Saint-Jacques poêlées au beurre",
+    "icon": "🍤",
+    "prepTime": 12,
+    "difficulty": "moyen",
+    "ingredientIds": ["saint-jacques", "beurre", "ail", "persil"],
+    "steps": [
+      "Fais fondre le beurre avec l'ail émincé dans une poêle bien chaude.",
+      "Saisis les noix de Saint-Jacques 1-2 minutes de chaque côté, pas plus.",
+      "Parsème de persil.",
+      "Sers immédiatement, encore fondantes à cœur."
+    ]
+  },
+  {
+    "id": "crevettes-curry-coco",
+    "name": "Crevettes au curry et lait de coco",
+    "icon": "🍤",
+    "prepTime": 20,
+    "difficulty": "facile",
+    "ingredientIds": ["crevettes", "lait-coco", "curry-poudre", "poivrons", "riz"],
+    "steps": [
+      "Cuis le riz selon le paquet.",
+      "Fais revenir les poivrons émincés avec le curry en poudre.",
+      "Ajoute le lait de coco et laisse mijoter 8 minutes.",
+      "Ajoute les crevettes et laisse cuire 3-4 minutes, puis sers sur le riz."
+    ]
+  },
+  {
+    "id": "surimi-avocat-riz",
+    "name": "Bol surimi, avocat et riz",
+    "icon": "🍣",
+    "prepTime": 12,
+    "difficulty": "facile",
+    "ingredientIds": ["surimi", "avocat", "riz", "sauce-soja"],
+    "steps": [
+      "Cuis le riz selon le paquet et laisse-le tiédir.",
+      "Coupe le surimi et l'avocat en morceaux.",
+      "Dispose le riz, le surimi et l'avocat dans un bol.",
+      "Arrose de sauce soja avant de servir."
+    ]
+  },
+  {
+    "id": "thon-frais-sauce-soja",
+    "name": "Thon frais mariné à la sauce soja",
+    "icon": "🐟",
+    "prepTime": 15,
+    "difficulty": "moyen",
+    "ingredientIds": ["thon-frais", "sauce-soja", "tahini", "riz"],
+    "steps": [
+      "Cuis le riz selon le paquet.",
+      "Fais mariner le thon frais dans la sauce soja quelques minutes.",
+      "Saisis-le à la poêle 1-2 minutes de chaque côté pour qu'il reste rosé à cœur.",
+      "Sers avec le riz et un filet de tahini."
+    ]
+  },
+  {
+    "id": "sole-meuniere",
+    "name": "Sole meunière",
+    "icon": "🐟",
+    "prepTime": 20,
+    "difficulty": "moyen",
+    "ingredientIds": ["sole", "beurre", "citron", "persil", "pommes-de-terre"],
+    "steps": [
+      "Fais cuire les pommes de terre à l'eau 15 minutes.",
+      "Fais fondre le beurre dans une poêle et fais dorer la sole 3-4 minutes de chaque côté.",
+      "Arrose de jus de citron en fin de cuisson.",
+      "Parsème de persil et sers avec les pommes de terre."
+    ]
+  },
+  {
+    "id": "lieu-noir-poireaux-creme",
+    "name": "Lieu noir aux poireaux fondants",
+    "icon": "🐟",
+    "prepTime": 22,
+    "difficulty": "facile",
+    "ingredientIds": ["lieu-noir", "poireaux", "creme-fraiche", "citron"],
+    "steps": [
+      "Coupe les poireaux en rondelles et fais-les fondre à la poêle 10 minutes.",
+      "Ajoute la crème fraîche et laisse mijoter 5 minutes.",
+      "Ajoute les filets de lieu noir et laisse cuire à couvert 8-10 minutes.",
+      "Arrose d'un filet de citron avant de servir."
+    ]
+  },
+  {
+    "id": "veau-marengo-rapide",
+    "name": "Veau haché façon marengo",
+    "icon": "🍲",
+    "prepTime": 28,
+    "difficulty": "moyen",
+    "ingredientIds": ["veau-hache", "champignons", "tomates", "oignons", "huile-olive"],
+    "steps": [
+      "Fais revenir l'oignon et les champignons dans l'huile d'olive.",
+      "Ajoute le veau haché et fais-le bien colorer.",
+      "Ajoute les tomates coupées et un peu d'eau.",
+      "Laisse mijoter 15 minutes à couvert et sers bien chaud."
+    ]
+  },
+  {
+    "id": "escalope-veau-citron",
+    "name": "Escalope de veau au citron",
+    "icon": "🍽️",
+    "prepTime": 18,
+    "difficulty": "facile",
+    "ingredientIds": ["escalope-veau", "citron", "beurre", "persil", "pates"],
+    "steps": [
+      "Cuis les pâtes selon le paquet.",
+      "Fais dorer l'escalope de veau dans le beurre 3-4 minutes de chaque côté.",
+      "Arrose de jus de citron en fin de cuisson.",
+      "Parsème de persil et sers avec les pâtes."
+    ]
+  },
+  {
+    "id": "roti-boeuf-legumes-four",
+    "name": "Rôti de bœuf et légumes au four",
+    "icon": "🥩",
+    "prepTime": 25,
+    "difficulty": "facile",
+    "ingredientIds": ["roti-boeuf", "pommes-de-terre", "carottes", "oignons"],
+    "steps": [
+      "Coupe les pommes de terre, les carottes et l'oignon en morceaux.",
+      "Dispose-les dans un plat avec les tranches de rôti de bœuf.",
+      "Arrose d'un filet d'huile et assaisonne.",
+      "Fais réchauffer et dorer le tout 15-18 minutes au four à 200°C."
+    ]
+  },
+  {
+    "id": "blanc-dinde-poelee-champignons",
+    "name": "Blanc de dinde et champignons à la crème",
+    "icon": "🍗",
+    "prepTime": 20,
+    "difficulty": "facile",
+    "ingredientIds": ["blanc-dinde", "champignons", "creme-fraiche", "persil"],
+    "steps": [
+      "Fais dorer le blanc de dinde coupé en morceaux à la poêle.",
+      "Ajoute les champignons émincés et poursuis la cuisson 5 minutes.",
+      "Ajoute la crème fraîche et laisse mijoter 5 minutes.",
+      "Parsème de persil et sers chaud."
+    ]
+  },
+  {
+    "id": "filet-dinde-fume-salade-comte",
+    "name": "Salade filet de dinde fumé et comté",
+    "icon": "🥗",
+    "prepTime": 10,
+    "difficulty": "facile",
+    "ingredientIds": ["filet-dinde-fume", "salade-verte", "tomates", "comte", "vinaigre-balsamique"],
+    "steps": [
+      "Coupe le filet de dinde fumé et le comté en lamelles.",
+      "Dispose la salade verte et les tomates coupées dans une assiette.",
+      "Ajoute la dinde et le comté par-dessus.",
+      "Arrose d'un filet de vinaigre balsamique avant de servir."
+    ]
+  },
+  {
+    "id": "nuggets-poulet-legumes-four",
+    "name": "Nuggets de poulet et légumes au four",
+    "icon": "🍗",
+    "prepTime": 25,
+    "difficulty": "facile",
+    "ingredientIds": ["nuggets-poulet", "brocoli", "patate-douce", "huile-olive"],
+    "steps": [
+      "Coupe la patate douce en frites fines et arrose d'un filet d'huile d'olive.",
+      "Dispose les nuggets et la patate douce sur une plaque.",
+      "Fais cuire 18-20 minutes au four à 200°C en retournant à mi-cuisson.",
+      "Fais cuire le brocoli à la vapeur pendant ce temps et sers ensemble."
+    ]
+  },
+  {
+    "id": "wrap-thon-avocat",
+    "name": "Wrap thon-avocat",
+    "icon": "🌯",
+    "prepTime": 10,
+    "difficulty": "facile",
+    "ingredientIds": ["wraps", "thon", "avocat", "salade-verte", "citron"],
+    "steps": [
+      "Égoutte le thon et écrase l'avocat à la fourchette avec un filet de citron.",
+      "Tartine le wrap d'avocat écrasé.",
+      "Ajoute le thon émietté et quelques feuilles de salade.",
+      "Roule serré et coupe en deux avant de servir."
+    ]
+  },
+  {
+    "id": "poke-bowl-saumon",
+    "name": "Poke bowl au saumon mariné",
+    "icon": "🥙",
+    "prepTime": 20,
+    "difficulty": "moyen",
+    "ingredientIds": ["riz", "saumon", "avocat", "concombre", "sauce-soja"],
+    "steps": [
+      "Cuis le riz selon le paquet et laisse-le tiédir.",
+      "Coupe le saumon en dés et fais-le mariner quelques minutes dans la sauce soja.",
+      "Coupe l'avocat et le concombre en dés.",
+      "Dispose le riz, le saumon, l'avocat et le concombre dans un bol et sers aussitôt."
+    ]
+  },
+  {
+    "id": "cabillaud-curry-legumes",
+    "name": "Cabillaud au curry et épinards",
+    "icon": "🍛",
+    "prepTime": 25,
+    "difficulty": "facile",
+    "ingredientIds": ["cabillaud", "lait-coco", "curry-poudre", "epinards", "riz"],
+    "steps": [
+      "Cuis le riz selon le paquet.",
+      "Fais tomber les épinards à la poêle avec le curry en poudre.",
+      "Ajoute le lait de coco et les filets de cabillaud.",
+      "Laisse cuire à couvert 10-12 minutes et sers sur le riz."
+    ]
+  },
+  {
+    "id": "sardines-grillees-citron",
+    "name": "Sardines grillées et pommes de terre au citron",
+    "icon": "🐟",
+    "prepTime": 15,
+    "difficulty": "facile",
+    "ingredientIds": ["sardines", "citron", "persil", "pommes-de-terre"],
+    "steps": [
+      "Fais cuire les pommes de terre à l'eau 15 minutes.",
+      "Fais griller les sardines à la poêle 3-4 minutes de chaque côté.",
+      "Arrose de jus de citron et parsème de persil.",
+      "Sers les sardines avec les pommes de terre encore chaudes."
+    ]
+  },
+  {
+    "id": "brandade-cabillaud-simplifiee",
+    "name": "Brandade de cabillaud simplifiée",
+    "icon": "🐟",
+    "prepTime": 30,
+    "difficulty": "moyen",
+    "ingredientIds": ["cabillaud", "pommes-de-terre", "creme-fraiche", "ail"],
+    "steps": [
+      "Fais cuire les pommes de terre à l'eau 20 minutes puis écrase-les.",
+      "Fais pocher le cabillaud dans un peu d'eau 8 minutes puis émiette-le.",
+      "Mélange la purée, le cabillaud émietté, la crème fraîche et l'ail écrasé.",
+      "Réchauffe le tout à feu doux et sers bien chaud."
+    ]
+  },
+  {
+    "id": "poulet-entier-roti-legumes",
+    "name": "Poulet entier rôti aux légumes",
+    "icon": "🍗",
+    "prepTime": 45,
+    "difficulty": "moyen",
+    "ingredientIds": ["poulet-entier", "pommes-de-terre", "oignons", "herbes-de-provence", "huile-olive"],
+    "steps": [
+      "Frotte le poulet d'huile d'olive et d'herbes de Provence.",
+      "Dispose-le dans un plat entouré des pommes de terre et de l'oignon coupés en gros morceaux.",
+      "Fais cuire 40-45 minutes au four à 200°C en arrosant régulièrement du jus de cuisson.",
+      "Vérifie que le jus qui s'écoule est clair avant de servir."
+    ]
+  },
+  {
+    "id": "boeuf-hache-poivrons-riz",
+    "name": "Bœuf haché sauté aux poivrons",
+    "icon": "🍚",
+    "prepTime": 20,
+    "difficulty": "facile",
+    "ingredientIds": ["boeuf-hache-15", "poivrons", "oignons", "sauce-soja", "riz"],
+    "steps": [
+      "Cuis le riz selon le paquet.",
+      "Fais revenir l'oignon et les poivrons émincés.",
+      "Ajoute le bœuf haché et fais-le bien colorer.",
+      "Arrose de sauce soja et sers sur le riz."
+    ]
+  },
+  {
+    "id": "steak-sauce-roquefort",
+    "name": "Steak, sauce au roquefort",
+    "icon": "🥩",
+    "prepTime": 15,
+    "difficulty": "moyen",
+    "ingredientIds": ["steak-hache", "roquefort", "creme-fraiche"],
+    "steps": [
+      "Fais cuire le steak haché à la poêle selon la cuisson désirée, réserve.",
+      "Dans la même poêle, fais fondre le roquefort avec la crème fraîche à feu doux.",
+      "Mélange jusqu'à obtenir une sauce homogène.",
+      "Nappe le steak de sauce et sers aussitôt."
+    ]
+  },
+  {
+    "id": "agneau-haché-aubergines-epices",
+    "name": "Agneau haché aux aubergines épicées",
+    "icon": "🍆",
+    "prepTime": 25,
+    "difficulty": "moyen",
+    "ingredientIds": ["agneau-hache", "aubergine", "cumin", "paprika", "huile-olive"],
+    "steps": [
+      "Coupe l'aubergine en dés et fais-la revenir dans l'huile d'olive 8 minutes.",
+      "Ajoute l'agneau haché avec le cumin et le paprika.",
+      "Fais bien colorer en émiettant à la fourchette.",
+      "Laisse mijoter 8-10 minutes à couvert et sers chaud."
+    ]
+  },
+  {
+    "id": "dinde-curry-pommes",
+    "name": "Escalope de dinde au curry et pommes",
+    "icon": "🍗",
+    "prepTime": 22,
+    "difficulty": "facile",
+    "ingredientIds": ["escalope-dinde", "curry-poudre", "pommes", "lait-coco", "riz"],
+    "steps": [
+      "Cuis le riz selon le paquet.",
+      "Fais dorer l'escalope de dinde coupée en morceaux avec le curry en poudre.",
+      "Ajoute les pommes coupées en dés et le lait de coco.",
+      "Laisse mijoter 10 minutes et sers sur le riz."
+    ]
+  },
+  {
+    "id": "foie-volaille-poele-persillade",
+    "name": "Foie de volaille en persillade",
+    "icon": "🍽️",
+    "prepTime": 12,
+    "difficulty": "moyen",
+    "ingredientIds": ["foie-volaille", "persil", "ail", "huile-olive", "salade-verte"],
+    "steps": [
+      "Fais chauffer l'huile d'olive avec l'ail émincé.",
+      "Ajoute les foies de volaille et fais-les saisir 4-5 minutes à feu vif.",
+      "Parsème de persil en fin de cuisson.",
+      "Sers avec une salade verte assaisonnée."
+    ]
+  },
+  {
+    "id": "veau-hache-courgettes-parmesan",
+    "name": "Veau haché aux courgettes et parmesan",
+    "icon": "🧀",
+    "prepTime": 20,
+    "difficulty": "facile",
+    "ingredientIds": ["veau-hache", "courgettes", "parmesan", "huile-olive"],
+    "steps": [
+      "Coupe les courgettes en dés et fais-les revenir dans l'huile d'olive.",
+      "Ajoute le veau haché et fais-le bien colorer.",
+      "Laisse mijoter 8-10 minutes à couvert.",
+      "Parsème de parmesan râpé avant de servir."
+    ]
+  },
+  {
+    "id": "filet-poulet-citron-miel",
+    "name": "Filet de poulet miel-citron et brocoli",
+    "icon": "🍯",
+    "prepTime": 20,
+    "difficulty": "facile",
+    "ingredientIds": ["filet-poulet-cru", "miel", "citron", "brocoli"],
+    "steps": [
+      "Fais dorer le poulet coupé en morceaux à la poêle.",
+      "Ajoute un filet de miel et de jus de citron, laisse caraméliser 3-4 minutes.",
+      "Fais cuire le brocoli à la vapeur pendant ce temps.",
+      "Sers le poulet accompagné du brocoli."
+    ]
+  },
+  {
+    "id": "crevettes-avocat-pamplemousse",
+    "name": "Salade crevettes, avocat et pamplemousse",
+    "icon": "🍤",
+    "prepTime": 12,
+    "difficulty": "facile",
+    "ingredientIds": ["crevettes", "avocat", "pamplemousse", "salade-verte"],
+    "steps": [
+      "Coupe l'avocat et le pamplemousse en quartiers.",
+      "Dispose la salade verte dans une assiette.",
+      "Ajoute l'avocat, le pamplemousse et les crevettes.",
+      "Assaisonne légèrement et sers frais."
+    ]
+  },
+  {
+    "id": "maquereau-pommes-terre-moutarde",
+    "name": "Maquereau, pommes de terre et sauce moutarde",
+    "icon": "🐟",
+    "prepTime": 20,
+    "difficulty": "facile",
+    "ingredientIds": ["maquereau", "pommes-de-terre", "moutarde", "echalote"],
+    "steps": [
+      "Fais cuire les pommes de terre à l'eau 15 minutes puis coupe-les en rondelles.",
+      "Mélange l'échalote émincée avec un peu de moutarde et d'huile.",
+      "Fais griller le maquereau à la poêle 4-5 minutes de chaque côté.",
+      "Sers le poisson avec les pommes de terre nappées de sauce moutarde."
+    ]
+  },
+  {
+    "id": "poulet-basquaise",
+    "name": "Poulet basquaise",
+    "icon": "🐔",
+    "prepTime": 30,
+    "difficulty": "facile",
+    "ingredientIds": ["filet-poulet-cru", "poivrons", "oignons", "tomates", "ail"],
+    "steps": [
+      "Fais dorer le poulet coupé en morceaux à la poêle, réserve.",
+      "Fais revenir les oignons, poivrons et l'ail émincés.",
+      "Ajoute les tomates coupées et remets le poulet.",
+      "Laisse mijoter 15 minutes à couvert et sers bien chaud."
+    ]
+  },
+  {
+    "id": "wok-boeuf-legumes",
+    "name": "Wok de bœuf aux légumes",
+    "icon": "🥢",
+    "prepTime": 20,
+    "difficulty": "facile",
+    "ingredientIds": ["veau-hache", "poivrons", "champignons", "sauce-soja", "gingembre-frais", "riz"],
+    "steps": [
+      "Cuis le riz selon le paquet.",
+      "Fais chauffer une poêle bien chaude et fais revenir le veau haché.",
+      "Ajoute les poivrons, les champignons et le gingembre râpé, fais sauter 5 minutes à feu vif.",
+      "Arrose de sauce soja et sers sur le riz."
+    ]
+  },
+  {
+    "id": "rillettes-cornichons-pain",
+    "name": "Rillettes, cornichons et pain de campagne",
+    "icon": "🍞",
+    "prepTime": 5,
+    "difficulty": "facile",
+    "ingredientIds": ["rillettes", "cornichons", "pain-de-campagne", "salade-verte"],
+    "steps": [
+      "Coupe le pain de campagne en tranches.",
+      "Tartine généreusement de rillettes.",
+      "Ajoute quelques cornichons coupés en rondelles.",
+      "Sers avec un peu de salade verte à côté."
+    ]
+  },
+  {
+    "id": "jambon-cru-figues-roquette",
+    "name": "Jambon cru, figues et roquette",
+    "icon": "🍈",
+    "prepTime": 8,
+    "difficulty": "facile",
+    "ingredientIds": ["jambon-cru", "figues", "roquette", "huile-olive"],
+    "steps": [
+      "Coupe les figues en quartiers.",
+      "Dispose la roquette dans une assiette.",
+      "Ajoute le jambon cru et les figues par-dessus.",
+      "Arrose d'un filet d'huile d'olive et sers frais."
+    ]
+  },
+  {
+    "id": "cotes-porc-pommes-poelees",
+    "name": "Côtes de porc et pommes poêlées",
+    "icon": "🍏",
+    "prepTime": 25,
+    "difficulty": "moyen",
+    "ingredientIds": ["cotes-porc", "pommes", "oignons", "beurre"],
+    "steps": [
+      "Fais dorer les côtes de porc dans le beurre 5-6 minutes de chaque côté, réserve.",
+      "Coupe les pommes en quartiers et fais-les poêler avec l'oignon émincé.",
+      "Laisse caraméliser légèrement 5 minutes.",
+      "Sers les côtes de porc avec les pommes poêlées."
+    ]
+  },
+  {
+    "id": "spaghetti-carbonara-traditionnelle",
+    "name": "Spaghetti carbonara traditionnelle",
+    "icon": "🍝",
+    "prepTime": 18,
+    "difficulty": "facile",
+    "ingredientIds": ["spaghetti", "lardons", "oeufs", "parmesan"],
+    "steps": [
+      "Cuis les spaghetti selon le paquet.",
+      "Fais revenir les lardons à sec dans une poêle.",
+      "Hors du feu, mélange les lardons avec un œuf battu et le parmesan râpé.",
+      "Égoutte les spaghetti et mélange avec la préparation encore chaude."
+    ]
+  },
+  {
+    "id": "saucisses-lentilles",
+    "name": "Saucisses et lentilles mijotées",
+    "icon": "🌭",
+    "prepTime": 30,
+    "difficulty": "facile",
+    "ingredientIds": ["saucisses", "lentilles", "oignons", "moutarde"],
+    "steps": [
+      "Fais dorer les saucisses à la poêle, réserve.",
+      "Fais revenir l'oignon émincé, ajoute les lentilles rincées et couvre d'eau.",
+      "Laisse mijoter 20 minutes à couvert.",
+      "Remets les saucisses dans la poêle, ajoute une pointe de moutarde et sers chaud."
+    ]
+  },
+  {
+    "id": "boudin-noir-pommes-puree",
+    "name": "Boudin noir, pommes et purée",
+    "icon": "🍎",
+    "prepTime": 25,
+    "difficulty": "moyen",
+    "ingredientIds": ["boudin-noir", "pommes", "pommes-de-terre", "beurre"],
+    "steps": [
+      "Fais cuire les pommes de terre à l'eau 20 minutes puis écrase-les avec le beurre.",
+      "Fais dorer le boudin noir à la poêle 4-5 minutes de chaque côté.",
+      "Dans la même poêle, fais poêler les pommes coupées en quartiers 5 minutes.",
+      "Sers le boudin avec les pommes et la purée."
+    ]
+  },
+  {
+    "id": "quiche-lorraine-maison",
+    "name": "Quiche lorraine maison",
+    "icon": "🥧",
+    "prepTime": 40,
+    "difficulty": "moyen",
+    "ingredientIds": ["pate-brisee", "lardons", "oeufs", "creme-fraiche", "fromage-rape"],
+    "steps": [
+      "Étale la pâte brisée dans un moule.",
+      "Fais revenir les lardons à sec quelques minutes, dispose-les sur la pâte.",
+      "Bats les œufs avec la crème fraîche et le fromage râpé, verse sur les lardons.",
+      "Fais cuire 30 minutes au four à 200°C."
+    ]
+  },
+  {
+    "id": "andouillette-pommes-de-terre-moutarde",
+    "name": "Andouillette, pommes de terre et moutarde",
+    "icon": "🍽️",
+    "prepTime": 22,
+    "difficulty": "moyen",
+    "ingredientIds": ["andouillette", "pommes-de-terre", "moutarde", "oignons"],
+    "steps": [
+      "Fais cuire les pommes de terre en dés à l'eau 15 minutes.",
+      "Fais dorer l'andouillette à la poêle avec l'oignon émincé.",
+      "Mélange les pommes de terre égouttées avec une pointe de moutarde.",
+      "Sers l'andouillette accompagnée des pommes de terre."
+    ]
+  },
+  {
+    "id": "terrine-cornichons-pain",
+    "name": "Terrine, cornichons et pain de campagne",
+    "icon": "🍞",
+    "prepTime": 5,
+    "difficulty": "facile",
+    "ingredientIds": ["terrine", "cornichons", "pain-de-campagne"],
+    "steps": [
+      "Coupe le pain de campagne en tranches.",
+      "Dépose une tranche de terrine sur chaque tranche de pain.",
+      "Ajoute quelques cornichons.",
+      "Sers en entrée ou en déjeuner léger."
+    ]
+  },
+  {
+    "id": "bacon-oeufs-brouilles",
+    "name": "Bacon et œufs brouillés",
+    "icon": "🥓",
+    "prepTime": 12,
+    "difficulty": "facile",
+    "ingredientIds": ["bacon", "oeufs", "pains-mie", "beurre"],
+    "steps": [
+      "Fais dorer le bacon à la poêle, réserve.",
+      "Fais fondre un peu de beurre dans la même poêle, verse les œufs battus.",
+      "Remue doucement à feu doux jusqu'à ce que les œufs soient crémeux.",
+      "Sers avec le bacon et des tranches de pain de mie grillées."
+    ]
+  },
+  {
+    "id": "chorizo-riz-poivrons",
+    "name": "Riz au chorizo et poivrons",
+    "icon": "🌶️",
+    "prepTime": 22,
+    "difficulty": "facile",
+    "ingredientIds": ["chorizo", "riz", "poivrons", "oignons"],
+    "steps": [
+      "Cuis le riz selon le paquet.",
+      "Fais revenir l'oignon et les poivrons coupés en dés.",
+      "Ajoute le chorizo coupé en rondelles et fais-le légèrement dorer.",
+      "Mélange avec le riz et sers bien chaud."
+    ]
+  },
+  {
+    "id": "pate-campagne-cornichons-pain",
+    "name": "Pâté de campagne, cornichons et pain",
+    "icon": "🥖",
+    "prepTime": 5,
+    "difficulty": "facile",
+    "ingredientIds": ["pate-campagne", "cornichons", "pain-de-campagne"],
+    "steps": [
+      "Coupe le pain de campagne en tranches.",
+      "Tartine de pâté de campagne.",
+      "Ajoute quelques cornichons.",
+      "Sers en entrée ou en repas léger."
+    ]
+  },
+  {
+    "id": "saucisses-puree-oignons",
+    "name": "Saucisses, purée et oignons fondants",
+    "icon": "🌭",
+    "prepTime": 25,
+    "difficulty": "facile",
+    "ingredientIds": ["saucisses", "pommes-de-terre", "lait", "oignons"],
+    "steps": [
+      "Fais cuire les pommes de terre à l'eau 20 minutes puis écrase-les avec le lait.",
+      "Fais dorer les saucisses à la poêle.",
+      "Dans la même poêle, fais fondre l'oignon émincé 8-10 minutes à feu doux.",
+      "Sers les saucisses avec la purée et les oignons fondants."
+    ]
+  },
+  {
+    "id": "gratin-ravioli-frais",
+    "name": "Gratin de ravioli frais",
+    "icon": "🍝",
+    "prepTime": 18,
+    "difficulty": "facile",
+    "ingredientIds": ["ravioli-frais", "fromage-rape", "creme-fraiche"],
+    "steps": [
+      "Fais cuire les ravioli frais 3-4 minutes à l'eau bouillante.",
+      "Égoutte-les et dispose-les dans un plat.",
+      "Nappe de crème fraîche et recouvre de fromage râpé.",
+      "Passe au four 10 minutes à 200°C jusqu'à ce que ce soit doré."
+    ]
+  },
+  {
+    "id": "panna-cotta-fruits-rouges",
+    "name": "Panna cotta aux fruits rouges",
+    "icon": "🍮",
+    "prepTime": 20,
+    "difficulty": "moyen",
+    "ingredientIds": ["gelatine", "creme-fraiche", "sucre", "fraises"],
+    "steps": [
+      "Fais ramollir la gélatine dans un peu d'eau froide.",
+      "Fais chauffer la crème fraîche avec le sucre sans bouillir, puis incorpore la gélatine essorée.",
+      "Verse dans des verrines et laisse prendre au réfrigérateur au moins 3 heures.",
+      "Ajoute des fraises coupées au moment de servir."
+    ]
+  },
+  {
+    "id": "mix-fruits-secs-maison",
+    "name": "Mélange de fruits secs maison",
+    "icon": "🥜",
+    "prepTime": 3,
+    "difficulty": "facile",
+    "ingredientIds": ["amandes", "noix-cajou", "raisins-secs", "pistaches"],
+    "steps": [
+      "Verse les amandes, les noix de cajou, les raisins secs et les pistaches dans un bol.",
+      "Mélange bien.",
+      "Répartis en petites portions pour la semaine.",
+      "Emporte partout comme encas coupe-faim."
+    ]
+  },
+  {
+    "id": "chips-guacamole-maison",
+    "name": "Guacamole maison et chips",
+    "icon": "🥑",
+    "prepTime": 10,
+    "difficulty": "facile",
+    "ingredientIds": ["chips", "avocat", "citron", "coriandre", "piment"],
+    "steps": [
+      "Écrase l'avocat à la fourchette dans un bol.",
+      "Ajoute le jus de citron, la coriandre ciselée et un peu de piment.",
+      "Mélange bien jusqu'à obtenir une texture crémeuse.",
+      "Sers avec des chips pour tremper."
+    ]
+  },
+  {
+    "id": "galette-riz-beurre-cacahuete-banane",
+    "name": "Galette de riz beurre de cacahuète-banane",
+    "icon": "🍌",
+    "prepTime": 3,
+    "difficulty": "facile",
+    "ingredientIds": ["galette-de-riz", "beurre-cacahuete", "bananes"],
+    "steps": [
+      "Tartine la galette de riz de beurre de cacahuète.",
+      "Ajoute des rondelles de banane par-dessus.",
+      "Sers aussitôt.",
+      "Idéal comme encas rapide avant ou après le sport."
+    ]
+  },
+  {
+    "id": "batonnets-legumes-houmous",
+    "name": "Bâtonnets de légumes et houmous",
+    "icon": "🥕",
+    "prepTime": 8,
+    "difficulty": "facile",
+    "ingredientIds": ["concombre", "poivrons", "celeri", "houmous"],
+    "steps": [
+      "Coupe le concombre, les poivrons et le céleri en bâtonnets.",
+      "Dispose le houmous au centre d'une assiette.",
+      "Range les bâtonnets tout autour.",
+      "Sers frais, à picorer."
+    ]
+  },
+  {
+    "id": "fruits-secs-chocolat-maison",
+    "name": "Dattes fourrées amandes et chocolat",
+    "icon": "🍫",
+    "prepTime": 8,
+    "difficulty": "facile",
+    "ingredientIds": ["dattes", "amandes", "chocolat-noir"],
+    "steps": [
+      "Fends les dattes en deux et retire le noyau.",
+      "Glisse une amande dans chaque datte.",
+      "Fais fondre le chocolat noir doucement au bain-marie.",
+      "Trempe les dattes dans le chocolat fondu et laisse durcir au frais."
+    ]
+  },
+  {
+    "id": "smoothie-mangue-orange",
+    "name": "Smoothie mangue-orange",
+    "icon": "🥭",
+    "prepTime": 5,
+    "difficulty": "facile",
+    "ingredientIds": ["mangue", "jus-orange", "graines-chia"],
+    "steps": [
+      "Coupe la mangue en morceaux.",
+      "Mixe la mangue avec le jus d'orange jusqu'à obtenir une texture lisse.",
+      "Verse dans un verre.",
+      "Parsème de graines de chia et sers frais."
+    ]
+  },
+  {
+    "id": "toast-miel-amandes",
+    "name": "Toast au miel et amandes",
+    "icon": "🍯",
+    "prepTime": 5,
+    "difficulty": "facile",
+    "ingredientIds": ["pain-cereales", "miel", "amandes"],
+    "steps": [
+      "Fais griller la tranche de pain aux céréales.",
+      "Arrose d'un filet de miel.",
+      "Parsème d'amandes concassées.",
+      "Sers aussitôt, en encas ou petit-déjeuner rapide."
+    ]
+  },
+  {
+    "id": "yaourt-nature-miel-noix",
+    "name": "Yaourt nature, miel et noix",
+    "icon": "🍯",
+    "prepTime": 3,
+    "difficulty": "facile",
+    "ingredientIds": ["yaourt-nature", "miel", "noix"],
+    "steps": [
+      "Verse le yaourt nature dans un bol.",
+      "Arrose d'un filet de miel.",
+      "Ajoute les noix concassées.",
+      "Mélange légèrement et déguste."
+    ]
+  },
+  {
+    "id": "compote-poire-maison",
+    "name": "Compote de poire maison",
+    "icon": "🍐",
+    "prepTime": 15,
+    "difficulty": "facile",
+    "ingredientIds": ["poire", "sucre", "citron"],
+    "steps": [
+      "Épluche et coupe les poires en morceaux.",
+      "Fais-les cuire dans une casserole avec un fond d'eau et un filet de citron.",
+      "Laisse mijoter 12-15 minutes jusqu'à ce que les poires soient fondantes.",
+      "Écrase à la fourchette, ajoute le sucre et laisse tiédir."
+    ]
+  },
+  {
+    "id": "barres-energetiques-maison",
+    "name": "Barres énergétiques maison",
+    "icon": "🍫",
+    "prepTime": 15,
+    "difficulty": "moyen",
+    "ingredientIds": ["flocons-avoine", "dattes", "beurre-cacahuete", "graines-chia"],
+    "steps": [
+      "Mixe les dattes dénoyautées avec le beurre de cacahuète jusqu'à obtenir une pâte.",
+      "Ajoute les flocons d'avoine et les graines de chia, mélange bien.",
+      "Étale la préparation dans un plat sur 1-2 cm d'épaisseur.",
+      "Place au réfrigérateur au moins 1 heure puis découpe en barres."
+    ]
+  },
+  {
+    "id": "salade-fruits-frais",
+    "name": "Salade de fruits frais à la menthe",
+    "icon": "🍓",
+    "prepTime": 10,
+    "difficulty": "facile",
+    "ingredientIds": ["kiwi", "fraises", "orange", "menthe-fraiche", "citron"],
+    "steps": [
+      "Épluche et coupe le kiwi et l'orange en morceaux.",
+      "Coupe les fraises en deux.",
+      "Mélange tous les fruits dans un saladier avec un filet de citron.",
+      "Parsème de menthe fraîche ciselée avant de servir bien frais."
+    ]
+  },
+  {
+    "id": "bananes-poelees-caramel",
+    "name": "Bananes poêlées au beurre et sucre",
+    "icon": "🍌",
+    "prepTime": 10,
+    "difficulty": "facile",
+    "ingredientIds": ["bananes", "beurre", "sucre", "citron"],
+    "steps": [
+      "Coupe les bananes en deux dans la longueur.",
+      "Fais fondre le beurre dans une poêle et saupoudre de sucre.",
+      "Fais dorer les bananes 2-3 minutes de chaque côté jusqu'à caramélisation.",
+      "Arrose d'un filet de citron et sers tiède."
+    ]
+  },
+  {
+    "id": "verrine-fromage-blanc-chocolat",
+    "name": "Verrine fromage blanc et chocolat",
+    "icon": "🍫",
+    "prepTime": 12,
+    "difficulty": "facile",
+    "ingredientIds": ["fromage-blanc", "chocolat-noir", "miel"],
+    "steps": [
+      "Fais fondre le chocolat noir doucement au bain-marie.",
+      "Mélange le fromage blanc avec un filet de miel.",
+      "Alterne les couches de fromage blanc et de chocolat fondu dans une verrine.",
+      "Place au frais 10 minutes avant de servir."
+    ]
+  },
+  {
+    "id": "pommes-au-four-miel",
+    "name": "Pommes au four, miel et amandes",
+    "icon": "🍎",
+    "prepTime": 30,
+    "difficulty": "facile",
+    "ingredientIds": ["pommes", "miel", "amandes", "beurre"],
+    "steps": [
+      "Évide le centre des pommes sans les percer jusqu'au fond.",
+      "Garnis chaque pomme d'un peu de beurre, de miel et d'amandes concassées.",
+      "Dispose dans un plat avec un fond d'eau.",
+      "Fais cuire 25 minutes au four à 180°C jusqu'à ce qu'elles soient fondantes."
+    ]
+  },
+  {
+    "id": "crumble-pommes-rapide",
+    "name": "Crumble aux pommes",
+    "icon": "🍰",
+    "prepTime": 35,
+    "difficulty": "moyen",
+    "ingredientIds": ["pommes", "farine", "sucre", "beurre"],
+    "steps": [
+      "Épluche et coupe les pommes en dés, dispose-les dans un plat.",
+      "Mélange la farine, le sucre et le beurre ramolli du bout des doigts pour obtenir une texture sableuse.",
+      "Répartis ce mélange sur les pommes.",
+      "Fais cuire 25-30 minutes au four à 180°C jusqu'à ce que le dessus soit doré."
+    ]
+  },
+  {
+    "id": "tarte-pommes-rapide",
+    "name": "Tarte aux pommes rapide",
+    "icon": "🥧",
+    "prepTime": 35,
+    "difficulty": "moyen",
+    "ingredientIds": ["pate-brisee", "pommes", "sucre", "beurre"],
+    "steps": [
+      "Étale la pâte brisée dans un moule.",
+      "Épluche et coupe les pommes en fines lamelles, dispose-les en rosace.",
+      "Saupoudre de sucre et ajoute quelques noisettes de beurre.",
+      "Fais cuire 25-30 minutes au four à 200°C jusqu'à ce que la pâte soit dorée."
+    ]
+  },
+  {
+    "id": "clementines-chocolat-fondant",
+    "name": "Clémentines et chocolat fondant",
+    "icon": "🍫",
+    "prepTime": 5,
+    "difficulty": "facile",
+    "ingredientIds": ["clementine", "chocolat-noir"],
+    "steps": [
+      "Épluche les clémentines et sépare les quartiers.",
+      "Fais fondre le chocolat noir doucement au bain-marie.",
+      "Trempe la moitié de chaque quartier de clémentine dans le chocolat fondu.",
+      "Laisse durcir quelques minutes au frais avant de déguster."
+    ]
   }
 ]
