@@ -327,60 +327,117 @@ function buildMainMealSlots(canteenDays: number[]): MainMealSlot[] {
 // précis, pas de jours entiers.
 //
 // `mealSlots` est déjà trié chronologiquement (jour 0 → 6, et pour un même
-// jour déjeuner avant dîner) — on répartit donc simplement les membres en
-// tourniquet sur cet ordre (`index % nombre de membres`), comme des cartes
-// distribuées une à une autour d'une table. Deux créneaux consécutifs dans
-// cette liste reçoivent alors TOUJOURS des membres différents (dès que
-// n ≥ 2, l'index avance de 1 à chaque créneau donc `index % n` change),
-// ce qui couvre à la fois le déjeuner/dîner d'un même jour (toujours
-// consécutifs dans la liste) ET la paire dîner d'un jour / déjeuner du jour
-// suivant (également consécutifs quand ce jour n'est pas un jour de
-// cantine).
+// jour déjeuner avant dîner). Chaque groupe interchangeable (les féculents
+// ensemble, ou les membres d'une même catégorie comme les viandes/poissons)
+// se partage les créneaux dejeuner/dîner de la semaine par un tourniquet
+// PONDÉRÉ : un produit acheté en grande quantité hérite de plus de créneaux
+// (pour ne pas tout recevoir d'un coup), un produit acheté en petite
+// quantité en hérite de moins — mais la somme des créneaux donnés aux
+// membres d'un groupe fait toujours EXACTEMENT le nombre de créneaux
+// disponibles, donc jamais deux membres d'un même groupe sur le même
+// créneau (voir weightedRoundRobin ci-dessous).
 //
-// Une précédente version utilisait la clé `(jour + décalage dîner) % n` :
-// elle évitait bien la répétition au sein d'un même jour, mais avait un
-// défaut caché — le dîner du jour J (valeur J+1) et le déjeuner du jour J+1
-// (valeur J+1, sans décalage) tombaient sur la MÊME valeur, donc toujours
-// le même membre des deux côtés. Résultat observé en production le 13 août
-// 2026 : chaque déjeuner d'un jour sans cantine (mercredi, samedi,
-// dimanche) reproduisait EXACTEMENT le dîner de la veille, plat pour plat
-// et gramme pour gramme — précisément le défaut que cette fonction est
-// censée éviter. Le tourniquet sur l'ordre réel des créneaux n'a pas ce
-// piège : il répartit aussi plus équitablement le nombre de créneaux par
-// membre (écart d'au plus 1 entre membres), ce qui évite au passage qu'un
-// membre n'hérite d'un seul créneau dans toute la semaine et y reçoive donc
-// sa quantité hebdomadaire entière d'un coup (ex : 720 g d'escalope de veau
-// observés en un seul dîner avec l'ancienne répartition).
+// Historique des correctifs (retours utilisateur + balayage automatisé de
+// ~350 profils le 20 août 2026) :
+//
+// 1. (13 août 2026) Le déjeuner recopiait EXACTEMENT le dîner de la veille
+//    sur les jours sans cantine. Cause : une clé `(jour + décalage dîner) %
+//    n` donnait la même valeur au dîner du jour J et au déjeuner du jour
+//    J+1. Corrigé par un tourniquet sur l'ordre chronologique réel des
+//    créneaux plutôt qu'une formule jour+décalage.
+//
+// 2. (20 août 2026) Un même repas (4 aliments identiques) revenait 3+ fois
+//    dans la semaine même à budget confortable, car toutes les catégories
+//    démarraient leur tourniquet au même créneau 0 et leurs membres
+//    "indice 0" retombaient ensemble. Corrigé en donnant à chaque groupe un
+//    décalage de crédit de départ différent (voir `phaseSeed` plus bas).
+//
+// 3. (20 août 2026) Portions déraisonnables (jusqu'à 720 g de viande en un
+//    seul repas) quand un membre n'héritait que d'un seul créneau sur ~10
+//    alors que sa quantité hebdomadaire totale était grande. Une première
+//    correction "élargit les créneaux de ce membre" a été tentée, mais en
+//    piochant des créneaux sans savoir qu'ils appartenaient déjà à un autre
+//    membre du MÊME groupe (ex. Pois chiches ET Haricots rouges, tous deux
+//    dans le groupe "épicerie", combinés dans un même repas) — remplacée
+//    par cette répartition pondérée qui donne le nombre de créneaux voulu
+//    au bon membre DÈS le départ, sans jamais chevaucher un autre membre du
+//    même groupe.
+const MAX_SERVINGS_PER_MEAL = 2.5;
+
+// Répartit `slotCount` créneaux (0..slotCount-1) entre les membres d'un
+// groupe interchangeable, proportionnellement à `weights` (nombre minimum
+// de créneaux voulu pour chaque membre — voir MAX_SERVINGS_PER_MEAL), en
+// garantissant : (a) chaque créneau va à UN SEUL membre (jamais de
+// chevauchement au sein du groupe), (b) les créneaux d'un même membre sont
+// étalés le plus régulièrement possible sur la semaine plutôt que collés
+// les uns aux autres (algorithme classique de répartition pondérée en
+// tourniquet, comme l'ordonnancement réseau "Weighted Round Robin").
+// `phaseSeed` désynchronise le point de départ d'un groupe à l'autre pour
+// que deux groupes différents (ex. féculents et légumes) ne retombent pas
+// systématiquement sur les mêmes créneaux semaine après semaine.
+function weightedRoundRobin(
+  weights: number[],
+  slotCount: number,
+  phaseSeed: number
+): number[][] {
+  const n = weights.length;
+  const totalWeight = weights.reduce((sum, w) => sum + w, 0) || 1;
+  const result: number[][] = weights.map(() => []);
+  const credits = weights.map((_, i) => ((i * 97 + phaseSeed * 31) % totalWeight) - totalWeight);
+
+  for (let slot = 0; slot < slotCount; slot++) {
+    for (let i = 0; i < n; i++) credits[i] += weights[i];
+    let winner = 0;
+    for (let i = 1; i < n; i++) {
+      if (credits[i] > credits[winner]) winner = i;
+    }
+    result[winner].push(slot);
+    credits[winner] -= totalWeight;
+  }
+
+  return result;
+}
+
 function buildMainMealSlotMap(
   items: ShoppingListItem[],
   mealSlots: MainMealSlot[]
 ): Map<string, number[]> {
   const map = new Map<string, number[]>();
 
-  function assignRotation(memberIds: string[]) {
-    const n = memberIds.length;
-    memberIds.forEach((id, memberIndex) => {
-      const allowedIndices = mealSlots
-        .map((_, index) => index)
-        .filter((index) => index % n === memberIndex);
-      map.set(id, allowedIndices);
-    });
+  // Poids d'un membre = nombre minimum de créneaux nécessaire pour que sa
+  // quantité hebdomadaire reste sous MAX_SERVINGS_PER_MEAL par repas — un
+  // produit acheté en grosse quantité hérite ainsi automatiquement de plus
+  // de créneaux qu'un produit acheté en petite quantité, sans jamais
+  // dépasser le nombre total de créneaux disponibles pour le groupe.
+  function weightFor(id: string): number {
+    const item = items.find((i) => i.product.id === id);
+    if (!item?.product.weeklyServings) return 1;
+    const total = item.product.weeklyServings * item.quantity;
+    return Math.max(1, Math.ceil(total / MAX_SERVINGS_PER_MEAL));
+  }
+
+  function assignGroup(memberIds: string[], phaseSeed: number) {
+    const weights = memberIds.map(weightFor);
+    const allocation = weightedRoundRobin(weights, mealSlots.length, phaseSeed);
+    memberIds.forEach((id, i) => map.set(id, allocation[i]));
   }
 
   const presentIds = new Set(items.map((item) => item.product.id));
   const feculentFamily = Array.from(FECULENT_IDS).filter((id) => presentIds.has(id));
-  if (feculentFamily.length > 1) assignRotation(feculentFamily);
+  if (feculentFamily.length > 1) assignGroup(feculentFamily, 0);
 
   // Rotation des accompagnements (légumes, fromages/charcuterie,
   // viandes/poissons...) : sans ça, TOUS les articles achetés dans une
   // catégorie pour ce créneau (pois chiches, concombre, salade, chou-fleur,
   // oignon, camembert, rillettes, jambon de dinde...) se retrouvaient
   // combinés dans le même repas — bien trop long à préparer pour un
-  // étudiant. On les fait plutôt tourner un seul par catégorie et par
-  // créneau, avec une part plus grosse à chaque apparition (ex : 250 g de
-  // blanc de dinde un soir plutôt que 130 g de poulet + sole + Saint-Jacques
-  // le même soir).
-  for (const category of CATEGORY_ORDER) {
+  // étudiant. On les fait plutôt tourner, un sous-ensemble par catégorie et
+  // par créneau, avec une part plus grosse à chaque apparition (ex : 250 g
+  // de blanc de dinde un soir plutôt que 130 g de poulet + sole +
+  // Saint-Jacques le même soir). Chaque catégorie reçoit une graine de
+  // phase distincte (voir note ci-dessus) pour ne pas retomber en même
+  // temps que les autres catégories sur les mêmes créneaux.
+  CATEGORY_ORDER.forEach((category, categoryIndex) => {
     const members = items
       .filter(
         (item) =>
@@ -391,8 +448,8 @@ function buildMainMealSlotMap(
           !map.has(item.product.id) // priorité aux familles déjà assignées (ex : pommes de terre/patate douce dans les féculents)
       )
       .map((item) => item.product.id);
-    if (members.length > 1) assignRotation(members);
-  }
+    if (members.length > 1) assignGroup(members, categoryIndex * 3 + 1);
+  });
 
   return map;
 }
