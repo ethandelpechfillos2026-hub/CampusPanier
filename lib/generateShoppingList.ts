@@ -341,12 +341,53 @@ function round(amount: number): number {
 // eux. Boulangerie reste à 3 : les petits-déjeuners sont déjà couverts par
 // la rotation des familles de pains/laitages, une variété plus large n'y
 // change pas grand-chose.
-const MAX_DISTINCT_PER_CATEGORY: Partial<Record<Product["category"], number>> = {
-  epicerie: 5,
+// Rôles partagés dans une assiette (voir generateMenu.ts, buildMainMealSlotMap,
+// même liste de catégories) : depuis le 1er septembre 2026, viande-poisson,
+// frais et boulangerie(déjeuner/dîner) tournent ENSEMBLE sur les mêmes
+// créneaux repas (un seul des trois par repas), et de même pour les
+// féculents avec les légumineuses/céréales de l'épicerie. Le plafond de
+// variété doit suivre ce même regroupement, sinon on continue d'acheter
+// autant de produits distincts qu'avant (jusqu'à 11, 17 avec le bonus grand
+// budget, répartis sur TROIS catégories) alors qu'il n'y a plus qu'UN SEUL
+// jeu de ~9 à 14 créneaux dans la semaine pour les servir tous — chaque
+// produit reçoit alors trop peu de créneaux et sa portion explose (jusqu'à
+// 900 g de pois chiches en un seul repas, constaté par balayage automatisé
+// juste après le regroupement des rôles). Boulangerie petit-déjeuner reste
+// à part (clé dédiée ci-dessous) : sa variété est déjà gérée par la
+// rotation des familles de pains (generateMenu.ts), pas par ce plafond.
+// Exporté : generateMenu.ts (buildMainMealSlotMap) réutilise exactement le
+// même ensemble pour répartir les repas — une seule et même définition du
+// rôle "garniture" pour la répartition ET pour le plafond de variété,
+// jamais deux listes qui pourraient diverger avec le temps.
+export const GARNITURE_ROLE_CATEGORIES: ReadonlySet<Product["category"]> = new Set<
+  Product["category"]
+>(["viande-poisson", "frais", "boulangerie"]);
+
+function isMainCourseProduct(product: Product): boolean {
+  return product.mealSlot === "dejeuner-diner";
+}
+
+// Clé de comptage utilisée par le plafond de variété — PAS forcément la
+// catégorie brute du produit, voir le commentaire ci-dessus.
+function varietyGroupKeyFor(product: Product): string {
+  if (
+    isMainCourseProduct(product) &&
+    (FECULENT_IDS.has(product.id) || product.category === "epicerie")
+  ) {
+    return "role:base";
+  }
+  if (isMainCourseProduct(product) && GARNITURE_ROLE_CATEGORIES.has(product.category)) {
+    return "role:garniture";
+  }
+  if (product.category === "boulangerie") return "boulangerie-petit-dejeuner";
+  return product.category;
+}
+
+const MAX_DISTINCT_PER_VARIETY_GROUP: Partial<Record<string, number>> = {
+  "role:base": 5,
+  "role:garniture": 5,
   "fruits-legumes": 5,
-  frais: 4,
-  boulangerie: 3,
-  "viande-poisson": 4,
+  "boulangerie-petit-dejeuner": 3,
 };
 
 // Au-delà de ce budget, le plafond de variété ci-dessus augmente plutôt que
@@ -354,26 +395,46 @@ const MAX_DISTINCT_PER_CATEGORY: Partial<Record<Product["category"], number>> = 
 // des repas qui se ressemblent est normal et acceptable, mais avec un gros
 // budget et de la marge, rien ne justifie de se limiter à si peu de produits
 // différents. Chaque tranche de VARIETY_BUDGET_STEP € au-dessus du seuil
-// débloque un produit distinct de plus par catégorie, jusqu'à
-// VARIETY_MAX_BONUS. Boulangerie n'en profite pas : le petit-déjeuner est
-// déjà couvert par la rotation des familles de pains (voir
-// generateMenu.ts), plus de variété n'y change pas grand-chose.
+// débloque un produit distinct de plus par groupe, jusqu'à VARIETY_MAX_BONUS.
+// Boulangerie petit-déjeuner n'en profite pas : le petit-déjeuner est déjà
+// couvert par la rotation des familles de pains (voir generateMenu.ts), plus
+// de variété n'y change pas grand-chose.
 const VARIETY_BUDGET_THRESHOLD = 80;
 const VARIETY_BUDGET_STEP = 20;
 const VARIETY_MAX_BONUS = 3;
 
-function distinctCapFor(
-  category: Product["category"],
-  budget: number
-): number | undefined {
-  const base = MAX_DISTINCT_PER_CATEGORY[category];
-  if (base === undefined || category === "boulangerie") return base;
+function distinctCapFor(product: Product, budget: number): number | undefined {
+  const key = varietyGroupKeyFor(product);
+  const base = MAX_DISTINCT_PER_VARIETY_GROUP[key];
+  if (base === undefined || key === "boulangerie-petit-dejeuner") return base;
   if (budget < VARIETY_BUDGET_THRESHOLD) return base;
   const bonus = Math.min(
     VARIETY_MAX_BONUS,
     1 + Math.floor((budget - VARIETY_BUDGET_THRESHOLD) / VARIETY_BUDGET_STEP)
   );
   return base + bonus;
+}
+
+// Produits sans AUCUNE valeur nutritionnelle qu'on ne laisse jamais
+// l'algorithme ajouter tout seul juste parce qu'ils sont bon marché — ex :
+// l'eau gazeuse (0 kcal, 0,60€) survivait presque toujours jusqu'à la fin
+// du remplissage (phases 2/3, marge de fin) : le malus de score sur les
+// produits quasi sans calories (voir score() ci-dessus) ne fait que la
+// pousser en DERNIER dans l'ordre de remplissage, pas l'exclure — et
+// "dernier" veut quand même dire "achetée" tant qu'il reste ne serait-ce
+// que 0,60€ de budget, ce qui arrive presque à chaque génération. Résultat
+// observé (retour utilisateur, 1er septembre 2026) : de l'eau gazeuse en
+// collation absolument tous les jours de la semaine, sans jamais nourrir
+// personne. Ne s'applique qu'au remplissage AUTOMATIQUE (phases 2/3 ci-
+// dessous) : un choix explicite via "Je choisis mes ingrédients"
+// (allowedProductIds) reste toujours respecté, voir isAutoFillWorthy.
+function isZeroNutritionFiller(product: Product): boolean {
+  return product.mealSlot === "encas-extra" && product.kcal === 0 && !product.isCondiment;
+}
+
+function isAutoFillWorthy(product: Product, allowedProductIds: Set<string> | undefined): boolean {
+  if (allowedProductIds) return true; // choix explicite de la personne, jamais filtré
+  return !isZeroNutritionFiller(product);
 }
 
 const DEFAULT_MAX_QUANTITY_PER_ITEM = 3;
@@ -805,32 +866,37 @@ function generateShoppingListCore(
   // ajout, la priorité à l'efficacité s'arrête dès que l'objectif est
   // couvert, et le remplissage redevient piloté par les préférences
   // habituelles pour le reste du budget.
-  const categoryCounts = new Map<Product["category"], number>();
+  const categoryCounts = new Map<string, number>();
   for (const p of selected) {
-    categoryCounts.set(p.category, (categoryCounts.get(p.category) ?? 0) + 1);
+    const key = varietyGroupKeyFor(p);
+    categoryCounts.set(key, (categoryCounts.get(key) ?? 0) + 1);
   }
 
-  let phase2Pool = filtered.filter((p) => !selectedIds.has(p.id));
+  let phase2Pool = filtered.filter(
+    (p) => !selectedIds.has(p.id) && isAutoFillWorthy(p, allowedProductIds)
+  );
   while (phase2Pool.length > 0) {
     const shortfallNow = isCalorieShortfall();
     phase2Pool.sort((a, b) => compareForBudgetFill(a, b, shortfallNow));
     const product = phase2Pool[0];
     phase2Pool = phase2Pool.slice(1);
 
-    const cap = distinctCapFor(product.category, preferences.budget);
-    const atCap =
-      cap !== undefined && (categoryCounts.get(product.category) ?? 0) >= cap;
+    const groupKey = varietyGroupKeyFor(product);
+    const cap = distinctCapFor(product, preferences.budget);
+    const atCap = cap !== undefined && (categoryCounts.get(groupKey) ?? 0) >= cap;
 
     if (atCap) {
-      // Plafond atteint pour cette catégorie : plutôt qu'un produit
-      // différent de plus, on prend une quantité supplémentaire du meilleur
-      // produit déjà choisi dans cette catégorie (dans la limite de
-      // MAX_QUANTITY_PER_ITEM) — plus cohérent à cuisiner qu'une multitude
-      // de viandes/poissons différents en une seule portion chacun.
+      // Plafond atteint pour ce groupe : plutôt qu'un produit différent de
+      // plus, on prend une quantité supplémentaire du meilleur produit déjà
+      // choisi dans ce même GROUPE (pas juste la même catégorie brute,
+      // depuis que viande-poisson/frais/boulangerie — et féculents/épicerie
+      // — partagent un même rôle, voir varietyGroupKeyFor) — dans la limite
+      // de MAX_QUANTITY_PER_ITEM, plus cohérent à cuisiner qu'une multitude
+      // de produits différents en une seule portion chacun.
       const boostCandidate = selected
         .filter(
           (p) =>
-            p.category === product.category &&
+            varietyGroupKeyFor(p) === groupKey &&
             (quantities.get(p.id) ?? 1) < maxQuantityFor(p.category)
         )
         .sort((a, b) => compareForBudgetFill(a, b, shortfallNow))[0];
@@ -849,10 +915,7 @@ function generateShoppingListCore(
       selected.push(product);
       selectedIds.add(product.id);
       quantities.set(product.id, 1);
-      categoryCounts.set(
-        product.category,
-        (categoryCounts.get(product.category) ?? 0) + 1
-      );
+      categoryCounts.set(groupKey, (categoryCounts.get(groupKey) ?? 0) + 1);
       total += product.price;
     }
   }
@@ -884,26 +947,25 @@ function generateShoppingListCore(
     }
 
     if (freedBudget > 0) {
-      let extraPool = filtered.filter((p) => !selectedIds.has(p.id));
+      let extraPool = filtered.filter(
+        (p) => !selectedIds.has(p.id) && isAutoFillWorthy(p, allowedProductIds)
+      );
       while (extraPool.length > 0) {
         const shortfallNow = isCalorieShortfall();
         extraPool.sort((a, b) => compareForBudgetFill(a, b, shortfallNow));
         const product = extraPool[0];
         extraPool = extraPool.slice(1);
 
-        const cap = distinctCapFor(product.category, preferences.budget);
-        const atCap =
-          cap !== undefined && (categoryCounts.get(product.category) ?? 0) >= cap;
+        const groupKey = varietyGroupKeyFor(product);
+        const cap = distinctCapFor(product, preferences.budget);
+        const atCap = cap !== undefined && (categoryCounts.get(groupKey) ?? 0) >= cap;
         if (atCap) continue;
 
         if (total + product.price <= preferences.budget) {
           selected.push(product);
           selectedIds.add(product.id);
           quantities.set(product.id, 1);
-          categoryCounts.set(
-            product.category,
-            (categoryCounts.get(product.category) ?? 0) + 1
-          );
+          categoryCounts.set(groupKey, (categoryCounts.get(groupKey) ?? 0) + 1);
           total += product.price;
         }
       }
@@ -922,7 +984,9 @@ function generateShoppingListCore(
   const LEFTOVER_VARIETY_THRESHOLD = 3;
   const MAX_LEFTOVER_VARIETY_ITEMS = 4;
   if (preferences.budget - total >= LEFTOVER_VARIETY_THRESHOLD) {
-    let leftoverPool = filtered.filter((p) => !selectedIds.has(p.id));
+    let leftoverPool = filtered.filter(
+      (p) => !selectedIds.has(p.id) && isAutoFillWorthy(p, allowedProductIds)
+    );
     let leftoverAdded = 0;
     while (leftoverPool.length > 0 && leftoverAdded < MAX_LEFTOVER_VARIETY_ITEMS) {
       const shortfallNow = isCalorieShortfall();

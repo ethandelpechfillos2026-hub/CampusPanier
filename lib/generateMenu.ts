@@ -1,6 +1,5 @@
-import { FECULENT_IDS } from "@/lib/generateShoppingList";
+import { FECULENT_IDS, GARNITURE_ROLE_CATEGORIES } from "@/lib/generateShoppingList";
 import {
-  CATEGORY_ORDER,
   MealOutEntry,
   MEAL_SLOT_ORDER,
   MealSlot,
@@ -398,6 +397,36 @@ function weightedRoundRobin(
   return result;
 }
 
+// Un repas ne doit combiner que trois RÔLES au maximum : une base (féculent
+// ou légumineuse), une garniture (viande/poisson, charcuterie-fromage-tofu,
+// ou pain garni) et un légume — comme un vrai plat étudiant simple ("des
+// pâtes avec un steak haché"). Avant ce regroupement par rôle, chacune des
+// CINQ catégories du catalogue (épicerie, fruits-légumes, frais,
+// boulangerie, viande-poisson) tournait de façon complètement indépendante
+// des autres — et comme chaque rotation, par construction, donne À CHAQUE
+// créneau un article à L'UN de ses membres (jamais de créneau "vide" pour
+// une catégorie présente dans le panier), ÇA FAISAIT SIX ARTICLES DANS
+// CHAQUE REPAS DE LA SEMAINE, SANS EXCEPTION, dès que les six catégories/
+// familles étaient représentées dans le panier — vérifié par un script de
+// reproduction (__repro_meal_complexity.ts, profil Mode Performance ~3700
+// kcal) : 14/14 repas de la semaine à exactement 6 produits différents.
+// Retour utilisateur (1er septembre 2026), verbatim : dîner à "quatre-vingt-
+// dix grammes de chou vert, cent quinze grammes de pois chiche, vingt-cinq
+// grammes de focaccia, cent-vingt grammes de semoule de couscous, deux-
+// cent-quarante grammes de poulet rôti et soixante grammes de tempeh" — "je
+// ne vois pas pourquoi tu te fais chier à mettre plein de trucs alors qu'on
+// peut juste simplifier la vie", "des pâtes avec des steaks hachés [...],
+// des trucs simples". Ces trois rôles ci-dessous remplacent l'ancienne
+// boucle CATEGORY_ORDER : à l'intérieur d'un même rôle, toujours une seule
+// rotation (donc jamais deux membres du même rôle le même repas, comme
+// avant), mais les rôles eux-mêmes ne sont plus que TROIS au lieu de SIX,
+// donc au plus 3 produits par repas au lieu de 6.
+const BASE_ROLE_CATEGORIES = new Set<Product["category"]>(["epicerie"]);
+// GARNITURE_ROLE_CATEGORIES vient de generateShoppingList.ts (voir import en
+// haut du fichier) — même ensemble utilisé là-bas pour le plafond de
+// variété, une seule définition pour les deux, jamais deux listes qui
+// pourraient diverger avec le temps.
+
 function buildMainMealSlotMap(
   items: ShoppingListItem[],
   mealSlots: MainMealSlot[]
@@ -417,39 +446,63 @@ function buildMainMealSlotMap(
   }
 
   function assignGroup(memberIds: string[], phaseSeed: number) {
+    if (memberIds.length === 0) return;
     const weights = memberIds.map(weightFor);
     const allocation = weightedRoundRobin(weights, mealSlots.length, phaseSeed);
     memberIds.forEach((id, i) => map.set(id, allocation[i]));
   }
 
-  const presentIds = new Set(items.map((item) => item.product.id));
-  const feculentFamily = Array.from(FECULENT_IDS).filter((id) => presentIds.has(id));
-  if (feculentFamily.length > 1) assignGroup(feculentFamily, 0);
+  const isMainCandidate = (product: Product) =>
+    product.mealSlot === "dejeuner-diner" &&
+    Boolean(product.weeklyServings) &&
+    !product.isCondiment;
 
-  // Rotation des accompagnements (légumes, fromages/charcuterie,
-  // viandes/poissons...) : sans ça, TOUS les articles achetés dans une
-  // catégorie pour ce créneau (pois chiches, concombre, salade, chou-fleur,
-  // oignon, camembert, rillettes, jambon de dinde...) se retrouvaient
-  // combinés dans le même repas — bien trop long à préparer pour un
-  // étudiant. On les fait plutôt tourner, un sous-ensemble par catégorie et
-  // par créneau, avec une part plus grosse à chaque apparition (ex : 250 g
-  // de blanc de dinde un soir plutôt que 130 g de poulet + sole +
-  // Saint-Jacques le même soir). Chaque catégorie reçoit une graine de
-  // phase distincte (voir note ci-dessus) pour ne pas retomber en même
-  // temps que les autres catégories sur les mêmes créneaux.
-  CATEGORY_ORDER.forEach((category, categoryIndex) => {
-    const members = items
-      .filter(
-        (item) =>
-          item.product.category === category &&
-          item.product.mealSlot === "dejeuner-diner" &&
-          item.product.weeklyServings &&
-          !item.product.isCondiment &&
-          !map.has(item.product.id) // priorité aux familles déjà assignées (ex : pommes de terre/patate douce dans les féculents)
-      )
-      .map((item) => item.product.id);
-    if (members.length > 1) assignGroup(members, categoryIndex * 3 + 1);
-  });
+  // Rôle "Base" : féculents (riz, pâtes, pommes de terre...) ET
+  // légumineuses/céréales de l'épicerie (lentilles, pois chiches, quinoa,
+  // semoule, haricots...) — des ALTERNATIVES entre elles, jamais riz ET
+  // lentilles le même soir. FECULENT_IDS d'abord (peu importe leur
+  // catégorie réelle, ex : pommes de terre/patate douce sont catégorie
+  // "fruits-legumes" mais jouent ce rôle) pour rester la même liste que
+  // generateShoppingList.ts.
+  const baseRole = items
+    .filter(
+      (item) =>
+        isMainCandidate(item.product) &&
+        (FECULENT_IDS.has(item.product.id) ||
+          BASE_ROLE_CATEGORIES.has(item.product.category))
+    )
+    .map((item) => item.product.id);
+  assignGroup(baseRole, 0);
+
+  // Rôle "Garniture" : viande/poisson, charcuterie-fromage-tofu-tempeh
+  // (frais) et pains garnis (tortillas, naan, focaccia...) — trois
+  // catégories catalogue différentes, mais un seul et même rôle dans
+  // l'assiette (la partie protéinée/copieuse du repas). Les regrouper
+  // garantit qu'un seul des trois joue ce rôle par repas plutôt que les
+  // trois en même temps (poulet + tempeh + focaccia le même dîner, comme
+  // remonté par l'utilisateur).
+  const garnitureRole = items
+    .filter(
+      (item) =>
+        isMainCandidate(item.product) &&
+        GARNITURE_ROLE_CATEGORIES.has(item.product.category)
+    )
+    .map((item) => item.product.id);
+  assignGroup(garnitureRole, 7);
+
+  // Rôle "Légume" : inchangé dans son principe (une seule rotation, un seul
+  // légume par repas) — exclut les FECULENT_IDS déjà pris par le rôle
+  // "Base" ci-dessus (pommes de terre/patate douce sont catégorie
+  // "fruits-legumes" mais déjà affectées comme base, pas comme légume).
+  const legumeRole = items
+    .filter(
+      (item) =>
+        isMainCandidate(item.product) &&
+        item.product.category === "fruits-legumes" &&
+        !FECULENT_IDS.has(item.product.id)
+    )
+    .map((item) => item.product.id);
+  assignGroup(legumeRole, 13);
 
   return map;
 }
