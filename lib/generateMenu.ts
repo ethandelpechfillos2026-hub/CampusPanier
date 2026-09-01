@@ -216,27 +216,26 @@ function round2(value: number): number {
 // pâtes...), ou une fraction lisible (¼, ½, ¾, 1, 1 ¼...) pour les produits
 // qui se comptent à l'unité (baguette, œuf...). Le résultat n'est jamais 0
 // tant que le produit est présent ce jour-là (minimum ¼ unité affiché).
-// Fruits en collation qui se comptent naturellement à la pièce (une unité
-// précise dans servingUnit — "banane", "pomme", "orange" — pas le "portion"
-// générique des fruits vendus en barquette/grappe, où le poids reste plus
-// clair qu'une fraction de "portion"). Sans cette exception, ces fruits
-// s'affichaient en grammes malgré leur servingUnit dédié — retour
-// utilisateur (1er septembre 2026) : "les fruits, tu parles en grammes et
-// pas en pièce".
-function isWholeFruitCountedByPiece(product: Product): boolean {
-  return (
-    product.category === "fruits-legumes" &&
-    product.mealSlot === "encas-extra" &&
-    Boolean(product.servingUnit) &&
-    product.servingUnit !== "portion"
-  );
+// Collations (encas-extra) : toujours affichées en unités/portions plutôt
+// qu'en grammes, quel que soit le servingUnit exact ("banane", "galette",
+// "portion"...) — un premier correctif ne couvrait que les fruits avec un
+// servingUnit spécifique (banane/pomme/orange), ce qui laissait en grammes
+// des produits pourtant tout aussi "comptables" comme les raisins secs,
+// dattes ou galettes de riz. Retour utilisateur (1er septembre 2026) :
+// "raisin sec quinze grammes, datte quinze grammes, galette de riz dix
+// grammes [...] je préférerais que tu parles en unités [...] une galette de
+// riz, trois prunes". "Portion" reste un mot français normal pour une
+// collation ("une portion de chips", "2 portions de raisins secs") — pas
+// besoin de le traiter différemment des unités plus spécifiques.
+function isSnackCountedByPiece(product: Product): boolean {
+  return product.mealSlot === "encas-extra" && Boolean(product.servingUnit);
 }
 
 export function formatDayEntryQuantity(
   product: Product,
   rawCount: number
 ): string {
-  if (product.gramsPerServing && !isWholeFruitCountedByPiece(product)) {
+  if (product.gramsPerServing && !isSnackCountedByPiece(product)) {
     const grams = Math.max(
       5,
       Math.round((rawCount * product.gramsPerServing) / 5) * 5
@@ -299,16 +298,24 @@ const PRODUCT_FAMILIES: string[][] = [
     "clementine", "abricot", "prune", "cerises", "figues", "grenade",
     "papaye", "mure", "groseille",
   ],
+  // Fruits secs en collation (raisins secs, dattes) — même logique que les
+  // fruits frais ci-dessus, dans une famille séparée : un fruit sec et un
+  // fruit frais ne sont pas vraiment redondants (peuvent coexister), mais
+  // deux fruits secs le même jour, si.
+  ["raisins-secs", "dattes"],
+  // Fruits à coque/graines apéritives en collation — même logique.
+  ["noix-cajou", "noix", "pistaches"],
   // Féculents principaux du déjeuner/dîner — voir FECULENT_IDS dans
   // generateShoppingList.ts, la même liste sert aux deux endroits.
   Array.from(FECULENT_IDS),
-  // Douceurs/collations sucrées — pour éviter d'empiler chips + cookies +
-  // financiers + tiramisu le même jour quand plusieurs sont sélectionnés.
+  // Douceurs/collations sucrées et salées — pour éviter d'empiler chips +
+  // cookies + financiers + tiramisu + gressins le même jour quand plusieurs
+  // sont sélectionnés.
   [
     "chips", "biscuits-sables", "cookie", "financier", "madeleine",
     "muffin", "tarte-fine", "galette-bretonne", "popcorn", "gateaux-secs",
     "bonbons", "chocolat-noir", "barres-cereales", "creme-fouettee",
-    "mousse-chocolat", "tiramisu", "flan", "glace-vanille",
+    "mousse-chocolat", "tiramisu", "flan", "glace-vanille", "gressins",
   ],
 ];
 
