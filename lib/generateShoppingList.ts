@@ -181,6 +181,20 @@ function effectiveFibresLevel(product: Product): NutriLevel {
   return levelFromGrams(product.nutritionPer100g?.fibresG, FIBRES_LOW, FIBRES_HIGH);
 }
 
+// Fromages "plateau" seuls (pas un vrai plat, plutôt un accompagnement/
+// dessert) — voir le malus dédié dans score() ci-dessous. Charcuterie/tofu/
+// tempeh/quiche en sont volontairement absents : ce sont déjà de vrais
+// plats protéinés, pas juste un fromage.
+const PLAIN_CHEESE_IDS = new Set([
+  "fromage-rape",
+  "mozzarella",
+  "camembert",
+  "roquefort",
+  "ricotta",
+  "brie",
+  "comte",
+]);
+
 // Score a product against the user's nutritional preferences. This is a
 // simple heuristic to prioritize matching items when filling the basket —
 // not a real nutrition engine (no per-meal or per-day calorie modeling).
@@ -303,6 +317,23 @@ function score(product: Product, preferences: UserPreferences): number {
   // est justement le plus précieux et devrait aller à de la vraie nourriture.
   if (product.kcal < 20) {
     s -= 5;
+  }
+
+  // Léger malus pour les fromages "plateau" seuls (pas un vrai plat, plutôt
+  // un accompagnement/dessert dans la cuisine française) — sans lui, ils
+  // concurrencent à égalité viande/poisson et charcuterie/tofu/tempeh pour
+  // le même rôle de "garniture" du repas (voir generateMenu.ts,
+  // GARNITURE_ROLE_CATEGORIES), ce qui pouvait donner un dîner sans AUCUNE
+  // vraie source de protéines animale/végétale (ex : mozzarella + petits
+  // pois + pois chiches). Retour utilisateur (1er septembre 2026) : "je
+  // trouve que mozzarella c'est quand même pas mal gras [...] un petit
+  // morceau de viande ou des œufs, [...] pour avoir une source de
+  // protéines". Volontairement modeste (pas une exclusion) : le fromage
+  // reste un choix valide, juste plus rarement LA garniture du repas.
+  // Charcuterie/tofu/tempeh/quiche ne sont volontairement PAS dans cette
+  // liste : ce sont déjà de vrais plats protéinés, pas juste un fromage.
+  if (PLAIN_CHEESE_IDS.has(product.id)) {
+    s -= 2;
   }
 
   return s;

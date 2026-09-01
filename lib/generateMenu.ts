@@ -216,11 +216,27 @@ function round2(value: number): number {
 // pâtes...), ou une fraction lisible (¼, ½, ¾, 1, 1 ¼...) pour les produits
 // qui se comptent à l'unité (baguette, œuf...). Le résultat n'est jamais 0
 // tant que le produit est présent ce jour-là (minimum ¼ unité affiché).
+// Fruits en collation qui se comptent naturellement à la pièce (une unité
+// précise dans servingUnit — "banane", "pomme", "orange" — pas le "portion"
+// générique des fruits vendus en barquette/grappe, où le poids reste plus
+// clair qu'une fraction de "portion"). Sans cette exception, ces fruits
+// s'affichaient en grammes malgré leur servingUnit dédié — retour
+// utilisateur (1er septembre 2026) : "les fruits, tu parles en grammes et
+// pas en pièce".
+function isWholeFruitCountedByPiece(product: Product): boolean {
+  return (
+    product.category === "fruits-legumes" &&
+    product.mealSlot === "encas-extra" &&
+    Boolean(product.servingUnit) &&
+    product.servingUnit !== "portion"
+  );
+}
+
 export function formatDayEntryQuantity(
   product: Product,
   rawCount: number
 ): string {
-  if (product.gramsPerServing) {
+  if (product.gramsPerServing && !isWholeFruitCountedByPiece(product)) {
     const grams = Math.max(
       5,
       Math.round((rawCount * product.gramsPerServing) / 5) * 5
@@ -253,9 +269,36 @@ const PRODUCT_FAMILIES: string[][] = [
   ],
   // Laitiers du petit-déjeuner.
   ["yaourt-nature", "yaourt-grec", "fromage-blanc", "skyr", "petit-suisse", "faisselle", "cottage-cheese", "yaourt-soja"],
-  // Variantes de lait à boire — redondantes entre elles (pas de raison
-  // d'avoir "lait" ET "lait entier" ET "lait écrémé" le même matin).
-  ["lait", "lait-entier", "lait-ecreme"],
+  // Boissons "lait" à boire — laits animaux ET végétaux ensemble : avant,
+  // seuls "lait"/"lait-entier"/"lait-ecreme" étaient regroupés, donc
+  // "lait-soja" (ou coco/avoine/amande) s'ajoutait EN PLUS d'un lait animal
+  // au lieu de le remplacer un jour sur deux — retour utilisateur (1er
+  // septembre 2026) : lait demi-écrémé ET lait de soja la même semaine,
+  // redondant.
+  ["lait", "lait-entier", "lait-ecreme", "lait-soja", "lait-coco", "lait-avoine", "lait-amande"],
+  // Pâtes à tartiner sucrées du petit-déjeuner — sans cette famille, miel +
+  // confiture + pâte à tartiner + beurre de cacahuète (aucune n'étant dans
+  // une famille) s'affichaient TOUTES les 7 jours de la semaine à la fois
+  // (même bug que féculents/pains avant leur propre famille : un produit
+  // hors famille est étalé sur tous les jours, voir buildFamilyDayMap) —
+  // retour utilisateur (1er septembre 2026) : petit-déjeuner "surchargé"
+  // avec miel, sirop d'érable et confiture tous présents en même temps.
+  ["miel", "confiture", "pate-a-tartiner", "beurre-cacahuete", "sirop-erable"],
+  // Variantes de beurre — une seule à la fois plutôt que beurre + beurre
+  // allégé + beurre demi-sel le même matin.
+  ["beurre", "beurre-demi-sel", "beurre-allege"],
+  // Fruits frais en collation — même bug que les pâtes à tartiner ci-dessus :
+  // sans famille, chaque variété achetée s'affichait TOUS les jours en même
+  // temps (jusqu'à 6 fruits différents par jour en très petite quantité
+  // chacun) au lieu de tourner, un ou deux fruits par jour. Retour
+  // utilisateur (1er septembre 2026) : "6 variétés de fruits différents
+  // avec des grammages faibles, je ne vois pas trop l'utilité".
+  [
+    "bananes", "pommes", "orange", "kiwi", "ananas", "mangue", "pasteque",
+    "fraises", "framboises", "myrtilles", "raisin", "poire", "pamplemousse",
+    "clementine", "abricot", "prune", "cerises", "figues", "grenade",
+    "papaye", "mure", "groseille",
+  ],
   // Féculents principaux du déjeuner/dîner — voir FECULENT_IDS dans
   // generateShoppingList.ts, la même liste sert aux deux endroits.
   Array.from(FECULENT_IDS),
