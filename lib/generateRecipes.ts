@@ -37,13 +37,42 @@ export function countDietCompatibleRecipes(preferences: UserPreferences): number
   return recipes.filter((recipe) => isRecipeCompatible(recipe, preferences)).length;
 }
 
+export type RecipeMealSlot = "petit-dejeuner" | "dejeuner-diner";
+
+// Dérive le créneau d'une recette à partir des mealSlot de ses ingrédients
+// non-condiments — pas de nouveau champ à ajouter/maintenir dans
+// data/recipes.json (148 recettes), juste une lecture de ce que ses
+// ingrédients impliquent déjà. Un SEUL ingrédient "dejeuner-diner" suffit à
+// classer la recette "dejeuner-diner" (un vrai plat, même avec un peu de
+// lait ou un yaourt en accompagnement) ; sinon "petit-dejeuner" par défaut
+// (pain, céréales, fruits, laitages...). Sert à RecipesContent.tsx pour
+// proposer une recette de petit-déjeuner pour le matin et une recette de
+// vrai repas pour le midi/soir, plutôt qu'un mélange des deux — retour
+// utilisateur (1er septembre 2026) : "lundi, la recette que j'ai en
+// premier, c'est le petit-déjeuner [...] juste en dessous, la recette du
+// midi ou du soir".
+export function getRecipeMealSlot(recipe: Recipe): RecipeMealSlot {
+  const nonCondimentIngredients = recipe.ingredientIds
+    .map((id) => getProduct(id))
+    .filter((p): p is Product => Boolean(p))
+    .filter((p) => !p.isCondiment);
+  const hasMainCourseIngredient = nonCondimentIngredients.some(
+    (p) => p.mealSlot === "dejeuner-diner"
+  );
+  return hasMainCourseIngredient ? "dejeuner-diner" : "petit-dejeuner";
+}
+
 export function suggestRecipes(
   cartIds: Set<string>,
   preferences: UserPreferences,
-  limit = 4
+  limit = 4,
+  mealSlotFilter?: RecipeMealSlot
 ): RecipeMatch[] {
   return recipes
     .filter((recipe) => isRecipeCompatible(recipe, preferences))
+    .filter(
+      (recipe) => !mealSlotFilter || getRecipeMealSlot(recipe) === mealSlotFilter
+    )
     .map((recipe) => {
       const ingredients = recipe.ingredientIds
         .map((id) => getProduct(id))

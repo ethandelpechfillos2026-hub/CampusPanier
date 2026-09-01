@@ -4,6 +4,7 @@ import { useMemo, useState } from "react";
 import Mascot from "@/components/Mascot";
 import {
   buildWeeklyPlan,
+  DAY_SLOT_LABEL_KEYS,
   DAY_SLOT_ORDER,
   WEEKDAY_LABEL_KEYS,
 } from "@/lib/generateMenu";
@@ -15,6 +16,7 @@ import { recordRecipeViewed } from "@/lib/stats";
 import {
   GeneratedRecipe,
   Recipe,
+  RecipeMatch,
   ShoppingListResult,
   UserPreferences,
 } from "@/lib/types";
@@ -51,6 +53,123 @@ function RecipeThumbnail({ recipe }: { recipe: Recipe }) {
   );
 }
 
+// Bloc de recettes réutilisé pour chaque repas du jour (petit-déjeuner,
+// déjeuner, dîner) — même rendu qu'avant (une seule liste), juste répété
+// une fois par créneau au lieu d'une fois par jour, voir RecipesContent
+// ci-dessous.
+function RecipeMatchList({
+  matches,
+  openId,
+  onToggle,
+  weekCartIds,
+  emptyLabel,
+  t,
+}: {
+  matches: RecipeMatch[];
+  openId: string | null;
+  onToggle: (id: string) => void;
+  weekCartIds: Set<string>;
+  emptyLabel: string;
+  t: (key: string) => string;
+}) {
+  if (matches.length === 0) {
+    return (
+      <div className="rounded-2xl border border-campus-sand bg-campus-surface p-5 text-center">
+        <p className="text-sm text-campus-muted">{emptyLabel}</p>
+      </div>
+    );
+  }
+
+  return (
+    <div className="space-y-3">
+      {matches.map(({ recipe, matchedCount, totalCount, missingProducts }) => {
+        const isOpen = openId === recipe.id;
+        return (
+          <div
+            key={recipe.id}
+            className="overflow-hidden rounded-2xl border border-campus-sand bg-campus-surface"
+          >
+            <button
+              type="button"
+              onClick={() => {
+                if (!isOpen) recordRecipeViewed(recipe.id);
+                onToggle(recipe.id);
+              }}
+              className="flex w-full items-center gap-3 p-4 text-left"
+            >
+              <RecipeThumbnail recipe={recipe} />
+              <span className="flex-1">
+                <span className="block text-sm font-bold text-campus-ink">
+                  {recipe.name}
+                </span>
+                <span className="mt-1 block text-xs text-campus-muted">
+                  {recipe.prepTime} min ·{" "}
+                  {recipe.difficulty === "moyen"
+                    ? t("recipesContent.difficultyMoyen")
+                    : t("recipesContent.difficultyFacile")}{" "}
+                  · {matchedCount}/{totalCount} {t("recipesContent.alreadyPlannedToday")}
+                </span>
+              </span>
+              <span className="text-campus-muted">{isOpen ? "−" : "+"}</span>
+            </button>
+
+            {isOpen && (
+              <div className="space-y-4 border-t border-campus-sand p-4">
+                <div>
+                  <h3 className="mb-2 text-xs font-bold uppercase tracking-wide text-campus-muted">
+                    {t("recipesContent.ingredients")}
+                  </h3>
+                  <ul className="space-y-1 text-sm">
+                    {recipe.ingredientIds.map((id) => {
+                      const product = products.find((p) => p.id === id);
+                      const missing = missingProducts.some((p) => p.id === id);
+                      const scheduledAnotherDay = missing && weekCartIds.has(id);
+                      return (
+                        <li
+                          key={id}
+                          className={`flex items-center gap-2 ${
+                            missing ? "text-campus-muted" : "text-campus-ink"
+                          }`}
+                        >
+                          <span>{missing ? "＋" : "✓"}</span>
+                          <span>
+                            {product?.shortName ?? product?.name ?? id}
+                            {scheduledAnotherDay
+                              ? ` ${t("recipesContent.scheduledAnotherDay")}`
+                              : missing
+                              ? ` ${t("recipesContent.toAdd")}`
+                              : ""}
+                          </span>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </div>
+
+                <div>
+                  <h3 className="mb-2 text-xs font-bold uppercase tracking-wide text-campus-muted">
+                    {t("recipesContent.preparation")}
+                  </h3>
+                  <ol className="space-y-2 text-sm text-campus-ink">
+                    {recipe.steps.map((step, index) => (
+                      <li key={index} className="flex gap-2">
+                        <span className="font-bold text-campus-terracotta">
+                          {index + 1}.
+                        </span>
+                        <span>{step}</span>
+                      </li>
+                    ))}
+                  </ol>
+                </div>
+              </div>
+            )}
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
 export default function RecipesContent({
   result,
   preferences,
@@ -70,26 +189,64 @@ export default function RecipesContent({
     () => buildWeeklyPlan(result.items, preferences.canteenDays),
     [result.items, preferences.canteenDays]
   );
-  const dayIds = useMemo(() => {
-    const day = days[selectedDay];
+
+  // Condiments (huile, sel, sucre...) : jamais assignés à un jour précis
+  // dans "Mon menu" — ils sont là toute la semaine, donc toujours
+  // disponibles pour une recette, peu importe le repas/jour choisi.
+  const condimentIds = useMemo(() => {
     const ids = new Set<string>();
-    for (const slot of DAY_SLOT_ORDER) {
-      for (const entry of day.slots[slot]) ids.add(entry.product.id);
-    }
-    // Les condiments (huile, sel, sucre...) ne sont jamais assignés à un
-    // jour précis dans "Mon menu" — ils sont là toute la semaine, donc
-    // toujours disponibles pour une recette, peu importe le jour choisi.
     for (const item of result.items) {
       if (item.product.isCondiment) ids.add(item.product.id);
     }
     return ids;
-  }, [days, selectedDay, result.items]);
+  }, [result.items]);
 
-  const matches = suggestRecipes(dayIds, preferences);
+  function idsForSlot(slot: (typeof DAY_SLOT_ORDER)[number]): Set<string> {
+    const ids = new Set(condimentIds);
+    for (const entry of days[selectedDay].slots[slot]) ids.add(entry.product.id);
+    return ids;
+  }
+
+  // Une recette par repas du jour plutôt qu'une seule liste mélangeant
+  // petit-déjeuner et repas du midi/soir — retour utilisateur (1er
+  // septembre 2026) : "lundi, la recette que j'ai en premier, c'est le
+  // petit-déjeuner [...] juste en dessous, la recette du midi ou du soir".
+  // suggestRecipes filtre déjà par créneau (mealSlotFilter) pour ne jamais
+  // proposer un porridge comme idée de dîner. Le déjeuner est simplement
+  // absent le jour où il est mangé à la cantine (day.slots.dejeuner vide),
+  // pas besoin de section vide à afficher ce jour-là.
+  const breakfastMatches = suggestRecipes(
+    idsForSlot("petitDejeuner"),
+    preferences,
+    3,
+    "petit-dejeuner"
+  );
+  const lunchMatches =
+    days[selectedDay].slots.dejeuner.length > 0
+      ? suggestRecipes(idsForSlot("dejeuner"), preferences, 3, "dejeuner-diner")
+      : null;
+  const dinnerMatches = suggestRecipes(
+    idsForSlot("diner"),
+    preferences,
+    3,
+    "dejeuner-diner"
+  );
+
   const dietCompatibleCount = useMemo(
     () => countDietCompatibleRecipes(preferences),
     [preferences]
   );
+
+  // Pour la génération IA ci-dessous : garde le comportement existant, basé
+  // sur tout ce qui est prévu ce jour-là (petit-déj + repas), pas restreint
+  // à un seul repas.
+  const dayIds = useMemo(() => {
+    const ids = new Set(condimentIds);
+    for (const slot of DAY_SLOT_ORDER) {
+      for (const entry of days[selectedDay].slots[slot]) ids.add(entry.product.id);
+    }
+    return ids;
+  }, [days, selectedDay, condimentIds]);
 
   // Pour distinguer, parmi les ingrédients manquants ce jour-là, ceux qui
   // sont déjà dans la liste de la semaine mais prévus un AUTRE jour
@@ -245,98 +402,57 @@ export default function RecipesContent({
         </button>
       </div>
 
-      {matches.length === 0 ? (
+      {dietCompatibleCount === 0 ? (
         <div className="rounded-2xl border border-campus-sand bg-campus-surface p-5 text-center">
           <p className="text-sm text-campus-muted">
-            {dietCompatibleCount === 0
-              ? t("recipesContent.noCompatibleRecipe")
-              : t("recipesContent.noMatchToday")}
+            {t("recipesContent.noCompatibleRecipe")}
           </p>
         </div>
       ) : (
-        <div className="space-y-4">
-          {matches.map(({ recipe, matchedCount, totalCount, missingProducts }) => {
-            const isOpen = openId === recipe.id;
-            return (
-              <div
-                key={recipe.id}
-                className="overflow-hidden rounded-2xl border border-campus-sand bg-campus-surface"
-              >
-                <button
-                  type="button"
-                  onClick={() => {
-                    if (!isOpen) recordRecipeViewed(recipe.id);
-                    setOpenId(isOpen ? null : recipe.id);
-                  }}
-                  className="flex w-full items-center gap-3 p-4 text-left"
-                >
-                  <RecipeThumbnail recipe={recipe} />
-                  <span className="flex-1">
-                    <span className="block text-sm font-bold text-campus-ink">
-                      {recipe.name}
-                    </span>
-                    <span className="mt-1 block text-xs text-campus-muted">
-                      {recipe.prepTime} min ·{" "}
-                      {recipe.difficulty === "moyen" ? t("recipesContent.difficultyMoyen") : t("recipesContent.difficultyFacile")}{" "}
-                      · {matchedCount}/{totalCount} {t("recipesContent.alreadyPlannedToday")}
-                    </span>
-                  </span>
-                  <span className="text-campus-muted">{isOpen ? "−" : "+"}</span>
-                </button>
+        <div className="space-y-6">
+          <div>
+            <h2 className="mb-2 text-sm font-bold text-campus-ink">
+              {t(DAY_SLOT_LABEL_KEYS.petitDejeuner)}
+            </h2>
+            <RecipeMatchList
+              matches={breakfastMatches}
+              openId={openId}
+              onToggle={(id) => setOpenId(openId === id ? null : id)}
+              weekCartIds={weekCartIds}
+              emptyLabel={t("recipesContent.noMatchToday")}
+              t={t}
+            />
+          </div>
 
-                {isOpen && (
-                  <div className="space-y-4 border-t border-campus-sand p-4">
-                    <div>
-                      <h3 className="mb-2 text-xs font-bold uppercase tracking-wide text-campus-muted">
-                        {t("recipesContent.ingredients")}
-                      </h3>
-                      <ul className="space-y-1 text-sm">
-                        {recipe.ingredientIds.map((id) => {
-                          const product = products.find((p) => p.id === id);
-                          const missing = missingProducts.some((p) => p.id === id);
-                          const scheduledAnotherDay = missing && weekCartIds.has(id);
-                          return (
-                            <li
-                              key={id}
-                              className={`flex items-center gap-2 ${
-                                missing ? "text-campus-muted" : "text-campus-ink"
-                              }`}
-                            >
-                              <span>{missing ? "＋" : "✓"}</span>
-                              <span>
-                                {product?.shortName ?? product?.name ?? id}
-                                {scheduledAnotherDay
-                                  ? ` ${t("recipesContent.scheduledAnotherDay")}`
-                                  : missing
-                                  ? ` ${t("recipesContent.toAdd")}`
-                                  : ""}
-                              </span>
-                            </li>
-                          );
-                        })}
-                      </ul>
-                    </div>
+          {lunchMatches !== null && (
+            <div>
+              <h2 className="mb-2 text-sm font-bold text-campus-ink">
+                {t(DAY_SLOT_LABEL_KEYS.dejeuner)}
+              </h2>
+              <RecipeMatchList
+                matches={lunchMatches}
+                openId={openId}
+                onToggle={(id) => setOpenId(openId === id ? null : id)}
+                weekCartIds={weekCartIds}
+                emptyLabel={t("recipesContent.noMatchToday")}
+                t={t}
+              />
+            </div>
+          )}
 
-                    <div>
-                      <h3 className="mb-2 text-xs font-bold uppercase tracking-wide text-campus-muted">
-                        {t("recipesContent.preparation")}
-                      </h3>
-                      <ol className="space-y-2 text-sm text-campus-ink">
-                        {recipe.steps.map((step, index) => (
-                          <li key={index} className="flex gap-2">
-                            <span className="font-bold text-campus-terracotta">
-                              {index + 1}.
-                            </span>
-                            <span>{step}</span>
-                          </li>
-                        ))}
-                      </ol>
-                    </div>
-                  </div>
-                )}
-              </div>
-            );
-          })}
+          <div>
+            <h2 className="mb-2 text-sm font-bold text-campus-ink">
+              {t(DAY_SLOT_LABEL_KEYS.diner)}
+            </h2>
+            <RecipeMatchList
+              matches={dinnerMatches}
+              openId={openId}
+              onToggle={(id) => setOpenId(openId === id ? null : id)}
+              weekCartIds={weekCartIds}
+              emptyLabel={t("recipesContent.noMatchToday")}
+              t={t}
+            />
+          </div>
         </div>
       )}
 

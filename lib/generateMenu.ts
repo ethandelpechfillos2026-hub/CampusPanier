@@ -266,15 +266,24 @@ const PRODUCT_FAMILIES: string[][] = [
     "pain-de-campagne", "pain-seigle", "pain-nordique",
     "pain-complet-graines", "baguette-graines", "pain-brie",
   ],
-  // Laitiers du petit-déjeuner.
-  ["yaourt-nature", "yaourt-grec", "fromage-blanc", "skyr", "petit-suisse", "faisselle", "cottage-cheese", "yaourt-soja"],
-  // Boissons "lait" à boire — laits animaux ET végétaux ensemble : avant,
-  // seuls "lait"/"lait-entier"/"lait-ecreme" étaient regroupés, donc
-  // "lait-soja" (ou coco/avoine/amande) s'ajoutait EN PLUS d'un lait animal
-  // au lieu de le remplacer un jour sur deux — retour utilisateur (1er
-  // septembre 2026) : lait demi-écrémé ET lait de soja la même semaine,
-  // redondant.
-  ["lait", "lait-entier", "lait-ecreme", "lait-soja", "lait-coco", "lait-avoine", "lait-amande"],
+  // Laitiers ET laits à boire du petit-déjeuner — une SEULE famille pour les
+  // deux : avant, "yaourt/fromage blanc" et "lait à boire" étaient deux
+  // familles séparées, donc un yaourt/fromage blanc ET un verre de lait
+  // pouvaient apparaître le même matin en plus l'un de l'autre, alors qu'un
+  // seul des deux suffit pour accompagner le pain ou les flocons d'avoine —
+  // retour utilisateur (1er septembre 2026) : "flocons d'avoine, je mange
+  // avec du fromage blanc ou du lait, mais [...] il reste soit le lait
+  // toute seul ou le fromage blanc tout seul [...] il faut que ce soit
+  // cohérent". Laits végétaux (soja/coco/avoine/amande) inclus avec les
+  // laits animaux pour la même raison (déjà fusionnés ici auparavant, un
+  // yaourt de soja ET un lait de vache n'ont pas plus de raison de
+  // coexister qu'un yaourt et un lait tout court).
+  [
+    "yaourt-nature", "yaourt-grec", "fromage-blanc", "skyr", "petit-suisse",
+    "faisselle", "cottage-cheese", "yaourt-soja",
+    "lait", "lait-entier", "lait-ecreme", "lait-soja", "lait-coco",
+    "lait-avoine", "lait-amande",
+  ],
   // Pâtes à tartiner sucrées du petit-déjeuner — sans cette famille, miel +
   // confiture + pâte à tartiner + beurre de cacahuète (aucune n'étant dans
   // une famille) s'affichaient TOUTES les 7 jours de la semaine à la fois
